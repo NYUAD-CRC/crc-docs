@@ -2,7 +2,6 @@
 CRC Documentation
 ******************
 
-
 .. toctree::
    :glob:
    :caption: RCS Documentation
