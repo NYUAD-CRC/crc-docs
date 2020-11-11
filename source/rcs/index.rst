@@ -5,7 +5,8 @@ Research Computing Services (RCS) at NYUAD is a set of services that supports re
 We have adapted our services to meet and satisfy researchers’ and faculty changing research and teaching needs. Members of our team engage researchers and faculty across all academic divisions, centers and institutes at NYUAD. 
 We provide `Research Application Hosting`_, `Professional Services`_, and `Research Lab Support Services`_.
 
-.. note::
+
+.. seealso::
     For further information on NYU Abu Dhabi Research Computing Support, contact:
 
     :Muataz Al-Barwani: Senior Director, Center for Research Computing
