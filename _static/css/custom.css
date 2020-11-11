@@ -1,0 +1,16 @@
+/* lighten */
+/* 57068C   #2980b9 */
+/* #6907a9  #3091d1 6% */
+/* #8509d5  #55a5d9 15% */
+/* #a557d9  30% */
+
+.wy-side-nav-search, .wy-side-nav-search img, .wy-nav-top, .wy-nav-top img {
+    background-color: #57068C;
+}
+.wy-menu-vertical a:active {
+    background-color: #6907a9;
+}
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption{
+    color: #a557d9;
+}
