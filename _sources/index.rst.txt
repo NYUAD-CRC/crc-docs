@@ -1,5 +1,5 @@
 ******************
-CRC Documentation
+CRC User Documentation
 ******************
 
 .. toctree::
