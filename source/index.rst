@@ -7,7 +7,6 @@ CRC Documentation
    :glob:
    :caption: RCS Documentation
    :maxdepth: 2
-   :hidden:
 
    /rcs/index
    /rcs/kb/index
