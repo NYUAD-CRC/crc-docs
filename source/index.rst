@@ -1,11 +1,13 @@
-**********************
-CRC User Documentation
-**********************
+******************
+CRC Documentation
+******************
+
 
 .. toctree::
    :glob:
    :caption: RCS Documentation
    :maxdepth: 2
+   :hidden:
 
    /rcs/index
    /rcs/kb/index
@@ -14,5 +16,6 @@ CRC User Documentation
 .. toctree::
    :caption: HPC Documentation
    :maxdepth: 2
+   :hidden:
 
    /hpc/index
