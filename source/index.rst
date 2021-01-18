@@ -18,7 +18,18 @@ CRC Documentation
    :hidden:
 
    /hpc/index
+   /hpc/accounts/index
+   /hpc/system/index
+   /hpc/storage/index
+   /hpc/software/index
+   /hpc/jobs/index
    /hpc/research/index
+   /hpc/help/index
+   
+   
+   
+   
+   
    
 
 
