@@ -1,0 +1,75 @@
+Software Modules
+================
+
+HPC systems differ from desktop/laptop computers in how
+software is installed. In a desktop/laptop you install software
+in a pre-defined centralized location where all users can
+access it. For instance the command "yum install python"
+will install python version 2.7.5 (on CentOS 7) under /usr/bin.
+But in a large system hosting a multitude of users it is not
+practical to have a single version of "python" installed. Some
+users may need access to the latest version, while others
+have hard dependencies on an earlier version. And of
+course, this applies to all applications. So in an HPC system
+software is installed as independent modules which users
+must explicitly load into their shell environment.
+Here's an example with matlab:
+
+::
+
+    module load matlab/2019b
+
+When you login your shell environment is empty of all software modules.
+
+.. warning::
+    **we strongly discourage loading modules automatically in your .bashrc**
+
+``module avail matlab`` shows you all available versions of matlab on Dalma. ``module load matlab/R2016a`` loads the R2016a version into your shell environment. So when you invoke ``matlab`` you actually use the correct version.
+
+Software module environment are set on a per shell instance. So if you open a new terminal on a login node the
+environment you may have set in another terminal will not be propagated.
+You can control and monitor the contents of your software modules environment with the following commands:
+
+::
+
+    module list         -   Display contents of your software modules environment
+    module purge        -   Reset your software modules environment
+    module avail        -   Display the list of all software modules available
+    module load XXX     -   Load software module XXX into your environment
+    module unload XXX   -   Unload software module XXX from your environment
+
+As a guideline you should
+
+
+- Never add ``module load`` into your .bashrc file
+- Use ``module purge`` before loading a new module environment to run an application
+- Use a shell script to run an application and include the necessary modules in the script
+
+::
+
+    #!/bin/bash
+    module purge
+    module load matlab
+    matlab –nodisplay –nodesktop –r "mycode.m"
+
+Dalma implements a one-of-a-kind software module environment – developed by the HPC team in Abu Dhabi – which is
+designed to make using software modules simpler and safer.
+
+By simpler we mean that you need not load dependent software modules. For instance if you load netcdf into your
+environment, you need not load hdf5, nor zlib. All dependencies are automatically handled. So everytime you use netcdf
+you get the same software modules and get the same results.
+
+Things are also simpler as when compiling applications and libraries you do not neet to worry about specifying the
+directories from which to pick up libraries (``-L``) or include files (``-I``), and you do not need to list all dependent libraries. For
+example when linking with netcdf you do not need to list the dependent libraries, such as ``hdf5`` and ``zlib``; it's as simple as
+``mpicc –o wrf wrf-main.o wrflibs.a –lnetcdf``!
+
+We also simplify things by making nearly all libraries compiler independent. So math libraries such as ``lapack`` can be used
+with both GNU and Intel compilers equally.
+
+Finally, we simplify things further by deploying computationally intensive applications
+and libraries using an NYU Abu Dhabi designed method which automatically switches
+to the most efficient implementation based on the processor where you are currently
+executing. For instance if you load the ``fftw2`` math library at execution time the
+module will run the ``sse``, ``avx``, or ``avx2`` compiled version based on the processor you
+are currently using.
