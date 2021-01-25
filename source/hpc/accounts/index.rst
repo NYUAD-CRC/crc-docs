@@ -11,16 +11,17 @@ Accounts
 Requesting New Account
 ----------------------
 
-#. Follow the instructions this :doc:`page <account_new>` to request an new account on Dalma.
-#. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request.
-#. You cannot submit jobs until you pass our online training. Click this: :ref:`Dalma Trainig <training>`
-
 .. toctree::
-    :glob:
    :maxdepth: 1
    :hidden:
 
    /hpc/system/account_new
+
+#. Follow the instructions this :doc:`page <account_new>` to request an new account on Dalma.
+#. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request.
+#. You cannot submit jobs until you pass our online training. Click this: :ref:`Dalma Trainig <training>`
+
+
 
 Renewing an Account
 -------------------
@@ -31,7 +32,6 @@ Users need to renew their account every year.
 #. You cannot submit jobs until you pass our online training. Click this: :ref:`Dalma Training <training>`
 
 .. toctree::
-    :glob:
    :maxdepth: 2
    :hidden:
     
@@ -44,7 +44,6 @@ Formalities
 Check this :doc:`page <account_formality>` for the formality on eligibility, sponsorship guidelines, sponsorship responsibility and etc.
 
 .. toctree::
-    :glob:
    :maxdepth: 2
    :hidden:
     

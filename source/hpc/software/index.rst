@@ -52,7 +52,7 @@ As you can see, ``Python 3`` is available then. You could load ``Python 3`` by l
 At this point, you should be able to invoke the executable, e.g., ``python``. 
 
 .. note::
-    Alternatively, you can use Dalma miniconda for hassle-free, independent Python environment. Follow this page: :doc:`Miniconda in Dalma </hpc/software/python/Dalma_Miniconda>`
+    Alternatively, you can use Dalma miniconda for hassle-free, independent Python environment. Follow this page: :doc:`Miniconda in Dalma </hpc/software/python/dalma_miniconda>`
 
 More information about the software modules in dalma can 
 be found in the document here :download:`Dalma SW modules </hpc/docs/Dalma-SWModules.pdf>`
@@ -62,5 +62,5 @@ For running Jobs: Please refer to the :doc:`Jobs Management </hpc/jobs/index>` s
 Dalma Miniconda
 ---------------
 
-We have a centralized installation of :doc:`Miniconda </hpc/software/python/Dalma_Miniconda>`, 
-:doc:`TensorFlow </hpc/software/python/Dalma_TensorFlow>` and :doc:`PyTorch </hpc/software/python/Dalma_PyTorch>` in Dalma. Please refer to the highlighted sections for more details.
+We have a centralized installation of :doc:`Miniconda </hpc/software/python/dalma_miniconda>`, 
+:doc:`TensorFlow </hpc/software/python/dalma_tensorflow>` and :doc:`PyTorch </hpc/software/python/dalma_pytorch>` in Dalma. Please refer to the highlighted sections for more details.

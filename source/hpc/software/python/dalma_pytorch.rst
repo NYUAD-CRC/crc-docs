@@ -11,6 +11,7 @@ How to clone the **PyTorch** environment
 1. If you are using Dalma Miniconda 
 
     .. code-block:: bash
+    
         #conda create -n <name of the new env> --clone <existing env>
         #example:
         conda create -n pytorch --clone pytorch-1.4
@@ -21,6 +22,7 @@ How to clone the **PyTorch** environment
 2. If you are using your own conda package
 
     .. code-block:: bash
+
         #conda create -n <name of the new env> --clone <path to existing env>
         #example:
         conda create -n pytorch --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/pytorch-1.4
