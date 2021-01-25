@@ -8,7 +8,7 @@ On HPC, you don't run it directly on the login nodes. Instead, you submit jobs o
 1. You request certain resources from the system. The most common resources are CPU cores. 
 2. With the assigned resources, you run your computational tasks.
 
-
+For Special Compute Nodes (GPU  and Visualization), please refer to the section :ref:`here <special_compute_nodes>`.
 
 .. toctree::
     :glob:

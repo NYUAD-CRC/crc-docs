@@ -32,6 +32,6 @@ Submit an Account Renewal Request
     .. image:: ../img/newaccount4.png
 
 6. Hit ``Submit``, and the request will go to your sponsor to approve (if applicable), and your account will be created, usually within a day of being approved.  You will be returned to the dashboard.
-7. (If you are not an NYU faculty) Ask your sponsor to approve as instructed here :doc:`Approving Account <Approve_Account>`
-8. (Only minimum computing resource will be assigned to your account until you pass the online training!) Pass our online training for more computing resources. :doc:`Dalma Training <Dalma_Trainig>`
+7. (If you are not an NYU faculty) Ask your sponsor to approve as instructed here :doc:`Approving Account <account_approval>`
+8. (Only minimum computing resource will be assigned to your account until you pass the online training!) Pass our online training for more computing resources. :ref:`Dalma Training <trainig>`
 9. If you have any difficulties or questions, please contact us at dalma.admins@nyu.edu

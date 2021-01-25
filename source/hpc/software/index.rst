@@ -8,14 +8,14 @@ On HPC:
 
 You can compile / install your own software, and/or use our Module system. For the latter, first check what applications are available.
 
-::
+.. code-block:: bash
 
     # Run the following commands after logging in Dalma
     module avail
 
 Then you could select the desired software to load. The following example shows how to load a self-sufficient-single-application environment for gromacs.
 
-::
+.. code-block:: bash
 
     # Run the following commands after logging in Dalma
     module load gromacs
@@ -24,7 +24,7 @@ Then you could select the desired software to load. The following example shows 
 
 The following example shows how to load an environment for compiling source code from scratch.
 
-::
+.. code-block:: bash
 
     # Run the following commands after logging in Dalma
     module load gcc
@@ -35,7 +35,7 @@ At this point, compilers like ``gcc``, ``gfortran`` and ``g++`` are available, i
 
 If you cannot find a certain version of the software (for example, you are looking for Python 3, but only to find Python 2 is available), try running the following command to make all modules visible first.
 
-::
+.. code-block:: bash
 
     # Run the following commands after logging in Dalma
     module load all
@@ -45,7 +45,7 @@ If you cannot find a certain version of the software (for example, you are looki
 
 As you can see, ``Python 3`` is available then. You could load ``Python 3`` by loading the specific module.
 
-::
+.. code-block:: bash
 
     module load python/3.5.1
 

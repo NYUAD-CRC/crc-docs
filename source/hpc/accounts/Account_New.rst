@@ -39,6 +39,6 @@ Once the steps below are finished and your sponsor approved, your account will b
 
 
 6. Hit ``Submit``, you will be returned to the dashboard. Soon you and your sponsor (if applicable) will receive a confirmation email from IDM. 
-7. (If you are not an NYU faculty) Ask your sponsor to approve as instructed here: :doc:`Approving New Account <Account_Approval>`
-8. Pass our online training for more computing resources. :doc:`Dalma Training <Dalma_Training>`. Otherwise, you are not allowed to submit jobs. Your account will be activated within 2 working days.
+7. (If you are not an NYU faculty) Ask your sponsor to approve as instructed here: :doc:`Approving New Account <account_approval>`
+8. Pass our online training for more computing resources. :ref:`Dalma Training <training>`. Otherwise, you are not allowed to submit jobs. Your account will be activated within 2 working days.
 9. If you have any difficulties or questions, please contact us at dalma.admins@nyu.edu

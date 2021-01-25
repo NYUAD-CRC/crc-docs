@@ -73,17 +73,15 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
     /archive      418GB     5242GB ( 8%)           3        125 ( 3%)
 
 
-- :doc:`$HOME and $SCRATCH <home_scratch>`
-- :doc:`$WORK <work>`
-- :doc:`$ARCHIVE <archive>`
 
-For data transfers please refer to the **Data Trasnfers** section :doc:`here </hpc/system/index>`
+
+For data transfers please refer to the **Data Trasnfers** section :ref:`here <data_transfers>`
 
 
 .. toctree::
     :glob:
    :maxdepth: 2
-   :hidden:
+   
 
    /hpc/storage/home_scratch
    /hpc/storage/work

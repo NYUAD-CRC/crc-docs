@@ -1,3 +1,5 @@
+.. _mount_work:
+
 Mount $WORK with SSHFS
 =======================
 

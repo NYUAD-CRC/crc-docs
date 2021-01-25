@@ -11,6 +11,7 @@ For infrequent data transfer, directly specify the port 922 in your scp command.
 **Pulling data from Dalma**
 
 .. code-block:: bash
+
     scp -P 922 <NetID>@dalma.abudhabi.nyu.edu:~/filename ./
 
 **Pushing data to Dalma**

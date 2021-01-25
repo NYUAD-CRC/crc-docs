@@ -97,7 +97,7 @@ We recommend Mobaxterm/Putty as your ssh client. Putty is available for download
     c. Type Dalma under Saved Sessions.
     d. Click Save button. A new session called Dalma will appear in Saved Sessions. 
 
-.. image:: img/putty.png
+.. image:: /hpc/img/putty.png
 
 
 2. Select Dalma session. Click Load button. 

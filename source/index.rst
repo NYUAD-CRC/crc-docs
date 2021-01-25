@@ -25,6 +25,7 @@ CRC Documentation
    /hpc/jobs/index
    /hpc/research/index
    /hpc/help/index
+   /hpc/training/index 
    
    
    

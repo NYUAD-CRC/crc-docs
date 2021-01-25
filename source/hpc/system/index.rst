@@ -54,28 +54,40 @@ Once your account is ready, you can access Dalma. With Linux or Mac in NYU AD/NY
 
 If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma <access_dalma>`.
 
+.. toctree::
+    :glob:
+   :maxdepth: 1
+   :hidden:
+
+   /hpc/system/access_dalma
+
+.. _data_transfers:
+
 Data Transfers
 --------------
 
 You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to Dalma: 
 
+.. toctree::
+    :glob:
+   :maxdepth: 1
+   
 
-* :doc:`File Transfer using rsync <rsync_transfer>`
-
-* :doc:`File Transfer using FileZilla <FileZilla_transfer>`
+   /hpc/system/rsync_transfer
+   /hpc/system/filezilla_transfer
+   
+.. _special_compute_nodes: 
 
 Special Compute Nodes
 ---------------------
 
-- :doc:`Visualization Nodes <Visual_nodes>`
-- :doc:`GPU Nodes <GPU_nodes>`
 
 .. toctree::
     :glob:
-   :maxdepth: 2
-   :hidden:
+   :maxdepth: 1
+   
 
-   /hpc/system/Visual_nodes
-   /hpc/system/GPU_nodes 
+   /hpc/system/visual_nodes
+   /hpc/system/gpu_nodes 
    
    
