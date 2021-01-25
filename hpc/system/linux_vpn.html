@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Fast Transfer Between NYU NYC and Dalma &mdash; CRC Documentation  documentation</title>
+  <title>NYU VPN for Linux &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -148,13 +148,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Fast Transfer Between NYU NYC and Dalma</li>
+      <li>NYU VPN for Linux</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/hpc/system/NYC_fileTransfer.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/hpc/system/linux_vpn.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,35 +167,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fast-transfer-between-nyu-nyc-and-dalma">
-<h1>Fast Transfer Between NYU NYC and Dalma<a class="headerlink" href="#fast-transfer-between-nyu-nyc-and-dalma" title="Permalink to this headline">¶</a></h1>
-<p>The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a high bandwidth ANKABUT link instead.</p>
-<div class="section" id="specifying-the-port-directly">
-<h2>Specifying the port directly<a class="headerlink" href="#specifying-the-port-directly" title="Permalink to this headline">¶</a></h2>
-<p>For infrequent data transfer, directly specify the port 922 in your scp command. From your host in NY, run this in the terminal.</p>
-<p><strong>Pulling data from Dalma</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> &lt;NetID&gt;@dalma.abudhabi.nyu.edu:~/filename ./
+  <div class="section" id="nyu-vpn-for-linux">
+<h1>NYU VPN for Linux<a class="headerlink" href="#nyu-vpn-for-linux" title="Permalink to this headline">¶</a></h1>
+<p>This article describes how to connect NYU VPN using Linux.</p>
+<p>Use at Your Own Risk</p>
+<p>NYU IT does not support VPN for Linux officially. The following instructions are tested with Mint Linux based on Ubuntu 14.04 LTS. They come with absolutely no warranty.</p>
+<div class="section" id="step-by-step-guide">
+<h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl>
+<dt>Install OpenConnect.</dt><dd><ul class="simple">
+<li><p>(For Debian / Ubuntu user): OpenConnect is available on the repository. Run this in your local machine terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install openconnect
 </pre></div>
 </div>
-<p><strong>Pushing data to Dalma</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> filename &lt;NetID&gt;@dalma.abudhabi.nyu.edu:~/
+<ul class="simple">
+<li><p>(Compile from source): Download source code and compile yourself. <a class="reference external" href="http://www.infradead.org/openconnect/download.html">http://www.infradead.org/openconnect/download.html</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Connect NYU VPN using OpenConnect:</dt><dd><ul class="simple">
+<li><p>Run this in your local machine terminal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo openconnect vpn.abudhabi.nyu.edu
 </pre></div>
 </div>
-</div>
-<div class="section" id="setup-an-alias">
-<h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this headline">¶</a></h2>
-<p>If you need to transfer data frequently, it is easier to setup an alias in your ssh config. In your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, append the following entries.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host dalma-fast
-    Hostname     dalma.abudhabi.nyu.edu
-    Port         <span class="m">922</span>
-    User         &lt;your-NetID&gt;
-</pre></div>
-</div>
-<p>Now you should be able to scp to / from Dalma using the ANKABUT fast link by the following commands.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp filename dalma-fast:~/
-</pre></div>
-</div>
-<p>Windows user can do the same thing by specifying the port 922 in the file transfer software. E.g., FileZilla.</p>
+<ul class="simple">
+<li><p>Type your netid and password.</p></li>
+<li><p>After successful login, all network traffic will be under VPN.</p></li>
+<li><p>When VPN is no longer needed, type Ctrl+c to exit OpenConnect.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 </div>
 

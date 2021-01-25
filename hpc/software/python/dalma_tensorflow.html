@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Miniconda in Dalma &mdash; CRC Documentation  documentation</title>
+  <title>TensorFlow (Keras) in Dalma &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -148,13 +148,13 @@
     
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Miniconda in Dalma</li>
+      <li>TensorFlow (Keras) in Dalma</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/hpc/software/python/Dalma_Miniconda.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/hpc/software/python/dalma_tensorflow.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,80 +167,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="miniconda-in-dalma">
-<h1>Miniconda in Dalma<a class="headerlink" href="#miniconda-in-dalma" title="Permalink to this headline">¶</a></h1>
-<p>We have a centralized installation of Miniconda in Dalma. The users can either
-install their own Miniconda or use the centralized installation present in Dalma. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.</p>
-<p>The conda cheat sheet gives you a list of useful commands in a glance:  Conda-cheat-sheet</p>
-<div class="section" id="one-time-set-up">
-<h2>One Time Set up<a class="headerlink" href="#one-time-set-up" title="Permalink to this headline">¶</a></h2>
-<p>Execute the following command for making Dalma Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
-<span class="nb">source</span> ~/.bashrc
-</pre></div>
+  <div class="section" id="tensorflow-keras-in-dalma">
+<h1>TensorFlow (Keras) in Dalma<a class="headerlink" href="#tensorflow-keras-in-dalma" title="Permalink to this headline">¶</a></h1>
+<p>We have Tensorflow (1.15 &amp; 2.0) installations as part of Miniconda module in Dalma. You can clone the existing centralized environments to your local environments and add other required libraries or packages on top of it. To find more details of the Miniconda module in Dalma, click <span class="xref std std-doc">here</span>. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The current Nvidia driver version on the GPU nodes is <code class="docutils literal notranslate"><span class="pre">410.79</span></code> which supports <code class="docutils literal notranslate"><span class="pre">cuda/10.0</span></code> or lesser and hence the TensorFlow versions &lt;= 2.0 are supported. However, the TensorFlow versions &gt;= 2.1 require cuda/10.1 or higher and hence are not compatible. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.</p>
 </div>
-</div>
-<div class="section" id="managing-environments">
-<h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
-<p><strong>Create a Local Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the environment&gt;</span>
+<p>If you have never used Conda, we recommend you to use Dalma Miniconda. You can find the steps to set up Dalma Miniconda by clicking <span class="xref std std-doc">here</span>.</p>
+<div class="section" id="how-to-clone-the-tensorflow-environment">
+<h2>How to clone the TensorFlow environment<a class="headerlink" href="#how-to-clone-the-tensorflow-environment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p><strong>If you are using Dalma Miniconda</strong></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;existing env&gt;</span>
 <span class="c1">#example:</span>
-conda create -n myenv1
-</pre></div>
-</div>
-<p><strong>Activate the Local Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda activate &lt;name of the environment&gt;</span>
-<span class="c1">#example:</span>
-conda activate myenv1
-</pre></div>
-</div>
-<p><strong>Deactivate an Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda deactivate
-</pre></div>
-</div>
-<p><strong>Listing the Environments Available</strong></p>
-<p>This shows the existing local and centralized Miniconda environments available</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env list
-</pre></div>
-</div>
-<p>A sample output is shown below. The list of centralized and local installations can be seen.</p>
-<p><strong>Cloning an Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p &lt;path to new env&gt; --clone &lt;path to existing env&gt;</span>
-<span class="c1">#example: Here we clone the existing Tensorflow environment.</span>
 conda create -n tf-gpu --clone tensorflow-1.15
 </pre></div>
 </div>
+</div></blockquote>
+</li>
+<li><p><strong>If you are using your own conda package</strong></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;path to existing env&gt;</span>
+<span class="c1">#example:</span>
+conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
 </div>
 <div class="section" id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>
-<p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the <code class="docutils literal notranslate"><span class="pre">bashrc</span></code> file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
+<p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
-A sample job submission script is shown below:
-
-<span class="c1">#!/bin/bash</span>
+</pre></div>
+</div>
+<p>A sample job submission script is shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -n 10</span>
 <span class="c1">#SBATCH -t 48:00:00</span>
+<span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
 <span class="c1">#Other SBATCH commands go here</span>
 
 <span class="c1">#Activating conda</span>
 <span class="nb">source</span> ~/.bashrc
-conda activate myenv1
+conda activate tf-gpu
 
 <span class="c1">#Your appication commands go here</span>
 python abc.py
 </pre></div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>In order to avoid activating a long path everytime, an alias can be created in the bashrc similar to the following</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">myenv1</span><span class="o">=</span><span class="s1">&#39;conda activate myenv1&#39;</span>
-</pre></div>
-</div>
-<p>This will activate the environment just by typing <code class="docutils literal notranslate"><span class="pre">myenv1</span></code>.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Go through the Conda 30 mins test drive to make sure you understand the basic concepts: <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html</a></p>
+<p>These installations have preinstalled cuda and cudnn libraries as well and hence there is no need to load cuda modules explicitly.</p>
 </div>
 </div>
 </div>

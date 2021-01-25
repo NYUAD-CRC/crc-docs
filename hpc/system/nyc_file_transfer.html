@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Approving New Account &mdash; CRC Documentation  documentation</title>
+  <title>Fast Transfer Between NYU NYC and Dalma &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -93,8 +93,8 @@
 <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Accounts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
@@ -148,13 +148,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Approving New Account</li>
+      <li>Fast Transfer Between NYU NYC and Dalma</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/hpc/accounts/Account_Approval.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/hpc/system/nyc_file_transfer.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,29 +167,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="approving-new-account">
-<h1>Approving New Account<a class="headerlink" href="#approving-new-account" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic">
-<li><p>When someone nominates you as their HPC sponsor, you will be notified by an email. Open this website  <a class="reference external" href="https://identity.it.nyu.edu/">https://identity.it.nyu.edu/</a> (Make sure you are connected to VPN). After login, the webpage is similar to the screenshot below.</p>
-<blockquote>
-<div><img alt="../../_images/approve1.png" src="../../_images/approve1.png" />
-</div></blockquote>
-</li>
-<li><p>Clicking on the “Approvals” QuickLink will lead to a list of pending requests:</p>
-<blockquote>
-<div><img alt="../../_images/approve2.png" src="../../_images/approve2.png" />
-</div></blockquote>
-</li>
-<li><p>Click on the action item to see details as per the image below.</p>
-<blockquote>
-<div><img alt="../../_images/approve3.png" src="../../_images/approve3.png" />
-<p>Here, the Approve or Deny button should be clicked,
-then confirmed, in order to complete the request.</p>
-<p>The account will then be created automatically within a day.</p>
-</div></blockquote>
-</li>
-<li><p>If you have any difficulties or questions, please contact us at <a class="reference external" href="mailto:dalma&#46;admins&#37;&#52;&#48;nyu&#46;edu">dalma<span>&#46;</span>admins<span>&#64;</span>nyu<span>&#46;</span>edu</a></p></li>
-</ol>
+  <div class="section" id="fast-transfer-between-nyu-nyc-and-dalma">
+<h1>Fast Transfer Between NYU NYC and Dalma<a class="headerlink" href="#fast-transfer-between-nyu-nyc-and-dalma" title="Permalink to this headline">¶</a></h1>
+<p>The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a high bandwidth ANKABUT link instead.</p>
+<div class="section" id="specifying-the-port-directly">
+<h2>Specifying the port directly<a class="headerlink" href="#specifying-the-port-directly" title="Permalink to this headline">¶</a></h2>
+<p>For infrequent data transfer, directly specify the port 922 in your scp command. From your host in NY, run this in the terminal.</p>
+<p><strong>Pulling data from Dalma</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> &lt;NetID&gt;@dalma.abudhabi.nyu.edu:~/filename ./
+</pre></div>
+</div>
+<p><strong>Pushing data to Dalma</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> filename &lt;NetID&gt;@dalma.abudhabi.nyu.edu:~/
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-an-alias">
+<h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this headline">¶</a></h2>
+<p>If you need to transfer data frequently, it is easier to setup an alias in your ssh config. In your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, append the following entries.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host dalma-fast
+    Hostname     dalma.abudhabi.nyu.edu
+    Port         <span class="m">922</span>
+    User         &lt;your-NetID&gt;
+</pre></div>
+</div>
+<p>Now you should be able to scp to / from Dalma using the ANKABUT fast link by the following commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp filename dalma-fast:~/
+</pre></div>
+</div>
+<p>Windows user can do the same thing by specifying the port 922 in the file transfer software. E.g., FileZilla.</p>
+</div>
 </div>
 
 

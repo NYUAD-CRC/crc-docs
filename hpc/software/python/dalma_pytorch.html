@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>TensorFlow (Keras) in Dalma &mdash; CRC Documentation  documentation</title>
+  <title>PyTorch in Dalma &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -148,13 +148,13 @@
     
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>TensorFlow (Keras) in Dalma</li>
+      <li>PyTorch in Dalma</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/hpc/software/python/Dalma_TensorFlow.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/hpc/software/python/dalma_pytorch.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,34 +167,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tensorflow-keras-in-dalma">
-<h1>TensorFlow (Keras) in Dalma<a class="headerlink" href="#tensorflow-keras-in-dalma" title="Permalink to this headline">¶</a></h1>
-<p>We have Tensorflow (1.15 &amp; 2.0) installations as part of Miniconda module in Dalma. You can clone the existing centralized environments to your local environments and add other required libraries or packages on top of it. To find more details of the Miniconda module in Dalma, click <a class="reference internal" href="Dalma_Miniconda.html"><span class="doc">here</span></a>. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The current Nvidia driver version on the GPU nodes is <code class="docutils literal notranslate"><span class="pre">410.79</span></code> which supports <code class="docutils literal notranslate"><span class="pre">cuda/10.0</span></code> or lesser and hence the TensorFlow versions &lt;= 2.0 are supported. However, the TensorFlow versions &gt;= 2.1 require cuda/10.1 or higher and hence are not compatible. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.</p>
-</div>
-<p>If you have never used Conda, we recommend you to use Dalma Miniconda. You can find the steps to set up Dalma Miniconda by clicking <a class="reference internal" href="Dalma_Miniconda.html"><span class="doc">here</span></a>.</p>
-<div class="section" id="how-to-clone-the-tensorflow-environment">
-<h2>How to clone the TensorFlow environment<a class="headerlink" href="#how-to-clone-the-tensorflow-environment" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="pytorch-in-dalma">
+<h1>PyTorch in Dalma<a class="headerlink" href="#pytorch-in-dalma" title="Permalink to this headline">¶</a></h1>
+<p>We have PyTorch (1.4 &amp; 1.7) installations as part of Miniconda module in Dalma. You can clone the existing centralized environment to your local environment and add other required libraries or packages on top of it after activating it. To find more details of the Miniconda module in Dalma, click <span class="xref std std-doc">here</span>.</p>
+<p>If you have never used Conda, we recommend you to use Dalma Miniconda. You can find the steps to set up Dalma Miniconda by clicking <span class="xref std std-doc">here</span>.</p>
+<div class="section" id="how-to-clone-the-pytorch-environment">
+<h2>How to clone the <strong>PyTorch</strong> environment<a class="headerlink" href="#how-to-clone-the-pytorch-environment" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p><strong>If you are using Dalma Miniconda</strong></p>
+<li><p>If you are using Dalma Miniconda</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;existing env&gt;</span>
-<span class="c1">#example:</span>
-conda create -n tf-gpu --clone tensorflow-1.15
-</pre></div>
-</div>
-</div></blockquote>
+<div></div></blockquote>
 </li>
-<li><p><strong>If you are using your own conda package</strong></p>
+<li><p>If you are using your own conda package</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;path to existing env&gt;</span>
-<span class="c1">#example:</span>
-conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
-</pre></div>
-</div>
-</div></blockquote>
+<div></div></blockquote>
 </li>
 </ol>
 </div>
@@ -214,7 +200,7 @@ conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorfl
 
 <span class="c1">#Activating conda</span>
 <span class="nb">source</span> ~/.bashrc
-conda activate tf-gpu
+conda activate pytorch
 
 <span class="c1">#Your appication commands go here</span>
 python abc.py
@@ -222,7 +208,7 @@ python abc.py
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>These installations have preinstalled cuda and cudnn libraries as well and hence there is no need to load cuda modules explicitly.</p>
+<p>These installations have preinstalled cuda and cudnn libraries as well and hence there is no need to load cuda modules explicitly</p>
 </div>
 </div>
 </div>
