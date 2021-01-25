@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Performance Considerations &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Research Publications" href="../research/index.html" />
+    <link rel="prev" title="Cancelling a Job" href="job_cancel.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Performance Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#job-throughput">Job Throughput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-performance-runtime">Job Performance/Runtime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Performance Considerations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/jobs/performance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="performance-considerations">
+<h1>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="job-throughput">
+<h2>Job Throughput<a class="headerlink" href="#job-throughput" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>It is crucial to specify a more or less accurate runtime for your job.</dt><dd><p>Requesting too little will result in job abortion, while requesting too much will have a
+negative impact on job start time and job throughput: Firstly, jobs with a shorter runtime have a greater chance to benefit from being backfilled between long running jobs and may therefore start earlier if resources are scarce. Secondly, a short running job may still start when a scheduled downtime is getting closer while long running jobs won’t start because they are not guaranteed to finish before the start of the downtime.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>It is crucial to request the correct amount of cores for your job.</dt><dd><p>Requesting cores that your job cannot utilize is a waste of resources that
+could otherwise be allocated to other jobs. Hence, jobs that theoretically
+could run have to wait for the resources to become available. For potential consequences of requesting too less cores on job performance, see below.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>It is crucial to request the correct amount of memory for your job.</dt><dd><p>Requesting too little memory will result in job abortion.
+Requesting too much memory is a waste of resources that could otherwise be allocated to other jobs.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="job-performance-runtime">
+<h2>Job Performance/Runtime<a class="headerlink" href="#job-performance-runtime" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>It is crucial to request the correct amount of cores for your job.</dt><dd><p>For parallel jobs (shared memory, MPI, hybrid) requesting less cores than processes/threads are spawned by the job will lead to potentially overbooked compute nodes. This is because your job will nevertheless spawn the required number of processes/threads (use a certain number of cores) while to the scheduler it appears that some of the utilized resources are still available, and thus the scheduler will allocate those resources to other jobs. Although under certain circumstances it might make sense to share cores among multiple processes/threads, the above reasoning should be considered as a general guideline, especially for unexperienced user.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../research/index.html" class="btn btn-neutral float-right" title="Research Publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="job_cancel.html" class="btn btn-neutral float-left" title="Cancelling a Job" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

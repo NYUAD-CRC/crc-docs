@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>User’s group Modification &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>User’s group Modification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/admin/user_group.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-s-group-modification">
+<h1>User’s group Modification<a class="headerlink" href="#user-s-group-modification" title="Permalink to this headline">¶</a></h1>
+<p>The application team takes the responsibility to modify NetId user primary and/or secondary groups.</p>
+<p>Group property info:</p>
+<p>Run all below commands on idm server as root
+A cron is run every 15 minutes for admin servers and 1 hour for login, compute nodes to resync password and group files.
+GID &gt;= 1000 (RHEL7 now uses GID &lt; 1000 for system groups)
+Don’t use system groupnames (if you feel a groupname might cause problems, ask first)
+Add a new group (automatically selected GID): $ groupadd &lt;groupname&gt;</p>
+<p>Add a user to a (secondary) group: $ gpasswd -a &lt;username&gt; &lt;groupname&gt;</p>
+<p>Delete a user from a (secondary) group: $ gpasswd -d &lt;username&gt; &lt;groupname&gt;</p>
+<p>Change a user’s primary group: $ usermod -g &lt;groupname&gt; &lt;username&gt;</p>
+<p>To enable group’s other members to access a user main directory (by default umask is 0022, all subdirectories should be readable; otherwise use -R option to chgrp or modify subdirectory permission):</p>
+<p>$ chmod g+rx /home/&lt;username&gt;; chgrp &lt;groupname&gt; /home/&lt;username&gt;</p>
+<p>$ chmod g+rx /archive/&lt;username&gt;; chgrp &lt;groupname&gt; /archive/&lt;username&gt;</p>
+<p>$ chmod g+rx,o+r /scratch/&lt;username&gt;; chgrp &lt;groupname&gt; /scratch/&lt;username&gt;</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IIQ User Operation &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>IIQ User Operation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/admin/iiq_user.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iiq-user-operation">
+<h1>IIQ User Operation<a class="headerlink" href="#iiq-user-operation" title="Permalink to this headline">¶</a></h1>
+<p>IIQ is the user account management used by NYU Account Management office. The account sync is done through user account ‘idm’ on idm server. This user is allowed to run selective sudo with the command list given in IIQ_CMDS variable in /etc/sudoers.</p>
+<p>At the moment, some IIQ commands initiated from NY don’t quite make sense, therefore there are some commands such as /bin/echo which need to be listed in the sudo file.</p>
+<p>IIQ also initiated some prechecks by running some commands such as /usr/sbin/useradd which we don’t want because useradd creates user account but don’t properly create /scratch, /archive, etc. as well as password and group files sync. Hence useradd, usermod, userdel commands are moved to &lt;command&gt;.real and in their place a wrapper is created to disable idm user execution of these commands.</p>
+<p>Dalma IIQ scripts
+There are 5 IIQ scripts which we use to manage user accounts on Dalma: iiq_archiveUser.sh, iiq_createUser.sh, iiq_deleteUser.sh, iiq_expireUser.sh, iiq_renewUser.sh; all in /usr/sbin. A configuration settings is placed in /etc/idm/iiq_config.sh and log files in /var/log/idm. Using a single script to perform many subtasks is preferable because of our abilities to do error logging as well as parallel tasks execution. The scripts also optionally perform prechecks of the account operation logic.</p>
+<p>Because user filesystems (/home, /scratch, etc.) are not mounted on idm server, the user account operation is split into two steps. The first step is done on idm server; the 5 scripts only modify password, group, shadow, gshadow files. These password, etc. files are immediately synced to /etc/idm folder on mgmt-gw server; then synced within 15 minutes to admin servers and within 1 hour from login, compute, etc. nodes.</p>
+<p>In the second step, inside these 5 scripts (on idm server), an ssh connection is made into mgmt-gw to perform folders creation and bastion host account operation. The corresponding 5 scripts on mgmt-gw server do not modify password, etc. files on mgmt1 or mgmt2 server.</p>
+<p>The IIQ scripts have the following functions:</p>
+<p>iiq_createUser.sh: On idm server, create a user account; on mgmt-gw server, create user folder in /home, /archive, and /scratch, and apply quotas. If old folders in expired folder exist, they will be used instead of creating new folders. Also create account in the bastion host.</p>
+<p>iiq_expireUser.sh: On idm server, change user shells into expiredshell; on mgmt-gw server, perform the same to bastion host.</p>
+<p>iiq_renewUser.sh: On idm server, change user shells back into default user shells; on mgmt-gw server, perform the same to bastion host.</p>
+<p>iiq_archiveUser.sh: On idm server, delete user accounts; on mgmt-gw server, archive user folders to expired folders and delete user accounts on bastion host. This is performed 90 days after account has expired (as per current policy).</p>
+<p>iiq_deleteUser.sh: On mgmt-gw server, delete archived user folders. This is performed 180 days after account has expired.</p>
+<p>The log files for the scripts are written to /var/log/idm/iiq_*. iiq_error.log list the the overall status of scripts execution. Even if this log shows 0 failure, it could be that some subtasks have failed. These subtasks log is given in iiq_output.log. A script run failure on idm server would trigger a second try from NY. If only some subtasks failed, we could correct these ourselves. The previous day failure for script and subtasks are checked in Dalma daily status report.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

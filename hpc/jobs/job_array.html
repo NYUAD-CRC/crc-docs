@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Job Array &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Parallel Job Array" href="parallel_job_array.html" />
+    <link rel="prev" title="Interactive Sessions" href="interactive.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Job Array</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples-of-the-array-parameter">Examples of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-simple-example">A simple example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-of-commands">File of commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Job Array</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/jobs/job_array.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="job-array">
+<h1>Job Array<a class="headerlink" href="#job-array" title="Permalink to this headline">¶</a></h1>
+<p>The SLURM provides one of the simplest method to run parallel computations.
+Frequently we need to run the same application / job
+script several times for either:</p>
+<ul class="simple">
+<li><p>Processing multiple independent input files</p></li>
+<li><p>Looking for an optimal set of input parameters for the same input file (eg parametric analysis)</p></li>
+<li><p>You have a code whose major work is looping through iterations which are independent of each other</p></li>
+</ul>
+<p>For instance you may need to process the results of 50
+experiments. Then you can</p>
+<ul class="simple">
+<li><p>Prepare a single job script which processes all 50 experiments, one at a time,or</p></li>
+<li><p>Prepare 50 job scripts which process concurrently the experiments, one experiment per job.</p></li>
+</ul>
+<p>In either case this is not an optimal use of your time.
+The solution is to process your experiments using a job
+array; the script will be executed 50 times but each time
+it runs the counter will be different. You can use the
+counter to refer to each experiment input as in the job
+script to the left.</p>
+<p>Consider another example where you have a python script whose most time consuming part is an iterating loop with independent iterations.
+Instead of looping through each of the iterations one by one, you can use the SLURM job array to run it in parallel.</p>
+<p>The individual tasks in the array are distinguished by an environment variable, <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> , which Slurm sets to a different value for each task. You set the range of values with the <code class="docutils literal notranslate"><span class="pre">--array</span></code> or <code class="docutils literal notranslate"><span class="pre">-a</span></code> parameter.</p>
+<div class="section" id="examples-of-the-array-parameter">
+<h2>Examples of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> parameter<a class="headerlink" href="#examples-of-the-array-parameter" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch --array<span class="o">=</span><span class="m">0</span>-7       <span class="c1"># $SLURM_ARRAY_TASK_ID takes values from 0 to 7 inclusive</span>
+sbatch --array<span class="o">=</span><span class="m">1</span>,3,5,7   <span class="c1"># $SLURM_ARRAY_TASK_ID takes the listed values</span>
+sbatch --array<span class="o">=</span><span class="m">1</span>-7:2     <span class="c1"># Step-size of 2, same as the previous example</span>
+sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span class="c1"># Allows no more than 10 of the jobs to run simultaneously</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-simple-example">
+<h2>A simple example<a class="headerlink" href="#a-simple-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you have multiple files you wish to process by passing to another code.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#Processing for each experiment requires a single core</span>
+<span class="c1">#The input files are named file.1, file.2,..., file.50</span>
+<span class="c1">#SBATCH –p serial</span>
+<span class="c1">#SBATCH –n 1</span>
+<span class="c1">#SBATCH –a 1-50</span>
+
+<span class="c1">#your application commands go here</span>
+./my-code file.<span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-of-commands">
+<h2>File of commands<a class="headerlink" href="#file-of-commands" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, it may be easier to write out a file with a list of command lines to execute, one per line. For example, your file could look like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">jobs.txt</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>locuszoom --refsnp rs1
+locuszoom --refsnp rs2
+locuszoom --refsnp rs3
+</pre></div>
+</div>
+<p>Now you can write a job submission script that looks like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">submit.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --array=1-3</span>
+
+srun <span class="k">$(</span>head -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> jobs.txt <span class="p">|</span> tail -n <span class="m">1</span><span class="k">)</span>
+</pre></div>
+</div>
+<p>Note in the above example <code class="docutils literal notranslate"><span class="pre">--array=1-3</span></code> - the last number corresponds to the total number of jobs (or command lines) in your <code class="docutils literal notranslate"><span class="pre">jobs.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-n</span> <span class="pre">...</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">1</span></code> part is just a simple trick to read the <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> th line from the file (for example, if the task ID is 3, <code class="docutils literal notranslate"><span class="pre">head</span></code> reads the first 3 lines from <code class="docutils literal notranslate"><span class="pre">jobs.txt</span></code>, and then <code class="docutils literal notranslate"><span class="pre">tail</span></code> takes the last line from those 3 lines, which is of course the 3rd line in the file.)</p>
+<p>Now you can submit this to the cluster by doing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch submit.sh
+</pre></div>
+</div>
+<p>A job array looks like a normal job, except that the jobid is extended with a taskid – eg <code class="docutils literal notranslate"><span class="pre">466546_[1-50]</span></code> and
+<code class="docutils literal notranslate"><span class="pre">466565_1</span></code> .
+If the system is idle all the array jobs will be run concurrently. But in practice you will see some jobs running, and some jobs waiting for their turn to run.</p>
+<p>Job array processing can be used for serial, multithreaded and MPI jobs alike.
+You can kill all jobs in a job array with <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">466546</span></code> or an individual job with <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">466546_42</span></code> for example. You can also refer to a range of taskids such as <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">466546_[3-17]</span></code> .
+Each job in the job array will have its own output file (and error file if you are submitting with <code class="docutils literal notranslate"><span class="pre">-e</span></code>). So you have to be careful with not exceeding the 1000 files per directory limit! You may split the outputs in multiple directories or use the parallel job array tool described next.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you have a job with independent computations, then
+<a class="reference internal" href="#"><span class="doc">Job arrays</span></a> and <a class="reference internal" href="parallel_job_array.html"><span class="doc">Parallel Job Array</span></a>
+are one of the most easiest ways to parallelize
+your computations. Follow the corresponding highlighted links for a much more detailed example.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="parallel_job_array.html" class="btn btn-neutral float-right" title="Parallel Job Array" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="interactive.html" class="btn btn-neutral float-left" title="Interactive Sessions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

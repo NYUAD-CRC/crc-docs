@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Jobs Management &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Batch Job" href="batch_job.html" />
+    <link rel="prev" title="Software" href="../software/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Jobs Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Jobs Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/jobs/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jobs-management">
+<h1>Jobs Management<a class="headerlink" href="#jobs-management" title="Permalink to this headline">¶</a></h1>
+<p>On HPC, you don’t run it directly on the login nodes. Instead, you submit jobs on login nodes. These jobs will be queued to the system and executed eventually. Conceptually, each job is a 2-step process:</p>
+<ol class="arabic simple">
+<li><p>You request certain resources from the system. The most common resources are CPU cores.</p></li>
+<li><p>With the assigned resources, you run your computational tasks.</p></li>
+</ol>
+<p>For Special Compute Nodes (GPU  and Visualization), please refer to the section <a class="reference internal" href="../system/index.html#special-compute-nodes"><span class="std std-ref">here</span></a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="batch_job.html">Batch Job</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html#batch-job-script">Batch Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html#a-job-with-1-cpu-core">A Job with 1 CPU Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html#multithreading-job">Multithreading Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html#pure-mpi-job">Pure MPI Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html#hybrid-mpi-job">Hybrid MPI Job</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_array.html">Job Array</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html#examples-of-the-array-parameter">Examples of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html#a-simple-example">A simple example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html#file-of-commands">File of commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_status.html">Checking Job Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html#before-and-during-job-execution">Before and During Job Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html#after-job-execution">After Job Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#job-throughput">Job Throughput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#job-performance-runtime">Job Performance/Runtime</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="batch_job.html" class="btn btn-neutral float-right" title="Batch Job" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../software/index.html" class="btn btn-neutral float-left" title="Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

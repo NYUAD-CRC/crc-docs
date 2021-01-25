@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Checking Job Status &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Cancelling a Job" href="job_cancel.html" />
+    <link rel="prev" title="Submitting a Job" href="job_submit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Checking Job Status</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-and-during-job-execution">Before and During Job Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#after-job-execution">After Job Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Checking Job Status</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/jobs/job_status.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="checking-job-status">
+<h1>Checking Job Status<a class="headerlink" href="#checking-job-status" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="before-and-during-job-execution">
+<h2>Before and During Job Execution<a class="headerlink" href="#before-and-during-job-execution" title="Permalink to this headline">¶</a></h2>
+<p>This command shows all your current jobs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p>
+<p>Example output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ squeue -j <span class="m">31408</span>
+            JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+            <span class="m">31408</span>   ser_std  job1.sh     wz22  R       <span class="m">0</span>:02      <span class="m">1</span> compute-21-4
+</pre></div>
+</div>
+<p>It means the job with Job ID <code class="docutils literal notranslate"><span class="pre">31408</span></code>, has been running (<code class="docutils literal notranslate"><span class="pre">ST:</span> <span class="pre">R</span></code>) for 2 minutes on <code class="docutils literal notranslate"><span class="pre">compute-21-4</span></code>.</p>
+<p>For more verbose information, use <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">job</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scontrol show job &lt;jobid&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="after-job-execution">
+<h2>After Job Execution<a class="headerlink" href="#after-job-execution" title="Permalink to this headline">¶</a></h2>
+<p>Once the job is finished, the job can’t be inspected by squeue or scontrol show job. At this point, you could inspect the job by sacct.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct -j &lt;jobid&gt;
+</pre></div>
+</div>
+<p>The following commands give you extremely verbose information on a job.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct -j &lt;jobid&gt; -l
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="job_cancel.html" class="btn btn-neutral float-right" title="Cancelling a Job" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="job_submit.html" class="btn btn-neutral float-left" title="Submitting a Job" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

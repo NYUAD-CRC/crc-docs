@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Batch Job &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Interactive Sessions" href="interactive.html" />
+    <link rel="prev" title="Jobs Management" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Batch Job</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#batch-job-script">Batch Job Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-job-with-1-cpu-core">A Job with 1 CPU Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multithreading-job">Multithreading Job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pure-mpi-job">Pure MPI Job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid-mpi-job">Hybrid MPI Job</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Batch Job</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/jobs/batch_job.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="batch-job">
+<h1>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this headline">¶</a></h1>
+<p>Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used.</p>
+<p>A complete batch job workflow:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Write a job script, which consists of 2 parts:</dt><dd><ol class="loweralpha simple">
+<li><p>Resources requirement.</p></li>
+<li><p>Commands to be executed.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>Submit the job.</p></li>
+<li><p>Relax, have a coffee, log off if you wish. The computer will do the work.</p></li>
+<li><p>Come back to examine the result.</p></li>
+</ol>
+<div class="section" id="batch-job-script">
+<h2>Batch Job Script<a class="headerlink" href="#batch-job-script" title="Permalink to this headline">¶</a></h2>
+<p>A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us.</p>
+<p><strong>Typically, a user can ask for 48 hours, 700 CPU cores maximum per job.</strong></p>
+<p>If you ask for more resources than you can use, your job will stay in the queue forever. (e.g., you specify 10000 hours walltime in your job script)</p>
+<p>If you have multiple jobs (which is very normal), your jobs will start either immediately if the system is free and the quotas for you and your department have not been exhausted.</p>
+</div>
+<div class="section" id="a-job-with-1-cpu-core">
+<h2>A Job with 1 CPU Core<a class="headerlink" href="#a-job-with-1-cpu-core" title="Permalink to this headline">¶</a></h2>
+<p>This is a very basic example, using only one CPU core.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Set number of tasks to run</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1"># Walltime format hh:mm:ss</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+<span class="c1"># Output and error files</span>
+<span class="c1">#SBATCH -o job.%J.out</span>
+<span class="c1">#SBATCH -e job.%J.err</span>
+
+<span class="c1"># **** Put all #SBATCH directives above this line! ****</span>
+<span class="c1"># **** Otherwise they will not be effective! ****</span>
+
+<span class="c1"># **** Actual commands start here ****</span>
+<span class="c1"># Load modules here (safety measure)</span>
+module purge
+<span class="c1"># You may need to load gcc here .. This is application specific</span>
+<span class="c1"># module load gcc</span>
+<span class="c1"># Replace this with your actual command. &#39;serial-hello-world&#39; for example</span>
+hostname
+</pre></div>
+</div>
+<p>As you can see, it is a simple bash script,
+plus some lines on the top, starting with <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>,
+which are the Slurm directives.</p>
+<p>Those Slurm directives specify resources required. E.g., <code class="docutils literal notranslate"><span class="pre">–ntasks=1</span></code>
+is 1 CPU core. <code class="docutils literal notranslate"><span class="pre">–time=00:30:00</span></code> means the maximum walltime is 30 mins. <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">job.%J.out</span></code> is redirecting the
+stdout, usually your screen output, to a file called <code class="docutils literal notranslate"><span class="pre">job.$JOBID.out</span></code>.
+Why? Because the system will run your job in the background, hence no display.</p>
+<p>Everything under the Slurm directives is normal Linux command.
+This example runs <code class="docutils literal notranslate"><span class="pre">hostname</span></code>, which will print the hostname.
+In reality, you should load your desired modules, and execute
+whatever you want to run.</p>
+</div>
+<div class="section" id="multithreading-job">
+<h2>Multithreading Job<a class="headerlink" href="#multithreading-job" title="Permalink to this headline">¶</a></h2>
+<p>Multithreading enables a process to spawn multiple threads to accelerate its execution. The most common multithreading model in HPC is OpenMP. If your application supports this (not sure? contact us to find out), you could use the below example.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Set number of tasks to run</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1"># Set the number of CPU cores for each task</span>
+<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1"># Walltime format hh:mm:ss</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+<span class="c1"># Output and error files</span>
+<span class="c1">#SBATCH -o job.%J.out</span>
+<span class="c1">#SBATCH -e job.%J.err</span>
+
+<span class="c1"># **** Put all #SBATCH directives above this line! ****</span>
+<span class="c1"># **** Otherwise they will not be effective! ****</span>
+
+<span class="c1"># **** Actual commands start here ****</span>
+<span class="c1"># Load modules here (safety measure)</span>
+module purge
+<span class="c1"># You may need to load gcc here .. This is application specific</span>
+<span class="c1"># module load gcc</span>
+
+<span class="c1"># If you are using OpenMP application, keep this line.</span>
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+
+<span class="c1"># Replace this with your actual command. In this example, you should run a multithreading supported application</span>
+hostname
+</pre></div>
+</div>
+<p>Comparing to the previous examples, there are 2 extra lines:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--cpus-per-task=4</span></code>: this asks the system to assign 4 CPU cores per tasks. This number should be <strong>no larger than and a divisor of 28 (e.g., 2, 4, 7, 14, 28)</strong> because the majority of our nodes comes with 28 cores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK</span></code>: this tells your applications, if OpenMP supported, to use all the CPU cores assigned to your job, by spawning an exact number of OpenMP threads.</p></li>
+</ol>
+<p>Remember, running a job is 2 steps process:</p>
+<ol class="arabic simple">
+<li><p>Request the resources.</p></li>
+<li><p>Use the resources. This example is a perfect illustration. <strong>Run with what you requested, no more, no less</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="pure-mpi-job">
+<h2>Pure MPI Job<a class="headerlink" href="#pure-mpi-job" title="Permalink to this headline">¶</a></h2>
+<p>Now comes the pure MPI Jobs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Set number of tasks to run</span>
+<span class="c1"># This number should be divisible by 28. E.g., 56, 84, 112...</span>
+<span class="c1">#SBATCH --ntasks=56</span>
+<span class="c1"># Walltime format hh:mm:ss</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+<span class="c1"># Output and error files</span>
+<span class="c1">#SBATCH -o job.%J.out</span>
+<span class="c1">#SBATCH -e job.%J.err</span>
+
+<span class="c1"># **** Put all #SBATCH directives above this line! ****</span>
+<span class="c1"># **** Otherwise they will not be effective! ****</span>
+
+<span class="c1"># **** Actual commands start here ****</span>
+<span class="c1"># Load modules here (safety measure)</span>
+module purge
+<span class="c1"># You may need to load gcc here .. This is application specific</span>
+<span class="c1"># module load gcc</span>
+<span class="c1"># Replace this with your actual command. &#39;serial-hello-world&#39; for example</span>
+srun hostname
+</pre></div>
+</div>
+<p>Comparing to the 1 core example, there are 2 different lines:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=56</span></code>: This line requests 56 cores. <strong>This number should be divisible by 28. E.g., 56, 84, 112…</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">hostname</span></code>: This tells your application to run with MPI support, utilizing all CPU cores requested.</p></li>
+</ol>
+<p>The old school <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> or <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> are supported as well. But you need to load <code class="docutils literal notranslate"><span class="pre">openmpi</span></code> module in this case.</p>
+</div>
+<div class="section" id="hybrid-mpi-job">
+<h2>Hybrid MPI Job<a class="headerlink" href="#hybrid-mpi-job" title="Permalink to this headline">¶</a></h2>
+<p>If your application support MPI + OpenMP hybrid parallelization, you could follow this example to submit a hybrid job.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Set number of tasks to run</span>
+<span class="c1">#SBATCH --ntasks=56</span>
+<span class="c1"># Set the number of CPU cores for each task</span>
+<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1"># Walltime format hh:mm:ss</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+<span class="c1"># Output and error files</span>
+<span class="c1">#SBATCH -o job.%J.out</span>
+<span class="c1">#SBATCH -e job.%J.err</span>
+
+<span class="c1"># **** Put all #SBATCH directives above this line! ****</span>
+<span class="c1"># **** Otherwise they will not be effective! ****</span>
+
+<span class="c1"># **** Actual commands start here ****</span>
+<span class="c1"># Load modules here (safety measure)</span>
+module purge
+<span class="c1"># You may need to load gcc here .. This is application specific</span>
+<span class="c1"># module load gcc</span>
+
+<span class="c1"># If you are using Hybrid MPI + OpenMP application, keep this line.</span>
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+
+<span class="c1"># Replace this with your actual command. &#39;serial-hello-world&#39; for example</span>
+srun hostname
+</pre></div>
+</div>
+<p>In this case,
+1. the number of CPU cores requested is <code class="docutils literal notranslate"><span class="pre">56</span> <span class="pre">(ntasks)</span> <span class="pre">*</span> <span class="pre">4</span> <span class="pre">(cpus-per-task)</span> <span class="pre">=</span> <span class="pre">224</span></code>.
+2. This number should be divisible by 28 to use all the cores on the nodes. As in the multithreading job example, make sure <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> is a divisor of 28.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="interactive.html" class="btn btn-neutral float-right" title="Interactive Sessions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Jobs Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

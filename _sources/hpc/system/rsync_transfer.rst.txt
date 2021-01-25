@@ -1,0 +1,130 @@
+File Transfer using rsync
+=========================
+
+For replicating datasets between the HPC clusters and your workstation, or between two filesystems on an HPC cluster, rsync offers powerful functionality beyond that of cp or scp. With rsync you can copy directories between your workstation and the HPC clusters - or between different filesystems - in such a way that permission and file modification timestamps are preserved, and that only files which have changed are transferred.
+
+ 
+
+.. admonition:: Basic Usage of rsync
+
+    .. code-block:: bash
+
+        rsync [options] source [source] destination
+
+Where source is a list of one or more source files or directories to copy and destination is a directory into which to copy source. Commonly useful options are:
+
+* ``-a`` "Archive" mode - permissions and timestamps of the source are replicated at the destination.
+* ``-v`` "Verbose".
+* ``-n``  "dry run" - don't actually do anything, just indicate what would be done.
+* ``-C`` "follow CVS ignore conventions" 
+
+.. admonition:: Before Actually Copying Files
+
+    Whether rsync treats destination as a new name for the copy of source, a parent directory into which to copy source, or a parent directory into which to place the contents of source, depends on the exact context of the command. For this reason, it is highly advisable to first run rsync with -n and -v to see exactly what rsync will do before issuing the "real" command, eg:
+
+    .. admonition:: Dry Run First!
+
+        .. code-block:: bash
+            
+            rsync -nav source destination
+            rsync -av source destination
+
+For detailed information about rsync, type ``man rsync`` at the command line.
+
+Some examples of rsync usage
+----------------------------
+
+To replicate in your /scratch area a directory tree you have saved in /home
+
+.. code-block:: bash
+
+    $ cd /home/$USER/
+    $ ls -F
+    my_input_data/
+    $ rsync -nav my_input_data /scratch/$USER/my_run_dir
+    building file list ... done
+    my_input_data/file1
+    my_input_data/file2
+        
+    $ rsync -av my_input_data /scratch/$USER/my_run_dir
+    building file list ... done
+    my_input_data/file1
+    my_input_data/file2
+        
+    $ ls -F /scratch/$USER/my_run_dir
+    my_input_data/
+
+There is now a copy of my_input_data directory under ``/scratch/$USER/my_run_dir``.  
+
+**If you append / to source, rsync will copy the contents of source rather than the source directory itself**
+
+.. code-block:: bash
+
+    $ cd /home/$USER/
+    $ ls -F
+    my_input_data/
+    $ rsync -nav my_input_data/ /scratch/$USER/my_run_dir
+    building file list ... done
+    file1
+    file2
+        
+    $ rsync -av my_input_data/ /scratch/$USER/my_run_dir
+    building file list ... done
+    file1
+    file2
+        
+    $ ls -F /scratch/$USER/my_run_dir
+    file1
+    file2
+ 
+
+The host name followed by a colon tells rsync that the (in this case) destination is on another host. If your username on the other host is different to the username on the current host, you can specify the remote username with username@remotehost:
+Note the backslash in ``\$USER`` - this instructs the shell not to expand ``$USER`` to your local (on your workstation) username. An equivalent command is: 
+
+.. code-block:: bash
+
+    $ ls -F
+    my_input_data/
+    $ rsync -av my_input_data <your-net-id>@dalma.abudhabi.nyu.edu:/scratch/<your-net-id>/my_run_dir
+    ### For Example ###
+    $ rsync -av my_input_data wz22@dalma.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
+
+To copy in the other direction, from ``/scratch`` on Dalma to your workstation.
+
+.. code-block:: bash
+
+    $ hostname
+    my_workstation
+    $ rsync -av <your-net-id>@dalma.abudhabi.nyu.edu:/scratch/<your-net-id>/my_run_dir my_results
+    ### For Example ###
+    $ rsync -av wz22@dalma.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
+    $ ls my_results
+
+Only those files not already up-to-date on your workstation will be copied.
+
+Ignoring certain files
+----------------------
+
+The ``-C`` option tells rsync to follow CVS conventions about ignoring certain files. For example, when copying a tree of source code, you probably want the .c, .f and .h files but not the .o files. The conventions are described fully in the man page (man rsync). In summary, when -C is used the following files are ignored:
+
+* Any file or directory whose name matches any of:
+
+.. code-block:: bash
+
+    RCS SCCS CVS CVS.adm RCSLOG cvslog.* tags TAGS .make.state .nse_depinfo *~ #* .#* ,* _$* *$ *.old *.bak *.BAK *.orig *.rej .del-* *.a *.olb *.o *.obj *.so *.exe *.Z *.elc *.ln core .svn/
+
+
+
+* Any file whose name matches a pattern listed in the environment variable ``CVSIGNORE``. This environment variable takes a list of patterns separated by spaces, such as the default list above. When defining ``CVSIGNORE`` you will need to enclose the definition in quotation marks, for example to skip Fortran output to unnamed unit numbers (whose files have names like ``fort.99``) and netcdf files whose name ends in ``intermediate.nc``, set ``CVSIGNORE`` as follows (note that this syntax is for ``BASH``)
+
+.. code-block::bash
+
+    export CVSIGNORE="fort.?? *.intermediate.nc"
+ 
+* Any file whose name matches a pattern listed in the file $HOME/.cvsignore, or in a file named .cvsignore within a directory being copied. This file has contents as per $CVSIGNORE, but with one pattern per line, for example:
+
+.. code-block:: bash
+
+    $ cat .cvsignore
+    fort.??
+    *.intermediate.nc

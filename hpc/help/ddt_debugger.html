@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>How to use the DDT Debugger &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>How to use the DDT Debugger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/help/ddt_debugger.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-use-the-ddt-debugger">
+<h1>How to use the DDT Debugger<a class="headerlink" href="#how-to-use-the-ddt-debugger" title="Permalink to this headline">¶</a></h1>
+<p>Users can use Allinea DDT debugger to debug serial, multi-threaded or MPI applications submitted to Dalma.</p>
+<p>Due to X-Forwarding restrictions in the cluster, the jobs have to be submitted to queues and DDT started in the login nodes and then attach the debugger to the running process in the remote node.</p>
+<div class="section" id="step-by-step-guide">
+<h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl>
+<dt>Attaching to a running process</dt><dd><p>In the login node:</p>
+<ul class="simple">
+<li><p>Compile your application with debugging enabled (e.g. <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag)</p></li>
+<li><p>Submit the application using  <code class="docutils literal notranslate"><span class="pre">sbatch</span></code></p></li>
+<li><p>Once the app is running, use the command <code class="docutils literal notranslate"><span class="pre">squeue</span></code> to retrieve the NODELIST…You will need the head node name to instruct DDT where to connect to</p></li>
+</ul>
+<p>Load the allinea module and run <code class="docutils literal notranslate"><span class="pre">ddt</span></code></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You will need to ssh Dalma enabling X11 Forwarding:  <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;netid&gt;&#64;dalma.abudhabi.nyu.edu</span></code></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load allinea
+$ ddt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">ATTACH</span></code> button and <code class="docutils literal notranslate"><span class="pre">choose</span> <span class="pre">hosts</span></code> to add the head node where the job is running ( see Figure below )</p></li>
+</ul>
+<img alt="hpc/help/img/ddt1.png" src="hpc/help/img/ddt1.png" />
+<ul class="simple">
+<li><p>If it is an MPI app, attach to the <code class="docutils literal notranslate"><span class="pre">srun</span></code> process</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Submitting an MPI application from within DDT</dt><dd><p>In the login node:</p>
+<ul class="simple">
+<li><p>Compile your application with debugging enabled (e.g. <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag)</p></li>
+<li><dl class="simple">
+<dt>Copy your submission script and rename it with extension <strong>*.qtf</strong></dt><dd><ul>
+<li><p>you can also use the template file in <code class="docutils literal notranslate"><span class="pre">/share/apps/NYUAD/allinea/5.0/templates/slurm.qtf</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Load the allinea module and run <code class="docutils literal notranslate"><span class="pre">ddt</span></code></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You will need to ssh Dalma enabling X11 Forwarding: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;netid&gt;&#64;dalma.abudhabi.nyu.edu</span></code></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load allinea
+$ ddt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Click on <strong>RUN</strong></p></li>
+<li><p>Select your application to run</p></li>
+<li><p>Enable MPI and be sure the <strong>SLURM(generic)</strong> is selected … Click on Change  and in the next window select the <strong>submission template file</strong> to the <strong>*.qtf</strong> file you just created</p></li>
+</ul>
+<img alt="hpc/help/img/ddt2.png" src="hpc/help/img/ddt2.png" />
+<ul class="simple">
+<li><p>Finally set the MPI params (Number of Processes,etc) and hit RUN</p></li>
+</ul>
+<img alt="hpc/help/img/ddt3.png" src="hpc/help/img/ddt3.png" />
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Dalma HA Setup &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dalma HA Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/admin/dalma_ha_setup.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dalma-ha-setup">
+<h1>Dalma HA Setup<a class="headerlink" href="#dalma-ha-setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ha-servers">
+<h2>HA servers<a class="headerlink" href="#ha-servers" title="Permalink to this headline">¶</a></h2>
+<p>High-availability setup for Dalma mgmt1 and mgmt2 is done through several methods:</p>
+<dl class="simple">
+<dt>. KVM-based shared storage method where one needs to manually start VM on the either mgmt1 or mgmt2</dt><dd><p>. idm
+. monitor-db
+. repo
+. syslog
+. warewulf</p>
+</dd>
+<dt>. Automatic active-active setup (fault-tolerant):</dt><dd><p>. mgmt1/mgmt2
+. slurm1/slurm2
+. mx1/mx2</p>
+</dd>
+<dt>. Manual active-active setup (fault-tolerant):</dt><dd><p>. monitor1/monitor2
+. salt1/salt2</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="services">
+<h2>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h2>
+<p>Because of the need to perform syncing of any static config changes while the server was possibly down, one needs to manually start the services below (start the primary server first).</p>
+<dl class="simple">
+<dt>. salt1/salt2:</dt><dd><p>. salt-master</p>
+</dd>
+<dt>. slurm1/slurm2:</dt><dd><p>. slurmdbd
+. slurmctld</p>
+</dd>
+<dt>. monitor1/monitor2:</dt><dd><p>. nagios
+. nsca</p>
+</dd>
+</dl>
+<p>These services need to be started the first time the cluster is booted up (when no secondary servers are running) and during Recovery Step 3 below.</p>
+<dl class="simple">
+<dt>. home2/ssc1:</dt><dd><p>. lsyncd</p>
+</dd>
+<dt>. slurm1:</dt><dd><p>. ifup eth0:0</p>
+</dd>
+<dt>. apps2:</dt><dd><p>. ifup ib0:0
+. ifup eth0:0</p>
+</dd>
+<dt>. mgmt1:</dt><dd><p>. ifup br0:0
+. lsyncd</p>
+</dd>
+<dt>. salt1:</dt><dd><p>. ifup eth0:0
+. lsyncd</p>
+</dd>
+<dt>. monitor1:</dt><dd><p>. ifup eth0:0
+. lsyncd
+. nagios-notifications start
+. nagios-event_handlers start</p>
+</dd>
+<dt>. archive3:</dt><dd><p>. ifup eth0:0</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="recovery">
+<h2>Recovery<a class="headerlink" href="#recovery" title="Permalink to this headline">¶</a></h2>
+<p><strong>Step 1. Fault-tolerant servers</strong>
+For any of the fault-tolerant servers above, after booting up, make sure to run Salt’s highstate for the server to sync any static config changes which might occur when the server was down. Then reboot and manually start services as described above.</p>
+<p><strong>Step 2. Manual dynamic files/folders sync</strong>
+First servers (mgmt1, salt1, etc.) are always the primary servers, except for home1 (home2 is the primary server). Automatic syncing of dynamic files/folders is done by lsync from primary servers to secondary servers; if the secondary servers go down, one does not need to do any manual syncing during recovery. If primary servers go down, the following files/folders need to synced (rsync –dry-run -a –delete; rsync -a –delete) from secondary servers to primary servers before flipping the floating IPs.</p>
+<p>mgmt1/mgmt2:</p>
+<p>. /etc/idm
+. /var/log/idm
+. /etc/hosts–warewulf
+. /etc/libvirt/qemu/shared-*</p>
+<p>salt1/salt2:</p>
+<p>. /srv/salt
+. /etc/salt/pki/master
+. Git repositories (sync through git push from a client, not through rsync)</p>
+<p>monitor1/monitor2:</p>
+<p>. /etc/nagiosql</p>
+<p><strong>Step 3. Floating IPs switch</strong></p>
+<p>Several floating IPs are required for the functioning of active-active setup of services:</p>
+<p>. mgmt-gw
+. salt-gw
+. monitor-gw
+. slurm-gw
+. apps-gw, apps-gw.fast
+. archive-gw
+There are automatic flipping of IPs through /etc/cron.d/gateway-ip-public on monitor1/monitor2, and /etc/cron.d/gateway-ip on secondary servers (mgmt2, monitor2, slurm2, salt2, apps1,archive4). To switch from secondary servers to primary servers, one needs to perform prior syncing above.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

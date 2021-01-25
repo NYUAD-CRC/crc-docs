@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>DMF archive offsite tape operation &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>DMF archive offsite tape operation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/admin/dmf_operation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dmf-archive-offsite-tape-operation">
+<h1>DMF archive offsite tape operation<a class="headerlink" href="#dmf-archive-offsite-tape-operation" title="Permalink to this headline">¶</a></h1>
+<p>The tape volume group Dalma_2 tapes will be send to offsite in order to prevent any single point of failure on users archive data. The tapes in group Dalma_1 will be inside the Library for time being until we see any requirements to offload those as well.  The below steps to be followed whenever want to offload any tapes from the library.</p>
+<p>DMF Manger: This tool is being used to manage overall DMF operations. This can be accessed internally from an active DMF server node. Eg: <a class="reference external" href="https://10.0.0.90:11109/">https://10.0.0.90:11109/</a></p>
+<p>Once login go to -&gt; Storage-&gt; Volumes -&gt; tape -&gt; Dalma_2 this will show all tapes used for tape volume group Dalma_2. Before ejecting any tapes just make sure that the tape has been fully utilized for writing.  For example, click on any tapes with full green color we can see Data is written is 100% and the tapes is not being access for 30 days which eligible for send to offsite.</p>
+<img alt="../../_images/archive1.png" src="../../_images/archive1.png" />
+<p>And if any user deletes data from /archive/userx corresponding data will be deleted from tape as well. But DMF will mark the space as reclaimable space in blue color which means in order to reuse the space we need to sparse the tape. The tape sparse spawned automatically by DMF but as per the current schedule if the tape is having less than 30% active data then only the tape will be sparse. This ratio can be changed if the user’s deletion is more frequent than anticipated which can result more tapes will have reclaimable space and if the active data is more than 30% we lose space on tapes. However, if we want to sparse the tape we have to merge the data off manually.</p>
+<p>For example, the below- Figure2 tape H00012 has around 1TB of reclaimable space and active data is 70% so this tape will not be parsed unless it goes to 30%. In this case we can manually select this tapes to merge data off volumes. So active data will be copied over to a different tape and we can reuse this tape.</p>
+<img alt="../../_images/archive2.png" src="../../_images/archive2.png" />
+<p>When any tapes parsed those will be hold “hfree” flag for some days to go to empty one. These all operations are happening internally so need to do anything from our side.</p>
+<img alt="../../_images/archive3.png" src="../../_images/archive3.png" />
+<p>Once we identified the tapes to be offloaded from library select all those tapes and click on eject volumes. At a time, the library will eject only 24 volumes as it have only 24 male slots and once we collect ejected tapes from library rest tapes will be processed.</p>
+<img alt="../../_images/archive4.png" src="../../_images/archive4.png" />
+<p>After we offload the ejected tapes from library those tapes flags will be changed to “hexterm” as shown in Figure-5</p>
+<img alt="../../_images/archive5.png" src="../../_images/archive5.png" />
+<p>Adding new tapes to Library</p>
+<p>Whenever we add new tapes to library add insert in male slots so it automatically feed the empty slots with new tapes and will appear in the Volumes. Then right click on volumes -&gt;Add Volumes</p>
+<img alt="../../_images/archive6.png" src="../../_images/archive6.png" />
+<p>Then select all new tapes on the window except those cleaning tapes. Also make sure change the Library as “ESL_DMF_Archive” ,Cartridge type as ” Ultrium6-2500” and allocation group to ‘ag_lto6’ as shown in Figure- 7 where all the new DMF compliance tapes will be added. From this group DMF will assign the tapes to Dalma_1 or 2 whenever needed.</p>
+<img alt="../../_images/archive7.png" src="../../_images/archive7.png" />
+<p>Removing damaged tapes from Library</p>
+<p>If any tapes reports I/O error DMF will put the flag as hvfy (Append error) on those media and no more writing will be happen afterwards. So we in that case generally we migrate the existing data on the tape and remove the tape from library to scratch it.</p>
+<p>Once we merge the data from the tape eject and remove it from the library and run below commands to delete the record from DMF database and catalogue database.</p>
+<p>dmvoladm -c “list hvfy”  ——–&gt; list the tapes with hvfy flag</p>
+<p>dmvoladm -c “delete ECJ889”  ———&gt; delete from DMF database</p>
+<p>ov_purge -vB ECJ889    ———–&gt; delete from DMF catalogue database</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

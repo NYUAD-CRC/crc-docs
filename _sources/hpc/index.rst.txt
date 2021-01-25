@@ -9,10 +9,14 @@ New York University Abu Dhabi (NYUAD) High Performance Computing (HPC) Center se
     Cluster - Dalma
 
 You could:
-    * Open an account on our HPC cluster Dalma (Accounts)
-    * Learn to submit your first job (Overview)
-    * Check out our Help Pages, How To's and Tutorials
-    * More information (More Information).
+    * Open an account on our HPC cluster Dalma (:doc:`Accounts <accounts/index>`)
+    * Learn more about the system and how you can access it (:doc:`System <system/index>`)
+    * Check out the :doc:`Storage <storage/index>` page for user quota and different storages available.
+    * Learn how to submit jobs here (:doc:`Jobs Management <jobs/index>`)
+    * Learn more about the software stack and what it offers you in terms of your application (MPI,Python,R) (:doc:`Software <software/index>`)
+    * Checkout the research works carried out on the system and donot forget to acknowledge us (:doc:`Research <research/index>`)
+    * Follow our :doc:`Help <help/index>` page for more HowTo's  
+    * Contact us anytime at dalma.admins@nyu.edu
 
 .. important:: 
 

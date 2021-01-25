@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Dalma User Limits &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dalma User Limits</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/admin/dalma_user_limits.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dalma-user-limits">
+<h1>Dalma User Limits<a class="headerlink" href="#dalma-user-limits" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt>MGMT1,MGMT2</dt><dd><p>Login only for group wheel
+No ssh root login
+Can login as root to any machine on the cluster
+No X, agent forwarding</p>
+</dd>
+<dt>MGMT3</dt><dd><p>Login only for groups wheel, apps (no apps user)
+No ssh root login
+Can login as root to login, compute, devel nodes
+No X, agent, TCP forwarding
+No ssh tunneling to other cluster nodes for non-wheel group
+Max 512 processes per normal user
+Max 1024 open files per normal user</p>
+</dd>
+<dt>MX1,MX2,MONITOR1,MONITOR2,MONITOR-DB,MOD,SALT1,SALT2,WAREWULF,REPO</dt><dd><p>Login only for group wheel
+No ssh root login
+Web interface (if supported) only on https port</p>
+</dd>
+<dt>SYSLOG,SLURM1,SLURM2,IDM,LICENSE</dt><dd><p>Login only for groups wheel, apps
+No ssh root login</p>
+</dd>
+<dt>LOGIN NODES</dt><dd><p>No agent, TCP forwarding
+No ssh tunneling to other cluster nodes
+No direct sshfs to /scratch, /fastscratch, /archive; for data transfer to these directories, use sftp to /home and cd to there (not implemented yet)
+Per normal user limits of:</p>
+<blockquote>
+<div><p>256 processes
+1024 open files
+2 CPUs (if available)
+6GB RAM
+Throttled I/O to local disk to 50MB/s, 50 IOPS
+Throttled network I/O to admin network (eth0) to 10mbps
+1 hour run time of processes with &gt;90% CPU usage</p>
+</div></blockquote>
+</dd>
+<dt>DEVELOPMENT NODES</dt><dd><p>Full outgoing network access
+Per normal user limits of:</p>
+<blockquote>
+<div><p>4096 processes
+4096 open files</p>
+</div></blockquote>
+</dd>
+<dt>COMPUTE NODES</dt><dd><p>User can login if his/her own job(s) are running on the node
+Groups wheel, apps (no apps user) can login anytime for troubleshooting
+Any processes with open files for “write/update” to /home will be automatically killed (not implemented yet)</p>
+</dd>
+<dt>MISC</dt><dd><dl class="simple">
+<dt>All internal nodes can not connect to outside world unless specifically allowed. This is because all ethernet traffic passes through MGMT1/MGMT2 on 1Gbps admin network. Allowed services:</dt><dd><p>Matlab license ports on NYUAD library servers</p>
+</dd>
+</dl>
+<p>Full /etc/passwd (with NetID users) are only available on IDM, MGMT3, LOGIN, COMPUTE, DEVEL NODES</p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

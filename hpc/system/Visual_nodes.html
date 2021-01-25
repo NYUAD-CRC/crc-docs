@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Visualization Nodes &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Visualization Nodes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/system/Visual_nodes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualization-nodes">
+<h1>Visualization Nodes<a class="headerlink" href="#visualization-nodes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-the-visualization-nodes">
+<h2>Introduction to the Visualization Nodes<a class="headerlink" href="#introduction-to-the-visualization-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The Visualization Nodes is a High Performance Computing resource that provides an advanced visualization capability to the end user’s desktop. Users can connect to the nodes and take advantage of its advanced capabilities to render very large data sets interactively from their desktops without having any special graphics hardware on their workstation. The images are sent back to the user’s desktop over the network and displayed on the desktop using a lightweight visualization client.</p>
+<p>The Visualization nodes consists of 4 render nodes. Multiple users can share a node. Each node has access to the same /home and /archive shared file system on the Dalma HPC nodes.</p>
+<p>To run any visualization software interactively on the nodes you will first need to connect to the login node and request resources. In simple terms, the login node will check which nodes in the nodes are available for you and will consequently allocate you the requested resources. You can then connect to your given visualization node and start your visualization session there.</p>
+<p>Remote visualization method on the visualization nodes is implemented using Virtual Network Computing (VNC). VNC is a desktop sharing system which uses a protocol to remotely control another computer (one of the visualization nodes nodes for example). It transmits the keyboard presses and mouse clicks from one computer to another relaying the screen updates back in the other direction, over a network.</p>
+</div>
+<div class="section" id="visualization-nodes-hardware-and-software">
+<h2>Visualization nodes hardware and software<a class="headerlink" href="#visualization-nodes-hardware-and-software" title="Permalink to this headline">¶</a></h2>
+<p>The visualization nodes have an Intel x86-64 architecture with CentOS 7.2 operating system. Each visualization render node has:</p>
+<ul class="simple">
+<li><p>32 cores Intel Xeon 6130 2.1GHz CPU</p></li>
+<li><p>128GB of RAM</p></li>
+<li><p>2 Nvidia Quadro P4000 GPU</p></li>
+</ul>
+<p>Software on the visualization nodes can be accessed through the environment module system (module commands). Currently installed software includes Paraview, IDL, PyMOL, VMD, and Matlab.</p>
+</div>
+<div class="section" id="remote-visualization-session-through-vnc">
+<h2>Remote visualization session through VNC<a class="headerlink" href="#remote-visualization-session-through-vnc" title="Permalink to this headline">¶</a></h2>
+<p>A remote visualization session consists of connecting a Virtual Network Computing (VNC) client to a VNC server on a different computer over the network.</p>
+<p>To connect to the nodes via a remote visualization session, you will first need to download a VNC client software on your local machine. The standard VNC client software which has been tested for connecting to the visualization nodes is SSVNC (<a class="reference external" href="http://www.karlrunge.com/x11vnc/ssvnc.html">http://www.karlrunge.com/x11vnc/ssvnc.html</a>).</p>
+<p><strong>Before you can request a remote visualization session on the login node, and then start a session on your allocated node on the nodes, you will have to first create a VNC password.</strong></p>
+</div>
+<div class="section" id="starting-a-remote-visualization-session">
+<h2>Starting a remote visualization session<a class="headerlink" href="#starting-a-remote-visualization-session" title="Permalink to this headline">¶</a></h2>
+<p>A quick guide to start a VNC session on the visualization nodes is given in the following steps:</p>
+<ol class="arabic simple">
+<li><p>(<strong>Necessary only once</strong>) create a VNC password;</p></li>
+<li><p>SSH to the login node and request resources via the command <code class="docutils literal notranslate"><span class="pre">viz-tvnc</span></code> (or <code class="docutils literal notranslate"><span class="pre">viz-tvnc</span> <span class="pre">-X</span></code>);</p></li>
+<li><p>Start a VNC client on your local machine and connect to your allocated node;</p></li>
+<li><p>Start a 3D application inside your VNC session.</p></li>
+</ol>
+<p>More detail descriptions of the steps above are given in the subsections below.</p>
+</div>
+<div class="section" id="creating-a-vnc-password-necessary-only-once">
+<h2>Creating a VNC password (necessary only once)<a class="headerlink" href="#creating-a-vnc-password-necessary-only-once" title="Permalink to this headline">¶</a></h2>
+<p>If this is your first time using a remote VNC session on the visualization nodes, you need to create a VNC password. While logged in to the login node type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vncpasswd
+</pre></div>
+</div>
+<p>in the terminal window and follow the instructions.</p>
+<img alt="../../_images/vnc-password.png" src="../../_images/vnc-password.png" />
+<p>Note that you do not need to enter a view-only password. This is an extra option that allows collaborators to connect to and view your session without being able to interfere.</p>
+<p><strong>This above step can be repeated whenever your VNC password needs to be changed.</strong></p>
+</div>
+<div class="section" id="requesting-resources">
+<h2>Requesting resources<a class="headerlink" href="#requesting-resources" title="Permalink to this headline">¶</a></h2>
+<p>While logged in to the login node, you can request an allocation of a visualization node by typing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viz-tvnc
+</pre></div>
+</div>
+<p>in the terminal window. If you need to use GPU-enabled application, run <code class="docutils literal notranslate"><span class="pre">viz-tvnc</span> <span class="pre">-X</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viz-tvnc -X11
+</pre></div>
+</div>
+<p>This will allocate a single visualization node for your exclusive use for a limited time period (presently 6 hours max usage). The node allocated below, for example, is <code class="docutils literal notranslate"><span class="pre">hpcviz2.abudhabi.nyu.edu</span></code>.</p>
+<img alt="../../_images/viz-tvnc.png" src="../../_images/viz-tvnc.png" />
+<p>You can specify the geometry (size) of the remote visualization session when starting viz-tvnc with the -g option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-g DESKTOP_RESOLUTION
+</pre></div>
+</div>
+<p>The resolution to run the desktop at. This can be any “&lt;width&gt;x&lt;height&gt;” value, and doesn’t need to match any display device resolution.</p>
+</div>
+<div class="section" id="installing-a-vnc-client">
+<h2>Installing a VNC client<a class="headerlink" href="#installing-a-vnc-client" title="Permalink to this headline">¶</a></h2>
+<p>We kindly ask users to use ssvnc, available on Linux, MacOS and Windows.You could install it from zip or tar.gz, or from package manager if you are using Ubuntu / Debian.</p>
+<p><strong>Installing from zip</strong></p>
+<div class="admonition-for-macos admonition">
+<p class="admonition-title">For MacOS</p>
+<p>First you need to install X11 support here: <a class="reference external" href="https://www.xquartz.org/">https://www.xquartz.org/</a>.</p>
+</div>
+<p>This approach is valid for Windows, MacOS and Linux / Unix.</p>
+<ol class="arabic simple">
+<li><p>Download this file: ssvnc-1.0.30.zip. For all versions, <a class="reference external" href="http://www.karlrunge.com/x11vnc/ssvnc.html#download">http://www.karlrunge.com/x11vnc/ssvnc.html#download</a>.</p></li>
+<li><p>Install it by following the instructions here: <a class="reference external" href="http://www.karlrunge.com/x11vnc/ssvnc.html#quickstart">http://www.karlrunge.com/x11vnc/ssvnc.html#quickstart</a></p></li>
+</ol>
+<p><strong>Installing from package manager</strong>
+Alternatively, for Debian / Ubuntu, you could install it by</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install ssvnc
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-a-vnc-client">
+<h2>Starting a VNC client<a class="headerlink" href="#starting-a-vnc-client" title="Permalink to this headline">¶</a></h2>
+<p>To make a secured VNC client-server connection, please follow the instructions below.</p>
+<p>If ssvnc is installed from zip
+After you extracted the zip file ssvnc-1.0.30.zip, the content looks like</p>
+<img alt="../../_images/sshvnc.png" src="../../_images/sshvnc.png" />
+<p>For Linux / Unix, the executable you want to execute is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Unix/sshvnc
+</pre></div>
+</div>
+<p>For Mac, the executable you want to execute is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MacOSX/sshvnc
+</pre></div>
+</div>
+<p>For Windows, the executable you want to execute is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Windows/sshvnc.bat
+</pre></div>
+</div>
+<p>If ssvnc is installed from package manager
+In a new terminal, you can start the  viewer as follow:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshvnc
+</pre></div>
+</div>
+<p><strong>Connecting a VNC client</strong></p>
+<p>Once the client is started, you need to instruct it to connect to the visualization server. Here is the example screen shot for connecting to your session. Change &lt;DisplayNumber&gt;, &lt;NetID&gt;&#64;&lt;Visualization host assigned to you&gt; in the example to your actual Display Number, NetID and the host assigned to you.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>VNC Host:Display</p></td>
+<td><p>127.0.0.1:&lt;DisplayNumber&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Proxy/Gateway</p></td>
+<td><p>&lt;NetID&gt;&#64;&lt;Visualization host assigned to you&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Linux / MacOS Screenshot (Display: 1, Host: hpcviz2.abudhabi.nyu.edu)</strong></p>
+<img alt="../../_images/sshvnc.png" src="../../_images/sshvnc.png" />
+<p><strong>Windows Screenshot (Display: 1, Host: hpcviz2.abudhabi.nyu.edu)</strong></p>
+<img alt="hpc/system/../img/windows-sshvnc-connect.png" src="hpc/system/../img/windows-sshvnc-connect.png" />
+<div class="admonition-cursor admonition">
+<p class="admonition-title">Cursor</p>
+<p>By default the cursor is a single pixel dot, and difficult to see. To change it in Linux, enable the following option in SSH VNC Viewer.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Options -&gt; Advanced ... -&gt; Unix ssvncviewer ... -&gt; Use X11 Cursor
+</pre></div>
+</div>
+<p>To change it in Windows, please follow the instructions below first.</p>
+</div>
+<p>Click <strong>Connect</strong>. A new window will pop up.</p>
+<p>The first time you attempt to connect to the visualization node, you will probably see a warning that looks like this.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>The authenticity of host &#39;HPCVIZ1.ABUDHABI.NYU.EDU (10.230.42.111)&#39; can&#39;t be established.
+ECDSA key fingerprint is
+74:55:46:1a:ab:37:30:8e:86:54:97:38:bb:3c:fa:f0.
+Are you sure you want to continue connecting (yes/no)?
+</pre></div>
+</div>
+<p>Type <code class="docutils literal notranslate"><span class="pre">yes</span></code> to continue.</p>
+<p><strong>Then it might ask you for 2 passwords:</strong></p>
+<ul class="simple">
+<li><p>(Not applied if you have your ssh key stored on Dalma). Your ssh password. This is essentially your login password to Dalma.</p></li>
+<li><p>Your VNC password. Set up earlier in this tutorial.</p></li>
+</ul>
+<div class="admonition-for-certain-macos-users admonition">
+<p class="admonition-title">For Certain MacOS Users</p>
+<p>Some MacOS is not compatible with the ssvnc client. In that case, please follow these steps to connect.</p>
+<ol class="arabic">
+<li><dl>
+<dt>On your computer, open a terminal. In that terminal, run the following command to establish an SSH tunnel to the visualization node.</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">5930</span>:127.0.0.1:590&lt;DisplayNumber&gt; &lt;NetID&gt;@&lt;Visualization host assigned to you&gt;<span class="sb">``</span>
+</pre></div>
+</div>
+<p>For example, if my NetID is <code class="docutils literal notranslate"><span class="pre">wz22</span></code>, my visualization host is <code class="docutils literal notranslate"><span class="pre">hpcviz2.abudhabi.nyu.edu</span></code> and display number is <code class="docutils literal notranslate"><span class="pre">2</span></code>,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">5930</span>:127.0.0.1:5902 gh50@hpcviz2.abudhabi.nyu.edu
+</pre></div>
+</div>
+<p>Then keep this terminal active.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Open Safari. Enter this in the address.</dt><dd><p><code class="docutils literal notranslate"><span class="pre">vnc://127.0.0.1:5930</span></code></p>
+<ul class="simple">
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Allow</span></code> to open “Screen Sharing”. Then click <code class="docutils literal notranslate"><span class="pre">Connect</span></code>. It will prompt for VNC password.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<p>Finally, the remote desktop will show up.</p>
+<img alt="hpc/system/../img/sshvnc-remote-desktop.png" src="hpc/system/../img/sshvnc-remote-desktop.png" />
+<div class="admonition-cursor admonition">
+<p class="admonition-title">Cursor</p>
+<p>By default the cursor is a single pixel dot, and difficult to see. To change it in Windows, click the left-upper most icon of the window, “connection options…”. Then change the “Local cursor shape” to “Normal arrow”
+.. image:: ../img/modified-sshvnc-cursor-windows.png</p>
+</div>
+</div>
+<div class="section" id="running-applications-inside-the-vnc-session">
+<h2>Running applications inside the VNC session<a class="headerlink" href="#running-applications-inside-the-vnc-session" title="Permalink to this headline">¶</a></h2>
+<p>To run GPU enabled applications on the GPU device, you will need to append “vglrun” command when starting your application in the terminal on the remote desktop. E.g.,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vglrun application
+</pre></div>
+</div>
+<p>For example as a simple test you can try:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vglrun glxspheres64
+</pre></div>
+</div>
+<div class="admonition-matlab-users admonition">
+<p class="admonition-title">Matlab Users</p>
+<p>Either you directly invoke matlab</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>matlab
+</pre></div>
+</div>
+<p>Or disable software opengl by</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vglrun matlab -nosoftwareopengl
+</pre></div>
+</div>
+</div>
+<p>Stopping a remote visualization session
+If you just close your local VNC viewer window, your session will still be running on the visualization nodes and you could reconnect to it from a different computer for example.</p>
+<p>To really terminate a VNC session on the visualization nodes, you should do one of the following actions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Log</span> <span class="pre">out</span></code> from inside your VNC session, this will stop your session and allocation.</p></li>
+<li><dl class="simple">
+<dt>If you are unable to do so, you can “force quit” your allocation by using the <code class="docutils literal notranslate"><span class="pre">scancel</span></code> command on the login node</dt><dd><ol class="arabic simple">
+<li><p>First, log in to the login node</p></li>
+<li><p>Then to check your session ID use <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">&lt;NetID&gt;</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;Session-ID&gt;</span></code> to cancel the session.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

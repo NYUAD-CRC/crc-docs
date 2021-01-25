@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Parallel Job Array &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Submitting a Job" href="job_submit.html" />
+    <link rel="prev" title="Job Array" href="job_array.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Parallel Job Array</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/jobs/parallel_job_array.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parallel-job-array">
+<h1>Parallel Job Array<a class="headerlink" href="#parallel-job-array" title="Permalink to this headline">¶</a></h1>
+<p>There are times, however, when even a job array doesn’t really fit your needs. For instance, you may be looking at running 300,000 very short running jobs. Or maybe, the complexity to search through all the output files or having to manually “glue” them back together into a single output file is too demanding. Or maybe it’s too difficult to match SLURM’s taskids to actual input file names or parametric analysis. Or more probably the time delay between each jobs being scheduled to run is slowing down your processing as your jobs are really short</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-resuls file.1
+./process-one-resuls file.2
+./process-one-resuls file.3
+...
+./process-one-result file.50000
+</pre></div>
+</div>
+<p>For these cases Dalma has the “parallel job array” system– an NYU Abu Dhabi in-house tool – designed to make running large number of jobs even simpler.</p>
+<p>To submit a parallel job array you need to prepare a file (eg: <code class="docutils literal notranslate"><span class="pre">list_of_commands.txt</span></code> ) ,where each line represents a single job to execute. You can have multiple Linux commands on a line as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>myprogram1
+<span class="nb">export</span> <span class="nv">V</span><span class="o">=</span><span class="m">42</span><span class="p">;</span> myprogram2 <span class="p">|</span> myprogram3
+myprogram4<span class="p">;</span> myprogram5 &lt; inp
+myprogram6 &gt; out
+</pre></div>
+</div>
+<p>Then you pass the file to the tool and it automatically submits the job array for you.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>slurm_parallel_ja_submit.sh list_of_commands.txt
+</pre></div>
+</div>
+<p>The tool splits all jobs into groups and proceeds to run them as a normal job array.
+During execution all jobs within a group are split across the cores of a compute node and run in parallel.</p>
+<p>The output is gathered into files, 1 output file per group and 1 error file per group;
+the output is ordered to make things easy for you.</p>
+<p>You get significant performance gains by eliminating the job scheduling
+overhead and the queuing delay for each job.</p>
+<p>The parallel job array tool allows you to set the time limit for each node – <strong>not each job</strong>!,
+the processor type (sse, or avx2), the partition – useful if your research
+group has its “compute condo”, and the number of nodes to use.</p>
+<p>The parallel job array tool determines an optimal number of nodes to use (actually job array tasks).
+It groups all jobs into groups processes them using conventional job array.
+The number of “nodes” corresponds actually to the number of groups,
+which is the number of tasks for the job array.</p>
+<p>The time limit parameter applies to the groups – eg an entire group must complete within the time limit.</p>
+<div class="admonition-more-on-the-timelimit-parameter admonition">
+<p class="admonition-title">More on the <strong>TimeLimit</strong> parameter</p>
+<p>For example:
+Let’s say you have an input file <code class="docutils literal notranslate"><span class="pre">list.txt</span></code> with 10000 commands to run.
+Let’s also assume each command utilizes a single CPU (serial job) an takes around <strong>5 minutes per command (job)</strong>.</p>
+<p>Suppose you specified the <code class="docutils literal notranslate"><span class="pre">-N</span></code> parameter (which corresponds to number of nodes) to as eight while
+submitting the “parallel job array”. This means that the 10000 jobs of yours are now divided in 8 groups,
+with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">per</span> <span class="n">group</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">/</span><span class="mi">8</span> <span class="o">=</span> <span class="mi">1250</span>
+</pre></div>
+</div>
+<p>Now each group of job will run on one node and each standard compute node on Dalma has 28 CPUs (cores).
+This means that per each core (CPU), we will have</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">per</span> <span class="n">core</span> <span class="p">(</span><span class="n">CPU</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1250</span><span class="o">/</span><span class="mi">28</span> <span class="o">=</span> <span class="mi">44</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Hence</span><span class="p">,</span> <span class="n">total</span> <span class="n">time</span> <span class="n">per</span> <span class="n">CPU</span> <span class="o">=</span> <span class="mi">45</span> <span class="o">*</span> <span class="mi">5</span> <span class="n">minutes</span> <span class="o">=</span> <span class="mi">225</span> <span class="n">minutes</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">hours</span> <span class="mi">45</span> <span class="n">minutes</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">+1</span></code> factor comes with the fact that since <code class="docutils literal notranslate"><span class="pre">1250</span></code> isn’t perfectly divisible by <code class="docutils literal notranslate"><span class="pre">28</span></code>, the reminder is distributed
+among the different cores in a round robin fashion.</p>
+</div>
+<p>This is the estimated time it will take a group of jobs (1250) to complete on a single node.</p>
+<p><strong>Hence, while submitting the ``parallel job array`` it will be good to specify this TimeLimit as well, as
+the lower the walltime, the higher is the probability for the faster allocation of resources.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">slurm_parallel_ja_submit</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">N</span> <span class="mi">8</span> <span class="o">-</span><span class="n">t</span> <span class="mi">03</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt; slurm_parallel_ja_submit.sh –h
+slurm_parallel_ja_submit.sh options:
+-C &lt;constraint&gt; <span class="o">(</span>avx2 or sse<span class="o">)</span>
+-t &lt;<span class="nb">time</span> limit HH:MM:SS&gt;
+-p &lt;partition&gt;
+-N &lt;number of nodes&gt;
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The parallel job array tool propagates your environment,
+and loaded modules, to all jobs.
+So to execute the previous matlab example you need to
+load the matlab software module prior to launching the parallel job array.</p>
+</div>
+<p>The tool also support OpenMP jobs, so you can set the number of threads before launching your parallel job array.</p>
+<p>By default the tool will allow up to 8 “nodes” (groups).
+You can increase the number of nodes when there is a very large
+number of jobs to process to run faster, or when the groups can’t finish within the time limit</p>
+<p>Here is how a complete example looks like.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; cat list_of_commands.txt
+<span class="nb">echo</span> processing <span class="m">1</span>
+<span class="nb">echo</span> processing <span class="m">2</span>
+...
+<span class="nb">echo</span> processing <span class="m">100000</span>
+
+$&gt; slurm_parallel_ja_submit.sh list_of_commands.txt
+Input: list3
+Actual maximum number of nodes that will be used: <span class="m">8</span>
+Submitting parallel job array using the following modules:
+Currently Loaded Modulefiles:
+<span class="m">1</span><span class="o">)</span> NYUAD/3.0
+Submitting parallel job array with <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span> <span class="m">4</span>
+Submitted batch job <span class="m">466656</span>
+
+$&gt; squeue -u bm102
+JOBID           PARTITION   NAME    USER    ST  TIME    NODES   NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+466656_<span class="o">[</span><span class="m">1</span>-8<span class="o">]</span>     ser_std    sbatch  bm102   PD  <span class="m">0</span>:00      <span class="m">1</span>     <span class="o">(</span>Priority<span class="o">)</span>
+
+$&gt; ls list3-466656_*
+list3-466656_1.err list3-466656_2.err list3-466656_3.err list-466656_4.err
+list3-466656_5.err list3-466656_6.err list3-466656_7.err list-466656_8.err
+list3-466656_1.out list3-466656_2.out list3-466656_3.out list-466656_4.out
+list3-466656_5.out list3-466656_6.out list3-466656_7.out list-466656_8.out
+
+$&gt; cat list-466656_1.out
+<span class="o">=============</span> job <span class="nv">1</span> <span class="o">============</span>
+processing <span class="nv">1</span>
+<span class="o">=============</span> job <span class="nv">2</span> <span class="o">============</span>
+processing <span class="m">2</span>
+...
+processing <span class="nv">12499</span>
+<span class="o">=============</span> job <span class="nv">12500</span> <span class="o">============</span>
+processing <span class="m">12500</span>
+
+$&gt; cat list-466656_8.out
+<span class="o">=============</span> job <span class="nv">87501</span> <span class="o">============</span>
+processing <span class="nv">87501</span>
+<span class="o">=============</span> job <span class="nv">87502</span> <span class="o">============</span>
+processing <span class="m">87502</span>
+...
+<span class="o">=============</span> job <span class="nv">99999</span> <span class="o">============</span>
+processing <span class="nv">99999</span>
+<span class="o">=============</span> job <span class="nv">100000</span> <span class="o">============</span>
+processing <span class="m">100000</span>
+</pre></div>
+</div>
+<p>For compatibilty with existing job array scripts you can
+use the <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> environment variable
+in your parallel job array processing.
+Here the <code class="docutils literal notranslate"><span class="pre">list4.txt</span></code> input file contains the line <code class="docutils literal notranslate"><span class="pre">./ja.sh</span></code> 100
+times.</p>
+<p>An additional benefit of parallel job array processing is
+that you are not limited to SLURM’s <code class="docutils literal notranslate"><span class="pre">MaxSubmit</span></code> and
+<code class="docutils literal notranslate"><span class="pre">MaxJobs</span> <span class="pre">account</span></code> / user limits.
+Whereas you can submit a maximum of 200 jobs, and
+have up to 100 running concurrently using regular job
+array processing, using parallel job array you have no
+such limits.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; cat ja.sh
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -p serial</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH -a 1-100</span>
+sleep <span class="m">5</span>
+<span class="nb">echo</span> -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> <span class="s2">&quot; &quot;</span>
+date
+
+$&gt; sbatch ja.sh
+
+$&gt; cat list4.txt
+./ja.sh
+./ja.sh
+...
+./ja.sh
+
+$&gt; slurm_parallel_ja_submit.sh list4
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="job_submit.html" class="btn btn-neutral float-right" title="Submitting a Job" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="job_array.html" class="btn btn-neutral float-left" title="Job Array" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
