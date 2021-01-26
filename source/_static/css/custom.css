@@ -14,3 +14,7 @@
 .wy-menu-vertical header, .wy-menu-vertical p.caption{
     color: #a557d9;
 }
+
+.text-justify {
+    text-align: justify;
+}
