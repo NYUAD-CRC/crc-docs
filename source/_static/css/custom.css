@@ -18,3 +18,26 @@
 .text-justify {
     text-align: justify;
 }
+
+
+@media screen and (min-width: 1100px) {
+    .wy-body-for-nav {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .wy-nav-side {
+        left: inherit;
+    }
+
+    .rst-versions {
+        left: inherit;
+    }
+
+    .wy-nav-content-wrap, .wy-body-for-nav {
+        background-color: #efefef;
+    }
+    .wy-nav-content {
+        background-color: #fcfcfc;
+    }
+} 
