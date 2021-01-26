@@ -28,6 +28,7 @@
 
     .wy-nav-side {
         left: inherit;
+        box-shadow: 0 0 10px rgba(50, 50, 50, .17);
     }
 
     .rst-versions {
@@ -39,5 +40,6 @@
     }
     .wy-nav-content {
         background-color: #fcfcfc;
+        box-shadow: 0 0 10px rgba(50, 50, 50, .17);
     }
 } 
