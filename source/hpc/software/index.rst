@@ -4,7 +4,10 @@ Software
 On HPC:
 
 1. The Operating System is CentOS 7. Windows / Mac software is not supported.
-2. No GUI. No display. (Although we do have a few Visualization nodes, Please refer to the section :doc:`here </hpc/system/Visual_nodes>`)
+2. No GUI. No display. (Although we do have a few Visualization nodes, Please refer to the section :doc:`here </hpc/system/visual_nodes>`)
+
+Software Modules
+----------------
 
 You can compile / install your own software, and/or use our Module system. For the latter, first check what applications are available.
 
@@ -33,7 +36,7 @@ The following example shows how to load an environment for compiling source code
 
 At this point, compilers like ``gcc``, ``gfortran`` and ``g++`` are available, in a sense that the paths to those executables are prepended to ``$PATH``. Also, paths to libraries files from ``FFTW3`` will be prepended to ``$LD_LIBRARY_PATH``.
 
-If you cannot find a certain version of the software (for example, you are looking for Python 3, but only to find Python 2 is available), try running the following command to make all modules visible first.
+**If you cannot find a certain version of the software (for example, you are looking for Python 3, but only to find Python 2 is available), try running the following command to make all modules visible first.**
 
 .. code-block:: bash
 
@@ -59,8 +62,21 @@ be found in the document here :download:`Dalma SW modules </hpc/docs/Dalma-SWMod
 
 For running Jobs: Please refer to the :doc:`Jobs Management </hpc/jobs/index>` section.
 
+.. important::
+    If you have a job with independent computations, then 
+    :doc:`Job arrays </hpc/jobs/job_array>` and :doc:`Parallel Job Array </hpc/jobs/parallel_job_array>`  
+    are one of the most easiest ways to parallelize 
+    your computations. Follow the corresponding highlighted links for a much more detailed example.
+
 Dalma Miniconda
 ---------------
 
 We have a centralized installation of :doc:`Miniconda </hpc/software/python/dalma_miniconda>`, 
 :doc:`TensorFlow </hpc/software/python/dalma_tensorflow>` and :doc:`PyTorch </hpc/software/python/dalma_pytorch>` in Dalma. Please refer to the highlighted sections for more details.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   /hpc/software/python/index
+   

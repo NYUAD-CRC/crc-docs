@@ -79,12 +79,10 @@ For data transfers please refer to the **Data Trasnfers** section :ref:`here <da
 
 
 .. toctree::
-    :glob:
-   :maxdepth: 2
+  :maxdepth: 1
    
-
-   /hpc/storage/home_scratch
-   /hpc/storage/work
-   /hpc/storage/archive
+  /hpc/storage/home_scratch
+  /hpc/storage/work
+  /hpc/storage/archive
    
    

@@ -19,7 +19,7 @@ Once the installation is done,
     http://www.nyu.edu/life/information-technology/getting-started/network-and-connectivity/vpn.html
 2. Open FileZilla. It will prompt a GUI.
 
-    .. image:: img/open.png
+    .. image:: /hpc/img/open.png
 
 3. Enter the **Host**, **Username**, **Password** and **Port**. Click **Quickconnect**, as shown in the screenshot below:
     * Host: dalma.abudhabi.nyu.edu
@@ -27,23 +27,23 @@ Once the installation is done,
     * Password: Your NetID password
     * Port: 22
 
-    .. image:: img/quickconnect.png
+    .. image:: /hpc/img/quickconnect.png
 
 4. Remote host is connected. The window on the left is local site (your workstation), while the window on the right is remote site (Dalma). By default, the remote path is ``$HOME``, e.g., ``/home/NetID``.
 
-    .. image:: img/loggedin.png
+    .. image:: /hpc/img/loggedin.png
 
 5. If you want to change the current directory, double click the target folder.
 
-    .. image:: img/change.png
+    .. image:: /hpc/img/change.png
 
 6. To upload a folder or file, right click the target folder or file from local site, select **Upload**.
 
-    .. image:: img/upload.png
+    .. image:: /hpc/img/upload.png
 
 7. To download a folder or file, right click the target folder or file from remote site, select **Download**.
 
-    .. image:: img/download.png
+    .. image:: /hpc/img/download.png
 
 
  

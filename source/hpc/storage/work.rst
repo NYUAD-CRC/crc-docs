@@ -17,6 +17,11 @@ Instructions are in this page: :ref:`Mount $WORK with SSHFS <mount_work>`
 
 We urge our users to clean up their storage regularily.
 
+.. toctree::
+    :maxdepth: 1
+    
+    /hpc/storage/mount_work
+   
 
 .. warning::
 

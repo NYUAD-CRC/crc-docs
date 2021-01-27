@@ -55,6 +55,7 @@ This shows the existing local and centralized Miniconda environments available
 A sample output is shown below. The list of centralized and local installations can be seen. 
 
 .. code-block:: bash
+
                                          /home/wz22/.conda/envs/myenv
                                          /home/wz22/.conda/envs/myenv2
                                          /home/wz22/.conda/envs/myenv3
