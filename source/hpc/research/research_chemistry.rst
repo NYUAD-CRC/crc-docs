@@ -5,7 +5,7 @@ Chemistry
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -28,7 +28,7 @@ Chemistry
 2019
 ----
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -50,7 +50,7 @@ Chemistry
 2018
 ----
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 

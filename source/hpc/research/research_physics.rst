@@ -5,7 +5,7 @@ Physics
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -52,7 +52,7 @@ Physics
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -158,7 +158,7 @@ Physics
 2018
 ----
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 

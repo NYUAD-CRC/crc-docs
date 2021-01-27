@@ -5,7 +5,7 @@ CGSB
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto
     :header-rows: 1
 
     * - 
@@ -32,7 +32,7 @@ CGSB
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -92,7 +92,7 @@ CGSB
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 

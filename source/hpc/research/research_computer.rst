@@ -5,7 +5,7 @@ Computer Science
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -31,7 +31,7 @@ Computer Science
 2018
 ----
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 

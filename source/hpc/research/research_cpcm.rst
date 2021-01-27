@@ -5,7 +5,7 @@ CPCM
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -20,7 +20,7 @@ CPCM
 ----
 
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -38,7 +38,7 @@ CPCM
 2018
 ----
 .. list-table:: 
-    :widths: 1 10 10 
+    :widths: auto 
     :header-rows: 1
 
     * - 

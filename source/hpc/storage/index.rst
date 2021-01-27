@@ -18,7 +18,7 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
 
 
 .. list-table:: 
-    :widths: 1 1 1 1 1 
+    :widths: auto 
     :header-rows: 1
 
     * - 

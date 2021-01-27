@@ -5,7 +5,7 @@ Engineering
 ----
 
 .. list-table:: 
-    :widths: 1 10 3 
+    :widths: auto 
     :header-rows: 1
 
     * - 
@@ -23,7 +23,7 @@ Engineering
 2018
 ----
 .. list-table:: 
-    :widths: 1 10 3 
+    :widths: auto 
     :header-rows: 1
 
     * - 
