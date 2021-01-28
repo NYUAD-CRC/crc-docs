@@ -1,7 +1,5 @@
-Help
-====
-
-This section pulls out the How To's available
+Python Softwares in Dalma
+=========================
 
 .. important::
     If you have a job with independent computations, then 

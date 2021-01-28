@@ -18,6 +18,7 @@ Batch Job Script
 A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us.
 
 .. admonition:: Resources Limit
+
     The cluster is shared among the whole university. The HPC steering committee decides each year on resources limit for each department. We at NYUAD HPC center implement these limits.
 
 **Typically, a user can ask for 48 hours, 700 CPU cores maximum per job.**

@@ -55,7 +55,6 @@ Once your account is ready, you can access Dalma. With Linux or Mac in NYU AD/NY
 If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma <access_dalma>`.
 
 .. toctree::
-    :glob:
    :maxdepth: 1
    :hidden:
 
@@ -69,7 +68,6 @@ Data Transfers
 You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to Dalma: 
 
 .. toctree::
-    :glob:
    :maxdepth: 1
    
 
@@ -83,11 +81,20 @@ Special Compute Nodes
 
 
 .. toctree::
-    :glob:
    :maxdepth: 1
    
 
    /hpc/system/visual_nodes
    /hpc/system/gpu_nodes 
    
+Fast Transfer between NYC and Dalma
+-----------------------------------
+
+The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a 
+high bandwidth ANKABUT link instead.
+
+.. toctree::
+   :maxdepth: 1
    
+
+   /hpc/system/nyc_file_transfer

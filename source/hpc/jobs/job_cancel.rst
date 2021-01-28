@@ -1,5 +1,5 @@
 Cancelling a Job
-===============
+================
 
 If you decide to end a job prematurely, use ``scancel``
 

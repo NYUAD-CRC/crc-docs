@@ -3,7 +3,8 @@
 Mount $WORK with SSHFS
 =======================
 
-This page explains how to mount ``$WORK`` on Dalma with SSHFS on your local workstation. Only recent Linux distributions and MacOS are supported. Only ``$WORK`` is supported, not ``$HOME`` , ``$SCRATCH`` or any other file system on Dalma.
+This page explains how to mount ``$WORK`` on Dalma with SSHFS on your local workstation. 
+Only ``$WORK`` is supported, not ``$HOME`` , ``$SCRATCH`` or any other file system on Dalma.
 
 Step-by-step guide
 ------------------

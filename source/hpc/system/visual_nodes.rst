@@ -176,7 +176,7 @@ Click **Connect**. A new window will pop up.
 
 The first time you attempt to connect to the visualization node, you will probably see a warning that looks like this.
 
-.. code-block:: bash
+.. code-block:: 
 
     The authenticity of host 'HPCVIZ1.ABUDHABI.NYU.EDU (10.230.42.111)' can't be established.
     ECDSA key fingerprint is
