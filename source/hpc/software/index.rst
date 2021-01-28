@@ -80,5 +80,14 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/python/dalm
 
    /hpc/software/python/index
 
-   
+R with Dalma Miniconda
+----------------------
+
+Users can have their own local installation of R. You can find more details about the same here: :doc:`R in Dalma Miniconda <r_dalma_miniconda>`.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   /hpc/software/r_dalma_miniconda
    

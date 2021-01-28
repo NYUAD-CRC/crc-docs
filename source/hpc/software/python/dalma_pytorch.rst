@@ -6,8 +6,9 @@ You can clone the existing centralized environment to your local environment and
 add other required libraries or packages on top of it after activating it. 
 To find more details of the Miniconda module in Dalma, click :doc:`here <dalma_miniconda>`.
 
-If you have never used Conda, we recommend you to use Dalma Miniconda. 
-You can find the steps to set up Dalma Miniconda by clicking :doc:`here <dalma_miniconda>`.
+.. note::
+    If you have never used Conda, we recommend you to use Dalma Miniconda. 
+    You can find the steps to set up Dalma Miniconda by clicking :doc:`here <dalma_miniconda>`.
 
 How to clone the **PyTorch** environment
 ----------------------------------------
