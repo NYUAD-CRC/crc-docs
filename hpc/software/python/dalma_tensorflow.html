@@ -40,7 +40,9 @@
 
     
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="R in Dalma Miniconda" href="../r_dalma_miniconda.html" />
+    <link rel="prev" title="PyTorch in Dalma" href="dalma_pytorch.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,15 +93,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../rcs/kb/index.html">Knowledge Base</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HPC Documentation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">High Performance Computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../system/index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../storage/index.html">Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#software-modules">Software Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#dalma-miniconda">Dalma Miniconda</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Python Softwares in Dalma</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dalma_jupyter.html">Jupyter Notebook in Dalma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dalma_miniconda.html">Miniconda in Dalma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dalma_pytorch.html">PyTorch in Dalma</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">TensorFlow (Keras) in Dalma</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#r-with-dalma-miniconda">R with Dalma Miniconda</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/index.html">Dalma Training</a></li>
 </ul>
 
             
@@ -148,6 +165,10 @@
     
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="../index.html">Software</a> &raquo;</li>
+        
+          <li><a href="index.html">Python Softwares in Dalma</a> &raquo;</li>
+        
       <li>TensorFlow (Keras) in Dalma</li>
     
     
@@ -169,12 +190,19 @@
             
   <div class="section" id="tensorflow-keras-in-dalma">
 <h1>TensorFlow (Keras) in Dalma<a class="headerlink" href="#tensorflow-keras-in-dalma" title="Permalink to this headline">¶</a></h1>
-<p>We have Tensorflow (1.15 &amp; 2.0) installations as part of Miniconda module in Dalma. You can clone the existing centralized environments to your local environments and add other required libraries or packages on top of it. To find more details of the Miniconda module in Dalma, click <span class="xref std std-doc">here</span>. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.</p>
+<p>We have Tensorflow (1.15 &amp; 2.0) installations as part of Miniconda module in Dalma.
+You can clone the existing centralized environments to your local environments and add
+other required libraries or packages on top of it. To find more details of the
+Miniconda module in Dalma, click <a class="reference internal" href="dalma_miniconda.html"><span class="doc">here</span></a>. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The current Nvidia driver version on the GPU nodes is <code class="docutils literal notranslate"><span class="pre">410.79</span></code> which supports <code class="docutils literal notranslate"><span class="pre">cuda/10.0</span></code> or lesser and hence the TensorFlow versions &lt;= 2.0 are supported. However, the TensorFlow versions &gt;= 2.1 require cuda/10.1 or higher and hence are not compatible. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.</p>
 </div>
-<p>If you have never used Conda, we recommend you to use Dalma Miniconda. You can find the steps to set up Dalma Miniconda by clicking <span class="xref std std-doc">here</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have never used Conda, we recommend you to use Dalma Miniconda.
+You can find the steps to set up Dalma Miniconda by clicking <a class="reference internal" href="dalma_miniconda.html"><span class="doc">here</span></a>.</p>
+</div>
 <div class="section" id="how-to-clone-the-tensorflow-environment">
 <h2>How to clone the TensorFlow environment<a class="headerlink" href="#how-to-clone-the-tensorflow-environment" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -232,6 +260,10 @@ python abc.py
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../r_dalma_miniconda.html" class="btn btn-neutral float-right" title="R in Dalma Miniconda" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dalma_pytorch.html" class="btn btn-neutral float-left" title="PyTorch in Dalma" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

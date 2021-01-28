@@ -40,7 +40,9 @@
 
     
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="PyTorch in Dalma" href="dalma_pytorch.html" />
+    <link rel="prev" title="Jupyter Notebook in Dalma" href="dalma_jupyter.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,15 +93,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../rcs/kb/index.html">Knowledge Base</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HPC Documentation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">High Performance Computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../system/index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../storage/index.html">Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#software-modules">Software Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#dalma-miniconda">Dalma Miniconda</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Python Softwares in Dalma</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dalma_jupyter.html">Jupyter Notebook in Dalma</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Miniconda in Dalma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dalma_pytorch.html">PyTorch in Dalma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dalma_tensorflow.html">TensorFlow (Keras) in Dalma</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#r-with-dalma-miniconda">R with Dalma Miniconda</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/index.html">Dalma Training</a></li>
 </ul>
 
             
@@ -148,6 +165,10 @@
     
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="../index.html">Software</a> &raquo;</li>
+        
+          <li><a href="index.html">Python Softwares in Dalma</a> &raquo;</li>
+        
       <li>Miniconda in Dalma</li>
     
     
@@ -168,10 +189,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="miniconda-in-dalma">
-<h1>Miniconda in Dalma<a class="headerlink" href="#miniconda-in-dalma" title="Permalink to this headline">¶</a></h1>
+<span id="miniconda"></span><h1>Miniconda in Dalma<a class="headerlink" href="#miniconda-in-dalma" title="Permalink to this headline">¶</a></h1>
 <p>We have a centralized installation of Miniconda in Dalma. The users can either
 install their own Miniconda or use the centralized installation present in Dalma. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.</p>
-<p>The conda cheat sheet gives you a list of useful commands in a glance:  Conda-cheat-sheet</p>
+<p>The conda cheat sheet gives you a list of useful commands in a glance:  <a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda-cheat-sheet</a></p>
 <div class="section" id="one-time-set-up">
 <h2>One Time Set up<a class="headerlink" href="#one-time-set-up" title="Permalink to this headline">¶</a></h2>
 <p>Execute the following command for making Dalma Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.</p>
@@ -181,7 +202,7 @@ install their own Miniconda or use the centralized installation present in Dalma
 </div>
 </div>
 <div class="section" id="managing-environments">
-<h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
+<span id="managing-envs"></span><h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
 <p><strong>Create a Local Environment</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the environment&gt;</span>
 <span class="c1">#example:</span>
@@ -204,6 +225,16 @@ conda activate myenv1
 </pre></div>
 </div>
 <p>A sample output is shown below. The list of centralized and local installations can be seen.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>                                     /home/wz22/.conda/envs/myenv
+                                     /home/wz22/.conda/envs/myenv2
+                                     /home/wz22/.conda/envs/myenv3
+                                     /home/wz22/.conda/envs/myenv4
+base                            *    /share/apps/NYUAD/miniconda/3-4.8.2
+firefox                              /share/apps/NYUAD/miniconda/3-4.8.2/envs/firefox
+tensorflow-1.15                      /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
+tensorflow-2.0                       /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-2.0
+</pre></div>
+</div>
 <p><strong>Cloning an Environment</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p &lt;path to new env&gt; --clone &lt;path to existing env&gt;</span>
 <span class="c1">#example: Here we clone the existing Tensorflow environment.</span>
@@ -250,6 +281,10 @@ python abc.py
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dalma_pytorch.html" class="btn btn-neutral float-right" title="PyTorch in Dalma" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dalma_jupyter.html" class="btn btn-neutral float-left" title="Jupyter Notebook in Dalma" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

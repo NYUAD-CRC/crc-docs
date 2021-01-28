@@ -22,11 +22,13 @@ If you need ``X11``, add the ``-X`` option.
 
 Outside NYU Network
 -------------------
+
 **VPN**
 
 You could either first connect to NYU VPN (See `here <https://www.nyu.edu/life/information-technology/getting-started/network-and-connectivity/vpn.html>`__ for instruction) and then connect to Dalma directly. Choose ``vpn.abudhabi.nyu.edu`` as your VPN server.
 
 **Bastion Host**
+
 Or, use bastion host as instructed below.
 
 1. Connect to bastion host.

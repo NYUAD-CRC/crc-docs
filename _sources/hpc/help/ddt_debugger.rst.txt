@@ -30,7 +30,7 @@ Step-by-step guide
 
     * Click on the ``ATTACH`` button and ``choose hosts`` to add the head node where the job is running ( see Figure below )
 
-    .. image:: img/ddt1.png
+    .. image:: /hpc/img/ddt1.png
 
 
 
@@ -58,8 +58,10 @@ Step-by-step guide
     * Click on **RUN**
     * Select your application to run 
     * Enable MPI and be sure the **SLURM(generic)** is selected ... Click on Change  and in the next window select the **submission template file** to the ***.qtf** file you just created
-    .. image:: img/ddt2.png
+    
+    .. image:: /hpc/img/ddt2.png
 
     * Finally set the MPI params (Number of Processes,etc) and hit RUN
-    .. image:: img/ddt3.png
+
+    .. image:: /hpc/img/ddt3.png
 

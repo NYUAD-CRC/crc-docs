@@ -14,9 +14,9 @@ Login Dalma.
 $RECIPESDIR/localize-perl.sh
  If the localization is successful, in the end the screen output will be similar to this:
 
-***************************************
-Now re-login to take effect of localization of Perl
-***************************************
+
+**Now re-login to take effect of localization of Perl**
+
  
 Perl localization completed.
  

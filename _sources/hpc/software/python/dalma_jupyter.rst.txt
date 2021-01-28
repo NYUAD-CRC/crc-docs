@@ -14,7 +14,7 @@ Step-by-step guide
 
 A sample output is shown below:
 
-.. image:: img/jupyter.png
+.. image:: /hpc/img/jupyter.png
 
 .. tip::
 

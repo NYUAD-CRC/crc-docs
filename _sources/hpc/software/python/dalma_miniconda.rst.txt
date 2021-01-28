@@ -1,10 +1,12 @@
+.. _miniconda:
+
 Miniconda in Dalma
 ==================
 
 We have a centralized installation of Miniconda in Dalma. The users can either 
 install their own Miniconda or use the centralized installation present in Dalma. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
 
-The conda cheat sheet gives you a list of useful commands in a glance:  Conda-cheat-sheet
+The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
 
 One Time Set up
 ---------------
@@ -15,6 +17,8 @@ Execute the following command for making Dalma Miniconda as your default conda e
 
     module load miniconda
     source ~/.bashrc
+
+.. _managing_envs:
 
 Managing Environments
 ---------------------
@@ -55,6 +59,7 @@ This shows the existing local and centralized Miniconda environments available
 A sample output is shown below. The list of centralized and local installations can be seen. 
 
 .. code-block:: bash
+
                                          /home/wz22/.conda/envs/myenv
                                          /home/wz22/.conda/envs/myenv2
                                          /home/wz22/.conda/envs/myenv3

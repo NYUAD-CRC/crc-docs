@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>How to use MATLAB Parallel Toolbox &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Perl - Create and manage your own Perl environment" href="perl_env.html" />
+    <link rel="prev" title="NYU VPN for Linux" href="linux_vpn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/index.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Help</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ddt_debugger.html">How to use the DDT Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="greasy.html">“Greasy” Workload Management Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_vpn.html">NYU VPN for Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to use MATLAB Parallel Toolbox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step-guide">Step-by-step guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-example-using-an-interactive-session">Running the example using an interactive session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-example-using-the-batch-system">Running the example using the batch system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="perl_env.html">Perl - Create and manage your own Perl environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Help</a> &raquo;</li>
+        
+      <li>How to use MATLAB Parallel Toolbox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/hpc/help/matlab_parallel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-use-matlab-parallel-toolbox">
+<h1>How to use MATLAB Parallel Toolbox<a class="headerlink" href="#how-to-use-matlab-parallel-toolbox" title="Permalink to this headline">¶</a></h1>
+<p>One of the features users may want to use in Dalma is Matlab’s Parallel Toolbox.</p>
+<p>MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems. For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD.
+Parallel computations can be achieved either using  <strong>parallel for-loops</strong> , <strong>special array types</strong> or <strong>parallelized numerical algorithms</strong>. You can also submit <strong>batch local workers</strong>, for more info visit the MATLAB documentation ( <a class="reference external" href="http://www.mathworks.es/es/help/distcomp/introduction-to-parallel-solutions.html#brjw1fx-2">http://www.mathworks.es/es/help/distcomp/introduction-to-parallel-solutions.html#brjw1fx-2</a> )</p>
+<p>In any case, for all these things to work, you will need to define a set of resources (cpus or workers) where the tasks will be executed.  The easiest way is to use the matlabpool command. This command has been replaced in recent versions for parpool. Again, refer to the MATLAB documentation for details.</p>
+<div class="section" id="step-by-step-guide">
+<h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
+<p>If you are planning to run parallel computation with Matlab:</p>
+<ol class="arabic">
+<li><p>the maximum allowed number of workers by MATLAB in a node is 12. Use this in your submission script</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --cpus-per-task=12</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Open the matlabpool / parpool</p></li>
+<li><p>Do the computation</p></li>
+<li><p>Close the matlabpool / parpool</p></li>
+</ol>
+<p><strong>Example:</strong> Suppose we have the following matlab code file named: <code class="docutils literal notranslate"><span class="pre">parfortest.m</span></code></p>
+<div class="highlight-matlab notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">P</span><span class="p">=</span><span class="mi">8</span><span class="p">;</span>
+ <span class="n">N</span><span class="p">=</span><span class="mi">10000</span><span class="p">;</span>
+ <span class="n">n</span><span class="p">=</span><span class="mi">100</span><span class="p">;</span>
+ <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+<span class="hll"> <span class="n">parpool</span> <span class="p">(</span><span class="s">&#39;open&#39;</span><span class="p">,</span><span class="n">P</span><span class="p">);</span>
+</span><span class="hll"> <span class="n">parfor</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+</span>     <span class="n">y</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+     <span class="n">for</span> <span class="s">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+         <span class="n">y</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">rand</span><span class="p">;</span>
+     <span class="n">end</span>
+     <span class="s">x(i,:)</span> <span class="p">=</span> <span class="n">y</span><span class="p">;</span>
+ <span class="n">end</span>
+<span class="hll"> <span class="s">parpool</span> <span class="s">close</span><span class="p">;</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="running-the-example-using-an-interactive-session">
+<h2>Running the example using an interactive session<a class="headerlink" href="#running-the-example-using-an-interactive-session" title="Permalink to this headline">¶</a></h2>
+<p>You can now open an interactive session to run it. To open an interactive shell in the cluster, type the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>login-node<span class="o">]</span>$&gt; srun --pty  -n <span class="m">1</span> --cpus-per-task<span class="o">=</span><span class="m">12</span>  /bin/bash
+</pre></div>
+</div>
+<p>Once you are in the interactive shell you must load the matlab module like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>compute-node<span class="o">]</span>$&gt; module load matlab
+</pre></div>
+</div>
+<p>And finally open matlab and run the example as you would do it in your workstation/laptop. Notice that running Matlab in the interactive queue you will not have GUI available.</p>
+</div>
+<div class="section" id="running-the-example-using-the-batch-system">
+<h2>Running the example using the batch system<a class="headerlink" href="#running-the-example-using-the-batch-system" title="Permalink to this headline">¶</a></h2>
+<p>First thing you need a submission script like this: <code class="docutils literal notranslate"><span class="pre">run.slurm</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --cpus-per-task=12</span>
+<span class="c1">#SBATCH -J matlab_test</span>
+<span class="c1">#SBATCH -o matlab.%J.out</span>
+<span class="c1">#SBATCH -e matlab.%J.err</span>
+
+module purge
+module load matlab
+
+<span class="c1"># to run an m file do the following</span>
+matlab -nosplah -nodisplay -nodesktop &lt; parfortest.m &gt; parfortest_output.out
+
+<span class="c1"># If you are running a matlab function do the following:</span>
+<span class="c1"># matlab -nosplash -nodisplay -nodesktop -r &quot;myCode(arg,...);exit;&quot;</span>
+</pre></div>
+</div>
+<p>Then you can submit the job as usual.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="perl_env.html" class="btn btn-neutral float-right" title="Perl - Create and manage your own Perl environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linux_vpn.html" class="btn btn-neutral float-left" title="NYU VPN for Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
