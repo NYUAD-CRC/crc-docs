@@ -47,3 +47,7 @@
 .wy-table-responsive table td, .wy-table-responsive table th {
     white-space: unset;
 }
+
+.publication-table td + td + td {
+    min-width: 165px;
+}
