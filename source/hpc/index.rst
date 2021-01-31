@@ -2,8 +2,12 @@
 High Performance Computing
 **************************
 
-High Performance Computing Abu Dhabi
-New York University Abu Dhabi (NYUAD) High Performance Computing (HPC) Center serves New York University Abu Dhabi (NYUAD) researchers, faculty and students by providing them with HPC services and support to help them conduct world-class computational research and education. The HPC Center provides its services through a medium-sized Linux cluster called Dalma. The cluster consists of around **12,000 computing cores** and a peak performance of *approx.* **385 TFLOPS**.
+.. rst-class:: text-justify
+
+    New York University Abu Dhabi (NYUAD) High Performance Computing (HPC) Center serves New York University Abu Dhabi (NYUAD) researchers, faculty and students by providing them with HPC services and support to help them conduct world-class computational research and education. The HPC Center provides its services through a medium-sized Linux cluster called Dalma. The cluster consists of around **12,000 computing cores** and a peak performance of *approx.* **385 TFLOPS**.
+
+.. warning::
+    Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 
 .. seealso::
     Cluster - Dalma
@@ -20,7 +24,11 @@ You could:
 
 .. important:: 
 
-    *Acknowledgement*
-        We ask our users to acknowledge use of the HPC computing resources by including the following in any publication resulting from work carried out on the HPC:
+    **Acknowledgement**
+        We ask our users to acknowledge use of the HPC resources by including the following in any publication resulting from work carried out on the HPC:
         
-            This research was carried out on the High Performance Computing resources at New York University Abu Dhabi.
+        **This research was carried out on the High Performance Computing resources at New York University Abu Dhabi.**
+
+.. admonition:: Contact us
+
+    Contact us anytime at dalma.admins@nyu.edu
