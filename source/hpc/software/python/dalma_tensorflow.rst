@@ -21,6 +21,11 @@ How to clone the TensorFlow environment
     .. code-block:: bash
 
         #conda create -n <name of the new env> --clone <existing env>
+
+        #or
+
+        #conda create -p <path to local env> --clone <existing env>
+
         #example:
         conda create -n tf-gpu --clone tensorflow-1.15
 

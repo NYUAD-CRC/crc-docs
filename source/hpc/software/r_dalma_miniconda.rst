@@ -78,7 +78,11 @@ How to install the Conda complementary packages
     you can find more about managing environments, by clicking :ref:`here<managing_envs>`.
 
     .. code-block:: bash
-    
+
+        #conda activate <path to local env>
+
+        #or
+        
         #conda activate <name of the environment>
         #example:
         conda activate R
