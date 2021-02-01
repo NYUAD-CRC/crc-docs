@@ -2,7 +2,7 @@ A Detailed SLURM Guide
 ======================
 
 SLURM: Partitions
-----------------
+-----------------
 
 A partition is a collection of nodes, they may share some attributes (CPU type, GPU, etc)
 
@@ -17,7 +17,7 @@ A partition is a collection of nodes, they may share some attributes (CPU type, 
 * For those who are experts in SLURM we use partitions to request GPUs, large memory, and visual instead of "constraints" as this approach gives us more flexibility for priorities and resource limits.
 
 SLURM: Submitting Jobs
----------------------
+----------------------
 
 1. To submit a job first you write a "job script"
 
@@ -284,15 +284,11 @@ the following Dalma specific tool:
 
 **In this output we see:**
 
-* user ``benoit`` can submit up to 200 jobs on ``par_std`` (parallel) partition, but have at most 100 jobs running consuming a maximum
-of 700 cores total where each jobs is limited to a maximum of 200 cores for 12 hours
-* user ``benoit`` can submit up to 200 jobs on ``ser_std`` (serial) partition, with at most 100 jobs running using a total of up to 200 cores for
-up to 48 hours
-* account ``avengers_par`` is shared with other users and together they have a limit of 2000 cores, 200 jobs queued, and 100 jobs
-running (eg the sum of all cores used by running jobs using account ``avengers_par`` can't exceed 2000 cores)
+* user ``benoit`` can submit up to 200 jobs on ``par_std`` (parallel) partition, but have at most 100 jobs running consuming a maximum of 700 cores total where each jobs is limited to a maximum of 200 cores for 12 hours
+* user ``benoit`` can submit up to 200 jobs on ``ser_std`` (serial) partition, with at most 100 jobs running using a total of up to 200 cores for up to 48 hours
+* account ``avengers_par`` is shared with other users and together they have a limit of 2000 cores, 200 jobs queued, and 100 jobs running (eg the sum of all cores used by running jobs using account ``avengers_par`` can't exceed 2000 cores)
 * account ``avengers_par`` is shared with other users and together they have a limit of 200 jobs queued, and 100 jobs running
-* account ``avengers`` is a sub-account of ``nyuad`` and the sum of all parallel and serial jobs can't exceed 200 jobs queued, 100 jobs
-running
+* account ``avengers`` is a sub-account of ``nyuad`` and the sum of all parallel and serial jobs can't exceed 200 jobs queued, 100 jobs running
 
 SLURM: Account Usage
 --------------------
@@ -363,14 +359,16 @@ the steering committee with statistics and
 other key informations that help them
 define fair resource usage rules.
 
---------------------------------------------------------------------------------
-slurm_show_usage V1.0 - 2017 NYUAD Proprietary Software
-
-Account lines show the usage and limit for all users in that account.
-The indentation on Account lines represent the level of sub-accounts
-up to the present account.
-
 .. code-block:: bash
+
+    --------------------------------------------------------------------------------
+    slurm_show_usage V1.0 - 2017 NYUAD Proprietary Software
+
+    Account lines show the usage and limit for all users in that account.
+    The indentation on Account lines represent the level of sub-accounts
+    up to the present account.
+
+
 
     --------------------------------------------------------------------------------
     Usage  Limit     TYPE     Account
