@@ -28,6 +28,11 @@ Managing Environments
 .. code-block:: bash
 
     #conda create -n <name of the environment>
+
+    #or
+
+    #conda create -p /scratch/<NetID>/conda-envs/R --clone R-3.6
+
     #example:
     conda create -n myenv1
 
@@ -36,6 +41,10 @@ Managing Environments
 
 .. code-block:: bash
 
+    #conda activate <path to local env>
+
+    #or
+    
     #conda activate <name of the environment>
     #example:
     conda activate myenv1

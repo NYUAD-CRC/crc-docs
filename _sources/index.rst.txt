@@ -26,6 +26,7 @@ CRC Documentation
    /hpc/research/index
    /hpc/help/index
    /hpc/training/index 
+   /hpc/dalma_load/index
    
    
    
