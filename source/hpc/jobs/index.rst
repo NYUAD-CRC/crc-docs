@@ -16,6 +16,10 @@ For Special Compute Nodes (GPU  and Visualization), please refer to the section 
     are one of the most easiest ways to parallelize 
     your computations. Follow the corresponding highlighted links for a much more detailed example.
 
+.. seealso::
+    A detailed SLURM guide with more info on the accounts,usage limits can be found :doc:`here <dalma_slurm>`
+    and can be downloaded from here :download:`Dalma SLURM </hpc/docs/Dalma-SLURM.pdf>`
+
 .. toctree::
    :maxdepth: 2
    
@@ -29,3 +33,4 @@ For Special Compute Nodes (GPU  and Visualization), please refer to the section 
    /hpc/jobs/job_status
    /hpc/jobs/job_cancel
    /hpc/jobs/performance
+   /hpc/jobs/dalma_slurm
