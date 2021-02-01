@@ -3,6 +3,7 @@
 import sys
 import os
 import shlex
+from datetime import datetime
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -40,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'CRC Documentation'
-copyright = '2020, Center for Research Computing | NYU Abu Dhabi'
+copyright = datetime.today().strftime("%Y") +', Center for Research Computing | NYU Abu Dhabi'
 author = 'Nasser Alansari and CRC teams'
 
 github_doc_root = 'https://github.com/NYUAD-CRC/crc-docs/tree/main/source'
@@ -172,7 +173,7 @@ html_static_path = ['_static']
 html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-#html_show_sphinx = True
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
