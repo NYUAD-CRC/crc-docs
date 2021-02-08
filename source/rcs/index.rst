@@ -5,4 +5,5 @@
    :maxdepth: 2
 
    /rcs/rcs
+   /rcs/1001n
    /rcs/kb/index

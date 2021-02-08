@@ -1,0 +1,22 @@
+1001n Research Cluster
+==========================
+
+The center provides virtualized research computing services through a 
+Hyper-Converged Infrastructure (HCI) cluster called 1001n (a thousand and one 
+nights!), named after the famous Arabian folk story 1001 Nights. The cluster 
+provides virtualized computing resources through a VMware vSAN environment built 
+from 5 VMware-ready nodes. 
+
+The cluster nodes are grouped in two groups; Compute Only (Sinbad) nodes and Compute/
+GPU nodes (Aladdin) nodes. The Sinbad series has a total of 4 nodes and the Aladdin 
+series has a total of 1 node. Each Sinbad node has 512 Gb Memory, 36 Cores, 21 TB (6.
+99 TB x 3 disks) NVMe disks and a 1.46 TB (write intensive) NVMe disks. The Aladdin 
+node has 2 x Nvidia Tesla V100 (32 GB) GPU cards, 358 GB of memory, 36 Cores, 14 TB 
+(6.99 TB x 2 disks) NVMe disks and a 1.75 TB (write Intensive) NVMe disk. 
+
+The 1001n cluster in total has 2 TB of memory, 97.81 TB of storage and 180 CPU Cores 
+which can support over 700 vCPUs. The nodes are connected through redundant 
+high-performance switches. Uplink bandwidth to the rest of the campus network is 10 
+GB/s and the cluster also has a dedicated link with Dalma, the HPC Cluster for 
+direct access to work storage.
+ 
