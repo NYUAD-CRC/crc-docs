@@ -207,31 +207,31 @@ Parallel computations can be achieved either using  <strong>parallel for-loops</
 <li><p>Close the matlabpool / parpool</p></li>
 </ol>
 <p><strong>Example:</strong> Suppose we have the following matlab code file named: <code class="docutils literal notranslate"><span class="pre">parfortest.m</span></code></p>
-<div class="highlight-matlab notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">P</span><span class="p">=</span><span class="mi">8</span><span class="p">;</span>
- <span class="n">N</span><span class="p">=</span><span class="mi">10000</span><span class="p">;</span>
- <span class="n">n</span><span class="p">=</span><span class="mi">100</span><span class="p">;</span>
- <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
-<span class="hll"> <span class="n">parpool</span> <span class="p">(</span><span class="s">&#39;open&#39;</span><span class="p">,</span><span class="n">P</span><span class="p">);</span>
-</span><span class="hll"> <span class="n">parfor</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span>
-</span>     <span class="n">y</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
-     <span class="n">for</span> <span class="s">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-         <span class="n">y</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">rand</span><span class="p">;</span>
-     <span class="n">end</span>
-     <span class="s">x(i,:)</span> <span class="p">=</span> <span class="n">y</span><span class="p">;</span>
- <span class="n">end</span>
-<span class="hll"> <span class="s">parpool</span> <span class="s">close</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="w"> </span><span class="n">P</span><span class="p">=</span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">N</span><span class="p">=</span><span class="mi">10000</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">n</span><span class="p">=</span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="hll"><span class="w"> </span><span class="n">parpool</span><span class="w"> </span><span class="p">(</span><span class="s">&#39;open&#39;</span><span class="p">,</span><span class="n">P</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="w"> </span><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="w"></span>
+</span><span class="w">     </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="w"></span>
+<span class="w">         </span><span class="n">y</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="k">end</span><span class="w"></span>
+<span class="w">     </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">end</span><span class="w"></span>
+<span class="hll"><span class="w"> </span><span class="n">parpool</span><span class="w"> </span><span class="nb">close</span><span class="p">;</span><span class="w"></span>
 </span></pre></div>
 </td></tr></table></div>
 </div>
