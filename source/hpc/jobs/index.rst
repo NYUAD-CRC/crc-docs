@@ -22,9 +22,7 @@ For Special Compute Nodes (GPU  and Visualization), please refer to the section 
 
 .. toctree::
    :maxdepth: 2
-   
-
-   
+      
    /hpc/jobs/batch_job
    /hpc/jobs/interactive
    /hpc/jobs/job_array

@@ -1,6 +1,12 @@
 System
 ======
 
+.. toctree::
+   :maxdepth: 1
+   
+   /hpc/system/load.rst
+
+
 Overview
 --------
 
@@ -82,7 +88,6 @@ Special Compute Nodes
 
 .. toctree::
    :maxdepth: 1
-   
 
    /hpc/system/visual_nodes
    /hpc/system/gpu_nodes 
@@ -96,8 +101,5 @@ high bandwidth ANKABUT link instead.
 .. toctree::
    :maxdepth: 1
    
-
    /hpc/system/nyc_file_transfer
 
-
-  
