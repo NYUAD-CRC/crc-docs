@@ -8,17 +8,16 @@ This document will help to configure VNC software to connect to Linux Servers. V
 Connect VPN and Login
 ---------------------
 
-Connect VPN if accessing the system from outside campus
+You need to connect NYU VPN if accessing the system from outside campus
 
-( See How to access NYUAD VPN for more details ) 
+( See `How to access NYUAD VPN <https://intranet.nyuad.nyu.edu/administrative-services/technology-services/wireless-network-connectivity/remote-connectivity-vpn/>`_ for more details ) 
 
 
 
 Start Server
 ------------
 
-
-After login to remote server: 
+After login via **SSH** to remote server: 
 
 .. code-block :: bash  
 
