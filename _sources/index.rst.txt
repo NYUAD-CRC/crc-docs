@@ -3,14 +3,7 @@ CRC Documentation
 ******************
 
 
-.. toctree::
-   :glob:
-   :caption: RCS Documentation
-   :maxdepth: 2
-
-   /rcs/index
-   /rcs/kb/index
-
+.. include:: /rcs/index.rst
 
 .. toctree::
    :caption: HPC Documentation

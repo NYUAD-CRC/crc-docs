@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>How to Map Shared Drive &mdash; CRC Documentation  documentation</title>
+  <title>VNC access to Linux Servers &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="VNC access to Linux Servers" href="how_to_vnc.html" />
-    <link rel="prev" title="Knowledge Base" href="index.html" /> 
+    <link rel="next" title="High Performance Computing" href="../../hpc/index.html" />
+    <link rel="prev" title="How to Map Shared Drive" href="how_to_map_shared_drive.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,14 +92,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Knowledge Base</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">How to Map Shared Drive</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mac">MAC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#centos">Centos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_map_shared_drive.html">How to Map Shared Drive</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VNC access to Linux Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connect-vpn-and-login">Connect VPN and Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-server">Start Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-client">Start Client</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_vnc.html">VNC access to Linux Servers</a></li>
 </ul>
 </li>
 </ul>
@@ -165,7 +164,7 @@
         
           <li><a href="index.html">Knowledge Base</a> &raquo;</li>
         
-      <li>How to Map Shared Drive</li>
+      <li>VNC access to Linux Servers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,70 +181,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-map-shared-drive">
-<h1>How to Map Shared Drive<a class="headerlink" href="#how-to-map-shared-drive" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="mac">
-<h2>MAC<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic">
-<li><p>In <strong>Finder</strong>, select <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Server</span></code> from <strong>Go</strong> menu</p>
-<blockquote>
-<div><img alt="../../_images/1.png" src="../../_images/1.png" />
-</div></blockquote>
-</li>
-<li><dl>
-<dt>Type the following Windows File Share Address followed by the folder name:</dt><dd><p><a class="reference external" href="smb://rcsfileshare.abudhabi.nyu.edu/">smb://rcsfileshare.abudhabi.nyu.edu/</a><code class="docutils literal notranslate"><span class="pre">&lt;SHARE_FOLDER_NAME&gt;</span></code></p>
-<img alt="../../_images/2.png" src="../../_images/2.png" />
-</dd>
-</dl>
-</li>
-<li><p>In the below shown screen, type your NetID and password:</p>
-<blockquote>
-<div><div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>Name</strong> format should be NetID prefixed with <code class="docutils literal notranslate"><span class="pre">ad\</span></code>. Example for <code class="docutils literal notranslate"><span class="pre">fmk4</span></code>, <strong>Name</strong> should be <code class="docutils literal notranslate"><span class="pre">ad\fmk4</span></code>.</p>
+  <div class="section" id="vnc-access-to-linux-servers">
+<h1>VNC access to Linux Servers<a class="headerlink" href="#vnc-access-to-linux-servers" title="Permalink to this headline">¶</a></h1>
+<p>This document will help to configure VNC software to connect to Linux Servers. VNC is a graphical desktop sharing system which used to share GUI of servers ( mostly Linux in our case )</p>
+<div class="section" id="connect-vpn-and-login">
+<h2>Connect VPN and Login<a class="headerlink" href="#connect-vpn-and-login" title="Permalink to this headline">¶</a></h2>
+<p>Connect VPN if accessing the system from outside campus</p>
+<p>( See How to access NYUAD VPN for more details )</p>
 </div>
-<img alt="../../_images/3.png" src="../../_images/3.png" />
-</div></blockquote>
-</li>
-</ol>
-</div>
-<div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic">
-<li><p>Open <strong>My Computer</strong> window -&gt; Select <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">Network</span> <span class="pre">Drive</span></code></p>
-<blockquote>
-<div><img alt="../../_images/4.png" src="../../_images/4.png" />
-</div></blockquote>
-</li>
-<li><p>Select Drive Letter; for example <code class="docutils literal notranslate"><span class="pre">Y:</span></code> Drive</p></li>
-<li><p>Copy paste the link received by IT ( for example : <code class="docutils literal notranslate"><span class="pre">\\rcsfileshare.abudhabi.nyu.edu\myshare</span></code> )</p></li>
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">Reconnect</span> <span class="pre">at</span> <span class="pre">Logon</span></code></p></li>
-<li><p>Click <strong>Finish</strong></p>
-<blockquote>
-<div><img alt="../../_images/5.png" src="../../_images/5.png" />
-</div></blockquote>
-</li>
-</ol>
-<p>The departmental drive will appear in <strong>My Computer</strong> window below <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Location</span></code> Pane as shown below:</p>
-<blockquote>
-<div><img alt="../../_images/6.png" src="../../_images/6.png" />
-</div></blockquote>
-</div>
-<div class="section" id="ubuntu">
-<h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install cifs-utils
-$ sudo mkdir /mnt/network
-$ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/network -o <span class="nv">username</span><span class="o">=</span>&lt;netid&gt;,sec<span class="o">=</span>ntlmssp,vers<span class="o">=</span><span class="m">2</span>.0
+<div class="section" id="start-server">
+<h2>Start Server<a class="headerlink" href="#start-server" title="Permalink to this headline">¶</a></h2>
+<p>After login to remote server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vncserver
 </pre></div>
 </div>
-</div>
-<div class="section" id="centos">
-<h2>Centos<a class="headerlink" href="#centos" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install cifs-utils
-$ sudo mkdir /mnt/network
-$ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/network -o <span class="nv">username</span><span class="o">=</span>&lt;netid&gt;,sec<span class="o">=</span>ntlmssp,vers<span class="o">=</span><span class="m">2</span>.0
+<p>If it runs successfully, it will provide you a session number. This will be used in VNC client.</p>
+<p>Next, set VNC password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vncpasswd
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This needs to be done only once and the same password can be reused for future connections</p>
+</div>
+</div>
+<div class="section" id="start-client">
+<h2>Start Client<a class="headerlink" href="#start-client" title="Permalink to this headline">¶</a></h2>
+<p>From your preferred VNC client, use FQDN or IP address of the remote machine
+with the session number (from <a class="reference external" href="StartServer">StartServer</a>) to connect to remote server.</p>
 </div>
 </div>
 
@@ -255,8 +218,8 @@ $ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/ne
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="how_to_vnc.html" class="btn btn-neutral float-right" title="VNC access to Linux Servers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Knowledge Base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../hpc/index.html" class="btn btn-neutral float-right" title="High Performance Computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="how_to_map_shared_drive.html" class="btn btn-neutral float-left" title="How to Map Shared Drive" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
