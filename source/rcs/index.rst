@@ -2,7 +2,7 @@
 .. toctree::
    :glob:
    :caption: RCS Documentation
-   :maxdepth: 2
+   :maxdepth: 1
 
    /rcs/rcs
    /rcs/1001n
