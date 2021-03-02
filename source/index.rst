@@ -2,13 +2,9 @@
 CRC Documentation
 ******************
 
-
-.. include:: /rcs/index.rst
-
 .. toctree::
    :caption: HPC Documentation
-   :maxdepth: 2
-   :hidden:
+   :maxdepth: 1
 
    /hpc/index
    /hpc/accounts/index
@@ -21,8 +17,7 @@ CRC Documentation
    /hpc/training/index 
    /hpc/dalma_load/index
    
-   
-   
+.. include:: /rcs/index.rst
    
    
    
