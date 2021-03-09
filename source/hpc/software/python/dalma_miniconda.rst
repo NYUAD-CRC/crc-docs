@@ -87,6 +87,33 @@ A sample output is shown below. The list of centralized and local installations 
     #example: Here we clone the existing Tensorflow environment.
     conda create -n tf-gpu --clone tensorflow-1.15
 
+Migrating / Sharing Environment
+-------------------------------
+
+It is possible to migrate an environment, with exact same packages and configuration. 
+This is the beauty of Conda. Same environment, anywhere.
+
+
+1. Activate the environment you want to migrate from.
+    .. code-block:: bash
+       
+        # Activate the environment you want to migrate from
+        # Example: conda activate <env-migrate-from>
+        conda activate myenv
+
+2. Export the environment to an yml file.
+    .. code-block:: bash
+        
+        # In this example, the yml file is called environment.yml
+        conda env export > environment.yml
+
+3. Share this yml file.
+    The other person / machine, an identical environment could be created using this yml file.
+    
+    .. code-block:: bash
+
+        # In this example, the yml file is called environment.yml
+        conda env create -f environment.yml
 
 Submitting Job Scripts
 ----------------------
