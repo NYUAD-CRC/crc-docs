@@ -1,4 +1,4 @@
-NYU Shnaghai
+NYU Shanghai
 ============
 
 .. csv-table:: 2020

@@ -1,6 +1,6 @@
-**************************
-High Performance Computing
-**************************
+*************
+Introduction
+*************
 
 .. rst-class:: text-justify
 
