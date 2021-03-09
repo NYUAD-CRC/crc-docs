@@ -89,7 +89,7 @@
             
               <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../hpc.html">High Performance Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../system/index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../storage/index.html">Storage</a></li>
@@ -250,6 +250,39 @@ tensorflow-2.0                       /share/apps/NYUAD/miniconda/3-4.8.2/envs/te
 conda create -n tf-gpu --clone tensorflow-1.15
 </pre></div>
 </div>
+</div>
+<div class="section" id="migrating-sharing-environment">
+<h2>Migrating / Sharing Environment<a class="headerlink" href="#migrating-sharing-environment" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to migrate an environment, with exact same packages and configuration.
+This is the beauty of Conda. Same environment, anywhere.</p>
+<ol class="arabic">
+<li><dl>
+<dt>Activate the environment you want to migrate from.</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activate the environment you want to migrate from</span>
+<span class="c1"># Example: conda activate &lt;env-migrate-from&gt;</span>
+conda activate myenv
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Export the environment to an yml file.</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example, the yml file is called environment.yml</span>
+conda env <span class="nb">export</span> &gt; environment.yml
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Share this yml file.</dt><dd><p>The other person / machine, an identical environment could be created using this yml file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example, the yml file is called environment.yml</span>
+conda env create -f environment.yml
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 <div class="section" id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>

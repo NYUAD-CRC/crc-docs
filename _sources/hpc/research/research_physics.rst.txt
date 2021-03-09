@@ -18,3 +18,9 @@ Physics
    :header-rows: 1
    :class: publication-table
    :file: data/physics-2018.csv
+
+.. csv-table:: Pre 2018
+   :widths: auto
+   :header-rows: 1
+   :class: publication-table
+   :file: data/physics-pre2018.csv
