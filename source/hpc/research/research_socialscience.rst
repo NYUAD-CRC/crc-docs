@@ -1,8 +1,8 @@
-NYU Shanghai
-============
+Social Science
+==============
 
 .. csv-table:: 
    :widths: auto
    :header-rows: 1
    :class: publication-table
-   :file: data/shanghai.csv
+   :file: data/socialscience.csv

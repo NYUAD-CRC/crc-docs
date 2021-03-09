@@ -18,3 +18,9 @@ CPCM
    :header-rows: 1
    :class: publication-table
    :file: data/cpcm-2018.csv
+
+.. csv-table:: Pre 2018
+   :widths: auto
+   :header-rows: 1
+   :class: publication-table
+   :file: data/cpcm-pre2018.csv
