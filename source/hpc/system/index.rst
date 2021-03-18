@@ -30,7 +30,7 @@ Dalma consists of more than 12K CPU cores. But it is very unlikely that your cod
 * The CPU mode is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
 * 28 CPU cores per node. Implications:
     1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
-    2. For MPI jobs using more than one node, always use a number of cores dividable by 28, to utilize the full nodes.
+    2. For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.
 
 * 4 GB memory per core by default.
 
@@ -47,6 +47,43 @@ Typical Workflow
 6. Your jobs will queue for execution.
 7. Once done, examine the output.
 
+Summary of Nodes
+----------------
+
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - Node Type
+      - No. of Nodes
+      - CPUs per Node
+      - Memory per node
+      - GPUs per node
+      - Remarks
+    * - Standard
+      - 375
+      - 28
+      - 112 GB 
+      - None
+      - Use for general purpose
+    * - Bigmem
+      - 3	
+      - 64
+      - 1 TB / 2TB	
+      - None	
+      - Use when memory requirement per node is greater than 112GB
+    * - GPU 
+      - 10
+      - 40
+      - 360 GB
+      - 2/8	(Nvidia V100)
+      - Two nodes have 8 GPU cards each, rest of them have 2 each
+    * - Visual	
+      - 4	
+      - 38	
+      - 112 GB
+      - 1 (Nvidia Quadro P4000)
+      - 
 
 
 Access

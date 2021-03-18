@@ -12,9 +12,15 @@ In short, you should
 
 Backing up is a user's own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.
 
+.. toctree::
+  :maxdepth: 1
+   
+  /hpc/storage/home_scratch
+  /hpc/storage/work
+  /hpc/storage/archive
 
-
-**Summary**
+Summary
+-------
 
 
 .. list-table:: 
@@ -57,7 +63,8 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
       - 5TB, 500K Files	
       - 5TB, 125K Files
 
-**Know Your Quota**
+Know Your Quota
+---------------
 
 
 - Run ``myquota`` command in the terminal on Dalma to check your current usage and quota. Example output:
@@ -78,11 +85,5 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
 For data transfers please refer to the **Data Trasnfers** section :ref:`here <data_transfers>`
 
 
-.. toctree::
-  :maxdepth: 1
-   
-  /hpc/storage/home_scratch
-  /hpc/storage/work
-  /hpc/storage/archive
-   
+
    
