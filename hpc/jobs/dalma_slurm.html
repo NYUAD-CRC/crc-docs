@@ -309,15 +309,15 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Wait    for     specific        job     array   elements</span>
-sbatch      --depend<span class="o">=</span>after:123_4    my.job
-sbatch      --depend<span class="o">=</span>afterok:123_4:123_8    my.job2
-<span class="c1">#   Wait    for     entire  job     array   to      complete</span>
-sbatch      --depend<span class="o">=</span>afterany:123   my.job
-<span class="c1">#   Wait    for     entire  job     array   to      complete        successfully</span>
-sbatch      --depend<span class="o">=</span>afterok:123    my.job
-<span class="c1">#   Wait    for     entire  job     array   to      complete        and     at      least   one     task    fails</span>
-sbatch      --depend<span class="o">=</span>afternotok:123 my.job
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Wait for specific job array elements</span>
+sbatch --depend<span class="o">=</span>after:123_4 my.job
+sbatch --depend<span class="o">=</span>afterok:123_4:123_8 my.job2
+<span class="c1">#Wait for entire job array to complete</span>
+sbatch --depend<span class="o">=</span>afterany:123 my.job
+<span class="c1">#Wait for entire job array to complete successfully</span>
+sbatch --depend<span class="o">=</span>afterok:123 my.job
+<span class="c1">#Wait for entire job array to complete and at least one task fails</span>
+sbatch --depend<span class="o">=</span>afternotok:123 my.job
 </pre></div>
 </div>
 </div>

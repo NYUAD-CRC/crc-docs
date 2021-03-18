@@ -103,15 +103,15 @@ Submitting with dependencies: Useful to create workflows
 
 .. code-block:: bash
 
-    #	Wait	for	specific	job	array	elements	
-    sbatch	--depend=after:123_4	my.job
-    sbatch	--depend=afterok:123_4:123_8	my.job2	
-    #	Wait	for	entire	job	array	to	complete	
-    sbatch	--depend=afterany:123	my.job
-    #	Wait	for	entire	job	array	to	complete	successfully	
-    sbatch	--depend=afterok:123	my.job
-    #	Wait	for	entire	job	array	to	complete	and	at	least	one	task	fails	
-    sbatch	--depend=afternotok:123	my.job
+    #Wait for specific job array elements	
+    sbatch --depend=after:123_4 my.job
+    sbatch --depend=afterok:123_4:123_8 my.job2	
+    #Wait for entire job array to complete	
+    sbatch --depend=afterany:123 my.job
+    #Wait for entire job array to complete successfully	
+    sbatch --depend=afterok:123 my.job
+    #Wait for entire job array to complete and at least one task fails	
+    sbatch --depend=afternotok:123 my.job
 
 SLURM: Listing Jobs
 -------------------

@@ -102,6 +102,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
@@ -188,7 +190,8 @@
   <div class="section" id="mount-work-with-sshfs">
 <span id="mount-work"></span><h1>Mount $WORK with SSHFS<a class="headerlink" href="#mount-work-with-sshfs" title="Permalink to this headline">¶</a></h1>
 <p>This page explains how to mount <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> on Dalma with SSHFS on your local workstation.
-Only <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is supported, not <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> , <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> or any other file system on Dalma.</p>
+Only <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is supported, not <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> , <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> or any other file system on Dalma.
+For mounting <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> on Windows, Kindly follow the section <a class="reference internal" href="#mount-work-windows"><span class="std std-ref">here</span></a></p>
 <div class="section" id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
@@ -240,6 +243,48 @@ Only <code class="docutils literal notranslate"><span class="pre">$WORK</span></
 </dd>
 </dl>
 </li>
+</ol>
+</div>
+<div class="section" id="mount-work-on-windows">
+<span id="mount-work-windows"></span><h2>Mount $WORK on Windows<a class="headerlink" href="#mount-work-on-windows" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Download the following applications and install them.</dt><dd><ul class="simple">
+<li><p>SSHFS-Win: <a class="reference external" href="https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi">https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi</a></p></li>
+<li><p>WinFsp: <a class="reference external" href="https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi">https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Navigate to your Windows File explorer</dt><dd><img alt="../../_images/mount_work1.png" src="../../_images/mount_work1.png" />
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Right click on ‘This PC’ and select ‘Map network drive’:</dt><dd><img alt="../../_images/mount_work2.png" src="../../_images/mount_work2.png" />
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Enter the details and click ‘Finish’:</dt><dd><img alt="../../_images/mount_work3.png" src="../../_images/mount_work3.png" />
+<ul class="simple">
+<li><p>The ‘Drive’ corresponds to the local mountpoint</p></li>
+<li><p>The Folder corresponds to the remote location.It should be noted that by default it connects to the /home and a relative path to the mounting point (/work) should be specified. So in this case the syntax should be as follows:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\&lt;</span>net-id&gt;@cng-hpc.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\&lt;</span>netid&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For example:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\w</span>z22@cng-hpc.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\w</span>z22
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>You will be prompted for a password, after which you would have successfully mounted “$WORK” on to your local workstation.</p></li>
 </ol>
 <div class="admonition-info admonition">
 <p class="admonition-title">Info</p>

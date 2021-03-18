@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#typical-workflow">Typical Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary-of-nodes">Summary of Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access">Access</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="access_dalma.html">Access Dalma</a></li>
 </ul>
@@ -220,7 +221,7 @@
 <li><dl class="simple">
 <dt>28 CPU cores per node. Implications:</dt><dd><ol class="arabic simple">
 <li><p>If your code doesn’t support MPI, or you don’t know what MPI is, use maximum 28 cores per job.</p></li>
-<li><p>For MPI jobs using more than one node, always use a number of cores dividable by 28, to utilize the full nodes.</p></li>
+<li><p>For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.</p></li>
 </ol>
 </dd>
 </dl>
@@ -240,6 +241,50 @@
 <li><p>Your jobs will queue for execution.</p></li>
 <li><p>Once done, examine the output.</p></li>
 </ol>
+</div>
+<div class="section" id="summary-of-nodes">
+<h2>Summary of Nodes<a class="headerlink" href="#summary-of-nodes" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Node Type</p></th>
+<th class="head"><p>No. of Nodes</p></th>
+<th class="head"><p>CPUs per Node</p></th>
+<th class="head"><p>Memory per node</p></th>
+<th class="head"><p>GPUs per node</p></th>
+<th class="head"><p>Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Standard</p></td>
+<td><p>375</p></td>
+<td><p>28</p></td>
+<td><p>112 GB</p></td>
+<td><p>None</p></td>
+<td><p>Use for general purpose</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bigmem</p></td>
+<td><p>3</p></td>
+<td><p>64</p></td>
+<td><p>1 TB / 2TB</p></td>
+<td><p>None</p></td>
+<td><p>Use when memory requirement per node is greater than 112GB</p></td>
+</tr>
+<tr class="row-even"><td><p>GPU</p></td>
+<td><p>10</p></td>
+<td><p>40</p></td>
+<td><p>360 GB</p></td>
+<td><p>2/8     (Nvidia V100)</p></td>
+<td><p>Two nodes have 8 GPU cards each, rest of them have 2 each</p></td>
+</tr>
+<tr class="row-odd"><td><p>Visual</p></td>
+<td><p>4</p></td>
+<td><p>38</p></td>
+<td><p>112 GB</p></td>
+<td><p>1 (Nvidia Quadro P4000)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="access">
 <h2>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h2>
