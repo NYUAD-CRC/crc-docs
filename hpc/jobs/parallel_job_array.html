@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Parallel Job Array &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -112,14 +111,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -189,7 +188,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="parallel-job-array">
+  <div class="section" id="parallel-job-array">
 <h1>Parallel Job Array<a class="headerlink" href="#parallel-job-array" title="Permalink to this headline">¶</a></h1>
 <p>There are times, however, when even a job array doesn’t really fit your needs. For instance, you may be looking at running 300,000 very short running jobs. Or maybe, the complexity to search through all the output files or having to manually “glue” them back together into a single output file is too demanding. Or maybe it’s too difficult to match SLURM’s taskids to actual input file names or parametric analysis. Or more probably the time delay between each jobs being scheduled to run is slowing down your processing as your jobs are really short</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-resuls file.1
@@ -353,7 +352,7 @@ $&gt; cat list4.txt
 $&gt; slurm_parallel_ja_submit.sh list4
 </pre></div>
 </div>
-</section>
+</div>
 
 
            </div>

@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Visualization Nodes &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -127,14 +126,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -204,16 +203,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="visualization-nodes">
+  <div class="section" id="visualization-nodes">
 <h1>Visualization Nodes<a class="headerlink" href="#visualization-nodes" title="Permalink to this headline">¶</a></h1>
-<section id="introduction-to-the-visualization-nodes">
+<div class="section" id="introduction-to-the-visualization-nodes">
 <h2>Introduction to the Visualization Nodes<a class="headerlink" href="#introduction-to-the-visualization-nodes" title="Permalink to this headline">¶</a></h2>
 <p>The Visualization Nodes is a High Performance Computing resource that provides an advanced visualization capability to the end user’s desktop. Users can connect to the nodes and take advantage of its advanced capabilities to render very large data sets interactively from their desktops without having any special graphics hardware on their workstation. The images are sent back to the user’s desktop over the network and displayed on the desktop using a lightweight visualization client.</p>
 <p>The Visualization nodes consists of 4 render nodes. Multiple users can share a node. Each node has access to the same /home and /archive shared file system on the Dalma HPC nodes.</p>
 <p>To run any visualization software interactively on the nodes you will first need to connect to the login node and request resources. In simple terms, the login node will check which nodes in the nodes are available for you and will consequently allocate you the requested resources. You can then connect to your given visualization node and start your visualization session there.</p>
 <p>Remote visualization method on the visualization nodes is implemented using Virtual Network Computing (VNC). VNC is a desktop sharing system which uses a protocol to remotely control another computer (one of the visualization nodes nodes for example). It transmits the keyboard presses and mouse clicks from one computer to another relaying the screen updates back in the other direction, over a network.</p>
-</section>
-<section id="visualization-nodes-hardware-and-software">
+</div>
+<div class="section" id="visualization-nodes-hardware-and-software">
 <h2>Visualization nodes hardware and software<a class="headerlink" href="#visualization-nodes-hardware-and-software" title="Permalink to this headline">¶</a></h2>
 <p>The visualization nodes have an Intel x86-64 architecture with CentOS 7.2 operating system. Each visualization render node has:</p>
 <ul class="simple">
@@ -222,14 +221,14 @@
 <li><p>2 Nvidia Quadro P4000 GPU</p></li>
 </ul>
 <p>Software on the visualization nodes can be accessed through the environment module system (module commands). Currently installed software includes Paraview, IDL, PyMOL, VMD, and Matlab.</p>
-</section>
-<section id="remote-visualization-session-through-vnc">
+</div>
+<div class="section" id="remote-visualization-session-through-vnc">
 <h2>Remote visualization session through VNC<a class="headerlink" href="#remote-visualization-session-through-vnc" title="Permalink to this headline">¶</a></h2>
 <p>A remote visualization session consists of connecting a Virtual Network Computing (VNC) client to a VNC server on a different computer over the network.</p>
 <p>To connect to the nodes via a remote visualization session, you will first need to download a VNC client software on your local machine. The standard VNC client software which has been tested for connecting to the visualization nodes is SSVNC (<a class="reference external" href="http://www.karlrunge.com/x11vnc/ssvnc.html">http://www.karlrunge.com/x11vnc/ssvnc.html</a>).</p>
 <p><strong>Before you can request a remote visualization session on the login node, and then start a session on your allocated node on the nodes, you will have to first create a VNC password.</strong></p>
-</section>
-<section id="starting-a-remote-visualization-session">
+</div>
+<div class="section" id="starting-a-remote-visualization-session">
 <h2>Starting a remote visualization session<a class="headerlink" href="#starting-a-remote-visualization-session" title="Permalink to this headline">¶</a></h2>
 <p>A quick guide to start a VNC session on the visualization nodes is given in the following steps:</p>
 <ol class="arabic simple">
@@ -239,8 +238,8 @@
 <li><p>Start a 3D application inside your VNC session.</p></li>
 </ol>
 <p>More detail descriptions of the steps above are given in the subsections below.</p>
-</section>
-<section id="creating-a-vnc-password-necessary-only-once">
+</div>
+<div class="section" id="creating-a-vnc-password-necessary-only-once">
 <h2>Creating a VNC password (necessary only once)<a class="headerlink" href="#creating-a-vnc-password-necessary-only-once" title="Permalink to this headline">¶</a></h2>
 <p>If this is your first time using a remote VNC session on the visualization nodes, you need to create a VNC password. While logged in to the login node type</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vncpasswd
@@ -250,8 +249,8 @@
 <img alt="../../_images/vnc-password.png" src="../../_images/vnc-password.png" />
 <p>Note that you do not need to enter a view-only password. This is an extra option that allows collaborators to connect to and view your session without being able to interfere.</p>
 <p><strong>This above step can be repeated whenever your VNC password needs to be changed.</strong></p>
-</section>
-<section id="requesting-resources">
+</div>
+<div class="section" id="requesting-resources">
 <h2>Requesting resources<a class="headerlink" href="#requesting-resources" title="Permalink to this headline">¶</a></h2>
 <p>While logged in to the login node, you can request an allocation of a visualization node by typing</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viz-tvnc
@@ -268,8 +267,8 @@
 </pre></div>
 </div>
 <p>The resolution to run the desktop at. This can be any “&lt;width&gt;x&lt;height&gt;” value, and doesn’t need to match any display device resolution.</p>
-</section>
-<section id="installing-a-vnc-client">
+</div>
+<div class="section" id="installing-a-vnc-client">
 <h2>Installing a VNC client<a class="headerlink" href="#installing-a-vnc-client" title="Permalink to this headline">¶</a></h2>
 <p>We kindly ask users to use ssvnc, available on Linux, MacOS and Windows.You could install it from zip or tar.gz, or from package manager if you are using Ubuntu / Debian.</p>
 <p><strong>Installing from zip</strong></p>
@@ -287,8 +286,8 @@ Alternatively, for Debian / Ubuntu, you could install it by</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install ssvnc
 </pre></div>
 </div>
-</section>
-<section id="starting-a-vnc-client">
+</div>
+<div class="section" id="starting-a-vnc-client">
 <h2>Starting a VNC client<a class="headerlink" href="#starting-a-vnc-client" title="Permalink to this headline">¶</a></h2>
 <p>To make a secured VNC client-server connection, please follow the instructions below.</p>
 <p>If ssvnc is installed from zip
@@ -388,8 +387,8 @@ Are you sure you want to continue connecting (yes/no)?
 <p>By default the cursor is a single pixel dot, and difficult to see. To change it in Windows, click the left-upper most icon of the window, “connection options…”. Then change the “Local cursor shape” to “Normal arrow”
 .. image:: ../img/modified-sshvnc-cursor-windows.png</p>
 </div>
-</section>
-<section id="running-applications-inside-the-vnc-session">
+</div>
+<div class="section" id="running-applications-inside-the-vnc-session">
 <h2>Running applications inside the VNC session<a class="headerlink" href="#running-applications-inside-the-vnc-session" title="Permalink to this headline">¶</a></h2>
 <p>To run GPU enabled applications on the GPU device, you will need to append “vglrun” command when starting your application in the terminal on the remote desktop. E.g.,</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vglrun application
@@ -425,8 +424,8 @@ If you just close your local VNC viewer window, your session will still be runni
 </dl>
 </li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

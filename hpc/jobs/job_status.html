@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Checking Job Status &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -116,14 +115,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -193,9 +192,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="checking-job-status">
+  <div class="section" id="checking-job-status">
 <h1>Checking Job Status<a class="headerlink" href="#checking-job-status" title="Permalink to this headline">¶</a></h1>
-<section id="before-and-during-job-execution">
+<div class="section" id="before-and-during-job-execution">
 <h2>Before and During Job Execution<a class="headerlink" href="#before-and-during-job-execution" title="Permalink to this headline">¶</a></h2>
 <p>This command shows all your current jobs.</p>
 <p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p>
@@ -210,8 +209,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scontrol show job &lt;jobid&gt;
 </pre></div>
 </div>
-</section>
-<section id="after-job-execution">
+</div>
+<div class="section" id="after-job-execution">
 <h2>After Job Execution<a class="headerlink" href="#after-job-execution" title="Permalink to this headline">¶</a></h2>
 <p>Once the job is finished, the job can’t be inspected by squeue or scontrol show job. At this point, you could inspect the job by sacct.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct -j &lt;jobid&gt;
@@ -221,8 +220,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct -j &lt;jobid&gt; -l
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

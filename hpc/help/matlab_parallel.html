@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>How to use MATLAB Parallel Toolbox &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -114,14 +113,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -191,13 +190,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="how-to-use-matlab-parallel-toolbox">
+  <div class="section" id="how-to-use-matlab-parallel-toolbox">
 <h1>How to use MATLAB Parallel Toolbox<a class="headerlink" href="#how-to-use-matlab-parallel-toolbox" title="Permalink to this headline">¶</a></h1>
 <p>One of the features users may want to use in Dalma is Matlab’s Parallel Toolbox.</p>
 <p>MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems. For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD.
 Parallel computations can be achieved either using  <strong>parallel for-loops</strong> , <strong>special array types</strong> or <strong>parallelized numerical algorithms</strong>. You can also submit <strong>batch local workers</strong>, for more info visit the MATLAB documentation ( <a class="reference external" href="http://www.mathworks.es/es/help/distcomp/introduction-to-parallel-solutions.html#brjw1fx-2">http://www.mathworks.es/es/help/distcomp/introduction-to-parallel-solutions.html#brjw1fx-2</a> )</p>
 <p>In any case, for all these things to work, you will need to define a set of resources (cpus or workers) where the tasks will be executed.  The easiest way is to use the matlabpool command. This command has been replaced in recent versions for parpool. Again, refer to the MATLAB documentation for details.</p>
-<section id="step-by-step-guide">
+<div class="section" id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
 <p>If you are planning to run parallel computation with Matlab:</p>
 <ol class="arabic">
@@ -241,8 +240,8 @@ Parallel computations can be achieved either using  <strong>parallel for-loops</
 <span class="hll"><span class="w"> </span><span class="n">parpool</span><span class="w"> </span><span class="nb">close</span><span class="p">;</span><span class="w"></span>
 </span></pre></div>
 </td></tr></table></div>
-</section>
-<section id="running-the-example-using-an-interactive-session">
+</div>
+<div class="section" id="running-the-example-using-an-interactive-session">
 <h2>Running the example using an interactive session<a class="headerlink" href="#running-the-example-using-an-interactive-session" title="Permalink to this headline">¶</a></h2>
 <p>You can now open an interactive session to run it. To open an interactive shell in the cluster, type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>login-node<span class="o">]</span>$&gt; srun --pty  -n <span class="m">1</span> --cpus-per-task<span class="o">=</span><span class="m">12</span>  /bin/bash
@@ -253,8 +252,8 @@ Parallel computations can be achieved either using  <strong>parallel for-loops</
 </pre></div>
 </div>
 <p>And finally open matlab and run the example as you would do it in your workstation/laptop. Notice that running Matlab in the interactive queue you will not have GUI available.</p>
-</section>
-<section id="running-the-example-using-the-batch-system">
+</div>
+<div class="section" id="running-the-example-using-the-batch-system">
 <h2>Running the example using the batch system<a class="headerlink" href="#running-the-example-using-the-batch-system" title="Permalink to this headline">¶</a></h2>
 <p>First thing you need a submission script like this: <code class="docutils literal notranslate"><span class="pre">run.slurm</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -275,8 +274,8 @@ matlab -nosplah -nodisplay -nodesktop &lt; parfortest.m &gt; parfortest_output.o
 </pre></div>
 </div>
 <p>Then you can submit the job as usual.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

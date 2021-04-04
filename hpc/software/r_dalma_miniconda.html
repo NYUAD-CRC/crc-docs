@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>R in Dalma Miniconda &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -115,14 +114,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -192,7 +191,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="r-in-dalma-miniconda">
+  <div class="section" id="r-in-dalma-miniconda">
 <h1>R in Dalma Miniconda<a class="headerlink" href="#r-in-dalma-miniconda" title="Permalink to this headline">¶</a></h1>
 <p>Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in Dalma. This provides greater flexibility and easier installation for other complementary packages required for R (eg: Tidyverse, Rstan etc). To find more details on the Miniconda module usage, click <a class="reference internal" href="python/dalma_miniconda.html"><span class="doc">here</span></a>.</p>
 <div class="admonition tip">
@@ -204,7 +203,7 @@ You can find the steps to set up Dalma Miniconda by clicking <a class="reference
 <p class="admonition-title">Note</p>
 <p>The conda cheat sheet gives you a list of useful commands in a glance:  <a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda-cheat-sheet</a></p>
 </div>
-<section id="how-to-clone-the-r-environment">
+<div class="section" id="how-to-clone-the-r-environment">
 <h2>How to clone the R environment<a class="headerlink" href="#how-to-clone-the-r-environment" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl>
@@ -252,8 +251,8 @@ conda create -n R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="finding-the-conda-complementary-packages-tidyverse-rstan-etc">
+</div>
+<div class="section" id="finding-the-conda-complementary-packages-tidyverse-rstan-etc">
 <h2>Finding the Conda complementary packages (Tidyverse, Rstan etc)<a class="headerlink" href="#finding-the-conda-complementary-packages-tidyverse-rstan-etc" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="simple">
@@ -269,8 +268,8 @@ conda create -n R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 </dl>
 </li>
 </ol>
-</section>
-<section id="how-to-install-the-conda-complementary-packages">
+</div>
+<div class="section" id="how-to-install-the-conda-complementary-packages">
 <h2>How to install the Conda complementary packages<a class="headerlink" href="#how-to-install-the-conda-complementary-packages" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl>
@@ -309,8 +308,8 @@ conda install -c r r-tidyverse
 </dl>
 </li>
 </ol>
-</section>
-<section id="submitting-job-scripts">
+</div>
+<div class="section" id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
@@ -334,8 +333,8 @@ Rscript abc.R
 <p class="admonition-title">See also</p>
 <p>Go through the Conda 30 mins test drive to make sure you understand the basic concepts:  <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html</a></p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>File Transfer using rsync &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -120,14 +119,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -197,7 +196,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="file-transfer-using-rsync">
+  <div class="section" id="file-transfer-using-rsync">
 <h1>File Transfer using rsync<a class="headerlink" href="#file-transfer-using-rsync" title="Permalink to this headline">¶</a></h1>
 <p>For replicating datasets between the HPC clusters and your workstation, or between two filesystems on an HPC cluster, rsync offers powerful functionality beyond that of cp or scp. With rsync you can copy directories between your workstation and the HPC clusters - or between different filesystems - in such a way that permission and file modification timestamps are preserved, and that only files which have changed are transferred.</p>
 <div class="admonition-basic-usage-of-rsync admonition">
@@ -225,7 +224,7 @@ rsync -av <span class="nb">source</span> destination
 </div>
 </div>
 <p>For detailed information about rsync, type <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">rsync</span></code> at the command line.</p>
-<section id="some-examples-of-rsync-usage">
+<div class="section" id="some-examples-of-rsync-usage">
 <h2>Some examples of rsync usage<a class="headerlink" href="#some-examples-of-rsync-usage" title="Permalink to this headline">¶</a></h2>
 <p>To replicate in your /scratch area a directory tree you have saved in /home</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/<span class="nv">$USER</span>/
@@ -284,8 +283,8 @@ $ ls my_results
 </pre></div>
 </div>
 <p>Only those files not already up-to-date on your workstation will be copied.</p>
-</section>
-<section id="ignoring-certain-files">
+</div>
+<div class="section" id="ignoring-certain-files">
 <h2>Ignoring certain files<a class="headerlink" href="#ignoring-certain-files" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">-C</span></code> option tells rsync to follow CVS conventions about ignoring certain files. For example, when copying a tree of source code, you probably want the .c, .f and .h files but not the .o files. The conventions are described fully in the man page (man rsync). In summary, when -C is used the following files are ignored:</p>
 <ul class="simple">
@@ -305,8 +304,8 @@ fort.??
 *.intermediate.nc
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

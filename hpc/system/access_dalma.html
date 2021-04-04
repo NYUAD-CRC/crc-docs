@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Access Dalma &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -120,14 +119,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -197,10 +196,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="access-dalma">
+  <div class="section" id="access-dalma">
 <h1>Access Dalma<a class="headerlink" href="#access-dalma" title="Permalink to this headline">¶</a></h1>
 <p>Want to access Dalma? Follow the guide below for Linux / Mac and Windows.</p>
-<section id="linux-mac">
+<div class="section" id="linux-mac">
 <h2>Linux / Mac<a class="headerlink" href="#linux-mac" title="Permalink to this headline">¶</a></h2>
 <p><strong>Inside NYU Network</strong></p>
 <p>For Linux/Mac, execute the following command, change <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> to your actual username.</p>
@@ -211,8 +210,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@dalma.abudhabi.nyu.edu -X
 </pre></div>
 </div>
-</section>
-<section id="outside-nyu-network">
+</div>
+<div class="section" id="outside-nyu-network">
 <h2>Outside NYU Network<a class="headerlink" href="#outside-nyu-network" title="Permalink to this headline">¶</a></h2>
 <p><strong>VPN</strong></p>
 <p>You could either first connect to NYU VPN (See <a class="reference external" href="https://www.nyu.edu/life/information-technology/getting-started/network-and-connectivity/vpn.html">here</a> for instruction) and then connect to Dalma directly. Choose <code class="docutils literal notranslate"><span class="pre">vpn.abudhabi.nyu.edu</span></code> as your VPN server.</p>
@@ -267,8 +266,8 @@ Host tunnel-dalma
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync -rav ./local-folder-to-upload tunnel-dalma:/scratch/&lt;NetID&gt;/remote-folder-on-dalma
 </pre></div>
 </div>
-</section>
-<section id="windows">
+</div>
+<div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <p><strong>Inside NYU Network</strong></p>
 <p>We recommend Mobaxterm/Putty as your ssh client. Putty is available for download here: <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>.</p>
@@ -301,8 +300,8 @@ Host tunnel-dalma
 </pre></div>
 </div>
 <p>Now you are on Dalma.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

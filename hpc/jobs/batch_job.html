@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Batch Job &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -119,14 +118,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -196,7 +195,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="batch-job">
+  <div class="section" id="batch-job">
 <h1>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this headline">¶</a></h1>
 <p>Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used.</p>
 <p>A complete batch job workflow:</p>
@@ -213,7 +212,7 @@
 <li><p>Relax, have a coffee, log off if you wish. The computer will do the work.</p></li>
 <li><p>Come back to examine the result.</p></li>
 </ol>
-<section id="batch-job-script">
+<div class="section" id="batch-job-script">
 <h2>Batch Job Script<a class="headerlink" href="#batch-job-script" title="Permalink to this headline">¶</a></h2>
 <p>A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us.</p>
 <div class="admonition-resources-limit admonition">
@@ -223,8 +222,8 @@
 <p><strong>Typically, a user can ask for 48 hours, 700 CPU cores maximum per job.</strong></p>
 <p>If you ask for more resources than you can use, your job will stay in the queue forever. (e.g., you specify 10000 hours walltime in your job script)</p>
 <p>If you have multiple jobs (which is very normal), your jobs will start either immediately if the system is free and the quotas for you and your department have not been exhausted.</p>
-</section>
-<section id="a-job-with-1-cpu-core">
+</div>
+<div class="section" id="a-job-with-1-cpu-core">
 <h2>A Job with 1 CPU Core<a class="headerlink" href="#a-job-with-1-cpu-core" title="Permalink to this headline">¶</a></h2>
 <p>This is a very basic example, using only one CPU core.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -259,8 +258,8 @@ Why? Because the system will run your job in the background, hence no display.</
 This example runs <code class="docutils literal notranslate"><span class="pre">hostname</span></code>, which will print the hostname.
 In reality, you should load your desired modules, and execute
 whatever you want to run.</p>
-</section>
-<section id="multithreading-job">
+</div>
+<div class="section" id="multithreading-job">
 <h2>Multithreading Job<a class="headerlink" href="#multithreading-job" title="Permalink to this headline">¶</a></h2>
 <p>Multithreading enables a process to spawn multiple threads to accelerate its execution. The most common multithreading model in HPC is OpenMP. If your application supports this (not sure? contact us to find out), you could use the below example.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -300,8 +299,8 @@ hostname
 <li><p>Request the resources.</p></li>
 <li><p>Use the resources. This example is a perfect illustration. <strong>Run with what you requested, no more, no less</strong>.</p></li>
 </ol>
-</section>
-<section id="pure-mpi-job">
+</div>
+<div class="section" id="pure-mpi-job">
 <h2>Pure MPI Job<a class="headerlink" href="#pure-mpi-job" title="Permalink to this headline">¶</a></h2>
 <p>Now comes the pure MPI Jobs.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -332,8 +331,8 @@ srun hostname
 <li><p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">hostname</span></code>: This tells your application to run with MPI support, utilizing all CPU cores requested.</p></li>
 </ol>
 <p>The old school <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> or <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> are supported as well. But you need to load <code class="docutils literal notranslate"><span class="pre">openmpi</span></code> module in this case.</p>
-</section>
-<section id="hybrid-mpi-job">
+</div>
+<div class="section" id="hybrid-mpi-job">
 <h2>Hybrid MPI Job<a class="headerlink" href="#hybrid-mpi-job" title="Permalink to this headline">¶</a></h2>
 <p>If your application support MPI + OpenMP hybrid parallelization, you could follow this example to submit a hybrid job.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -366,8 +365,8 @@ srun hostname
 <p>In this case,
 1. the number of CPU cores requested is <code class="docutils literal notranslate"><span class="pre">56</span> <span class="pre">(ntasks)</span> <span class="pre">*</span> <span class="pre">4</span> <span class="pre">(cpus-per-task)</span> <span class="pre">=</span> <span class="pre">224</span></code>.
 2. This number should be divisible by 28 to use all the cores on the nodes. As in the multithreading job example, make sure <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> is a divisor of 28.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

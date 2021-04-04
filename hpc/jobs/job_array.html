@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Job Array &mdash; CRC Documentation  documentation</title>
@@ -88,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">HPC Documentation</span></p>
+              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -117,14 +116,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p><span class="caption-text">RCS Documentation</span></p>
+<p class="caption"><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
 </ul>
-<p><span class="caption-text">Team</span></p>
+<p class="caption"><span class="caption-text">Team</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
@@ -194,7 +193,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="job-array">
+  <div class="section" id="job-array">
 <h1>Job Array<a class="headerlink" href="#job-array" title="Permalink to this headline">¶</a></h1>
 <p>The SLURM provides one of the simplest method to run parallel computations.
 Frequently we need to run the same application / job
@@ -219,7 +218,7 @@ script to the left.</p>
 <p>Consider another example where you have a python script whose most time consuming part is an iterating loop with independent iterations.
 Instead of looping through each of the iterations one by one, you can use the SLURM job array to run it in parallel.</p>
 <p>The individual tasks in the array are distinguished by an environment variable, <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> , which Slurm sets to a different value for each task. You set the range of values with the <code class="docutils literal notranslate"><span class="pre">--array</span></code> or <code class="docutils literal notranslate"><span class="pre">-a</span></code> parameter.</p>
-<section id="examples-of-the-array-parameter">
+<div class="section" id="examples-of-the-array-parameter">
 <h2>Examples of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> parameter<a class="headerlink" href="#examples-of-the-array-parameter" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch --array<span class="o">=</span><span class="m">0</span>-7       <span class="c1"># $SLURM_ARRAY_TASK_ID takes values from 0 to 7 inclusive</span>
 sbatch --array<span class="o">=</span><span class="m">1</span>,3,5,7   <span class="c1"># $SLURM_ARRAY_TASK_ID takes the listed values</span>
@@ -227,8 +226,8 @@ sbatch --array<span class="o">=</span><span class="m">1</span>-7:2     <span cla
 sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span class="c1"># Allows no more than 10 of the jobs to run simultaneously</span>
 </pre></div>
 </div>
-</section>
-<section id="a-simple-example">
+</div>
+<div class="section" id="a-simple-example">
 <h2>A simple example<a class="headerlink" href="#a-simple-example" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you have multiple files you wish to process by passing to another code.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -242,8 +241,8 @@ sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span cla
 ./my-code file.<span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span>
 </pre></div>
 </div>
-</section>
-<section id="file-of-commands">
+</div>
+<div class="section" id="file-of-commands">
 <h2>File of commands<a class="headerlink" href="#file-of-commands" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes, it may be easier to write out a file with a list of command lines to execute, one per line. For example, you have multiple instances of a <code class="docutils literal notranslate"><span class="pre">python</span></code> program with different
 set of arguments to run. In this case, your “file of commands” could look like:</p>
@@ -281,8 +280,8 @@ Each job in the job array will have its own output file (and error file if you a
 are one of the most easiest ways to parallelize
 your computations. Follow the corresponding highlighted links for a much more detailed example.</p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
