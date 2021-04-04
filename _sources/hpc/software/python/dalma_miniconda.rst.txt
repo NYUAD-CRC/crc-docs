@@ -123,7 +123,10 @@ The conda environment might not get activated when submitting a Job script since
 .. code-block:: bash
 
     source ~/.bashrc
-    A sample job submission script is shown below:
+
+A sample job submission script is shown below:
+
+.. code-block:: bash
 
     #!/bin/bash
     #SBATCH -n 10

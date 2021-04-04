@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>A Detailed SLURM Guide &mdash; CRC Documentation  documentation</title>
@@ -87,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
+              <p><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -127,11 +128,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<p><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
 
             
@@ -199,9 +205,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="a-detailed-slurm-guide">
+  <section id="a-detailed-slurm-guide">
 <h1>A Detailed SLURM Guide<a class="headerlink" href="#a-detailed-slurm-guide" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="slurm-partitions">
+<section id="slurm-partitions">
 <h2>SLURM: Partitions<a class="headerlink" href="#slurm-partitions" title="Permalink to this headline">¶</a></h2>
 <p>A partition is a collection of nodes, they may share some attributes (CPU type, GPU, etc)</p>
 <ul class="simple">
@@ -220,8 +226,8 @@
 <li><p>There are other partitions, but these are reserved for specific groups and research projects</p></li>
 <li><p>For those who are experts in SLURM we use partitions to request GPUs, large memory, and visual instead of “constraints” as this approach gives us more flexibility for priorities and resource limits.</p></li>
 </ul>
-</div>
-<div class="section" id="slurm-submitting-jobs">
+</section>
+<section id="slurm-submitting-jobs">
 <h2>SLURM: Submitting Jobs<a class="headerlink" href="#slurm-submitting-jobs" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>To submit a job first you write a “job script”</p>
@@ -251,8 +257,8 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 </div></blockquote>
 </li>
 </ol>
-</div>
-<div class="section" id="slurm-arguments">
+</section>
+<section id="slurm-arguments">
 <h2>SLURM: Arguments<a class="headerlink" href="#slurm-arguments" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Arguments to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> can be put on the command line or embedded in the job script</p></li>
@@ -292,8 +298,8 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-user=user</span></code> Who to send email notification</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mem</span></code> Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)</p></li>
 </ul>
-</div>
-<div class="section" id="slurm-job-dependencies">
+</section>
+<section id="slurm-job-dependencies">
 <h2>SLURM: Job Dependencies<a class="headerlink" href="#slurm-job-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Submitting with dependencies: Useful to create workflows</p>
 <ul class="simple">
@@ -320,8 +326,8 @@ sbatch --depend<span class="o">=</span>afterok:123 my.job
 sbatch --depend<span class="o">=</span>afternotok:123 my.job
 </pre></div>
 </div>
-</div>
-<div class="section" id="slurm-listing-jobs">
+</section>
+<section id="slurm-listing-jobs">
 <h2>SLURM: Listing Jobs<a class="headerlink" href="#slurm-listing-jobs" title="Permalink to this headline">¶</a></h2>
 <p>Each submitted job is given a unique number
 * You can list your jobs to see which ones are waiting (pending), running
@@ -344,8 +350,8 @@ JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST<span c
 435235_1        ser_std     151215_F u123    R   <span class="m">1</span>:04:37   <span class="m">1</span>        compute-21-3
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2>SLURM: Listing Jobs<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>You can look at completed jobs using the “sacct” command</p></li>
@@ -387,8 +393,8 @@ JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
 <span class="m">466281</span>.0      env                   cpcm_par     <span class="m">56</span>      COMPLETED    <span class="m">0</span>:0
 </pre></div>
 </div>
-</div>
-<div class="section" id="slurm-job-progress">
+</section>
+<section id="slurm-job-progress">
 <h2>SLURM: Job Progress<a class="headerlink" href="#slurm-job-progress" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>You can see your job’s progress by looking at the output and error files</p></li>
@@ -400,8 +406,8 @@ $&gt; more slurm-435563.out
 $&gt; tail –f slurm-435563.out
 </pre></div>
 </div>
-</div>
-<div class="section" id="slurm-killing-jobs">
+</section>
+<section id="slurm-killing-jobs">
 <h2>SLURM: Killing Jobs<a class="headerlink" href="#slurm-killing-jobs" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sometimes you need to kill your job when you realise it is not working as expected</p></li>
@@ -410,8 +416,8 @@ $&gt; tail –f slurm-435563.out
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; scancel <span class="m">435563</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="slurm-tasks">
+</section>
+<section id="slurm-tasks">
 <h2>SLURM: Tasks<a class="headerlink" href="#slurm-tasks" title="Permalink to this headline">¶</a></h2>
 <p>In SLURM users specify how many tasks – not cores! - they need (-n). Each task by default
 uses 1 core. But this can be redefined by users using the “-c” option.</p>
@@ -422,13 +428,13 @@ eg no other jobs may run on nodes allocated for running parallel jobs.</p>
 <p>When submitting parallel jobs on Dalma you need not specify the number of nodes. The
 number of tasks and cpus-per-task is sufficient for SLURM to determine how many nodes to
 reserve.</p>
-</div>
-<div class="section" id="slurm-node-list">
+</section>
+<section id="slurm-node-list">
 <h2>SLURM: Node List<a class="headerlink" href="#slurm-node-list" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes applications require a list of nodes where they are to run in parallel to start.
 SLURM keeps the list of nodes within the environment variable <code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NODELIST</span></code>.</p>
-</div>
-<div class="section" id="slurm-accounts">
+</section>
+<section id="slurm-accounts">
 <h2>SLURM: Accounts<a class="headerlink" href="#slurm-accounts" title="Permalink to this headline">¶</a></h2>
 <p>SLURM maintains user associations which include user, account, qos, and partition. Users
 may have several associations. Moreover, accounts are hierarchical. For example, account
@@ -448,8 +454,8 @@ account. So at most you’ll need to specify:</p>
 <p>Moreover, accounts, partitions, qos and users may each be configured with resource usage
 limits. Thus the administrators can impose limits to the number of jobs queued, jobs running,
 cores usage, and run time.</p>
-</div>
-<div class="section" id="slurm-account-limits">
+</section>
+<section id="slurm-account-limits">
 <h2>SLURM: Account Limits<a class="headerlink" href="#slurm-account-limits" title="Permalink to this headline">¶</a></h2>
 <p>To see you SLURM associations (and their parents) as well as your resource usage limits use
 the following Dalma specific tool:</p>
@@ -480,8 +486,8 @@ the following Dalma specific tool:</p>
 <li><p>account <code class="docutils literal notranslate"><span class="pre">avengers_par</span></code> is shared with other users and together they have a limit of 200 jobs queued, and 100 jobs running</p></li>
 <li><p>account <code class="docutils literal notranslate"><span class="pre">avengers</span></code> is a sub-account of <code class="docutils literal notranslate"><span class="pre">nyuad</span></code> and the sum of all parallel and serial jobs can’t exceed 200 jobs queued, 100 jobs running</p></li>
 </ul>
-</div>
-<div class="section" id="slurm-account-usage">
+</section>
+<section id="slurm-account-usage">
 <h2>SLURM: Account Usage<a class="headerlink" href="#slurm-account-usage" title="Permalink to this headline">¶</a></h2>
 <p>This next Dalma specific tool allows you to see how much resources you are using. This is useful when your
 job can’t run because of “group resource limit” having been reached.</p>
@@ -565,8 +571,8 @@ Usage  Limit     TYPE     Account
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
-</div>
-<div class="section" id="slurm-system-usage">
+</section>
+<section id="slurm-system-usage">
 <h2>SLURM: System Usage<a class="headerlink" href="#slurm-system-usage" title="Permalink to this headline">¶</a></h2>
 <p><strong>dmap</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dmap</span></code> tool (Dalma specific) will show you the utilization of each compute node on the cluster. The first
@@ -618,8 +624,8 @@ node is free.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm_partition_monitor</span></code> tool gives a glimpse on the brief stats of difefrent resources in terms of partitions.</p>
 <p>You can launch this tool using the command <code class="docutils literal notranslate"><span class="pre">slurm_partition_monitor</span></code></p>
 <img alt="../../_images/slurm_partition_monitor.png" src="../../_images/slurm_partition_monitor.png" />
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

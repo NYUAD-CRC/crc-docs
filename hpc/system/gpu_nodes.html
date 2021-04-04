@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>GPU nodes in Dalma &mdash; CRC Documentation  documentation</title>
@@ -87,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
+              <p><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -118,11 +119,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<p><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
 
             
@@ -190,7 +196,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gpu-nodes-in-dalma">
+  <section id="gpu-nodes-in-dalma">
 <h1>GPU nodes in Dalma<a class="headerlink" href="#gpu-nodes-in-dalma" title="Permalink to this headline">¶</a></h1>
 <p>When using the GPU nodes available on Dalma.</p>
 <p>Currently Dalma holds 10 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (8) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS.</p>
@@ -198,7 +204,7 @@
 <p class="admonition-title">Warning</p>
 <p>The current Nvidia driver version on the GPU nodes is 410.79 which supports cuda/10.0 or lower. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.</p>
 </div>
-<div class="section" id="step-by-step-guide">
+<section id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Users that want to have access to the GPU nodes have to make a request for access. By default, any account in Dalma is created without access to the GPU nodes.</p></li>
@@ -220,8 +226,8 @@
 <li><p>Default walltime = 4 hours</p></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

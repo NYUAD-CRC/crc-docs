@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Fast Transfer Between NYU NYC and Dalma &mdash; CRC Documentation  documentation</title>
@@ -87,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
+              <p><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -118,11 +119,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<p><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
 
             
@@ -190,11 +196,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fast-transfer-between-nyu-nyc-and-dalma">
+  <section id="fast-transfer-between-nyu-nyc-and-dalma">
 <h1>Fast Transfer Between NYU NYC and Dalma<a class="headerlink" href="#fast-transfer-between-nyu-nyc-and-dalma" title="Permalink to this headline">¶</a></h1>
 <p>The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a
 high bandwidth ANKABUT link instead.</p>
-<div class="section" id="specifying-the-port-directly">
+<section id="specifying-the-port-directly">
 <h2>Specifying the port directly<a class="headerlink" href="#specifying-the-port-directly" title="Permalink to this headline">¶</a></h2>
 <p>For infrequent data transfer, directly specify the port 922 in your scp command. From your host in NY, run this in the terminal.</p>
 <p><strong>Pulling data from Dalma</strong></p>
@@ -205,8 +211,8 @@ high bandwidth ANKABUT link instead.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> filename &lt;NetID&gt;@dalma.abudhabi.nyu.edu:~/
 </pre></div>
 </div>
-</div>
-<div class="section" id="setup-an-alias">
+</section>
+<section id="setup-an-alias">
 <h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this headline">¶</a></h2>
 <p>If you need to transfer data frequently, it is easier to setup an alias in your ssh config. In your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, append the following entries.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host dalma-fast
@@ -220,8 +226,8 @@ high bandwidth ANKABUT link instead.</p>
 </pre></div>
 </div>
 <p>Windows user can do the same thing by specifying the port 922 in the file transfer software. E.g., FileZilla.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

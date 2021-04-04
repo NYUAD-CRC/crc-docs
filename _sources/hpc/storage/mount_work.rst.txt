@@ -41,7 +41,7 @@ Step-by-step guide
 
     .. code-block:: bash
 
-        sshfs gh50@hpc-cng.abudhabi.nyu.edu:/work/gh50 $HOME/work-gh50
+        sshfs wz22@hpc-cng.abudhabi.nyu.edu:/work/wz22 $HOME/work-wz22
 
     These options might increase the speed.
 
@@ -60,31 +60,30 @@ Step-by-step guide
 Mount $WORK on Windows
 ----------------------
 
-1. Download the following applications and install them.
-    * SSHFS-Win: https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi
-    * WinFsp: https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi
-2. Navigate to your Windows File explorer
+1. Download the following applications and install them on your local Windows PC.
+    * :download:`SSHFS-Win<https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi>`
+    * :download:`WinFsp<https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi>`
+2. **Navigate to your Windows File explorer**
+3. Right click on ``This PC`` and select ``Map network drive``:
     .. image:: ../img/mount_work1.png
-3. Right click on ‘This PC’ and select ‘Map network drive’:
+4. Enter the details and click ``Finish``:
     .. image:: ../img/mount_work2.png
-4. Enter the details and click ‘Finish’:
-    .. image:: ../img/mount_work3.png
 
-    * The ‘Drive’ corresponds to the local mountpoint
-    * The Folder corresponds to the remote location.It should be noted that by default it connects to the /home and a relative path to the mounting point (/work) should be specified. So in this case the syntax should be as follows:
+    * The ``Drive`` corresponds to the local mountpoint
+    * The ``Folder`` corresponds to the remote location.It should be noted that by default it connects to the ``/home`` and a relative path to the mounting point (``/work``) should be specified. So in this case the syntax should be as follows:
 
     .. code-block:: bash
 
-        \\sshfs\<net-id>@cng-hpc.abudhabi.nyu.edu\..\..\work\<netid>
+        \\sshfs\<net-id>@hpc-cng.abudhabi.nyu.edu\..\..\work\<netid>
 
     * For example:
 
     .. code-block:: bash
 
-        \\sshfs\wz22@cng-hpc.abudhabi.nyu.edu\..\..\work\wz22
+        \\sshfs\wz22@hpc-cng.abudhabi.nyu.edu\..\..\work\wz22
 
-5. You will be prompted for a password, after which you would have successfully mounted “$WORK” on to your local workstation.
-
+5. You will be prompted for a password, after which you would have successfully mounted ``$WORK`` on to your local workstation.
+    .. image:: ../img/mount_work3.png
 
 .. admonition:: Info
 

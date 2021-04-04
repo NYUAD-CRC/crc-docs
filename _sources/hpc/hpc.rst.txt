@@ -9,9 +9,6 @@ Introduction
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 
-.. seealso::
-    Cluster - Dalma
-
 You could:
     * Open an account on our HPC cluster Dalma (:doc:`Accounts <accounts/index>`)
     * Learn more about the system and how you can access it (:doc:`System <system/index>`)
@@ -20,12 +17,13 @@ You could:
     * Learn more about the software stack and what it offers you in terms of your application (MPI,Python,R) (:doc:`Software <software/index>`)
     * Checkout the research works carried out on the system and donot forget to acknowledge us (:doc:`Research <research/index>`)
     * Follow our :doc:`Help <help/index>` page for more HowTo's  
+    * The :doc:`Dalma Load<dalma_load/index>` page gives a glimpse of the current cluster utilization.
     * Contact us anytime at dalma.admins@nyu.edu
 
 .. important:: 
 
     **Acknowledgement**
-        We ask our users to acknowledge use of the HPC resources by including the following in any publication resulting from work carried out on the HPC:
+        We ask our users to acknowledge the use of the HPC resources by including the following in any publication resulting from work carried out on the HPC:
         
         **This research was carried out on the High Performance Computing resources at New York University Abu Dhabi.**
 

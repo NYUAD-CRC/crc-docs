@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Mount $WORK with SSHFS &mdash; CRC Documentation  documentation</title>
@@ -87,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
+              <p><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -113,11 +114,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<p><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
 
             
@@ -187,12 +193,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mount-work-with-sshfs">
+  <section id="mount-work-with-sshfs">
 <span id="mount-work"></span><h1>Mount $WORK with SSHFS<a class="headerlink" href="#mount-work-with-sshfs" title="Permalink to this headline">¶</a></h1>
 <p>This page explains how to mount <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> on Dalma with SSHFS on your local workstation.
 Only <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is supported, not <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> , <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> or any other file system on Dalma.
 For mounting <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> on Windows, Kindly follow the section <a class="reference internal" href="#mount-work-windows"><span class="std std-ref">here</span></a></p>
-<div class="section" id="step-by-step-guide">
+<section id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -226,7 +232,7 @@ For mounting <code class="docutils literal notranslate"><span class="pre">$WORK<
 </pre></div>
 </div>
 <p>For example, this command mount the <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> of NetID <code class="docutils literal notranslate"><span class="pre">wz22</span></code> to the local path <code class="docutils literal notranslate"><span class="pre">$HOME/work-wz22</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs gh50@hpc-cng.abudhabi.nyu.edu:/work/gh50 <span class="nv">$HOME</span>/work-gh50
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs wz22@hpc-cng.abudhabi.nyu.edu:/work/wz22 <span class="nv">$HOME</span>/work-wz22
 </pre></div>
 </div>
 <p>These options might increase the speed.</p>
@@ -244,54 +250,54 @@ For mounting <code class="docutils literal notranslate"><span class="pre">$WORK<
 </dl>
 </li>
 </ol>
-</div>
-<div class="section" id="mount-work-on-windows">
+</section>
+<section id="mount-work-on-windows">
 <span id="mount-work-windows"></span><h2>Mount $WORK on Windows<a class="headerlink" href="#mount-work-on-windows" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="simple">
-<dt>Download the following applications and install them.</dt><dd><ul class="simple">
-<li><p>SSHFS-Win: <a class="reference external" href="https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi">https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi</a></p></li>
-<li><p>WinFsp: <a class="reference external" href="https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi">https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi</a></p></li>
+<dt>Download the following applications and install them on your local Windows PC.</dt><dd><ul class="simple">
+<li><p><a class="reference download external" download="" href="https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi"><code class="xref download docutils literal notranslate"><span class="pre">SSHFS-Win</span></code></a></p></li>
+<li><p><a class="reference download external" download="" href="https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi"><code class="xref download docutils literal notranslate"><span class="pre">WinFsp</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
 </li>
+<li><p><strong>Navigate to your Windows File explorer</strong></p></li>
 <li><dl>
-<dt>Navigate to your Windows File explorer</dt><dd><img alt="../../_images/mount_work1.png" src="../../_images/mount_work1.png" />
+<dt>Right click on <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">PC</span></code> and select <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">network</span> <span class="pre">drive</span></code>:</dt><dd><img alt="../../_images/mount_work1.png" src="../../_images/mount_work1.png" />
 </dd>
 </dl>
 </li>
 <li><dl>
-<dt>Right click on ‘This PC’ and select ‘Map network drive’:</dt><dd><img alt="../../_images/mount_work2.png" src="../../_images/mount_work2.png" />
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Enter the details and click ‘Finish’:</dt><dd><img alt="../../_images/mount_work3.png" src="../../_images/mount_work3.png" />
+<dt>Enter the details and click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>:</dt><dd><img alt="../../_images/mount_work2.png" src="../../_images/mount_work2.png" />
 <ul class="simple">
-<li><p>The ‘Drive’ corresponds to the local mountpoint</p></li>
-<li><p>The Folder corresponds to the remote location.It should be noted that by default it connects to the /home and a relative path to the mounting point (/work) should be specified. So in this case the syntax should be as follows:</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Drive</span></code> corresponds to the local mountpoint</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Folder</span></code> corresponds to the remote location.It should be noted that by default it connects to the <code class="docutils literal notranslate"><span class="pre">/home</span></code> and a relative path to the mounting point (<code class="docutils literal notranslate"><span class="pre">/work</span></code>) should be specified. So in this case the syntax should be as follows:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\&lt;</span>net-id&gt;@cng-hpc.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\&lt;</span>netid&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\&lt;</span>net-id&gt;@hpc-cng.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\&lt;</span>netid&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>For example:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\w</span>z22@cng-hpc.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\w</span>z22
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\w</span>z22@hpc-cng.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\w</span>z22
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><p>You will be prompted for a password, after which you would have successfully mounted “$WORK” on to your local workstation.</p></li>
+<li><dl>
+<dt>You will be prompted for a password, after which you would have successfully mounted <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> on to your local workstation.</dt><dd><img alt="../../_images/mount_work3.png" src="../../_images/mount_work3.png" />
+</dd>
+</dl>
+</li>
 </ol>
 <div class="admonition-info admonition">
 <p class="admonition-title">Info</p>
 <p>Reference: <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh</a></p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

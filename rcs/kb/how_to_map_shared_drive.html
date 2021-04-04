@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>How to Map Shared Drive &mdash; CRC Documentation  documentation</title>
@@ -87,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
+              <p><span class="caption-text">HPC Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../hpc/hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hpc/accounts/index.html">Accounts</a></li>
@@ -100,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../hpc/training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hpc/dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<p><span class="caption-text">RCS Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1001n.html">1001n Research Cluster</a></li>
@@ -115,6 +116,11 @@
 <li class="toctree-l2"><a class="reference internal" href="how_to_vnc.html">VNC access to Linux Servers</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
 </ul>
 
             
@@ -182,9 +188,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-map-shared-drive">
+  <section id="how-to-map-shared-drive">
 <h1>How to Map Shared Drive<a class="headerlink" href="#how-to-map-shared-drive" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="mac">
+<section id="mac">
 <h2>MAC<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>In <strong>Finder</strong>, select <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Server</span></code> from <strong>Go</strong> menu</p>
@@ -208,8 +214,8 @@
 </div></blockquote>
 </li>
 </ol>
-</div>
-<div class="section" id="windows">
+</section>
+<section id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Open <strong>My Computer</strong> window -&gt; Select <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">Network</span> <span class="pre">Drive</span></code></p>
@@ -230,24 +236,24 @@
 <blockquote>
 <div><img alt="../../_images/6.png" src="../../_images/6.png" />
 </div></blockquote>
-</div>
-<div class="section" id="ubuntu">
+</section>
+<section id="ubuntu">
 <h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install cifs-utils
 $ sudo mkdir /mnt/network
 $ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/network -o <span class="nv">username</span><span class="o">=</span>&lt;netid&gt;,sec<span class="o">=</span>ntlmssp,vers<span class="o">=</span><span class="m">2</span>.0
 </pre></div>
 </div>
-</div>
-<div class="section" id="centos">
+</section>
+<section id="centos">
 <h2>Centos<a class="headerlink" href="#centos" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install cifs-utils
 $ sudo mkdir /mnt/network
 $ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/network -o <span class="nv">username</span><span class="o">=</span>&lt;netid&gt;,sec<span class="o">=</span>ntlmssp,vers<span class="o">=</span><span class="m">2</span>.0
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

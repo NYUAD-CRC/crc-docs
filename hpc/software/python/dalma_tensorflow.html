@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>TensorFlow (Keras) in Dalma &mdash; CRC Documentation  documentation</title>
@@ -87,7 +88,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">HPC Documentation</span></p>
+              <p><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts/index.html">Accounts</a></li>
@@ -114,11 +115,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../training/index.html">Dalma Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dalma_load/index.html">Dalma Load</a></li>
 </ul>
-<p class="caption"><span class="caption-text">RCS Documentation</span></p>
+<p><span class="caption-text">RCS Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../rcs/rcs.html">Research Computing Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rcs/1001n.html">1001n Research Cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../team.html">Center for Research Computing Team</a></li>
 </ul>
 
             
@@ -188,7 +194,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tensorflow-keras-in-dalma">
+  <section id="tensorflow-keras-in-dalma">
 <h1>TensorFlow (Keras) in Dalma<a class="headerlink" href="#tensorflow-keras-in-dalma" title="Permalink to this headline">¶</a></h1>
 <p>We have Tensorflow (1.15 &amp; 2.0) installations as part of Miniconda module in Dalma.
 You can clone the existing centralized environments to your local environments and add
@@ -203,7 +209,7 @@ Miniconda module in Dalma, click <a class="reference internal" href="dalma_minic
 <p>If you have never used Conda, we recommend you to use Dalma Miniconda.
 You can find the steps to set up Dalma Miniconda by clicking <a class="reference internal" href="dalma_miniconda.html"><span class="doc">here</span></a>.</p>
 </div>
-<div class="section" id="how-to-clone-the-tensorflow-environment">
+<section id="how-to-clone-the-tensorflow-environment">
 <h2>How to clone the TensorFlow environment<a class="headerlink" href="#how-to-clone-the-tensorflow-environment" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p><strong>If you are using Dalma Miniconda</strong></p>
@@ -230,8 +236,8 @@ conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorfl
 </div></blockquote>
 </li>
 </ol>
-</div>
-<div class="section" id="submitting-job-scripts">
+</section>
+<section id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
@@ -257,8 +263,8 @@ python abc.py
 <p class="admonition-title">Note</p>
 <p>These installations have preinstalled cuda and cudnn libraries as well and hence there is no need to load cuda modules explicitly.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
