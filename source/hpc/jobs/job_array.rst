@@ -53,15 +53,16 @@ Suppose you have multiple files you wish to process by passing to another code.
 
 File of commands
 -----------------
-Sometimes, it may be easier to write out a file with a list of command lines to execute, one per line. For example, your file could look like:
+Sometimes, it may be easier to write out a file with a list of command lines to execute, one per line. For example, you have multiple instances of a ``python`` program with different 
+set of arguments to run. In this case, your "file of commands" could look like:
 
 ``jobs.txt``:
 
 .. code-block:: bash
 
-    locuszoom --refsnp rs1
-    locuszoom --refsnp rs2
-    locuszoom --refsnp rs3
+    python myProgram.py arg1 arg2
+    python myProgram.py arg3 arg4
+    python myProgram.py arg5 arg6
 
 Now you can write a job submission script that looks like:
 
@@ -76,7 +77,7 @@ Now you can write a job submission script that looks like:
 
     srun $(head -n $SLURM_ARRAY_TASK_ID jobs.txt | tail -n 1)
     
-Note in the above example ``--array=1-3`` - the last number corresponds to the total number of jobs (or command lines) in your ``jobs.txt`` file. The ``head -n ... | tail -n 1`` part is just a simple trick to read the ``$SLURM_ARRAY_TASK_ID`` th line from the file (for example, if the task ID is 3, ``head`` reads the first 3 lines from ``jobs.txt``, and then ``tail`` takes the last line from those 3 lines, which is of course the 3rd line in the file.)
+Note in the above example ``--array=1-3`` - the last number corresponds to the total number of jobs (or command lines) in your " file of commands" ``jobs.txt`` file. The ``head -n ... | tail -n 1`` part is just a simple trick to read the ``$SLURM_ARRAY_TASK_ID`` th line from the file (for example, if the task ID is 3, ``head`` reads the first 3 lines from ``jobs.txt``, and then ``tail`` takes the last line from those 3 lines, which is of course the 3rd line in the file.)
 
 Now you can submit this to the cluster by doing:
 
