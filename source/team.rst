@@ -9,13 +9,10 @@ Leadership
 
     * - Name
       - Position
-      - Email
     * - **Muataz Al Barwani**
       - Senior Director
-      - m.albarwani@nyu.edu
+      
      
-
-
 High Performance Computing
 --------------------------
 
@@ -27,16 +24,13 @@ High Performance Computing
 
     * - Name
       - Position
-      - Email
     * - **Benoit Marchand**
       - Senior HPC Computational Specialist
-      - benoit.marchand@nyu.edu
     * - **Jorge Naranjo**
       - Senior HPC Computational Specialist
-      - jorge.naranjo@nyu.edu
     * - **Waqqas Zia**
       - HPC Applicaions Specialist
-      - zia.waqqas@nyu.edu
+
 
 **HPC System Administrators**
 
@@ -46,16 +40,13 @@ High Performance Computing
 
     * - Name
       - Position
-      - Email
     * - **Hendra Adiwijaja**
       - Senior HPC System Administrator
-      - dalma.admins@nyu.edu
     * - **Simon Johny**
       - HPC Storage System Administrator
-      - dalma.admins@nyu.edu
     * - **Wissam Ali**
       - HPC System Administrator
-      - dalma.admins@nyu.edu
+
 
 
 Research Support
@@ -70,10 +61,8 @@ Research Support
 
     * - Name
       - Position
-      - Email
     * - **Fayizal Kunhi**
       - Senior Research Technology Specialist
-      - fayizal.mohd@nyu.edu
 
 **Application & Development**
 
@@ -85,10 +74,8 @@ Research Support
 
     * - Name
       - Position
-      - Email
     * - **Nasser Al Ansari**
       - Senior Research Application Specialist
-      - alansari.n@nyu.edu
 
 **Data Science**
 
@@ -98,8 +85,6 @@ Research Support
 
     * - Name
       - Position
-      - Email
     * - **Karunakar Reddy Mannem**
       - Research Data Scientist
-      - karunakar.mannem@nyu.edu
 
