@@ -55,10 +55,10 @@ Summary of Nodes
     :header-rows: 1
 
     * - Node Type
-      - No. of Nodes
-      - CPUs per Node
-      - Memory per node
-      - GPUs per node
+      - Num Nodes
+      - CPUs / Node
+      - Memory / node
+      - GPUs / node
       - Remarks
     * - Standard
       - 375
@@ -72,18 +72,18 @@ Summary of Nodes
       - 1 TB / 2TB	
       - None	
       - Use when memory requirement per node is greater than 112GB
-    * - GPU 
+    * - :doc:`GPU<gpu_nodes>` 
       - 10
       - 40
       - 360 GB
       - 2/8	(Nvidia V100)
       - Two nodes have 8 GPU cards each, rest of them have 2 each
-    * - Visual	
+    * - :doc:`Visual<visual_nodes>`	
       - 4	
       - 38	
       - 112 GB
       - 1 (Nvidia Quadro P4000)
-      - 
+      - Used for GUI 
 
 
 Access

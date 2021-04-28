@@ -1,12 +1,13 @@
 GPU nodes in Dalma
 ==================
 
-When using the GPU nodes available on Dalma.
-
 Currently Dalma holds 10 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (8) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS. 
 
 .. Warning::
     The current Nvidia driver version on the GPU nodes is 410.79 which supports cuda/10.0 or lower. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.
+
+.. tip::
+    Know more about the Centralized Dalma Miniconda,TensorFlow(Keras) and PyTorch installations available :ref:`here<dalma_miniconda>`
 
 Step-by-step guide
 -------------------

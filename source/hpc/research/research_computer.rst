@@ -1,6 +1,12 @@
 Computer Science
 ================
 
+.. csv-table:: 2021
+   :widths: auto
+   :header-rows: 1
+   :class: publication-table
+   :file: data/computer-2021.csv
+
 .. csv-table:: 2020
    :widths: auto
    :header-rows: 1

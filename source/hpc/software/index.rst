@@ -68,6 +68,8 @@ For running Jobs: Please refer to the :doc:`Jobs Management </hpc/jobs/index>` s
     are one of the most easiest ways to parallelize 
     your computations. Follow the corresponding highlighted links for a much more detailed example.
 
+.. _dalma_miniconda:
+
 Dalma Miniconda
 ---------------
 
@@ -79,6 +81,9 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/python/dalm
    :hidden:
 
    /hpc/software/python/index
+
+.. tip::
+    Know more about the GPU nodes available :doc:`here</hpc/system/gpu_nodes>`
 
 R with Dalma Miniconda
 ----------------------
