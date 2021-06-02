@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
 
   
@@ -32,6 +34,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -206,27 +209,34 @@ install their own Miniconda or use the centralized installation present in Dalma
 </pre></div>
 </div>
 </div>
+<div class="section" id="application-installation">
+<h2>Application Installation<a class="headerlink" href="#application-installation" title="Permalink to this headline">¶</a></h2>
+<p>Following are the steps which need to be followed to install an application using conda.</p>
+<ul class="simple">
+<li><p>Create a local conda environment using conda create (more details below)</p></li>
+<li><p>Activate the local conda environment using conda activate (more details below)</p></li>
+<li><p>Install the application using conda install (eg : <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">r</span> <span class="pre">r=3.6</span></code>)</p></li>
+</ul>
+</div>
 <div class="section" id="managing-environments">
 <span id="managing-envs"></span><h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default the environemnts get created in the user’s <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> but we recommend our users to
+create their environments in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> as the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> quota is limited.</p>
+</div>
 <p><strong>Create a Local Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the environment&gt;</span>
-
-<span class="c1">#or</span>
-
-<span class="c1">#conda create -p /scratch/&lt;NetID&gt;/conda-envs/R --clone R-3.6</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p /scratch/&lt;NetID&gt;/conda-envs/&lt;name of the env&gt;</span>
 
 <span class="c1">#example:</span>
-conda create -n myenv1
+conda create -p /scratch/wz22/conda-envs/myenv
 </pre></div>
 </div>
 <p><strong>Activate the Local Environment</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda activate &lt;path to local env&gt;</span>
 
-<span class="c1">#or</span>
-
-<span class="c1">#conda activate &lt;name of the environment&gt;</span>
 <span class="c1">#example:</span>
-conda activate myenv1
+conda activate /scratch/wz22/conda-envs/myenv
 </pre></div>
 </div>
 <p><strong>Deactivate an Environment</strong></p>

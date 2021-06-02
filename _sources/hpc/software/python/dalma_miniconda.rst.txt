@@ -18,24 +18,34 @@ Execute the following command for making Dalma Miniconda as your default conda e
     module load miniconda
     source ~/.bashrc
 
+Application Installation
+------------------------
+
+Following are the steps which need to be followed to install an application using conda.
+
+* Create a local conda environment using conda create (more details below)
+* Activate the local conda environment using conda activate (more details below)
+* Install the application using conda install (eg : ``conda install -c r r=3.6``)
+
 .. _managing_envs:
 
 Managing Environments
 ---------------------
 
+.. note::
+
+    By default the environemnts get created in the user's ``$HOME`` but we recommend our users to 
+    create their environments in ``$SCRATCH`` as the ``$HOME`` quota is limited.
+
+
 **Create a Local Environment**
 
 .. code-block:: bash
 
-    #conda create -n <name of the environment>
-
-    #or
-
-    #conda create -p /scratch/<NetID>/conda-envs/R --clone R-3.6
-
+    #conda create -p /scratch/<NetID>/conda-envs/<name of the env>
+ 
     #example:
-    conda create -n myenv1
-
+    conda create -p /scratch/wz22/conda-envs/myenv
 
 **Activate the Local Environment**
 
@@ -43,11 +53,8 @@ Managing Environments
 
     #conda activate <path to local env>
 
-    #or
-    
-    #conda activate <name of the environment>
     #example:
-    conda activate myenv1
+    conda activate /scratch/wz22/conda-envs/myenv
 
 
 **Deactivate an Environment**

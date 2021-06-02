@@ -22,8 +22,8 @@ HPC Documentation
 * :doc:`Accounts </hpc/accounts/index>`
 * :doc:`System </hpc/system/index>`
 * :doc:`Storage </hpc/storage/index>`
-* :doc:`Jobs Management </hpc/jobs/index>`
 * :doc:`Software </hpc/software/index>`
-* :doc:`Research </hpc/research/index>`
+* :doc:`Jobs Management </hpc/jobs/index>`
+* :doc:`Research Publications </hpc/research/index>`
 * :doc:`Help </hpc/help/index>` 
 * :doc:`Dalma Load</hpc/dalma_load/index>`
