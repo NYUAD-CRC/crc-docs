@@ -18,6 +18,7 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
   /hpc/storage/home_scratch
   /hpc/storage/work
   /hpc/storage/archive
+  /hpc/storage/data_sharing
 
 Summary
 -------

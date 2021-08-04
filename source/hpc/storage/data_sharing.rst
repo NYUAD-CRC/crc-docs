@@ -8,13 +8,13 @@ hence minimizing the complexity for quick/temporary sharing of data/files.
 The instructions for the same are given below:
 
 1. Copy the data to ``/scratch/tmp``
-    The owner can copy/transfer the data from his account to a folder in ``/scratch/tmp``
+    The owner can copy/transfer the data from his/her account to a folder in ``/scratch/tmp``
 
     .. code-block:: bash
 
         cp -r /scratch/<Netid>/data /scratch/tmp/.
 
-3. Copy the data from ``/scratch/tmp``        
+2. Copy the data from ``/scratch/tmp``        
     The collaborator can then transfer the data from ``/scratch/tmp`` to his/her account
 
     .. code-block:: bash
@@ -22,7 +22,7 @@ The instructions for the same are given below:
         cp -r /scratch/tmp/data /scratch/<NetId>/data/.
 
 
-2. **(Optional)** Change permissions of the folder if you would like the data to be private
+3. **(Optional)** Change permissions of the folder if you would like the data to be private
 
     
 
