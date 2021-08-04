@@ -116,6 +116,10 @@ You can use either Terminal or FileZilla (with a GUI) to transfer your data from
 
    /hpc/system/rsync_transfer
    /hpc/system/filezilla_transfer
+
+.. note::
+
+  For data sharing among collaborators, Kindly refer to the section :doc:`here </hpc/storage/data_sharing>`
    
 .. _special_compute_nodes: 
 
