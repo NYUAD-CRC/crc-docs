@@ -1,11 +1,13 @@
 R in Dalma Miniconda
 ====================
 
-Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in Dalma. This provides greater flexibility and easier installation for other complementary packages required for R (eg: Tidyverse, Rstan etc). To find more details on the Miniconda module usage, click :doc:`here<python/dalma_miniconda>`.
+Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in Dalma. This provides greater flexibility and 
+easier installation for other complementary packages required for R (eg: Tidyverse, Rstan etc). 
+To find more details on the Miniconda module usage, click :doc:`here<dalma_miniconda>`.
 
 .. tip::
     If you have never used Conda, we recommend you to use Dalma Miniconda. 
-    You can find the steps to set up Dalma Miniconda by clicking :doc:`here <python/dalma_miniconda>`.
+    You can find the steps to set up Dalma Miniconda by clicking :doc:`here <dalma_miniconda>`.
 
 .. note::
     The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
