@@ -201,51 +201,59 @@
 <h1>Singularity For Conda<a class="headerlink" href="#singularity-for-conda" title="Permalink to this headline">¶</a></h1>
 <p>A simple conda environment requires a lot of files to be created on file system.
 With a limit of 0.5 million files per user, more than a 100 thousand of that may be eaten just by one conda environment.</p>
-<p>To address this situation, we offer users an option to use Singularity containers combined with overlay option.</p>
+<p>To address this situation, we offer users an option to use Singularity containers combined with overlay option.
+You could read</p>
 <div class="section" id="choose-and-copy-ext3-file">
 <h2>Choose and copy ext3 file<a class="headerlink" href="#choose-and-copy-ext3-file" title="Permalink to this headline">¶</a></h2>
-<p>Templates for ext3 filesystem files are located in <code class="docutils literal notranslate"><span class="pre">/share/apps/NYUAD/dalma/overlay-fs-ext3</span></code>.</p>
+<p>Templates for ext3 filesystem files are located in <code class="docutils literal notranslate"><span class="pre">/share/apps/dalma/overlay-fs-ext3</span></code>.</p>
 <p>These templates have fixed disk size-so choose one that has an appropriate template based on name of the file.
 Please copy a chosen template to your own directory on <code class="docutils literal notranslate"><span class="pre">/scratch</span></code></p>
 <p>Naming: <code class="docutils literal notranslate"><span class="pre">overlay-0.5GB-300K.ext3</span></code> means this file system will be able to hold up to <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">GB</span></code>  and up to <code class="docutils literal notranslate"><span class="pre">300K</span></code> files</p>
 <p>For example</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /scratch/<span class="nv">$USER</span>/&lt;directory_for_project&gt;
-cp /scratch/work/public/overlay-fs-ext3/overlay-0.5GB-200K.ext3.gz .
+cp /share/apps/dalma/overlay-fs-ext3/overlay-0.5GB-200K.ext3.gz .
 gunzip overlay-0.5GB-300K.ext3.gz
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-container-with-overlay-filesystem">
 <h2>Run container with overlay filesystem<a class="headerlink" href="#run-container-with-overlay-filesystem" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load all
-module load singularity/3.4.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load NYUAD/4.0 singularity
 
 <span class="c1">##Please choose appropriate singularity ext3 image at this location</span>
-singularity <span class="nb">exec</span>  --overlay &lt;chosen-file&gt;.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif /bin/bash
+singularity shell  --overlay &lt;chosen-file&gt;.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>If you want to mount ext3 file as read and write, you can do that only with one process.</p>
 <p>If you have more than one process reading from the given ext3 file, it shall be mounted as read-only.</p>
 <p>For read-only mount, please specify <code class="docutils literal notranslate"><span class="pre">:ro</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span>  --overlay &lt;chosen-file&gt;.ext3:ro /share/apps/dalma/singularity-images/centos-8.2.2004.sif /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell  --overlay &lt;chosen-file&gt;.ext3:ro /share/apps/dalma/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>If you use GPUs please specify option <code class="docutils literal notranslate"><span class="pre">--nv</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> --nv  --overlay &lt;chosen-file&gt;.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell --nv  --overlay &lt;chosen-file&gt;.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif
+</pre></div>
+</div>
+<p>More info on singularuty shell <a class="reference external" href="https://sylabs.io/guides/3.1/user-guide/cli/singularity_shell.html">here</a></p>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">exec</span></code> to run the container with overlay filesystem:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> --overlay &lt;chosen-file&gt;.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif /bin/bash
 </pre></div>
 </div>
 <p>More info on singularity exec <a class="reference external" href="https://sylabs.io/guides/3.5/user-guide/cli/singularity_exec.html">here</a></p>
 </div>
 <div class="section" id="write-to-overlay-filesystem">
 <h2>Write to overlay filesystem<a class="headerlink" href="#write-to-overlay-filesystem" title="Permalink to this headline">¶</a></h2>
-<p>You can write to directory /ext3 to create conda environment and install packages you need</p>
+<p>You can write to directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages you need</p>
 </div>
 <div class="section" id="while-in-container">
 <h2>While in container<a class="headerlink" href="#while-in-container" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#install miniconda and choose NOT to initialize conda initialize when prompted (choose ``no`` for ``conda init``)</span>
-<span class="c1">#Give the path to installation</span>
-conda create -p /ext3/cenv <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
-conda activate /ext3/cenv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#activate your conda by sourcing bashrc file</span>
+<span class="nb">source</span> ~/.bashrc
+
+<span class="c1">#Create new environments in /opt</span>
+conda create -p /opt/conda-envs/myenv
+
+conda activate /opt/conda-envs/myenv
 <span class="c1">## then use conda as usual</span>
 <span class="c1">#Close singularity</span>
 <span class="nb">exit</span>
@@ -254,6 +262,8 @@ conda activate /ext3/cenv
 </div>
 <div class="section" id="job-submission">
 <h2>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h2>
+<p>A smaple job script can look as follows. Note that all the commands to be
+executed within the container are part of the <code class="docutils literal notranslate"><span class="pre">/bin/bash</span> <span class="pre">-c</span> <span class="pre">&quot;&lt;commands</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">executed&gt;&quot;</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --mem=8GB</span>
 <span class="c1">#SBATCH --time=1:00:00</span>
@@ -264,8 +274,8 @@ conda activate /ext3/cenv
 singularity <span class="se">\</span>
     <span class="nb">exec</span> --overlay <span class="nv">$overlay_ext3</span>:ro <span class="se">\</span>
     /share/apps/dalma/singularity-images/centos-8.2.2004.sif  <span class="se">\</span>
-    /bin/bash -c <span class="s2">&quot;source /etc/miniconda3/bin/activate; \</span>
-<span class="s2">                conda activate /ext3/cenv; \</span>
+    /bin/bash -c <span class="s2">&quot;source ~/.bashrc; \</span>
+<span class="s2">                conda activate /opt/conda-envs/myenv; \</span>
 <span class="s2">                python &lt;path_to_python_script_file&gt;.py &quot;</span>
 </pre></div>
 </div>
