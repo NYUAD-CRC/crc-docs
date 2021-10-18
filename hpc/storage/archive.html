@@ -100,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="work.html">$WORK</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">$ARCHIVE</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#quick-glance-into-the-archive-commands">Quick Glance into the archive commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archive-sh">archive.sh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
@@ -225,7 +226,7 @@ will generate a lot of data.</p>
 <tbody>
 <tr class="row-even"><td><p>List the Files</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">&lt;path-to-archive&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">/achive/wz22</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">/archive/wz22</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Copy to Archive</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dmfput</span> <span class="pre">&lt;full-path-to-scracth&gt;</span> <span class="pre">&lt;full-path-to-archive&gt;</span></code></p></td>
@@ -244,6 +245,47 @@ will generate a lot of data.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The guide to long term storage (archive) can be downloaded from here: <a class="reference download internal" download="" href="../../_downloads/b61f6830f1758c147bb8a6e50165c14b/Dalma-Storage.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Dalma</span> <span class="pre">Storage</span></code></a></p>
+</div>
+</div>
+<div class="section" id="archive-sh">
+<h2>archive.sh<a class="headerlink" href="#archive-sh" title="Permalink to this headline">¶</a></h2>
+<p>We also have a script <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> which facilitates this process. The <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> takes one argumnet in the form
+of the path of the directory to be archived.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> does the follwoing:</p>
+<ol class="arabic simple">
+<li><p>Create a tar with the same name and the date appended.</p></li>
+<li><p>Archive the tar using dmfput.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#USAGE:</span>
+<span class="c1">#archive.sh &lt;Path-to-dir-to-be-archived&gt;</span>
+
+<span class="c1">#example</span>
+archive.sh /scratch/wz22/abc/def
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>This will create a tar in the directory <code class="docutils literal notranslate"><span class="pre">/scratch/wz22/abc</span></code> with the name <code class="docutils literal notranslate"><span class="pre">def-ddmmyyyy.tar.gz</span></code> where</dt><dd><p><code class="docutils literal notranslate"><span class="pre">ddmmyyyy</span></code> corresponds to date the script <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> was invoked.</p>
+</dd>
+</dl>
+</li>
+<li><p>Once the tar creation is done, the tar is archived using <code class="docutils literal notranslate"><span class="pre">dmpfput</span></code></p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you have a larger directory to be archived, you could use <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions to run the
+script in background. An example is given below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load screen
+screen -dm bash -c <span class="s2">&quot;archive.sh /scratch/wz22/abc/def 2&gt;&amp;1 | tee archive.log&quot;</span>
+</pre></div>
+</div>
+<p>The above command will initiate the <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> in a screen session which shall run in the
+background. It will also write the output to a file named <code class="docutils literal notranslate"><span class="pre">archived.log</span></code>.</p>
+<p>You could learn more about the <code class="docutils literal notranslate"><span class="pre">screen</span></code> commands using the link <a class="reference external" href="https://www.geeksforgeeks.org/screen-command-in-linux-with-examples/">here</a>
+or using the command below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>screen -h
+</pre></div>
+</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
