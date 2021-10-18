@@ -38,7 +38,7 @@ Quick Glance into the archive commands
       - Example
     * - List the Files 
       - ``dmfls <path-to-archive>`` 
-      - ``dmfls /achive/wz22``
+      - ``dmfls /archive/wz22``
     * - Copy to Archive
       - ``dmfput <full-path-to-scracth> <full-path-to-archive>``	
       - ``dmfput /scratch/wz22/abc/def /archive/wz22/.``
@@ -53,6 +53,49 @@ Quick Glance into the archive commands
 .. important::
     The guide to long term storage (archive) can be downloaded from here: :download:`Dalma Storage <../docs/Dalma-Storage.pdf>`
 
+
+archive.sh
+----------
+
+We also have a script ``archive.sh`` which facilitates this process. The ``archive.sh`` takes one argumnet in the form 
+of the path of the directory to be archived. 
+
+The ``archive.sh`` does the follwoing:
+1. Create a tar with the same name and the date appended.
+2. Archive the tar using dmfput.
+
+.. code-block:: bash
+
+    #USAGE:
+    #archive.sh <Path-to-dir-to-be-archived>
+
+    #example
+    archive.sh /scratch/wz22/abc/def
+
+* This will create a tar in the directory ``/scratch/wz22/abc`` with the name ``def-ddmmyyyy.tar.gz`` where
+    ``ddmmyyyy`` corresponds to date the script archive.sh was invoked.
+* Once the tar creation is done, the tar is archived using dmpfput
+
+.. tip::
+    If you have a larger directory to be archived, you could use ``screen`` sessions to run the 
+    script in background
+
+    .. code-block:: bash
+        
+        module load screen
+        screen -dm bash -c "archive.sh /scratch/wz22/abc/def 2>&1 | tee archive.log"
+
+    The above command will initiate the ``archive.sh`` in a screen session which shall run in the 
+    background. It will also write the output to a file named ``archived.log``.
+
+    You could learn more about the ``screen`` commands using the link `here <https://www.geeksforgeeks.org/screen-command-in-linux-with-examples/>`__
+    or using the commnd below:
+
+    .. code-block:: bash
+
+        screen -h  
+
+ 
 .. note::
     You can use the following command to list the contents of the folder not accessed for "N" number of days.
     
@@ -67,4 +110,3 @@ Quick Glance into the archive commands
     The archiving (``dmfput`` & ``dmfget``) might take some time for larger files. Hence It is 
     advisable to use ``screen`` sessions to run the same in the background.
 
-    
