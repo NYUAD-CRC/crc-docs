@@ -61,6 +61,7 @@ We also have a script ``archive.sh`` which facilitates this process. The ``archi
 of the path of the directory to be archived. 
 
 The ``archive.sh`` does the follwoing:
+
 1. Create a tar with the same name and the date appended.
 2. Archive the tar using dmfput.
 
@@ -73,12 +74,12 @@ The ``archive.sh`` does the follwoing:
     archive.sh /scratch/wz22/abc/def
 
 * This will create a tar in the directory ``/scratch/wz22/abc`` with the name ``def-ddmmyyyy.tar.gz`` where
-    ``ddmmyyyy`` corresponds to date the script archive.sh was invoked.
-* Once the tar creation is done, the tar is archived using dmpfput
+    ``ddmmyyyy`` corresponds to date the script ``archive.sh`` was invoked.
+* Once the tar creation is done, the tar is archived using ``dmpfput``
 
 .. tip::
     If you have a larger directory to be archived, you could use ``screen`` sessions to run the 
-    script in background
+    script in background. An example is given below:
 
     .. code-block:: bash
         
@@ -89,7 +90,7 @@ The ``archive.sh`` does the follwoing:
     background. It will also write the output to a file named ``archived.log``.
 
     You could learn more about the ``screen`` commands using the link `here <https://www.geeksforgeeks.org/screen-command-in-linux-with-examples/>`__
-    or using the commnd below:
+    or using the command below:
 
     .. code-block:: bash
 
