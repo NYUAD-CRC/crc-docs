@@ -124,6 +124,7 @@ Using docker and singularity images from existing container libraries
 
 	- Quay (Bioinformatics): https://quay.io/ or https://biocontainers.pro/#/registry
 	
+	
 2. Singularity Container Library
 
 	- Singularity Library: https://cloud.sylabs.io/library
@@ -151,7 +152,7 @@ You can also pull the images to a directory of your choosing (assuming you have 
 .. code-block:: bash
 
  	export SINGULARITY_CACHEDIR=$TMPDIR 
-  export SINGULARITY_TMPDIR=$TMPDIR
+ 	export SINGULARITY_TMPDIR=$TMPDIR
   
 .. note::
   While pulling the containers, pay attention to the home directory as the cached image blobs will be saved in ${HOME}/.singularity.
@@ -236,17 +237,40 @@ Singularity Containers from scratch
 	
 3. Build the container
 
-	- This will create a ``.sif`` file which is the container
+	**To build on the HPC**
+			If building on the HPC, you would need a definition file and 
+			access token obtained (onetime process) from `Singularity Container Services <https://cloud.sylabs.io/auth>`__ . We use the Singularity's remote builder for the same.
+			You can use the access token to remotely login to the singularity services before building the container as shown below:
+			
+			.. code-block:: bash
+			
+				[ziaw@login-0-3 ~]$ module load singularity
+				[ziaw@login-0-3 ~]$ singularity remote login
+				INFO:    Authenticating with default remote.
+				Generate an API Key at https://cloud.sylabs.io/auth/tokens, and paste here:
+				API Key: 
+
+			Once logged in, you can build the container using definition file with ``--remote`` option.
+			
+			.. code-block:: bash
+			
+				#singularity build --remote <name_of_the_container>.sif <definition_file.def>
+				#example:
+				singularity build --remote abc.sif exmple.def
+				
+				
+	**To build on local Desktop/Workstation**
 	
-	.. code-block:: bash
+	
+		.. code-block:: bash
+	
+			#If building with definition file (``example.def``)
+			#singularity build <name_you_want>.sif <definition_file.def> 	
+			singularity build mycontainer.sif example.def
 		
-		#If building with definition file (``example.def``)
-		#singularity build <name_you_want>.sif <definition_file.def> 	
-		singularity build mycontainer.sif example.def
-		
-		#If building with a sandbox
-		#singularity build <name_you_want>.sif <name_of_the_sandbox>
-		singularity build mycontainer.sif abc
+			#If building with a sandbox
+			#singularity build <name_you_want>.sif <name_of_the_sandbox>
+			singularity build mycontainer.sif abc
 		
 		
 		
