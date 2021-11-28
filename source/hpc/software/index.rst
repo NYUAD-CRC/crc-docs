@@ -33,7 +33,7 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/dalma_minic
 :doc:`TensorFlow </hpc/software/dalma_tensorflow>` and :doc:`PyTorch </hpc/software/dalma_pytorch>` in Dalma. Please refer to the highlighted sections for more details.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
 
    /hpc/software/dalma_miniconda
@@ -42,15 +42,27 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/dalma_minic
 
 .. tip::
     Know more about the GPU nodes available :doc:`here</hpc/system/gpu_nodes>`
+    
+    
+Singularity
+-----------
+
+.. toctree::
+   :maxdepth: 2
+   
+
+   /hpc/software/singularity
+   /hpc/software/singularity_commands
+   /hpc/software/singularity_conda
 
 Miscellaneous
 ----------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
 
    /hpc/software/r_dalma_miniconda
-   /hpc/software/singularity_conda
+   
    /hpc/software/dalma_jupyter
    

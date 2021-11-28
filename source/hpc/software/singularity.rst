@@ -158,6 +158,7 @@ You can also pull the images to a directory of your choosing (assuming you have 
   While pulling the containers, pay attention to the home directory as the cached image blobs will be saved in ${HOME}/.singularity.
   Since the home directory has a limited amount of space, this can fill up quite easily. Users can change where the files will be cached by setting SINGULARITY_CACHEDIR and SINGULARITY_TMPDIR environment variables.
   
+.. _create_singularity_containers:
   
 Creating Singularity containers
 -------------------------------
@@ -272,6 +273,12 @@ Singularity Containers from scratch
 			#singularity build <name_you_want>.sif <name_of_the_sandbox>
 			singularity build mycontainer.sif abc
 		
+Additional Documents
+--------------------
+
+- `Singularity Documentation <https://sylabs.io/guides/3.7/user-guide/index.html>`__
+- `Singularity Quick Start Guide <https://www.sylabs.io/guides/3.7/user-guide/quick_start.html>`__
+
 		
 		
 	
