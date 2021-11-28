@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Singularity Containers &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Singularity - How to Run on HPC" href="singularity_commands.html" />
+    <link rel="prev" title="TensorFlow (Keras) in Dalma" href="dalma_tensorflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#dalma-miniconda">Dalma Miniconda</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#singularity">Singularity</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Singularity Containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-a-container">What is a Container?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-containers-differ-from-virtual-machines-vms">How do containers differ from virtual machines (VMs)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#singularity">Singularity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#steps-to-use-a-container">Steps to use a Container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-docker-and-singularity-images-from-existing-container-libraries">Using docker and singularity images from existing container libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-singularity-containers">Creating Singularity containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#singularity-containers-from-scratch">Singularity Containers from scratch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-documents">Additional Documents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Software</a> &raquo;</li>
+        
+      <li>Singularity Containers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="singularity-containers">
+<h1>Singularity Containers<a class="headerlink" href="#singularity-containers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-container">
+<h2>What is a Container?<a class="headerlink" href="#what-is-a-container" title="Permalink to this headline">¶</a></h2>
+<p>A container allows you to stick an application and all of its dependencies into a single package. This makes your application portable, shareable, and reproducible.</p>
+<p>Containers foster portability and reproducibility because they package ALL of an applications dependencies, including its own tiny operating system!</p>
+<p>This means your application won’t break when you port it to a new environment. Your app brings its environment with it.</p>
+<p>Here are some examples of things you can do with containers:</p>
+<ul class="simple">
+<li><p>Package an analysis pipeline so that it runs on your laptop, in the cloud, and in a high performance computing (HPC) environment to produce the same result.</p></li>
+<li><p>Publish a paper and include a link to a container with all of the data and software that you used so that others can easily reproduce your results.</p></li>
+<li><p>Install and run an application that requires a complicated stack of dependencies with a few keystrokes.</p></li>
+<li><p>Create a pipeline or complex workflow where each individual program is meant to run on a different operating system.</p></li>
+</ul>
+</div>
+<div class="section" id="how-do-containers-differ-from-virtual-machines-vms">
+<h2>How do containers differ from virtual machines (VMs)<a class="headerlink" href="#how-do-containers-differ-from-virtual-machines-vms" title="Permalink to this headline">¶</a></h2>
+<p>Containers and VMs are both types of virtualization. But it’s important to understand the differences between the two and know when to use each.</p>
+<p>Virtual Machines install every last bit of an operating system (OS) right down to the core software that allows the OS to control the hardware (called the kernel). This means that VMs:
+* Are complete in the sense that you can use a VM to interact with your computer via a different OS.
+* Are extremely flexible. For instance you an install a Windows VM on a Mac using software like VirtualBox.
+* Are slow and resource hungry. Every time you start a VM it has to bring up an entirely new OS.</p>
+<p>Containers share a kernel with the host OS. This means that Containers:
+* Are less flexible than VMs. For example, a Linux container must be run on a Linux host OS. (Although you can mix and match distributions.) In practice, containers are only extensively developed on Linux.
+* Are much faster and lighter weight than VMs. A container may be just a few MB.
+* Start and stop quickly and are suitable for running single apps.</p>
+<p>Because of their differences, VMs and containers serve different purposes and should be favoured under different circumstances.</p>
+<ul class="simple">
+<li><p>VMs are good for long running interactive sessions where you may want to use several different applications. (Checking email on Outlook and using Microsoft Word and Excel).</p></li>
+<li><p>Containers are better suited to running one or two applications, often non-interactively, in their own custom environments.</p></li>
+</ul>
+</div>
+<div class="section" id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.docker.com/">Docker</a> is currently the most widely used container software. It has several strengths and weaknesses that make it a good choice for some projects but not for others.</p>
+<p><strong>Philosophy</strong></p>
+<p>Docker is built for running multiple containers on a single system and it allows containers to share common software features for efficiency. It also seeks to fully isolate each container from all other containers and from the host system.</p>
+<p>Docker assumes that you will be a root user. Or that it will be OK for you to elevate your privileges if you are not a root user. See <a class="reference external" href="https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface">https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface</a> for details.</p>
+<p><strong>Strengths</strong></p>
+<ul class="simple">
+<li><p>Mature software with a large user community</p></li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://hub.docker.com/">Docker Hub</a></dt><dd><ul>
+<li><p>A place to build and host your containers</p></li>
+<li><p>Fully integrated into core Docker</p></li>
+<li><p>Over 100,000 pre-built containers</p></li>
+<li><p>Provides an ecosystem for container orchestration</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Rich feature set</p></li>
+</ul>
+<p><strong>Weaknesses</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Difficult to learn</dt><dd><ul>
+<li><p>Hidden innards</p></li>
+<li><p>Complex container model (layers)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Not architected with security in mind</p></li>
+<li><p>Not built for HPC (but good for cloud)</p></li>
+</ul>
+<p>Docker shines for DevOPs teams providing cloud-native micro-services to users.</p>
+</div>
+<div class="section" id="singularity">
+<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://singularity.lbl.gov/">Singularity</a> is a relatively new container software invented by Greg Kurtzer while at Lawrence Berkley National labs and now developed by his company <a class="reference external" href="https://sylabs.io">Sylabs</a>.  It was developed with security, scientific software, and HPC systems in mind.</p>
+<p><strong>Philosophy</strong></p>
+<p>Singularity assumes (<a class="reference external" href="http://containers-ftw.org/SCI-F/">more or less</a>) that each application will have its own container.  It does not seek to fully isolate containers from one another or the host system.
+Singularity assumes that you will have a build system where you are the root user, but that you will also have a production system where you may or may not be the root user.</p>
+<p><strong>Strengths</strong></p>
+<ul class="simple">
+<li><p>Easy to learn and use (relatively speaking)</p></li>
+<li><p>Approved for HPC (<a class="reference external" href="https://singularity.hpcng.org/">installed on some of the biggest HPC systems in the world</a>)</p></li>
+<li><p>Can convert Docker containers to Singularity and run containers directly from Docker Hub</p></li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://cloud.sylabs.io/home">Singularity Container Services</a></dt><dd><ul>
+<li><p>A place to build and share your containers securely</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Weaknesses</strong></p>
+<ul class="simple">
+<li><p>Younger and less mature than Docker</p></li>
+<li><p>Smaller user community (as of now)</p></li>
+<li><p>Under active development (must keep up with new changes)</p></li>
+</ul>
+<p>Singularity shines for scientific software running in an HPC environent.</p>
+</div>
+<div class="section" id="steps-to-use-a-container">
+<h2>Steps to use a Container<a class="headerlink" href="#steps-to-use-a-container" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>create or pull an existing container</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Singularity containers are identified with an extension <code class="docutils literal notranslate"><span class="pre">example.sif</span></code></p></li>
+<li><p>Singularity containers are created from definition files whose extension is <code class="docutils literal notranslate"><span class="pre">example.def</span></code></p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">pull</span></code> to get an existing container from one of the hubs available.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Launch the container</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Run the container using <a class="reference external" href="https://sylabs.io/guides/3.1/user-guide/cli/singularity_shell.html">singularity shell</a> or <a class="reference external" href="https://sylabs.io/guides/3.5/user-guide/cli/singularity_exec.html">singularity exec</a> or launch it simply like an executable (<code class="docutils literal notranslate"><span class="pre">./example.sif</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="using-docker-and-singularity-images-from-existing-container-libraries">
+<h2>Using docker and singularity images from existing container libraries<a class="headerlink" href="#using-docker-and-singularity-images-from-existing-container-libraries" title="Permalink to this headline">¶</a></h2>
+<p><strong>List of useful container libraries</strong></p>
+<ol class="arabic">
+<li><p>Docker Based Container Libraries</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Docker Hub: <a class="reference external" href="https://hub.docker.com/">https://hub.docker.com/</a></p></li>
+<li><p>Nvidia GPU-Accelerated Containers (NGC): <a class="reference external" href="https://ngc.nvidia.com/">https://ngc.nvidia.com/</a></p></li>
+<li><p>Quay (Bioinformatics): <a class="reference external" href="https://quay.io/">https://quay.io/</a> or <a class="reference external" href="https://biocontainers.pro/#/registry">https://biocontainers.pro/#/registry</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Singularity Container Library</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Singularity Library: <a class="reference external" href="https://cloud.sylabs.io/library">https://cloud.sylabs.io/library</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>Example Usage</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the singularity container</span>
+module load singularity
+
+<span class="c1"># pull the docker/singularity image from hub</span>
+<span class="c1"># pulls the latest GCC container and saves in current working directory</span>
+singularity pull docker://gcc
+</pre></div>
+</div>
+<p>If you prefer to pull a specific GCC version, look at the <a class="reference external" href="https://hub.docker.com/r/library/gcc/tags/">available tags</a> for the specific container and append the tag version to the end of the container name. For example, if you need to pull the <code class="docutils literal notranslate"><span class="pre">GCC</span> <span class="pre">v</span> <span class="pre">5.3.0</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity pull docker://gcc:8.3.0
+</pre></div>
+</div>
+<p>You can also pull the images to a directory of your choosing (assuming you have write permission) by setting the variables <code class="docutils literal notranslate"><span class="pre">SINGULARITY_CACHEDIR</span></code> and <code class="docutils literal notranslate"><span class="pre">SINGULARITY_TMPDIR</span></code>. For instance,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SINGULARITY_CACHEDIR</span><span class="o">=</span><span class="nv">$TMPDIR</span>
+<span class="nb">export</span> <span class="nv">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="nv">$TMPDIR</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While pulling the containers, pay attention to the home directory as the cached image blobs will be saved in ${HOME}/.singularity.
+Since the home directory has a limited amount of space, this can fill up quite easily. Users can change where the files will be cached by setting SINGULARITY_CACHEDIR and SINGULARITY_TMPDIR environment variables.</p>
+</div>
+</div>
+<div class="section" id="creating-singularity-containers">
+<span id="create-singularity-containers"></span><h2>Creating Singularity containers<a class="headerlink" href="#creating-singularity-containers" title="Permalink to this headline">¶</a></h2>
+<p>To use Singularity on the HPC, you either need to create your own Singularity container, or use one created by someone else.You have several options to build Singularity containers:</p>
+<ul class="simple">
+<li><p>You can build small and medium sized containers on HPC using the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option. In a nutshell, you must log in and generate a token on the <a class="reference external" href="https://cloud.sylabs.io/auth">Singularity Container Services</a> and use the command line to copy that token into your environment (using the command <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">remote</span> <span class="pre">login</span></code>). Once you’ve done that, the <code class="docutils literal notranslate"><span class="pre">--remote</span> <span class="pre">option</span></code> will allow you to build containers using the Sylabs remote builder.</p></li>
+<li><p>If you have a Linux system to which you have root (admin) access, you can install Singularity and build your Singularity container there.</p></li>
+<li><p>If you have a very recent Linux system (like Ubuntu &gt;=18) you can build Singularity containers without root access using the <a class="reference external" href="https://sylabs.io/guides/3.4/user-guide/fakeroot.html#build">–fakeroot option</a>.</p></li>
+<li><p>If you don’t have a Linux system you could easily install one in a virtual machine using software like <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a>, <a class="reference external" href="https://www.vagrantup.com/">Vagrant</a>, <a class="reference external" href="http://www.vmware.com/">VMware</a>, or <a class="reference external" href="http://www.parallels.com/">Parallels</a>. (If you use a virtual machine be sure to allocate at least 2GB of memory or some of your builds may fail with out of memory errors.)</p></li>
+<li><p>You can allocate a cloud instance, to which you will have root access. Install Singularity and build your Singularity container there.</p></li>
+</ul>
+<p>You can find information about installing Singularity on Linux <a class="reference external" href="https://sylabs.io/guides/latest/user-guide/quick_start.html#quick-installation-steps">here</a>.</p>
+<p>In addition to your own Linux environment, you will also need a definition file to build a Singularity container from scratch. You can find some simple definition files for a variety of Linux distributions in the <a class="reference external" href="https://github.com/hpcng/singularity/tree/master/examples">example</a> directory of the source code. Detailed documentation about building Singularity container images is available at the <a class="reference external" href="https://sylabs.io/guides/latest/user-guide/">Singularity website</a>.</p>
+</div>
+<div class="section" id="singularity-containers-from-scratch">
+<h2>Singularity Containers from scratch<a class="headerlink" href="#singularity-containers-from-scratch" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Create a definition file (<code class="docutils literal notranslate"><span class="pre">example.def</span></code>)</p>
+<blockquote>
+<div><p>Detailed documentation for a Singularity definition file is <a class="reference external" href="https://sylabs.io/guides/3.3/user-guide/definition_files.html">here</a>. But below is a simple example to get you started.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: docker
+
+
+From: continuumio/miniconda3
+
+
+
+%labels
+
+maintainer <span class="s2">&quot;Name&quot;</span> &lt;email address&gt;
+
+
+
+%post
+
+apt-get update <span class="o">&amp;&amp;</span> apt-get install -y git
+
+<span class="c1"># Conda install stringtie</span>
+
+conda install -c bioconda stringtie
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The header includes the Bootstrap and the label of the container.</p></li>
+<li><p>Most of the definition files use docker as their bootstrap as docker library is more robust and well maintained.</p></li>
+<li><p>This is using an existing docker image for miniconda (Python 3) available from <a class="reference external" href="https://hub.docker.com/r/continuumio/miniconda3">https://hub.docker.com/r/continuumio/miniconda3</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%post</span></code> section is any modifications or additions the user can make to the original container - in this case we are adding stringtie package to the container.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>2. Once you have the definition file ready, You can build the sandox (writable directory), where you can log in and install anything inside the sandbox. Note that this requires sudo/root privileges.
+<strong>If you do not have sudo/root privileges, please proceed to step number 3 or use a machine where you have the sudo or root privileges.</strong></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the singularity module</span>
+module load singularity
+
+<span class="c1">#singularity build --sandbox &lt;name_you_want&gt; &lt;definition_file.def&gt;</span>
+<span class="c1">#example</span>
+singularity build --sandbox abc example.def
+</pre></div>
+</div>
+<p>This will create a sandbox (writable directory) where you can log in and install anything you want after you <code class="docutils literal notranslate"><span class="pre">shell</span></code> into the sandox. Note that this requires root/sudo privileges.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#singularity shell -w &lt;name_of_the_sanbox&gt;</span>
+singularity shell -w abc
+</pre></div>
+</div>
+<p>Once you have installed the required packages into the sandox, you can exit and build the container by following the next step.</p>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>Build the container</p>
+<blockquote>
+<div><dl>
+<dt><strong>To build on the HPC</strong></dt><dd><p>If building on the HPC, you would need a definition file and
+access token obtained (onetime process) from <a class="reference external" href="https://cloud.sylabs.io/auth">Singularity Container Services</a> . We use the Singularity’s remote builder for the same.
+You can use the access token to remotely login to the singularity services before building the container as shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>ziaw@login-0-3 ~<span class="o">]</span>$ module load singularity
+<span class="o">[</span>ziaw@login-0-3 ~<span class="o">]</span>$ singularity remote login
+INFO:    Authenticating with default remote.
+Generate an API Key at https://cloud.sylabs.io/auth/tokens, and paste here:
+API Key:
+</pre></div>
+</div>
+<p>Once logged in, you can build the container using definition file with <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#singularity build --remote &lt;name_of_the_container&gt;.sif &lt;definition_file.def&gt;</span>
+<span class="c1">#example:</span>
+singularity build --remote abc.sif exmple.def
+</pre></div>
+</div>
+</dd>
+</dl>
+<p><strong>To build on local Desktop/Workstation</strong></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#If building with definition file (``example.def``)</span>
+<span class="c1">#singularity build &lt;name_you_want&gt;.sif &lt;definition_file.def&gt;</span>
+singularity build mycontainer.sif example.def
+
+<span class="c1">#If building with a sandbox</span>
+<span class="c1">#singularity build &lt;name_you_want&gt;.sif &lt;name_of_the_sandbox&gt;</span>
+singularity build mycontainer.sif abc
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="additional-documents">
+<h2>Additional Documents<a class="headerlink" href="#additional-documents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sylabs.io/guides/3.7/user-guide/index.html">Singularity Documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.sylabs.io/guides/3.7/user-guide/quick_start.html">Singularity Quick Start Guide</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="singularity_commands.html" class="btn btn-neutral float-right" title="Singularity - How to Run on HPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dalma_tensorflow.html" class="btn btn-neutral float-left" title="TensorFlow (Keras) in Dalma" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

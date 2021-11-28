@@ -107,9 +107,14 @@
 <li class="toctree-l3"><a class="reference internal" href="dalma_tensorflow.html">TensorFlow (Keras) in Dalma</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#singularity">Singularity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="singularity.html">Singularity Containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="r_dalma_miniconda.html">R in Dalma Miniconda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dalma_jupyter.html">Jupyter Notebook in Dalma</a></li>
 </ul>
 </li>
@@ -225,9 +230,24 @@ your computations. Follow the corresponding highlighted links for a much more de
 <a class="reference internal" href="dalma_tensorflow.html"><span class="doc">TensorFlow</span></a> and <a class="reference internal" href="dalma_pytorch.html"><span class="doc">PyTorch</span></a> in Dalma. Please refer to the highlighted sections for more details.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dalma_miniconda.html">Miniconda in Dalma</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dalma_pytorch.html">PyTorch in Dalma</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dalma_tensorflow.html">TensorFlow (Keras) in Dalma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalma_miniconda.html">Miniconda in Dalma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dalma_miniconda.html#one-time-set-up">One Time Set up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dalma_miniconda.html#application-installation">Application Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dalma_miniconda.html#managing-environments">Managing Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dalma_miniconda.html#migrating-sharing-environment">Migrating / Sharing Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dalma_miniconda.html#submitting-job-scripts">Submitting Job Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dalma_pytorch.html">PyTorch in Dalma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dalma_pytorch.html#how-to-clone-the-pytorch-environment">How to clone the <strong>PyTorch</strong> environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dalma_pytorch.html#submitting-job-scripts">Submitting Job Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dalma_tensorflow.html">TensorFlow (Keras) in Dalma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dalma_tensorflow.html#how-to-clone-the-tensorflow-environment">How to clone the TensorFlow environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dalma_tensorflow.html#submitting-job-scripts">Submitting Job Scripts</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="admonition tip">
@@ -235,13 +255,58 @@ your computations. Follow the corresponding highlighted links for a much more de
 <p>Know more about the GPU nodes available <a class="reference internal" href="../system/gpu_nodes.html"><span class="doc">here</span></a></p>
 </div>
 </div>
+<div class="section" id="singularity">
+<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="singularity.html">Singularity Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#what-is-a-container">What is a Container?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#how-do-containers-differ-from-virtual-machines-vms">How do containers differ from virtual machines (VMs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#docker">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#singularity">Singularity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#steps-to-use-a-container">Steps to use a Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#using-docker-and-singularity-images-from-existing-container-libraries">Using docker and singularity images from existing container libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#creating-singularity-containers">Creating Singularity containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#singularity-containers-from-scratch">Singularity Containers from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#additional-documents">Additional Documents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#commands-at-a-glance">Commands at a glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#interact-with-container">Interact With Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#files-in-a-container">Files in a container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#gpu-in-a-container">GPU in a container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#sample-job-script">Sample job script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#build-and-modify-your-own-containers">Build and Modify your own containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#additional-documents">Additional Documents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#choose-and-copy-ext3-file">Choose and copy ext3 file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#run-container-with-overlay-filesystem">Run container with overlay filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#write-to-overlay-filesystem">Write to overlay filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#while-in-container">While in container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#job-submission">Job Submission</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="miscellaneous">
 <h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="r_dalma_miniconda.html">R in Dalma Miniconda</a></li>
-<li class="toctree-l1"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dalma_jupyter.html">Jupyter Notebook in Dalma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r_dalma_miniconda.html">R in Dalma Miniconda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r_dalma_miniconda.html#how-to-clone-the-r-environment">How to clone the R environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_dalma_miniconda.html#finding-the-conda-complementary-packages-tidyverse-rstan-etc">Finding the Conda complementary packages (Tidyverse, Rstan etc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_dalma_miniconda.html#how-to-install-the-conda-complementary-packages">How to install the Conda complementary packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_dalma_miniconda.html#submitting-job-scripts">Submitting Job Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dalma_jupyter.html">Jupyter Notebook in Dalma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dalma_jupyter.html#step-by-step-guide">Step-by-step guide</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
