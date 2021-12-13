@@ -10,6 +10,14 @@ On HPC, you don't run it directly on the login nodes. Instead, you submit jobs o
 
 For Special Compute Nodes (GPU  and Visualization), please refer to the section :ref:`here <special_compute_nodes>`.
 
+Quick Start Guide
+-----------------
+.. toctree::
+   :maxdepth: 2
+      
+   /hpc/jobs/quick_start
+
+
 .. important::
     If you have a job with independent computations, then 
     :doc:`Job arrays </hpc/jobs/job_array>` and :doc:`Parallel Job Array </hpc/jobs/parallel_job_array>`  

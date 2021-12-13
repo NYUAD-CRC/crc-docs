@@ -1,7 +1,7 @@
 Batch Job
 =========
 
-Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used. 
+Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used. You could also visit the quick intro guide :doc:`here <quick_start>`
 
 A complete batch job workflow:
 
@@ -21,12 +21,20 @@ A job script is a text file describing the job. As discussed, the first part tel
 
     The cluster is shared among the whole university. The HPC steering committee decides each year on resources limit for each department. We at NYUAD HPC center implement these limits.
 
-**Typically, a user can ask for 48 hours, 700 CPU cores maximum per job.**
+**Kindly refer to the following :ref:`section <partitions_summary>` to know more about partitions and limits**
 
 
 If you ask for more resources than you can use, your job will stay in the queue forever. (e.g., you specify 10000 hours walltime in your job script)
 
 If you have multiple jobs (which is very normal), your jobs will start either immediately if the system is free and the quotas for you and your department have not been exhausted.
+
+.. admonition:: Difference between CPUs,Cores and Tasks
+
+	- On Jubail HPC, One CPU is equivalent to one Core. 
+	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
+	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
+	- By Default, Each task is equivalent to one CPU.
+	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple the multiple of ``-n`` and ``-c``.
 
 A Job with 1 CPU Core
 ---------------------
@@ -121,8 +129,8 @@ Now comes the pure MPI Jobs.
 
     #!/bin/bash
     # Set number of tasks to run
-    # This number should be divisible by 28. E.g., 56, 84, 112...
-    #SBATCH --ntasks=56
+    # This number should be divisible by 128. E.g., 128,256...
+    #SBATCH --ntasks=256
     # Walltime format hh:mm:ss
     #SBATCH --time=00:30:00
     # Output and error files
@@ -142,7 +150,7 @@ Now comes the pure MPI Jobs.
 
 Comparing to the 1 core example, there are 2 different lines:
 
-1. ``#SBATCH --ntasks=56``: This line requests 56 cores. **This number should be divisible by 28. E.g., 56, 84, 112...**
+1. ``#SBATCH --ntasks=128``: This line requests 128 cores. **This number should be divisible by 128. E.g., 128,256...**
 2. ``srun hostname``: This tells your application to run with MPI support, utilizing all CPU cores requested. 
 
 The old school ``mpiexec`` or ``mpirun`` are supported as well. But you need to load ``openmpi`` module in this case.
