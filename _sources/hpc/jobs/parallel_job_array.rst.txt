@@ -111,7 +111,7 @@ The tool also support OpenMP jobs, so you can set the number of threads before l
 
 .. code-block::bash
     $> #export the required number of threads
-    $> #in the current environement
+    $> #in the current environment
     $> #before submitting the jobs
     $> 
     $> #For example
@@ -190,7 +190,6 @@ such limits.
 
     $> cat ja.sh
     #!/bin/bash
-    #SBATCH -p serial
     #SBATCH -n 1
     #SBATCH -a 1-100
     sleep 5

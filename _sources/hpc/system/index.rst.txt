@@ -103,12 +103,31 @@ If you use Windows or outside NYU AD/NY network, follow the instructions here: :
 
    /hpc/system/access_dalma
 
+Whenever you login, you land up on the login node which is shown on left most section of
+your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
+
+
+
+.. code-block:: bash
+
+  Last login: Fri Dec 17 04:07:47 2021 from hpc.abudhabi.nyu.edu
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Welcome to Jubail!
+
+  For documentation & examples: https://crc-docs.abudhabi.nyu.edu
+  For support: nyuad.it.help@nyu.edu
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  [wz22@login-0-2 ~]$
+
+.. warning::
+    Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 .. _data_transfers:
 
 Data Transfers
 --------------
 
-You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to Dalma: 
+You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to Dalma.
+Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and fro on Dalma.
 
 .. toctree::
    :maxdepth: 1

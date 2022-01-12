@@ -197,6 +197,11 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.</p></li>
 </ul>
 <p>Backing up is a user’s own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Running jobs from <code class="docutils literal notranslate"><span class="pre">/home</span></code> is a <strong>serious violation</strong> of HPC policy. Any users who intentionally violate this policy will get their account suspended.
+<code class="docutils literal notranslate"><span class="pre">$HOME</span></code> SSDs are not designed for scratch disks, it will kill the SSDs quickly.</p>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
@@ -288,7 +293,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Interactive Sessions" href="interactive.html" />
-    <link rel="prev" title="Jobs Management" href="index.html" /> 
+    <link rel="prev" title="Quick Intro to Job Submission" href="quick_start.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Batch Job</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#batch-job-script">Batch Job Script</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#a-job-with-1-cpu-core">A Job with 1 CPU Core</a></li>
@@ -200,7 +201,7 @@
             
   <div class="section" id="batch-job">
 <h1>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this headline">¶</a></h1>
-<p>Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used.</p>
+<p>Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used. You could also visit the quick intro guide <a class="reference internal" href="quick_start.html"><span class="doc">here</span></a></p>
 <p>A complete batch job workflow:</p>
 <ol class="arabic simple">
 <li><dl class="simple">
@@ -222,9 +223,19 @@
 <p class="admonition-title">Resources Limit</p>
 <p>The cluster is shared among the whole university. The HPC steering committee decides each year on resources limit for each department. We at NYUAD HPC center implement these limits.</p>
 </div>
-<p><strong>Typically, a user can ask for 48 hours, 700 CPU cores maximum per job.</strong></p>
+<p><strong>Kindly refer to the following :ref:`section &lt;partitions_summary&gt;` to know more about partitions and limits</strong></p>
 <p>If you ask for more resources than you can use, your job will stay in the queue forever. (e.g., you specify 10000 hours walltime in your job script)</p>
 <p>If you have multiple jobs (which is very normal), your jobs will start either immediately if the system is free and the quotas for you and your department have not been exhausted.</p>
+<div class="admonition-difference-between-cpus-cores-and-tasks admonition">
+<p class="admonition-title">Difference between CPUs,Cores and Tasks</p>
+<ul class="simple">
+<li><p>On Jubail HPC, One CPU is equivalent to one Core.</p></li>
+<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--natsks</span></code>.</p></li>
+<li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
+<li><p>By Default, Each task is equivalent to one CPU.</p></li>
+<li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the CPUs allocated to you would be the multiple the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="a-job-with-1-cpu-core">
 <h2>A Job with 1 CPU Core<a class="headerlink" href="#a-job-with-1-cpu-core" title="Permalink to this headline">¶</a></h2>
@@ -308,8 +319,8 @@ hostname
 <p>Now comes the pure MPI Jobs.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># Set number of tasks to run</span>
-<span class="c1"># This number should be divisible by 28. E.g., 56, 84, 112...</span>
-<span class="c1">#SBATCH --ntasks=56</span>
+<span class="c1"># This number should be divisible by 128. E.g., 128,256...</span>
+<span class="c1">#SBATCH --ntasks=256</span>
 <span class="c1"># Walltime format hh:mm:ss</span>
 <span class="c1">#SBATCH --time=00:30:00</span>
 <span class="c1"># Output and error files</span>
@@ -330,7 +341,7 @@ srun hostname
 </div>
 <p>Comparing to the 1 core example, there are 2 different lines:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=56</span></code>: This line requests 56 cores. <strong>This number should be divisible by 28. E.g., 56, 84, 112…</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=128</span></code>: This line requests 128 cores. <strong>This number should be divisible by 128. E.g., 128,256…</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">hostname</span></code>: This tells your application to run with MPI support, utilizing all CPU cores requested.</p></li>
 </ol>
 <p>The old school <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> or <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> are supported as well. But you need to load <code class="docutils literal notranslate"><span class="pre">openmpi</span></code> module in this case.</p>
@@ -378,14 +389,14 @@ srun hostname
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="interactive.html" class="btn btn-neutral float-right" title="Interactive Sessions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Jobs Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="Quick Intro to Job Submission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

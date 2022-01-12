@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
@@ -212,18 +213,20 @@
 <div class="section" id="slurm-partitions">
 <h2>SLURM: Partitions<a class="headerlink" href="#slurm-partitions" title="Permalink to this headline">¶</a></h2>
 <p>A partition is a collection of nodes, they may share some attributes (CPU type, GPU, etc)</p>
-<ul class="simple">
+<ul>
 <li><p>Compute nodes may belong to multiple partitions to ensure maximum use of the system</p></li>
 <li><p>Partitions may have different priorities and limits of execution and may limit who can use them</p></li>
-<li><dl class="simple">
-<dt>Dalma’s partition (as seen by users)</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">serial</span></code>    : Run single core and multi-threaded jobs (eg single node)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">parallel</span></code>  : Run MPI jobs (eg multi-node)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bigmem</span></code>   : Run jobs on large memory systems only</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">visual</span></code>   : Run jobs on systems with a graphics card only</p></li>
+<li><p>Dalma’s partition (as seen by users)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">compute</span></code>: General purpose partition for all the normal runs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nvidia</span></code> : Partition of GPU jobs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bigmem</span></code> : Partition for large memory jobs. Only jobs requesting more than 500GB will fall into this category.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prempt</span></code> : Supports all types of jobs with a grace period of 30 minutes. More on this <a class="reference internal" href="quick_start.html#preempt-partition"><span class="std std-ref">here</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xxl</span></code>    : Special partition for grand challenge applications. Requires approval from management.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">visual</span></code> : We have a few nodes which give you the liberty of running applications with GUI.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 <li><p>There are other partitions, but these are reserved for specific groups and research projects</p></li>
 <li><p>For those who are experts in SLURM we use partitions to request GPUs, large memory, and visual instead of “constraints” as this approach gives us more flexibility for priorities and resource limits.</p></li>
@@ -235,7 +238,6 @@
 <li><p>To submit a job first you write a “job script”</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH –p serial</span>
 <span class="c1">#SBATCH –n 1</span>
 ./myprogram
 </pre></div>
@@ -250,7 +252,6 @@ $&gt; sbatch &lt; job.sh
 <span class="c1">#OR</span>
 $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <span class="s">#!/bin/bash</span>
-<span class="s">#SBATCH –p serial</span>
 <span class="s">#SBATCH –n 1</span>
 <span class="s">./myprogram</span>
 <span class="s">EOF</span>
@@ -267,7 +268,6 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <li><p>Putting them in the job script is a better option as then it “documents” how to rerun your job</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH –p serial</span>
 <span class="c1">#SBATCH –n 1</span>
 ./myprogram
 </pre></div>
@@ -280,13 +280,12 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 ./myprogram
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch –p serial –n <span class="m">1</span> job2.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch –p preempt –n <span class="m">1</span> job2.sh
 </pre></div>
 </div>
 <p><strong>Common Job submission arguments:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>   Select number of tasks to run (default 1 core per task)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-C</span></code>   Select required system feature (eg avx2, sse, gpu)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code>   Select number of nodes on which to run</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>   Wallclock in hours:minutes:seconds (ex 4:00:00)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>   Select partition (serial, parallel, gpu, bigmem)</p></li>
@@ -336,20 +335,20 @@ sbatch --depend<span class="o">=</span>afternotok:123 my.job
 * As well as how long a job has been running and on which node(s)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; squeue
 JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-435251_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   ser_std     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-435252_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   ser_std     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-<span class="m">435294</span>          ser_std     Merge5.s u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-435235_<span class="o">[</span><span class="m">20</span>-50<span class="o">]</span>  ser_std     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-435235_19       ser_std     151215_F u123    R   <span class="m">12</span>:55     <span class="m">1</span>        compute-21-8
-435235_17       ser_std     151215_F u123    R   <span class="m">47</span>:34     <span class="m">1</span>        compute-21-12
-435235_15       ser_std     151215_F u123    R   <span class="m">49</span>:04     <span class="m">1</span>        compute-21-7
-435235_13       ser_std     151215_F u123    R   <span class="m">50</span>:34     <span class="m">1</span>        compute-21-4
-435235_11       ser_std     151215_F u123    R   <span class="m">54</span>:35     <span class="m">1</span>        compute-21-9
-435235_9        ser_std     151215_F u123    R   <span class="m">56</span>:35     <span class="m">1</span>        compute-21-6
-435235_7        ser_std     151215_F u123    R   <span class="m">58</span>:35     <span class="m">1</span>        compute-21-5
-435235_5        ser_std     151215_F u123    R   <span class="m">59</span>:36     <span class="m">1</span>        compute-21-1
-435235_3        ser_std     151215_F u123    R   <span class="m">1</span>:00:36   <span class="m">1</span>        compute-21-11
-435235_1        ser_std     151215_F u123    R   <span class="m">1</span>:04:37   <span class="m">1</span>        compute-21-3
+435251_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435252_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+<span class="m">435294</span>          compute     Merge5.s u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435235_<span class="o">[</span><span class="m">20</span>-50<span class="o">]</span>  compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435235_19       compute     151215_F u123    R   <span class="m">12</span>:55     <span class="m">1</span>        compute-21-8
+435235_17       compute     151215_F u123    R   <span class="m">47</span>:34     <span class="m">1</span>        compute-21-12
+435235_15       compute     151215_F u123    R   <span class="m">49</span>:04     <span class="m">1</span>        compute-21-7
+435235_13       compute     151215_F u123    R   <span class="m">50</span>:34     <span class="m">1</span>        compute-21-4
+435235_11       compute     151215_F u123    R   <span class="m">54</span>:35     <span class="m">1</span>        compute-21-9
+435235_9        compute     151215_F u123    R   <span class="m">56</span>:35     <span class="m">1</span>        compute-21-6
+435235_7        compute     151215_F u123    R   <span class="m">58</span>:35     <span class="m">1</span>        compute-21-5
+435235_5        compute     151215_F u123    R   <span class="m">59</span>:36     <span class="m">1</span>        compute-21-1
+435235_3        compute     151215_F u123    R   <span class="m">1</span>:00:36   <span class="m">1</span>        compute-21-11
+435235_1        compute     151215_F u123    R   <span class="m">1</span>:04:37   <span class="m">1</span>        compute-21-3
 </pre></div>
 </div>
 </div>
@@ -425,9 +424,9 @@ $&gt; tail –f slurm-435563.out
 uses 1 core. But this can be redefined by users using the “-c” option.</p>
 <p>For example <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is requesting 2 cores, while <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–c</span> <span class="pre">3</span></code> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is
 requesting 6 cores.</p>
-<p>On Dalma/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
+<p>On Jubail/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
 eg no other jobs may run on nodes allocated for running parallel jobs.</p>
-<p>When submitting parallel jobs on Dalma you need not specify the number of nodes. The
+<p>When submitting parallel jobs on Jubail you need not specify the number of nodes. The
 number of tasks and cpus-per-task is sufficient for SLURM to determine how many nodes to
 reserve.</p>
 </div>
@@ -443,10 +442,10 @@ may have several associations. Moreover, accounts are hierarchical. For example,
 “physics” maybe be a sub-account of “faculty”, which may be a sub-account of “institute”, etc.
 When submitting jobs users with multiple associations must explicitely list the account, qos,
 partition details they wish to use.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p serial –a physics –q normal –u benoit job
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p preempt –a physics -u ziaw job
 </pre></div>
 </div>
-<p>Dalma specific job submission tools extend SLURM’s associations to define a <code class="docutils literal notranslate"><span class="pre">default</span></code>
+<p>Jubail specific job submission tools extend SLURM’s associations to define a <code class="docutils literal notranslate"><span class="pre">default</span></code>
 association. So you only need to specify accounts is, for example, you belong to multiple
 accounts – ex faculty and research-lab – and you want to execute using your non-default
 account. So at most you’ll need to specify:</p>
@@ -482,8 +481,8 @@ the following Dalma specific tool:</p>
 </div>
 <p><strong>In this output we see:</strong></p>
 <ul class="simple">
-<li><p>user <code class="docutils literal notranslate"><span class="pre">benoit</span></code> can submit up to 200 jobs on <code class="docutils literal notranslate"><span class="pre">par_std</span></code> (parallel) partition, but have at most 100 jobs running consuming a maximum of 700 cores total where each jobs is limited to a maximum of 200 cores for 12 hours</p></li>
-<li><p>user <code class="docutils literal notranslate"><span class="pre">benoit</span></code> can submit up to 200 jobs on <code class="docutils literal notranslate"><span class="pre">ser_std</span></code> (serial) partition, with at most 100 jobs running using a total of up to 200 cores for up to 48 hours</p></li>
+<li><p>user <code class="docutils literal notranslate"><span class="pre">ziaw</span></code> can submit up to 200 jobs on <code class="docutils literal notranslate"><span class="pre">par_std</span></code> (parallel) partition, but have at most 100 jobs running consuming a maximum of 700 cores total where each jobs is limited to a maximum of 200 cores for 12 hours</p></li>
+<li><p>user <code class="docutils literal notranslate"><span class="pre">ziaw</span></code> can submit up to 200 jobs on <code class="docutils literal notranslate"><span class="pre">ser_std</span></code> (serial) partition, with at most 100 jobs running using a total of up to 200 cores for up to 48 hours</p></li>
 <li><p>account <code class="docutils literal notranslate"><span class="pre">avengers_par</span></code> is shared with other users and together they have a limit of 2000 cores, 200 jobs queued, and 100 jobs running (eg the sum of all cores used by running jobs using account <code class="docutils literal notranslate"><span class="pre">avengers_par</span></code> can’t exceed 2000 cores)</p></li>
 <li><p>account <code class="docutils literal notranslate"><span class="pre">avengers_par</span></code> is shared with other users and together they have a limit of 200 jobs queued, and 100 jobs running</p></li>
 <li><p>account <code class="docutils literal notranslate"><span class="pre">avengers</span></code> is a sub-account of <code class="docutils literal notranslate"><span class="pre">nyuad</span></code> and the sum of all parallel and serial jobs can’t exceed 200 jobs queued, 100 jobs running</p></li>
@@ -643,7 +642,7 @@ node is free.</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

@@ -191,6 +191,83 @@
             
   <div class="section" id="software-modules">
 <h1>Software Modules<a class="headerlink" href="#software-modules" title="Permalink to this headline">¶</a></h1>
+<p>HPC systems differ from desktop/laptop computers in how
+software is installed. In a desktop/laptop you install software
+in a pre-defined centralized location where all users can
+access it. For instance the command <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span> <span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">install</span> <span class="pre">python</span></code>
+will install python version 2.7.5 (on CentOS 7) under /usr/bin.
+But in a large system hosting a multitude of users it is not
+practical to have a single version of “python” installed. Some
+users may need access to the latest version, while others
+have hard dependencies on an earlier version. And of
+course, this applies to all applications. So in an HPC system
+software is installed as independent modules which users
+must explicitly load into their shell environment.</p>
+<p>Here’s an example with matlab.</p>
+<p>When you login your shell environment is empty of all software modules</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ matlab
+-bash: matlab: <span class="nb">command</span> not found
+<span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ which matlab
+/usr/bin/which: no matlab <span class="k">in</span> <span class="o">(</span>/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/dalma/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin<span class="o">)</span>
+<span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ module avail matlab
+
+---------------------------------------- /share/apps/NYUAD/modules/SOFTWARE ----------------------------------------
+matlab/R2015b matlab/R2019a
+<span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ module load matlab/R2019a
+Loading module <span class="s1">&#39;matlab/R2019a&#39;</span>
+<span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ which matlab
+/share/apps/NYUAD/matlab/R2019a/bin/matlab
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span> <span class="pre">matlab</span></code> shows you all available versions of matlab on Dalma. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">matlab/R2019a</span></code> loads the R2019a
+version into your shell environment. So when you invoke <code class="docutils literal notranslate"><span class="pre">matlab</span></code> you actually use the correct version.</p>
+<p>Software module environment are set on a per shell instance. So if you open a new terminal on a login node the
+environment you may have set in another terminal will not be propagated.
+You can control and monitor the contents of your software modules environment with the following commands:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code></p></td>
+<td><p>Display contents of your software modules environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code></p></td>
+<td><p>Reset your software modules environment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code></p></td>
+<td><p>Display the list of all software modules available</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">XXX</span></code></p></td>
+<td><p>Load software module XXX into your environment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">XXX</span></code></p></td>
+<td><p>Unload software module XXX from your environment</p></td>
+</tr>
+</tbody>
+</table>
+<p>As a guideline you should:</p>
+<ul class="simple">
+<li><p>Never add <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> into your .bashrc file</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> before loading a new module environment to run an application</p></li>
+<li><p>Use a shell script to run an application and include the necessary modules in the script:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module purge
+module load matlab
+matlab –nodisplay –nodesktop –r <span class="s2">&quot;mycode.m&quot;</span>
+</pre></div>
+</div>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">csh</span></code> then you need to initialize the software module environment before using <code class="docutils literal notranslate"><span class="pre">module</span></code> commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/csh</span>
+<span class="nb">source</span> /usr/share/Modules/init/csh
+module purge
+module load matlab
+matlab –nodisplay –nodesktop –r <span class="s2">&quot;mycode.m&quot;</span>
+</pre></div>
+</div>
 <p>You can compile / install your own software, and/or use our Module system. For the latter, first check what applications are available.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the following commands after logging in Dalma</span>
 module avail
@@ -246,7 +323,7 @@ be found in the document here <a class="reference download internal" download=""
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

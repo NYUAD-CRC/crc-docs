@@ -44,7 +44,6 @@ Suppose you have multiple files you wish to process by passing to another code.
     #!/bin/bash		
     #Processing	for each experiment requires a single core	
     #The input files are named file.1, file.2,..., file.50	
-    #SBATCH –p serial	
     #SBATCH –n 1	
     #SBATCH –a 1-50
 

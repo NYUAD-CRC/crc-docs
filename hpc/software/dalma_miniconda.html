@@ -218,7 +218,20 @@ install their own Miniconda or use the centralized installation present in Dalma
 <li><p>Create a local conda environment using conda create (more details below)</p></li>
 <li><p>Activate the local conda environment using conda activate (more details below)</p></li>
 <li><p>Install the application using conda install (eg : <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">r</span> <span class="pre">r=3.6</span></code>)</p></li>
+<li><p>Clean/remove the residual/cache files created by conda which eat up your quota (eg: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span> <span class="pre">-a</span></code>)</p></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don’t remove them automatically and hence stay in your $HOME affecting your files quota.</p>
+<p>We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.</p>
+<p>Following commands and links can come handy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span> <span class="pre">-a</span></code></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/commands/clean.html">https://docs.conda.io/projects/conda/en/latest/commands/clean.html</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">cache</span> <span class="pre">purge</span></code></p></li>
+<li><p><a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_cache/">https://pip.pypa.io/en/stable/cli/pip_cache/</a></p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="managing-environments">
 <span id="managing-envs"></span><h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
@@ -350,7 +363,7 @@ python abc.py
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

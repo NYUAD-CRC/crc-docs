@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Job Array</a><ul>
@@ -236,7 +237,6 @@ sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span cla
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#Processing for each experiment requires a single core</span>
 <span class="c1">#The input files are named file.1, file.2,..., file.50</span>
-<span class="c1">#SBATCH –p serial</span>
 <span class="c1">#SBATCH –n 1</span>
 <span class="c1">#SBATCH –a 1-50</span>
 
@@ -300,7 +300,7 @@ your computations. Follow the corresponding highlighted links for a much more de
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

@@ -105,6 +105,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#commands-at-a-glance">Commands at a glance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interact-with-container">Interact With Container</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#files-in-a-container">Files in a container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#singularity-overlays">Singularity Overlays</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gpu-in-a-container">GPU in a container</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sample-job-script">Sample job script</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-and-modify-your-own-containers">Build and Modify your own containers</a></li>
@@ -223,6 +224,9 @@ singularity shell container.sif
 <span class="c1">#running a container (More on this in subsequent sections)</span>
 singularity run container.sif
 
+<span class="c1">#attach overlay to the existing container</span>
+singularity shell --overlay overlay.ext3 container.sif
+
 <span class="c1">#Execute a command inside container</span>
 singularity <span class="nb">exec</span> container.sif ls -l
 
@@ -279,6 +283,25 @@ singularity --bind <span class="s2">&quot;/scratch,</span><span class="nv">$TMPD
 <p><a class="reference external" href="https://sylabs.io/guides/3.7/user-guide/bind_paths_and_mounts.html">https://sylabs.io/guides/3.7/user-guide/bind_paths_and_mounts.html</a></p>
 </div>
 </div>
+<div class="section" id="singularity-overlays">
+<h2>Singularity Overlays<a class="headerlink" href="#singularity-overlays" title="Permalink to this headline">¶</a></h2>
+<p>You can use the singularity overlays to have a writable filesystem on the top of your existing container. This is useful in the following scenarios:</p>
+<ul class="simple">
+<li><p>Install applications on the top of an existing container</p></li>
+<li><p>if you have directories which generate/have a large number of smaller files (order of 100K).</p></li>
+<li><p>conda installations which consume the number of files quota</p></li>
+</ul>
+<p>You can use the overlay filesystem with your existing container as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell --overlay overlay.ext3 container.sif
+</pre></div>
+</div>
+<p>For more info info on overlays, Kindly look at the links below:</p>
+<ul class="simple">
+<li><p>Singularity Overlays on HPC</p></li>
+<li><p><a class="reference internal" href="singularity_conda.html"><span class="doc">Singularity for Conda</span></a></p></li>
+<li><p><a class="reference external" href="https://sylabs.io/guides/3.5/user-guide/persistent_overlays.html">Persistent Overlays in Singularity</a></p></li>
+</ul>
+</div>
 <div class="section" id="gpu-in-a-container">
 <h2>GPU in a container<a class="headerlink" href="#gpu-in-a-container" title="Permalink to this headline">¶</a></h2>
 <p>If your container has been compiled with CUDA version &gt;= 9, it should work with the local GPUs. Just add the <code class="docutils literal notranslate"><span class="pre">--nv</span></code> flag to your singularity command.</p>
@@ -329,7 +352,7 @@ singularity <span class="nb">exec</span> tensorflow.sif /scratch/wz22/run.sh
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

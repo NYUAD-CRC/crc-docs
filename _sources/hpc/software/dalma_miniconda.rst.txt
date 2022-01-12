@@ -26,6 +26,20 @@ Following are the steps which need to be followed to install an application usin
 * Create a local conda environment using conda create (more details below)
 * Activate the local conda environment using conda activate (more details below)
 * Install the application using conda install (eg : ``conda install -c r r=3.6``)
+* Clean/remove the residual/cache files created by conda which eat up your quota (eg: ``conda clean -a``)
+
+.. tip::
+
+    The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don't remove them automatically and hence stay in your $HOME affecting your files quota. 
+
+    We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.
+
+    Following commands and links can come handy:
+
+    - ``conda clean -a``
+    - https://docs.conda.io/projects/conda/en/latest/commands/clean.html
+    - ``pip cache purge``
+    - https://pip.pypa.io/en/stable/cli/pip_cache/
 
 .. _managing_envs:
 
