@@ -26,6 +26,9 @@ Singularity commands mostly used are given below. The ``container.sif`` refers t
 		#running a container (More on this in subsequent sections)
 		singularity run container.sif
 		
+		#attach overlay to the existing container
+		singularity shell --overlay overlay.ext3 container.sif
+		
 		#Execute a command inside container
 		singularity exec container.sif ls -l
 		
@@ -92,6 +95,28 @@ The filesystem inside the container is isolated from the filesystem outside the 
 .. admonition:: Read more at:
 
     https://sylabs.io/guides/3.7/user-guide/bind_paths_and_mounts.html
+    
+Singularity Overlays
+--------------------
+
+You can use the singularity overlays to have a writable filesystem on the top of your existing container. This is useful in the following scenarios:
+
+- Install applications on the top of an existing container
+- if you have directories which generate/have a large number of smaller files (order of 100K).
+- conda installations which consume the number of files quota
+
+You can use the overlay filesystem with your existing container as follows:
+
+.. code-block:: bash
+
+	singularity shell --overlay overlay.ext3 container.sif
+	
+For more info info on overlays, Kindly look at the links below:
+
+- Singularity Overlays on HPC
+- :doc:`Singularity for Conda <singularity_conda>`
+- `Persistent Overlays in Singularity <https://sylabs.io/guides/3.5/user-guide/persistent_overlays.html>`__ 
+
 		
 GPU in a container
 ------------------
@@ -123,6 +148,10 @@ Build and Modify your own containers
 ------------------------------------
 
 For building conatiners, please refer to the sections :ref:`here <create_singularity_containers>`.
+
+
+
+
 
 Additional Documents
 --------------------

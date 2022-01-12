@@ -9,10 +9,13 @@ A partition is a collection of nodes, they may share some attributes (CPU type, 
 * Compute nodes may belong to multiple partitions to ensure maximum use of the system
 * Partitions may have different priorities and limits of execution and may limit who can use them
 * Dalma's partition (as seen by users)
-    * ``serial``    : Run single core and multi-threaded jobs (eg single node)
-    * ``parallel``  : Run MPI jobs (eg multi-node)
-    * ``bigmem``   : Run jobs on large memory systems only
-    * ``visual``   : Run jobs on systems with a graphics card only
+
+	- ``compute``: General purpose partition for all the normal runs
+	- ``nvidia`` : Partition of GPU jobs
+	- ``bigmem`` : Partition for large memory jobs. Only jobs requesting more than 500GB will fall into this category.
+	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition>`
+	- ``xxl``    : Special partition for grand challenge applications. Requires approval from management.
+	- ``visual`` : We have a few nodes which give you the liberty of running applications with GUI.
 * There are other partitions, but these are reserved for specific groups and research projects
 * For those who are experts in SLURM we use partitions to request GPUs, large memory, and visual instead of "constraints" as this approach gives us more flexibility for priorities and resource limits.
 
@@ -24,7 +27,6 @@ SLURM: Submitting Jobs
     .. code-block:: bash
 
         #!/bin/bash
-        #SBATCH –p serial
         #SBATCH –n 1
         ./myprogram
 2. Then you submit the script in any of the following manner
@@ -37,7 +39,6 @@ SLURM: Submitting Jobs
         #OR
         $> sbatch << EOF
         #!/bin/bash
-        #SBATCH –p serial
         #SBATCH –n 1
         ./myprogram
         EOF
@@ -51,7 +52,6 @@ SLURM: Arguments
 .. code-block:: bash
 
     #!/bin/bash
-    #SBATCH –p serial
     #SBATCH –n 1
     ./myprogram
 
@@ -68,13 +68,12 @@ OR
 
 .. code-block:: bash    
 
-    $> sbatch –p serial –n 1 job2.sh
+    $> sbatch –p preempt –n 1 job2.sh
 
 
 **Common Job submission arguments:**
 
 * ``-n``   Select number of tasks to run (default 1 core per task)
-* ``-C``   Select required system feature (eg avx2, sse, gpu)
 * ``-N``   Select number of nodes on which to run
 * ``-t``   Wallclock in hours:minutes:seconds (ex 4:00:00)
 * ``-p``   Select partition (serial, parallel, gpu, bigmem)
@@ -124,20 +123,20 @@ Each submitted job is given a unique number
 
     $> squeue
     JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST(REASON)
-    435251_[1-50]   ser_std     151215_F u123    PD  0:00      1        (Priority)
-    435252_[1-50]   ser_std     151215_F u123    PD  0:00      1        (Priority)
-    435294          ser_std     Merge5.s u123    PD  0:00      1        (Priority)
-    435235_[20-50]  ser_std     151215_F u123    PD  0:00      1        (Priority)
-    435235_19       ser_std     151215_F u123    R   12:55     1        compute-21-8
-    435235_17       ser_std     151215_F u123    R   47:34     1        compute-21-12
-    435235_15       ser_std     151215_F u123    R   49:04     1        compute-21-7
-    435235_13       ser_std     151215_F u123    R   50:34     1        compute-21-4
-    435235_11       ser_std     151215_F u123    R   54:35     1        compute-21-9
-    435235_9        ser_std     151215_F u123    R   56:35     1        compute-21-6
-    435235_7        ser_std     151215_F u123    R   58:35     1        compute-21-5
-    435235_5        ser_std     151215_F u123    R   59:36     1        compute-21-1
-    435235_3        ser_std     151215_F u123    R   1:00:36   1        compute-21-11
-    435235_1        ser_std     151215_F u123    R   1:04:37   1        compute-21-3
+    435251_[1-50]   compute     151215_F u123    PD  0:00      1        (Priority)
+    435252_[1-50]   compute     151215_F u123    PD  0:00      1        (Priority)
+    435294          compute     Merge5.s u123    PD  0:00      1        (Priority)
+    435235_[20-50]  compute     151215_F u123    PD  0:00      1        (Priority)
+    435235_19       compute     151215_F u123    R   12:55     1        compute-21-8
+    435235_17       compute     151215_F u123    R   47:34     1        compute-21-12
+    435235_15       compute     151215_F u123    R   49:04     1        compute-21-7
+    435235_13       compute     151215_F u123    R   50:34     1        compute-21-4
+    435235_11       compute     151215_F u123    R   54:35     1        compute-21-9
+    435235_9        compute     151215_F u123    R   56:35     1        compute-21-6
+    435235_7        compute     151215_F u123    R   58:35     1        compute-21-5
+    435235_5        compute     151215_F u123    R   59:36     1        compute-21-1
+    435235_3        compute     151215_F u123    R   1:00:36   1        compute-21-11
+    435235_1        compute     151215_F u123    R   1:04:37   1        compute-21-3
 
 SLURM: Listing Jobs
 -------------------
@@ -216,10 +215,10 @@ uses 1 core. But this can be redefined by users using the "-c" option.
 For example ``#SBATCH –n 2`` is requesting 2 cores, while ``#SBATCH –c 3`` ``#SBATCH –n 2`` is
 requesting 6 cores.
 
-On Dalma/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
+On Jubail/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
 eg no other jobs may run on nodes allocated for running parallel jobs.
 
-When submitting parallel jobs on Dalma you need not specify the number of nodes. The
+When submitting parallel jobs on Jubail you need not specify the number of nodes. The
 number of tasks and cpus-per-task is sufficient for SLURM to determine how many nodes to
 reserve.
 
@@ -240,9 +239,9 @@ partition details they wish to use.
 
 .. code-block:: bash
 
-    sbatch –p serial –a physics –q normal –u benoit job
+    sbatch –p preempt –a physics -u ziaw job
 
-Dalma specific job submission tools extend SLURM's associations to define a ``default``
+Jubail specific job submission tools extend SLURM's associations to define a ``default``
 association. So you only need to specify accounts is, for example, you belong to multiple
 accounts – ex faculty and research-lab – and you want to execute using your non-default
 account. So at most you'll need to specify:
@@ -284,8 +283,8 @@ the following Dalma specific tool:
 
 **In this output we see:**
 
-* user ``benoit`` can submit up to 200 jobs on ``par_std`` (parallel) partition, but have at most 100 jobs running consuming a maximum of 700 cores total where each jobs is limited to a maximum of 200 cores for 12 hours
-* user ``benoit`` can submit up to 200 jobs on ``ser_std`` (serial) partition, with at most 100 jobs running using a total of up to 200 cores for up to 48 hours
+* user ``ziaw`` can submit up to 200 jobs on ``par_std`` (parallel) partition, but have at most 100 jobs running consuming a maximum of 700 cores total where each jobs is limited to a maximum of 200 cores for 12 hours
+* user ``ziaw`` can submit up to 200 jobs on ``ser_std`` (serial) partition, with at most 100 jobs running using a total of up to 200 cores for up to 48 hours
 * account ``avengers_par`` is shared with other users and together they have a limit of 2000 cores, 200 jobs queued, and 100 jobs running (eg the sum of all cores used by running jobs using account ``avengers_par`` can't exceed 2000 cores)
 * account ``avengers_par`` is shared with other users and together they have a limit of 200 jobs queued, and 100 jobs running
 * account ``avengers`` is a sub-account of ``nyuad`` and the sum of all parallel and serial jobs can't exceed 200 jobs queued, 100 jobs running
