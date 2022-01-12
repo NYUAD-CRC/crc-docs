@@ -1,17 +1,12 @@
 System
 ======
 
-.. toctree::
-   :maxdepth: 1
-   
-   /hpc/system/load.rst
-
-
 Overview
 --------
 
-The operating system on Dalma is Linux. Make sure you know the basics. Useful links:
+The operating system on Jubail is Linux. Make sure you know the basics. Useful links:
 
+* https://www.tutorialspoint.com/unix/index.htm
 * http://linuxcommand.org/
 * http://software-carpentry.org/lessons/
 * https://www.edx.org/course/introduction-linux-linuxfoundationx-lfs101x-0
@@ -72,13 +67,13 @@ Summary of Nodes
       - 1 TB / 2TB	
       - None	
       - Use when memory requirement per node is greater than 112GB
-    * - :doc:`GPU<gpu_nodes>` 
+    * - :doc:`GPU </hpc/system/gpu_nodes>` 
       - 10
       - 40
       - 360 GB
       - 2/8	(Nvidia V100)
       - Two nodes have 8 GPU cards each, rest of them have 2 each
-    * - :doc:`Visual<visual_nodes>`	
+    * - :doc:`Visual </hpc/system/visual_nodes>`	
       - 4	
       - 38	
       - 112 GB
@@ -89,23 +84,15 @@ Summary of Nodes
 Access
 ------
 
-Once your account is ready, you can access Dalma. With Linux or Mac in NYU AD/NY network, simply ssh in your local terminal:
+Once your account is ready, you can access Jubail HPC. With Linux or Mac in NYU AD/NY network, simply ssh in your local terminal:
+This works if you are within the NYU network or connected to the VPN
 
 .. code-block:: bash
 
     ssh <NetID>@dalma.abudhabi.nyu.edu
 
-If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma <access_dalma>`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   /hpc/system/access_dalma
-
 Whenever you login, you land up on the login node which is shown on left most section of
 your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
-
 
 
 .. code-block:: bash
@@ -121,45 +108,6 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
 
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
-.. _data_transfers:
 
-Data Transfers
---------------
-
-You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to Dalma.
-Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and fro on Dalma.
-
-.. toctree::
-   :maxdepth: 1
-   
-
-   /hpc/system/rsync_transfer
-   /hpc/system/filezilla_transfer
-
-.. note::
-
-  For data sharing among collaborators, Kindly refer to the section :doc:`here </hpc/storage/data_sharing>`
-   
-.. _special_compute_nodes: 
-
-Special Compute Nodes
----------------------
-
-
-.. toctree::
-   :maxdepth: 1
-
-   /hpc/system/visual_nodes
-   /hpc/system/gpu_nodes 
-   
-Fast Transfer between NYC and Dalma
------------------------------------
-
-The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a 
-high bandwidth ANKABUT link instead.
-
-.. toctree::
-   :maxdepth: 1
-   
-   /hpc/system/nyc_file_transfer
+If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma </hpc/system/access_dalma>`.
 
