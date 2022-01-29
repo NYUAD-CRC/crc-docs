@@ -5,7 +5,7 @@ Introduction to the Visualization Nodes
 ---------------------------------------
 The Visualization Nodes is a High Performance Computing resource that provides an advanced visualization capability to the end user's desktop. Users can connect to the nodes and take advantage of its advanced capabilities to render very large data sets interactively from their desktops without having any special graphics hardware on their workstation. The images are sent back to the user's desktop over the network and displayed on the desktop using a lightweight visualization client.
 
-The Visualization nodes consists of 4 render nodes. Multiple users can share a node. Each node has access to the same /home and /archive shared file system on the Dalma HPC nodes.
+The Visualization nodes consists of 4 render nodes. Multiple users can share a node. Each node has access to the same /home and /archive shared file system on the HPC nodes.
 
 To run any visualization software interactively on the nodes you will first need to connect to the login node and request resources. In simple terms, the login node will check which nodes in the nodes are available for you and will consequently allocate you the requested resources. You can then connect to your given visualization node and start your visualization session there.
 
@@ -187,7 +187,7 @@ Type ``yes`` to continue.
 
 **Then it might ask you for 2 passwords:**
 
-* (Not applied if you have your ssh key stored on Dalma). Your ssh password. This is essentially your login password to Dalma.
+* (Not applied if you have your ssh key stored on HPC). Your ssh password. This is essentially your login password to HPC.
 * Your VNC password. Set up earlier in this tutorial.
 
 
