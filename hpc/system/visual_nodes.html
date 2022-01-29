@@ -211,7 +211,7 @@
 <div class="section" id="introduction-to-the-visualization-nodes">
 <h2>Introduction to the Visualization Nodes<a class="headerlink" href="#introduction-to-the-visualization-nodes" title="Permalink to this headline">¶</a></h2>
 <p>The Visualization Nodes is a High Performance Computing resource that provides an advanced visualization capability to the end user’s desktop. Users can connect to the nodes and take advantage of its advanced capabilities to render very large data sets interactively from their desktops without having any special graphics hardware on their workstation. The images are sent back to the user’s desktop over the network and displayed on the desktop using a lightweight visualization client.</p>
-<p>The Visualization nodes consists of 4 render nodes. Multiple users can share a node. Each node has access to the same /home and /archive shared file system on the Dalma HPC nodes.</p>
+<p>The Visualization nodes consists of 4 render nodes. Multiple users can share a node. Each node has access to the same /home and /archive shared file system on the HPC nodes.</p>
 <p>To run any visualization software interactively on the nodes you will first need to connect to the login node and request resources. In simple terms, the login node will check which nodes in the nodes are available for you and will consequently allocate you the requested resources. You can then connect to your given visualization node and start your visualization session there.</p>
 <p>Remote visualization method on the visualization nodes is implemented using Virtual Network Computing (VNC). VNC is a desktop sharing system which uses a protocol to remotely control another computer (one of the visualization nodes nodes for example). It transmits the keyboard presses and mouse clicks from one computer to another relaying the screen updates back in the other direction, over a network.</p>
 </div>
@@ -354,7 +354,7 @@ Are you sure you want to continue connecting (yes/no)?
 <p>Type <code class="docutils literal notranslate"><span class="pre">yes</span></code> to continue.</p>
 <p><strong>Then it might ask you for 2 passwords:</strong></p>
 <ul class="simple">
-<li><p>(Not applied if you have your ssh key stored on Dalma). Your ssh password. This is essentially your login password to Dalma.</p></li>
+<li><p>(Not applied if you have your ssh key stored on HPC). Your ssh password. This is essentially your login password to HPC.</p></li>
 <li><p>Your VNC password. Set up earlier in this tutorial.</p></li>
 </ul>
 <div class="admonition-for-certain-macos-users admonition">

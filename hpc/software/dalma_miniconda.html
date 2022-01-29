@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Miniconda in Dalma &mdash; CRC Documentation  documentation</title>
+  <title>Miniconda on the HPC &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -99,7 +99,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#dalma-miniconda">Dalma Miniconda</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Miniconda in Dalma</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Miniconda on the HPC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#one-time-set-up">One Time Set up</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#application-installation">Application Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#managing-environments">Managing Environments</a></li>
@@ -181,7 +181,7 @@
         
           <li><a href="index.html">Software</a> &raquo;</li>
         
-      <li>Miniconda in Dalma</li>
+      <li>Miniconda on the HPC</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,14 +198,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="miniconda-in-dalma">
-<span id="miniconda"></span><h1>Miniconda in Dalma<a class="headerlink" href="#miniconda-in-dalma" title="Permalink to this headline">¶</a></h1>
-<p>We have a centralized installation of Miniconda in Dalma. The users can either
-install their own Miniconda or use the centralized installation present in Dalma. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.</p>
+  <div class="section" id="miniconda-on-the-hpc">
+<span id="miniconda"></span><h1>Miniconda on the HPC<a class="headerlink" href="#miniconda-on-the-hpc" title="Permalink to this headline">¶</a></h1>
+<p>We have a centralized installation of Miniconda on the HPC. The users can either
+install their own Miniconda or use the centralized installation present on the HPC. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.</p>
 <p>The conda cheat sheet gives you a list of useful commands in a glance:  <a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda-cheat-sheet</a></p>
 <div class="section" id="one-time-set-up">
 <h2>One Time Set up<a class="headerlink" href="#one-time-set-up" title="Permalink to this headline">¶</a></h2>
-<p>Execute the following command for making Dalma Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.</p>
+<p>Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
 <span class="nb">source</span> ~/.bashrc
 </pre></div>
@@ -277,7 +277,7 @@ tensorflow-2.0                       /share/apps/NYUAD/miniconda/3-4.8.2/envs/te
 <p><strong>Cloning an Environment</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p &lt;path to new env&gt; --clone &lt;path to existing env&gt;</span>
 <span class="c1">#example: Here we clone the existing Tensorflow environment.</span>
-conda create -n tf-gpu --clone tensorflow-1.15
+conda create -p /scratch/wz22/conda-envs/tf-gpu --clone tensorflow-1.15
 </pre></div>
 </div>
 </div>
@@ -306,7 +306,7 @@ conda env <span class="nb">export</span> &gt; environment.yml
 <li><dl>
 <dt>Share this yml file.</dt><dd><p>The other person / machine, an identical environment could be created using this yml file.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example, the yml file is called environment.yml</span>
-conda env create -f environment.yml
+conda env create -p /scratch/wz22/conda-envs/myenv -f environment.yml
 </pre></div>
 </div>
 </dd>

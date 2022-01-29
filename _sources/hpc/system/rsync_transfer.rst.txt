@@ -89,7 +89,7 @@ Note the backslash in ``\$USER`` - this instructs the shell not to expand ``$USE
     ### For Example ###
     $ rsync -av my_input_data wz22@dalma.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
 
-To copy in the other direction, from ``/scratch`` on Dalma to your workstation.
+To copy in the other direction, from ``/scratch`` on HPC to your workstation.
 
 .. code-block:: bash
 
