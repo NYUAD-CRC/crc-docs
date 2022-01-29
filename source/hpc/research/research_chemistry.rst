@@ -7,6 +7,7 @@ Chemistry
    :class: publication-table
    :file: data/chemistry-2021.csv
 
+
 .. csv-table:: 2020
    :widths: auto
    :header-rows: 1
@@ -19,11 +20,13 @@ Chemistry
    :class: publication-table
    :file: data/chemistry-2019.csv
 
+
 .. csv-table:: 2018
    :widths: auto
    :header-rows: 1
    :class: publication-table
    :file: data/chemistry-2018.csv
+
 
 .. csv-table:: Pre 2018
    :widths: auto
