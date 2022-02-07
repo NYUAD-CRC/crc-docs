@@ -20,3 +20,11 @@ high-performance switches. Uplink bandwidth to the rest of the campus network is
 GB/s and the cluster also has a dedicated link with Dalma, the HPC Cluster for 
 direct access to work storage.
  
+ 
+Social Sciences Nodes
+---------------------
+
+- 4 Compute Nodes (144 cores, 2048 GB mem)
+- 36 Cores CPU per Node
+- 512 GB of Memory per Node
+- 20 TB Storage ( NVME )
