@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Difference in Job Submission on Jubail and Dalma &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Batch Job" href="batch_job.html" />
+    <link rel="prev" title="Quick Intro to Job Submission" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Difference in Job Submission on Jubail and Dalma</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc_slurm.html">A Detailed SLURM Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Difference in Job Submission on Jubail and Dalma</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="difference-in-job-submission-on-jubail-and-dalma">
+<h1>Difference in Job Submission on Jubail and Dalma<a class="headerlink" href="#difference-in-job-submission-on-jubail-and-dalma" title="Permalink to this headline">¶</a></h1>
+<p>This section highlights some of the important chnages you would need in your job submission
+scripts when moving from Dalma HPC to Jubail HPC. We shall discuss each of the sections below:</p>
+<ol class="arabic simple">
+<li><p>Partitions</p></li>
+<li><p>Number of Tasks</p></li>
+<li><p>Bigmem node</p></li>
+<li><p>GPU node</p></li>
+<li><p>Timelimit</p></li>
+<li><p>Memory</p></li>
+<li><p>Preempt jobs</p></li>
+</ol>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p><strong>Dalma</strong></p></th>
+<th class="head"><p><strong>Jubail</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Partitions</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Dalma had <code class="docutils literal notranslate"><span class="pre">serial</span></code> and <code class="docutils literal notranslate"><span class="pre">parallel</span></code> partitions</p></td>
+<td><p>No <code class="docutils literal notranslate"><span class="pre">serial</span></code> and <code class="docutils literal notranslate"><span class="pre">parallel</span></code> partitions on Jubail</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>Only one generalized partition called <code class="docutils literal notranslate"><span class="pre">compute</span></code></p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>More info can be found <a class="reference internal" href="quick_start.html"><span class="doc">here</span></a></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>Dalma based job scipts with <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">parallel</span></code> and <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">serial</span></code> specified will work on
+Jubail and these lines will be filtered out automatically by the job scheduling wrapper.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBATCH</span> <span class="pre">-p</span> <span class="pre">compute</span></code> is optional</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p parallel</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum number of Tasks or CPUs</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Maximum number of CPUs per node was 28 in Dalma.</p></td>
+<td><p>maximum number of CPUs per node is 128 on Jubail.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>Small jobs (requiring less than 28 CPUs) will be sent to old Dalma nodes by the scheduler.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>Medium and Large jobs will be prioritized and sent to Jubail.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>Small jobs (less than 28 CPUs),mostly belonging to python and R, don’t need any change and will be suported on jubail as well.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>Medium and Large jobs (MPI Jobs) would need an adjustment as the <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> parameter would need to be
+a multiple of 128 if it was a multiple of 28 on Dalma.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Requesting 280 (<code class="docutils literal notranslate"><span class="pre">28x10</span></code>) CPUs for a 10 node parallel job.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p parallel</span>
+<span class="c1">#SBATCH -n 280</span>
+</pre></div>
+</div>
+</td>
+<td><p>Requesting a nearest multiple of 128 (<code class="docutils literal notranslate"><span class="pre">128x2</span></code>) as compared to what was requested on Dalma.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+<span class="c1">#SBATCH -n 256</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Memory</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Total Memory per node was 112GB on Dalma</p></td>
+<td><p>Total Memory per node is 480GB on Jubail</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Default memory assigned for a job was 4GB per CPU.</p></td>
+<td><p>Default memory assigned for a job is 3.75GB per CPU.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Max allowed memory per node was 112GB.</p></td>
+<td><p>Max allowed memory per node is 480GB.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p parallel</span>
+<span class="c1">#SBATCH --mem=80G</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+<span class="c1">#SBATCH --mem=200G</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>BigMem Jobs</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Large memory nodes were requested using the <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> partition for memory greater than 112GB.</p></td>
+<td><p>Large memory nodes are requested using the <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> partition for memory greater than 480GB.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Dalma has three large memory nodes.</p></td>
+<td><p>Jubail has the same large memory nodes with no new additions.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">bigmem</span></code> was optional</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">bigmem</span></code> is mandatory</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Large mem nodes were requested when required memory was greater than 112GB</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p bigmem</span>
+<span class="c1">#SBATCH --mem=200G</span>
+</pre></div>
+</div>
+</td>
+<td><p>Large mem nodes are requested ONLY when required memory is greater than 480GB</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p bigmem</span>
+<span class="c1">#SBATCH --mem=700G</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>GPU nodes</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Dalma had 10 GPU nodes with 2 Nvidia <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU cards on 8 nodes and 8 <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU vards on 2 nodes.</p></td>
+<td><p>On addition to the Dalma GPU nodes, Jubail has 24 GPU nodes with one <code class="docutils literal notranslate"><span class="pre">A100</span></code> card on each of them.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Dalma had exclusive GPU nodes. Hence, only GPU jobs were running on GPU nodes.</p></td>
+<td><p>Jubail has both exclusive (<code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU nodes) and non-exclusive (versatile, <code class="docutils literal notranslate"><span class="pre">A100</span></code> GPU nodes) nodes which can run normal jobs when idle and have a higher priority
+for GPU jobs.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Only Nvidia <code class="docutils literal notranslate"><span class="pre">V100</span></code> cards were available on Dalma.</p></td>
+<td><p>On Jubail, Users have an option to choose between Nvidia <code class="docutils literal notranslate"><span class="pre">V100</span></code> and and the new <code class="docutils literal notranslate"><span class="pre">A100</span></code> cards.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>By Default, the GPU jobs will be sent to <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU nodes.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>The users can test the performance differences between the <code class="docutils literal notranslate"><span class="pre">A100</span></code> and <code class="docutils literal notranslate"><span class="pre">V100</span></code> nodes and decide accordingly.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>Since, <code class="docutils literal notranslate"><span class="pre">A100</span></code> GPU nodes are non exclusive, Users might have to wait in queue for non GPU jobs on those nodes
+to be available on a priority basis.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>You can also mention in your job script if you would like to explicitly send your job to a100 nodes.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>When requesting a single GPU</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+</pre></div>
+</div>
+</td>
+<td><p>The syntax on Jubail for requesting a single GPU is same as Dalma</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>When requesting a single GPU on new <code class="docutils literal notranslate"><span class="pre">A100</span></code> nodes</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:a100:1</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>WallTime</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Max WallTime on Dalma was linked to the account they belong to (physics,students,engineering etc)</p></td>
+<td><p>Max Wall time on Jubail is linked to the type (size) of job submitted by the user irrespective of the account they belong to.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>The details of the types of Jobs and their respective limits can be found in the link <a class="reference internal" href="quick_start.html#partitions-summary"><span class="std std-ref">here</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Preempt partition</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Partition used for quick testing with high job priority available for everyone.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Max Walltime for preempt jobs was 30 minutes on Dalma</p></td>
+<td><p>Max Walltime for preempt jobs on Jubail depends on size</p>
+<ul class="simple">
+<li><p>cpus &lt; 28 : 24 hours</p></li>
+<li><p>cpus &gt; 28 : 12 hours</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>More info on this can be found <a class="reference internal" href="quick_start.html#preempt-partition"><span class="std std-ref">here</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="batch_job.html" class="btn btn-neutral float-right" title="Batch Job" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="Quick Intro to Job Submission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Dalma Training &mdash; CRC Documentation  documentation</title>
+  <title>HPC Training &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Renewing an Account" href="../accounts/account_renew.html" />
+    <link rel="next" title="System" href="system.html" />
     <link rel="prev" title="Approving an Account" href="../accounts/account_approval.html" /> 
 </head>
 
@@ -93,6 +93,7 @@
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
@@ -100,8 +101,27 @@
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Dalma Training</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HPC Training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system">System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="system.html">System</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="storage.html">Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#software">Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="software.html">Software</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#job-submission">Job Submission</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="job_jubail.html">Difference in Job Submission on Jubail and Dalma</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
 <ul>
@@ -163,7 +183,7 @@
         
           <li><a href="../accounts/index.html">Accounts</a> &raquo;</li>
         
-      <li>Dalma Training</li>
+      <li>HPC Training</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,16 +200,101 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dalma-training">
-<span id="training"></span><h1>Dalma Training<a class="headerlink" href="#dalma-training" title="Permalink to this headline">¶</a></h1>
-<p>We request all the users to pass the following quiz before
-submitting jobs. Make sure to log in your NYU Google Apps Account (e.g., NYU Google Mail)
-first! Otherwise, your access to the Quiz will be denied.</p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/06b64f2d50e1177da4abfc0886440030/Dalma_Training.pdf"><code class="xref download docutils literal notranslate"><span class="pre">PDF</span> <span class="pre">Material</span></code></a></p></li>
-<li><p><a class="reference external" href="https://drive.google.com/open?id=14Mo7WKUEFafHuC03-Pkd70O3rZDIuepWKfeOTTkWI2w">Quiz</a></p></li>
+  <div class="section" id="hpc-training">
+<span id="training"></span><h1>HPC Training<a class="headerlink" href="#hpc-training" title="Permalink to this headline">¶</a></h1>
+<p>There are essentially four important components a HPC user needs to be familiar with for successfully
+using it for computational research.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../system/index.html"><span class="doc">System</span></a></p></td>
+<td><p>More about the system hardware and how to access it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../storage/index.html"><span class="doc">Storage</span></a></p></td>
+<td><p>Page about user quotas and different types of storage available (<code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>, <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../software/index.html"><span class="doc">Software</span></a></p></td>
+<td><p>More about the software stack and modules, and what it offers you in terms of your application (MPI,Python,R,Singularity)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../jobs/index.html"><span class="doc">Jobs Management</span></a></p></td>
+<td><p>Section containing details of Job submission</p></td>
+</tr>
+</tbody>
+</table>
+<p>We shall have a brief introduction to each of the components below.
+The users can also refer to the corresponding section for a more detailed explanation or reach us out
+at <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>admins<span>&#64;</span>nyu<span>&#46;</span>edu</a> for any assistance.</p>
+<div class="section" id="system">
+<h2>System<a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#hardware">Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#typical-workflow">Typical Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#summary-of-nodes">Summary of Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#access">Access</a></li>
 </ul>
-<p>Once you pass the quiz (70% out of 30 questions), you will be enabled for job submission on Dalma in 2 business days.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="storage">
+<h2>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="storage.html">Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="storage.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage.html#know-your-quota">Know Your Quota</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="software">
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#software-modules">Software modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#miniconda-important-for-python-users">Miniconda (Important for Python Users)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="miniconda.html">Miniconda in HPC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="miniconda.html#one-time-set-up">One Time Set up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="miniconda.html#application-installation">Application Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="miniconda.html#managing-environments">Managing Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="miniconda.html#migrating-sharing-environment">Migrating / Sharing Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="miniconda.html#submitting-job-scripts">Submitting Job Scripts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="job-submission">
+<h2>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#things-to-keep-in-mind">Things to Keep in mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#partitions-summary">Partitions Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#sample-job-script">Sample Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#preempt-partition">Preempt Partition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_jubail.html">Difference in Job Submission on Jubail and Dalma</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_jubail.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -198,7 +303,7 @@ first! Otherwise, your access to the Quiz will be denied.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../accounts/account_renew.html" class="btn btn-neutral float-right" title="Renewing an Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="system.html" class="btn btn-neutral float-right" title="System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../accounts/account_approval.html" class="btn btn-neutral float-left" title="Approving an Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

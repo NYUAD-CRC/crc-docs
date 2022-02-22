@@ -27,4 +27,4 @@ Approving an Account
 
 
 
-4. If you have any difficulties or questions, please contact us at dalma.admins@nyu.edu
+4. If you have any difficulties or questions, please contact us at jubail.admins@nyu.edu

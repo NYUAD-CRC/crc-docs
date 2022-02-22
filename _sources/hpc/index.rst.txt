@@ -8,6 +8,7 @@ HPC Documentation
    :hidden:
 
    /hpc/hpc
+   /hpc/dalma
    /hpc/accounts/index
    /hpc/system/index
    /hpc/storage/index
@@ -16,7 +17,7 @@ HPC Documentation
    /hpc/research/index
    /hpc/help/index
    /hpc/training/index 
-   /hpc/dalma_load/index
+   /hpc/hpc_load/index
 
 * :doc:`Where to Find What</hpc/hpc>`
 * :doc:`Accounts </hpc/accounts/index>`
@@ -26,4 +27,4 @@ HPC Documentation
 * :doc:`Jobs Management </hpc/jobs/index>`
 * :doc:`Research Publications </hpc/research/index>`
 * :doc:`Help </hpc/help/index>` 
-* :doc:`Dalma Load</hpc/dalma_load/index>`
+* :doc:`HPC Load</hpc/hpc_load/index>`

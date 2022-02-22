@@ -93,6 +93,7 @@
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">System</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="load.html">Cluster Load</a></li>
@@ -111,7 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#special-compute-nodes">Special Compute Nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#fast-transfer-between-nyc-and-dalma">Fast Transfer between NYC and Dalma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
@@ -119,8 +120,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
 <ul>
@@ -271,17 +272,17 @@ file2
 Note the backslash in <code class="docutils literal notranslate"><span class="pre">\$USER</span></code> - this instructs the shell not to expand <code class="docutils literal notranslate"><span class="pre">$USER</span></code> to your local (on your workstation) username. An equivalent command is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -F
 my_input_data/
-$ rsync -av my_input_data &lt;your-net-id&gt;@dalma.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir
+$ rsync -av my_input_data &lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir
 <span class="c1">### For Example ###</span>
-$ rsync -av my_input_data wz22@dalma.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
+$ rsync -av my_input_data wz22@jubail.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
 </pre></div>
 </div>
 <p>To copy in the other direction, from <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> on HPC to your workstation.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ hostname
 my_workstation
-$ rsync -av &lt;your-net-id&gt;@dalma.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir my_results
+$ rsync -av &lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir my_results
 <span class="c1">### For Example ###</span>
-$ rsync -av wz22@dalma.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
+$ rsync -av wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
 $ ls my_results
 </pre></div>
 </div>

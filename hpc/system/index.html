@@ -93,6 +93,7 @@
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">System</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="load.html">Cluster Load</a></li>
@@ -111,11 +112,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#special-compute-nodes">Special Compute Nodes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="visual_nodes.html">Visualization Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gpu_nodes.html">GPU nodes in Dalma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gpu_nodes.html">GPU nodes on HPC</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#fast-transfer-between-nyc-and-dalma">Fast Transfer between NYC and Dalma</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="nyc_file_transfer.html">Fast Transfer Between NYU NYC and Dalma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nyc_file_transfer.html">Fast Transfer Between NYU NYC and NYUAD</a></li>
 </ul>
 </li>
 </ul>
@@ -125,8 +126,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
 <ul>
@@ -212,8 +213,10 @@
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The operating system on Dalma is Linux. Make sure you know the basics. Useful links:</p>
+<p>The operating system on the HPC is Linux. Make sure you know the basics. Useful links:</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/unix/index.htm">https://www.tutorialspoint.com/unix/index.htm</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/essential-linuxunix-commands">https://www.geeksforgeeks.org/essential-linuxunix-commands</a></p></li>
 <li><p><a class="reference external" href="http://linuxcommand.org/">http://linuxcommand.org/</a></p></li>
 <li><p><a class="reference external" href="http://software-carpentry.org/lessons/">http://software-carpentry.org/lessons/</a></p></li>
 <li><p><a class="reference external" href="https://www.edx.org/course/introduction-linux-linuxfoundationx-lfs101x-0">https://www.edx.org/course/introduction-linux-linuxfoundationx-lfs101x-0</a></p></li>
@@ -223,9 +226,23 @@
 </div>
 <div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-<p>Dalma consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:</p>
+<p>The Jubail HPC consists of more than 28K cores.</p>
 <ul class="simple">
-<li><p>The CPU mode is Intel(R) Xeon(R) CPU E5-2680 v4 &#64; 2.40GHz, supporting AVX2.</p></li>
+<li><p>The CPU model is AMD EPYC 7742 64-Core Processor &#64;2.25GHz,supporting AVX2.</p></li>
+<li><p>512GB per node.4 GB memory per core by default.</p></li>
+<li><dl class="simple">
+<dt>128 CPU cores per node. Implications:</dt><dd><ol class="arabic simple">
+<li><p>If your code is serial and doesn’t has multithreading capabilities, use one core/CPU per job.</p></li>
+<li><p>If your code doesn’t support MPI, or you don’t know what MPI is, use maximum 128 cores per job.</p></li>
+<li><p>For MPI jobs using more than one node, always use a number of cores divisible by 128, to utilize the full nodes.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:</p>
+<ul class="simple">
+<li><p>The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 &#64; 2.40GHz, supporting AVX2.</p></li>
 <li><dl class="simple">
 <dt>28 CPU cores per node. Implications:</dt><dd><ol class="arabic simple">
 <li><p>If your code doesn’t support MPI, or you don’t know what MPI is, use maximum 28 cores per job.</p></li>
@@ -244,7 +261,7 @@
 <li><p>(One time only) Let us know your computational requirement.</p></li>
 <li><p>(One time only) Apply an HPC account and pass our quiz.</p></li>
 <li><p>If needed, transfer your input data to Dalma.</p></li>
-<li><p>Log on to Dalma login nodes.</p></li>
+<li><p>Log on to HPC login nodes.</p></li>
 <li><p>Submit jobs on login nodes.</p></li>
 <li><p>Your jobs will queue for execution.</p></li>
 <li><p>Once done, examine the output.</p></li>
@@ -263,21 +280,35 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Standard</p></td>
+<tr class="row-even"><td><p>Bulk</p></td>
+<td><p>197</p></td>
+<td><p>128</p></td>
+<td><p>480GB</p></td>
+<td><p>None</p></td>
+<td><p>New HPC Compute nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Versatile</p></td>
+<td><p>24</p></td>
+<td><p>128</p></td>
+<td><p>480GB</p></td>
+<td><p>1 (A100)</p></td>
+<td><p>New HPC GPU nodes with one A100 card each</p></td>
+</tr>
+<tr class="row-even"><td><p>Dalma Compute</p></td>
 <td><p>375</p></td>
 <td><p>28</p></td>
 <td><p>112 GB</p></td>
 <td><p>None</p></td>
-<td><p>Use for general purpose</p></td>
+<td><p>Small jobs &lt; 28 CPUs will be sent to Dalma</p></td>
 </tr>
 <tr class="row-odd"><td><p>Bigmem</p></td>
 <td><p>3</p></td>
 <td><p>64</p></td>
 <td><p>1 TB / 2TB</p></td>
 <td><p>None</p></td>
-<td><p>Use when memory requirement per node is greater than 112GB</p></td>
+<td><p>Use when memory requirement per node is greater than 500GB</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">GPU</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">Dalma GPU</span></a></p></td>
 <td><p>10</p></td>
 <td><p>40</p></td>
 <td><p>360 GB</p></td>
@@ -293,11 +324,21 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition-difference-between-cpus-cores-and-tasks admonition">
+<p class="admonition-title">Difference between CPUs,Cores and Tasks</p>
+<ul class="simple">
+<li><p>On Jubail HPC, One CPU is equivalent to one Core.</p></li>
+<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--natsks</span></code>.</p></li>
+<li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
+<li><p>By Default, Each task is equivalent to one CPU.</p></li>
+<li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the CPUs allocated to you would be the multiple the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="access">
 <h2>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h2>
-<p>Once your account is ready, you can access Dalma. With Linux or Mac in NYU AD/NY network, simply ssh in your local terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@dalma.abudhabi.nyu.edu
+<p>Once your account is ready, you can access the HPC. With Linux or Mac in NYU AD/NY network, simply ssh in your local terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
 <p>If you use Windows or outside NYU AD/NY network, follow the instructions here: <a class="reference internal" href="access_dalma.html"><span class="doc">Access Dalma</span></a>.</p>
@@ -322,8 +363,8 @@ For support: nyuad.it.help@nyu.edu
 </div>
 <div class="section" id="data-transfers">
 <span id="id1"></span><h2>Data Transfers<a class="headerlink" href="#data-transfers" title="Permalink to this headline">¶</a></h2>
-<p>You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to Dalma.
-Windows users can use <a class="reference external" href="https://winscp.net/eng/index.php">WinScp</a> for transferring data to and fro on Dalma.</p>
+<p>You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to the HPC.
+Windows users can use <a class="reference external" href="https://winscp.net/eng/index.php">WinScp</a> for transferring data to and fro on the HPC.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rsync_transfer.html">File Transfer using rsync</a></li>
@@ -340,17 +381,17 @@ Windows users can use <a class="reference external" href="https://winscp.net/eng
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="visual_nodes.html">Visualization Nodes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu_nodes.html">GPU nodes in Dalma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_nodes.html">GPU nodes on HPC</a></li>
 </ul>
 </div>
 </div>
-<div class="section" id="fast-transfer-between-nyc-and-dalma">
-<h2>Fast Transfer between NYC and Dalma<a class="headerlink" href="#fast-transfer-between-nyc-and-dalma" title="Permalink to this headline">¶</a></h2>
-<p>The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a
+<div class="section" id="fast-transfer-between-nyc-and-nyuad-hpc">
+<h2>Fast Transfer between NYC and NYUAD HPC<a class="headerlink" href="#fast-transfer-between-nyc-and-nyuad-hpc" title="Permalink to this headline">¶</a></h2>
+<p>The default MLPS link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a
 high bandwidth ANKABUT link instead.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="nyc_file_transfer.html">Fast Transfer Between NYU NYC and Dalma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nyc_file_transfer.html">Fast Transfer Between NYU NYC and NYUAD</a></li>
 </ul>
 </div>
 </div>

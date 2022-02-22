@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>A Detailed SLURM Guide &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Research Publications" href="../research/index.html" />
+    <link rel="prev" title="Performance Considerations" href="performance.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission on Jubail and Dalma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">A Detailed SLURM Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-partitions">SLURM: Partitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-submitting-jobs">SLURM: Submitting Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-arguments">SLURM: Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-job-dependencies">SLURM: Job Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-listing-jobs">SLURM: Listing Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">SLURM: Listing Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-job-progress">SLURM: Job Progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-killing-jobs">SLURM: Killing Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-tasks">SLURM: Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-node-list">SLURM: Node List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-accounts">SLURM: Accounts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>A Detailed SLURM Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="a-detailed-slurm-guide">
+<h1>A Detailed SLURM Guide<a class="headerlink" href="#a-detailed-slurm-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="slurm-partitions">
+<h2>SLURM: Partitions<a class="headerlink" href="#slurm-partitions" title="Permalink to this headline">¶</a></h2>
+<p>A partition is a collection of nodes, they may share some attributes (CPU type, GPU, etc)</p>
+<ul>
+<li><p>Compute nodes may belong to multiple partitions to ensure maximum use of the system</p></li>
+<li><p>Partitions may have different priorities and limits of execution and may limit who can use them</p></li>
+<li><p>Dalma’s partition (as seen by users)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">compute</span></code>: General purpose partition for all the normal runs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nvidia</span></code> : Partition of GPU jobs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bigmem</span></code> : Partition for large memory jobs. Only jobs requesting more than 500GB will fall into this category.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prempt</span></code> : Supports all types of jobs with a grace period of 30 minutes. More on this <a class="reference internal" href="quick_start.html#preempt-partition"><span class="std std-ref">here</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xxl</span></code>    : Special partition for grand challenge applications. Requires approval from management.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">visual</span></code> : We have a few nodes which give you the liberty of running applications with GUI.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>There are other partitions, but these are reserved for specific groups and research projects</p></li>
+<li><p>For those who are experts in SLURM we use partitions to request GPUs, large memory, and visual instead of “constraints” as this approach gives us more flexibility for priorities and resource limits.</p></li>
+</ul>
+</div>
+<div class="section" id="slurm-submitting-jobs">
+<h2>SLURM: Submitting Jobs<a class="headerlink" href="#slurm-submitting-jobs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>To submit a job first you write a “job script”</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH –n 1</span>
+./myprogram
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Then you submit the script in any of the following manner</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch job.sh
+<span class="c1">#OR</span>
+$&gt; sbatch &lt; job.sh
+<span class="c1">#OR</span>
+$&gt; sbatch <span class="s">&lt;&lt; EOF</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">#SBATCH –n 1</span>
+<span class="s">./myprogram</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="slurm-arguments">
+<h2>SLURM: Arguments<a class="headerlink" href="#slurm-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Arguments to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> can be put on the command line or embedded in the job script</p></li>
+<li><p>Putting them in the job script is a better option as then it “documents” how to rerun your job</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH –n 1</span>
+./myprogram
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch job1.sh
+</pre></div>
+</div>
+<p>OR</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+./myprogram
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch –p preempt –n <span class="m">1</span> job2.sh
+</pre></div>
+</div>
+<p><strong>Common Job submission arguments:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>   Select number of tasks to run (default 1 core per task)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code>   Select number of nodes on which to run</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>   Wallclock in hours:minutes:seconds (ex 4:00:00)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>   Select partition (serial, parallel, gpu, bigmem)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>   Output file ( with no –e option, err and out are merged to the Outfile)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e</span></code>   Keep a separate error File</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>   Dependency with prior job (ex don’t start this job before job XXX terminates)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-A</span></code>   Select account (ex physics_ser, faculty_ser)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>   Number of cores required per task (default 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--tasks-per-node</span> <span class="pre">Number</span></code> of tasks on each node</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mail-type=type</span></code> Notify on state change: BEGIN, END, FAIL or ALL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mail-user=user</span></code> Who to send email notification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mem</span></code> Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)</p></li>
+</ul>
+</div>
+<div class="section" id="slurm-job-dependencies">
+<h2>SLURM: Job Dependencies<a class="headerlink" href="#slurm-job-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Submitting with dependencies: Useful to create workflows</p>
+<ul class="simple">
+<li><p>Any specific job may have to wait until any of the specified conditions are met</p></li>
+<li><dl class="simple">
+<dt>These conditions are set with –d type:jobid where type can be:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">after</span></code>         run after &lt;jobid&gt; has terminated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">afterany</span></code>      if &lt;jobid&gt; is a job array run after any job in the job array has terminated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">afterok</span></code>       run after &lt;jobid&gt; if it finished successfully</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">afternotok</span></code>    run after &lt;jobid&gt; if it failed to finish successfully</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Wait for specific job array elements</span>
+sbatch --depend<span class="o">=</span>after:123_4 my.job
+sbatch --depend<span class="o">=</span>afterok:123_4:123_8 my.job2
+<span class="c1">#Wait for entire job array to complete</span>
+sbatch --depend<span class="o">=</span>afterany:123 my.job
+<span class="c1">#Wait for entire job array to complete successfully</span>
+sbatch --depend<span class="o">=</span>afterok:123 my.job
+<span class="c1">#Wait for entire job array to complete and at least one task fails</span>
+sbatch --depend<span class="o">=</span>afternotok:123 my.job
+</pre></div>
+</div>
+</div>
+<div class="section" id="slurm-listing-jobs">
+<h2>SLURM: Listing Jobs<a class="headerlink" href="#slurm-listing-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Each submitted job is given a unique number
+* You can list your jobs to see which ones are waiting (pending), running
+* As well as how long a job has been running and on which node(s)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; squeue
+JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+435251_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435252_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+<span class="m">435294</span>          compute     Merge5.s u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435235_<span class="o">[</span><span class="m">20</span>-50<span class="o">]</span>  compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435235_19       compute     151215_F u123    R   <span class="m">12</span>:55     <span class="m">1</span>        compute-21-8
+435235_17       compute     151215_F u123    R   <span class="m">47</span>:34     <span class="m">1</span>        compute-21-12
+435235_15       compute     151215_F u123    R   <span class="m">49</span>:04     <span class="m">1</span>        compute-21-7
+435235_13       compute     151215_F u123    R   <span class="m">50</span>:34     <span class="m">1</span>        compute-21-4
+435235_11       compute     151215_F u123    R   <span class="m">54</span>:35     <span class="m">1</span>        compute-21-9
+435235_9        compute     151215_F u123    R   <span class="m">56</span>:35     <span class="m">1</span>        compute-21-6
+435235_7        compute     151215_F u123    R   <span class="m">58</span>:35     <span class="m">1</span>        compute-21-5
+435235_5        compute     151215_F u123    R   <span class="m">59</span>:36     <span class="m">1</span>        compute-21-1
+435235_3        compute     151215_F u123    R   <span class="m">1</span>:00:36   <span class="m">1</span>        compute-21-11
+435235_1        compute     151215_F u123    R   <span class="m">1</span>:04:37   <span class="m">1</span>        compute-21-3
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>SLURM: Listing Jobs<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You can look at completed jobs using the “sacct” command</p></li>
+<li><p>To look at jobs you ran since July 1, 2017</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; squeue –starttime<span class="o">=</span><span class="m">2017</span>-07-01
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can retrieve the following informations about a job after it terminates:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>AllocCPUS       Account        AssocID          AveCPU
+AveCPUFreq      AveDiskRead    AveDiskWrite     AvePages
+AveRSS          AveVMSize      BlockID          Cluster
+Comment         ConsumedEnergy CPUTime          CPUTimeRAW
+DerivedExitCode Elapsed        Eligible         End
+ExitCode        GID            Group            JobID
+JobName         Layout         MaxDiskRead      MaxDiskReadNode
+MaxDiskReadTask MaxDiskWrite   MaxDiskWriteNode MaxDiskWriteTask
+MaxPages        MaxPagesNode   MaxPagesTask     MaxRSS
+MaxRSSNode      MaxRSSTask     MaxVMSize        MaxVMSizeNode
+MaxVMSizeTask   MinCPU         MinCPUNode       MinCPUTask
+NCPUS           NNodes         NodeList         NTasks
+Priority        Partition      QOSRAW           ReqCPUFreq
+ReqCPUs         ReqMem         Reserved         ResvCPU
+ResvCPURAW      Start          State            Submit
+Suspended       SystemCPU      Timelimit        TotalCPU
+UID             User           UserCPU          WCKey
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To retrieve specific informations about a job</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sacct -j <span class="m">466281</span> -format<span class="o">=</span>partition,alloccpus,elapsed,state,exitcode
+JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+<span class="m">466281</span>        job3.sh     par_std   cpcm_par     <span class="m">56</span>      COMPLETED    <span class="m">0</span>:0
+<span class="m">466281</span>.batch  batch                 cpcm_par     <span class="m">28</span>      COMPLETED    <span class="m">0</span>:0
+<span class="m">466281</span>.0      env                   cpcm_par     <span class="m">56</span>      COMPLETED    <span class="m">0</span>:0
+</pre></div>
+</div>
+</div>
+<div class="section" id="slurm-job-progress">
+<h2>SLURM: Job Progress<a class="headerlink" href="#slurm-job-progress" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You can see your job’s progress by looking at the output and error files</p></li>
+<li><p>By default output and error files are named “slurm-XXX.out” and “slurm-XXX.err” where XXX is the job id</p></li>
+<li><p>“tail –f” allows you to track new output as it is produced</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; cat slurm-435563.out
+$&gt; more slurm-435563.out
+$&gt; tail –f slurm-435563.out
+</pre></div>
+</div>
+</div>
+<div class="section" id="slurm-killing-jobs">
+<h2>SLURM: Killing Jobs<a class="headerlink" href="#slurm-killing-jobs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Sometimes you need to kill your job when you realise it is not working as expected</p></li>
+<li><p>Note that your job can be killed automatically when it reaches its maximum time/memory allocation</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; scancel <span class="m">435563</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slurm-tasks">
+<h2>SLURM: Tasks<a class="headerlink" href="#slurm-tasks" title="Permalink to this headline">¶</a></h2>
+<p>In SLURM users specify how many tasks – not cores! - they need (-n). Each task by default
+uses 1 core. But this can be redefined by users using the “-c” option.</p>
+<p>For example <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is requesting 2 cores, while <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–c</span> <span class="pre">3</span></code> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is
+requesting 6 cores.</p>
+<p>On Jubail/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
+eg no other jobs may run on nodes allocated for running parallel jobs.</p>
+<p>When submitting parallel jobs on Jubail you need not specify the number of nodes. The
+number of tasks and cpus-per-task is sufficient for SLURM to determine how many nodes to
+reserve.</p>
+</div>
+<div class="section" id="slurm-node-list">
+<h2>SLURM: Node List<a class="headerlink" href="#slurm-node-list" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes applications require a list of nodes where they are to run in parallel to start.
+SLURM keeps the list of nodes within the environment variable <code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NODELIST</span></code>.</p>
+</div>
+<div class="section" id="slurm-accounts">
+<h2>SLURM: Accounts<a class="headerlink" href="#slurm-accounts" title="Permalink to this headline">¶</a></h2>
+<p>SLURM maintains user associations which include user, account, qos, and partition. Users
+may have several associations. Moreover, accounts are hierarchical. For example, account
+“physics” maybe be a sub-account of “faculty”, which may be a sub-account of “institute”, etc.
+When submitting jobs users with multiple associations must explicitely list the account, qos,
+partition details they wish to use.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p preempt –a physics -u ziaw job
+</pre></div>
+</div>
+<p>Jubail specific job submission tools extend SLURM’s associations to define a <code class="docutils literal notranslate"><span class="pre">default</span></code>
+association. So you only need to specify accounts is, for example, you belong to multiple
+accounts – ex faculty and research-lab – and you want to execute using your non-default
+account. So at most you’ll need to specify:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p &lt;partition&gt; -a &lt;account&gt; job
+</pre></div>
+</div>
+<p>Moreover, accounts, partitions, qos and users may each be configured with resource usage
+limits. Thus the administrators can impose limits to the number of jobs queued, jobs running,
+cores usage, and run time.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../research/index.html" class="btn btn-neutral float-right" title="Research Publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="performance.html" class="btn btn-neutral float-left" title="Performance Considerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

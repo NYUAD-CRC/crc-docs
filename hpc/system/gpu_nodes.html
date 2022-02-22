@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>GPU nodes in Dalma &mdash; CRC Documentation  documentation</title>
+  <title>GPU nodes on HPC &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Fast Transfer Between NYU NYC and Dalma" href="nyc_file_transfer.html" />
+    <link rel="next" title="Fast Transfer Between NYU NYC and NYUAD" href="nyc_file_transfer.html" />
     <link rel="prev" title="Visualization Nodes" href="visual_nodes.html" /> 
 </head>
 
@@ -93,6 +93,7 @@
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">System</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="load.html">Cluster Load</a></li>
@@ -104,13 +105,13 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#data-transfers">Data Transfers</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#special-compute-nodes">Special Compute Nodes</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="visual_nodes.html">Visualization Nodes</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">GPU nodes in Dalma</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GPU nodes on HPC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide">Step-by-step guide</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#fast-transfer-between-nyc-and-dalma">Fast Transfer between NYC and Dalma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
@@ -118,8 +119,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
 <ul>
@@ -181,7 +182,7 @@
         
           <li><a href="index.html">System</a> &raquo;</li>
         
-      <li>GPU nodes in Dalma</li>
+      <li>GPU nodes on HPC</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,16 +199,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gpu-nodes-in-dalma">
-<h1>GPU nodes in Dalma<a class="headerlink" href="#gpu-nodes-in-dalma" title="Permalink to this headline">¶</a></h1>
-<p>Currently Dalma holds 10 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (8) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS.</p>
+  <div class="section" id="gpu-nodes-on-hpc">
+<h1>GPU nodes on HPC<a class="headerlink" href="#gpu-nodes-on-hpc" title="Permalink to this headline">¶</a></h1>
+<p>Currently Jubail HPC holds 10 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (8) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The current Nvidia driver version on the GPU nodes is 410.79 which supports cuda/10.0 or lower. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Know more about the Centralized Dalma Miniconda,TensorFlow(Keras) and PyTorch installations available <a class="reference internal" href="../software/index.html#dalma-miniconda"><span class="std std-ref">here</span></a></p>
+<p>Know more about the Centralized HPC Miniconda,TensorFlow(Keras) and PyTorch installations available <a class="reference internal" href="../software/index.html#hpc-miniconda"><span class="std std-ref">here</span></a></p>
 </div>
 <div class="section" id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
@@ -240,7 +241,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="nyc_file_transfer.html" class="btn btn-neutral float-right" title="Fast Transfer Between NYU NYC and Dalma" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nyc_file_transfer.html" class="btn btn-neutral float-right" title="Fast Transfer Between NYU NYC and NYUAD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="visual_nodes.html" class="btn btn-neutral float-left" title="Visualization Nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

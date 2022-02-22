@@ -4,12 +4,20 @@ Quick Intro to Job Submission
 Things to Keep in mind
 ----------------------
 
-- **No need to specify** ``partition`` / ``QOS`` : The job scheduler automatically assigns you a partition and a QOS based on your resource requirements (except for the ``preempt`` partition).
-- **Types of Jobs** : The jobs are basically categorized into four types based on their resource requirements (Small,Medium,Large,XLarge).
-- **Quick Testing** : Use the prempt partition for quick testing of your code. More details below.
-- **Special jobs** : Nvidia (GPU), bigmem (Large memory) jobs fall into this category and are limited in resource.
-- **Default WallTime** : The default Wall time of all the jobs is 5 hours (except for ``preempt`` partition). Each type of job has a different Max WallTime limit discussed below.
-- **Default Memory** : By Default, 4GB of memory is assigned to every CPU requested. So if 4 CPUs (``#SBATCH -n 4``) are requested, the assigned memory would be 16GB.
+.. list-table::
+	:widths: auto
+	
+	* - **Types of Jobs**
+	  - The jobs are basically categorized into four types based on their resource requirements (Small,Medium,Large,XLarge).
+	* - **Quick Testing**
+	  - Use the prempt partition for quick testing of your code. More details below.
+	* - **Special jobs**
+	  - Nvidia (GPU), bigmem (Large memory) jobs fall into this category and are limited in resource.
+	* - **Default WallTime**
+	  - The default Wall time of all the jobs is 5 hours (except for ``preempt`` partition). Each type of job has a different Max WallTime limit discussed below.
+	* - **Default Memory**
+	  - By Default, 3.75GB of memory is assigned to every CPU requested. So if 4 CPUs (``#SBATCH -n 4``) are requested, the assigned memory would be 15GB.
+	
 - **Partitions**:
 
 	- ``compute``: General purpose partition for all the normal runs
@@ -51,15 +59,26 @@ Partitions Summary
 		- (1,28)
 		- 7 days
 		- 200
-		- ``#SBATCH -n 14`` 
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p compute
+				#SBATCH -n 25
+		
+			
+
 		- The small jobs will be forwarded, preferably to Dalma nodes.
 	*	- 
 		- 
 		- Medium	
 		- (28,512)
-		- 4 days
+		- 7 days
 		- 20
-		- ``#SBATCH -n 56``
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p compute
+				#SBATCH -n 56
 		- 
 	*	- 
 		- 
@@ -67,7 +86,11 @@ Partitions Summary
 		- (512,2048) 
 		- 2 days
 		- 10
-		- ``#SBATCH -n 1024``
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p compute
+				#SBATCH -n 1024
 		- 
 	*	- 
 		- 
@@ -75,7 +98,12 @@ Partitions Summary
 		- (2048,4096) 
 		- 2 days
 		- 3
-		- ``#SBATCH -n 4000``
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p compute
+				#SBATCH -n 4000
+
 		-
 	*	- 2
 		- ``nvidia``
@@ -83,7 +111,13 @@ Partitions Summary
 		- (1,80)
 		- 4 days
 		- 4
-		- ``#SBATCH --gpus=2``
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p nvidia
+				#SBATCH --gres=gpu:1
+
+
 		- Max GPUs:8
 	*	- 3
 		- ``bigmem``
@@ -91,15 +125,29 @@ Partitions Summary
 		- (1,64)
 		- 4 days
 		- 2
-		- ``#SBATCH --mem=900G``
-		- Jobs requesting more than 512G will be fowarded to bigmem
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p bigmem
+				#SBATCH --mem=700G
+
+		- Jobs requesting more than 480GB will be fowarded to bigmem
 	*	- 4
 		- ``preempt``
 		- short high priority
 		- No Limit
 		- cpus<28:24h, cpus>28:12h
 		-
-		- ``#SBATCH -p preempt``
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p preempt
+				#SBATCH -n 128
+				#SBATCH -t 10:00:00
+          		 
+				
+				
+				
 		- grace period of 30 mins
 	*	- 5
 		- ``xxl``
@@ -127,7 +175,7 @@ A job script, which consists of 2 parts:
 	
 .. admonition:: Difference between CPUs,Cores and Tasks
 
-	- On Jubail HPC, One CPU is equivalent to one Core. 
+	- On Jubail HPC, One CPU is equivalent to one Core. Jubail also has 128 CPUs per node.
 	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.

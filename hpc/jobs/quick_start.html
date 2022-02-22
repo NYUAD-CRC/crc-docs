@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Batch Job" href="batch_job.html" />
+    <link rel="next" title="Difference in Job Submission on Jubail and Dalma" href="job_jubail.html" />
     <link rel="prev" title="Jobs Management" href="index.html" /> 
 </head>
 
@@ -93,6 +93,7 @@
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
@@ -105,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#preempt-partition">Preempt Partition</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission on Jubail and Dalma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
@@ -113,13 +115,13 @@
 <li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dalma_slurm.html">A Detailed SLURM Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc_slurm.html">A Detailed SLURM Guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Dalma Training</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dalma_load/index.html">Dalma Load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
 <ul>
@@ -202,13 +204,26 @@
 <h1>Quick Intro to Job Submission<a class="headerlink" href="#quick-intro-to-job-submission" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="things-to-keep-in-mind">
 <h2>Things to Keep in mind<a class="headerlink" href="#things-to-keep-in-mind" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Types of Jobs</strong></p></td>
+<td><p>The jobs are basically categorized into four types based on their resource requirements (Small,Medium,Large,XLarge).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Quick Testing</strong></p></td>
+<td><p>Use the prempt partition for quick testing of your code. More details below.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Special jobs</strong></p></td>
+<td><p>Nvidia (GPU), bigmem (Large memory) jobs fall into this category and are limited in resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Default WallTime</strong></p></td>
+<td><p>The default Wall time of all the jobs is 5 hours (except for <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition). Each type of job has a different Max WallTime limit discussed below.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Default Memory</strong></p></td>
+<td><p>By Default, 3.75GB of memory is assigned to every CPU requested. So if 4 CPUs (<code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">4</span></code>) are requested, the assigned memory would be 15GB.</p></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><p><strong>No need to specify</strong> <code class="docutils literal notranslate"><span class="pre">partition</span></code> / <code class="docutils literal notranslate"><span class="pre">QOS</span></code> : The job scheduler automatically assigns you a partition and a QOS based on your resource requirements (except for the <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition).</p></li>
-<li><p><strong>Types of Jobs</strong> : The jobs are basically categorized into four types based on their resource requirements (Small,Medium,Large,XLarge).</p></li>
-<li><p><strong>Quick Testing</strong> : Use the prempt partition for quick testing of your code. More details below.</p></li>
-<li><p><strong>Special jobs</strong> : Nvidia (GPU), bigmem (Large memory) jobs fall into this category and are limited in resource.</p></li>
-<li><p><strong>Default WallTime</strong> : The default Wall time of all the jobs is 5 hours (except for <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition). Each type of job has a different Max WallTime limit discussed below.</p></li>
-<li><p><strong>Default Memory</strong> : By Default, 4GB of memory is assigned to every CPU requested. So if 4 CPUs (<code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">4</span></code>) are requested, the assigned memory would be 16GB.</p></li>
 <li><p><strong>Partitions</strong>:</p>
 <blockquote>
 <div><ul class="simple">
@@ -253,16 +268,24 @@
 <td><p>(1,28)</p></td>
 <td><p>7 days</p></td>
 <td><p>200</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">14</span></code></p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+<span class="c1">#SBATCH -n 25</span>
+</pre></div>
+</div>
+</td>
 <td><p>The small jobs will be forwarded, preferably to Dalma nodes.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
 <td><p>Medium</p></td>
 <td><p>(28,512)</p></td>
-<td><p>4 days</p></td>
+<td><p>7 days</p></td>
 <td><p>20</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">56</span></code></p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+<span class="c1">#SBATCH -n 56</span>
+</pre></div>
+</div>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
@@ -271,7 +294,11 @@
 <td><p>(512,2048)</p></td>
 <td><p>2 days</p></td>
 <td><p>10</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">1024</span></code></p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+<span class="c1">#SBATCH -n 1024</span>
+</pre></div>
+</div>
+</td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
@@ -280,7 +307,11 @@
 <td><p>(2048,4096)</p></td>
 <td><p>2 days</p></td>
 <td><p>3</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">4000</span></code></p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
+<span class="c1">#SBATCH -n 4000</span>
+</pre></div>
+</div>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
@@ -289,7 +320,11 @@
 <td><p>(1,80)</p></td>
 <td><p>4 days</p></td>
 <td><p>4</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--gpus=2</span></code></p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+</pre></div>
+</div>
+</td>
 <td><p>Max GPUs:8</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
@@ -298,8 +333,12 @@
 <td><p>(1,64)</p></td>
 <td><p>4 days</p></td>
 <td><p>2</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--mem=900G</span></code></p></td>
-<td><p>Jobs requesting more than 512G will be fowarded to bigmem</p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p bigmem</span>
+<span class="c1">#SBATCH --mem=700G</span>
+</pre></div>
+</div>
+</td>
+<td><p>Jobs requesting more than 480GB will be fowarded to bigmem</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">preempt</span></code></p></td>
@@ -307,7 +346,12 @@
 <td><p>No Limit</p></td>
 <td><p>cpus&lt;28:24h, cpus&gt;28:12h</p></td>
 <td></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">preempt</span></code></p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p preempt</span>
+<span class="c1">#SBATCH -n 128</span>
+<span class="c1">#SBATCH -t 10:00:00</span>
+</pre></div>
+</div>
+</td>
 <td><p>grace period of 30 mins</p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
@@ -343,7 +387,7 @@
 <div class="admonition-difference-between-cpus-cores-and-tasks admonition">
 <p class="admonition-title">Difference between CPUs,Cores and Tasks</p>
 <ul class="simple">
-<li><p>On Jubail HPC, One CPU is equivalent to one Core.</p></li>
+<li><p>On Jubail HPC, One CPU is equivalent to one Core. Jubail also has 128 CPUs per node.</p></li>
 <li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--natsks</span></code>.</p></li>
 <li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
 <li><p>By Default, Each task is equivalent to one CPU.</p></li>
@@ -399,7 +443,7 @@ python abc.py
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="batch_job.html" class="btn btn-neutral float-right" title="Batch Job" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="job_jubail.html" class="btn btn-neutral float-right" title="Difference in Job Submission on Jubail and Dalma" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="Jobs Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

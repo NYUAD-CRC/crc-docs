@@ -10,7 +10,7 @@ You could read
 Choose and copy ext3 file
 --------------------------
 
-Templates for ext3 filesystem files are located in ``/share/apps/dalma/overlay-fs-ext3``.
+Templates for ext3 filesystem files are located in ``/share/apps/jubail/overlay-fs-ext3``.
 
 These templates have fixed disk size-so choose one that has an appropriate template based on name of the file. 
 Please copy a chosen template to your own directory on ``/scratch``
@@ -22,7 +22,7 @@ For example
 .. code-block:: bash
 
     cd /scratch/$USER/<directory_for_project>
-    cp /share/apps/dalma/overlay-fs-ext3/overlay-0.5GB-200K.ext3.gz .
+    cp /share/apps/jubail/overlay-fs-ext3/overlay-0.5GB-200K.ext3.gz .
     gunzip overlay-0.5GB-300K.ext3.gz
 
 Run container with overlay filesystem
@@ -33,7 +33,7 @@ Run container with overlay filesystem
     module load NYUAD/4.0 singularity
 
     ##Please choose appropriate singularity ext3 image at this location
-    singularity shell  --overlay <chosen-file>.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif   
+    singularity shell  --overlay <chosen-file>.ext3 /share/apps/jubail/singularity-images/centos-8.2.2004.sif   
 
 If you want to mount ext3 file as read and write, you can do that only with one process.
 
@@ -43,13 +43,13 @@ For read-only mount, please specify ``:ro``
 
 .. code-block:: bash
 
-    singularity shell  --overlay <chosen-file>.ext3:ro /share/apps/dalma/singularity-images/centos-8.2.2004.sif
+    singularity shell  --overlay <chosen-file>.ext3:ro /share/apps/jubail/singularity-images/centos-8.2.2004.sif
 
 If you use GPUs please specify option ``--nv``
 
 .. code-block:: bash
 
-    singularity shell --nv  --overlay <chosen-file>.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif 
+    singularity shell --nv  --overlay <chosen-file>.ext3 /share/apps/jubail/singularity-images/centos-8.2.2004.sif 
 
 More info on singularuty shell `here <https://sylabs.io/guides/3.1/user-guide/cli/singularity_shell.html>`__
 
@@ -57,7 +57,7 @@ You can also use ``singularity exec`` to run the container with overlay filesyst
 
 .. code-block:: bash
 
-    singularity exec --overlay <chosen-file>.ext3 /share/apps/dalma/singularity-images/centos-8.2.2004.sif /bin/bash
+    singularity exec --overlay <chosen-file>.ext3 /share/apps/jubail/singularity-images/centos-8.2.2004.sif /bin/bash
 
 
 More info on singularity exec `here <https://sylabs.io/guides/3.5/user-guide/cli/singularity_exec.html>`__
@@ -101,7 +101,7 @@ executed within the container are part of the ``/bin/bash -c "<commands to be ex
 
     singularity \
         exec --overlay $overlay_ext3:ro \
-        /share/apps/dalma/singularity-images/centos-8.2.2004.sif  \
+        /share/apps/jubail/singularity-images/centos-8.2.2004.sif  \
         /bin/bash -c "source ~/.bashrc; \
                     conda activate /opt/conda-envs/myenv; \
                     python <path_to_python_script_file>.py "

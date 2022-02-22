@@ -23,7 +23,7 @@ When you login your shell environment is empty of all software modules
     [wz22@login-0-1 ~]$ matlab
     -bash: matlab: command not found
     [wz22@login-0-1 ~]$ which matlab
-    /usr/bin/which: no matlab in (/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/dalma/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin)
+    /usr/bin/which: no matlab in (/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/the HPC/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin)
     [wz22@login-0-1 ~]$ module avail matlab
 
     ---------------------------------------- /share/apps/NYUAD/modules/SOFTWARE ----------------------------------------
@@ -34,7 +34,7 @@ When you login your shell environment is empty of all software modules
     /share/apps/NYUAD/matlab/R2019a/bin/matlab
 
 
-``module avail matlab`` shows you all available versions of matlab on Dalma. ``module load matlab/R2019a`` loads the R2019a
+``module avail matlab`` shows you all available versions of matlab on the HPC. ``module load matlab/R2019a`` loads the R2019a
 version into your shell environment. So when you invoke ``matlab`` you actually use the correct version.
 
 Software module environment are set on a per shell instance. So if you open a new terminal on a login node the
@@ -87,14 +87,14 @@ You can compile / install your own software, and/or use our Module system. For t
 
 .. code-block:: bash
 
-    # Run the following commands after logging in Dalma
+    # Run the following commands after logging in the HPC
     module avail
 
 Then you could select the desired software to load. The following example shows how to load a self-sufficient-single-application environment for gromacs.
 
 .. code-block:: bash
 
-    # Run the following commands after logging in Dalma
+    # Run the following commands after logging in the HPC
     module load gromacs
     # or use the full module name with version
     module load gromacs/5.0.4
@@ -103,7 +103,7 @@ The following example shows how to load an environment for compiling source code
 
 .. code-block:: bash
 
-    # Run the following commands after logging in Dalma
+    # Run the following commands after logging in the HPC
     module load gcc
     # multiple modules could be loaded in one line
     module load openmpi fftw3
@@ -114,7 +114,7 @@ At this point, compilers like ``gcc``, ``gfortran`` and ``g++`` are available, i
 
 .. code-block:: bash
 
-    # Run the following commands after logging in Dalma
+    # Run the following commands after logging in the HPC
     module load all
     module avail python
     --------------------------------------- /share/apps/NYUAD/modules/ALL -------------------------------
@@ -129,7 +129,7 @@ As you can see, ``Python 3`` is available then. You could load ``Python 3`` by l
 At this point, you should be able to invoke the executable, e.g., ``python``. 
 
 .. note::
-    Alternatively, you can use Dalma miniconda for hassle-free, independent Python environment. Follow this page: :doc:`Miniconda in Dalma </hpc/software/dalma_miniconda>`
+    Alternatively, you can use the HPC miniconda for hassle-free, independent Python environment. Follow this page: :doc:`Miniconda in HPC </hpc/software/hpc_miniconda>`
 
-More information about the software modules in dalma can 
-be found in the document here :download:`Dalma SW modules </hpc/docs/Dalma-SWModules.pdf>`
+More information about the software modules in the HPC can 
+be found in the document here :download:`HPC SW modules </hpc/docs/Dalma-SWModules.pdf>`

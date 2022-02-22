@@ -30,6 +30,8 @@ High Performance Computing
       - Senior HPC Computational Specialist
     * - **Waqqas Zia**
       - HPC Applicaions Specialist
+    * - **Mennatallah Saleh**
+      - HPC Applicaions Specialist
 
 
 **HPC System Administrators**
