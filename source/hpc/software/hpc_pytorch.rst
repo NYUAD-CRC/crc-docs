@@ -1,19 +1,19 @@
-PyTorch in Dalma
+PyTorch on HPC
 ================
 
-We have PyTorch (1.4 & 1.7) installations as part of Miniconda module in Dalma. 
+We have PyTorch (1.4 & 1.7) installations as part of Miniconda module on the HPC. 
 You can clone the existing centralized environment to your local environment and 
 add other required libraries or packages on top of it after activating it. 
-To find more details of the Miniconda module in Dalma, click :doc:`here <dalma_miniconda>`.
+To find more details of the Miniconda module on the HPC, click :doc:`here <hpc_miniconda>`.
 
 .. note::
-    If you have never used Conda, we recommend you to use Dalma Miniconda. 
-    You can find the steps to set up Dalma Miniconda by clicking :doc:`here <dalma_miniconda>`.
+    If you have never used Conda, we recommend you to use the HPC Miniconda. 
+    You can find the steps to set up the HPC Miniconda by clicking :doc:`here <hpc_miniconda>`.
 
 How to clone the **PyTorch** environment
 ----------------------------------------
 
-1. If you are using Dalma Miniconda 
+1. If you are using the HPC Miniconda 
 
     .. code-block:: bash
     

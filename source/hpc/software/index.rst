@@ -24,21 +24,21 @@ Software Modules and environment
 
    /hpc/software/software_modules
 
-.. _dalma_miniconda:
+.. _hpc_miniconda:
 
-Dalma Miniconda
+HPC Miniconda
 ---------------
 
-We have a centralized installation of :doc:`Miniconda </hpc/software/dalma_miniconda>`, 
-:doc:`TensorFlow </hpc/software/dalma_tensorflow>` and :doc:`PyTorch </hpc/software/dalma_pytorch>` in Dalma. Please refer to the highlighted sections for more details.
+We have a centralized installation of :doc:`Miniconda </hpc/software/hpc_miniconda>`, 
+:doc:`TensorFlow </hpc/software/hpc_tensorflow>` and :doc:`PyTorch </hpc/software/hpc_pytorch>` in the HPC. Please refer to the highlighted sections for more details.
 
 .. toctree::
    :maxdepth: 2
    
 
-   /hpc/software/dalma_miniconda
-   /hpc/software/dalma_pytorch
-   /hpc/software/dalma_tensorflow
+   /hpc/software/hpc_miniconda
+   /hpc/software/hpc_pytorch
+   /hpc/software/hpc_tensorflow
 
 .. tip::
     Know more about the GPU nodes available :doc:`here</hpc/system/gpu_nodes>`
@@ -62,7 +62,7 @@ Miscellaneous
    :maxdepth: 2
    
 
-   /hpc/software/r_dalma_miniconda
+   /hpc/software/r_hpc_miniconda
    
-   /hpc/software/dalma_jupyter
+   /hpc/software/hpc_jupyter
    

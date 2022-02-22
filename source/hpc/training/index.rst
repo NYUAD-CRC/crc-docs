@@ -1,13 +1,59 @@
 .. _training:
 
-Dalma Training
+HPC Training
 ==============
 
-We request all the users to pass the following quiz before 
-submitting jobs. Make sure to log in your NYU Google Apps Account (e.g., NYU Google Mail) 
-first! Otherwise, your access to the Quiz will be denied.
+There are essentially four important components a HPC user needs to be familiar with for successfully
+using it for computational research.  
 
-* :download:`PDF Material </hpc/docs/Dalma_Training.pdf>`
-* `Quiz <https://drive.google.com/open?id=14Mo7WKUEFafHuC03-Pkd70O3rZDIuepWKfeOTTkWI2w>`__ 
+.. list-table::
+    :widths: auto
+    :header-rows: 1
 
-Once you pass the quiz (70% out of 30 questions), you will be enabled for job submission on Dalma in 2 business days.
+    *   - Component
+        - Description
+    *   - :doc:`System </hpc/system/index>`
+        - More about the system hardware and how to access it.
+    *   - :doc:`Storage </hpc/storage/index>`
+        - Page about user quotas and different types of storage available (``$WORK``, ``$SCRATCH``, ``$HOME``, ``$ARCHIVE``).
+    *   - :doc:`Software </hpc/software/index>`
+        - More about the software stack and modules, and what it offers you in terms of your application (MPI,Python,R,Singularity)
+    *   - :doc:`Jobs Management </hpc/jobs/index>`
+        - Section containing details of Job submission
+
+We shall have a brief introduction to each of the components below.
+The users can also refer to the corresponding section for a more detailed explanation or reach us out 
+at jubail.admins@nyu.edu for any assistance.
+
+System
+------
+
+.. toctree::
+   :maxdepth: 4
+
+   /hpc/training/system
+
+Storage
+-------
+
+.. toctree::
+   :maxdepth: 4
+
+   /hpc/training/storage
+
+Software
+--------
+
+.. toctree::
+   :maxdepth: 4
+
+   /hpc/training/software
+
+Job Submission
+--------------
+
+.. toctree::
+   :maxdepth: 4
+
+   /hpc/training/quick_start
+   /hpc/training/job_jubail

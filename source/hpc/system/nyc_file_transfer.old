@@ -1,7 +1,7 @@
-Fast Transfer Between NYU NYC and NYUAD
+Fast Transfer Between NYU NYC and Dalma
 =======================================
 
-The default MLPS link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a 
+The default MLPS link between NY and AD has a low bandwidth. Using port 922 on Dalma will use a 
 high bandwidth ANKABUT link instead.
 
 Specifying the port directly
@@ -13,13 +13,13 @@ For infrequent data transfer, directly specify the port 922 in your scp command.
 
 .. code-block:: bash
 
-    scp -P 922 <NetID>@jubail.abudhabi.nyu.edu:~/filename ./
+    scp -P 922 <NetID>@dalma.abudhabi.nyu.edu:~/filename ./
 
 **Pushing data to Dalma**
  
 .. code-block:: bash
 
-    scp -P 922 filename <NetID>@jubail.abudhabi.nyu.edu:~/
+    scp -P 922 filename <NetID>@dalma.abudhabi.nyu.edu:~/
 
 Setup an alias
 --------------
@@ -29,15 +29,15 @@ If you need to transfer data frequently, it is easier to setup an alias in your 
 .. code-block:: bash
 
     Host dalma-fast
-        Hostname     jubail.abudhabi.nyu.edu
+        Hostname     dalma.abudhabi.nyu.edu
         Port         922
         User         <your-NetID>
 
-Now you should be able to scp to / from NYUAD HPC using the ANKABUT fast link by the following commands.
+Now you should be able to scp to / from Dalma using the ANKABUT fast link by the following commands.
 
 .. code-block:: bash
 
-    scp filename jubail-fast:~/
+    scp filename dalma-fast:~/
 
 
  

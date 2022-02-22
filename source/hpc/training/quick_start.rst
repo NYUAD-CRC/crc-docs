@@ -23,11 +23,11 @@ Things to Keep in mind
 	- ``compute``: General purpose partition for all the normal runs
 	- ``nvidia`` : Partition of GPU jobs
 	- ``bigmem`` : Partition for large memory jobs. Only jobs requesting more than 500GB will fall into this category.
-	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition>`
+	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition1>`
 	- ``xxl``    : Special partition for grand challenge applications. Requires approval from management.
 	- ``visual`` : We also have a few nodes which give you the liberty of running applications with GUI.
 
-.. _partitions_summary:	
+.. _partitions_summary1:	
 	
 Partitions Summary
 ------------------
@@ -175,7 +175,7 @@ A job script, which consists of 2 parts:
 	
 .. admonition:: Difference between CPUs,Cores and Tasks
 
-	- On Jubail HPC, One CPU is equivalent to one Core. Jubail also has 128 CPUs per node.
+	- On Jubail HPC, One CPU is equivalent to one Core. 
 	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
@@ -205,7 +205,7 @@ A job script, which consists of 2 parts:
  #Execute the code
  python abc.py
 
-.. _preempt_partition:
+.. _preempt_partition1:
    
 Preempt Partition
 -----------------

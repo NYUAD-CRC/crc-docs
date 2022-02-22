@@ -1,7 +1,7 @@
 Data Sharing with Collaborators
 ===============================
 
-Apart from the existing data sharing options (Groups and ACLs) avaiable in Dalma,
+Apart from the existing data sharing options (Groups and ACLs) avaiable on the HPC,
 Users can now also share the data/files with their collaborators via a common location (``/scratch/tmp``),
 hence minimizing the complexity for quick/temporary sharing of data/files.
 

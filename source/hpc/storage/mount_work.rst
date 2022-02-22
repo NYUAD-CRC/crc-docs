@@ -3,8 +3,8 @@
 Mount $WORK with SSHFS
 =======================
 
-This page explains how to mount ``$WORK`` on Dalma with SSHFS on your local workstation. 
-Only ``$WORK`` is supported, not ``$HOME`` , ``$SCRATCH`` or any other file system on Dalma.
+This page explains how to mount ``$WORK`` on the HPC with SSHFS on your local workstation. 
+Only ``$WORK`` is supported, not ``$HOME`` , ``$SCRATCH`` or any other file system on the HPC.
 For mounting ``$WORK`` on Windows, Kindly follow the section :ref:`here <mount_work_windows>`
 
 Step-by-step guide

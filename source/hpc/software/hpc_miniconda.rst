@@ -1,15 +1,17 @@
-Miniconda in Dalma
-==================
 
-We have a centralized installation of Miniconda in Dalma. The users can either 
-install their own Miniconda or use the centralized installation present in Dalma. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
+
+Miniconda on the HPC
+=====================
+
+We have a centralized installation of Miniconda on the HPC. The users can either 
+install their own Miniconda or use the centralized installation present on the HPC. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
 
 The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
 
 One Time Set up
 ---------------
 
-Execute the following command for making Dalma Miniconda as your default conda environment. This is needed to be done **ONLY once**, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.
+Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done **ONLY once**, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.
 
 .. code-block:: bash
 
@@ -39,7 +41,7 @@ Following are the steps which need to be followed to install an application usin
     - ``pip cache purge``
     - https://pip.pypa.io/en/stable/cli/pip_cache/
 
-
+.. _managing_envs:
 
 Managing Environments
 ---------------------
@@ -104,7 +106,7 @@ A sample output is shown below. The list of centralized and local installations 
 
     #conda create -p <path to new env> --clone <path to existing env>
     #example: Here we clone the existing Tensorflow environment.
-    conda create -n tf-gpu --clone tensorflow-1.15
+    conda create -p /scratch/wz22/conda-envs/tf-gpu --clone tensorflow-1.15
 
 Migrating / Sharing Environment
 -------------------------------
@@ -132,7 +134,7 @@ This is the beauty of Conda. Same environment, anywhere.
     .. code-block:: bash
 
         # In this example, the yml file is called environment.yml
-        conda env create -f environment.yml
+        conda env create -p /scratch/wz22/conda-envs/myenv -f environment.yml
 
 Submitting Job Scripts
 ----------------------

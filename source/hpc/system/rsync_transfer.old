@@ -85,9 +85,9 @@ Note the backslash in ``\$USER`` - this instructs the shell not to expand ``$USE
 
     $ ls -F
     my_input_data/
-    $ rsync -av my_input_data <your-net-id>@jubail.abudhabi.nyu.edu:/scratch/<your-net-id>/my_run_dir
+    $ rsync -av my_input_data <your-net-id>@dalma.abudhabi.nyu.edu:/scratch/<your-net-id>/my_run_dir
     ### For Example ###
-    $ rsync -av my_input_data wz22@jubail.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
+    $ rsync -av my_input_data wz22@dalma.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
 
 To copy in the other direction, from ``/scratch`` on HPC to your workstation.
 
@@ -95,9 +95,9 @@ To copy in the other direction, from ``/scratch`` on HPC to your workstation.
 
     $ hostname
     my_workstation
-    $ rsync -av <your-net-id>@jubail.abudhabi.nyu.edu:/scratch/<your-net-id>/my_run_dir my_results
+    $ rsync -av <your-net-id>@dalma.abudhabi.nyu.edu:/scratch/<your-net-id>/my_run_dir my_results
     ### For Example ###
-    $ rsync -av wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
+    $ rsync -av wz22@dalma.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
     $ ls my_results
 
 Only those files not already up-to-date on your workstation will be copied.

@@ -1,22 +1,22 @@
-TensorFlow (Keras) in Dalma
+TensorFlow (Keras) on HPC
 ===========================
 
-We have Tensorflow (1.15 & 2.0) installations as part of Miniconda module in Dalma. 
+We have Tensorflow (1.15 & 2.0) installations as part of Miniconda module on the HPC. 
 You can clone the existing centralized environments to your local environments and add 
 other required libraries or packages on top of it. To find more details of the 
-Miniconda module in Dalma, click :doc:`here <dalma_miniconda>`. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.
+Miniconda module on the HPC, click :doc:`here <hpc_miniconda>`. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.
 
 .. important:: 
     The current Nvidia driver version on the GPU nodes is ``410.79`` which supports ``cuda/10.0`` or lesser and hence the TensorFlow versions <= 2.0 are supported. However, the TensorFlow versions >= 2.1 require cuda/10.1 or higher and hence are not compatible. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.
 
 .. note::
-    If you have never used Conda, we recommend you to use Dalma Miniconda. 
-    You can find the steps to set up Dalma Miniconda by clicking :doc:`here <dalma_miniconda>`.
+    If you have never used Conda, we recommend you to use the HPC Miniconda. 
+    You can find the steps to set up the HPC Miniconda by clicking :doc:`here <hpc_miniconda>`.
 
 How to clone the TensorFlow environment
 ---------------------------------------
 
-1. **If you are using Dalma Miniconda**
+1. **If you are using the HPC Miniconda**
 
     .. code-block:: bash
 
