@@ -1,13 +1,13 @@
-R in Dalma Miniconda
+R in HPC Miniconda
 ====================
 
-Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in Dalma. This provides greater flexibility and 
+Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in the HPC. This provides greater flexibility and 
 easier installation for other complementary packages required for R (eg: Tidyverse, Rstan etc). 
-To find more details on the Miniconda module usage, click :doc:`here<dalma_miniconda>`.
+To find more details on the Miniconda module usage, click :doc:`here<hpc_miniconda>`.
 
 .. tip::
-    If you have never used Conda, we recommend you to use Dalma Miniconda. 
-    You can find the steps to set up Dalma Miniconda by clicking :doc:`here <dalma_miniconda>`.
+    If you have never used Conda, we recommend you to use the HPC Miniconda. 
+    You can find the steps to set up the HPC Miniconda by clicking :doc:`here <hpc_miniconda>`.
 
 .. note::
     The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
@@ -15,7 +15,7 @@ To find more details on the Miniconda module usage, click :doc:`here<dalma_minic
 How to clone the R environment
 ------------------------------
 
-1. If you are using Dalma Miniconda 
+1. If you are using the HPC Miniconda 
     This creates an exclusive local environment (installation) of the R package in the given path (in the example below, the path is "/scratch/wz22/my-envs/R"). The User can now activate this environment and use it and further install any required complementary packages in the activated environment (More details on this in upcoming sections).
     
     .. code-block:: bash

@@ -8,12 +8,12 @@ and easily manage the capacity.
 The current policy is to remove any files(data) that have not been accessed (viewed, created or modified) 
 for more than 90 days.
 
-On Dalma disk quotas are enforced on ``/home`` and ``/scratch`` (not ``/archive`` ). There are two
+On the HPC disk quotas are enforced on ``/home`` and ``/scratch`` (not ``/archive`` ). There are two
 quota constraints: the total amount of disk space and the total number of files. Once you reach a quota
 limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
 will generate a lot of data.
 
-Run ``myquota`` command in the terminal on Dalma to check your current usage and quota. Example output:
+Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. Example output:
 
 ::
 
@@ -51,7 +51,7 @@ Quick Glance into the archive commands
 
 
 .. important::
-    The guide to long term storage (archive) can be downloaded from here: :download:`Dalma Storage <../docs/Dalma-Storage.pdf>`
+    The guide to long term storage (archive) can be downloaded from here: :download:`Archive Storage <../docs/Dalma-Storage.pdf>`
 
 
 archive.sh
