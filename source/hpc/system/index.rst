@@ -26,11 +26,14 @@ Generic diagram of the cluster architecture and outside connectivity.
 
 Hardware
 --------
+The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
+
 The Jubail HPC consists of more than 28K cores.
 
 * The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
-* 512GB per node.4 GB memory per core by default.
-* 128 CPU cores per node. Implications:
+* 512GB per node.
+* 4 GB memory per core by default.
+* 128 CPU cores per node, implicits the following:
     1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
     2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128 cores per job.
     3. For MPI jobs using more than one node, always use a number of cores divisible by 128, to utilize the full nodes.
@@ -38,11 +41,10 @@ The Jubail HPC consists of more than 28K cores.
 The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
 
 * The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
-* 28 CPU cores per node. Implications:
+* 4 GB memory per core by default.
+* 28 CPU cores per node, implicits the following:
     1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
     2. For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.
-
-* 4 GB memory per core by default.
 
 Contact us if you need special configuration (extra large memory, GPU, etc...)
 
@@ -95,7 +97,7 @@ Summary of Nodes
       - None	
       - Use when memory requirement per node is greater than 500GB
     * - :doc:`Dalma GPU<gpu_nodes>` 
-      - 10
+      - 14
       - 40
       - 360 GB
       - 2/8	(Nvidia V100)
@@ -104,7 +106,7 @@ Summary of Nodes
       - 4	
       - 38	
       - 112 GB
-      - 1 (Nvidia Quadro P4000)
+      - 2 (Nvidia Quadro P4000)
       - Used for GUI 
 
 .. admonition:: Difference between CPUs,Cores and Tasks

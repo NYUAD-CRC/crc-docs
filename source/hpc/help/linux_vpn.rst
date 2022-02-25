@@ -1,11 +1,18 @@
+NYU VPN 
+=======
+
+For all details regarding the Virtual Private Network (VPN) and how to connect to NYU VPN for Windows/Mac
+(`NYU VPN Page <https://intranet.nyuad.nyu.edu/administrative-services/technology-services/wireless-network-connectivity/remote-connectivity-vpn/>`__).
+
+Only for Linux follow the following:
+
 NYU VPN for Linux
 =================
 
-This article describes how to connect NYU VPN using Linux.
+This article describes how to connect to NYU VPN using Linux.
 
-Use at Your Own Risk
 
-NYU IT does not support VPN for Linux officially. The following instructions are tested with Mint Linux based on Ubuntu 14.04 LTS. They come with absolutely no warranty.
+NYU IT does not support VPN for Linux officially (**Use it at your Own Risk**). 
 
  
 
@@ -13,13 +20,16 @@ Step-by-step guide
 ------------------
 
 1. Install OpenConnect.
-    * (For Debian / Ubuntu user): OpenConnect is available on the repository. Run this in your local machine terminal:
+    * (For Debian / Ubuntu user): OpenConnect is available on the repository. 
+       * Run this in your local machine terminal:
 
-    .. code-block:: bash
+       .. code-block:: bash
 
         sudo apt-get install openconnect
+    Or
 
-    * (Compile from source): Download source code and compile yourself. http://www.infradead.org/openconnect/download.html
+    * Compile from source code: 
+       * Download source code and compile yourself. http://www.infradead.org/openconnect/download.html
 
 2. Connect NYU VPN using OpenConnect:
     * Run this in your local machine terminal:
@@ -28,7 +38,9 @@ Step-by-step guide
 
         sudo openconnect vpn.abudhabi.nyu.edu
 
-    * Type your netid and password.
+    * Type your netid and passwords
+       * First password is your netid password.
+       * Second password is the multi factor authentication passcode.
     * After successful login, all network traffic will be under VPN.
     * When VPN is no longer needed, type Ctrl+c to exit OpenConnect.
  
