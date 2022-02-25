@@ -1,3 +1,7 @@
+This link includes all details about Virtual Private Network (VPN) and how to connect to NYU VPN for Windows/Mac [here](https://intranet.nyuad.nyu.edu/administrative-services/technology-services/wireless-network-connectivity/remote-connectivity-vpn/)
+
+Only for Linux follow the following:
+
 NYU VPN for Linux
 =================
 
