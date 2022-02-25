@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>NYU VPN for Linux &mdash; CRC Documentation  documentation</title>
+  <title>NYU VPN &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -103,7 +103,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Help</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ddt_debugger.html">How to use the DDT Debugger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="greasy.html">“Greasy” Workload Management Tool</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">NYU VPN for Linux</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NYU VPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nyu-vpn-for-linux">NYU VPN for Linux</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#step-by-step-guide">Step-by-step guide</a></li>
 </ul>
 </li>
@@ -175,7 +176,7 @@
         
           <li><a href="index.html">Help</a> &raquo;</li>
         
-      <li>NYU VPN for Linux</li>
+      <li>NYU VPN</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,23 +193,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nyu-vpn-for-linux">
+  <div class="section" id="nyu-vpn">
+<h1>NYU VPN<a class="headerlink" href="#nyu-vpn" title="Permalink to this headline">¶</a></h1>
+<p>For all details regarding the Virtual Private Network (VPN) and how to connect to NYU VPN for Windows/Mac
+(<a class="reference external" href="https://intranet.nyuad.nyu.edu/administrative-services/technology-services/wireless-network-connectivity/remote-connectivity-vpn/">NYU VPN Page</a>).</p>
+<p>Only for Linux follow the following:</p>
+</div>
+<div class="section" id="nyu-vpn-for-linux">
 <h1>NYU VPN for Linux<a class="headerlink" href="#nyu-vpn-for-linux" title="Permalink to this headline">¶</a></h1>
-<p>This article describes how to connect NYU VPN using Linux.</p>
-<p>Use at Your Own Risk</p>
-<p>NYU IT does not support VPN for Linux officially. The following instructions are tested with Mint Linux based on Ubuntu 14.04 LTS. They come with absolutely no warranty.</p>
+<p>This article describes how to connect to NYU VPN using Linux.</p>
+<p>NYU IT does not support VPN for Linux officially (<strong>Use it at your Own Risk</strong>).</p>
 <div class="section" id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl>
-<dt>Install OpenConnect.</dt><dd><ul class="simple">
-<li><p>(For Debian / Ubuntu user): OpenConnect is available on the repository. Run this in your local machine terminal:</p></li>
+<dt>Install OpenConnect.</dt><dd><ul>
+<li><dl>
+<dt>(For Debian / Ubuntu user): OpenConnect is available on the repository.</dt><dd><ul class="simple">
+<li><p>Run this in your local machine terminal:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install openconnect
 </pre></div>
 </div>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Or</p>
 <ul class="simple">
-<li><p>(Compile from source): Download source code and compile yourself. <a class="reference external" href="http://www.infradead.org/openconnect/download.html">http://www.infradead.org/openconnect/download.html</a></p></li>
+<li><dl class="simple">
+<dt>Compile from source code:</dt><dd><ul>
+<li><p>Download source code and compile yourself. <a class="reference external" href="http://www.infradead.org/openconnect/download.html">http://www.infradead.org/openconnect/download.html</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </dd>
 </dl>
@@ -221,7 +240,14 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Type your netid and password.</p></li>
+<li><dl class="simple">
+<dt>Type your netid and passwords</dt><dd><ul>
+<li><p>First password is your netid password.</p></li>
+<li><p>Second password is the multi factor authentication passcode.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p>After successful login, all network traffic will be under VPN.</p></li>
 <li><p>When VPN is no longer needed, type Ctrl+c to exit OpenConnect.</p></li>
 </ul>

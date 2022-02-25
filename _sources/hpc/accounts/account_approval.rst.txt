@@ -2,7 +2,7 @@ Approving an Account
 =====================
 
 
-1. When someone nominates you as their HPC sponsor, you will be notified by an email. Open this website  https://identity.it.nyu.edu/ (Make sure you are connected to VPN). After login, the webpage is similar to the screenshot below.
+1. When someone nominates you as their HPC sponsor, you will be notified by an email. Open this website  https://identity.it.nyu.edu/ (Make sure you are connected to VPN :doc:`NYU VPN</hpc/help/linux_vpn.rst>`). After login, the webpage is similar to the screenshot below.
 
     .. image:: ../img/approve1.png
 

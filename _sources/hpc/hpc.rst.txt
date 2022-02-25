@@ -10,8 +10,8 @@ Introduction
     through a medium-sized Linux cluster called Jubail. The cluster consists of around 
     **28,000 computing cores** and a peak performance of *approx.* **795 TFLOPS**.
 
-    The previous HPC Dalma will be integrated with Jubail starting from 10th of March. The details of the 
-    same can be found :doc:`here </hpc/dalma>` 
+    The previous HPC Dalma cluster will be integrated with Jubail starting from 10th of March. The details of the 
+    Dalma can be found :doc:`here </hpc/dalma>` 
 
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
@@ -26,7 +26,7 @@ You could:
     * Checkout the research works carried out on the system and donot forget to acknowledge us (:doc:`Research <research/index>`)
     * Follow our :doc:`Help <help/index>` page for more HowTo's  
     * The :doc:`HPC Load<hpc_load/index>` page gives a glimpse of the current cluster utilization.
-    * Contact us anytime at dalma.admins@nyu.edu
+    * Contact us anytime at jubail.admins@nyu.edu
 
 .. important:: 
 
@@ -37,4 +37,4 @@ You could:
 
 .. admonition:: Contact us
 
-    Contact us anytime at dalma.admins@nyu.edu
+    Contact us anytime at jubail.admins@nyu.edu
