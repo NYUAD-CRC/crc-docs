@@ -73,7 +73,7 @@ Summary of Nodes
       - GPUs / node
       - Remarks
     * - Bulk
-      - 197
+      - 189
       - 128
       - 480GB
       - None
@@ -82,29 +82,29 @@ Summary of Nodes
       - 24
       - 128
       - 480GB
-      - 1 (A100)
-      - New HPC GPU nodes with one A100 card each
+      - 1/2 (Nvidia A100)
+      - New HPC GPU nodes with two nodes have only one GPU card each, rest of them have 2 cards each
     * - Dalma Compute
-      - 375
-      - 28
-      - 112 GB 
+      - 432
+      - 28/40
+      - 128 GB / 512 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
     * - Bigmem
-      - 3	
-      - 64
+      - 4	
+      - 32/63/72
       - 1 TB / 2TB	
       - None	
-      - Use when memory requirement per node is greater than 500GB
+      - Used when memory requirement per node is greater than 500GB
     * - :doc:`Dalma GPU<gpu_nodes>` 
       - 14
       - 40
-      - 360 GB
-      - 2/8	(Nvidia V100)
-      - Two nodes have 8 GPU cards each, rest of them have 2 each
+      - 360 GB / 1 TB
+      - 2/8 (Nvidia V100)
+      - Two nodes have 8 GPU cards each, rest of them have 2 cards each
     * - :doc:`Visual<visual_nodes>`	
       - 4	
-      - 38	
+      - 32	
       - 112 GB
       - 2 (Nvidia Quadro P4000)
       - Used for GUI 
@@ -115,7 +115,7 @@ Summary of Nodes
 	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
-	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple the multiple of ``-n`` and ``-c``.
+	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
 	    
 Access
 ------
