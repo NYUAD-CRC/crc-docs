@@ -1,3 +1,6 @@
+NYU VPN 
+=======
+
 For all details regarding the Virtual Private Network (VPN) and how to connect to NYU VPN for Windows/Mac
 (`NYU VPN Page <https://intranet.nyuad.nyu.edu/administrative-services/technology-services/wireless-network-connectivity/remote-connectivity-vpn/>`__).
 
