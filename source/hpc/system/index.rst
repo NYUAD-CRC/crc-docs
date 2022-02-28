@@ -1,11 +1,6 @@
 System
 ======
 
-.. toctree::
-   :maxdepth: 1
-   
-   /hpc/system/load.rst
-
 
 Overview
 --------
@@ -145,7 +140,7 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   [wz22@login-0-2 ~]$
 
-.. warning::
+.. Important::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 
 .. _data_transfers:
@@ -153,16 +148,11 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
 Data Transfers
 --------------
 
-You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to the HPC.
-Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and fro on the HPC.
+You can use either :doc:`rsycn command </hpc/system/rsync_transfer>` or :doc:`FileZilla (with a GUI) </hpc/system/filezilla_transfer>` to transfer your data from/to the HPC cluster.
+Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and from the HPC cluster.
 
-.. toctree::
-   :maxdepth: 1
-   
 
-   /hpc/system/rsync_transfer
-   /hpc/system/filezilla_transfer
-
+  
 .. note::
 
   For data sharing among collaborators, Kindly refer to the section :doc:`here </hpc/storage/data_sharing>`
