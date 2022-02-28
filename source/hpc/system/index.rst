@@ -53,7 +53,7 @@ Typical Workflow
 
 1. (One time only) Let us know your computational requirement.
 2. (One time only) Apply an HPC account and pass our quiz.
-3. If needed, transfer your input data to Dalma.
+3. If needed, transfer your input data to Jubail.
 4. Log on to HPC login nodes.
 5. Submit jobs on login nodes. 
 6. Your jobs will queue for execution.
@@ -126,13 +126,8 @@ Once your account is ready, you can access the HPC. With Linux or Mac in NYU AD/
 
     ssh <NetID>@jubail.abudhabi.nyu.edu
 
-If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma <access_dalma>`.
+If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Jubail <access_jubail>`.
 
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   /hpc/system/access_dalma
 
 Whenever you login, you land up on the login node which is shown on left most section of
 your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
