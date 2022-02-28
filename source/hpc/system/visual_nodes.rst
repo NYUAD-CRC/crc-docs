@@ -9,14 +9,14 @@ The Visualization nodes consists of 4 render nodes. Multiple users can share a n
 
 To run any visualization software interactively on the nodes you will first need to connect to the login node and request resources. In simple terms, the login node will check which nodes in the nodes are available for you and will consequently allocate you the requested resources. You can then connect to your given visualization node and start your visualization session there.
 
-Remote visualization method on the visualization nodes is implemented using Virtual Network Computing (VNC). VNC is a desktop sharing system which uses a protocol to remotely control another computer (one of the visualization nodes nodes for example). It transmits the keyboard presses and mouse clicks from one computer to another relaying the screen updates back in the other direction, over a network.
+Remote visualization method on the visualization nodes is implemented using Virtual Network Computing (VNC). VNC is a desktop sharing system which uses a protocol to remotely control another computer (one of the visualization nodes for example). It transmits the keyboard presses and mouse clicks from one computer to another relaying the screen updates back in the other direction, over a network.
 
 Visualization nodes hardware and software
 -----------------------------------------
 The visualization nodes have an Intel x86-64 architecture with CentOS 7.2 operating system. Each visualization render node has:
 
 * 32 cores Intel Xeon 6130 2.1GHz CPU
-* 128GB of RAM
+* 112GB of RAM
 * 2 Nvidia Quadro P4000 GPU
 
 Software on the visualization nodes can be accessed through the environment module system (module commands). Currently installed software includes Paraview, IDL, PyMOL, VMD, and Matlab.
@@ -42,13 +42,14 @@ More detail descriptions of the steps above are given in the subsections below.
 
 Creating a VNC password (necessary only once)
 ---------------------------------------------
-If this is your first time using a remote VNC session on the visualization nodes, you need to create a VNC password. While logged in to the login node type
+If this is your first time using a remote VNC session on the visualization nodes, you need to create a VNC password. 
+
+While logged in to the login node type vncpasswd in the terminal window and follow the instructions.
 
 .. code-block:: bash
 
     vncpasswd
 
-in the terminal window and follow the instructions.
 
 .. image:: ../img/vnc-password.png
  

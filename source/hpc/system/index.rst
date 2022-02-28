@@ -162,12 +162,8 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 Special Compute Nodes
 ---------------------
 
-
-.. toctree::
-   :maxdepth: 1
-
-   /hpc/system/visual_nodes
-   /hpc/system/gpu_nodes 
+* :doc:`Visualization Nodes<visual_nodes>` 
+* :doc:`GPU nodes on HPC<gpu_nodes>` 
    
 Fast Transfer between NYC and NYUAD HPC
 ----------------------------------------
@@ -175,8 +171,5 @@ Fast Transfer between NYC and NYUAD HPC
 The default MLPS link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a 
 high bandwidth ANKABUT link instead.
 
-.. toctree::
-   :maxdepth: 1
-   
-   /hpc/system/nyc_file_transfer
+* :doc:`Fast Transfer Between NYU NYC and NYUAD<nyc_file_transfer>` 
 
