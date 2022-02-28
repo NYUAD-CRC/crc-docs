@@ -25,7 +25,7 @@ Outside NYU Network
 
 **VPN**
 
-You could either first connect to NYU VPN :doc:`NYU VPN</hpc/help/linux_vpn.rst>` and then connect to Dalma directly. Choose ``vpn.abudhabi.nyu.edu`` as your VPN server.
+You could either first connect to NYU VPN :doc:`NYU VPN</hpc/help/linux_vpn>` and then connect to Dalma directly. Choose ``vpn.abudhabi.nyu.edu`` as your VPN server.
 
 **Bastion Host**
 
@@ -111,7 +111,7 @@ The configuration will look like this screenshot.
 
 **Outside NYU Network**
 
-You could either first connect to NYU VPN :doc:`NYU VPN</hpc/help/linux_vpn.rst>` and then connect to Dalma directly. Choose vpn.abudhabi.nyu.edu as your VPN server.
+You could either first connect to NYU VPN :doc:`NYU VPN</hpc/help/linux_vpn>` and then connect to Dalma directly. Choose vpn.abudhabi.nyu.edu as your VPN server.
 
 Or, use bastion host as instructed below.
 

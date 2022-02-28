@@ -11,7 +11,7 @@ Submit an Account Renewal Request
  
 
 1. Open your browser.
-2. On to the Identity page, https://identity.it.nyu.edu/ (Make sure you are connected to VPN :doc:`NYU VPN</hpc/help/linux_vpn.rst>`)
+2. On to the Identity page, https://identity.it.nyu.edu/ (Make sure you are connected to VPN :doc:`NYU VPN</hpc/help/linux_vpn>`)
 3. Login with your NetID and password. 
 
     .. image:: ../img/newaccount1.png
