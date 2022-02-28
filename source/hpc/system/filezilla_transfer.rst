@@ -16,7 +16,7 @@ First, install and configure FileZilla in your workstation. These steps need to 
 Once the installation is done,
 
 1. If you are outside campus network, connect to NYU VPN first.
-    :doc:`NYU VPN</hpc/help/linux_vpn.rst>`
+    :doc:`NYU VPN</hpc/help/linux_vpn>`
 2. Open FileZilla. It will prompt a GUI.
 
     .. image:: /hpc/img/open.png
