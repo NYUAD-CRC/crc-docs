@@ -11,7 +11,7 @@ First, install and configure FileZilla in your workstation. These steps need to 
 1. Open your browser in your workstation.
 2. Open this page: https://filezilla-project.org/
 3. Click Download FileZilla Client.
-4. After finishing the downloading, finish the installation. If in question, contact us or check this guide: https://wiki.filezilla-project.org/Client_Installation
+4. After finishing the downloading, finish the installation. If you have any question, please contact us at jubail.admins@nyu.edu or check this guide: https://wiki.filezilla-project.org/Client_Installation
 
 Once the installation is done,
 
@@ -49,4 +49,4 @@ Once the installation is done,
  
 .. Note:: 
     
-    Check this link for general help on FileZilla (how to change directory, upload / download and comparison...): https://wiki.filezilla-project.org/Using
+    Check this `Link <https://wiki.filezilla-project.org/Using>`_ for general help on FileZilla (how to change directory, upload / download and comparison...) 
