@@ -1,7 +1,7 @@
 File Transfer using FileZilla
 =============================
 
-You want to transfer data from / to Dalma under Windows, Mac or Linux. But you don't want to use command line. Instead, you want to use an open-source SFTP client with easy-to-use GUI. Then, FileZilla is the choice for you. Follow the instructions below.
+You want to transfer data from / to HPC cluster under Windows, Mac or Linux. But you don't want to use command line. Instead, you want to use an open-source SFTP(SSH File Transfer Protocol) client with easy-to-use GUI. Then, FileZilla is the choice for you. Follow the instructions below.
 
 Step-by-step guide
 ------------------
@@ -22,14 +22,14 @@ Once the installation is done,
     .. image:: /hpc/img/open.png
 
 3. Enter the **Host**, **Username**, **Password** and **Port**. Click **Quickconnect**, as shown in the screenshot below:
-    * Host: dalma.abudhabi.nyu.edu
+    * Host: jubail.abudhabi.nyu.edu
     * Username: Your NetID
     * Password: Your NetID password
     * Port: 22
 
     .. image:: /hpc/img/quickconnect.png
 
-4. Remote host is connected. The window on the left is local site (your workstation), while the window on the right is remote site (Dalma). By default, the remote path is ``$HOME``, e.g., ``/home/NetID``.
+4. Remote host is connected. The window on the left is local site (your workstation), while the window on the right is remote site (Jubail). By default, the remote path is ``$HOME``, e.g., ``/home/NetID``.
 
     .. image:: /hpc/img/loggedin.png
 
