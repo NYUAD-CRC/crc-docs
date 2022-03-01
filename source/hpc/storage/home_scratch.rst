@@ -29,4 +29,4 @@ We urge our users to clean up their storage regularily.
 
 .. caution::
     Running jobs from ``/home`` is a **serious violation** of HPC policy. Any users who intentionally violate this policy will get their account suspended. 
-    ``$HOME`` SSDs are not designed for scratch disks, it will kill the SSDs quickly. 
+    ``$HOME`` SSDs are not designed for this purpose, it will kill the SSDs quickly. 

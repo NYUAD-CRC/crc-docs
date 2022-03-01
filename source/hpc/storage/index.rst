@@ -14,7 +14,7 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
 
 .. caution::
     Running jobs from ``/home`` is a **serious violation** of HPC policy. Any users who intentionally violate this policy will get their account suspended. 
-    ``$HOME`` SSDs are not designed for scratch disks, it will kill the SSDs quickly. 
+    ``$HOME`` SSDs are not designed for this purpose, it will kill the SSDs quickly. 
 
 * :doc:`$HOME and $SCRATCH <home_scratch>`
 * :doc:`$WORK <work>`

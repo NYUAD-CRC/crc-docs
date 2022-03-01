@@ -83,7 +83,7 @@ Partitions Summary
 	*	- 
 		- 
 		- Large
-		- (512,2048) 
+		- (256,2048) 
 		- 2 days
 		- 10
 		- 
@@ -95,9 +95,9 @@ Partitions Summary
 	*	- 
 		- 
 		- XLarge
-		- (2048,4096) 
+		- (512,4096) 
 		- 2 days
-		- 3
+		- 5
 		- 
 			.. code-block:: bash
 
@@ -118,11 +118,11 @@ Partitions Summary
 				#SBATCH --gres=gpu:1
 
 
-		- Max GPUs:8
+		- Max GPUs:4
 	*	- 3
 		- ``bigmem``
 		- Large Memory Jobs
-		- (1,64)
+		- (1,40)
 		- 4 days
 		- 2
 		- 
@@ -153,7 +153,7 @@ Partitions Summary
 		- ``xxl``
 		- Grand Challenge
 		- any
-		- 2 days
+		- 1 day
 		- 1
 		-
 		- Requires approval from management
@@ -179,7 +179,7 @@ A job script, which consists of 2 parts:
 	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
-	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple the multiple of ``-n`` and ``-c``.
+	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the total number of CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
 	    
 .. code-block:: bash
 
@@ -211,8 +211,8 @@ Preempt Partition
 -----------------
 
 - **Limitless high priority queue** with the caveat that the jobs can be preempted (killed) to make space for other jobs demanding resources.
-- A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpoint, if needed.
-- We intend to increase the machine occupancy and reduce the waiting time in queues for those job that may have short runtime or are meant to be for testing, etc, etc, that otherwise will be treated as regular jobs.
+- A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpointing, if needed.
+- We intend to increase the machine occupancy and reduce the waiting time in queues for those jobs that may have short runtime or are meant to be for testing ,otherwise jobs will be treated as regular jobs.
 - Default Walltime: 2 hours
 - Maximum Walltime depends on the job size:
 	
