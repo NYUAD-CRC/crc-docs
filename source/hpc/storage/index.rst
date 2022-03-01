@@ -16,13 +16,11 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
     Running jobs from ``/home`` is a **serious violation** of HPC policy. Any users who intentionally violate this policy will get their account suspended. 
     ``$HOME`` SSDs are not designed for scratch disks, it will kill the SSDs quickly. 
 
-.. toctree::
-  :maxdepth: 1
-   
-  /hpc/storage/home_scratch
-  /hpc/storage/work
-  /hpc/storage/archive
-  /hpc/storage/data_sharing
+* :doc:`$HOME and $SCRATCH <home_scratch>`
+* :doc:`$WORK <work>`
+* :doc:`$ARCHIVE <archive>`
+* :doc:`$Data Sharing with Collaborators <data_sharing>`
+
 
 Summary
 -------
