@@ -204,6 +204,26 @@ A job script, which consists of 2 parts:
 
  #Execute the code
  python abc.py
+   
+Requesting a GPU node
+---------------------
+To request a Gpu node you have two options:
+
+* Requesting only one GPU card of any type
+	    
+.. code-block:: bash
+
+	#SBATCH -p nvidia
+	#SBATCH --gres=gpu:1
+
+* Requesting only one GPU card of a specific type( available types are v100 and a100)
+	    
+.. code-block:: bash
+
+	#SBATCH -p nvidia
+	#SBATCH --gres=gpu:a100:1
+
+For more details regarding GPU nodes and cards types, kindly check :ref:`this <partitions_summary>`
 
 .. _preempt_partition:
    
