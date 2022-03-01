@@ -21,7 +21,7 @@ Once the steps below are finished and your sponsor approved, your account will b
 
 
 1. Open your browser.
-2. Go to the Identity page, https://identity.it.nyu.edu/ (Make sure you are connected to VPN :doc:`NYU VPN</hpc/help/linux_vpn.rst>`)
+2. Go to the Identity page, https://identity.it.nyu.edu/ (Make sure you are connected to VPN :doc:`NYU VPN</hpc/help/linux_vpn>`)
 3. Log in with your NetID and password. 
 
     .. image:: ../img/newaccount1.png
