@@ -171,7 +171,7 @@ A job script, which consists of 2 parts:
 	- **Ask only what you need**
 	- Serial jobs would need only one CPU (``#SBATCH -n 1``)
 	- Make sure the walltime specified is not greater than the allowed time limit. More details can be found :ref:`here <partitions_summary>`.
-	- By Default 4GB of memory is assigned for each CPU allocated and hence defining the memory requirement is optional  
+	- By Default 3.75GB of memory is assigned for each CPU allocated and hence defining the memory requirement is optional  
 	
 .. admonition:: Difference between CPUs,Cores and Tasks
 
