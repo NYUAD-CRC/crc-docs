@@ -43,9 +43,7 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="File Transfer using FileZilla" href="filezilla_transfer.html" />
-    <link rel="prev" title="Access Dalma" href="access_dalma.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,30 +89,11 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">System</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="load.html">Cluster Load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#hardware">Hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#typical-workflow">Typical Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#summary-of-nodes">Summary of Nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#access">Access</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#data-transfers">Data Transfers</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">File Transfer using rsync</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#some-examples-of-rsync-usage">Some examples of rsync usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ignoring-certain-files">Ignoring certain files</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="filezilla_transfer.html">File Transfer using FileZilla</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#special-compute-nodes">Special Compute Nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
@@ -181,8 +160,6 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">System</a> &raquo;</li>
-        
       <li>File Transfer using rsync</li>
     
     
@@ -202,14 +179,15 @@
             
   <div class="section" id="file-transfer-using-rsync">
 <h1>File Transfer using rsync<a class="headerlink" href="#file-transfer-using-rsync" title="Permalink to this headline">¶</a></h1>
-<p>For replicating datasets between the HPC clusters and your workstation, or between two filesystems on an HPC cluster, rsync offers powerful functionality beyond that of cp or scp. With rsync you can copy directories between your workstation and the HPC clusters - or between different filesystems - in such a way that permission and file modification timestamps are preserved, and that only files which have changed are transferred.</p>
+<p>For replicating datasets between the HPC clusters and your workstation, or between two filesystems on an HPC cluster, rsync offers powerful functionality beyond that of cp or scp commands. With rsync you can copy directories between your workstation and the HPC clusters - or between different filesystems - in such a way that permission and file modification timestamps are preserved, and that only files which have changed are transferred.</p>
 <div class="admonition-basic-usage-of-rsync admonition">
 <p class="admonition-title">Basic Usage of rsync</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync <span class="o">[</span>options<span class="o">]</span> <span class="nb">source</span> <span class="o">[</span>source<span class="o">]</span> destination
 </pre></div>
 </div>
 </div>
-<p>Where source is a list of one or more source files or directories to copy and destination is a directory into which to copy source. Commonly useful options are:</p>
+<p>Where source is a list of one or more source files or directories to copy and destination is a directory into which to copy source.</p>
+<p>Commonly useful options are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> “Archive” mode - permissions and timestamps of the source are replicated at the destination.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> “Verbose”.</p></li>
@@ -218,7 +196,7 @@
 </ul>
 <div class="admonition-before-actually-copying-files admonition">
 <p class="admonition-title">Before Actually Copying Files</p>
-<p>Whether rsync treats destination as a new name for the copy of source, a parent directory into which to copy source, or a parent directory into which to place the contents of source, depends on the exact context of the command. For this reason, it is highly advisable to first run rsync with -n and -v to see exactly what rsync will do before issuing the “real” command, eg:</p>
+<p>rsync treats destination in different ways:a new name for the copy of source, a parent directory into which to copy source, or a parent directory into which to place the contents of source, depending on the exact context of the command. For this reason, it is highly advisable to first run rsync with -n and -v to see exactly what rsync will do before issuing the “real” command, eg:</p>
 <div class="admonition-dry-run-first admonition">
 <p class="admonition-title">Dry Run First!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync -nav <span class="nb">source</span> destination
@@ -268,13 +246,12 @@ file1
 file2
 </pre></div>
 </div>
-<p>The host name followed by a colon tells rsync that the (in this case) destination is on another host. If your username on the other host is different to the username on the current host, you can specify the remote username with <a class="reference external" href="mailto:username&#37;&#52;&#48;remotehost">username<span>&#64;</span>remotehost</a>:
-Note the backslash in <code class="docutils literal notranslate"><span class="pre">\$USER</span></code> - this instructs the shell not to expand <code class="docutils literal notranslate"><span class="pre">$USER</span></code> to your local (on your workstation) username. An equivalent command is:</p>
+<p>The host name followed by a colon tells rsync that source or destination is on another host. If your username on the other host is different from the username on the current host, you can specify the remote username with <a class="reference external" href="mailto:username&#37;&#52;&#48;remotehost">username<span>&#64;</span>remotehost</a>: as following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -F
 my_input_data/
 $ rsync -av my_input_data &lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir
 <span class="c1">### For Example ###</span>
-$ rsync -av my_input_data wz22@jubail.abudhabi.nyu.edu:/scratch/gh50/my_run_dir
+$ rsync -av my_input_data wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir
 </pre></div>
 </div>
 <p>To copy in the other direction, from <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> on HPC to your workstation.</p>
@@ -286,22 +263,37 @@ $ rsync -av wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
 $ ls my_results
 </pre></div>
 </div>
-<p>Only those files not already up-to-date on your workstation will be copied.</p>
+<p>Only those files with modifications will be copired from the HPC to your workstation.</p>
 </div>
 <div class="section" id="ignoring-certain-files">
 <h2>Ignoring certain files<a class="headerlink" href="#ignoring-certain-files" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">-C</span></code> option tells rsync to follow CVS conventions about ignoring certain files. For example, when copying a tree of source code, you probably want the .c, .f and .h files but not the .o files. The conventions are described fully in the man page (man rsync). In summary, when -C is used the following files are ignored:</p>
-<ul class="simple">
-<li><p>Any file or directory whose name matches any of:</p></li>
-</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">-C</span></code> option tells rsync to follow CVS conventions about ignoring certain files.The conventions are described fully in the man page (man rsync) but in summary, when <code class="docutils literal notranslate"><span class="pre">-C</span></code> is used the following files are ignored  or any file or directory whose name matches any of these mentioned below are ignored:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>RCS SCCS CVS CVS.adm RCSLOG cvslog.* tags TAGS .make.state .nse_depinfo *~ <span class="c1">#* .#* ,* _$* *$ *.old *.bak *.BAK *.orig *.rej .del-* *.a *.olb *.o *.obj *.so *.exe *.Z *.elc *.ln core .svn/</span>
 </pre></div>
 </div>
+<p>For example, when copying a tree of source code, you probably want the .c, .f and .h files but not the .o files, to define your own ignored rsync files use any of those methods.</p>
 <ul class="simple">
-<li><p>Any file whose name matches a pattern listed in the environment variable <code class="docutils literal notranslate"><span class="pre">CVSIGNORE</span></code>. This environment variable takes a list of patterns separated by spaces, such as the default list above. When defining <code class="docutils literal notranslate"><span class="pre">CVSIGNORE</span></code> you will need to enclose the definition in quotation marks, for example to skip Fortran output to unnamed unit numbers (whose files have names like <code class="docutils literal notranslate"><span class="pre">fort.99</span></code>) and netcdf files whose name ends in <code class="docutils literal notranslate"><span class="pre">intermediate.nc</span></code>, set <code class="docutils literal notranslate"><span class="pre">CVSIGNORE</span></code> as follows (note that this syntax is for <code class="docutils literal notranslate"><span class="pre">BASH</span></code>)</p></li>
+<li><dl class="simple">
+<dt>Any file whose name matches a pattern listed in the environment variable <code class="docutils literal notranslate"><span class="pre">CVSIGNORE</span></code>.</dt><dd><ul>
+<li><p>This environment variable takes a list of patterns separated by spaces, such as the default list above.</p></li>
+<li><p>When defining <code class="docutils literal notranslate"><span class="pre">CVSIGNORE</span></code> you will need to enclose the definition in quotation marks.</p></li>
+<li><p>For example to skip Fortran output to unnamed unit numbers (whose files have names like <code class="docutils literal notranslate"><span class="pre">fort.99</span></code>) and netcdf files whose name ends in <code class="docutils literal notranslate"><span class="pre">intermediate.nc</span></code>, set <code class="docutils literal notranslate"><span class="pre">CVSIGNORE</span></code> as follows (note that this syntax is for <code class="docutils literal notranslate"><span class="pre">BASH</span></code>)</p></li>
 </ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CVSIGNORE</span><span class="o">=</span><span class="s2">&quot;fort.?? *.intermediate.nc&quot;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p>Any file whose name matches a pattern listed in the file $HOME/.cvsignore, or in a file named .cvsignore within a directory being copied. This file has contents as per $CVSIGNORE, but with one pattern per line, for example:</p></li>
+<li><dl class="simple">
+<dt>Or any file whose name matches a pattern listed in the file $HOME/.cvsignore, or in a file named .cvsignore within a directory being copied.</dt><dd><ul>
+<li><p>This file has contents as per $CVSIGNORE, but with one pattern per line, for example:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .cvsignore
 fort.??
@@ -316,10 +308,6 @@ fort.??
            
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="filezilla_transfer.html" class="btn btn-neutral float-right" title="File Transfer using FileZilla" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="access_dalma.html" class="btn btn-neutral float-left" title="Access Dalma" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
 
   <hr/>
 

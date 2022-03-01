@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Access Dalma &mdash; CRC Documentation  documentation</title>
+  <title>Access Jubail &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -160,7 +160,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Access Dalma</li>
+      <li>Access Jubail</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,25 +177,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="access-dalma">
-<h1>Access Dalma<a class="headerlink" href="#access-dalma" title="Permalink to this headline">¶</a></h1>
-<p>Want to access Dalma? Follow the guide below for Linux / Mac and Windows.</p>
+  <div class="section" id="access-jubail">
+<h1>Access Jubail<a class="headerlink" href="#access-jubail" title="Permalink to this headline">¶</a></h1>
+<p>Want to access Jubail? Follow the guide below for Linux / Mac and Windows.</p>
 <div class="section" id="linux-mac">
 <h2>Linux / Mac<a class="headerlink" href="#linux-mac" title="Permalink to this headline">¶</a></h2>
 <p><strong>Inside NYU Network</strong></p>
 <p>For Linux/Mac, execute the following command, change <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> to your actual username.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@dalma.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
-<p>If you need <code class="docutils literal notranslate"><span class="pre">X11</span></code>, add the <code class="docutils literal notranslate"><span class="pre">-X</span></code> option.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@dalma.abudhabi.nyu.edu -X
+<p>If you need <code class="docutils literal notranslate"><span class="pre">X11</span></code> for GUI interface, add the <code class="docutils literal notranslate"><span class="pre">-X</span></code> option.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu -X
 </pre></div>
 </div>
 </div>
 <div class="section" id="outside-nyu-network">
 <h2>Outside NYU Network<a class="headerlink" href="#outside-nyu-network" title="Permalink to this headline">¶</a></h2>
 <p><strong>VPN</strong></p>
-<p>You could either first connect to NYU VPN <a class="reference internal" href="../help/linux_vpn.html"><span class="doc">NYU VPN</span></a> and then connect to Dalma directly. Choose <code class="docutils literal notranslate"><span class="pre">vpn.abudhabi.nyu.edu</span></code> as your VPN server.</p>
+<p>You could either first connect to NYU VPN <a class="reference internal" href="../help/linux_vpn.html"><span class="doc">NYU VPN</span></a> and then connect to Jubail directly. Choose <code class="docutils literal notranslate"><span class="pre">vpn.abudhabi.nyu.edu</span></code> as your VPN server.</p>
 <p><strong>Bastion Host</strong></p>
 <p>Or, use bastion host as instructed below.</p>
 <ol class="arabic simple">
@@ -205,12 +205,13 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>On bastion host, connect to Dalma.</p></li>
+<li><p>On bastion host, connect to Jubail.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@dalma.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
-<p>To make a things easier, you could set up a tunnel configuration.</p>
+<p><strong>Tunnel configuration</strong></p>
+<p>Or, use tunnel configuration to make things easier as instructed below.</p>
 <ol class="arabic simple">
 <li><p>Add the following to your <code class="docutils literal notranslate"><span class="pre">$HOME/.ssh/config</span></code> on your local workstation. Replace <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> with your actual <code class="docutils literal notranslate"><span class="pre">NetID</span></code>. Make sure your local port 8023 is available.</p></li>
 </ol>
@@ -218,11 +219,11 @@
    HostName hpc.abudhabi.nyu.edu
    Port <span class="m">4410</span>
    ForwardX11 yes
-   LocalForward <span class="m">8023</span> dalma.abudhabi.nyu.edu:22
+   LocalForward <span class="m">8023</span> jubail.abudhabi.nyu.edu:22
    User &lt;NetID&gt;
 
 
-Host tunnel-dalma
+Host tunnel-jubail
    HostName localhost
    Port <span class="m">8023</span>
    ForwardX11 yes
@@ -236,15 +237,15 @@ Host tunnel-dalma
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Open a new terminal. Run the following to connect to Dalma.</p></li>
+<li><p>Open a new terminal. Run the following to connect to Jubail.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh tunnel-dalma
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh tunnel-jubail
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>If you want to transfer data instead, use the following example.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync -rav ./local-folder-to-upload tunnel-dalma:/scratch/&lt;NetID&gt;/remote-folder-on-dalma
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync -rav ./local-folder-to-upload tunnel-jubail:/scratch/&lt;NetID&gt;/remote-folder-on-jubail
 </pre></div>
 </div>
 </div>
@@ -256,9 +257,9 @@ Host tunnel-dalma
 <li><dl class="simple">
 <dt>(First-time login only) Setup Butinah session in your putty.</dt><dd><ol class="loweralpha simple">
 <li><p>Open Putty. Go to Category -&gt; Session.</p></li>
-<li><p>Type dalma.abudhabi.nyu.edu in Host Name (or IP address).</p></li>
-<li><p>Type Dalma under Saved Sessions.</p></li>
-<li><p>Click Save button. A new session called Dalma will appear in Saved Sessions.</p></li>
+<li><p>Type jubail.abudhabi.nyu.edu in Host Name (or IP address).</p></li>
+<li><p>Type Jubail under Saved Sessions.</p></li>
+<li><p>Click Save button. A new session called Jubail will appear in Saved Sessions.</p></li>
 </ol>
 </dd>
 </dl>
@@ -266,21 +267,21 @@ Host tunnel-dalma
 </ol>
 <img alt="../../_images/putty.png" src="../../_images/putty.png" />
 <ol class="arabic simple" start="2">
-<li><p>Select Dalma session. Click Load button.</p></li>
+<li><p>Select Jubail session. Click Load button.</p></li>
 <li><p>Click Open button.</p></li>
 </ol>
 <p>The configuration will look like this screenshot.</p>
 <p><strong>Outside NYU Network</strong></p>
-<p>You could either first connect to NYU VPN <a class="reference internal" href="../help/linux_vpn.html"><span class="doc">NYU VPN</span></a> and then connect to Dalma directly. Choose vpn.abudhabi.nyu.edu as your VPN server.</p>
+<p>You could either first connect to NYU VPN <a class="reference internal" href="../help/linux_vpn.html"><span class="doc">NYU VPN</span></a> and then connect to Jubail directly. Choose vpn.abudhabi.nyu.edu as your VPN server.</p>
 <p>Or, use bastion host as instructed below.</p>
 <ol class="arabic simple">
-<li><p>Follow the instructions above as in side NYU Network, but connect to the host <strong>hpc.abudhabi.nyu.edu</strong> with port <strong>4410</strong> instead of dalma.abudhabi.nyu.edu.</p></li>
+<li><p>Follow the instructions above as inside NYU Network, but connect to the host <strong>hpc.abudhabi.nyu.edu</strong> with port <strong>4410</strong> instead of jubail.abudhabi.nyu.edu.</p></li>
 <li><p>Once you are connected, run this in the terminal on hpc.abudhabi.nyu.edu</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@dalma.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
-<p>Now you are on Dalma.</p>
+<p>Now you are on Jubail.</p>
 </div>
 </div>
 

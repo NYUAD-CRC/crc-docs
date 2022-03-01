@@ -1,11 +1,6 @@
 System
 ======
 
-.. toctree::
-   :maxdepth: 1
-   
-   /hpc/system/load.rst
-
 
 Overview
 --------
@@ -53,7 +48,7 @@ Typical Workflow
 
 1. (One time only) Let us know your computational requirement.
 2. (One time only) Apply an HPC account and pass our quiz.
-3. If needed, transfer your input data to Dalma.
+3. If needed, transfer your input data to Jubail.
 4. Log on to HPC login nodes.
 5. Submit jobs on login nodes. 
 6. Your jobs will queue for execution.
@@ -73,7 +68,7 @@ Summary of Nodes
       - GPUs / node
       - Remarks
     * - Bulk
-      - 197
+      - 189
       - 128
       - 480GB
       - None
@@ -82,29 +77,29 @@ Summary of Nodes
       - 24
       - 128
       - 480GB
-      - 1 (A100)
-      - New HPC GPU nodes with one A100 card each
+      - 1/2 (Nvidia A100)
+      - New HPC GPU nodes with two nodes have only one GPU card each, rest of them have 2 cards each
     * - Dalma Compute
-      - 375
-      - 28
-      - 112 GB 
+      - 432
+      - 28/40
+      - 128 GB / 512 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
     * - Bigmem
-      - 3	
-      - 64
+      - 4	
+      - 32/63/72
       - 1 TB / 2TB	
       - None	
-      - Use when memory requirement per node is greater than 500GB
+      - Used when memory requirement per node is greater than 500GB
     * - :doc:`Dalma GPU<gpu_nodes>` 
       - 14
       - 40
-      - 360 GB
-      - 2/8	(Nvidia V100)
-      - Two nodes have 8 GPU cards each, rest of them have 2 each
+      - 360 GB / 1 TB
+      - 2/8 (Nvidia V100)
+      - Two nodes have 8 GPU cards each, rest of them have 2 cards each
     * - :doc:`Visual<visual_nodes>`	
       - 4	
-      - 38	
+      - 32	
       - 112 GB
       - 2 (Nvidia Quadro P4000)
       - Used for GUI 
@@ -115,7 +110,7 @@ Summary of Nodes
 	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
-	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple the multiple of ``-n`` and ``-c``.
+	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
 	    
 Access
 ------
@@ -126,13 +121,8 @@ Once your account is ready, you can access the HPC. With Linux or Mac in NYU AD/
 
     ssh <NetID>@jubail.abudhabi.nyu.edu
 
-If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma <access_dalma>`.
+If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Jubail <access_jubail>`.
 
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   /hpc/system/access_dalma
 
 Whenever you login, you land up on the login node which is shown on left most section of
 your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
@@ -150,7 +140,7 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   [wz22@login-0-2 ~]$
 
-.. warning::
+.. Important::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 
 .. _data_transfers:
@@ -158,16 +148,11 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
 Data Transfers
 --------------
 
-You can use either Terminal or FileZilla (with a GUI) to transfer your data from/to the HPC.
-Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and fro on the HPC.
+You can use either :doc:`rsycn command </hpc/system/rsync_transfer>` or :doc:`FileZilla (with a GUI) </hpc/system/filezilla_transfer>` to transfer your data from/to the HPC cluster.
+Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and from the HPC cluster.
 
-.. toctree::
-   :maxdepth: 1
-   
 
-   /hpc/system/rsync_transfer
-   /hpc/system/filezilla_transfer
-
+  
 .. note::
 
   For data sharing among collaborators, Kindly refer to the section :doc:`here </hpc/storage/data_sharing>`
@@ -177,12 +162,8 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 Special Compute Nodes
 ---------------------
 
-
-.. toctree::
-   :maxdepth: 1
-
-   /hpc/system/visual_nodes
-   /hpc/system/gpu_nodes 
+* :doc:`Visualization Nodes<visual_nodes>` 
+* :doc:`GPU nodes on HPC<gpu_nodes>` 
    
 Fast Transfer between NYC and NYUAD HPC
 ----------------------------------------
@@ -190,8 +171,5 @@ Fast Transfer between NYC and NYUAD HPC
 The default MLPS link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a 
 high bandwidth ANKABUT link instead.
 
-.. toctree::
-   :maxdepth: 1
-   
-   /hpc/system/nyc_file_transfer
+* :doc:`Fast Transfer Between NYU NYC and NYUAD<nyc_file_transfer>` 
 
