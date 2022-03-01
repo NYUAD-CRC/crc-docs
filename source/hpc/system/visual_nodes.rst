@@ -74,7 +74,7 @@ in the terminal window. If you need to use GPU-enabled application, run ``viz-tv
 
     viz-tvnc -X11
 
-This will allocate a single visualization node for your exclusive use for a limited time period (presently 6 hours max usage). The node allocated below, for example, is ``hpcviz2.abudhabi.nyu.edu``.
+This will allocate a single visualization node for your use for a limited time period (presently 6 hours max usage). The node allocated below, for example, is ``hpcviz2.abudhabi.nyu.edu``.
 
 .. image:: ../img/viz-tvnc.png
 
@@ -206,7 +206,7 @@ Type ``yes`` to continue.
 
         .. code-block:: bash
 
-            ssh -L 5930:127.0.0.1:5902 gh50@hpcviz2.abudhabi.nyu.edu
+            ssh -L 5930:127.0.0.1:5902 wz22@hpcviz2.abudhabi.nyu.edu
 
         Then keep this terminal active.
 
@@ -223,7 +223,8 @@ Finally, the remote desktop will show up.
 .. admonition:: Cursor
 
     By default the cursor is a single pixel dot, and difficult to see. To change it in Windows, click the left-upper most icon of the window, "connection options...". Then change the "Local cursor shape" to "Normal arrow"
-    .. image:: ../img/modified-sshvnc-cursor-windows.png
+    
+.. image:: ../img/modified-sshvnc-cursor-windows.png
 
 
 Running applications inside the VNC session
