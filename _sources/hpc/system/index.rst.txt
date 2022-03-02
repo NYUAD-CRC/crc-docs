@@ -168,7 +168,7 @@ Special Compute Nodes
 Fast Transfer between NYC and NYUAD HPC
 ----------------------------------------
 
-The default MLPS link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a 
+The default MLPS(Multiprotocol Label Switching) link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a 
 high bandwidth ANKABUT link instead.
 
 * :doc:`Fast Transfer Between NYU NYC and NYUAD<nyc_file_transfer>` 

@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Difference in Job Submission on Jubail and Dalma" href="job_jubail.html" />
+    <link rel="next" title="Difference in Job Submission between Jubail and Dalma" href="job_jubail.html" />
     <link rel="prev" title="Jobs Management" href="index.html" /> 
 </head>
 
@@ -103,10 +103,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#things-to-keep-in-mind">Things to Keep in mind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#partitions-summary">Partitions Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sample-job-script">Sample Job Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requesting-a-gpu-node">Requesting a GPU node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preempt-partition">Preempt Partition</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission on Jubail and Dalma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission between Jubail and Dalma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
@@ -291,7 +292,7 @@
 <tr class="row-odd"><td></td>
 <td></td>
 <td><p>Large</p></td>
-<td><p>(512,2048)</p></td>
+<td><p>(256,2048)</p></td>
 <td><p>2 days</p></td>
 <td><p>10</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
@@ -304,9 +305,9 @@
 <tr class="row-even"><td></td>
 <td></td>
 <td><p>XLarge</p></td>
-<td><p>(2048,4096)</p></td>
+<td><p>(512,4096)</p></td>
 <td><p>2 days</p></td>
-<td><p>3</p></td>
+<td><p>5</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
 <span class="c1">#SBATCH -n 4000</span>
 </pre></div>
@@ -325,12 +326,12 @@
 </pre></div>
 </div>
 </td>
-<td><p>Max GPUs:8</p></td>
+<td><p>Max GPUs:4</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bigmem</span></code></p></td>
 <td><p>Large Memory Jobs</p></td>
-<td><p>(1,64)</p></td>
+<td><p>(1,40)</p></td>
 <td><p>4 days</p></td>
 <td><p>2</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p bigmem</span>
@@ -358,7 +359,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">xxl</span></code></p></td>
 <td><p>Grand Challenge</p></td>
 <td><p>any</p></td>
-<td><p>2 days</p></td>
+<td><p>1 day</p></td>
 <td><p>1</p></td>
 <td></td>
 <td><p>Requires approval from management</p></td>
@@ -381,7 +382,7 @@
 <li><p><strong>Ask only what you need</strong></p></li>
 <li><p>Serial jobs would need only one CPU (<code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">1</span></code>)</p></li>
 <li><p>Make sure the walltime specified is not greater than the allowed time limit. More details can be found <a class="reference internal" href="#partitions-summary"><span class="std std-ref">here</span></a>.</p></li>
-<li><p>By Default 4GB of memory is assigned for each CPU allocated and hence defining the memory requirement is optional</p></li>
+<li><p>By Default 3.75GB of memory is assigned for each CPU allocated and hence defining the memory requirement is optional</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition-difference-between-cpus-cores-and-tasks admonition">
@@ -391,7 +392,7 @@
 <li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--natsks</span></code>.</p></li>
 <li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
 <li><p>By Default, Each task is equivalent to one CPU.</p></li>
-<li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the CPUs allocated to you would be the multiple the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
+<li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the total number of CPUs allocated to you would be the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
 </ul>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -418,12 +419,31 @@ python abc.py
 </pre></div>
 </div>
 </div>
+<div class="section" id="requesting-a-gpu-node">
+<h2>Requesting a GPU node<a class="headerlink" href="#requesting-a-gpu-node" title="Permalink to this headline">¶</a></h2>
+<p>To request a Gpu node you have two options:</p>
+<ul class="simple">
+<li><p>Requesting only one GPU card of any type</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Requesting only one GPU card of a specific type( available types are v100 and a100)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:a100:1</span>
+</pre></div>
+</div>
+<p>For more details regarding GPU nodes and cards types, kindly check <a class="reference internal" href="#partitions-summary"><span class="std std-ref">this</span></a></p>
+</div>
 <div class="section" id="preempt-partition">
 <span id="id2"></span><h2>Preempt Partition<a class="headerlink" href="#preempt-partition" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p><strong>Limitless high priority queue</strong> with the caveat that the jobs can be preempted (killed) to make space for other jobs demanding resources.</p></li>
-<li><p>A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpoint, if needed.</p></li>
-<li><p>We intend to increase the machine occupancy and reduce the waiting time in queues for those job that may have short runtime or are meant to be for testing, etc, etc, that otherwise will be treated as regular jobs.</p></li>
+<li><p>A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpointing, if needed.</p></li>
+<li><p>We intend to increase the machine occupancy and reduce the waiting time in queues for those jobs that may have short runtime or are meant to be for testing ,otherwise jobs will be treated as regular jobs.</p></li>
 <li><p>Default Walltime: 2 hours</p></li>
 <li><p>Maximum Walltime depends on the job size:</p>
 <blockquote>
@@ -443,7 +463,7 @@ python abc.py
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="job_jubail.html" class="btn btn-neutral float-right" title="Difference in Job Submission on Jubail and Dalma" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="job_jubail.html" class="btn btn-neutral float-right" title="Difference in Job Submission between Jubail and Dalma" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="Jobs Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

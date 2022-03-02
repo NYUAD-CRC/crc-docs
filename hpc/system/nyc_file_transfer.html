@@ -179,16 +179,29 @@
             
   <div class="section" id="fast-transfer-between-nyu-nyc-and-nyuad">
 <h1>Fast Transfer Between NYU NYC and NYUAD<a class="headerlink" href="#fast-transfer-between-nyu-nyc-and-nyuad" title="Permalink to this headline">¶</a></h1>
-<p>The default MLPS link between NY and AD has a low bandwidth. Using port 922 on NYUAD HPC will use a
+<p>The default MLPS(Multiprotocol Label Switching) link between NY and AD has a low bandwidth but using port 922 on NYUAD HPC will use a
 high bandwidth ANKABUT link instead.</p>
 <div class="section" id="specifying-the-port-directly">
 <h2>Specifying the port directly<a class="headerlink" href="#specifying-the-port-directly" title="Permalink to this headline">¶</a></h2>
-<p>For infrequent data transfer, directly specify the port 922 in your scp command. From your host in NY, run this in the terminal.</p>
-<p><strong>Pulling data from Dalma</strong></p>
+<p>For infrequent data transfer, directly specify the port 922 in your scp command.</p>
+<ul class="simple">
+<li><p>Original scp command (low bandwidth):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp source_file_name username@destination_host:destination_folder
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Addition of port 922 to the original scp command uses a high bandwidth ANKABUT link instead.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> source_file_name username@destination_host:destination_folder
+</pre></div>
+</div>
+<p>For Example from your host in NY, run this in the terminal.</p>
+<p><strong>For Pulling data from Jubail</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> &lt;NetID&gt;@jubail.abudhabi.nyu.edu:~/filename ./
 </pre></div>
 </div>
-<p><strong>Pushing data to Dalma</strong></p>
+<p><strong>For Pushing data to Jubail</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> filename &lt;NetID&gt;@jubail.abudhabi.nyu.edu:~/
 </pre></div>
 </div>
@@ -196,17 +209,17 @@ high bandwidth ANKABUT link instead.</p>
 <div class="section" id="setup-an-alias">
 <h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this headline">¶</a></h2>
 <p>If you need to transfer data frequently, it is easier to setup an alias in your ssh config. In your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, append the following entries.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host dalma-fast
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host jubail-fast
     Hostname     jubail.abudhabi.nyu.edu
     Port         <span class="m">922</span>
     User         &lt;your-NetID&gt;
 </pre></div>
 </div>
-<p>Now you should be able to scp to / from NYUAD HPC using the ANKABUT fast link by the following commands.</p>
+<p>Now you should be able to scp to / from NYUAD HPC from your host in NY using the ANKABUT fast link by the following commands.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp filename jubail-fast:~/
 </pre></div>
 </div>
-<p>Windows user can do the same thing by specifying the port 922 in the file transfer software. E.g., FileZilla.</p>
+<p>Windows user can do the same thing by specifying the port 922 in the file transfer software. E.g., <a class="reference internal" href="filezilla_transfer.html"><span class="doc">FileZilla</span></a>.</p>
 </div>
 </div>
 

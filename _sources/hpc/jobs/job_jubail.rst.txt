@@ -1,20 +1,20 @@
-Difference in Job Submission on Jubail and Dalma
-==================================================
+Difference in Job Submission between Jubail and Dalma
+=====================================================
 
-This section highlights some of the important chnages you would need in your job submission 
-scripts when moving from Dalma HPC to Jubail HPC. We shall discuss each of the sections below:
+This section highlights some of the important chnages you would need in your job submission scripts when moving from Dalma HPC to Jubail HPC. 
+
+We shall discuss each of the sections below:
 
 1. Partitions
 2. Number of Tasks
-3. Bigmem node
-4. GPU node
-5. Timelimit 
-6. Memory
+3. Memory
+4. Bigmem nodes
+5. GPU nodes
+6. Timelimit 
 7. Preempt jobs
 
 Summary
 -------
-
 .. list-table:: 
     :widths: auto 
     :header-rows: 1
@@ -40,7 +40,7 @@ Summary
         Jubail and these lines will be filtered out automatically by the job scheduling wrapper.
     * -
       -
-      - ``SBATCH -p compute`` is optional
+      - ``SBATCH -p compute`` is optional(as compute is the default partition)
     * -
       -
         .. code-block:: bash
@@ -52,12 +52,12 @@ Summary
 
           #SBATCH -p compute 
 
-    * - **Maximum number of Tasks or CPUs**
+    * - **Maximum number of Tasks/CPUs**
       - 
       -  
     * -
       - Maximum number of CPUs per node was 28 in Dalma. 
-      - maximum number of CPUs per node is 128 on Jubail.
+      - Maximum number of CPUs per node is 128 on Jubail.
     * -
       - 
       - Small jobs (requiring less than 28 CPUs) will be sent to old Dalma nodes by the scheduler.
@@ -72,14 +72,14 @@ Summary
       - Medium and Large jobs (MPI Jobs) would need an adjustment as the ``-n`` or ``--ntasks`` parameter would need to be 
         a multiple of 128 if it was a multiple of 28 on Dalma.
     * -
-      - Requesting 280 (``28x10``) CPUs for a 10 node parallel job.
+      - Requesting 280 CPUs(``28x10``) requires 10 nodes (parallel job).
 
         .. code-block:: bash
 
           #SBATCH -p parallel
           #SBATCH -n 280  
 
-      - Requesting a nearest multiple of 128 (``128x2``) as compared to what was requested on Dalma.
+      - Requesting the nearest multiple of 128 cores as compared to what was requested on Dalma, 256 CPUs (``128x2``) requires only 2 nodes.
 
         .. code-block:: bash
 
@@ -111,7 +111,7 @@ Summary
           #SBATCH -p compute
           #SBATCH --mem=200G
 
-    * - **BigMem Jobs**
+    * - **BigMem nodes**
       -
       -
     * -
@@ -119,7 +119,7 @@ Summary
       - Large memory nodes are requested using the ``bigmem`` partition for memory greater than 480GB. 
     * -
       - Dalma has three large memory nodes.
-      - Jubail has the same large memory nodes with no new additions.
+      - Jubail has four large memory nodes.
     * - 
       - ``#SBATCH -p bigmem`` was optional
       - ``#SBATCH -p bigmem`` is mandatory
@@ -142,12 +142,11 @@ Summary
       -
       -
     * -
-      - Dalma had 10 GPU nodes with 2 Nvidia ``V100`` GPU cards on 8 nodes and 8 ``V100`` GPU vards on 2 nodes.
+      - Dalma had 14 GPU nodes with 2 Nvidia ``V100`` GPU cards on 12 nodes and 8 ``V100`` GPU vards on 2 nodes.
       - On addition to the Dalma GPU nodes, Jubail has 24 GPU nodes with one ``A100`` card on each of them.
     * -
       - Dalma had exclusive GPU nodes. Hence, only GPU jobs were running on GPU nodes.
-      - Jubail has both exclusive (``V100`` GPU nodes) and non-exclusive (versatile, ``A100`` GPU nodes) nodes which can run normal jobs when idle and have a higher priority 
-        for GPU jobs.
+      - Jubail has both exclusive (``V100`` GPU nodes (Dalma GPU nodes) ) and non-exclusive (versatile, ``A100`` GPU nodes) which can run normal CPU jobs when idle (no GPU cards are needed) and have a higher priority for GPU jobs.
     * -
       - Only Nvidia ``V100`` cards were available on Dalma.
       - On Jubail, Users have an option to choose between Nvidia ``V100`` and and the new ``A100`` cards.
@@ -159,8 +158,7 @@ Summary
       - The users can test the performance differences between the ``A100`` and ``V100`` nodes and decide accordingly.
     * -
       -
-      - Since, ``A100`` GPU nodes are non exclusive, Users might have to wait in queue for non GPU jobs on those nodes 
-        to be available on a priority basis.
+      - Since, ``A100`` GPU nodes are non exclusive, Users might have to wait in queue for non GPU jobs (normal CPU jobs) on those nodes to be available on a priority basis.
     * -
       -
       - You can also mention in your job script if you would like to explicitly send your job to a100 nodes.

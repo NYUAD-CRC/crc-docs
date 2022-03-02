@@ -234,7 +234,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viz-tvnc -X11
 </pre></div>
 </div>
-<p>This will allocate a single visualization node for your exclusive use for a limited time period (presently 6 hours max usage). The node allocated below, for example, is <code class="docutils literal notranslate"><span class="pre">hpcviz2.abudhabi.nyu.edu</span></code>.</p>
+<p>This will allocate a single visualization node for your use for a limited time period (presently 6 hours max usage). The node allocated below, for example, is <code class="docutils literal notranslate"><span class="pre">hpcviz2.abudhabi.nyu.edu</span></code>.</p>
 <img alt="../../_images/viz-tvnc.png" src="../../_images/viz-tvnc.png" />
 <p>You can specify the geometry (size) of the remote visualization session when starting viz-tvnc with the -g option:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-g DESKTOP_RESOLUTION
@@ -337,7 +337,7 @@ Are you sure you want to continue connecting (yes/no)?
 </pre></div>
 </div>
 <p>For example, if my NetID is <code class="docutils literal notranslate"><span class="pre">wz22</span></code>, my visualization host is <code class="docutils literal notranslate"><span class="pre">hpcviz2.abudhabi.nyu.edu</span></code> and display number is <code class="docutils literal notranslate"><span class="pre">2</span></code>,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">5930</span>:127.0.0.1:5902 gh50@hpcviz2.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">5930</span>:127.0.0.1:5902 wz22@hpcviz2.abudhabi.nyu.edu
 </pre></div>
 </div>
 <p>Then keep this terminal active.</p>
@@ -358,9 +358,9 @@ Are you sure you want to continue connecting (yes/no)?
 <img alt="../../_images/sshvnc-remote-desktop.png" src="../../_images/sshvnc-remote-desktop.png" />
 <div class="admonition-cursor admonition">
 <p class="admonition-title">Cursor</p>
-<p>By default the cursor is a single pixel dot, and difficult to see. To change it in Windows, click the left-upper most icon of the window, “connection options…”. Then change the “Local cursor shape” to “Normal arrow”
-.. image:: ../img/modified-sshvnc-cursor-windows.png</p>
+<p>By default the cursor is a single pixel dot, and difficult to see. To change it in Windows, click the left-upper most icon of the window, “connection options…”. Then change the “Local cursor shape” to “Normal arrow”</p>
 </div>
+<img alt="../../_images/modified-sshvnc-cursor-windows.png" src="../../_images/modified-sshvnc-cursor-windows.png" />
 </div>
 <div class="section" id="running-applications-inside-the-vnc-session">
 <h2>Running applications inside the VNC session<a class="headerlink" href="#running-applications-inside-the-vnc-session" title="Permalink to this headline">¶</a></h2>

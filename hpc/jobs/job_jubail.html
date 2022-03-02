@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Difference in Job Submission on Jubail and Dalma &mdash; CRC Documentation  documentation</title>
+  <title>Difference in Job Submission between Jubail and Dalma &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -100,7 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Difference in Job Submission on Jubail and Dalma</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Difference in Job Submission between Jubail and Dalma</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
@@ -180,7 +180,7 @@
         
           <li><a href="index.html">Jobs Management</a> &raquo;</li>
         
-      <li>Difference in Job Submission on Jubail and Dalma</li>
+      <li>Difference in Job Submission between Jubail and Dalma</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -197,17 +197,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="difference-in-job-submission-on-jubail-and-dalma">
-<h1>Difference in Job Submission on Jubail and Dalma<a class="headerlink" href="#difference-in-job-submission-on-jubail-and-dalma" title="Permalink to this headline">¶</a></h1>
-<p>This section highlights some of the important chnages you would need in your job submission
-scripts when moving from Dalma HPC to Jubail HPC. We shall discuss each of the sections below:</p>
+  <div class="section" id="difference-in-job-submission-between-jubail-and-dalma">
+<h1>Difference in Job Submission between Jubail and Dalma<a class="headerlink" href="#difference-in-job-submission-between-jubail-and-dalma" title="Permalink to this headline">¶</a></h1>
+<p>This section highlights some of the important chnages you would need in your job submission scripts when moving from Dalma HPC to Jubail HPC.</p>
+<p>We shall discuss each of the sections below:</p>
 <ol class="arabic simple">
 <li><p>Partitions</p></li>
 <li><p>Number of Tasks</p></li>
-<li><p>Bigmem node</p></li>
-<li><p>GPU node</p></li>
-<li><p>Timelimit</p></li>
 <li><p>Memory</p></li>
+<li><p>Bigmem nodes</p></li>
+<li><p>GPU nodes</p></li>
+<li><p>Timelimit</p></li>
 <li><p>Preempt jobs</p></li>
 </ol>
 <div class="section" id="summary">
@@ -243,7 +243,7 @@ Jubail and these lines will be filtered out automatically by the job scheduling 
 </tr>
 <tr class="row-odd"><td></td>
 <td></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">SBATCH</span> <span class="pre">-p</span> <span class="pre">compute</span></code> is optional</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBATCH</span> <span class="pre">-p</span> <span class="pre">compute</span></code> is optional(as compute is the default partition)</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p parallel</span>
@@ -255,13 +255,13 @@ Jubail and these lines will be filtered out automatically by the job scheduling 
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>Maximum number of Tasks or CPUs</strong></p></td>
+<tr class="row-odd"><td><p><strong>Maximum number of Tasks/CPUs</strong></p></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p>Maximum number of CPUs per node was 28 in Dalma.</p></td>
-<td><p>maximum number of CPUs per node is 128 on Jubail.</p></td>
+<td><p>Maximum number of CPUs per node is 128 on Jubail.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td></td>
@@ -281,13 +281,13 @@ Jubail and these lines will be filtered out automatically by the job scheduling 
 a multiple of 128 if it was a multiple of 28 on Dalma.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>Requesting 280 (<code class="docutils literal notranslate"><span class="pre">28x10</span></code>) CPUs for a 10 node parallel job.</p>
+<td><p>Requesting 280 CPUs(<code class="docutils literal notranslate"><span class="pre">28x10</span></code>) requires 10 nodes (parallel job).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p parallel</span>
 <span class="c1">#SBATCH -n 280</span>
 </pre></div>
 </div>
 </td>
-<td><p>Requesting a nearest multiple of 128 (<code class="docutils literal notranslate"><span class="pre">128x2</span></code>) as compared to what was requested on Dalma.</p>
+<td><p>Requesting the nearest multiple of 128 cores as compared to what was requested on Dalma, 256 CPUs (<code class="docutils literal notranslate"><span class="pre">128x2</span></code>) requires only 2 nodes.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
 <span class="c1">#SBATCH -n 256</span>
 </pre></div>
@@ -322,7 +322,7 @@ a multiple of 128 if it was a multiple of 28 on Dalma.</p></td>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>BigMem Jobs</strong></p></td>
+<tr class="row-odd"><td><p><strong>BigMem nodes</strong></p></td>
 <td></td>
 <td></td>
 </tr>
@@ -332,7 +332,7 @@ a multiple of 128 if it was a multiple of 28 on Dalma.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>Dalma has three large memory nodes.</p></td>
-<td><p>Jubail has the same large memory nodes with no new additions.</p></td>
+<td><p>Jubail has four large memory nodes.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">bigmem</span></code> was optional</p></td>
@@ -357,13 +357,12 @@ a multiple of 128 if it was a multiple of 28 on Dalma.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>Dalma had 10 GPU nodes with 2 Nvidia <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU cards on 8 nodes and 8 <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU vards on 2 nodes.</p></td>
+<td><p>Dalma had 14 GPU nodes with 2 Nvidia <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU cards on 12 nodes and 8 <code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU vards on 2 nodes.</p></td>
 <td><p>On addition to the Dalma GPU nodes, Jubail has 24 GPU nodes with one <code class="docutils literal notranslate"><span class="pre">A100</span></code> card on each of them.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p>Dalma had exclusive GPU nodes. Hence, only GPU jobs were running on GPU nodes.</p></td>
-<td><p>Jubail has both exclusive (<code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU nodes) and non-exclusive (versatile, <code class="docutils literal notranslate"><span class="pre">A100</span></code> GPU nodes) nodes which can run normal jobs when idle and have a higher priority
-for GPU jobs.</p></td>
+<td><p>Jubail has both exclusive (<code class="docutils literal notranslate"><span class="pre">V100</span></code> GPU nodes (Dalma GPU nodes) ) and non-exclusive (versatile, <code class="docutils literal notranslate"><span class="pre">A100</span></code> GPU nodes) which can run normal CPU jobs when idle (no GPU cards are needed) and have a higher priority for GPU jobs.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>Only Nvidia <code class="docutils literal notranslate"><span class="pre">V100</span></code> cards were available on Dalma.</p></td>
@@ -379,8 +378,7 @@ for GPU jobs.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
-<td><p>Since, <code class="docutils literal notranslate"><span class="pre">A100</span></code> GPU nodes are non exclusive, Users might have to wait in queue for non GPU jobs on those nodes
-to be available on a priority basis.</p></td>
+<td><p>Since, <code class="docutils literal notranslate"><span class="pre">A100</span></code> GPU nodes are non exclusive, Users might have to wait in queue for non GPU jobs (normal CPU jobs) on those nodes to be available on a priority basis.</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td></td>
