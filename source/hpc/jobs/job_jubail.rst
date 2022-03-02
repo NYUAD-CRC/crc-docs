@@ -12,6 +12,7 @@ We shall discuss each of the sections below:
 5. GPU nodes
 6. Timelimit 
 7. Preempt jobs
+8. Default Quota
 
 Summary
 -------
@@ -209,6 +210,15 @@ Summary
     * -
       -
       - More info on this can be found :ref:`here <preempt_partition>`
+    * - **Default Quota**
+      -
+      -
+    * - 
+      - Dalma had 4 storage systems $HOME, $SCRATCH, $WORK and $ARCHIVE with Default Quota for each one.
+      - Jubail has same storage systems as Dalma and same Default Quota for all storage systems except $HOME.
+    * -
+      - Default Quota for Dalma per $HOME was 20GB in 400K files.
+      - Default Quota for Jubail per $HOME is 20GB in 100K files.
 
         
         
