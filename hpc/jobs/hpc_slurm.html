@@ -215,7 +215,7 @@
 <ul>
 <li><p>Compute nodes may belong to multiple partitions to ensure maximum use of the system</p></li>
 <li><p>Partitions may have different priorities and limits of execution and may limit who can use them</p></li>
-<li><p>Dalma’s partition (as seen by users)</p>
+<li><p>Jubail’s partition (as seen by users)</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">compute</span></code>: General purpose partition for all the normal runs</p></li>
@@ -286,14 +286,14 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>   Select number of tasks to run (default 1 core per task)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code>   Select number of nodes on which to run</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>   Wallclock in hours:minutes:seconds (ex 4:00:00)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>   Select partition (serial, parallel, gpu, bigmem)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>   Wallclock in days-hours:minutes:seconds (ex 4:00:00)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>   Select partition (compute, gpu, bigmem)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>   Output file ( with no –e option, err and out are merged to the Outfile)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-e</span></code>   Keep a separate error File</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>   Dependency with prior job (ex don’t start this job before job XXX terminates)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-A</span></code>   Select account (ex physics_ser, faculty_ser)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>   Number of cores required per task (default 1)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--tasks-per-node</span> <span class="pre">Number</span></code> of tasks on each node</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--tasks-per-node</span> <span class="pre">Number</span></code> Number of tasks on each node</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-type=type</span></code> Notify on state change: BEGIN, END, FAIL or ALL</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-user=user</span></code> Who to send email notification</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mem</span></code> Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)</p></li>
@@ -445,7 +445,7 @@ partition details they wish to use.</p>
 </pre></div>
 </div>
 <p>Jubail specific job submission tools extend SLURM’s associations to define a <code class="docutils literal notranslate"><span class="pre">default</span></code>
-association. So you only need to specify accounts is, for example, you belong to multiple
+association. So you only need to specify which account is, for example, you belong to multiple
 accounts – ex faculty and research-lab – and you want to execute using your non-default
 account. So at most you’ll need to specify:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p &lt;partition&gt; -a &lt;account&gt; job
