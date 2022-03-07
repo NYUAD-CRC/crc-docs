@@ -24,7 +24,7 @@ Containers and VMs are both types of virtualization. But it's important to under
 
 Virtual Machines install every last bit of an operating system (OS) right down to the core software that allows the OS to control the hardware (called the kernel). This means that VMs:
 * Are complete in the sense that you can use a VM to interact with your computer via a different OS.
-* Are extremely flexible. For instance you an install a Windows VM on a Mac using software like VirtualBox.
+* Are extremely flexible. For instance you install a Windows VM on a Mac using software like VirtualBox.
 * Are slow and resource hungry. Every time you start a VM it has to bring up an entirely new OS.
 
 Containers share a kernel with the host OS. This means that Containers:
@@ -77,7 +77,7 @@ Singularity
 
 **Philosophy**
 
-Singularity assumes (`more or less <http://containers-ftw.org/SCI-F/>`__) that each application will have its own container.  It does not seek to fully isolate containers from one another or the host system. 
+Singularity assumes (more or less) that each application will have its own container.  It does not seek to fully isolate containers from one another or the host system. 
 Singularity assumes that you will have a build system where you are the root user, but that you will also have a production system where you may or may not be the root user. 
 
 **Strengths**

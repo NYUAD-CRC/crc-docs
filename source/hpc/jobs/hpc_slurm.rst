@@ -8,7 +8,7 @@ A partition is a collection of nodes, they may share some attributes (CPU type, 
 
 * Compute nodes may belong to multiple partitions to ensure maximum use of the system
 * Partitions may have different priorities and limits of execution and may limit who can use them
-* Dalma's partition (as seen by users)
+* Jubail's partition (as seen by users)
 
 	- ``compute``: General purpose partition for all the normal runs
 	- ``nvidia`` : Partition of GPU jobs
@@ -75,14 +75,14 @@ OR
 
 * ``-n``   Select number of tasks to run (default 1 core per task)
 * ``-N``   Select number of nodes on which to run
-* ``-t``   Wallclock in hours:minutes:seconds (ex 4:00:00)
-* ``-p``   Select partition (serial, parallel, gpu, bigmem)
+* ``-t``   Wallclock in days-hours:minutes:seconds (ex 4:00:00)
+* ``-p``   Select partition (compute, gpu, bigmem)
 * ``-o``   Output file ( with no –e option, err and out are merged to the Outfile)
 * ``-e``   Keep a separate error File
 * ``-d``   Dependency with prior job (ex don't start this job before job XXX terminates)
 * ``-A``   Select account (ex physics_ser, faculty_ser)
 * ``-c``   Number of cores required per task (default 1)
-* ``--tasks-per-node Number`` of tasks on each node
+* ``--tasks-per-node Number`` Number of tasks on each node
 * ``--mail-type=type`` Notify on state change: BEGIN, END, FAIL or ALL
 * ``--mail-user=user`` Who to send email notification
 * ``--mem`` Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)
@@ -242,7 +242,7 @@ partition details they wish to use.
     sbatch –p preempt –a physics -u ziaw job
 
 Jubail specific job submission tools extend SLURM's associations to define a ``default``
-association. So you only need to specify accounts is, for example, you belong to multiple
+association. So you only need to specify which account is, for example, you belong to multiple
 accounts – ex faculty and research-lab – and you want to execute using your non-default
 account. So at most you'll need to specify:
 
