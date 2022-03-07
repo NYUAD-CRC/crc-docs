@@ -23,6 +23,12 @@ Summary
     * - 
       - **Dalma**
       - **Jubail**
+    * - **Access**
+      - 
+      - 
+    * - 
+      - Dalma was accessed as follows:
+      - Jubail can be accessed as follows:
     * - **Partitions**
       - 
       - 
