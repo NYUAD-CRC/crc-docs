@@ -109,5 +109,5 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 
-If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma </hpc/system/access_dalma>`.
+If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Dalma </hpc/system/access_jubail>`.
 

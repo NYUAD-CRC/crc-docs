@@ -123,6 +123,11 @@ Once your account is ready, you can access the HPC. With Linux or Mac in NYU AD/
 
 If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Jubail <access_jubail>`.
 
+.. toctree::
+ :hidden:
+
+ /hpc/system/access_jubail
+
 
 Whenever you login, you land up on the login node which is shown on left most section of
 your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
@@ -151,7 +156,11 @@ Data Transfers
 You can use either :doc:`rsycn command </hpc/system/rsync_transfer>` or :doc:`FileZilla (with a GUI) </hpc/system/filezilla_transfer>` to transfer your data from/to the HPC cluster.
 Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and from the HPC cluster.
 
+.. toctree::
+  :hidden:
 
+  /hpc/system/rsync_transfer
+  /hpc/system/filezilla_transfer
   
 .. note::
 
@@ -163,7 +172,14 @@ Special Compute Nodes
 ---------------------
 
 * :doc:`Visualization Nodes<visual_nodes>` 
-* :doc:`GPU nodes on HPC<gpu_nodes>` 
+* :doc:`GPU nodes on HPC<gpu_nodes>`
+
+
+.. toctree::
+  :hidden:
+
+  /hpc/system/visual_nodes
+  /hpc/system/gpu_nodes
    
 Fast Transfer between NYC and NYUAD HPC
 ----------------------------------------
@@ -173,3 +189,9 @@ high bandwidth ANKABUT link instead.
 
 * :doc:`Fast Transfer Between NYU NYC and NYUAD<nyc_file_transfer>` 
 
+.. toctree::
+  :hidden:
+
+  /hpc/system/nyc_file_transfer
+  
+  

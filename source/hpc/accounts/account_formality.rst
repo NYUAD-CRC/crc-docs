@@ -29,6 +29,8 @@ HPC faculty sponsors are expected to:
 * Agree to supervise the sponsored individual, to the extent necessary, to ensure proper use of the NYUAD HPC resources and compliance with all applicable policies.
 * Respond promptly to account-related requests from HPC staff
 
+
+
 Information for faculty sponsoring HPC users
 --------------------------------------------
 
