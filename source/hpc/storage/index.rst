@@ -17,6 +17,12 @@ Backing up is a user's own responsibility. E.g., if a user deleted something acc
     ``$HOME`` SSDs are not designed for this purpose, it will kill the SSDs quickly. 
 
 
+.. toctree::
+
+  /hpc/storage/home_scratch
+  /hpc/storage/work
+  /hpc/storage/archive
+  /hpc/storage/data_sharing
 
 Summary
 -------
@@ -63,12 +69,6 @@ Summary
       - 5TB, 125K Files
 
 
-.. toctree::
-
-  /hpc/storage/home_scratch
-  /hpc/storage/work
-  /hpc/storage/archive
-  /hpc/storage/data_sharing
   
 * :doc:`$HOME and $SCRATCH <home_scratch>`
 * :doc:`$WORK <work>`

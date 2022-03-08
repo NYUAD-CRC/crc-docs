@@ -222,14 +222,14 @@ a few of the basic commands a user can use for his/her jobs:
                                 
                                 squeue
 
-                - ``squeue`` command shows all the your jobs (runing and Pending) present in the queue
+                - ``squeue`` command shows all your jobs (Runing and Pending) present in the queue
         *       - 
                         .. code-block:: bash
 
                                 scancel 127445
                                 scancel -u wz22
 
-                - ``scancel`` commands allows you to cancel your jobs in the queue. YOu can cancel a single job using the job id
+                - ``scancel`` commands allows you to cancel your jobs in the queue. You can cancel a single job using the job id
                   or you can cancel all the jobs using your NetId.
 
  
