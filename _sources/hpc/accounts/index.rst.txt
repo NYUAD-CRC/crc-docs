@@ -19,7 +19,12 @@ Opening a New Account
 #. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request.
 #. You cannot submit jobs until you pass our online training. Click this: :ref:`HPC Trainig <training>`
 
+.. toctree::
+  :hidden:
 
+  /hpc/accounts/account_new
+  /hpc/accounts/account_approval
+  
 
 Renewing an Existing Account
 ----------------------------
@@ -30,15 +35,26 @@ Users need to renew their account every year.
 #. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request
 #. You cannot submit jobs until you pass our online training. Click this: :ref:`HPC Training <training>`
 
+.. toctree::
+  :hidden:
+
+  /hpc/accounts/account_renew
+  /hpc/accounts/account_approval
+  
    
 
 Formality
 ---------
 
+.. toctree::
+  :hidden:
+ 
+  /hpc/accounts/account_formality
  
 
 Check this :doc:`page <account_formality>` 
 for the formality on eligibility, sponsorship guidelines, sponsorship responsibility and etc.
+
 
 
    

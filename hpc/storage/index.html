@@ -44,8 +44,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Software" href="../software/index.html" />
-    <link rel="prev" title="System" href="../system/index.html" /> 
+    <link rel="next" title="$HOME and $SCRATCH" href="home_scratch.html" />
+    <link rel="prev" title="Fast Transfer Between NYU NYC and NYUAD" href="../system/nyc_file_transfer.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,6 +97,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="work.html">$WORK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#know-your-quota">Know Your Quota</a></li>
 </ul>
@@ -199,12 +203,21 @@
 <p>Running jobs from <code class="docutils literal notranslate"><span class="pre">/home</span></code> is a <strong>serious violation</strong> of HPC policy. Any users who intentionally violate this policy will get their account suspended.
 <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> SSDs are not designed for this purpose, it will kill the SSDs quickly.</p>
 </div>
-<ul class="simple">
-<li><p><a class="reference internal" href="home_scratch.html"><span class="doc">$HOME and $SCRATCH</span></a></p></li>
-<li><p><a class="reference internal" href="work.html"><span class="doc">$WORK</span></a></p></li>
-<li><p><a class="reference internal" href="archive.html"><span class="doc">$ARCHIVE</span></a></p></li>
-<li><p><a class="reference internal" href="data_sharing.html"><span class="doc">$Data Sharing with Collaborators</span></a></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="work.html">$WORK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="work.html#mount-work-with-sshfs">Mount $WORK with SSHFS</a></li>
 </ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="archive.html">$ARCHIVE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#quick-glance-into-the-archive-commands">Quick Glance into the archive commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#archive-sh">archive.sh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+</ul>
+</div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto docutils align-default">
@@ -255,6 +268,12 @@
 </tr>
 </tbody>
 </table>
+<ul class="simple">
+<li><p><a class="reference internal" href="home_scratch.html"><span class="doc">$HOME and $SCRATCH</span></a></p></li>
+<li><p><a class="reference internal" href="work.html"><span class="doc">$WORK</span></a></p></li>
+<li><p><a class="reference internal" href="archive.html"><span class="doc">$ARCHIVE</span></a></p></li>
+<li><p><a class="reference internal" href="data_sharing.html"><span class="doc">Data Sharing with Collaborators</span></a></p></li>
+</ul>
 </div>
 <div class="section" id="know-your-quota">
 <h2>Know Your Quota<a class="headerlink" href="#know-your-quota" title="Permalink to this headline">¶</a></h2>
@@ -280,8 +299,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../software/index.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../system/index.html" class="btn btn-neutral float-left" title="System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="home_scratch.html" class="btn btn-neutral float-right" title="$HOME and $SCRATCH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../system/nyc_file_transfer.html" class="btn btn-neutral float-left" title="Fast Transfer Between NYU NYC and NYUAD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

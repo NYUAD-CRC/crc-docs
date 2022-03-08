@@ -44,8 +44,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Storage" href="../storage/index.html" />
-    <link rel="prev" title="Accounts" href="../accounts/index.html" /> 
+    <link rel="next" title="Access Jubail" href="access_jubail.html" />
+    <link rel="prev" title="Account formality" href="../accounts/account_formality.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,10 +100,24 @@
 <li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#typical-workflow">Typical Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary-of-nodes">Summary of Nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#access">Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-transfers">Data Transfers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#special-compute-nodes">Special Compute Nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access">Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="access_jubail.html">Access Jubail</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-transfers">Data Transfers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rsync_transfer.html">File Transfer using rsync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filezilla_transfer.html">File Transfer using FileZilla</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#special-compute-nodes">Special Compute Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="visual_nodes.html">Visualization Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gpu_nodes.html">GPU nodes on HPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nyc_file_transfer.html">Fast Transfer Between NYU NYC and NYUAD</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
@@ -324,6 +338,8 @@
 </pre></div>
 </div>
 <p>If you use Windows or outside NYU AD/NY network, follow the instructions here: <a class="reference internal" href="access_jubail.html"><span class="doc">Access Jubail</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
 <p>Whenever you login, you land up on the login node which is shown on left most section of
 your terminal and may look something like <code class="docutils literal notranslate"><span class="pre">[wz22&#64;login-0-2</span> <span class="pre">~]$</span></code> suggesting that you are on one of the login nodes.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Last login: Fri Dec <span class="m">17</span> <span class="m">04</span>:07:47 <span class="m">2021</span> from hpc.abudhabi.nyu.edu
@@ -345,6 +361,8 @@ For support: nyuad.it.help@nyu.edu
 <span id="id1"></span><h2>Data Transfers<a class="headerlink" href="#data-transfers" title="Permalink to this headline">¶</a></h2>
 <p>You can use either <a class="reference internal" href="rsync_transfer.html"><span class="doc">rsycn command</span></a> or <a class="reference internal" href="filezilla_transfer.html"><span class="doc">FileZilla (with a GUI)</span></a> to transfer your data from/to the HPC cluster.
 Windows users can use <a class="reference external" href="https://winscp.net/eng/index.php">WinScp</a> for transferring data to and from the HPC cluster.</p>
+<div class="toctree-wrapper compound">
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For data sharing among collaborators, Kindly refer to the section <a class="reference internal" href="../storage/data_sharing.html"><span class="doc">here</span></a></p>
@@ -356,6 +374,8 @@ Windows users can use <a class="reference external" href="https://winscp.net/eng
 <li><p><a class="reference internal" href="visual_nodes.html"><span class="doc">Visualization Nodes</span></a></p></li>
 <li><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">GPU nodes on HPC</span></a></p></li>
 </ul>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 <div class="section" id="fast-transfer-between-nyc-and-nyuad-hpc">
 <h2>Fast Transfer between NYC and NYUAD HPC<a class="headerlink" href="#fast-transfer-between-nyc-and-nyuad-hpc" title="Permalink to this headline">¶</a></h2>
@@ -364,6 +384,8 @@ high bandwidth ANKABUT link instead.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="nyc_file_transfer.html"><span class="doc">Fast Transfer Between NYU NYC and NYUAD</span></a></p></li>
 </ul>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -373,8 +395,8 @@ high bandwidth ANKABUT link instead.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../storage/index.html" class="btn btn-neutral float-right" title="Storage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../accounts/index.html" class="btn btn-neutral float-left" title="Accounts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="access_jubail.html" class="btn btn-neutral float-right" title="Access Jubail" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../accounts/account_formality.html" class="btn btn-neutral float-left" title="Account formality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
