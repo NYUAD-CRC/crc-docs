@@ -3,6 +3,9 @@
 HPC Training
 ==============
 
+.. caution::
+        We are currently in the process of transition. Kindly visit our desk at A2-132 or email us at jubail.admins@nyu.edu for account activation
+
 There are essentially four important components a HPC user needs to be familiar with for successfully
 using it for computational research.  
 

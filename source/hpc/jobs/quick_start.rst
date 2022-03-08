@@ -149,14 +149,6 @@ Partitions Summary
 				
 				
 		- grace period of 30 mins
-	*	- 5
-		- ``xxl``
-		- Grand Challenge
-		- any
-		- 1 day
-		- 1
-		-
-		- Requires approval from management
     	
     	
 Sample Job Script
@@ -205,6 +197,45 @@ A job script, which consists of 2 parts:
  #Execute the code
  python abc.py
    
+
+Basic SLURM Commands
+--------------------
+
+SLURM is the Resource Manager we use to schedule the jobs to the resources according to the requirements specified. Bellow are
+a few of the basic commands a user can use for his/her jobs:
+
+.. list-table:: 
+        :widths: auto 
+        :header-rows: 1
+
+        *       - **Command**
+                - **Descirption**
+        *       - 
+                        .. code-block:: bash
+                                
+                             sbatch file1
+
+                - ``sbatch`` command is used to submit a job to the queue. Here ``file1`` is the job script
+                  containing the details of resource requirements and commands to be executed.
+        *       - 
+                        .. code-block:: bash
+                                
+                                squeue
+
+                - ``squeue`` command shows all your jobs (Runing and Pending) present in the queue
+        *       - 
+                        .. code-block:: bash
+
+                                scancel 127445
+                                scancel -u wz22
+
+                - ``scancel`` commands allows you to cancel your jobs in the queue. You can cancel a single job using the job id
+                  or you can cancel all the jobs using your NetId.
+
+ 
+ 
+ 
+ 
 Requesting a GPU node
 ---------------------
 To request a Gpu node you have two options:
