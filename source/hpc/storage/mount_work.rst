@@ -41,13 +41,13 @@ Step-by-step guide
 
     .. code-block:: bash
 
-        sshfs wz22@hpc-cng.abudhabi.nyu.edu:/work/wz22 $HOME/work-wz22
+        sshfs wz22@jubail.abudhabi.nyu.edu:/work/wz22 $HOME/work-wz22
 
     These options might increase the speed.
 
     .. code-block:: bash
 
-        sshfs -o auto_cache -o cache=yes -o kernel_cache -o compression=no -o large_read -o big_writes -o Ciphers=arcfour <NetID>@hpc-cng.abudhabi.nyu.edu:/work/<NetID> <Your-Local-Mount-Point>
+        sshfs -o auto_cache -o cache=yes -o kernel_cache -o compression=no -o large_read -o big_writes -o Ciphers=arcfour <NetID>@jubail.abudhabi.nyu.edu:/work/<NetID> <Your-Local-Mount-Point>
 
 
 3. **Once done, unmount the drive.**
