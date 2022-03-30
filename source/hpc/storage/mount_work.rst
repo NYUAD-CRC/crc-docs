@@ -35,19 +35,19 @@ Step-by-step guide
 2. **On your terminal, mount the drive**
     .. code-block:: bash
 
-        sshfs <NetID>@hpc-cng.abudhabi.nyu.edu:/work/<NetID> <Your-Local-Mount-Point>
+        sshfs <NetID>@jubail.abudhabi.nyu.edu:/work/<NetID> <Your-Local-Mount-Point>
 
     For example, this command mount the ``$WORK`` of NetID ``wz22`` to the local path ``$HOME/work-wz22``
 
     .. code-block:: bash
 
-        sshfs wz22@hpc-cng.abudhabi.nyu.edu:/work/wz22 $HOME/work-wz22
+        sshfs wz22@jubail.abudhabi.nyu.edu:/work/wz22 $HOME/work-wz22
 
     These options might increase the speed.
 
     .. code-block:: bash
 
-        sshfs -o auto_cache -o cache=yes -o kernel_cache -o compression=no -o large_read -o big_writes -o Ciphers=arcfour <NetID>@hpc-cng.abudhabi.nyu.edu:/work/<NetID> <Your-Local-Mount-Point>
+        sshfs -o auto_cache -o cache=yes -o kernel_cache -o compression=no -o large_read -o big_writes -o Ciphers=arcfour <NetID>@jubail.abudhabi.nyu.edu:/work/<NetID> <Your-Local-Mount-Point>
 
 
 3. **Once done, unmount the drive.**
@@ -74,13 +74,13 @@ Mount $WORK on Windows
 
     .. code-block:: bash
 
-        \\sshfs\<net-id>@hpc-cng.abudhabi.nyu.edu\..\..\work\<netid>
+        \\sshfs\<net-id>@jubail.abudhabi.nyu.edu\..\..\work\<netid>
 
     * For example:
 
     .. code-block:: bash
 
-        \\sshfs\wz22@hpc-cng.abudhabi.nyu.edu\..\..\work\wz22
+        \\sshfs\wz22@jubail.abudhabi.nyu.edu\..\..\work\wz22
 
 5. You will be prompted for a password, after which you would have successfully mounted ``$WORK`` on to your local workstation.
     .. image:: ../img/mount_work3.png

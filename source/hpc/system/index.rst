@@ -97,7 +97,7 @@ Summary of Nodes
       - 360 GB / 1 TB
       - 2/8 (Nvidia V100)
       - Two nodes have 8 GPU cards each, rest of them have 2 cards each
-    * - :doc:`Visual<visual_nodes>`	
+    * - Visual	
       - 4	
       - 32	
       - 112 GB
@@ -171,14 +171,12 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 Special Compute Nodes
 ---------------------
 
-* :doc:`Visualization Nodes<visual_nodes>` 
 * :doc:`GPU nodes on HPC<gpu_nodes>`
 
 
 .. toctree::
   :hidden:
 
-  /hpc/system/visual_nodes
   /hpc/system/gpu_nodes
    
 Fast Transfer between NYC and NYUAD HPC
