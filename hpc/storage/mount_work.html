@@ -232,15 +232,15 @@ For mounting <code class="docutils literal notranslate"><span class="pre">$WORK<
 </dl>
 </li>
 <li><dl>
-<dt><strong>On your terminal, mount the drive</strong></dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs &lt;NetID&gt;@hpc-cng.abudhabi.nyu.edu:/work/&lt;NetID&gt; &lt;Your-Local-Mount-Point&gt;
+<dt><strong>On your terminal, mount the drive</strong></dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs &lt;NetID&gt;@jubail.abudhabi.nyu.edu:/work/&lt;NetID&gt; &lt;Your-Local-Mount-Point&gt;
 </pre></div>
 </div>
 <p>For example, this command mount the <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> of NetID <code class="docutils literal notranslate"><span class="pre">wz22</span></code> to the local path <code class="docutils literal notranslate"><span class="pre">$HOME/work-wz22</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs wz22@hpc-cng.abudhabi.nyu.edu:/work/wz22 <span class="nv">$HOME</span>/work-wz22
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs wz22@jubail.abudhabi.nyu.edu:/work/wz22 <span class="nv">$HOME</span>/work-wz22
 </pre></div>
 </div>
 <p>These options might increase the speed.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs -o auto_cache -o <span class="nv">cache</span><span class="o">=</span>yes -o kernel_cache -o <span class="nv">compression</span><span class="o">=</span>no -o large_read -o big_writes -o <span class="nv">Ciphers</span><span class="o">=</span>arcfour &lt;NetID&gt;@hpc-cng.abudhabi.nyu.edu:/work/&lt;NetID&gt; &lt;Your-Local-Mount-Point&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs -o auto_cache -o <span class="nv">cache</span><span class="o">=</span>yes -o kernel_cache -o <span class="nv">compression</span><span class="o">=</span>no -o large_read -o big_writes -o <span class="nv">Ciphers</span><span class="o">=</span>arcfour &lt;NetID&gt;@jubail.abudhabi.nyu.edu:/work/&lt;NetID&gt; &lt;Your-Local-Mount-Point&gt;
 </pre></div>
 </div>
 </dd>
@@ -278,13 +278,13 @@ For mounting <code class="docutils literal notranslate"><span class="pre">$WORK<
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Drive</span></code> corresponds to the local mountpoint</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Folder</span></code> corresponds to the remote location.It should be noted that by default it connects to the <code class="docutils literal notranslate"><span class="pre">/home</span></code> and a relative path to the mounting point (<code class="docutils literal notranslate"><span class="pre">/work</span></code>) should be specified. So in this case the syntax should be as follows:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\&lt;</span>net-id&gt;@hpc-cng.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\&lt;</span>netid&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\&lt;</span>net-id&gt;@jubail.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\&lt;</span>netid&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>For example:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\w</span>z22@hpc-cng.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\w</span>z22
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\w</span>z22@jubail.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\w</span>ork<span class="se">\w</span>z22
 </pre></div>
 </div>
 </dd>
