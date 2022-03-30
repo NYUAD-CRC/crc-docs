@@ -73,7 +73,7 @@ Summary of Nodes
       - 360 GB
       - 2/8	(Nvidia V100)
       - Two nodes have 8 GPU cards each, rest of them have 2 each
-    * - :doc:`Visual </hpc/system/visual_nodes>`	
+    * - Visual	
       - 4	
       - 38	
       - 112 GB

@@ -177,15 +177,6 @@ Click **Connect**. A new window will pop up.
 
 The first time you attempt to connect to the visualization node, you will probably see a warning that looks like this.
 
-.. code-block:: 
-
-    The authenticity of host 'HPCVIZ1.ABUDHABI.NYU.EDU (10.230.42.111)' can't be established.
-    ECDSA key fingerprint is
-    74:55:46:1a:ab:37:30:8e:86:54:97:38:bb:3c:fa:f0.
-    Are you sure you want to continue connecting (yes/no)?
-
-Type ``yes`` to continue.
-
 **Then it might ask you for 2 passwords:**
 
 * (Not applied if you have your ssh key stored on HPC). Your ssh password. This is essentially your login password to HPC.

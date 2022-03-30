@@ -4,7 +4,6 @@ Software
 On HPC:
 
 1. The Operating System is CentOS 7. Windows / Mac software is not supported.
-2. No GUI. No display. (Although we do have a few Visualization nodes, Please refer to the section :doc:`here </hpc/system/visual_nodes>`)
 
 For running Jobs: Please refer to the :doc:`Jobs Management </hpc/jobs/index>` section.
 
