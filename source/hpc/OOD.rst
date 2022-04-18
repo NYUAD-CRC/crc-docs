@@ -8,7 +8,7 @@ Open OnDemand is an interactive interface to remote computing resources which he
 Connection to OOD
 ------------------
 
-To Access Jubail interactive interface go to this `link <https://ood.hpc.abudhabi.nyu.edu>`_, enter yout NetID and password and press **Log in with your NYU account**.
+To Access Jubail interactive interface go to this link https://ood.hpc.abudhabi.nyu.edu , enter your NetID and password and press **Log in with your NYU account**.
 
     .. image:: ./img/OOD_connection.png
     
@@ -22,4 +22,4 @@ These are the different features supported by OOD
  
      .. raw:: html
      
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/r3xuXAFOpqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; allowfullscreen></iframe>
+        <<iframe width="560" height="315" src="https://www.youtube.com/embed/2Nc1eAl8GSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; allowfullscreen></iframe>>
