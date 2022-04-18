@@ -7,8 +7,7 @@ Overview
 The Web interface **also known as OOD** (built upon `Open OnDemand <https://openondemand.org>`__ ) is an interactive interface to remote computing resources which helps computational researchers and students efficiently utilize remote computing resources. The OOD Web Interface is one stop solution for all your HPC needs from accessing your files to submitting and viewing your jobs to running an interactive app.
 
 .. note::
-
-	The documentation for this section is still under progress
+ The documentation for this section is still under progress
 
 Connection to OOD
 ------------------
