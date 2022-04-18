@@ -63,5 +63,5 @@ Miscellaneous
 
    /hpc/software/r_hpc_miniconda
    
-   /hpc/software/hpc_jupyter
+   /hpc/software/jupyter_kernels
    
