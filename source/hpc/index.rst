@@ -14,7 +14,7 @@ HPC Documentation
    /hpc/storage/index
    /hpc/software/index
    /hpc/jobs/index
-   /hpc/OOD
+   /hpc/ood/ood
    /hpc/research/index
    /hpc/help/index
    /hpc/training/index 
@@ -26,7 +26,7 @@ HPC Documentation
 * :doc:`Storage </hpc/storage/index>`
 * :doc:`Software </hpc/software/index>`
 * :doc:`Jobs Management </hpc/jobs/index>`
-* :doc:`OOD (Open OnDemand) </hpc/OOD>`
+* :doc:`HPC Web Interface </hpc/ood/ood>`
 * :doc:`Research Publications </hpc/research/index>`
 * :doc:`Help </hpc/help/index>` 
 * :doc:`HPC Load</hpc/hpc_load/index>`
