@@ -58,6 +58,7 @@ The below command creates a conda environment in your ``$SCRATCH/conda-envs`` if
 
     #conda create -n <name of the env>
     
+ 
     #example:
     conda create -n myenv
 
