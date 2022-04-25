@@ -101,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#hpc-miniconda">HPC Miniconda</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Miniconda on the HPC</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#one-time-set-up">One Time Set up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#one-time-setup">One Time Setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#application-installation">Application Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#managing-environments">Managing Environments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#migrating-sharing-environment">Migrating / Sharing Environment</a></li>
@@ -205,11 +205,13 @@
 <p>We have a centralized installation of Miniconda on the HPC. The users can either
 install their own Miniconda or use the centralized installation present on the HPC. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.</p>
 <p>The conda cheat sheet gives you a list of useful commands in a glance:  <a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda-cheat-sheet</a></p>
-<div class="section" id="one-time-set-up">
-<h2>One Time Set up<a class="headerlink" href="#one-time-set-up" title="Permalink to this headline">¶</a></h2>
-<p>Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.</p>
+<div class="section" id="one-time-setup">
+<span id="id1"></span><h2>One Time Setup<a class="headerlink" href="#one-time-setup" title="Permalink to this headline">¶</a></h2>
+<p>Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, <strong>you donot need to load the miniconda again in your subsequent logins</strong>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
 <span class="nb">source</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s2">&quot;export CONDA_ENVS_PATH=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs&quot;</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s2">&quot;export CONDA_PKGS_DIRS=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs/pkgs&quot;</span> &gt;&gt; ~/.bashrc
 </pre></div>
 </div>
 </div>
@@ -222,10 +224,13 @@ install their own Miniconda or use the centralized installation present on the H
 <li><p>Install the application using conda install (eg : <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">r</span> <span class="pre">r=3.6</span></code>)</p></li>
 <li><p>Clean/remove the residual/cache files created by conda which eat up your quota (eg: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span> <span class="pre">-a</span></code>)</p></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don’t remove them automatically and hence stay in your $HOME affecting your files quota.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><p>The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don’t remove them automatically and
+hence stay in your $HOME affecting your files quota.</p>
 <p>We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.</p>
+</div></blockquote>
 <p>Following commands and links can come handy:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span> <span class="pre">-a</span></code></p></li>
@@ -237,23 +242,19 @@ install their own Miniconda or use the centralized installation present on the H
 </div>
 <div class="section" id="managing-environments">
 <span id="managing-envs"></span><h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>By default the environemnts get created in the user’s <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> but we recommend our users to
-create their environments in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> as the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> quota is limited.</p>
-</div>
 <p><strong>Create a Local Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p /scratch/&lt;NetID&gt;/conda-envs/&lt;name of the env&gt;</span>
+<p>The below command creates a conda environment in your <code class="docutils literal notranslate"><span class="pre">$SCRATCH/conda-envs</span></code> if you have followed the <a class="reference internal" href="#one-time-setup"><span class="std std-ref">One Time Setup</span></a> instructions described above else the environments will be created in your home (which is not recommended as <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> quota is limited).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the env&gt;</span>
 
 <span class="c1">#example:</span>
-conda create -p /scratch/wz22/conda-envs/myenv
+conda create -n myenv
 </pre></div>
 </div>
 <p><strong>Activate the Local Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda activate &lt;path to local env&gt;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda activate &lt;name of the local env&gt;</span>
 
 <span class="c1">#example:</span>
-conda activate /scratch/wz22/conda-envs/myenv
+conda activate myenv
 </pre></div>
 </div>
 <p><strong>Deactivate an Environment</strong></p>
@@ -266,10 +267,10 @@ conda activate /scratch/wz22/conda-envs/myenv
 </pre></div>
 </div>
 <p>A sample output is shown below. The list of centralized and local installations can be seen.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>                                     /home/wz22/.conda/envs/myenv
-                                     /home/wz22/.conda/envs/myenv2
-                                     /home/wz22/.conda/envs/myenv3
-                                     /home/wz22/.conda/envs/myenv4
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>                                     /scratch/wz22/conda-envs/myenv
+                                     /scratch/wz22/conda-envs/myenv2
+                                     /scratch/wz22/conda-envs/myenv3
+                                     /scratch/wz22/conda-envs/myenv4
 base                            *    /share/apps/NYUAD/miniconda/3-4.8.2
 firefox                              /share/apps/NYUAD/miniconda/3-4.8.2/envs/firefox
 tensorflow-1.15                      /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
@@ -277,9 +278,9 @@ tensorflow-2.0                       /share/apps/NYUAD/miniconda/3-4.8.2/envs/te
 </pre></div>
 </div>
 <p><strong>Cloning an Environment</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p &lt;path to new env&gt; --clone &lt;path to existing env&gt;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;path to existing env&gt;</span>
 <span class="c1">#example: Here we clone the existing Tensorflow environment.</span>
-conda create -p /scratch/wz22/conda-envs/tf-gpu --clone tensorflow-1.15
+conda create -n tf-gpu --clone tensorflow-1.15
 </pre></div>
 </div>
 </div>
@@ -308,7 +309,7 @@ conda env <span class="nb">export</span> &gt; environment.yml
 <li><dl>
 <dt>Share this yml file.</dt><dd><p>The other person / machine, an identical environment could be created using this yml file.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example, the yml file is called environment.yml</span>
-conda env create -p /scratch/wz22/conda-envs/myenv -f environment.yml
+conda env create -n myenv -f environment.yml
 </pre></div>
 </div>
 </dd>
@@ -343,6 +344,18 @@ python abc.py
 </pre></div>
 </div>
 <p>This will activate the environment just by typing <code class="docutils literal notranslate"><span class="pre">myenv1</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you donot miniconda paths to mess up your bashrc, you can use <strong>ONE</strong> of the following commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /share/apps/NYUAD/miniconda/3-4.11.0/bin/activate
+<span class="c1">#you can also create an alias for the above command in your bashrc</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda-nobashrc
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>conda shell.bash hook<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
