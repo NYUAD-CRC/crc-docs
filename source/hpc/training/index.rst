@@ -7,6 +7,8 @@ HPC Training
     We request all the users to pass the following quiz before submitting jobs, 
     Make sure to log in your NYU Google Apps Account (e.g., NYU Google Mail) first! Otherwise, your access to the Quiz will be denied 
     (`Quiz <https://forms.gle/2Fzm5FnkTfhc3umXA>`__)
+    
+
 
 There are essentially four important components a HPC user needs to be familiar with for successfully
 using it for computational research.  
@@ -62,3 +64,9 @@ Job Submission
 
    /hpc/training/quick_start
    /hpc/training/job_jubail
+
+
+Quiz
+----
+
+- `Quiz <https://forms.gle/2Fzm5FnkTfhc3umXA>`__
