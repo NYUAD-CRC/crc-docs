@@ -8,7 +8,10 @@ install their own Miniconda or use the centralized installation present on the H
 
 The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
 
-One Time Set up
+
+.. _one_time_setup:
+
+One Time Setup
 ---------------
 
 Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done **ONLY once**, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, **you donot need to load the miniconda again in your subsequent logins**.
@@ -52,10 +55,12 @@ Managing Environments
 
 **Create a Local Environment**
 
+The below command creates a conda environment in your ``$SCRATCH/conda-envs`` if you have followed the :ref:`One Time Setup <one_time_setup>` instructions described above else the environments will be created in your home (which is not recommended as ``$HOME`` quota is limited).   
+
 .. code-block:: bash
 
     #conda create -n <name of the env>
- 
+    
     #example:
     conda create -n myenv
 
