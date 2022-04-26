@@ -20,8 +20,12 @@ To Access Jubail interactive interface go to this link https://ood.hpc.abudhabi.
 OOD Features
 ------------
 These are the different features supported by OOD
+ 
+     .. raw:: html
+     
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RUpJn6GbYpc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    .. image:: /hpc/img/ood_features.png
+
     
  1. **Files** shows and process your files in the different storage systems ``$HOME`` (``/home/<NetID>``), ``$SCRATCH`` (``/scratch/<NetID>``) and ``$WORK`` (``/work/<NetID>``)
  
