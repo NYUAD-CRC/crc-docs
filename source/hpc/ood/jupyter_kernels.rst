@@ -1,7 +1,10 @@
 Installing Jupyter Kernels
 ==========================
 
-This user guide provides instructions for installing Jupyter kernels when using Jupyter notebook via HPC Web interface OnDemand. For more information about OnDemand and using Jupyter notebooks, please check the following :doc:`section </hpc/ood/ood>`.
+This user guide provides instructions for installing Jupyter kernels when 
+using Jupyter notebook via HPC Web interface OnDemand. 
+For more information about OnDemand and using Jupyter notebooks, 
+please check the following :doc:`section </hpc/ood/index>`.
 
 A Jupyter kernel is a programming language-specific process that executes the code contained in a Jupyter notebook. The following provides installation instructions for a few popular Jupyter kernels, which will be installed in your home directory at ~/.local/share/jupyter/kernels. Install the kernels when logged in to NYUAD HPC before accessing them via the Jupyter OnDemand interactive app.
 
