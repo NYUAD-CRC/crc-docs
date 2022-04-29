@@ -3,7 +3,7 @@ Software
 
 On HPC:
 
-1. The Operating System is CentOS 7. Windows / Mac software is not supported.
+1. The Operating System is CentOS 8.2. Windows / Mac software is not supported.
 
 For running Jobs: Please refer to the :doc:`Jobs Management </hpc/jobs/index>` section.
 
@@ -62,6 +62,4 @@ Miscellaneous
    
 
    /hpc/software/r_hpc_miniconda
-   
-   /hpc/software/jupyter_kernels
    
