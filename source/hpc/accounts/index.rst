@@ -6,9 +6,6 @@ Accounts
     fill this form :download:`HPC Collaboration Template.docx <../docs/HPC_Collaboration_Template.docx>`
     with your NYU sponsor, sign and send to us (jubail.admins@nyu.edu).
     
-.. Warning::
-    Between 28 Feb 2022 to 10 March 2022, an integration between Dalma HPC and new Jubail cluster is happening so please during this period email us at dalma.admins@nyu.edu for account creation/activation or come directly to our office at A2 132
-
 
 
 Opening a New Account

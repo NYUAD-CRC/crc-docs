@@ -16,7 +16,29 @@ Introduction
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
 
+Useful Links
+------------
+.. warning::
+    The links mentioned below require you to be connected to the NYUAD VPN
+
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - **Description**
+      - **Links**
+    * - **Request/Renew HPC Accounts**
+      - https://identity.it.nyu.edu
+    * - **HPC Web Interface**
+      - https://ood.hpc.abudhabi.nyu.edu
+    * - **HPC Jobs Stats**
+      - https://slurm.hpc.abudhabi.nyu.edu 
+    * - **HPC Node Monitor**
+      - https://monitor.hpc.abudhabi.nyu.edu
+
+
 You could:
+    * Connect to HPC from your browser. The :doc:`HPC Web Interface <ood/index>` is a one stop solution for all your HPC needs.
     * Open an account on our HPC cluster Jubail (:doc:`Accounts <accounts/index>`)
     * Hop on to :doc:`HPC Training </hpc/training/index>` page to get a quick intro to HPC.
     * Learn more about the system and how you can access it (:doc:`System <system/index>`)
