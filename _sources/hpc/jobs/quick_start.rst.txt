@@ -56,7 +56,7 @@ Partitions Summary
 	*	- 
 		- 
 		- Small
-		- (1,28)
+		- (1,64)
 		- 7 days
 		- 200
 		- 
@@ -134,9 +134,9 @@ Partitions Summary
 		- Jobs requesting more than 480GB will be fowarded to bigmem
 	*	- 4
 		- ``preempt``
-		- short high priority
+		- high priority
 		- No Limit
-		- cpus<28:24h, cpus>28:12h
+		- 7 days
 		-
 		- 
 			.. code-block:: bash
@@ -267,8 +267,7 @@ Preempt Partition
 - Default Walltime: 2 hours
 - Maximum Walltime depends on the job size:
 	
-	- cpus < 28 : 24 hours
-	- cpus > 28 : 12 hours
+	- 7 days
  
 
 

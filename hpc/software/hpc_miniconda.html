@@ -208,10 +208,10 @@ install their own Miniconda or use the centralized installation present on the H
 <div class="section" id="one-time-setup">
 <span id="id1"></span><h2>One Time Setup<a class="headerlink" href="#one-time-setup" title="Permalink to this headline">¶</a></h2>
 <p>Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, <strong>you donot need to load the miniconda again in your subsequent logins</strong>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    module load miniconda
+    <span class="nb">echo</span> <span class="s2">&quot;export CONDA_ENVS_PATH=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs&quot;</span> &gt;&gt; ~/.bashrc
+    <span class="nb">echo</span> <span class="s2">&quot;export CONDA_PKGS_DIRS=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs/pkgs&quot;</span> &gt;&gt; ~/.bashrc
 <span class="nb">source</span> ~/.bashrc
-<span class="nb">echo</span> <span class="s2">&quot;export CONDA_ENVS_PATH=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs&quot;</span> &gt;&gt; ~/.bashrc
-<span class="nb">echo</span> <span class="s2">&quot;export CONDA_PKGS_DIRS=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs/pkgs&quot;</span> &gt;&gt; ~/.bashrc
 </pre></div>
 </div>
 </div>

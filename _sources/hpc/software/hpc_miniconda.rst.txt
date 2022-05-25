@@ -19,9 +19,9 @@ Execute the following command for making the HPC Miniconda as your default conda
 .. code-block:: bash
 
 	module load miniconda
-	source ~/.bashrc
 	echo "export CONDA_ENVS_PATH=$SCRATCH/conda-envs" >> ~/.bashrc
 	echo "export CONDA_PKGS_DIRS=$SCRATCH/conda-envs/pkgs" >> ~/.bashrc
+    source ~/.bashrc
 
 Application Installation
 ------------------------

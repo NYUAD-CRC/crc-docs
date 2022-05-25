@@ -135,7 +135,7 @@ To install a Bash kernel, enter the following commands:
 
 .. code-block:: bash
 
-	module load usc python/3.9.2
+	module load python/3.9.2
 	pip install bash_kernel --user
 	python -m bash_kernel.install --user
 	
