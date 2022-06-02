@@ -82,7 +82,7 @@ Summary of Nodes
     * - Dalma Compute
       - 432
       - 28/40
-      - 128 GB / 512 GB
+      - 102 GB / 480 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
     * - Bigmem

@@ -265,9 +265,7 @@ Preempt Partition
 - A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpointing, if needed.
 - We intend to increase the machine occupancy and reduce the waiting time in queues for those jobs that may have short runtime or are meant to be for testing ,otherwise jobs will be treated as regular jobs.
 - Default Walltime: 2 hours
-- Maximum Walltime depends on the job size:
-	
-	- 7 days
+- Maximum Walltime: 7 days
  
 
 

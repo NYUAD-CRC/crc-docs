@@ -114,7 +114,7 @@ You can use the overlay filesystem with your existing container as follows:
 For more info info on overlays, Kindly look at the links below:
 
 - Singularity Overlays on HPC
-- :doc:`Singularity for Conda <singularity_conda>`
+- :doc:`Singularity for Conda <singularity_overlays>`
 - `Persistent Overlays in Singularity <https://sylabs.io/guides/3.5/user-guide/persistent_overlays.html>`__ 
 
 		
