@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -203,7 +204,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="installing-jupyter-kernels">
-<h1>Installing Jupyter Kernels<a class="headerlink" href="#installing-jupyter-kernels" title="Permalink to this headline">¶</a></h1>
+<h1>Installing Jupyter Kernels<a class="headerlink" href="#installing-jupyter-kernels" title="Permalink to this heading">¶</a></h1>
 <p>This user guide provides instructions for installing Jupyter kernels when
 using Jupyter notebook via HPC Web interface OnDemand.
 For more information about OnDemand and using Jupyter notebooks,
@@ -212,7 +213,7 @@ please check the following <a class="reference internal" href="index.html"><span
 <p>When installing kernels, make sure to use descriptive names in order to distinguish among them. Once installed, when launching Jupyter on OnDemand, the kernels will show up on a Launcher tab (File &gt; New Launcher) and when selecting kernels through other methods.</p>
 <p>Many software kernels are available for use with Jupyter. See a full list here: <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a>.</p>
 <div class="section" id="python">
-<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading">¶</a></h2>
 <p>The default kernel is for Python 3.10.0, and this is ready to be used when Jupyter is launched. To use other versions of Python, enter a set of commands like the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6
 python -m ipykernel install --user --name py376 --display-name <span class="s2">&quot;Python 3.8.6&quot;</span>
@@ -222,7 +223,7 @@ python -m ipykernel install --user --name py376 --display-name <span class="s2">
 <p>The kernels will be able to access your user-installed Python packages.</p>
 </div>
 <div class="section" id="conda-envs">
-<h2>Conda Envs<a class="headerlink" href="#conda-envs" title="Permalink to this headline">¶</a></h2>
+<h2>Conda Envs<a class="headerlink" href="#conda-envs" title="Permalink to this heading">¶</a></h2>
 <p>To use a Python kernel from a Conda environment, install the ipykernel package in the Conda environment and then create a kernel. For example, with a Conda environment named myenv, enter a set of commands like the following to create a Python kernel:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge
 conda activate myenv
@@ -239,7 +240,7 @@ Rscript -e <span class="s2">&quot;IRkernel::installspec(name = &#39;r410&#39;, d
 </div>
 </div>
 <div class="section" id="r">
-<h2>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
+<h2>R<a class="headerlink" href="#r" title="Permalink to this heading">¶</a></h2>
 <p>To install an R kernel, first load the python/3.8.6 module and the R module version of your choice:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6 r/&lt;version&gt;
 </pre></div>
@@ -251,7 +252,7 @@ Rscript -e <span class="s2">&quot;IRkernel::installspec(name = &#39;r410&#39;, d
 <p>The kernel will be able to access your user-installed R packages.</p>
 </div>
 <div class="section" id="stata">
-<h2>Stata<a class="headerlink" href="#stata" title="Permalink to this headline">¶</a></h2>
+<h2>Stata<a class="headerlink" href="#stata" title="Permalink to this heading">¶</a></h2>
 <p>To install a Stata kernel, enter the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.9.2 stata
 pip install stata_kernel --user
@@ -260,7 +261,7 @@ python -m stata_kernel.install --user
 </div>
 </div>
 <div class="section" id="julia">
-<h2>Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h2>
+<h2>Julia<a class="headerlink" href="#julia" title="Permalink to this heading">¶</a></h2>
 <p>To install a Julia kernel, first load the python/3.9.2 module and the Julia module version of your choice:</p>
 <p>module load python/3.8.6 julia/&lt;version&gt;</p>
 <p>Then within a Julia session, install the IJulia package:</p>
@@ -271,7 +272,7 @@ python -m stata_kernel.install --user
 <p>The kernel will be able to access your user-installed Julia packages.</p>
 </div>
 <div class="section" id="matlab">
-<h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
+<h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this heading">¶</a></h2>
 <p>To install a MATLAB kernel, enter the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6 matlab
 pip install imatlab --user
@@ -285,7 +286,7 @@ python -mimatlab install --user
 </div>
 </div>
 <div class="section" id="mathematica">
-<h2>Mathematica<a class="headerlink" href="#mathematica" title="Permalink to this headline">¶</a></h2>
+<h2>Mathematica<a class="headerlink" href="#mathematica" title="Permalink to this heading">¶</a></h2>
 <p>To install a Mathematica kernel, run the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6 mathematica
 git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
@@ -295,7 +296,7 @@ git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 </div>
 </div>
 <div class="section" id="bash">
-<h2>Bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h2>
+<h2>Bash<a class="headerlink" href="#bash" title="Permalink to this heading">¶</a></h2>
 <p>To install a Bash kernel, enter the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.9.2
 pip install bash_kernel --user

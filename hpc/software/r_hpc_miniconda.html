@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -45,7 +46,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Jobs Management" href="../jobs/index.html" />
-    <link rel="prev" title="Singularity For Conda" href="singularity_conda.html" /> 
+    <link rel="prev" title="Singularity Overlays" href="singularity_overlays.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -198,7 +199,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="r-in-hpc-miniconda">
-<h1>R in HPC Miniconda<a class="headerlink" href="#r-in-hpc-miniconda" title="Permalink to this headline">¶</a></h1>
+<h1>R in HPC Miniconda<a class="headerlink" href="#r-in-hpc-miniconda" title="Permalink to this heading">¶</a></h1>
 <p>Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in the HPC. This provides greater flexibility and
 easier installation for other complementary packages required for R (eg: Tidyverse, Rstan etc).
 To find more details on the Miniconda module usage, click <a class="reference internal" href="hpc_miniconda.html"><span class="doc">here</span></a>.</p>
@@ -212,7 +213,7 @@ You can find the steps to set up the HPC Miniconda by clicking <a class="referen
 <p>The conda cheat sheet gives you a list of useful commands in a glance:  <a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda-cheat-sheet</a></p>
 </div>
 <div class="section" id="how-to-clone-the-r-environment">
-<h2>How to clone the R environment<a class="headerlink" href="#how-to-clone-the-r-environment" title="Permalink to this headline">¶</a></h2>
+<h2>How to clone the R environment<a class="headerlink" href="#how-to-clone-the-r-environment" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><dl>
 <dt>If you are using the HPC Miniconda</dt><dd><p>This creates an exclusive local environment (installation) of the R package in the given path (in the example below, the path is “/scratch/wz22/my-envs/R”). The User can now activate this environment and use it and further install any required complementary packages in the activated environment (More details on this in upcoming sections).</p>
@@ -261,7 +262,7 @@ conda create -n R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 </ol>
 </div>
 <div class="section" id="finding-the-conda-complementary-packages-tidyverse-rstan-etc">
-<h2>Finding the Conda complementary packages (Tidyverse, Rstan etc)<a class="headerlink" href="#finding-the-conda-complementary-packages-tidyverse-rstan-etc" title="Permalink to this headline">¶</a></h2>
+<h2>Finding the Conda complementary packages (Tidyverse, Rstan etc)<a class="headerlink" href="#finding-the-conda-complementary-packages-tidyverse-rstan-etc" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><dl class="simple">
 <dt>Search on the web for the Conda package of the required library.</dt><dd><p>For instance, if the required library is Tidyverse, you can search for “conda install r tidyverse”. You can then navigate to the link with anaconda (most probably the first one, like here).</p>
@@ -278,7 +279,7 @@ conda create -n R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 </ol>
 </div>
 <div class="section" id="how-to-install-the-conda-complementary-packages">
-<h2>How to install the Conda complementary packages<a class="headerlink" href="#how-to-install-the-conda-complementary-packages" title="Permalink to this headline">¶</a></h2>
+<h2>How to install the Conda complementary packages<a class="headerlink" href="#how-to-install-the-conda-complementary-packages" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><dl>
 <dt>Activate the local R environment</dt><dd><p>you can find more about managing environments, by clicking <a class="reference internal" href="hpc_miniconda.html#managing-envs"><span class="std std-ref">here</span></a>.</p>
@@ -318,7 +319,7 @@ conda install -c r r-tidyverse
 </ol>
 </div>
 <div class="section" id="submitting-job-scripts">
-<h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>
+<h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this heading">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
 </pre></div>
@@ -351,7 +352,7 @@ Rscript abc.R
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../jobs/index.html" class="btn btn-neutral float-right" title="Jobs Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="singularity_conda.html" class="btn btn-neutral float-left" title="Singularity For Conda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="singularity_overlays.html" class="btn btn-neutral float-left" title="Singularity Overlays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

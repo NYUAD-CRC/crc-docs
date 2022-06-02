@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -196,7 +197,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="parallel-job-array">
-<h1>Parallel Job Array<a class="headerlink" href="#parallel-job-array" title="Permalink to this headline">¶</a></h1>
+<h1>Parallel Job Array<a class="headerlink" href="#parallel-job-array" title="Permalink to this heading">¶</a></h1>
 <p>There are times, however, when even a job array doesn’t really fit your needs. For instance, you may be looking at running 300,000 very short running jobs. Or maybe, the complexity to search through all the output files or having to manually “glue” them back together into a single output file is too demanding. Or maybe it’s too difficult to match SLURM’s taskids to actual input file names or parametric analysis. Or more probably the time delay between each jobs being scheduled to run is slowing down your processing as your jobs are really short</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-resuls file.1
 ./process-one-resuls file.2

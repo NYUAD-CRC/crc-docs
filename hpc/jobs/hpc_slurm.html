@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -209,9 +210,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="a-detailed-slurm-guide">
-<h1>A Detailed SLURM Guide<a class="headerlink" href="#a-detailed-slurm-guide" title="Permalink to this headline">¶</a></h1>
+<h1>A Detailed SLURM Guide<a class="headerlink" href="#a-detailed-slurm-guide" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="slurm-partitions">
-<h2>SLURM: Partitions<a class="headerlink" href="#slurm-partitions" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Partitions<a class="headerlink" href="#slurm-partitions" title="Permalink to this heading">¶</a></h2>
 <p>A partition is a collection of nodes, they may share some attributes (CPU type, GPU, etc)</p>
 <ul>
 <li><p>Compute nodes may belong to multiple partitions to ensure maximum use of the system</p></li>
@@ -233,7 +234,7 @@
 </ul>
 </div>
 <div class="section" id="slurm-submitting-jobs">
-<h2>SLURM: Submitting Jobs<a class="headerlink" href="#slurm-submitting-jobs" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Submitting Jobs<a class="headerlink" href="#slurm-submitting-jobs" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>To submit a job first you write a “job script”</p>
 <blockquote>
@@ -262,7 +263,7 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 </ol>
 </div>
 <div class="section" id="slurm-arguments">
-<h2>SLURM: Arguments<a class="headerlink" href="#slurm-arguments" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Arguments<a class="headerlink" href="#slurm-arguments" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Arguments to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> can be put on the command line or embedded in the job script</p></li>
 <li><p>Putting them in the job script is a better option as then it “documents” how to rerun your job</p></li>
@@ -301,7 +302,7 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 </ul>
 </div>
 <div class="section" id="slurm-job-dependencies">
-<h2>SLURM: Job Dependencies<a class="headerlink" href="#slurm-job-dependencies" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Job Dependencies<a class="headerlink" href="#slurm-job-dependencies" title="Permalink to this heading">¶</a></h2>
 <p>Submitting with dependencies: Useful to create workflows</p>
 <ul class="simple">
 <li><p>Any specific job may have to wait until any of the specified conditions are met</p></li>
@@ -329,7 +330,7 @@ sbatch --depend<span class="o">=</span>afternotok:123 my.job
 </div>
 </div>
 <div class="section" id="slurm-listing-jobs">
-<h2>SLURM: Listing Jobs<a class="headerlink" href="#slurm-listing-jobs" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Listing Jobs<a class="headerlink" href="#slurm-listing-jobs" title="Permalink to this heading">¶</a></h2>
 <p>Each submitted job is given a unique number
 * You can list your jobs to see which ones are waiting (pending), running
 * As well as how long a job has been running and on which node(s)</p>
@@ -353,7 +354,7 @@ JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST<span c
 </div>
 </div>
 <div class="section" id="id1">
-<h2>SLURM: Listing Jobs<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Listing Jobs<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>You can look at completed jobs using the “sacct” command</p></li>
 <li><p>To look at jobs you ran since July 1, 2017</p></li>
@@ -396,7 +397,7 @@ JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
 </div>
 </div>
 <div class="section" id="slurm-job-progress">
-<h2>SLURM: Job Progress<a class="headerlink" href="#slurm-job-progress" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Job Progress<a class="headerlink" href="#slurm-job-progress" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>You can see your job’s progress by looking at the output and error files</p></li>
 <li><p>By default output and error files are named “slurm-XXX.out” and “slurm-XXX.err” where XXX is the job id</p></li>
@@ -409,7 +410,7 @@ $&gt; tail –f slurm-435563.out
 </div>
 </div>
 <div class="section" id="slurm-killing-jobs">
-<h2>SLURM: Killing Jobs<a class="headerlink" href="#slurm-killing-jobs" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Killing Jobs<a class="headerlink" href="#slurm-killing-jobs" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Sometimes you need to kill your job when you realise it is not working as expected</p></li>
 <li><p>Note that your job can be killed automatically when it reaches its maximum time/memory allocation</p></li>
@@ -419,7 +420,7 @@ $&gt; tail –f slurm-435563.out
 </div>
 </div>
 <div class="section" id="slurm-tasks">
-<h2>SLURM: Tasks<a class="headerlink" href="#slurm-tasks" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Tasks<a class="headerlink" href="#slurm-tasks" title="Permalink to this heading">¶</a></h2>
 <p>In SLURM users specify how many tasks – not cores! - they need (-n). Each task by default
 uses 1 core. But this can be redefined by users using the “-c” option.</p>
 <p>For example <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is requesting 2 cores, while <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–c</span> <span class="pre">3</span></code> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is
@@ -431,12 +432,12 @@ number of tasks and cpus-per-task is sufficient for SLURM to determine how many 
 reserve.</p>
 </div>
 <div class="section" id="slurm-node-list">
-<h2>SLURM: Node List<a class="headerlink" href="#slurm-node-list" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Node List<a class="headerlink" href="#slurm-node-list" title="Permalink to this heading">¶</a></h2>
 <p>Sometimes applications require a list of nodes where they are to run in parallel to start.
 SLURM keeps the list of nodes within the environment variable <code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NODELIST</span></code>.</p>
 </div>
 <div class="section" id="slurm-accounts">
-<h2>SLURM: Accounts<a class="headerlink" href="#slurm-accounts" title="Permalink to this headline">¶</a></h2>
+<h2>SLURM: Accounts<a class="headerlink" href="#slurm-accounts" title="Permalink to this heading">¶</a></h2>
 <p>SLURM maintains user associations which include user, account, qos, and partition. Users
 may have several associations. Moreover, accounts are hierarchical. For example, account
 “physics” maybe be a sub-account of “faculty”, which may be a sub-account of “institute”, etc.

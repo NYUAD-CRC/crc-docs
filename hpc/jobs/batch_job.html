@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -203,7 +204,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="batch-job">
-<h1>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this headline">¶</a></h1>
+<h1>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this heading">¶</a></h1>
 <p>Besides interactive sessions, a user can submit batch jobs to the system. For production jobs, batch jobs should be used. You could also visit the quick intro guide <a class="reference internal" href="quick_start.html"><span class="doc">here</span></a></p>
 <p>A complete batch job workflow:</p>
 <ol class="arabic simple">
@@ -220,7 +221,7 @@
 <li><p>Come back to examine the result.</p></li>
 </ol>
 <div class="section" id="batch-job-script">
-<h2>Batch Job Script<a class="headerlink" href="#batch-job-script" title="Permalink to this headline">¶</a></h2>
+<h2>Batch Job Script<a class="headerlink" href="#batch-job-script" title="Permalink to this heading">¶</a></h2>
 <p>A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us.</p>
 <div class="admonition-resources-limit admonition">
 <p class="admonition-title">Resources Limit</p>
@@ -241,7 +242,7 @@
 </div>
 </div>
 <div class="section" id="a-job-with-1-cpu-core">
-<h2>A Job with 1 CPU Core<a class="headerlink" href="#a-job-with-1-cpu-core" title="Permalink to this headline">¶</a></h2>
+<h2>A Job with 1 CPU Core<a class="headerlink" href="#a-job-with-1-cpu-core" title="Permalink to this heading">¶</a></h2>
 <p>This is a very basic example, using only one CPU core.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># Set number of tasks to run</span>
@@ -277,7 +278,7 @@ In reality, you should load your desired modules, and execute
 whatever you want to run.</p>
 </div>
 <div class="section" id="multithreading-job">
-<h2>Multithreading Job<a class="headerlink" href="#multithreading-job" title="Permalink to this headline">¶</a></h2>
+<h2>Multithreading Job<a class="headerlink" href="#multithreading-job" title="Permalink to this heading">¶</a></h2>
 <p>Multithreading enables a process to spawn multiple threads to accelerate its execution. The most common multithreading model in HPC is OpenMP. If your application supports this (not sure? contact us to find out), you could use the below example.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># Set number of tasks to run</span>
@@ -318,7 +319,7 @@ hostname
 </ol>
 </div>
 <div class="section" id="pure-mpi-job">
-<h2>Pure MPI Job<a class="headerlink" href="#pure-mpi-job" title="Permalink to this headline">¶</a></h2>
+<h2>Pure MPI Job<a class="headerlink" href="#pure-mpi-job" title="Permalink to this heading">¶</a></h2>
 <p>Now comes the pure MPI Jobs.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># Set number of tasks to run</span>
@@ -350,7 +351,7 @@ srun hostname
 <p>The old school <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> or <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> are supported as well. But you need to load <code class="docutils literal notranslate"><span class="pre">openmpi</span></code> module in this case.</p>
 </div>
 <div class="section" id="hybrid-mpi-job">
-<h2>Hybrid MPI Job<a class="headerlink" href="#hybrid-mpi-job" title="Permalink to this headline">¶</a></h2>
+<h2>Hybrid MPI Job<a class="headerlink" href="#hybrid-mpi-job" title="Permalink to this heading">¶</a></h2>
 <p>If your application support MPI + OpenMP hybrid parallelization, you could follow this example to submit a hybrid job.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># Set number of tasks to run</span>

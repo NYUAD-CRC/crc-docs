@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -111,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#singularity">Singularity</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="singularity.html">Singularity Containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_overlays.html">Singularity Overlays</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
@@ -203,7 +204,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="software">
-<h1>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
+<h1>Software<a class="headerlink" href="#software" title="Permalink to this heading">¶</a></h1>
 <p>On HPC:</p>
 <ol class="arabic simple">
 <li><p>The Operating System is CentOS 8.2. Windows / Mac software is not supported.</p></li>
@@ -217,7 +218,7 @@ are one of the most easiest ways to parallelize
 your computations. Follow the corresponding highlighted links for a much more detailed example.</p>
 </div>
 <div class="section" id="software-modules-and-environment">
-<h2>Software Modules and environment<a class="headerlink" href="#software-modules-and-environment" title="Permalink to this headline">¶</a></h2>
+<h2>Software Modules and environment<a class="headerlink" href="#software-modules-and-environment" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="software_modules.html">Software Modules</a></li>
@@ -225,7 +226,7 @@ your computations. Follow the corresponding highlighted links for a much more de
 </div>
 </div>
 <div class="section" id="hpc-miniconda">
-<span id="id1"></span><h2>HPC Miniconda<a class="headerlink" href="#hpc-miniconda" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>HPC Miniconda<a class="headerlink" href="#hpc-miniconda" title="Permalink to this heading">¶</a></h2>
 <p>We have a centralized installation of <a class="reference internal" href="hpc_miniconda.html"><span class="doc">Miniconda</span></a>,
 <a class="reference internal" href="hpc_tensorflow.html"><span class="doc">TensorFlow</span></a> and <a class="reference internal" href="hpc_pytorch.html"><span class="doc">PyTorch</span></a> in the HPC. Please refer to the highlighted sections for more details.</p>
 <div class="toctree-wrapper compound">
@@ -256,7 +257,7 @@ your computations. Follow the corresponding highlighted links for a much more de
 </div>
 </div>
 <div class="section" id="singularity">
-<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this headline">¶</a></h2>
+<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="singularity.html">Singularity Containers</a><ul>
@@ -282,19 +283,20 @@ your computations. Follow the corresponding highlighted links for a much more de
 <li class="toctree-l2"><a class="reference internal" href="singularity_commands.html#additional-documents">Additional Documents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#choose-and-copy-ext3-file">Choose and copy ext3 file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#run-container-with-overlay-filesystem">Run container with overlay filesystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#write-to-overlay-filesystem">Write to overlay filesystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#while-in-container">While in container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="singularity_conda.html#job-submission">Job Submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="singularity_overlays.html">Singularity Overlays</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity_overlays.html#creating-an-overlay">Creating an Overlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_overlays.html#run-container-with-overlay-filesystem">Run container with overlay filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_overlays.html#write-to-overlay-filesystem">Write to overlay filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_overlays.html#while-in-container">While in container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_overlays.html#sharing-the-overlay">Sharing the Overlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity_overlays.html#job-submission">Job Submission</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="miscellaneous">
-<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="r_hpc_miniconda.html">R in HPC Miniconda</a><ul>

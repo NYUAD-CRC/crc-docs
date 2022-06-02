@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -196,7 +197,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="greasy-workload-management-tool">
-<h1>“Greasy” Workload Management Tool<a class="headerlink" href="#greasy-workload-management-tool" title="Permalink to this headline">¶</a></h1>
+<h1>“Greasy” Workload Management Tool<a class="headerlink" href="#greasy-workload-management-tool" title="Permalink to this heading">¶</a></h1>
 <p>We want to introduce you the “greasy” tool. This tool will easy to implement “High Throughput Computing” (HTC) jobs on Dalma. HTC jobs  are usually concerned about resource availability and resilience normally for long running tasks. In most cases HPC environments are not suitable to run HTC workload and this is where Greasy can become a handy tool to use. It will help users to manage workflows with many serial tasks even if they have dependencies among them in an easy and robust way.</p>
 <p>This is a tools which is still under development, so some improvements may come up in the future.</p>
 <p>You can start by copying the example directory that you will find in the installation dir:
@@ -245,13 +246,13 @@ For more details about how to write dependencies please go to the user’s guide
 /bin/sleep 5
 /bin/sleep 6</p>
 <div class="section" id="these-lines-with-dependencies-are-correct">
-<h2># These Lines with dependencies are correct<a class="headerlink" href="#these-lines-with-dependencies-are-correct" title="Permalink to this headline">¶</a></h2>
+<h2># These Lines with dependencies are correct<a class="headerlink" href="#these-lines-with-dependencies-are-correct" title="Permalink to this heading">¶</a></h2>
 <p>[# 5 #]         /bin/sleep 11
 [# -1#]         /bin/sleep 12
 [#1-3#]         /bin/sleep 13</p>
 </div>
 <div class="section" id="these-ones-are-not-ok">
-<h2># these ones are not Ok<a class="headerlink" href="#these-ones-are-not-ok" title="Permalink to this headline">¶</a></h2>
+<h2># these ones are not Ok<a class="headerlink" href="#these-ones-are-not-ok" title="Permalink to this heading">¶</a></h2>
 <p># sharps missing
 [ 1 ]           /bin/sleep 22
 [#1 ]           /bin/sleep 23

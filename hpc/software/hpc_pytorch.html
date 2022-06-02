@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -198,7 +199,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pytorch-on-hpc">
-<h1>PyTorch on HPC<a class="headerlink" href="#pytorch-on-hpc" title="Permalink to this headline">¶</a></h1>
+<h1>PyTorch on HPC<a class="headerlink" href="#pytorch-on-hpc" title="Permalink to this heading">¶</a></h1>
 <p>We have PyTorch (1.4 &amp; 1.7) installations as part of Miniconda module on the HPC.
 You can clone the existing centralized environment to your local environment and
 add other required libraries or packages on top of it after activating it.
@@ -209,7 +210,7 @@ To find more details of the Miniconda module on the HPC, click <a class="referen
 You can find the steps to set up the HPC Miniconda by clicking <a class="reference internal" href="hpc_miniconda.html"><span class="doc">here</span></a>.</p>
 </div>
 <div class="section" id="how-to-clone-the-pytorch-environment">
-<h2>How to clone the <strong>PyTorch</strong> environment<a class="headerlink" href="#how-to-clone-the-pytorch-environment" title="Permalink to this headline">¶</a></h2>
+<h2>How to clone the <strong>PyTorch</strong> environment<a class="headerlink" href="#how-to-clone-the-pytorch-environment" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>If you are using the HPC Miniconda</p>
 <blockquote>
@@ -234,7 +235,7 @@ conda create -n pytorch --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/pytorch
 </ol>
 </div>
 <div class="section" id="submitting-job-scripts">
-<h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>
+<h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this heading">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
 </pre></div>

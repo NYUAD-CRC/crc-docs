@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Singularity For Conda &mdash; CRC Documentation  documentation</title>
+  <title>Singularity Overlays &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -103,11 +104,12 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#singularity">Singularity</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="singularity.html">Singularity Containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Singularity For Conda</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#choose-and-copy-ext3-file">Choose and copy ext3 file</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Singularity Overlays</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-overlay">Creating an Overlay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-container-with-overlay-filesystem">Run container with overlay filesystem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#write-to-overlay-filesystem">Write to overlay filesystem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#while-in-container">While in container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-the-overlay">Sharing the Overlay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#job-submission">Job Submission</a></li>
 </ul>
 </li>
@@ -183,7 +185,7 @@
         
           <li><a href="index.html">Software</a> &raquo;</li>
         
-      <li>Singularity For Conda</li>
+      <li>Singularity Overlays</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,60 +202,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="singularity-for-conda">
-<h1>Singularity For Conda<a class="headerlink" href="#singularity-for-conda" title="Permalink to this headline">¶</a></h1>
-<p>A simple conda environment requires a lot of files to be created on file system.
-With a limit of 0.5 million files per user, more than a 100 thousand of that may be eaten just by one conda environment.</p>
-<p>To address this situation, we offer users an option to use Singularity containers combined with overlay option.
-You could read</p>
-<div class="section" id="choose-and-copy-ext3-file">
-<h2>Choose and copy ext3 file<a class="headerlink" href="#choose-and-copy-ext3-file" title="Permalink to this headline">¶</a></h2>
-<p>Templates for ext3 filesystem files are located in <code class="docutils literal notranslate"><span class="pre">/share/apps/jubail/overlay-fs-ext3</span></code>.</p>
-<p>These templates have fixed disk size-so choose one that has an appropriate template based on name of the file.
-Please copy a chosen template to your own directory on <code class="docutils literal notranslate"><span class="pre">/scratch</span></code></p>
-<p>Naming: <code class="docutils literal notranslate"><span class="pre">overlay-0.5GB-300K.ext3</span></code> means this file system will be able to hold up to <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">GB</span></code>  and up to <code class="docutils literal notranslate"><span class="pre">300K</span></code> files</p>
-<p>For example</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /scratch/<span class="nv">$USER</span>/&lt;directory_for_project&gt;
-cp /share/apps/jubail/overlay-fs-ext3/overlay-0.5GB-200K.ext3.gz .
-gunzip overlay-0.5GB-300K.ext3.gz
+  <div class="section" id="singularity-overlays">
+<h1>Singularity Overlays<a class="headerlink" href="#singularity-overlays" title="Permalink to this heading">¶</a></h1>
+<p>An Overlay is a directory or a filesystem image which sits on top of a singularity container.</p>
+<p>The user can make benefit of the overlays in any of the following ways:</p>
+<ul class="simple">
+<li><p>You have too many conda environments eating up his number of files limit</p></li>
+<li><p>You have a datset consisting of a large number of small files</p></li>
+<li><p>You would like to share your environments (R,conda,etc) with your collaborators with no installation required.</p></li>
+</ul>
+<p>This process has the following steps which are explained in detailed later:</p>
+<ul class="simple">
+<li><p>Create an overlay of the desired size</p></li>
+<li><p>Use a singularity conatiner to get into the overlay</p></li>
+<li><p>Create your enviornments or copy your dataset in the <code class="docutils literal notranslate"><span class="pre">/opt</span></code> directory</p></li>
+<li><p>exit the singularity container</p></li>
+</ul>
+<div class="section" id="creating-an-overlay">
+<h2>Creating an Overlay<a class="headerlink" href="#creating-an-overlay" title="Permalink to this heading">¶</a></h2>
+<p>The script <code class="docutils literal notranslate"><span class="pre">overlay.sh</span></code> facilitates this process of creating an overlay based on your needs.
+The command <code class="docutils literal notranslate"><span class="pre">overlay.sh</span></code> takes two arguments <code class="docutils literal notranslate"><span class="pre">size</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">overlay</span> <span class="pre">(in</span> <span class="pre">MB)</span></code> and <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">files</span></code>
+in the overlay (in 1000’s). The usage is as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#overlay.sh &lt;size&gt; &lt;num of files&gt;</span>
+
+<span class="c1">#example:</span>
+overlay.sh <span class="m">500</span> <span class="m">700</span>
 </pre></div>
 </div>
+<p>The above command will create an overlay with <code class="docutils literal notranslate"><span class="pre">500MB</span></code> capacity and number of files capacity <code class="docutils literal notranslate"><span class="pre">700K</span></code>
+by the name <code class="docutils literal notranslate"><span class="pre">overlay-500M-700K.ext3</span></code> in the directory from which the command was issued.</p>
 </div>
 <div class="section" id="run-container-with-overlay-filesystem">
-<h2>Run container with overlay filesystem<a class="headerlink" href="#run-container-with-overlay-filesystem" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load NYUAD/4.0 singularity
+<h2>Run container with overlay filesystem<a class="headerlink" href="#run-container-with-overlay-filesystem" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##Please choose appropriate singularity ext3 image at this location</span>
+<span class="c1">#singularity shell  --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif</span>
 
-<span class="c1">##Please choose appropriate singularity ext3 image at this location</span>
-singularity shell  --overlay &lt;chosen-file&gt;.ext3 /share/apps/jubail/singularity-images/centos-8.2.2004.sif
+<span class="c1">#example:</span>
+singularity shell  --overlay overlay-500M-700K.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>If you want to mount ext3 file as read and write, you can do that only with one process.</p>
 <p>If you have more than one process reading from the given ext3 file, it shall be mounted as read-only.</p>
 <p>For read-only mount, please specify <code class="docutils literal notranslate"><span class="pre">:ro</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell  --overlay &lt;chosen-file&gt;.ext3:ro /share/apps/jubail/singularity-images/centos-8.2.2004.sif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell  --overlay &lt;chosen-file&gt;.ext3:ro /share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>If you use GPUs please specify option <code class="docutils literal notranslate"><span class="pre">--nv</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell --nv  --overlay &lt;chosen-file&gt;.ext3 /share/apps/jubail/singularity-images/centos-8.2.2004.sif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell --nv  --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>More info on singularuty shell <a class="reference external" href="https://sylabs.io/guides/3.1/user-guide/cli/singularity_shell.html">here</a></p>
 <p>You can also use <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">exec</span></code> to run the container with overlay filesystem:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> --overlay &lt;chosen-file&gt;.ext3 /share/apps/jubail/singularity-images/centos-8.2.2004.sif /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif /bin/bash
 </pre></div>
 </div>
 <p>More info on singularity exec <a class="reference external" href="https://sylabs.io/guides/3.5/user-guide/cli/singularity_exec.html">here</a></p>
 </div>
 <div class="section" id="write-to-overlay-filesystem">
-<h2>Write to overlay filesystem<a class="headerlink" href="#write-to-overlay-filesystem" title="Permalink to this headline">¶</a></h2>
-<p>You can write to directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages you need</p>
+<h2>Write to overlay filesystem<a class="headerlink" href="#write-to-overlay-filesystem" title="Permalink to this heading">¶</a></h2>
+<p>You can write to directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages you need.All the environments and datasets written from inside the container
+to <code class="docutils literal notranslate"><span class="pre">opt</span></code> are actually witten into the overlay which has been created.</p>
 </div>
 <div class="section" id="while-in-container">
-<h2>While in container<a class="headerlink" href="#while-in-container" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#activate your conda by sourcing bashrc file</span>
-<span class="nb">source</span> ~/.bashrc
-
-<span class="c1">#Create new environments in /opt</span>
+<h2>While in container<a class="headerlink" href="#while-in-container" title="Permalink to this heading">¶</a></h2>
+<p><strong>Creating a conda environment</strong>
+You can create a conda environment in /opt as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create new environments in /opt</span>
 conda create -p /opt/conda-envs/myenv
 
 conda activate /opt/conda-envs/myenv
@@ -262,9 +276,29 @@ conda activate /opt/conda-envs/myenv
 <span class="nb">exit</span>
 </pre></div>
 </div>
+<p><strong>Transferring Datasets</strong>
+You can also copy the Dataset from your local folder and place it under <code class="docutils literal notranslate"><span class="pre">/opt</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example:</span>
+mkdir -p /opt/data
+cp -r /scratch/wz22/dataset.zip /opt/data/.
+unzip dataset.zip
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to copy the datasets to the overlay in compressed formats (zip or tar) and then extract it
+in the overlay.</p>
+</div>
+</div>
+<div class="section" id="sharing-the-overlay">
+<h2>Sharing the Overlay<a class="headerlink" href="#sharing-the-overlay" title="Permalink to this heading">¶</a></h2>
+<p>The overlay can also be shared with your collaborators. All the environments and datasets written from inside the container
+to <code class="docutils literal notranslate"><span class="pre">opt</span></code> are actually witten into the overlay which has been created. Hence, the sharing an overlay with a
+collaborator is equivalent to sharing the working environment with the datasets etc, essentially sharing whatever
+is written into the overlay directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code>.</p>
 </div>
 <div class="section" id="job-submission">
-<h2>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h2>
+<h2>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this heading">¶</a></h2>
 <p>A smaple job script can look as follows. Note that all the commands to be
 executed within the container are part of the <code class="docutils literal notranslate"><span class="pre">/bin/bash</span> <span class="pre">-c</span> <span class="pre">&quot;&lt;commands</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">executed&gt;&quot;</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -272,10 +306,10 @@ executed within the container are part of the <code class="docutils literal notr
 <span class="c1">#SBATCH --time=1:00:00</span>
 
 <span class="c1">#Specify location of the overlay.ext3 file</span>
-<span class="nv">overlay_ext3</span><span class="o">=</span>/scratch/<span class="nv">$USER</span>/&lt;project_dir&gt;/&lt;chosen-file&gt;.ext3
+<span class="nv">overlay_ext3</span><span class="o">=</span>/scratch/wz22/overlay-500M-700K.ext3
 
 singularity <span class="se">\</span>
-    <span class="nb">exec</span> --overlay <span class="nv">$overlay_ext3</span>:ro <span class="se">\</span>
+    <span class="nb">exec</span> --nv --overlay <span class="nv">$overlay_ext3</span>:ro <span class="se">\</span>
     /share/apps/jubail/singularity-images/centos-8.2.2004.sif  <span class="se">\</span>
     /bin/bash -c <span class="s2">&quot;source ~/.bashrc; \</span>
 <span class="s2">                conda activate /opt/conda-envs/myenv; \</span>

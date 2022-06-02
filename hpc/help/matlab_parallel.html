@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -197,13 +198,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="how-to-use-matlab-parallel-toolbox">
-<h1>How to use MATLAB Parallel Toolbox<a class="headerlink" href="#how-to-use-matlab-parallel-toolbox" title="Permalink to this headline">¶</a></h1>
+<h1>How to use MATLAB Parallel Toolbox<a class="headerlink" href="#how-to-use-matlab-parallel-toolbox" title="Permalink to this heading">¶</a></h1>
 <p>One of the features users may want to use in Dalma is Matlab’s Parallel Toolbox.</p>
 <p>MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems. For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD.
 Parallel computations can be achieved either using  <strong>parallel for-loops</strong> , <strong>special array types</strong> or <strong>parallelized numerical algorithms</strong>. You can also submit <strong>batch local workers</strong>, for more info visit the MATLAB documentation ( <a class="reference external" href="http://www.mathworks.es/es/help/distcomp/introduction-to-parallel-solutions.html#brjw1fx-2">http://www.mathworks.es/es/help/distcomp/introduction-to-parallel-solutions.html#brjw1fx-2</a> )</p>
 <p>In any case, for all these things to work, you will need to define a set of resources (cpus or workers) where the tasks will be executed.  The easiest way is to use the matlabpool command. This command has been replaced in recent versions for parpool. Again, refer to the MATLAB documentation for details.</p>
 <div class="section" id="step-by-step-guide">
-<h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this headline">¶</a></h2>
+<h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">¶</a></h2>
 <p>If you are planning to run parallel computation with Matlab:</p>
 <ol class="arabic">
 <li><p>the maximum allowed number of workers by MATLAB in a node is 12. Use this in your submission script</p>
@@ -236,7 +237,7 @@ Parallel computations can be achieved either using  <strong>parallel for-loops</
 </div>
 </div>
 <div class="section" id="running-the-example-using-an-interactive-session">
-<h2>Running the example using an interactive session<a class="headerlink" href="#running-the-example-using-an-interactive-session" title="Permalink to this headline">¶</a></h2>
+<h2>Running the example using an interactive session<a class="headerlink" href="#running-the-example-using-an-interactive-session" title="Permalink to this heading">¶</a></h2>
 <p>You can now open an interactive session to run it. To open an interactive shell in the cluster, type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>login-node<span class="o">]</span>$&gt; srun --pty  -n <span class="m">1</span> --cpus-per-task<span class="o">=</span><span class="m">12</span>  /bin/bash
 </pre></div>
@@ -248,7 +249,7 @@ Parallel computations can be achieved either using  <strong>parallel for-loops</
 <p>And finally open matlab and run the example as you would do it in your workstation/laptop. Notice that running Matlab in the interactive queue you will not have GUI available.</p>
 </div>
 <div class="section" id="running-the-example-using-the-batch-system">
-<h2>Running the example using the batch system<a class="headerlink" href="#running-the-example-using-the-batch-system" title="Permalink to this headline">¶</a></h2>
+<h2>Running the example using the batch system<a class="headerlink" href="#running-the-example-using-the-batch-system" title="Permalink to this heading">¶</a></h2>
 <p>First thing you need a submission script like this: <code class="docutils literal notranslate"><span class="pre">run.slurm</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -n 1</span>

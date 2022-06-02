@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -199,7 +200,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="miniconda-in-hpc">
-<h1>Miniconda in HPC<a class="headerlink" href="#miniconda-in-hpc" title="Permalink to this headline">¶</a></h1>
+<h1>Miniconda in HPC<a class="headerlink" href="#miniconda-in-hpc" title="Permalink to this heading">¶</a></h1>
 <p>We have a centralized installation of Miniconda in the HPC. The users can either
 install their own Miniconda or use the centralized installation present in the HPC.
 This centralized installation can also be used for creating your own local environments,
@@ -207,7 +208,7 @@ wherein you can install your own packages. Moreover, You can clone the existing 
 environments (like Tensorflow, R) and add other required libraries or packages on top of it.</p>
 <p>The conda cheat sheet gives you a list of useful commands in a glance:  <a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda-cheat-sheet</a></p>
 <div class="section" id="one-time-set-up">
-<h2>One Time Set up<a class="headerlink" href="#one-time-set-up" title="Permalink to this headline">¶</a></h2>
+<h2>One Time Set up<a class="headerlink" href="#one-time-set-up" title="Permalink to this heading">¶</a></h2>
 <p>Execute the following command for making HPC Miniconda as your default conda environment.
 This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
@@ -216,7 +217,7 @@ This is needed to be done <strong>ONLY once</strong>, just for setting up Minico
 </div>
 </div>
 <div class="section" id="application-installation">
-<h2>Application Installation<a class="headerlink" href="#application-installation" title="Permalink to this headline">¶</a></h2>
+<h2>Application Installation<a class="headerlink" href="#application-installation" title="Permalink to this heading">¶</a></h2>
 <p>Following are the steps which need to be followed to install an application using conda.</p>
 <ul class="simple">
 <li><p>Create a local conda environment using conda create (more details below)</p></li>
@@ -238,7 +239,7 @@ This is needed to be done <strong>ONLY once</strong>, just for setting up Minico
 </div>
 </div>
 <div class="section" id="managing-environments">
-<h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
+<h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>By default the environemnts get created in the user’s <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> but we recommend our users to
@@ -286,7 +287,7 @@ conda create -p /scratch/wz22/conda-envs/tf-gpu --clone tensorflow-1.15
 </div>
 </div>
 <div class="section" id="migrating-sharing-environment">
-<h2>Migrating / Sharing Environment<a class="headerlink" href="#migrating-sharing-environment" title="Permalink to this headline">¶</a></h2>
+<h2>Migrating / Sharing Environment<a class="headerlink" href="#migrating-sharing-environment" title="Permalink to this heading">¶</a></h2>
 <p>It is possible to migrate an environment, with exact same packages and configuration.
 This is the beauty of Conda. Same environment, anywhere.</p>
 <ol class="arabic">
@@ -319,7 +320,7 @@ conda env create -f environment.yml
 </ol>
 </div>
 <div class="section" id="submitting-job-scripts">
-<h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this headline">¶</a></h2>
+<h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this heading">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the <code class="docutils literal notranslate"><span class="pre">bashrc</span></code> file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
 </pre></div>

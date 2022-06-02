@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -114,7 +115,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="singularity_conda.html">Singularity For Conda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_overlays.html">Singularity Overlays</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#miscellaneous">Miscellaneous</a></li>
@@ -205,9 +206,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="singularity-containers">
-<h1>Singularity Containers<a class="headerlink" href="#singularity-containers" title="Permalink to this headline">¶</a></h1>
+<h1>Singularity Containers<a class="headerlink" href="#singularity-containers" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="what-is-a-container">
-<h2>What is a Container?<a class="headerlink" href="#what-is-a-container" title="Permalink to this headline">¶</a></h2>
+<h2>What is a Container?<a class="headerlink" href="#what-is-a-container" title="Permalink to this heading">¶</a></h2>
 <p>A container allows you to stick an application and all of its dependencies into a single package. This makes your application portable, shareable, and reproducible.</p>
 <p>Containers foster portability and reproducibility because they package ALL of an applications dependencies, including its own tiny operating system!</p>
 <p>This means your application won’t break when you port it to a new environment. Your app brings its environment with it.</p>
@@ -220,7 +221,7 @@
 </ul>
 </div>
 <div class="section" id="how-do-containers-differ-from-virtual-machines-vms">
-<h2>How do containers differ from virtual machines (VMs)<a class="headerlink" href="#how-do-containers-differ-from-virtual-machines-vms" title="Permalink to this headline">¶</a></h2>
+<h2>How do containers differ from virtual machines (VMs)<a class="headerlink" href="#how-do-containers-differ-from-virtual-machines-vms" title="Permalink to this heading">¶</a></h2>
 <p>Containers and VMs are both types of virtualization. But it’s important to understand the differences between the two and know when to use each.</p>
 <p>Virtual Machines install every last bit of an operating system (OS) right down to the core software that allows the OS to control the hardware (called the kernel). This means that VMs:
 * Are complete in the sense that you can use a VM to interact with your computer via a different OS.
@@ -237,7 +238,7 @@
 </ul>
 </div>
 <div class="section" id="docker">
-<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="https://www.docker.com/">Docker</a> is currently the most widely used container software. It has several strengths and weaknesses that make it a good choice for some projects but not for others.</p>
 <p><strong>Philosophy</strong></p>
 <p>Docker is built for running multiple containers on a single system and it allows containers to share common software features for efficiency. It also seeks to fully isolate each container from all other containers and from the host system.</p>
@@ -273,7 +274,7 @@
 <p>Docker shines for DevOPs teams providing cloud-native micro-services to users.</p>
 </div>
 <div class="section" id="singularity">
-<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this headline">¶</a></h2>
+<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="http://singularity.lbl.gov/">Singularity</a> is a relatively new container software invented by Greg Kurtzer while at Lawrence Berkley National labs and now developed by his company <a class="reference external" href="https://sylabs.io">Sylabs</a>.  It was developed with security, scientific software, and HPC systems in mind.</p>
 <p><strong>Philosophy</strong></p>
 <p>Singularity assumes (more or less) that each application will have its own container.  It does not seek to fully isolate containers from one another or the host system.
@@ -300,7 +301,7 @@ Singularity assumes that you will have a build system where you are the root use
 <p>Singularity shines for scientific software running in an HPC environent.</p>
 </div>
 <div class="section" id="steps-to-use-a-container">
-<h2>Steps to use a Container<a class="headerlink" href="#steps-to-use-a-container" title="Permalink to this headline">¶</a></h2>
+<h2>Steps to use a Container<a class="headerlink" href="#steps-to-use-a-container" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>create or pull an existing container</p>
 <blockquote>
@@ -321,7 +322,7 @@ Singularity assumes that you will have a build system where you are the root use
 </ol>
 </div>
 <div class="section" id="using-docker-and-singularity-images-from-existing-container-libraries">
-<h2>Using docker and singularity images from existing container libraries<a class="headerlink" href="#using-docker-and-singularity-images-from-existing-container-libraries" title="Permalink to this headline">¶</a></h2>
+<h2>Using docker and singularity images from existing container libraries<a class="headerlink" href="#using-docker-and-singularity-images-from-existing-container-libraries" title="Permalink to this heading">¶</a></h2>
 <p><strong>List of useful container libraries</strong></p>
 <ol class="arabic">
 <li><p>Docker Based Container Libraries</p>
@@ -366,7 +367,7 @@ Since the home directory has a limited amount of space, this can fill up quite e
 </div>
 </div>
 <div class="section" id="creating-singularity-containers">
-<span id="create-singularity-containers"></span><h2>Creating Singularity containers<a class="headerlink" href="#creating-singularity-containers" title="Permalink to this headline">¶</a></h2>
+<span id="create-singularity-containers"></span><h2>Creating Singularity containers<a class="headerlink" href="#creating-singularity-containers" title="Permalink to this heading">¶</a></h2>
 <p>To use Singularity on the HPC, you either need to create your own Singularity container, or use one created by someone else.You have several options to build Singularity containers:</p>
 <ul class="simple">
 <li><p>You can build small and medium sized containers on HPC using the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option. In a nutshell, you must log in and generate a token on the <a class="reference external" href="https://cloud.sylabs.io/auth">Singularity Container Services</a> and use the command line to copy that token into your environment (using the command <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">remote</span> <span class="pre">login</span></code>). Once you’ve done that, the <code class="docutils literal notranslate"><span class="pre">--remote</span> <span class="pre">option</span></code> will allow you to build containers using the Sylabs remote builder.</p></li>
@@ -379,7 +380,7 @@ Since the home directory has a limited amount of space, this can fill up quite e
 <p>In addition to your own Linux environment, you will also need a definition file to build a Singularity container from scratch. You can find some simple definition files for a variety of Linux distributions in the <a class="reference external" href="https://github.com/hpcng/singularity/tree/master/examples">example</a> directory of the source code. Detailed documentation about building Singularity container images is available at the <a class="reference external" href="https://sylabs.io/guides/latest/user-guide/">Singularity website</a>.</p>
 </div>
 <div class="section" id="singularity-containers-from-scratch">
-<h2>Singularity Containers from scratch<a class="headerlink" href="#singularity-containers-from-scratch" title="Permalink to this headline">¶</a></h2>
+<h2>Singularity Containers from scratch<a class="headerlink" href="#singularity-containers-from-scratch" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>Create a definition file (<code class="docutils literal notranslate"><span class="pre">example.def</span></code>)</p>
 <blockquote>
@@ -472,7 +473,7 @@ singularity build mycontainer.sif abc
 </ol>
 </div>
 <div class="section" id="additional-documents">
-<h2>Additional Documents<a class="headerlink" href="#additional-documents" title="Permalink to this headline">¶</a></h2>
+<h2>Additional Documents<a class="headerlink" href="#additional-documents" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://sylabs.io/guides/3.7/user-guide/index.html">Singularity Documentation</a></p></li>
 <li><p><a class="reference external" href="https://www.sylabs.io/guides/3.7/user-guide/quick_start.html">Singularity Quick Start Guide</a></p></li>

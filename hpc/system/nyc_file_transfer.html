@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -200,11 +201,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="fast-transfer-between-nyu-nyc-and-nyuad">
-<h1>Fast Transfer Between NYU NYC and NYUAD<a class="headerlink" href="#fast-transfer-between-nyu-nyc-and-nyuad" title="Permalink to this headline">¶</a></h1>
+<h1>Fast Transfer Between NYU NYC and NYUAD<a class="headerlink" href="#fast-transfer-between-nyu-nyc-and-nyuad" title="Permalink to this heading">¶</a></h1>
 <p>The default MLPS(Multiprotocol Label Switching) link between NY and AD has a low bandwidth but using port 922 on NYUAD HPC will use a
 high bandwidth ANKABUT link instead.</p>
 <div class="section" id="specifying-the-port-directly">
-<h2>Specifying the port directly<a class="headerlink" href="#specifying-the-port-directly" title="Permalink to this headline">¶</a></h2>
+<h2>Specifying the port directly<a class="headerlink" href="#specifying-the-port-directly" title="Permalink to this heading">¶</a></h2>
 <p>For infrequent data transfer, directly specify the port 922 in your scp command.</p>
 <ul class="simple">
 <li><p>Original scp command (low bandwidth):</p></li>
@@ -229,7 +230,7 @@ high bandwidth ANKABUT link instead.</p>
 </div>
 </div>
 <div class="section" id="setup-an-alias">
-<h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this headline">¶</a></h2>
+<h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this heading">¶</a></h2>
 <p>If you need to transfer data frequently, it is easier to setup an alias in your ssh config. In your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, append the following entries.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host jubail-fast
     Hostname     jubail.abudhabi.nyu.edu

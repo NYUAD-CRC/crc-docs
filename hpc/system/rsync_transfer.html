@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -201,7 +202,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="file-transfer-using-rsync">
-<h1>File Transfer using rsync<a class="headerlink" href="#file-transfer-using-rsync" title="Permalink to this headline">¶</a></h1>
+<h1>File Transfer using rsync<a class="headerlink" href="#file-transfer-using-rsync" title="Permalink to this heading">¶</a></h1>
 <p>For replicating datasets between the HPC clusters and your workstation, or between two filesystems on an HPC cluster, rsync offers powerful functionality beyond that of cp or scp commands. With rsync you can copy directories between your workstation and the HPC clusters - or between different filesystems - in such a way that permission and file modification timestamps are preserved, and that only files which have changed are transferred.</p>
 <div class="admonition-basic-usage-of-rsync admonition">
 <p class="admonition-title">Basic Usage of rsync</p>
@@ -230,7 +231,7 @@ rsync -av <span class="nb">source</span> destination
 </div>
 <p>For detailed information about rsync, type <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">rsync</span></code> at the command line.</p>
 <div class="section" id="some-examples-of-rsync-usage">
-<h2>Some examples of rsync usage<a class="headerlink" href="#some-examples-of-rsync-usage" title="Permalink to this headline">¶</a></h2>
+<h2>Some examples of rsync usage<a class="headerlink" href="#some-examples-of-rsync-usage" title="Permalink to this heading">¶</a></h2>
 <p>To replicate in your /scratch area a directory tree you have saved in /home</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/<span class="nv">$USER</span>/
 $ ls -F
@@ -289,7 +290,7 @@ $ ls my_results
 <p>Only those files with modifications will be copired from the HPC to your workstation.</p>
 </div>
 <div class="section" id="ignoring-certain-files">
-<h2>Ignoring certain files<a class="headerlink" href="#ignoring-certain-files" title="Permalink to this headline">¶</a></h2>
+<h2>Ignoring certain files<a class="headerlink" href="#ignoring-certain-files" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">-C</span></code> option tells rsync to follow CVS conventions about ignoring certain files.The conventions are described fully in the man page (man rsync) but in summary, when <code class="docutils literal notranslate"><span class="pre">-C</span></code> is used the following files are ignored  or any file or directory whose name matches any of these mentioned below are ignored:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>RCS SCCS CVS CVS.adm RCSLOG cvslog.* tags TAGS .make.state .nse_depinfo *~ <span class="c1">#* .#* ,* _$* *$ *.old *.bak *.BAK *.orig *.rej .del-* *.a *.olb *.o *.obj *.so *.exe *.Z *.elc *.ln core .svn/</span>
 </pre></div>

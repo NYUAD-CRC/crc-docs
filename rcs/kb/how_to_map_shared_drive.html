@@ -37,6 +37,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -193,9 +194,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="how-to-map-shared-drive">
-<h1>How to Map Shared Drive<a class="headerlink" href="#how-to-map-shared-drive" title="Permalink to this headline">¶</a></h1>
+<h1>How to Map Shared Drive<a class="headerlink" href="#how-to-map-shared-drive" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="mac">
-<h2>MAC<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
+<h2>MAC<a class="headerlink" href="#mac" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>In <strong>Finder</strong>, select <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Server</span></code> from <strong>Go</strong> menu</p>
 <blockquote>
@@ -220,7 +221,7 @@
 </ol>
 </div>
 <div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>Open <strong>My Computer</strong> window -&gt; Select <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">Network</span> <span class="pre">Drive</span></code></p>
 <blockquote>
@@ -242,7 +243,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="ubuntu">
-<h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
+<h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install cifs-utils
 $ sudo mkdir /mnt/network
 $ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/network -o <span class="nv">username</span><span class="o">=</span>&lt;netid&gt;,sec<span class="o">=</span>ntlmssp,vers<span class="o">=</span><span class="m">2</span>.0
@@ -250,7 +251,7 @@ $ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/ne
 </div>
 </div>
 <div class="section" id="centos">
-<h2>Centos<a class="headerlink" href="#centos" title="Permalink to this headline">¶</a></h2>
+<h2>Centos<a class="headerlink" href="#centos" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install cifs-utils
 $ sudo mkdir /mnt/network
 $ sudo mount -t cifs //rcsfileshare.abudhabi.nyu.edu/&lt;share_name&gt; /mnt/network -o <span class="nv">username</span><span class="o">=</span>&lt;netid&gt;,sec<span class="o">=</span>ntlmssp,vers<span class="o">=</span><span class="m">2</span>.0
