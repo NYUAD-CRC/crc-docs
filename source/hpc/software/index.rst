@@ -42,7 +42,16 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/hpc_minicon
 .. tip::
     Know more about the GPU nodes available :doc:`here</hpc/system/gpu_nodes>`
     
-    
+
+Matlab
+------
+
+.. toctree::
+   :maxdepth: 2
+
+   /hpc/software/matlab_parallel
+
+
 Singularity
 -----------
 

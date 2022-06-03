@@ -5,7 +5,7 @@ An Overlay is a directory or a filesystem image which sits on top of a singulari
 
 The user can make benefit of the overlays in any of the following ways:
 
-- You have too many conda environments eating up his number of files limit
+- You have too many conda environments eating up your number of files limit
 - You have a datset consisting of a large number of small files
 - You would like to share your environments (R,conda,etc) with your collaborators with no installation required.
 
@@ -74,13 +74,14 @@ More info on singularity exec `here <https://sylabs.io/guides/3.5/user-guide/cli
 Write to overlay filesystem
 ---------------------------
 
-You can write to directory ``/opt`` to create conda environment and install packages you need.All the environments and datasets written from inside the container
+You can write to the directory ``/opt`` to create conda environment and install packages you need.All the environments and datasets written from inside the container
 to ``opt`` are actually witten into the overlay which has been created.
 
 While in container
 ------------------
 
-**Creating a conda environment**
+**Creating a Conda Environment**
+
 You can create a conda environment in /opt as follows:
 
 .. code-block:: bash
@@ -91,11 +92,13 @@ You can create a conda environment in /opt as follows:
     
     conda activate /opt/conda-envs/myenv
     ## then use conda as usual
+
     #Close singularity
     exit
 
 
 **Transferring Datasets**
+
 You can also copy the Dataset from your local folder and place it under ``/opt``.
 
 .. code-block :: bash
