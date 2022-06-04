@@ -51,6 +51,13 @@ To run the MATLAB script, simply submit the job to the scheduler with the follow
 
     sbatch job.slurm
 
+.. note::
+    Matlab GUI can be launched from the ``Interactive Apps`` section of our HPC Web Interface,
+    https://ood.hpc.abuhdabi.nyu.edu (VPN Required). More info on the HPC Web Interface can be found :doc:`here </hpc/ood/index>`.
+    It is recommended you use the GUI for testing/debugging purposes. For the actual/production runs, command line/batch mode is 
+    recommended as it reduces the overhead created by processes/java threads in the background.
+
+
 Running a Multi-threaded MATLAB Job with the Parallel Computing Toolbox
 -----------------------------------------------------------------------
 
@@ -115,7 +122,7 @@ The amount of time that a job waits in the queue is proportional to the requeste
 Furthermore, your fairshare value is decreased in proportion to the requested resources. 
 
 .. tip::
-    More the number of matlab workers, more are chances of overhead and hence reduced speedup.
+    More the number of matlab workers, more are the chances of overhead and hence reduced speedup.
     If you have a matlab code with independent computations, then 
     :doc:`Job arrays </hpc/jobs/job_array>` and :doc:`Parallel Job Array </hpc/jobs/parallel_job_array>`  
     are one of the most easiest and efficient ways of parallelizing 
