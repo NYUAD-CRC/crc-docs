@@ -3,14 +3,14 @@ How to use MATLAB Parallel Toolbox
 
 One of the features users may want to use in jubail is Matlab's Parallel Toolbox.  
 
-MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems. For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD.
-Parallel computations can be achieved either using  `parallel for-loops <https://www.mathworks.com/help/matlab/ref/parfor.html>`__ ,
-`GPU computing <https://www.mathworks.com/solutions/gpu-computing.html>`__ .For more info visit 
+MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems, parallel computations can be achieved either using  `parallel for-loops <https://www.mathworks.com/help/matlab/ref/parfor.html>`__ or
+`GPU computing <https://www.mathworks.com/solutions/gpu-computing.html>`__ , for more info visit 
 the MATLAB documentation (`Get Started with Parallel Computing Toolbox <https://es.mathworks.com/help/parallel-computing/getting-started-with-parallel-computing-toolbox.html#brjw1fx-2>`__ )
 
 
-In any case, for all these things to work, you will need to define a set of resources (cpus or workers) where the tasks will be executed.  The easiest way is to use the matlabpool command. This command has been replaced in recent versions for parpool.
-Again, refer to the MATLAB documentation for details. 
+For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD. 
+
+In any case, for all these things to work you will need to define a set of resources (cpus or workers) where the tasks will be executed, the easiest way is to use the ``matlabpool`` command this command has been replaced in recent versions with ``parpool``, again refer to the MATLAB documentation for details. 
 
 Running a Serial MATLAB Job
 ---------------------------
@@ -64,7 +64,9 @@ Running a Multi-threaded MATLAB Job with the Parallel Computing Toolbox
 Most of the time, running MATLAB in single-threaded mode (as described above) will meet your needs. 
 However, if your code makes use of the Parallel Computing Toolbox (e.g., ``parfor``) or you have intense 
 computations that can benefit from the built-in multi-threading provided by MATLAB's BLAS implementation, 
-then you can run in multi-threaded mode. One can use up to all the CPU-cores on a single node in this mode. 
+then you can run in multi-threaded mode. 
+
+One can use up to all the CPU-cores on a single node in this mode. 
 Multi-node jobs are not possible with the version of MATLAB that we have so your Slurm script should always 
 use ``#SBATCH --nodes=1``. Here is an example from MathWorks of using multiple cores (``for_loop.m``):
 
@@ -89,7 +91,7 @@ The Slurm script (``job.slurm``) below can be used for this case:
     #!/bin/bash
     #SBATCH --job-name=parfor        # create a short name for your job
     #SBATCH --nodes=1                # node count
-    #SBATCH --n=1               # total number of tasks across all nodes
+    #SBATCH --ntasks=1               # total number of tasks across all nodes
     #SBATCH --cpus-per-task=4        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:00:30          # total run time limit (HH:MM:SS)
     #SBATCH --mail-type=all          # send email on job start, end and fault
@@ -100,9 +102,9 @@ The Slurm script (``job.slurm``) below can be used for this case:
     module load matlab
 
     #Run the matlab script
-    matlab -nojvm -nodisplay -nosplash -nodesktop -batch for_loop
+    matlab -nodisplay -nosplash -nodesktop -batch for_loop
 
-Note that ``-singleCompThread`` does not appear in the Slurm script in contrast to the serial case. 
+Note that ``-singleCompThread`` and ``-nojvm`` does not appear in the Slurm script in contrast to the serial case. 
 One must tune the value of ``--cpus-per-task`` for optimum performance. 
 Use the smallest value that gives you a significant performance boost because the more resources you 
 request the longer your queue time will be.
