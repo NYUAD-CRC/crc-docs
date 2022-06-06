@@ -101,6 +101,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#hpc-miniconda">HPC Miniconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#matlab">Matlab</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#singularity">Singularity</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="singularity.html">Singularity Containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
@@ -207,7 +208,7 @@
 <p>An Overlay is a directory or a filesystem image which sits on top of a singularity container.</p>
 <p>The user can make benefit of the overlays in any of the following ways:</p>
 <ul class="simple">
-<li><p>You have too many conda environments eating up his number of files limit</p></li>
+<li><p>You have too many conda environments eating up your number of files limit</p></li>
 <li><p>You have a datset consisting of a large number of small files</p></li>
 <li><p>You would like to share your environments (R,conda,etc) with your collaborators with no installation required.</p></li>
 </ul>
@@ -260,24 +261,25 @@ singularity shell  --overlay overlay-500M-700K.ext3 /share/apps/admin/singularit
 </div>
 <div class="section" id="write-to-overlay-filesystem">
 <h2>Write to overlay filesystem<a class="headerlink" href="#write-to-overlay-filesystem" title="Permalink to this heading">¶</a></h2>
-<p>You can write to directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages you need.All the environments and datasets written from inside the container
+<p>You can write to the directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages you need.All the environments and datasets written from inside the container
 to <code class="docutils literal notranslate"><span class="pre">opt</span></code> are actually witten into the overlay which has been created.</p>
 </div>
 <div class="section" id="while-in-container">
 <h2>While in container<a class="headerlink" href="#while-in-container" title="Permalink to this heading">¶</a></h2>
-<p><strong>Creating a conda environment</strong>
-You can create a conda environment in /opt as follows:</p>
+<p><strong>Creating a Conda Environment</strong></p>
+<p>You can create a conda environment in /opt as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create new environments in /opt</span>
 conda create -p /opt/conda-envs/myenv
 
 conda activate /opt/conda-envs/myenv
 <span class="c1">## then use conda as usual</span>
+
 <span class="c1">#Close singularity</span>
 <span class="nb">exit</span>
 </pre></div>
 </div>
-<p><strong>Transferring Datasets</strong>
-You can also copy the Dataset from your local folder and place it under <code class="docutils literal notranslate"><span class="pre">/opt</span></code>.</p>
+<p><strong>Transferring Datasets</strong></p>
+<p>You can also copy the Dataset from your local folder and place it under <code class="docutils literal notranslate"><span class="pre">/opt</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example:</span>
 mkdir -p /opt/data
 cp -r /scratch/wz22/dataset.zip /opt/data/.

@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>How to use MATLAB Parallel Toolbox &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Singularity Containers" href="singularity.html" />
+    <link rel="prev" title="TensorFlow (Keras) on HPC" href="hpc_tensorflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#hpc-miniconda">HPC Miniconda</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#matlab">Matlab</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">How to use MATLAB Parallel Toolbox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-a-serial-matlab-job">Running a Serial MATLAB Job</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-a-multi-threaded-matlab-job-with-the-parallel-computing-toolbox">Running a Multi-threaded MATLAB Job with the Parallel Computing Toolbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overriding-the-12-core-limit">Overriding the 12 core limit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-know-if-my-matlab-code-is-parallelized">How Do I Know If My MATLAB Code is Parallelized?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-matlab-on-gpus">Running Matlab on GPUs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#singularity">Singularity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Software</a> &raquo;</li>
+        
+      <li>How to use MATLAB Parallel Toolbox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-use-matlab-parallel-toolbox">
+<h1>How to use MATLAB Parallel Toolbox<a class="headerlink" href="#how-to-use-matlab-parallel-toolbox" title="Permalink to this heading">¶</a></h1>
+<p>One of the features users may want to use in jubail is Matlab’s Parallel Toolbox.</p>
+<p>MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems, parallel computations can be achieved either using  <a class="reference external" href="https://www.mathworks.com/help/matlab/ref/parfor.html">parallel for-loops</a> or
+<a class="reference external" href="https://www.mathworks.com/solutions/gpu-computing.html">GPU computing</a> , for more info visit
+the MATLAB documentation (<a class="reference external" href="https://es.mathworks.com/help/parallel-computing/getting-started-with-parallel-computing-toolbox.html#brjw1fx-2">Get Started with Parallel Computing Toolbox</a> )</p>
+<p>For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD.</p>
+<p>In any case, for all these things to work you will need to define a set of resources (cpus or workers) where the tasks will be executed, the easiest way is to use the <code class="docutils literal notranslate"><span class="pre">matlabpool</span></code> command this command has been replaced in recent versions with <code class="docutils literal notranslate"><span class="pre">parpool</span></code>, again refer to the MATLAB documentation for details.</p>
+<div class="section" id="running-a-serial-matlab-job">
+<h2>Running a Serial MATLAB Job<a class="headerlink" href="#running-a-serial-matlab-job" title="Permalink to this heading">¶</a></h2>
+<p>A serial MATLAB job is one that requires only a single CPU-core. Here is an example of a trivial,
+one-line serial MATLAB script (<code class="docutils literal notranslate"><span class="pre">hello_world.m</span></code>):</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Hello world.\n&#39;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The Slurm script (job.slurm) below can be used for serial jobs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=matlab        # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks=1               # total number of tasks across all nodes</span>
+<span class="c1">#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --mail-type=all          # send email on job start, end and fault</span>
+<span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@nyu.edu</span>
+
+<span class="c1">#Load matlab module</span>
+module purge
+module load matlab
+
+<span class="c1">#Run Matlab via command line</span>
+matlab -nojvm -singleCompThread -nodisplay -nosplash -nodesktop -batch hello_world
+</pre></div>
+</div>
+<p>By invoking MATLAB with <code class="docutils literal notranslate"><span class="pre">-nojvm</span> <span class="pre">-singleCompThread</span> <span class="pre">-nodisplay</span> <span class="pre">-nosplash</span></code>, the GUI and the background java processes are
+suppressed as is the creation of multiple threads.</p>
+<p>To run the MATLAB script, simply submit the job to the scheduler with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch job.slurm
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Matlab GUI can be launched from the <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code> section of our HPC Web Interface,
+<a class="reference external" href="https://ood.hpc.abuhdabi.nyu.edu">https://ood.hpc.abuhdabi.nyu.edu</a> (VPN Required). More info on the HPC Web Interface can be found <a class="reference internal" href="../ood/index.html"><span class="doc">here</span></a>.
+It is recommended you use the GUI for testing/debugging purposes. For the actual/production runs, command line/batch mode is
+recommended as it reduces the overhead created by processes/java threads in the background.</p>
+</div>
+</div>
+<div class="section" id="running-a-multi-threaded-matlab-job-with-the-parallel-computing-toolbox">
+<h2>Running a Multi-threaded MATLAB Job with the Parallel Computing Toolbox<a class="headerlink" href="#running-a-multi-threaded-matlab-job-with-the-parallel-computing-toolbox" title="Permalink to this heading">¶</a></h2>
+<p>Most of the time, running MATLAB in single-threaded mode (as described above) will meet your needs.
+However, if your code makes use of the Parallel Computing Toolbox (e.g., <code class="docutils literal notranslate"><span class="pre">parfor</span></code>) or you have intense
+computations that can benefit from the built-in multi-threading provided by MATLAB’s BLAS implementation,
+then you can run in multi-threaded mode.</p>
+<p>One can use up to all the CPU-cores on a single node in this mode.
+Multi-node jobs are not possible with the version of MATLAB that we have so your Slurm script should always
+use <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--nodes=1</span></code>. Here is an example from MathWorks of using multiple cores (<code class="docutils literal notranslate"><span class="pre">for_loop.m</span></code>):</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">;</span><span class="w"></span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Number of workers: %g\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">poolobj</span><span class="p">.</span><span class="n">NumWorkers</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">tic</span><span class="w"></span>
+<span class="s">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span><span class="w"></span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="w"></span>
+<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="n">A</span><span class="p">))));</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+<span class="nb">toc</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The Slurm script (<code class="docutils literal notranslate"><span class="pre">job.slurm</span></code>) below can be used for this case:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=parfor        # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks=1               # total number of tasks across all nodes</span>
+<span class="c1">#SBATCH --cpus-per-task=4        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --time=00:00:30          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --mail-type=all          # send email on job start, end and fault</span>
+<span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@nyu.edu</span>
+
+<span class="c1">#Load Matlab</span>
+module purge
+module load matlab
+
+<span class="c1">#Run the matlab script</span>
+matlab -nodisplay -nosplash -nodesktop -batch for_loop
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">-singleCompThread</span></code> and <code class="docutils literal notranslate"><span class="pre">-nojvm</span></code> does not appear in the Slurm script in contrast to the serial case.</p>
+<p>One must tune the value of <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> for optimum performance, use the smallest value for <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> that gives you a significant performance boost because the more resources you
+request the longer your queue time will be.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Number of matlab workers will equal the number of <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> up to a maximum of 12 workers</p>
+</div>
+</div>
+<div class="section" id="overriding-the-12-core-limit">
+<h2>Overriding the 12 core limit<a class="headerlink" href="#overriding-the-12-core-limit" title="Permalink to this heading">¶</a></h2>
+<p>By default MATLAB will restrict you to 12 worker threads. You can override this when making the parallel
+pool with the following line, for example, with 24 threads:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">(</span><span class="s">&#39;local&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you use more than one thread then make sure that your code can take advantage of all the CPU-cores.
+The amount of time that a job waits in the queue is proportional to the requested resources.
+Furthermore, your fairshare value is decreased in proportion to the requested resources.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>More the number of matlab workers, more are the chances of overhead and hence reduced speedup.
+If you have a matlab code with independent computations, then
+<a class="reference internal" href="../jobs/job_array.html"><span class="doc">Job arrays</span></a> and <a class="reference internal" href="../jobs/parallel_job_array.html"><span class="doc">Parallel Job Array</span></a>
+are one of the most easiest and efficient ways of parallelizing
+your computations. Follow the corresponding highlighted links for a much more detailed example.
+You can also contact us if you need any further help with this.</p>
+</div>
+</div>
+<div class="section" id="how-do-i-know-if-my-matlab-code-is-parallelized">
+<h2>How Do I Know If My MATLAB Code is Parallelized?<a class="headerlink" href="#how-do-i-know-if-my-matlab-code-is-parallelized" title="Permalink to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">parfor</span></code> statement is a clear indication of a parallelized MATLAB code. However,
+there are cases when the parallelization is not obvious. One example would be a code that uses
+linear algebra operations such as matrix multiplication. In this case MATLAB will use the BLAS library
+which offers multithreaded routines.</p>
+<p>There are two common ways to deteremine whether or not a MATLAB code can take advantage of parallelism
+without knowing anything about the code.</p>
+<p>The first to is run the code using 1 CPU-core and then do a second run using, say, 4 CPU-cores. Look to see if there is a significant difference in the execution
+time of the two codes.</p>
+<p>The second method is to launch the job using, say, 4 CPU-cores then ssh to the compute node where the job is running and use htop -u $USER to inspect the CPU usage. To get the name of the compute node where your job is running use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue
+</pre></div>
+</div>
+<p>The rightmost column labeled <code class="docutils literal notranslate"><span class="pre">NODELIST(REASON)</span></code> gives the name of the node where your job is running.
+SSH to this node, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh dn034
+</pre></div>
+</div>
+<p>Once on the compute node, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>htop -u <span class="nv">$USER</span>
+</pre></div>
+</div>
+<p>If your job is running in parallel you should see a process using much more than <code class="docutils literal notranslate"><span class="pre">100%</span></code> in the <code class="docutils literal notranslate"><span class="pre">%CPU</span></code>
+column. For 4 CPU-cores this number would ideally be <code class="docutils literal notranslate"><span class="pre">400%</span></code></p>
+</div>
+<div class="section" id="running-matlab-on-gpus">
+<h2>Running Matlab on GPUs<a class="headerlink" href="#running-matlab-on-gpus" title="Permalink to this heading">¶</a></h2>
+<p>Many routines in MATLAB have been written to run on a GPU. Below is a MATLAB script (svd_matlab.m) that
+performs a matrix decomposition using a GPU:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gpu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuDevice</span><span class="p">();</span><span class="w"></span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Using a %s GPU.\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">gpu</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span><span class="w"></span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">gpuDevice</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuArray</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="o">-</span><span class="mi">9</span><span class="p">]);</span><span class="w"></span>
+<span class="n">whos</span><span class="w"> </span><span class="s">X</span><span class="p">;</span><span class="w"></span>
+<span class="p">[</span><span class="n">U</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;trace(S): %f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trace</span><span class="p">(</span><span class="n">S</span><span class="p">))</span><span class="w"></span>
+<span class="nb">quit</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The Slurm script (<code class="docutils literal notranslate"><span class="pre">job.slurm</span></code>) below can be used for this case:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=matlab-svd    # create a short name for your job</span>
+<span class="c1">#SBATCH --nodes=1                # node count</span>
+<span class="c1">#SBATCH --ntasks=1               # total number of tasks across all nodes</span>
+<span class="c1">#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)</span>
+<span class="c1">#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH -p nvidia                # Request nvidia partition for GPU nodes</span>
+<span class="c1">#SBATCH --gres=gpu:1             # number of gpus per node</span>
+<span class="c1">#SBATCH --mail-type=begin        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+<span class="c1">#SBATCH --mail-user=&lt;NetID&gt;@nyu.edu</span>
+
+<span class="c1">#Load Matlab Module</span>
+module purge
+module load matlab
+
+<span class="c1">#Run your matlab script</span>
+matlab -nojvm -singleCompThread -nodisplay -nosplash -nodesktop -batch svd_matlab
+</pre></div>
+</div>
+<p>In the above Slurm script, notice the new lines: <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">nvidia</span></code> and <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--gres=gpu:1</span></code></p>
+<p>The job can be submitted to the scheduler with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch job.slurm
+</pre></div>
+</div>
+<p>Be sure that your MATLAB code is able to use a GPU before submitting your job.
+See this <a class="reference external" href="https://www.mathworks.com/solutions/gpu-computing/getting-started.html">Getting started guide on MATLAB and GPUs</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="singularity.html" class="btn btn-neutral float-right" title="Singularity Containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hpc_tensorflow.html" class="btn btn-neutral float-left" title="TensorFlow (Keras) on HPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
