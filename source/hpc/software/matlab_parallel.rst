@@ -1,7 +1,7 @@
 How to use MATLAB Parallel Toolbox
 ==================================
 
-One of the features users may want to use in Dalma is Matlab's Parallel Toolbox.  
+One of the features users may want to use in jubail is Matlab's Parallel Toolbox.  
 
 MATLAB Parallel Toolbox allows you to run parallel computations in multicore systems. For computer cluster and grid support you would need to use the MATLAB Distributed Computing Server which is not currently supported at NYUAD.
 Parallel computations can be achieved either using  `parallel for-loops <https://www.mathworks.com/help/matlab/ref/parfor.html>`__ ,
