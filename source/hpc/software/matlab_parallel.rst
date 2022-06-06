@@ -105,9 +105,13 @@ The Slurm script (``job.slurm``) below can be used for this case:
     matlab -nodisplay -nosplash -nodesktop -batch for_loop
 
 Note that ``-singleCompThread`` and ``-nojvm`` does not appear in the Slurm script in contrast to the serial case. 
-One must tune the value of ``--cpus-per-task`` for optimum performance. 
-Use the smallest value that gives you a significant performance boost because the more resources you 
+
+One must tune the value of ``--cpus-per-task`` for optimum performance, use the smallest value for ``--cpus-per-task`` that gives you a significant performance boost because the more resources you 
 request the longer your queue time will be.
+
+
+.. note::
+	Number of matlab workers will equal the number of ``--cpus-per-task`` up to a maximum of 12 workers
 
 Overriding the 12 core limit
 ----------------------------
@@ -129,7 +133,7 @@ Furthermore, your fairshare value is decreased in proportion to the requested re
     :doc:`Job arrays </hpc/jobs/job_array>` and :doc:`Parallel Job Array </hpc/jobs/parallel_job_array>`  
     are one of the most easiest and efficient ways of parallelizing 
     your computations. Follow the corresponding highlighted links for a much more detailed example.
-    You can also contact us if you need any help with this.
+    You can also contact us if you need any further help with this.
 
 
 How Do I Know If My MATLAB Code is Parallelized?
@@ -141,10 +145,14 @@ linear algebra operations such as matrix multiplication. In this case MATLAB wil
 which offers multithreaded routines.
 
 There are two common ways to deteremine whether or not a MATLAB code can take advantage of parallelism 
-without knowing anything about the code. The first to is run the code using 1 CPU-core and then do a 
-second run using, say, 4 CPU-cores. Look to see if there is a significant difference in the execution 
-time of the two codes. The second method is to launch the job using, say, 4 CPU-cores then ssh to the 
-compute node where the job is running and use htop -u $USER to inspect the CPU usage. To get the name of the compute node where your job is running use the following command:
+without knowing anything about the code. 
+
+
+The first to is run the code using 1 CPU-core and then do a second run using, say, 4 CPU-cores. Look to see if there is a significant difference in the execution 
+time of the two codes. 
+
+
+The second method is to launch the job using, say, 4 CPU-cores then ssh to the compute node where the job is running and use htop -u $USER to inspect the CPU usage. To get the name of the compute node where your job is running use the following command:
 
 .. code-block:: bash
 
