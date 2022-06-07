@@ -82,7 +82,7 @@ The time limit parameter applies to the groups – eg an entire group must compl
 
     ::
 
-        >> slurm_parallel_ja_submit.sh -N 8 -t 03:45:00
+        >> slurm_parallel_ja_submit.sh -N 8 -t 50:00
 
              
 
