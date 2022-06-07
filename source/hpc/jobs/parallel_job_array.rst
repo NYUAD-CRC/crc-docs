@@ -11,7 +11,7 @@ There are times, however, when even a job array doesn't really fit your needs. F
     ...	
     ./process-one-result file.50000
 
-For these cases Dalma has the "parallel job array" system– an NYU Abu Dhabi in-house tool – designed to make running large number of jobs even simpler.
+For these cases Jubail has the "parallel job array" system– an NYU Abu Dhabi in-house tool – designed to make running large number of jobs even simpler.
 
 To submit a parallel job array you need to prepare a file (eg: ``list_of_commands.txt`` ) ,where each line represents a single job to execute. You can have multiple Linux commands on a line as:
 
@@ -62,17 +62,17 @@ The time limit parameter applies to the groups – eg an entire group must compl
 
         Number of jobs per group = 10000/8 = 1250
 
-    Now each group of job will run on one node and each standard compute node on Dalma has 28 CPUs (cores).
+    Now each group of job will run on one node and each standard compute node on Jubail has 128 CPUs (cores).
     This means that per each core (CPU), we will have 
 
     ::
 
-        Number of jobs per core (CPU) = 1250/28 = 44 (+1) 
-        Hence, total time per CPU = 45 * 5 minutes = 225 minutes = 3 hours 45 minutes
+        Number of jobs per core (CPU) = 1250/128 = 9 (+1) 
+        Hence, total time per CPU = 10 * 5 minutes = 50 minutes
 
     .. note::
 
-        The ``+1`` factor comes with the fact that since ``1250`` isn't perfectly divisible by ``28``, the reminder is distributed 
+        The ``+1`` factor comes with the fact that since ``1250`` isn't perfectly divisible by ``128``, the reminder is distributed 
         among the different cores in a round robin fashion.
 
     This is the estimated time it will take a group of jobs (1250) to complete on a single node.
