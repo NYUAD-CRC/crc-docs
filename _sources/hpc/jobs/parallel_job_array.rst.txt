@@ -11,7 +11,7 @@ There are times, however, when even a job array doesn't really fit your needs. F
     ...	
     ./process-one-result file.50000
 
-For these cases Dalma has the "parallel job array" system– an NYU Abu Dhabi in-house tool – designed to make running large number of jobs even simpler.
+For these cases our HPC cluster has the "parallel job array" system– an NYU Abu Dhabi in-house tool – designed to make running large number of jobs even simpler.
 
 To submit a parallel job array you need to prepare a file (eg: ``list_of_commands.txt`` ) ,where each line represents a single job to execute. You can have multiple Linux commands on a line as:
 
@@ -38,20 +38,19 @@ You get significant performance gains by eliminating the job scheduling
 overhead and the queuing delay for each job.
 
 The parallel job array tool allows you to set the time limit for each node – **not each job**!, 
-the processor type (sse, or avx2), the partition – useful if your research 
-group has its "compute condo", and the number of nodes to use.
+the processor type (sse, or avx2) and the partition, this is useful if your research group has its "compute condo", and the number of nodes to use.
 
-The parallel job array tool determines an optimal number of nodes to use (actually job array tasks). 
-It groups all jobs into groups processes them using conventional job array. 
-The number of "nodes" corresponds actually to the number of groups, 
-which is the number of tasks for the job array. 
+The parallel job array tool determines an optimal number of nodes to use 
+It groups all jobs into groups then processes them using conventional job array. 
+
+The number of "nodes" corresponds actually to the number of groups, which is the number of tasks for the job array. 
 
 The time limit parameter applies to the groups – eg an entire group must complete within the time limit.
 
 .. admonition:: More on the **TimeLimit** parameter
 
     For example:
-    Let's say you have an input file ``list.txt`` with 10000 commands to run. 
+    Let's say you have an input file ``list_of_commands.txt`` with 10000 commands to run. 
     Let's also assume each command utilizes a single CPU (serial job) an takes around **5 minutes per command (job)**.
 
     Suppose you specified the ``-N`` parameter (which corresponds to number of nodes) to as eight while
@@ -62,7 +61,7 @@ The time limit parameter applies to the groups – eg an entire group must compl
 
         Number of jobs per group = 10000/8 = 1250
 
-    Now each group of job will run on one node and each standard compute node on Dalma has 28 CPUs (cores).
+    Now each group of job will run on one node and the parallel job array is submitted by default to dalma nodes which has 28 CPUs per node.
     This means that per each core (CPU), we will have 
 
     ::
@@ -83,7 +82,6 @@ The time limit parameter applies to the groups – eg an entire group must compl
     ::
 
         >> slurm_parallel_ja_submit.sh -N 8 -t 03:45:00
-
              
 
 
@@ -98,25 +96,18 @@ The time limit parameter applies to the groups – eg an entire group must compl
 .. important::
     The parallel job array tool propagates your environment, 
     and loaded modules, to all jobs. 
-    So to execute the previous matlab example you need to 
-    load the matlab software module prior to launching the parallel job array.
-
-.. code-block::bash
-    $> #Load the required modules
-    $> #Forexample
-    $> module load matlab
-    $> slurm_parallel_job_array_submit.sh matlabjobs
 
 The tool also support OpenMP jobs, so you can set the number of threads before launching your parallel job array.
 
-.. code-block::bash
+.. code-block:: bash
+
     $> #export the required number of threads
     $> #in the current environment
     $> #before submitting the jobs
     $> 
     $> #For example
     $> export OMP_NUM_THREADS=4
-    $> slurm_parallel_job_array_submit.sh matlabjobs
+    $> slurm_parallel_ja_submit.sh -N 8 -t 03:45:00 list_of_commands.txt
 
 By default the tool will allow up to 8 "nodes" (groups). 
 You can increase the number of nodes when there is a very large 
@@ -130,60 +121,72 @@ Here is how a complete example looks like.
     echo processing 1
     echo processing 2
     ...
-    echo processing 100000
+    echo processing 10000
 
-    $> slurm_parallel_ja_submit.sh list_of_commands.txt
-    Input: list3
+
+    $> export OMP_NUM_THREADS=4
+    $> slurm_parallel_ja_submit.sh -N 8 -t 03:45:00 list_of_commands.txt 
+    Entered number of nodes to use: 8
+    Entered walltime: 03:45:00
+    Input: list_of_commands.txt
     Actual maximum number of nodes that will be used: 8
     Submitting parallel job array using the following modules:
-    Currently Loaded Modulefiles:
-    1) NYUAD/3.0
+    No Modulefiles Currently Loaded.
     Submitting parallel job array with OMP_NUM_THREADS= 4
-    Submitted batch job 466656
+    Submitted batch job 265340
 
-    $> squeue -u bm102
-    JOBID           PARTITION   NAME    USER    ST  TIME    NODES   NODELIST(REASON)
-    466656_[1-8]     ser_std    sbatch  bm102   PD  0:00      1     (Priority)
+
+    $> squeue
+                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          265340_1   compute   sbatch  ms13779  R       0:03      2 cn[107,110]
+          265340_2   compute   sbatch  ms13779  R       0:03      2 cn[163,189]
+          265340_3   compute   sbatch  ms13779  R       0:03      2 cn[190-191]
+          265340_4   compute   sbatch  ms13779  R       0:03      2 cn[192-193]
+          265340_5   compute   sbatch  ms13779  R       0:03      4 cn[041,043,049,146]
+          265340_6   compute   sbatch  ms13779  R       0:03      4 cn[050,203-205]
+          265340_7   compute   sbatch  ms13779  R       0:03      3 cn[206-208]
+          265340_8   compute   sbatch  ms13779  R       0:03      3 cn[209-211]
+
     
-    $> ls list3-466656_*
-    list3-466656_1.err list3-466656_2.err list3-466656_3.err list-466656_4.err
-    list3-466656_5.err list3-466656_6.err list3-466656_7.err list-466656_8.err
-    list3-466656_1.out list3-466656_2.out list3-466656_3.out list-466656_4.out
-    list3-466656_5.out list3-466656_6.out list3-466656_7.out list-466656_8.out
+    $> ls list_of_commands.txt-265340_*
+    list_of_commands.txt-265340_1.err  list_of_commands.txt-265340_2.err  list_of_commands.txt-265340_3.err  list_of_commands.txt-265340_4.err  
+    list_of_commands.txt-265340_5.err  list_of_commands.txt-265340_6.err  list_of_commands.txt-265340_7.err  list_of_commands.txt-265340_8.err  
+    list_of_commands.txt-265340_1.out  list_of_commands.txt-265340_2.out  list_of_commands.txt-265340_3.out  list_of_commands.txt-265340_4.out  
+    list_of_commands.txt-265340_5.out  list_of_commands.txt-265340_6.out  list_of_commands.txt-265340_7.out  list_of_commands.txt-265340_8.out
     
-    $> cat list-466656_1.out
+    
+    $> cat list_of_commands.txt-265340_1.out
     ============= job 1 ============
     processing 1
     ============= job 2 ============
     processing 2
     ...
-    processing 12499
-    ============= job 12500 ============
-    processing 12500
+    processing 1249
+    ============= job 1250 ============
+    processing 1250
 
-    $> cat list-466656_8.out
-    ============= job 87501 ============
-    processing 87501
-    ============= job 87502 ============
-    processing 87502
+
+    $> cat list_of_commands.txt-265340_8.out
+    ============= job 8751 ============
+    processing 8751
+    ============= job 8752 ============
+    processing 8752
     ...
-    ============= job 99999 ============
-    processing 99999
-    ============= job 100000 ============
-    processing 100000
+    ============= job 9999 ============
+    processing 9999
+    ============= job 10000 ============
+    processing 10000
 
 For compatibilty with existing job array scripts you can
 use the ``SLURM_ARRAY_TASK_ID`` environment variable
 in your parallel job array processing.
-Here the ``list4.txt`` input file contains the line ``./ja.sh`` 100
+Here the ``list4.txt`` input file contains the line ``./ja.sh`` 1000
 times.
 
 An additional benefit of parallel job array processing is
 that you are not limited to SLURM's ``MaxSubmit`` and
 ``MaxJobs account`` / user limits.
-Whereas you can submit a maximum of 200 jobs, and
-have up to 100 running concurrently using regular job
-array processing, using parallel job array you have no
+Whereas you can submit a maximum of 200 jobs, using parallel job array you have no
 such limits.
 
 .. code-block:: bash
@@ -191,7 +194,7 @@ such limits.
     $> cat ja.sh
     #!/bin/bash
     #SBATCH -n 1
-    #SBATCH -a 1-100
+    #SBATCH -a 1-1000
     sleep 5
     echo -n $SLURM_ARRAY_TASK_ID " "
     date
