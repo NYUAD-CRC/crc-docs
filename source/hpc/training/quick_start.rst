@@ -23,11 +23,11 @@ Things to Keep in mind
 	- ``compute``: General purpose partition for all the normal runs
 	- ``nvidia`` : Partition of GPU jobs
 	- ``bigmem`` : Partition for large memory jobs. Only jobs requesting more than 500GB will fall into this category.
-	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition1>`
+	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition>`
 	- ``xxl``    : Special partition for grand challenge applications. Requires approval from management.
 	- ``visual`` : We also have a few nodes which give you the liberty of running applications with GUI.
 
-.. _partitions_summary1:	
+.. _partitions_summary:	
 	
 Partitions Summary
 ------------------
@@ -56,7 +56,7 @@ Partitions Summary
 	*	- 
 		- 
 		- Small
-		- (1,28)
+		- (1,64)
 		- 7 days
 		- 200
 		- 
@@ -83,7 +83,7 @@ Partitions Summary
 	*	- 
 		- 
 		- Large
-		- (512,2048) 
+		- (256,2048) 
 		- 2 days
 		- 10
 		- 
@@ -95,9 +95,9 @@ Partitions Summary
 	*	- 
 		- 
 		- XLarge
-		- (2048,4096) 
+		- (512,4096) 
 		- 2 days
-		- 3
+		- 5
 		- 
 			.. code-block:: bash
 
@@ -118,11 +118,11 @@ Partitions Summary
 				#SBATCH --gres=gpu:1
 
 
-		- Max GPUs:8
+		- Max GPUs:4
 	*	- 3
 		- ``bigmem``
 		- Large Memory Jobs
-		- (1,64)
+		- (1,40)
 		- 4 days
 		- 2
 		- 
@@ -134,9 +134,9 @@ Partitions Summary
 		- Jobs requesting more than 480GB will be fowarded to bigmem
 	*	- 4
 		- ``preempt``
-		- short high priority
+		- high priority
 		- No Limit
-		- cpus<28:24h, cpus>28:12h
+		- 7 days
 		-
 		- 
 			.. code-block:: bash
@@ -149,14 +149,6 @@ Partitions Summary
 				
 				
 		- grace period of 30 mins
-	*	- 5
-		- ``xxl``
-		- Grand Challenge
-		- any
-		- 2 days
-		- 1
-		-
-		- Requires approval from management
     	
     	
 Sample Job Script
@@ -171,15 +163,15 @@ A job script, which consists of 2 parts:
 	- **Ask only what you need**
 	- Serial jobs would need only one CPU (``#SBATCH -n 1``)
 	- Make sure the walltime specified is not greater than the allowed time limit. More details can be found :ref:`here <partitions_summary>`.
-	- By Default 4GB of memory is assigned for each CPU allocated and hence defining the memory requirement is optional  
+	- By Default 3.75GB of memory is assigned for each CPU allocated and hence defining the memory requirement is optional  
 	
 .. admonition:: Difference between CPUs,Cores and Tasks
 
-	- On Jubail HPC, One CPU is equivalent to one Core. 
+	- On Jubail HPC, One CPU is equivalent to one Core. Jubail also has 128 CPUs per node.
 	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
-	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple the multiple of ``-n`` and ``-c``.
+	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the total number of CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
 	    
 .. code-block:: bash
 
@@ -204,20 +196,76 @@ A job script, which consists of 2 parts:
 
  #Execute the code
  python abc.py
+   
 
-.. _preempt_partition1:
+Basic SLURM Commands
+--------------------
+
+SLURM is the Resource Manager we use to schedule the jobs to the resources according to the requirements specified. Bellow are
+a few of the basic commands a user can use for his/her jobs:
+
+.. list-table:: 
+        :widths: auto 
+        :header-rows: 1
+
+        *       - **Command**
+                - **Descirption**
+        *       - 
+                        .. code-block:: bash
+                                
+                             sbatch file1
+
+                - ``sbatch`` command is used to submit a job to the queue. Here ``file1`` is the job script
+                  containing the details of resource requirements and commands to be executed.
+        *       - 
+                        .. code-block:: bash
+                                
+                                squeue
+
+                - ``squeue`` command shows all your jobs (Runing and Pending) present in the queue
+        *       - 
+                        .. code-block:: bash
+
+                                scancel 127445
+                                scancel -u wz22
+
+                - ``scancel`` commands allows you to cancel your jobs in the queue. You can cancel a single job using the job id
+                  or you can cancel all the jobs using your NetId.
+
+ 
+ 
+ 
+ 
+Requesting a GPU node
+---------------------
+To request a Gpu node you have two options:
+
+* Requesting only one GPU card of any type
+	    
+.. code-block:: bash
+
+	#SBATCH -p nvidia
+	#SBATCH --gres=gpu:1
+
+* Requesting only one GPU card of a specific type( available types are v100 and a100)
+	    
+.. code-block:: bash
+
+	#SBATCH -p nvidia
+	#SBATCH --gres=gpu:a100:1
+
+For more details regarding GPU nodes and cards types, kindly check :ref:`this <partitions_summary>`
+
+.. _preempt_partition:
    
 Preempt Partition
 -----------------
 
 - **Limitless high priority queue** with the caveat that the jobs can be preempted (killed) to make space for other jobs demanding resources.
-- A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpoint, if needed.
-- We intend to increase the machine occupancy and reduce the waiting time in queues for those job that may have short runtime or are meant to be for testing, etc, etc, that otherwise will be treated as regular jobs.
+- A grace period of 30 mins is given to the job to allow some time for a smooth termination or checkpointing, if needed.
+- We intend to increase the machine occupancy and reduce the waiting time in queues for those jobs that may have short runtime or are meant to be for testing ,otherwise jobs will be treated as regular jobs.
 - Default Walltime: 2 hours
-- Maximum Walltime depends on the job size:
-	
-	- cpus < 28 : 24 hours
-	- cpus > 28 : 12 hours
+- Maximum Walltime: 7 days
  
 
 
