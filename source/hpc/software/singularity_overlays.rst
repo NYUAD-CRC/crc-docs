@@ -16,6 +16,11 @@ This process has the following steps which are explained in detailed later:
 - Create your enviornments or copy your dataset in the ``/opt`` directory
 - exit the singularity container
 
+.. note::
+    You can think of an overlay as an external filesystem image to which you would be able to write
+    using singularity 
+
+
 Creating an Overlay
 -------------------
 
@@ -76,6 +81,21 @@ Write to overlay filesystem
 
 You can write to the directory ``/opt`` to create conda environment and install packages you need.All the environments and datasets written from inside the container
 to ``opt`` are actually witten into the overlay which has been created.
+
+.. note::
+    It should be noted that you can write to any of the directories and create your own directories in
+    the overlay as well:
+    for example:
+
+    .. code-block:: bash
+
+        mkdir -p /data
+        mkdir -p /conda
+
+    The above commands will create ``/data`` and ``/conda`` directories, which will be part of the overlay itself.
+    In Short, anything written inside the overlay except in ``/scratch`` and ``/home`` will go inside the overlay
+    and the files/directories written in ``/scratch`` and ``/home``, will stay there and wouldn't be part of the 
+    overlay.
 
 While in container
 ------------------

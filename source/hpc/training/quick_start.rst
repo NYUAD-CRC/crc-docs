@@ -23,11 +23,11 @@ Things to Keep in mind
 	- ``compute``: General purpose partition for all the normal runs
 	- ``nvidia`` : Partition of GPU jobs
 	- ``bigmem`` : Partition for large memory jobs. Only jobs requesting more than 500GB will fall into this category.
-	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition>`
+	- ``prempt`` : Supports all types of jobs with a grace period of 30 minutes. More on this :ref:`here <preempt_partition1>`
 	- ``xxl``    : Special partition for grand challenge applications. Requires approval from management.
 	- ``visual`` : We also have a few nodes which give you the liberty of running applications with GUI.
 
-.. _partitions_summary:	
+.. _partitions_summary1:	
 	
 Partitions Summary
 ------------------
@@ -254,9 +254,9 @@ To request a Gpu node you have two options:
 	#SBATCH -p nvidia
 	#SBATCH --gres=gpu:a100:1
 
-For more details regarding GPU nodes and cards types, kindly check :ref:`this <partitions_summary>`
+For more details regarding GPU nodes and cards types, kindly check :ref:`this <partitions_summary1>`
 
-.. _preempt_partition:
+.. _preempt_partition1:
    
 Preempt Partition
 -----------------

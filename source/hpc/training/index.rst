@@ -27,6 +27,8 @@ using it for computational research.
         - More about the software stack and modules, and what it offers you in terms of your application (MPI,Python,R,Singularity)
     *   - :doc:`Jobs Management </hpc/jobs/index>`
         - Section containing details of Job submission
+    *   - :doc:`HPC Web Interface </hpc/ood/index>`
+        - An interactive interface to remote computing resources    
 
 We shall have a brief introduction to each of the components below.
 The users can also refer to the corresponding section for a more detailed explanation or reach us out 
@@ -65,8 +67,20 @@ Job Submission
    /hpc/training/quick_start
    /hpc/training/job_jubail
 
+HPC Web Interface
+-----------------
+
+.. toctree::
+   :maxdepth: 4
+
+   /hpc/training/ood
+   
 
 Quiz
 ----
 
-- `Quiz <https://forms.gle/2Fzm5FnkTfhc3umXA>`__
+.. toctree::
+   :maxdepth: 4
+
+   /hpc/training/quiz
+   

@@ -20,14 +20,25 @@ Generic diagram of the cluster architecture and outside connectivity.
 Hardware
 --------
 
-Dalma consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
+The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-* The CPU mode is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
-* 28 CPU cores per node. Implications:
+The Jubail HPC consists of more than 28K cores.
+
+* The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
+* 480GB per node.
+* 3.75 GB memory per core by default.
+* 128 CPU cores per node, implicits the following:
+    1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
+    2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128 cores per job.
+    3. For MPI jobs using more than one node, always use a number of cores divisible by 128, to utilize the full nodes.
+
+The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
+
+* The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
+* 3.75 GB memory per core by default.
+* 28 CPU cores per node, implicits the following:
     1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
     2. For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.
-
-* 4 GB memory per core by default.
 
 Contact us if you need special configuration (extra large memory, GPU, etc...)
 
@@ -89,7 +100,7 @@ This works if you are within the NYU network or connected to the VPN
 
 .. code-block:: bash
 
-    ssh <NetID>@dalma.abudhabi.nyu.edu
+    ssh <NetID>@jubail.abudhabi.nyu.edu
 
 Whenever you login, you land up on the login node which is shown on left most section of
 your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
