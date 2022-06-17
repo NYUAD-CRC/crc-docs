@@ -26,7 +26,7 @@ When you login your shell environment is empty of all software modules
     [wz22@login1 ~]$ matlab
     -bash: matlab: command not found
     [wz22@login1 ~]$ which matlab
-    /usr/bin/which: no matlab in (/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/dalma/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin)
+    /usr/bin/which: no matlab in (/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/admin/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin)
     [wz22@login1 ~]$ module avail matlab
 
     ---------------------------------------- /share/apps/NYUAD/modules/SOFTWARE ----------------------------------------
@@ -37,7 +37,7 @@ When you login your shell environment is empty of all software modules
     /share/apps/NYUAD/matlab/R2019a/bin/matlab
 
 
-``module avail matlab`` shows you all available versions of matlab on Dalma. ``module load matlab/R2019a`` loads the R2019a
+``module avail matlab`` shows you all available versions of matlab on the HPC. ``module load matlab/R2019a`` loads the R2019a
 version into your shell environment. So when you invoke ``matlab`` you actually use the correct version.
 
 Software module environment are set on a per shell instance. So if you open a new terminal on a login node the
