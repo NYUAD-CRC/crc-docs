@@ -56,7 +56,7 @@ Summary
       - Yes	
       - No
     * - Default Quota (star)	
-      - 5GB, 100K Files	
+      - 20GB, 150K Files	
       - 5TB, 500K Files	
       - 5TB, 500K Files	
       - 5TB, 125K Files
@@ -65,14 +65,14 @@ Know Your Quota
 ---------------
 
 
-- Run ``myquota`` command in the terminal on Dalma to check your current usage and quota. Example output:
+- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. Example output:
 
 ::
 
                         DISK SPACE                # FILES (1000's)
     filesystem       size      quota            number      quota
                 --------------------------   --------------------------
-    /home         131KB     6442MB ( 0%)           0        100 ( 0%)
+    /home         131KB     20GB   ( 0%)           0        150 ( 0%)
     /scratch      220GB     5242GB ( 4%)           4        500 ( 1%)
     /work         4KB       5242GB ( 0%)           0        512 ( 0%)
     /archive      418GB     5242GB ( 8%)           3        125 ( 3%)

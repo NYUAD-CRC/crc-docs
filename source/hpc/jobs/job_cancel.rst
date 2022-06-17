@@ -9,7 +9,7 @@ If you decide to end a job prematurely, use ``scancel``
 
 .. admonition:: Use with Cautions
     
-    To cancel all jobs from your account. Run this on Dalma terminal.
+    To cancel all jobs from your account. Run this on the HPC terminal.
 
     .. code-block:: bash
 

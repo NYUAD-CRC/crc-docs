@@ -1,30 +1,23 @@
+Miniconda in HPC
+==================
 
-
-Miniconda on the HPC
-=====================
-
-We have a centralized installation of Miniconda on the HPC, the users can either 
-install their own Miniconda or use the centralized installation present on the HPC. 
-
-This centralized installation can also be used for creating your own local environments, in which you can install your own packages. 
-
-Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
+We have a centralized installation of Miniconda in the HPC. The users can either 
+install their own Miniconda or use the centralized installation present in the HPC. 
+This centralized installation can also be used for creating your own local environments, 
+wherein you can install your own packages. Moreover, You can clone the existing centralized 
+environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
 
 The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
 
-
-.. _one_time_setup1:
-
-One Time Setup
+One Time Set up
 ---------------
 
-Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done **ONLY once**, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, **you donot need to load the miniconda again in your subsequent logins**.
+Execute the following command for making HPC Miniconda as your default conda environment. 
+This is needed to be done **ONLY once**, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, you donot need to load the miniconda again in your subsequent logins.
 
 .. code-block:: bash
 
     module load miniconda
-    echo "export CONDA_ENVS_PATH=$SCRATCH/conda-envs" >> ~/.bashrc
-    echo "export CONDA_PKGS_DIRS=$SCRATCH/conda-envs/pkgs" >> ~/.bashrc
     source ~/.bashrc
 
 Application Installation
@@ -37,44 +30,47 @@ Following are the steps which need to be followed to install an application usin
 * Install the application using conda install (eg : ``conda install -c r r=3.6``)
 * Clean/remove the residual/cache files created by conda which eat up your quota (eg: ``conda clean -a``)
 
-.. Note::
+.. tip::
 
-	The number of files quota usually gets filled up very quickly if you use conda/pip environment, as they generate a large number of residual files. The conda and pip environments don't remove the files automatically and hence they stay in your $HOME affecting your files quota. 
+    The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don't remove them automatically and hence stay in your $HOME affecting your files quota. 
 
-	We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.
+    We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.
 
-  Following commands and links can come handy:
+    Following commands and links can come handy:
 
-  - ``conda clean -a``
-  - https://docs.conda.io/projects/conda/en/latest/commands/clean.html
-  - ``pip cache purge``
-  - https://pip.pypa.io/en/stable/cli/pip_cache/
+    - ``conda clean -a``
+    - https://docs.conda.io/projects/conda/en/latest/commands/clean.html
+    - ``pip cache purge``
+    - https://pip.pypa.io/en/stable/cli/pip_cache/
 
-.. _managing_envs1:
+
 
 Managing Environments
 ---------------------
 
+.. note::
+
+    By default the environemnts get created in the user's ``$HOME`` but we recommend our users to 
+    create their environments in ``$SCRATCH`` as the ``$HOME`` quota is limited.
+
 
 **Create a Local Environment**
 
-The below command creates a conda environment in your ``$SCRATCH/conda-envs`` if you have followed the :ref:`One Time Setup <one_time_setup1>` instructions described above else the environments will be created in your home (which is not recommended as ``$HOME`` quota is limited).   
-
 .. code-block:: bash
 
-    #conda create -n <name of the env>
-    
+    #conda create -p /scratch/<NetID>/conda-envs/<name of the env>
+ 
     #example:
-    conda create -n myenv
+    conda create -p /scratch/wz22/conda-envs/myenv
 
 **Activate the Local Environment**
 
 .. code-block:: bash
 
-    #conda activate <name of the local env>
+    #conda activate <path to local env>
 
     #example:
-    conda activate myenv
+    conda activate /scratch/wz22/conda-envs/myenv
 
 
 **Deactivate an Environment**
@@ -96,10 +92,10 @@ A sample output is shown below. The list of centralized and local installations 
 
 .. code-block:: bash
 
-                                         /scratch/wz22/conda-envs/myenv
-                                         /scratch/wz22/conda-envs/myenv2
-                                         /scratch/wz22/conda-envs/myenv3
-                                         /scratch/wz22/conda-envs/myenv4
+                                         /home/wz22/.conda/envs/myenv
+                                         /home/wz22/.conda/envs/myenv2
+                                         /home/wz22/.conda/envs/myenv3
+                                         /home/wz22/.conda/envs/myenv4
     base                            *    /share/apps/NYUAD/miniconda/3-4.8.2
     firefox                              /share/apps/NYUAD/miniconda/3-4.8.2/envs/firefox
     tensorflow-1.15                      /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
@@ -110,9 +106,9 @@ A sample output is shown below. The list of centralized and local installations 
 
 .. code-block:: bash
 
-    #conda create -n <name of the new env> --clone <path to existing env>
+    #conda create -p <path to new env> --clone <path to existing env>
     #example: Here we clone the existing Tensorflow environment.
-    conda create -n tf-gpu --clone tensorflow-1.15
+    conda create -p /scratch/wz22/conda-envs/tf-gpu --clone tensorflow-1.15
 
 Migrating / Sharing Environment
 -------------------------------
@@ -140,10 +136,7 @@ This is the beauty of Conda. Same environment, anywhere.
     .. code-block:: bash
 
         # In this example, the yml file is called environment.yml
-        conda env create -n myenv -f environment.yml
-
-
-
+        conda env create -f environment.yml
 
 Submitting Job Scripts
 ----------------------
@@ -179,20 +172,6 @@ A sample job submission script is shown below:
         alias myenv1='conda activate myenv1'
 
     This will activate the environment just by typing ``myenv1``.
-    
-.. Note::
-
-	If you donot miniconda paths to mess up your bashrc, you can use **ONE** of the following commands 
-	
-	.. code-block:: bash
-	
-		source /share/apps/NYUAD/miniconda/3-4.11.0/bin/activate
-		#you can also create an alias for the above command in your bashrc
-		
-	.. code-block:: bash
-	
-		module load miniconda-nobashrc
-		eval "$(conda shell.bash hook)"
 
 .. Note::
     
