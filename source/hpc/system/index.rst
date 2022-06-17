@@ -26,8 +26,8 @@ The new HPC cluster includes the integration of previous HPC cluster Dalma with 
 The Jubail HPC consists of more than 28K cores.
 
 * The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
-* 512GB per node.
-* 4 GB memory per core by default.
+* 480GB per node.
+* 3.75 GB memory per core by default.
 * 128 CPU cores per node, implicits the following:
     1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
     2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128 cores per job.

@@ -3,8 +3,12 @@
 Miniconda on the HPC
 =====================
 
-We have a centralized installation of Miniconda on the HPC. The users can either 
-install their own Miniconda or use the centralized installation present on the HPC. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
+We have a centralized installation of Miniconda on the HPC, the users can either 
+install their own Miniconda or use the centralized installation present on the HPC. 
+
+This centralized installation can also be used for creating your own local environments, in which you can install your own packages. 
+
+Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
 
 The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
 
@@ -35,8 +39,7 @@ Following are the steps which need to be followed to install an application usin
 
 .. Note::
 
-	The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don't remove them automatically and 
-	hence stay in your $HOME affecting your files quota. 
+	The number of files quota usually gets filled up very quickly if you use conda/pip environment, as they generate a large number of residual files. The conda and pip environments don't remove the files automatically and hence they stay in your $HOME affecting your files quota. 
 
 	We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.
 

@@ -53,6 +53,7 @@ Typical Workflow
 6. Your jobs will queue for execution.
 7. Once done, examine the output.
 
+
 Summary of Nodes
 ----------------
 
@@ -66,44 +67,66 @@ Summary of Nodes
       - Memory / node
       - GPUs / node
       - Remarks
-    * - Standard
-      - 375
-      - 28
-      - 112 GB 
+    * - Bulk
+      - 189
+      - 128
+      - 480GB
       - None
-      - Use for general purpose
+      - New HPC Compute nodes
+    * - Versatile
+      - 24
+      - 128
+      - 480GB
+      - 1/2 (Nvidia A100)
+      - New HPC GPU nodes with two nodes have only one GPU card each, rest of them have 2 cards each
+    * - Dalma Compute
+      - 432
+      - 28/40
+      - 102 GB / 480 GB
+      - None
+      - Small jobs < 28 CPUs will be sent to Dalma
     * - Bigmem
-      - 3	
-      - 64
+      - 4	
+      - 32/63/72
       - 1 TB / 2TB	
       - None	
-      - Use when memory requirement per node is greater than 112GB
-    * - :doc:`GPU </hpc/system/gpu_nodes>` 
-      - 10
+      - Used when memory requirement per node is greater than 500GB
+    * - :doc:`Dalma GPU<../system/gpu_nodes>` 
+      - 14
       - 40
-      - 360 GB
-      - 2/8	(Nvidia V100)
-      - Two nodes have 8 GPU cards each, rest of them have 2 each
+      - 360 GB / 1 TB
+      - 2/8 (Nvidia V100)
+      - Two nodes have 8 GPU cards each, rest of them have 2 cards each
     * - Visual	
       - 4	
-      - 38	
+      - 32	
       - 112 GB
-      - 1 (Nvidia Quadro P4000)
+      - 2 (Nvidia Quadro P4000)
       - Used for GUI 
 
+.. admonition:: Difference between CPUs,Cores and Tasks
+
+	- On Jubail HPC, One CPU is equivalent to one Core. 
+	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
+	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
+	- By Default, Each task is equivalent to one CPU.
+	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
+	    
 
 Access
 ------
 
-Once your account is ready, you can access Jubail HPC. With Linux or Mac in NYU AD/NY network, simply ssh in your local terminal:
-This works if you are within the NYU network or connected to the VPN
+Once your account is ready, you can access Jubail HPC with Linux or Mac in NYU AD/NY network. Simply ssh in your local terminal:
 
 .. code-block:: bash
 
     ssh <NetID>@jubail.abudhabi.nyu.edu
 
+This works if you are within the NYU network or connected to the :doc:`VPN<../help/linux_vpn>` 
+
+
 Whenever you login, you land up on the login node which is shown on left most section of
-your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting that you are on one of the login nodes.
+your terminal and may look something like ``[wz22@@login2 ~]$`` suggesting that you are on one of the login nodes.
 
 
 .. code-block:: bash
@@ -115,7 +138,7 @@ your terminal and may look something like ``[wz22@login-0-2 ~]$`` suggesting tha
   For documentation & examples: https://crc-docs.abudhabi.nyu.edu
   For support: nyuad.it.help@nyu.edu
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  [wz22@login-0-2 ~]$
+  [wz22@@login2 ~]$
 
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
