@@ -79,7 +79,7 @@ More info on singularity exec `here <https://sylabs.io/guides/3.5/user-guide/cli
 Write to overlay filesystem
 ---------------------------
 
-You can write to the directory ``/opt`` to create conda environment and install packages you need.All the environments and datasets written from inside the container
+You can write to the directory ``/opt`` to create conda environment and install packages that you need.All the environments and datasets written from inside the container
 to ``opt`` are actually witten into the overlay which has been created.
 
 .. note::
@@ -107,6 +107,8 @@ You can create a conda environment in /opt as follows:
 
 .. code-block:: bash
 
+    module load miniconda
+    source ~/.bashrc
     
     #Create new environments in /opt  
     conda create -p /opt/conda-envs/myenv
@@ -139,14 +141,14 @@ Sharing the Overlay
  
 The overlay can also be shared with your collaborators. All the environments and datasets written from inside the container
 to ``opt`` are actually witten into the overlay which has been created. Hence, the sharing of an overlay with a 
-collaborator is equivalent to sharing the working environment with the datasets, also essentially sharing whatever
+collaborator is equivalent to sharing the working environment with the datasets, also it means essentially sharing whatever
 is written into the overlay directory ``/opt``.
 
 
 Job Submission
 --------------
 
-A smaple job script can look as follows. 
+A sample job script can look as follows. 
 
 Note that all the commands to be executed within the container are part of the ``/bin/bash -c "<commands to be executed>"`` 
 
@@ -161,7 +163,7 @@ Note that all the commands to be executed within the container are part of the `
 
     singularity \
         exec --nv --overlay $overlay_ext3:ro \
-        /share/apps/jubail/singularity-images/centos-8.2.2004.sif  \
+        /share/apps/admin/singularity-images/centos-8.2.2004.sif  \
         /bin/bash -c "source ~/.bashrc; \
                     conda activate /opt/conda-envs/myenv; \
                     python <path_to_python_script_file>.py "
