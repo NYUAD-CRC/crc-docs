@@ -6,10 +6,10 @@ An Overlay is a directory or a filesystem image which sits on top of a singulari
 The user can make benefit of the overlays in any of the following ways:
 
 - You have too many conda environments eating up your number of files limit
-- You have a datset consisting of a large number of small files
+- You have a data set consisting of a large number of small files
 - You would like to share your environments (R,conda,etc) with your collaborators with no installation required.
 
-This process has the following steps which are explained in detailed later:
+This process has the following steps which are explained in more details later:
 
 - Create an overlay of the desired size
 - Use a singularity conatiner to get into the overlay
@@ -85,8 +85,9 @@ to ``opt`` are actually witten into the overlay which has been created.
 .. note::
     It should be noted that you can write to any of the directories and create your own directories in
     the overlay as well:
+    
     for example:
-
+    
     .. code-block:: bash
 
         mkdir -p /data
@@ -137,16 +138,17 @@ Sharing the Overlay
 -------------------
  
 The overlay can also be shared with your collaborators. All the environments and datasets written from inside the container
-to ``opt`` are actually witten into the overlay which has been created. Hence, the sharing an overlay with a 
-collaborator is equivalent to sharing the working environment with the datasets etc, essentially sharing whatever
+to ``opt`` are actually witten into the overlay which has been created. Hence, the sharing of an overlay with a 
+collaborator is equivalent to sharing the working environment with the datasets, also essentially sharing whatever
 is written into the overlay directory ``/opt``.
 
 
 Job Submission
 --------------
 
-A smaple job script can look as follows. Note that all the commands to be 
-executed within the container are part of the ``/bin/bash -c "<commands to be executed>"`` 
+A smaple job script can look as follows. 
+
+Note that all the commands to be executed within the container are part of the ``/bin/bash -c "<commands to be executed>"`` 
 
 .. code-block:: bash
 
