@@ -30,3 +30,4 @@ HPC Documentation
 * :doc:`Research Publications </hpc/research/index>`
 * :doc:`Help </hpc/help/index>` 
 * :doc:`HPC Load</hpc/hpc_load/index>`
+* :doc:`HPC Training </hpc/training/index>`

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Cancelling a Job &mdash; CRC Documentation  documentation</title>
+  <title>Quiz &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -45,8 +45,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Performance Considerations" href="performance.html" />
-    <link rel="prev" title="Checking Job Status" href="job_status.html" /> 
+    <link rel="next" title="HPC Load" href="../hpc_load/index.html" />
+    <link rel="prev" title="HPC Web Interface" href="ood.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,24 +99,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission between Jubail and Dalma</a></li>
-<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Cancelling a Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hpc_slurm.html">A Detailed SLURM Guide</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">HPC Training</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#storage">Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#job-submission">Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#hpc-web-interface">HPC Web Interface</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#quiz">Quiz</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quiz</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
@@ -177,9 +175,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+          <li><a href="index.html">HPC Training</a> &raquo;</li>
         
-      <li>Cancelling a Job</li>
+      <li>Quiz</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,19 +194,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cancelling-a-job">
-<h1>Cancelling a Job<a class="headerlink" href="#cancelling-a-job" title="Permalink to this heading">¶</a></h1>
-<p>If you decide to end a job prematurely, use <code class="docutils literal notranslate"><span class="pre">scancel</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel &lt;jobid&gt;
-</pre></div>
-</div>
-<div class="admonition-use-with-cautions admonition">
-<p class="admonition-title">Use with Cautions</p>
-<p>To cancel all jobs from your account. Run this on the HPC terminal.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel -u &lt;NetID&gt;
-</pre></div>
-</div>
-</div>
+  <div class="section" id="quiz">
+<h1>Quiz<a class="headerlink" href="#quiz" title="Permalink to this heading">¶</a></h1>
+<p>Once you pass the quiz (70% out of 30 questions (score 21 and above)), you will be enabled for job submission on the HPC in 2 business days.</p>
+<p>If you fail to pass, kindly contact us to discuss your difficulties via email <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>admins<span>&#64;</span>nyu<span>&#46;</span>edu</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://forms.gle/2Fzm5FnkTfhc3umXA">Quiz</a></p></li>
+</ul>
 </div>
 
 
@@ -217,8 +209,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="performance.html" class="btn btn-neutral float-right" title="Performance Considerations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="job_status.html" class="btn btn-neutral float-left" title="Checking Job Status" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hpc_load/index.html" class="btn btn-neutral float-right" title="HPC Load" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ood.html" class="btn btn-neutral float-left" title="HPC Web Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

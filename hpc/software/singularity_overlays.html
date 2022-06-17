@@ -209,16 +209,21 @@
 <p>The user can make benefit of the overlays in any of the following ways:</p>
 <ul class="simple">
 <li><p>You have too many conda environments eating up your number of files limit</p></li>
-<li><p>You have a datset consisting of a large number of small files</p></li>
+<li><p>You have a data set consisting of a large number of small files</p></li>
 <li><p>You would like to share your environments (R,conda,etc) with your collaborators with no installation required.</p></li>
 </ul>
-<p>This process has the following steps which are explained in detailed later:</p>
+<p>This process has the following steps which are explained in more details later:</p>
 <ul class="simple">
 <li><p>Create an overlay of the desired size</p></li>
 <li><p>Use a singularity conatiner to get into the overlay</p></li>
 <li><p>Create your enviornments or copy your dataset in the <code class="docutils literal notranslate"><span class="pre">/opt</span></code> directory</p></li>
 <li><p>exit the singularity container</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can think of an overlay as an external filesystem image to which you would be able to write
+using singularity</p>
+</div>
 <div class="section" id="creating-an-overlay">
 <h2>Creating an Overlay<a class="headerlink" href="#creating-an-overlay" title="Permalink to this heading">¶</a></h2>
 <p>The script <code class="docutils literal notranslate"><span class="pre">overlay.sh</span></code> facilitates this process of creating an overlay based on your needs.
@@ -261,14 +266,31 @@ singularity shell  --overlay overlay-500M-700K.ext3 /share/apps/admin/singularit
 </div>
 <div class="section" id="write-to-overlay-filesystem">
 <h2>Write to overlay filesystem<a class="headerlink" href="#write-to-overlay-filesystem" title="Permalink to this heading">¶</a></h2>
-<p>You can write to the directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages you need.All the environments and datasets written from inside the container
+<p>You can write to the directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code> to create conda environment and install packages that you need.All the environments and datasets written from inside the container
 to <code class="docutils literal notranslate"><span class="pre">opt</span></code> are actually witten into the overlay which has been created.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It should be noted that you can write to any of the directories and create your own directories in
+the overlay as well:</p>
+<p>for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p /data
+mkdir -p /conda
+</pre></div>
+</div>
+<p>The above commands will create <code class="docutils literal notranslate"><span class="pre">/data</span></code> and <code class="docutils literal notranslate"><span class="pre">/conda</span></code> directories, which will be part of the overlay itself.
+In Short, anything written inside the overlay except in <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> and <code class="docutils literal notranslate"><span class="pre">/home</span></code> will go inside the overlay
+and the files/directories written in <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> and <code class="docutils literal notranslate"><span class="pre">/home</span></code>, will stay there and wouldn’t be part of the
+overlay.</p>
+</div>
 </div>
 <div class="section" id="while-in-container">
 <h2>While in container<a class="headerlink" href="#while-in-container" title="Permalink to this heading">¶</a></h2>
 <p><strong>Creating a Conda Environment</strong></p>
 <p>You can create a conda environment in /opt as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create new environments in /opt</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
+<span class="nb">source</span> ~/.bashrc
+
+<span class="c1">#Create new environments in /opt</span>
 conda create -p /opt/conda-envs/myenv
 
 conda activate /opt/conda-envs/myenv
@@ -295,14 +317,14 @@ in the overlay.</p>
 <div class="section" id="sharing-the-overlay">
 <h2>Sharing the Overlay<a class="headerlink" href="#sharing-the-overlay" title="Permalink to this heading">¶</a></h2>
 <p>The overlay can also be shared with your collaborators. All the environments and datasets written from inside the container
-to <code class="docutils literal notranslate"><span class="pre">opt</span></code> are actually witten into the overlay which has been created. Hence, the sharing an overlay with a
-collaborator is equivalent to sharing the working environment with the datasets etc, essentially sharing whatever
+to <code class="docutils literal notranslate"><span class="pre">opt</span></code> are actually witten into the overlay which has been created. Hence, the sharing of an overlay with a
+collaborator is equivalent to sharing the working environment with the datasets, also it means essentially sharing whatever
 is written into the overlay directory <code class="docutils literal notranslate"><span class="pre">/opt</span></code>.</p>
 </div>
 <div class="section" id="job-submission">
 <h2>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this heading">¶</a></h2>
-<p>A smaple job script can look as follows. Note that all the commands to be
-executed within the container are part of the <code class="docutils literal notranslate"><span class="pre">/bin/bash</span> <span class="pre">-c</span> <span class="pre">&quot;&lt;commands</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">executed&gt;&quot;</span></code></p>
+<p>A sample job script can look as follows.</p>
+<p>Note that all the commands to be executed within the container are part of the <code class="docutils literal notranslate"><span class="pre">/bin/bash</span> <span class="pre">-c</span> <span class="pre">&quot;&lt;commands</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">executed&gt;&quot;</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --mem=8GB</span>
 <span class="c1">#SBATCH --time=1:00:00</span>
@@ -312,7 +334,7 @@ executed within the container are part of the <code class="docutils literal notr
 
 singularity <span class="se">\</span>
     <span class="nb">exec</span> --nv --overlay <span class="nv">$overlay_ext3</span>:ro <span class="se">\</span>
-    /share/apps/jubail/singularity-images/centos-8.2.2004.sif  <span class="se">\</span>
+    /share/apps/admin/singularity-images/centos-8.2.2004.sif  <span class="se">\</span>
     /bin/bash -c <span class="s2">&quot;source ~/.bashrc; \</span>
 <span class="s2">                conda activate /opt/conda-envs/myenv; \</span>
 <span class="s2">                python &lt;path_to_python_script_file&gt;.py &quot;</span>

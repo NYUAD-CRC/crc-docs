@@ -6,15 +6,20 @@ An Overlay is a directory or a filesystem image which sits on top of a singulari
 The user can make benefit of the overlays in any of the following ways:
 
 - You have too many conda environments eating up your number of files limit
-- You have a datset consisting of a large number of small files
+- You have a data set consisting of a large number of small files
 - You would like to share your environments (R,conda,etc) with your collaborators with no installation required.
 
-This process has the following steps which are explained in detailed later:
+This process has the following steps which are explained in more details later:
 
 - Create an overlay of the desired size
 - Use a singularity conatiner to get into the overlay
 - Create your enviornments or copy your dataset in the ``/opt`` directory
 - exit the singularity container
+
+.. note::
+    You can think of an overlay as an external filesystem image to which you would be able to write
+    using singularity 
+
 
 Creating an Overlay
 -------------------
@@ -74,8 +79,24 @@ More info on singularity exec `here <https://sylabs.io/guides/3.5/user-guide/cli
 Write to overlay filesystem
 ---------------------------
 
-You can write to the directory ``/opt`` to create conda environment and install packages you need.All the environments and datasets written from inside the container
+You can write to the directory ``/opt`` to create conda environment and install packages that you need.All the environments and datasets written from inside the container
 to ``opt`` are actually witten into the overlay which has been created.
+
+.. note::
+    It should be noted that you can write to any of the directories and create your own directories in
+    the overlay as well:
+    
+    for example:
+    
+    .. code-block:: bash
+
+        mkdir -p /data
+        mkdir -p /conda
+
+    The above commands will create ``/data`` and ``/conda`` directories, which will be part of the overlay itself.
+    In Short, anything written inside the overlay except in ``/scratch`` and ``/home`` will go inside the overlay
+    and the files/directories written in ``/scratch`` and ``/home``, will stay there and wouldn't be part of the 
+    overlay.
 
 While in container
 ------------------
@@ -86,6 +107,8 @@ You can create a conda environment in /opt as follows:
 
 .. code-block:: bash
 
+    module load miniconda
+    source ~/.bashrc
     
     #Create new environments in /opt  
     conda create -p /opt/conda-envs/myenv
@@ -117,16 +140,17 @@ Sharing the Overlay
 -------------------
  
 The overlay can also be shared with your collaborators. All the environments and datasets written from inside the container
-to ``opt`` are actually witten into the overlay which has been created. Hence, the sharing an overlay with a 
-collaborator is equivalent to sharing the working environment with the datasets etc, essentially sharing whatever
+to ``opt`` are actually witten into the overlay which has been created. Hence, the sharing of an overlay with a 
+collaborator is equivalent to sharing the working environment with the datasets, also it means essentially sharing whatever
 is written into the overlay directory ``/opt``.
 
 
 Job Submission
 --------------
 
-A smaple job script can look as follows. Note that all the commands to be 
-executed within the container are part of the ``/bin/bash -c "<commands to be executed>"`` 
+A sample job script can look as follows. 
+
+Note that all the commands to be executed within the container are part of the ``/bin/bash -c "<commands to be executed>"`` 
 
 .. code-block:: bash
 
@@ -139,7 +163,7 @@ executed within the container are part of the ``/bin/bash -c "<commands to be ex
 
     singularity \
         exec --nv --overlay $overlay_ext3:ro \
-        /share/apps/jubail/singularity-images/centos-8.2.2004.sif  \
+        /share/apps/admin/singularity-images/centos-8.2.2004.sif  \
         /bin/bash -c "source ~/.bashrc; \
                     conda activate /opt/conda-envs/myenv; \
                     python <path_to_python_script_file>.py "

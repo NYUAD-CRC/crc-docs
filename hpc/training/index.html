@@ -121,7 +121,14 @@
 <li class="toctree-l3"><a class="reference internal" href="job_jubail.html">Difference in Job Submission on Jubail and Dalma</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#quiz">Quiz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hpc-web-interface">HPC Web Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ood.html">HPC Web Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quiz">Quiz</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz.html">Quiz</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
@@ -206,11 +213,10 @@
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>We request all the users to pass the following quiz before submitting jobs,
-Make sure to log in your NYU Google Apps Account (e.g., NYU Google Mail) first! Otherwise, your access to the Quiz will be denied
+Make sure to log in to your NYU Google Apps Account (e.g., NYU Google Mail) first! Otherwise, your access to the Quiz will be denied
 (<a class="reference external" href="https://forms.gle/2Fzm5FnkTfhc3umXA">Quiz</a>)</p>
 </div>
-<p>There are essentially four important components a HPC user needs to be familiar with for successfully
-using it for computational research.</p>
+<p>There are essentially four important components a HPC user needs to be familiar with to be able to use it successfully for computational research.</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
@@ -230,11 +236,13 @@ using it for computational research.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../jobs/index.html"><span class="doc">Jobs Management</span></a></p></td>
 <td><p>Section containing details of Job submission</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../ood/index.html"><span class="doc">HPC Web Interface</span></a></p></td>
+<td><p>An interactive interface to remote computing resources</p></td>
+</tr>
 </tbody>
 </table>
 <p>We shall have a brief introduction to each of the components below.
-The users can also refer to the corresponding section for a more detailed explanation or reach us out
-at <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>admins<span>&#64;</span>nyu<span>&#46;</span>edu</a> for any assistance.</p>
+The users can also refer to the corresponding section from (<a class="reference external" href="file:///home/mennatallah/Mennatallah_projects/crc-docs/_build/html/hpc/hpc.html#useful-links">here</a>) for a more detailed explanation, or reach us out at <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>admins<span>&#64;</span>nyu<span>&#46;</span>edu</a> for any assistance.</p>
 <div class="section" id="system">
 <h2>System<a class="headerlink" href="#system" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -269,8 +277,8 @@ at <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;ny
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="software.html#software-modules">Software modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#miniconda-important-for-python-users">Miniconda (Important for Python Users)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="miniconda.html">Miniconda in HPC</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="miniconda.html#one-time-set-up">One Time Set up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="miniconda.html">Miniconda on the HPC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="miniconda.html#one-time-setup">One Time Setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="miniconda.html#application-installation">Application Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="miniconda.html#managing-environments">Managing Environments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="miniconda.html#migrating-sharing-environment">Migrating / Sharing Environment</a></li>
@@ -292,6 +300,8 @@ at <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;ny
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#things-to-keep-in-mind">Things to Keep in mind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#partitions-summary">Partitions Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#sample-job-script">Sample Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#basic-slurm-commands">Basic SLURM Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#requesting-a-gpu-node">Requesting a GPU node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#preempt-partition">Preempt Partition</a></li>
 </ul>
 </li>
@@ -302,11 +312,26 @@ at <a class="reference external" href="mailto:jubail&#46;admins&#37;&#52;&#48;ny
 </ul>
 </div>
 </div>
+<div class="section" id="hpc-web-interface">
+<h2>HPC Web Interface<a class="headerlink" href="#hpc-web-interface" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ood.html">HPC Web Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ood.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ood.html#connection-to-ood">Connection to OOD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ood.html#ood-features">OOD Features</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="quiz">
 <h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://forms.gle/2Fzm5FnkTfhc3umXA">Quiz</a></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quiz.html">Quiz</a></li>
 </ul>
+</div>
 </div>
 </div>
 
