@@ -75,7 +75,7 @@ To install a Stata kernel, enter the following commands:
 
 .. code-block:: bash
 
-	module load python/3.9.2 stata
+	module load python/3.8.6 stata
 	pip install stata_kernel --user
 	python -m stata_kernel.install --user
 
