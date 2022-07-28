@@ -1,8 +1,9 @@
 Social Science
 ==============
 
-.. csv-table:: 
+.. csv-table:: Pre 2018
    :widths: auto
    :header-rows: 1
    :class: publication-table
-   :file: data/socialscience.csv
+   :file: data/socialscience-pre2018.csv
+   
