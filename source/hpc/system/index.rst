@@ -193,3 +193,15 @@ high bandwidth ANKABUT link instead.
   /hpc/system/nyc_file_transfer
   
   
+Globus Data Transfer
+--------------------
+
+The NYUAD HPC Researchers can also benefit from transferring large data within the globus network 
+at a faster rate.
+
+* :doc:`Globus Data Transfer <globus>`
+
+.. toctree::
+  :hidden:
+
+  /hpc/system/globus
