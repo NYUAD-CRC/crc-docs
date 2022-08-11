@@ -6,7 +6,8 @@ Miniconda on the HPC
 We have a centralized installation of Miniconda on the HPC. The users can either 
 install their own Miniconda or use the centralized installation present on the HPC. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
 
-The conda cheat sheet gives you a list of useful commands in a glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
+The conda cheat sheet gives you a list of useful commands in a 
+glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
 
 
 .. _one_time_setup:
