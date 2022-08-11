@@ -68,7 +68,7 @@ Summary of Nodes
       - GPUs / node
       - Remarks
     * - Bulk
-      - 189
+      - 188
       - 128
       - 480GB
       - None
@@ -82,12 +82,12 @@ Summary of Nodes
     * - Dalma Compute
       - 432
       - 28/40
-      - 102 GB / 480 GB
+      - 105 GB / 480 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
     * - Bigmem
       - 4	
-      - 32/63/72
+      - 32/64/72
       - 1 TB / 2TB	
       - None	
       - Used when memory requirement per node is greater than 500GB
@@ -100,7 +100,7 @@ Summary of Nodes
     * - Visual	
       - 4	
       - 32	
-      - 112 GB
+      - 105 GB
       - 2 (Nvidia Quadro P4000)
       - Used for GUI 
 
