@@ -221,10 +221,7 @@ Summary
       -      
     * -
       - Max Walltime for preempt jobs was 30 minutes on Dalma
-      - Max Walltime for preempt jobs on Jubail depends on size
-        
-        * cpus < 28 : 24 hours
-        * cpus > 28 : 12 hours  
+      - Max Walltime for preempt jobs on Jubail is 7 days
     * -
       -
       - More info on this can be found :ref:`here <preempt_partition>`

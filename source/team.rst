@@ -32,7 +32,9 @@ High Performance Computing
       - HPC Applicaions Specialist
     * - **Mennatallah Saleh**
       - HPC Applicaions Specialist
-
+    * - **Fatema Alhajeri**
+      - Junior HPC Applications Specialist
+      
 
 **HPC System Administrators**
 
@@ -46,7 +48,7 @@ High Performance Computing
       - Senior HPC System Administrator
     * - **Simon Johny**
       - HPC Storage System Administrator
-    * - **Wissam Ali**
+    * - **Fayizal Kunhi**
       - HPC System Administrator
 
 
@@ -63,8 +65,8 @@ Research Support
 
     * - Name
       - Position
-    * - **Fayizal Kunhi**
-      - Senior Research Technology Specialist
+    * - **Wissam Ali**
+      - Research Technology Specialist
 
 **Application & Development**
 

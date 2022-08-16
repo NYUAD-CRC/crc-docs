@@ -27,7 +27,7 @@ SLURM: Submitting Jobs
     .. code-block:: bash
 
         #!/bin/bash
-        #SBATCH –n 1
+        #SBATCH -n 1
         ./myprogram
 2. Then you submit the script in any of the following manner
 
@@ -39,7 +39,7 @@ SLURM: Submitting Jobs
         #OR
         $> sbatch << EOF
         #!/bin/bash
-        #SBATCH –n 1
+        #SBATCH -n 1
         ./myprogram
         EOF
 
@@ -52,7 +52,7 @@ SLURM: Arguments
 .. code-block:: bash
 
     #!/bin/bash
-    #SBATCH –n 1
+    #SBATCH -n 1
     ./myprogram
 
 .. code-block:: bash
@@ -68,7 +68,7 @@ OR
 
 .. code-block:: bash    
 
-    $> sbatch –p preempt –n 1 job2.sh
+    $> sbatch -p preempt -n 1 job2.sh
 
 
 **Common Job submission arguments:**
@@ -82,7 +82,7 @@ OR
 * ``-d``   Dependency with prior job (ex don't start this job before job XXX terminates)
 * ``-A``   Select account (ex physics_ser, faculty_ser)
 * ``-c``   Number of cores required per task (default 1)
-* ``--tasks-per-node Number`` Number of tasks on each node
+* ``--ntasks-per-node`` Number of tasks on each node
 * ``--mail-type=type`` Notify on state change: BEGIN, END, FAIL or ALL
 * ``--mail-user=user`` Who to send email notification
 * ``--mem`` Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)
@@ -91,10 +91,10 @@ OR
 SLURM: Job Dependencies
 -----------------------
 
-Submitting with dependencies: Useful to create workflows
+Submitting with dependencies: Useful to create workflows.
 
-* Any specific job may have to wait until any of the specified conditions are met
-* These conditions are set with –d type:jobid where type can be:
+Any specific job may have to wait until any of the specified conditions are met, these conditions are set with **--depend=type:jobid** where type can be:
+
     * ``after``         run after <jobid> has terminated
     * ``afterany``      if <jobid> is a job array run after any job in the job array has terminated
     * ``afterok``       run after <jobid> if it finished successfully
@@ -105,7 +105,7 @@ Submitting with dependencies: Useful to create workflows
     #Wait for specific job array elements	
     sbatch --depend=after:123_4 my.job
     sbatch --depend=afterok:123_4:123_8 my.job2	
-    #Wait for entire job array to complete	
+    #Wait for any job array element to complete	
     sbatch --depend=afterany:123 my.job
     #Wait for entire job array to complete successfully	
     sbatch --depend=afterok:123 my.job
@@ -116,37 +116,38 @@ SLURM: Listing Jobs
 -------------------
 
 Each submitted job is given a unique number
-* You can list your jobs to see which ones are waiting (pending), running
+
+* You can list your jobs to see which ones are waiting (pending) or running
 * As well as how long a job has been running and on which node(s)
 
 .. code-block:: bash
 
     $> squeue
     JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST(REASON)
-    435251_[1-50]   compute     151215_F u123    PD  0:00      1        (Priority)
-    435252_[1-50]   compute     151215_F u123    PD  0:00      1        (Priority)
-    435294          compute     Merge5.s u123    PD  0:00      1        (Priority)
-    435235_[20-50]  compute     151215_F u123    PD  0:00      1        (Priority)
-    435235_19       compute     151215_F u123    R   12:55     1        compute-21-8
-    435235_17       compute     151215_F u123    R   47:34     1        compute-21-12
-    435235_15       compute     151215_F u123    R   49:04     1        compute-21-7
-    435235_13       compute     151215_F u123    R   50:34     1        compute-21-4
-    435235_11       compute     151215_F u123    R   54:35     1        compute-21-9
-    435235_9        compute     151215_F u123    R   56:35     1        compute-21-6
-    435235_7        compute     151215_F u123    R   58:35     1        compute-21-5
-    435235_5        compute     151215_F u123    R   59:36     1        compute-21-1
-    435235_3        compute     151215_F u123    R   1:00:36   1        compute-21-11
-    435235_1        compute     151215_F u123    R   1:04:37   1        compute-21-3
-
+    435251_[1-50]   compute     151215_F wz22    PD  0:00      1        (Priority)
+    435252_[1-50]   compute     151215_F wz22    PD  0:00      1        (Priority)
+    435294          compute     Merge5.s wz22    PD  0:00      1        (Priority)
+    435235_[20-50]  compute     151215_F wz22    PD  0:00      1        (Priority)
+    435235_19       compute     151215_F wz22    R   12:55     1        cn028
+    435235_17       compute     151215_F wz22    R   47:34     1        cn021
+    435235_15       compute     151215_F wz22    R   49:04     1        cn027
+    435235_13       compute     151215_F wz22    R   50:34     1        cn024
+    435235_11       compute     151215_F wz22    R   54:35     1        cn029
+    435235_9        compute     151215_F wz22    R   56:35     1        cn026
+    435235_7        compute     151215_F wz22    R   58:35     1        cn025
+    435235_5        compute     151215_F wz22    R   59:36     1        cn020
+    435235_3        compute     151215_F wz22    R   1:00:36   1        cn011
+    435235_1        compute     151215_F wz22    R   1:04:37   1        cn013
+    
 SLURM: Listing Jobs
 -------------------
 
 * You can look at completed jobs using the "sacct" command
-* To look at jobs you ran since July 1, 2017
+* To look at jobs you ran since July 1, 2022
 
 .. code-block:: bash
 
-    $> squeue –starttime=2017-07-01
+    $> sacct --starttime=2022-07-01
 
 
 * You can retrieve the following informations about a job after it terminates:
@@ -176,12 +177,13 @@ SLURM: Listing Jobs
 
 .. code-block:: bash
 
-    $> sacct -j 466281 -format=partition,alloccpus,elapsed,state,exitcode
-    JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
-    ------------ ---------- ---------- ---------- ---------- ---------- --------
-    466281        job3.sh     par_std   cpcm_par     56      COMPLETED    0:0
-    466281.batch  batch                 cpcm_par     28      COMPLETED    0:0
-    466281.0      env                   cpcm_par     56      COMPLETED    0:0
+    $> sacct -j 511512 -format=partition,alloccpus,elapsed,state,exitcode
+     JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
+     ------------ ---------- ---------- ---------- ---------- ---------- --------
+     511512        sub.sh     nvidia     avengers     20      COMPLETED    0:0
+     511512.batch  batch                 avengers     20      COMPLETED    0:0
+     511512.0      env                   avengers     20      COMPLETED    0:0
+
 
 SLURM: Job Progress
 -------------------
@@ -209,14 +211,11 @@ SLURM: Killing Jobs
 SLURM: Tasks
 ------------
 
-In SLURM users specify how many tasks – not cores! - they need (-n). Each task by default
-uses 1 core. But this can be redefined by users using the "-c" option.
+In SLURM users specify how many tasks (not cores!) they need using (**-n**), each task by default
+uses 1 core but this can be redefined by users using the (**-c**) option.
 
-For example ``#SBATCH –n 2`` is requesting 2 cores, while ``#SBATCH –c 3`` ``#SBATCH –n 2`` is
+For example ``#SBATCH -n 2`` is requesting 2 cores, while ``#SBATCH -c 3`` ``#SBATCH -n 2`` is
 requesting 6 cores.
-
-On Jubail/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
-eg no other jobs may run on nodes allocated for running parallel jobs.
 
 When submitting parallel jobs on Jubail you need not specify the number of nodes. The
 number of tasks and cpus-per-task is sufficient for SLURM to determine how many nodes to
@@ -231,24 +230,23 @@ SLURM keeps the list of nodes within the environment variable ``$SLURM_JOB_NODEL
 SLURM: Accounts
 ---------------
 
-SLURM maintains user associations which include user, account, qos, and partition. Users
-may have several associations. Moreover, accounts are hierarchical. For example, account
-"physics" maybe be a sub-account of "faculty", which may be a sub-account of "institute", etc.
-When submitting jobs users with multiple associations must explicitely list the account, qos,
-partition details they wish to use.
+SLURM maintains user associations which include user, account, qos, and partition.
+
+Users may have several associations, also accounts are hierarchical. For example, account "physics" maybe be a sub-account of "faculty", which may be a sub-account of "institute", etc.
+
+When submitting jobs, users with multiple associations must explicitely list the account, qos,partition and all details they wish to use.
 
 .. code-block:: bash
 
-    sbatch –p preempt –a physics -u ziaw job
+    sbatch -p preempt -A physics job
 
-Jubail specific job submission tools extend SLURM's associations to define a ``default``
-association. So you only need to specify which account is, for example, you belong to multiple
-accounts – ex faculty and research-lab – and you want to execute using your non-default
+Jubail specific job submission tools extend SLURM's associations to define a ``default`` association, so you only need to specify which account is, for example you belong to multiple
+accounts (faculty) and (research-lab) and you want to execute using your non-default
 account. So at most you'll need to specify:
 
 .. code-block:: bash
 
-    sbatch –p <partition> -a <account> job
+    sbatch -p <partition> -A <account> job
 
 Moreover, accounts, partitions, qos and users may each be configured with resource usage
 limits. Thus the administrators can impose limits to the number of jobs queued, jobs running,
