@@ -90,7 +90,7 @@ Then within a Julia session, install the IJulia package:
 
 .. code-block:: bash
 
-	pkg> add IJulia
+	import Pkg; Pkg.add("Ijulia")
 
 This will create a Julia kernel automatically.
 
