@@ -81,8 +81,8 @@ Summary of Nodes
       - New HPC GPU nodes with two nodes have only one GPU card each, rest of them have 2 cards each
     * - Dalma Compute
       - 432
-      - 28/40
-      - 105 GB / 480 GB
+      - 28
+      - 105 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
     * - Bigmem

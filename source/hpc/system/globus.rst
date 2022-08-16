@@ -3,7 +3,7 @@ Globus Data Transfer
 
 Globus is a service that makes it easy to move, sync, and share large amounts of data. 
 Globus will manage file transfers, monitor performance, retry failures, recover from faults 
-automatically when possible, and report the status of your data transfer. Globus uses GridFTP 
+automatically when possible, and report the status of your data transfer. Globus uses [`GridFTP <https://en.wikipedia.org/wiki/GridFTP>`__] 
 for more reliable and high-performance file transfer, and will queue file transfers to be 
 performed asynchronously in the background.
 
@@ -103,7 +103,7 @@ Follow the below steps to connect to the Globus Network.
 Globus Portal
 -------------
 
-- In order to login to the Globus Portal, Researchers needn't need to create a new account and use the ``Orginzational Login`` option to connect to the Globus portal ( www.globus.org ) using their respective institute credentials (NetId and Password)
+- In order to login to the Globus Portal, Researchers don't need to create a new account, instead they can use the ``Orginzational Login`` option to connect to the `Globus portal <http://www.globus.org/>`__  using New York University and then (NetId and Password)
 
 .. image:: ../img/globus5.png
 

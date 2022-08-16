@@ -41,7 +41,7 @@ To access JupyetrNotebook for OOD please follow this video:
      
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1poV44cuRC0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
        
-Conda Enviroement with Juputer Notebbok on OOD
+Conda Environment with Jupyter Notebook on OOD
 ----------------------------------------------
 To Add conda environment to Jupyter Notebook please follow this video:
  
