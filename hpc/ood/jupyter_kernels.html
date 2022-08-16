@@ -105,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#connection-to-ood">Connection to OOD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ood-features">OOD Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#juputer-notebbok-on-ood">Juputer Notebbok on OOD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#conda-environment-with-jupyter-notebook-on-ood">Conda Environment with Jupyter Notebook on OOD</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#installing-jupyter-kernels">Installing Jupyter Kernels</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installing Jupyter Kernels</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
@@ -242,11 +243,11 @@ Rscript -e <span class="s2">&quot;IRkernel::installspec(name = &#39;r410&#39;, d
 <div class="section" id="r">
 <h2>R<a class="headerlink" href="#r" title="Permalink to this heading">¶</a></h2>
 <p>To install an R kernel, first load the python/3.8.6 module and the R module version of your choice:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6 r/&lt;version&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6 R
 </pre></div>
 </div>
 <p>Then within an R session, create a kernel with a command like the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; IRkernel::installspec<span class="o">(</span><span class="nv">name</span> <span class="o">=</span> <span class="s1">&#39;r410&#39;</span>, <span class="nv">displayname</span> <span class="o">=</span> <span class="s1">&#39;R 4.1.0&#39;</span><span class="o">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; IRkernel::installspec<span class="o">(</span><span class="nv">name</span> <span class="o">=</span> <span class="s1">&#39;R3.6.1&#39;</span>, <span class="nv">displayname</span> <span class="o">=</span> <span class="s1">&#39;R 3.6.1&#39;</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>The kernel will be able to access your user-installed R packages.</p>

@@ -254,7 +254,7 @@ To request a Gpu node you have two options:
 	#SBATCH -p nvidia
 	#SBATCH --gres=gpu:a100:1
 
-For more details regarding GPU nodes and cards types, kindly check :ref:`this <partitions_summary>`
+For more details regarding GPU nodes and cards types, kindly check this section :doc:`Gpu nodes</hpc/system/gpu_nodes>`.
 
 .. _preempt_partition:
    

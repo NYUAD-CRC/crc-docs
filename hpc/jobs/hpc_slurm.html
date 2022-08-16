@@ -239,7 +239,7 @@
 <li><p>To submit a job first you write a “job script”</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH –n 1</span>
+<span class="c1">#SBATCH -n 1</span>
 ./myprogram
 </pre></div>
 </div>
@@ -253,7 +253,7 @@ $&gt; sbatch &lt; job.sh
 <span class="c1">#OR</span>
 $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <span class="s">#!/bin/bash</span>
-<span class="s">#SBATCH –n 1</span>
+<span class="s">#SBATCH -n 1</span>
 <span class="s">./myprogram</span>
 <span class="s">EOF</span>
 </pre></div>
@@ -269,7 +269,7 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <li><p>Putting them in the job script is a better option as then it “documents” how to rerun your job</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH –n 1</span>
+<span class="c1">#SBATCH -n 1</span>
 ./myprogram
 </pre></div>
 </div>
@@ -281,7 +281,7 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 ./myprogram
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch –p preempt –n <span class="m">1</span> job2.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch -p preempt -n <span class="m">1</span> job2.sh
 </pre></div>
 </div>
 <p><strong>Common Job submission arguments:</strong></p>
@@ -295,7 +295,7 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>   Dependency with prior job (ex don’t start this job before job XXX terminates)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-A</span></code>   Select account (ex physics_ser, faculty_ser)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>   Number of cores required per task (default 1)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--tasks-per-node</span> <span class="pre">Number</span></code> Number of tasks on each node</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code> Number of tasks on each node</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-type=type</span></code> Notify on state change: BEGIN, END, FAIL or ALL</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-user=user</span></code> Who to send email notification</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mem</span></code> Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)</p></li>
@@ -303,24 +303,20 @@ $&gt; sbatch <span class="s">&lt;&lt; EOF</span>
 </div>
 <div class="section" id="slurm-job-dependencies">
 <h2>SLURM: Job Dependencies<a class="headerlink" href="#slurm-job-dependencies" title="Permalink to this heading">¶</a></h2>
-<p>Submitting with dependencies: Useful to create workflows</p>
-<ul class="simple">
-<li><p>Any specific job may have to wait until any of the specified conditions are met</p></li>
-<li><dl class="simple">
-<dt>These conditions are set with –d type:jobid where type can be:</dt><dd><ul>
+<p>Submitting with dependencies: Useful to create workflows.</p>
+<p>Any specific job may have to wait until any of the specified conditions are met, these conditions are set with <strong>–depend=type:jobid</strong> where type can be:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">after</span></code>         run after &lt;jobid&gt; has terminated</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">afterany</span></code>      if &lt;jobid&gt; is a job array run after any job in the job array has terminated</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">afterok</span></code>       run after &lt;jobid&gt; if it finished successfully</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">afternotok</span></code>    run after &lt;jobid&gt; if it failed to finish successfully</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-</ul>
+</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Wait for specific job array elements</span>
 sbatch --depend<span class="o">=</span>after:123_4 my.job
 sbatch --depend<span class="o">=</span>afterok:123_4:123_8 my.job2
-<span class="c1">#Wait for entire job array to complete</span>
+<span class="c1">#Wait for any job array element to complete</span>
 sbatch --depend<span class="o">=</span>afterany:123 my.job
 <span class="c1">#Wait for entire job array to complete successfully</span>
 sbatch --depend<span class="o">=</span>afterok:123 my.job
@@ -331,25 +327,27 @@ sbatch --depend<span class="o">=</span>afternotok:123 my.job
 </div>
 <div class="section" id="slurm-listing-jobs">
 <h2>SLURM: Listing Jobs<a class="headerlink" href="#slurm-listing-jobs" title="Permalink to this heading">¶</a></h2>
-<p>Each submitted job is given a unique number
-* You can list your jobs to see which ones are waiting (pending), running
-* As well as how long a job has been running and on which node(s)</p>
+<p>Each submitted job is given a unique number</p>
+<ul class="simple">
+<li><p>You can list your jobs to see which ones are waiting (pending) or running</p></li>
+<li><p>As well as how long a job has been running and on which node(s)</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; squeue
 JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-435251_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-435252_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-<span class="m">435294</span>          compute     Merge5.s u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-435235_<span class="o">[</span><span class="m">20</span>-50<span class="o">]</span>  compute     151215_F u123    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
-435235_19       compute     151215_F u123    R   <span class="m">12</span>:55     <span class="m">1</span>        compute-21-8
-435235_17       compute     151215_F u123    R   <span class="m">47</span>:34     <span class="m">1</span>        compute-21-12
-435235_15       compute     151215_F u123    R   <span class="m">49</span>:04     <span class="m">1</span>        compute-21-7
-435235_13       compute     151215_F u123    R   <span class="m">50</span>:34     <span class="m">1</span>        compute-21-4
-435235_11       compute     151215_F u123    R   <span class="m">54</span>:35     <span class="m">1</span>        compute-21-9
-435235_9        compute     151215_F u123    R   <span class="m">56</span>:35     <span class="m">1</span>        compute-21-6
-435235_7        compute     151215_F u123    R   <span class="m">58</span>:35     <span class="m">1</span>        compute-21-5
-435235_5        compute     151215_F u123    R   <span class="m">59</span>:36     <span class="m">1</span>        compute-21-1
-435235_3        compute     151215_F u123    R   <span class="m">1</span>:00:36   <span class="m">1</span>        compute-21-11
-435235_1        compute     151215_F u123    R   <span class="m">1</span>:04:37   <span class="m">1</span>        compute-21-3
+435251_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F wz22    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435252_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span>   compute     151215_F wz22    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+<span class="m">435294</span>          compute     Merge5.s wz22    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435235_<span class="o">[</span><span class="m">20</span>-50<span class="o">]</span>  compute     151215_F wz22    PD  <span class="m">0</span>:00      <span class="m">1</span>        <span class="o">(</span>Priority<span class="o">)</span>
+435235_19       compute     151215_F wz22    R   <span class="m">12</span>:55     <span class="m">1</span>        cn028
+435235_17       compute     151215_F wz22    R   <span class="m">47</span>:34     <span class="m">1</span>        cn021
+435235_15       compute     151215_F wz22    R   <span class="m">49</span>:04     <span class="m">1</span>        cn027
+435235_13       compute     151215_F wz22    R   <span class="m">50</span>:34     <span class="m">1</span>        cn024
+435235_11       compute     151215_F wz22    R   <span class="m">54</span>:35     <span class="m">1</span>        cn029
+435235_9        compute     151215_F wz22    R   <span class="m">56</span>:35     <span class="m">1</span>        cn026
+435235_7        compute     151215_F wz22    R   <span class="m">58</span>:35     <span class="m">1</span>        cn025
+435235_5        compute     151215_F wz22    R   <span class="m">59</span>:36     <span class="m">1</span>        cn020
+435235_3        compute     151215_F wz22    R   <span class="m">1</span>:00:36   <span class="m">1</span>        cn011
+435235_1        compute     151215_F wz22    R   <span class="m">1</span>:04:37   <span class="m">1</span>        cn013
 </pre></div>
 </div>
 </div>
@@ -357,9 +355,9 @@ JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST<span c
 <h2>SLURM: Listing Jobs<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>You can look at completed jobs using the “sacct” command</p></li>
-<li><p>To look at jobs you ran since July 1, 2017</p></li>
+<li><p>To look at jobs you ran since July 1, 2022</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; squeue –starttime<span class="o">=</span><span class="m">2017</span>-07-01
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sacct --starttime<span class="o">=</span><span class="m">2022</span>-07-01
 </pre></div>
 </div>
 <ul class="simple">
@@ -387,12 +385,12 @@ UID             User           UserCPU          WCKey
 <ul class="simple">
 <li><p>To retrieve specific informations about a job</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sacct -j <span class="m">466281</span> -format<span class="o">=</span>partition,alloccpus,elapsed,state,exitcode
-JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
------------- ---------- ---------- ---------- ---------- ---------- --------
-<span class="m">466281</span>        job3.sh     par_std   cpcm_par     <span class="m">56</span>      COMPLETED    <span class="m">0</span>:0
-<span class="m">466281</span>.batch  batch                 cpcm_par     <span class="m">28</span>      COMPLETED    <span class="m">0</span>:0
-<span class="m">466281</span>.0      env                   cpcm_par     <span class="m">56</span>      COMPLETED    <span class="m">0</span>:0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; sacct -j <span class="m">511512</span> -format<span class="o">=</span>partition,alloccpus,elapsed,state,exitcode
+ JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
+ ------------ ---------- ---------- ---------- ---------- ---------- --------
+ <span class="m">511512</span>        sub.sh     nvidia     avengers     <span class="m">20</span>      COMPLETED    <span class="m">0</span>:0
+ <span class="m">511512</span>.batch  batch                 avengers     <span class="m">20</span>      COMPLETED    <span class="m">0</span>:0
+ <span class="m">511512</span>.0      env                   avengers     <span class="m">20</span>      COMPLETED    <span class="m">0</span>:0
 </pre></div>
 </div>
 </div>
@@ -421,12 +419,10 @@ $&gt; tail –f slurm-435563.out
 </div>
 <div class="section" id="slurm-tasks">
 <h2>SLURM: Tasks<a class="headerlink" href="#slurm-tasks" title="Permalink to this heading">¶</a></h2>
-<p>In SLURM users specify how many tasks – not cores! - they need (-n). Each task by default
-uses 1 core. But this can be redefined by users using the “-c” option.</p>
-<p>For example <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is requesting 2 cores, while <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–c</span> <span class="pre">3</span></code> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">–n</span> <span class="pre">2</span></code> is
+<p>In SLURM users specify how many tasks (not cores!) they need using (<strong>-n</strong>), each task by default
+uses 1 core but this can be redefined by users using the (<strong>-c</strong>) option.</p>
+<p>For example <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">2</span></code> is requesting 2 cores, while <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-c</span> <span class="pre">3</span></code> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-n</span> <span class="pre">2</span></code> is
 requesting 6 cores.</p>
-<p>On Jubail/SLURM we implement an exclusive policy on nodes being used to run parallel jobs –
-eg no other jobs may run on nodes allocated for running parallel jobs.</p>
 <p>When submitting parallel jobs on Jubail you need not specify the number of nodes. The
 number of tasks and cpus-per-task is sufficient for SLURM to determine how many nodes to
 reserve.</p>
@@ -438,19 +434,16 @@ SLURM keeps the list of nodes within the environment variable <code class="docut
 </div>
 <div class="section" id="slurm-accounts">
 <h2>SLURM: Accounts<a class="headerlink" href="#slurm-accounts" title="Permalink to this heading">¶</a></h2>
-<p>SLURM maintains user associations which include user, account, qos, and partition. Users
-may have several associations. Moreover, accounts are hierarchical. For example, account
-“physics” maybe be a sub-account of “faculty”, which may be a sub-account of “institute”, etc.
-When submitting jobs users with multiple associations must explicitely list the account, qos,
-partition details they wish to use.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p preempt –a physics -u ziaw job
+<p>SLURM maintains user associations which include user, account, qos, and partition.</p>
+<p>Users may have several associations, also accounts are hierarchical. For example, account “physics” maybe be a sub-account of “faculty”, which may be a sub-account of “institute”, etc.</p>
+<p>When submitting jobs, users with multiple associations must explicitely list the account, qos,partition and all details they wish to use.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch -p preempt -A physics job
 </pre></div>
 </div>
-<p>Jubail specific job submission tools extend SLURM’s associations to define a <code class="docutils literal notranslate"><span class="pre">default</span></code>
-association. So you only need to specify which account is, for example, you belong to multiple
-accounts – ex faculty and research-lab – and you want to execute using your non-default
+<p>Jubail specific job submission tools extend SLURM’s associations to define a <code class="docutils literal notranslate"><span class="pre">default</span></code> association, so you only need to specify which account is, for example you belong to multiple
+accounts (faculty) and (research-lab) and you want to execute using your non-default
 account. So at most you’ll need to specify:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch –p &lt;partition&gt; -a &lt;account&gt; job
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch -p &lt;partition&gt; -A &lt;account&gt; job
 </pre></div>
 </div>
 <p>Moreover, accounts, partitions, qos and users may each be configured with resource usage

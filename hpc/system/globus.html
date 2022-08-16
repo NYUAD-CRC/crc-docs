@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Globus Data Transfer &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Storage" href="../storage/index.html" />
+    <link rel="prev" title="Fast Transfer Between NYU NYC and NYUAD" href="nyc_file_transfer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">System</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#hardware">Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#typical-workflow">Typical Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary-of-nodes">Summary of Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#access">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#data-transfers">Data Transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#special-compute-nodes">Special Compute Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#fast-transfer-between-nyc-and-nyuad-hpc">Fast Transfer between NYC and NYUAD HPC</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#globus-data-transfer">Globus Data Transfer</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Globus Data Transfer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use-globus">When to use Globus?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#one-time-setup">One Time Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#globus-portal">Globus Portal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">System</a> &raquo;</li>
+        
+      <li>Globus Data Transfer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="globus-data-transfer">
+<h1>Globus Data Transfer<a class="headerlink" href="#globus-data-transfer" title="Permalink to this heading">¶</a></h1>
+<p>Globus is a service that makes it easy to move, sync, and share large amounts of data.
+Globus will manage file transfers, monitor performance, retry failures, recover from faults
+automatically when possible, and report the status of your data transfer. Globus uses [<a class="reference external" href="https://en.wikipedia.org/wiki/GridFTP">GridFTP</a>]
+for more reliable and high-performance file transfer, and will queue file transfers to be
+performed asynchronously in the background.</p>
+<p>Globus was developed and is maintained at the University of Chicago and is used extensively at
+supercomputer centers and major research facilities [<a class="reference external" href="http://www.globus.org/">Globus Website</a> ].</p>
+<p>The NYUAD HPC is also part of the Globus network.</p>
+<p><strong>Globus can be used for file transfers between NYUAD HPC and a computing institution with Globus installed</strong>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Globus Endpoint has <strong>ONLY</strong> <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> mounted. Users can access the same in the Globus portal by specify <code class="docutils literal notranslate"><span class="pre">/NetID</span></code>. This will correspond to <code class="docutils literal notranslate"><span class="pre">/work/Netid</span></code>.</p>
+</div>
+<div class="section" id="when-to-use-globus">
+<h2>When to use Globus?<a class="headerlink" href="#when-to-use-globus" title="Permalink to this heading">¶</a></h2>
+<p>For transferring small amounts of data, the scp, sftp, and rsync over ssh utilities generally
+work well and are more widely available. However, if you transfer large data that takes a long time
+(more than 15 minutes) and happens frequently, or is using an unreliable connection, Globus is
+recommended. This is because Globus not only transfers data faster but also takes care of
+disruptions gracefully (e.g., automatically resumes data transfer after temporary
+network disconnections).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use Globus, it needs to be available on both source and destination endpoints.</p>
+</div>
+</div>
+<div class="section" id="one-time-setup">
+<h2>One Time Setup<a class="headerlink" href="#one-time-setup" title="Permalink to this heading">¶</a></h2>
+<p>Follow the below steps to connect to the Globus Network.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The below steps need to be followed <strong>ONLY</strong> the first time you connect to Globus.</p>
+</div>
+<ul class="simple">
+<li><p>Log into NYUAD HPC</p></li>
+<li><p>In login node, execute the command <code class="docutils literal notranslate"><span class="pre">globus-keyinit</span></code>. A sample output is given below.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above command makes sure that globus DMZ server will be able to login to CNG/Login nodes without password</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[wz22@login4 ~]$ globus-keyinit
+Generating public/private ed25519 key pair.
+Your identification has been saved in /home/wz22/.ssh/globus_ed25519.
+Your public key has been saved in /home/wz22/.ssh/globus_ed25519.pub.
+The key fingerprint is:
+SHA256:zPAwabcdefghiJKLmnOPqrSTuvWxYZabcdeFGHijKLmnopnzG6SlItu0 wz22@globus
+The key&#39;s randomart image is:
++--[ED25519 256]--+
+|     ..o   . +=  |
+|    . o o . ooo+ |
+|     ++o + .o...o|
+|    . oOo....o .+|
+|       oS....  oB|
+|      .oo . .  Bo|
+|      o +o =  . o|
+|       o o+ .    |
+|        .E.o     |
++----[SHA256]-----+
+------------------------------------------------------------------------------
+
+                To enable automount of /work for Globus,
+    please copy Globus ssh-key to HPC Bastion host (NetID pass):
+
+    scp -P 4410 ~/.ssh/globus_ed25519 hpc.abudhabi.nyu.edu:~/.ssh/
+
+    -------------------------------------------------------------
+[wz22@login4 ~]$
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Once the above command is executed, it outputs a command to copy the private key to the bastion host. Please copy and execute it in the same shell/terminal and proceed. A sample output is shown below.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[wz22@login4 ~]$  scp -P 4410 ~/.ssh/globus_ed25519 hpc.abudhabi.nyu.edu:~/.ssh/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        WARNING:  UNAUTHORIZED PERSONS ........ DO NOT PROCEED
+        ~~~~~~~   ~~~~~~~~~~~~~~~~~~~~          ~~~~~~~~~~~~~~
+This computer system is operated by New York University (NYU) and may be
+accessed only by authorized users.  Authorized users are granted specific,
+limited privileges in their use of the system.  The data and programs
+in this system may not be accessed, copied, modified, or disclosed without
+prior approval of NYU.  Access and use, or causing access and use, of this
+computer system by anyone other than as permitted by NYU are strictly pro-
+hibited by NYU and by law and may subject an unauthorized user, including
+unauthorized employees, to criminal and civil penalties as well as NYU-
+initiated disciplinary proceedings.  The use of this system is routinely
+monitored and recorded, and anyone accessing this system consents to such
+monitoring and recording.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+wz22@hpc.abudhabi.nyu.edu&#39;s password:
+globus_ed25519                                                                          100%  399   472.2KB/s   00:00
+[wz22@login4 ~]$
+</pre></div>
+</div>
+</div>
+<div class="section" id="globus-portal">
+<h2>Globus Portal<a class="headerlink" href="#globus-portal" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>In order to login to the Globus Portal, Researchers don’t need to create a new account, instead they can use the <code class="docutils literal notranslate"><span class="pre">Orginzational</span> <span class="pre">Login</span></code> option to connect to the <a class="reference external" href="http://www.globus.org/">Globus portal</a>  using New York University and then (NetId and Password)</p></li>
+</ul>
+<img alt="../../_images/globus5.png" src="../../_images/globus5.png" />
+<ul class="simple">
+<li><p>Once logged in to the portal, browse for the <code class="docutils literal notranslate"><span class="pre">NYUAD</span> <span class="pre">HPC</span> <span class="pre">Posix</span> <span class="pre">collection</span></code>.</p></li>
+</ul>
+<img alt="../../_images/globus1.png" src="../../_images/globus1.png" />
+<ul class="simple">
+<li><p>You can now Trasnfer or sync data available within the globus network.</p></li>
+</ul>
+<p>The screenshot below is a trasnfer to be initiated between one of the dataset from “NCAR’s Research Data Archive”
+to <code class="docutils literal notranslate"><span class="pre">/work/wz22</span></code> of NYUAD HPC.</p>
+<blockquote>
+<div><img alt="../../_images/globus3.png" src="../../_images/globus3.png" />
+</div></blockquote>
+<p>The Globus organization provides a series of <a class="reference external" href="https://docs.globus.org/how-to/">How To</a> documents
+including a <a class="reference external" href="https://docs.globus.org/how-to/get-started/">Getting Started Guide</a> that covers
+gives a quick tour on transferring files.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../storage/index.html" class="btn btn-neutral float-right" title="Storage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nyc_file_transfer.html" class="btn btn-neutral float-left" title="Fast Transfer Between NYU NYC and NYUAD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
