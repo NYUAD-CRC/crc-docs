@@ -120,6 +120,6 @@ to ``/work/wz22`` of NYUAD HPC.
 
 The Globus organization provides a series of `How To <https://docs.globus.org/how-to/>`__ documents 
 including a `Getting Started Guide <https://docs.globus.org/how-to/get-started/>`__ that covers 
-logging in and transferring files.
+gives a quick tour on transferring files.
 
 
