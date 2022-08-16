@@ -10,12 +10,13 @@ performed asynchronously in the background.
 Globus was developed and is maintained at the University of Chicago and is used extensively at 
 supercomputer centers and major research facilities [`Globus Website <http://www.globus.org/>`__ ].
 
-The NYUAD HPC is also part of the Globus network.**Globus can be used for file transfers between 
-NYUAD HPC and a computing institution with Globus installed**. Researchers can benefit from the above 
-by using ``$WORK``as the mountpoint. 
+The NYUAD HPC is also part of the Globus network.
+
+**Globus can be used for file transfers between NYUAD HPC and a computing institution with Globus installed**. 
+
 
 .. Important::
-    The Globus Endpoint has only ``$WORK`` mounted. Users can access the same in the Globus portal by specify ``/NetID``. This will correspond to ``/work/Netid``.
+    The Globus Endpoint has **ONLY** ``$WORK`` mounted. Users can access the same in the Globus portal by specify ``/NetID``. This will correspond to ``/work/Netid``.
 
 
 When to use Globus?
@@ -34,19 +35,18 @@ network disconnections).
 One Time Setup
 --------------
 
-Follow the below steps to connect to the Globus Network
+Follow the below steps to connect to the Globus Network.
+
+.. note::
+    The below steps need to be followed **ONLY** the first time you connect to Globus.
 
 - Log into NYUAD HPC
-- In login node, execute the command ``globus-keyinit``.
+- In login node, execute the command ``globus-keyinit``. A sample output is given below.
 
 .. note:: 
     The above command makes sure that globus DMZ server will be able to login to CNG/Login nodes without password
 
-- Once the above command is executed, it outputs a command to copy the private key to the bastion host. 
-Please copy and execute it in the same shell/terminal and proceed. A sample output is shown below.
-
-
-.. code-block:: bash
+.. code-block:: 
 
     [wz22@login4 ~]$ globus-keyinit
     Generating public/private ed25519 key pair.
@@ -74,16 +74,36 @@ Please copy and execute it in the same shell/terminal and proceed. A sample outp
         scp -P 4410 ~/.ssh/globus_ed25519 hpc.abudhabi.nyu.edu:~/.ssh/
 
         -------------------------------------------------------------
-    [wz22@login4 ~]$ scp -P 4410 ~/.ssh/globus_ed25519 hpc.abudhabi.nyu.edu:~/.ssh/
+    [wz22@login4 ~]$ 
 
+- Once the above command is executed, it outputs a command to copy the private key to the bastion host. Please copy and execute it in the same shell/terminal and proceed. A sample output is shown below.
 
+.. code-block::
+
+    [wz22@login4 ~]$  scp -P 4410 ~/.ssh/globus_ed25519 hpc.abudhabi.nyu.edu:~/.ssh/
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            WARNING:  UNAUTHORIZED PERSONS ........ DO NOT PROCEED
+            ~~~~~~~   ~~~~~~~~~~~~~~~~~~~~          ~~~~~~~~~~~~~~
+    This computer system is operated by New York University (NYU) and may be
+    accessed only by authorized users.  Authorized users are granted specific,
+    limited privileges in their use of the system.  The data and programs
+    in this system may not be accessed, copied, modified, or disclosed without
+    prior approval of NYU.  Access and use, or causing access and use, of this
+    computer system by anyone other than as permitted by NYU are strictly pro-
+    hibited by NYU and by law and may subject an unauthorized user, including
+    unauthorized employees, to criminal and civil penalties as well as NYU-
+    initiated disciplinary proceedings.  The use of this system is routinely
+    monitored and recorded, and anyone accessing this system consents to such
+    monitoring and recording.
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    wz22@hpc.abudhabi.nyu.edu's password:
+    globus_ed25519                                                                          100%  399   472.2KB/s   00:00
+    [wz22@login4 ~]$
 
 Globus Portal
 -------------
 
-- In order to login to the Globus Portal, Researchers needn't need to create a new account and use 
-the ``Orginzational Login`` option to connect to the Globus portal ( www.globus.org ) 
-using their respective institute credentials (NetId and Password)
+- In order to login to the Globus Portal, Researchers needn't need to create a new account and use the ``Orginzational Login`` option to connect to the Globus portal ( www.globus.org ) using their respective institute credentials (NetId and Password)
 
 .. image:: ../img/globus5.png
 
