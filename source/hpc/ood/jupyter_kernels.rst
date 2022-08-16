@@ -57,13 +57,13 @@ To install an R kernel, first load the python/3.8.6 module and the R module vers
 
 .. code-block:: bash
 
-	module load python/3.8.6 r/<version>
+	module load python/3.8.6 R
 	
 Then within an R session, create a kernel with a command like the following:
 
 .. code-block:: bash
 
-	> IRkernel::installspec(name = 'r410', displayname = 'R 4.1.0')
+	> IRkernel::installspec(name = 'R3.6.1', displayname = 'R 3.6.1')
 	
 The kernel will be able to access your user-installed R packages.
 
