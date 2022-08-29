@@ -90,7 +90,7 @@ Then within a Julia session, install the IJulia package:
 
 .. code-block:: bash
 
-	pkg> add IJulia
+	import Pkg; Pkg.add("IJulia")
 
 This will create a Julia kernel automatically.
 
@@ -135,7 +135,7 @@ To install a Bash kernel, enter the following commands:
 
 .. code-block:: bash
 
-	module load python/3.9.2
+	module load python/3.8.6
 	pip install bash_kernel --user
 	python -m bash_kernel.install --user
 	

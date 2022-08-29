@@ -266,7 +266,7 @@ python -m stata_kernel.install --user
 <p>To install a Julia kernel, first load the python/3.9.2 module and the Julia module version of your choice:</p>
 <p>module load python/3.8.6 julia/&lt;version&gt;</p>
 <p>Then within a Julia session, install the IJulia package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pkg&gt; add IJulia
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>import Pkg<span class="p">;</span> Pkg.add<span class="o">(</span><span class="s2">&quot;IJulia&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>This will create a Julia kernel automatically.</p>
@@ -299,7 +299,7 @@ git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 <div class="section" id="bash">
 <h2>Bash<a class="headerlink" href="#bash" title="Permalink to this heading">¶</a></h2>
 <p>To install a Bash kernel, enter the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.9.2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.8.6
 pip install bash_kernel --user
 python -m bash_kernel.install --user
 </pre></div>
