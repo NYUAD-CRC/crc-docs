@@ -80,7 +80,7 @@ Summary of Nodes
       - 1/2 (Nvidia A100)
       - New HPC GPU nodes with two nodes have only one GPU card each, rest of them have 2 cards each
     * - Dalma Compute
-      - 432
+      - 428
       - 28
       - 105 GB
       - None
