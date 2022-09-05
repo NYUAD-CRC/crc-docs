@@ -234,7 +234,7 @@
 <p class="admonition-title">Difference between CPUs,Cores and Tasks</p>
 <ul class="simple">
 <li><p>On Jubail HPC, One CPU is equivalent to one Core.</p></li>
-<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--natsks</span></code>.</p></li>
+<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>.</p></li>
 <li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
 <li><p>By Default, Each task is equivalent to one CPU.</p></li>
 <li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the CPUs allocated to you would be the multiple the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
