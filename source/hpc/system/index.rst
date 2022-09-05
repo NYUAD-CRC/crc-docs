@@ -107,7 +107,7 @@ Summary of Nodes
 .. admonition:: Difference between CPUs,Cores and Tasks
 
 	- On Jubail HPC, One CPU is equivalent to one Core. 
-	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
+	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--ntasks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
 	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
