@@ -15,14 +15,13 @@ A complete batch job workflow:
 Batch Job Script
 ----------------
 
-A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us.
+A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us at 	jubail.support@nyu.edu
 
 .. admonition:: Resources Limit
 
     The cluster is shared among the whole university. The HPC steering committee decides each year on resources limit for each department. We at NYUAD HPC center implement these limits.
 
-**Kindly refer to the following :ref:`section <partitions_summary>` to know more about partitions and limits**
-
+Kindly refer to the following :ref:`section <partitions_summary>` to know more about partitions and limits
 
 If you ask for more resources than you can use, your job will stay in the queue forever. (e.g., you specify 10000 hours walltime in your job script)
 
@@ -112,13 +111,15 @@ Multithreading enables a process to spawn multiple threads to accelerate its exe
 
 Comparing to the previous examples, there are 2 extra lines:
 
-1. ``#SBATCH --cpus-per-task=4``: this asks the system to assign 4 CPU cores per tasks. This number should be **no larger than and a divisor of 28 (e.g., 2, 4, 7, 14, 28)** because the majority of our nodes comes with 28 cores.
+1. ``#SBATCH --cpus-per-task=4``: this asks the system to assign 4 CPU cores per tasks, this number should be no larger than and a divisor of 28 **(Dalma)** or 128 **(Jubail)** to use all the cores on the nodes
 2. ``export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK``: this tells your applications, if OpenMP supported, to use all the CPU cores assigned to your job, by spawning an exact number of OpenMP threads.
 
 Remember, running a job is 2 steps process: 
 
 1. Request the resources. 
-2. Use the resources. This example is a perfect illustration. **Run with what you requested, no more, no less**.
+2. Use the resources.
+
+**Run with what you requested, no more, no less**.
 
 Pure MPI Job
 ------------
@@ -150,7 +151,7 @@ Now comes the pure MPI Jobs.
 
 Comparing to the 1 core example, there are 2 different lines:
 
-1. ``#SBATCH --ntasks=128``: This line requests 128 cores. **This number should be divisible by 128. E.g., 128,256...**
+1. ``#SBATCH --ntasks=128``: This line requests 128 cores, **this number should be divisible by 28 (Dalma) E.g., 28,56... or 128 (Jubail) . E.g., 128,256...**
 2. ``srun hostname``: This tells your application to run with MPI support, utilizing all CPU cores requested. 
 
 The old school ``mpiexec`` or ``mpirun`` are supported as well. But you need to load ``openmpi`` module in this case.
@@ -189,7 +190,8 @@ If your application support MPI + OpenMP hybrid parallelization, you could follo
     # Replace this with your actual command. 'serial-hello-world' for example
     srun hostname
 
-In this case, 
-1. the number of CPU cores requested is ``56 (ntasks) * 4 (cpus-per-task) = 224``. 
-2. This number should be divisible by 28 to use all the cores on the nodes. As in the multithreading job example, make sure ``cpus-per-task`` is a divisor of 28.
+In this case:
+
+1. The number of CPU cores requested is ``56 (ntasks) * 4 (cpus-per-task) = 224``. 
+2. This number should be divisible by 28 **(Dalma)** or 128 **(Jubail)** to use all the cores on the nodes.
 
