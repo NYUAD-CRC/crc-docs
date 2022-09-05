@@ -222,12 +222,12 @@
 </ol>
 <div class="section" id="batch-job-script">
 <h2>Batch Job Script<a class="headerlink" href="#batch-job-script" title="Permalink to this heading">¶</a></h2>
-<p>A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us.</p>
+<p>A job script is a text file describing the job. As discussed, the first part tells how much resources you want. The second part is what you want to run. Choose one of the following examples to start with. If you are not sure, contact us at         <a class="reference external" href="mailto:jubail&#46;support&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>support<span>&#64;</span>nyu<span>&#46;</span>edu</a></p>
 <div class="admonition-resources-limit admonition">
 <p class="admonition-title">Resources Limit</p>
 <p>The cluster is shared among the whole university. The HPC steering committee decides each year on resources limit for each department. We at NYUAD HPC center implement these limits.</p>
 </div>
-<p><strong>Kindly refer to the following :ref:`section &lt;partitions_summary&gt;` to know more about partitions and limits</strong></p>
+<p>Kindly refer to the following <a class="reference internal" href="quick_start.html#partitions-summary"><span class="std std-ref">section</span></a> to know more about partitions and limits</p>
 <p>If you ask for more resources than you can use, your job will stay in the queue forever. (e.g., you specify 10000 hours walltime in your job script)</p>
 <p>If you have multiple jobs (which is very normal), your jobs will start either immediately if the system is free and the quotas for you and your department have not been exhausted.</p>
 <div class="admonition-difference-between-cpus-cores-and-tasks admonition">
@@ -309,14 +309,15 @@ hostname
 </div>
 <p>Comparing to the previous examples, there are 2 extra lines:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--cpus-per-task=4</span></code>: this asks the system to assign 4 CPU cores per tasks. This number should be <strong>no larger than and a divisor of 28 (e.g., 2, 4, 7, 14, 28)</strong> because the majority of our nodes comes with 28 cores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--cpus-per-task=4</span></code>: this asks the system to assign 4 CPU cores per tasks, this number should be no larger than and a divisor of 28 <strong>(Dalma)</strong> or 128 <strong>(Jubail)</strong> to use all the cores on the nodes</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK</span></code>: this tells your applications, if OpenMP supported, to use all the CPU cores assigned to your job, by spawning an exact number of OpenMP threads.</p></li>
 </ol>
 <p>Remember, running a job is 2 steps process:</p>
 <ol class="arabic simple">
 <li><p>Request the resources.</p></li>
-<li><p>Use the resources. This example is a perfect illustration. <strong>Run with what you requested, no more, no less</strong>.</p></li>
+<li><p>Use the resources.</p></li>
 </ol>
+<p><strong>Run with what you requested, no more, no less</strong>.</p>
 </div>
 <div class="section" id="pure-mpi-job">
 <h2>Pure MPI Job<a class="headerlink" href="#pure-mpi-job" title="Permalink to this heading">¶</a></h2>
@@ -345,7 +346,7 @@ srun hostname
 </div>
 <p>Comparing to the 1 core example, there are 2 different lines:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=128</span></code>: This line requests 128 cores. <strong>This number should be divisible by 128. E.g., 128,256…</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=128</span></code>: This line requests 128 cores, <strong>this number should be divisible by 28 (Dalma) E.g., 28,56… or 128 (Jubail) . E.g., 128,256…</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">hostname</span></code>: This tells your application to run with MPI support, utilizing all CPU cores requested.</p></li>
 </ol>
 <p>The old school <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> or <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> are supported as well. But you need to load <code class="docutils literal notranslate"><span class="pre">openmpi</span></code> module in this case.</p>
@@ -380,9 +381,11 @@ module purge
 srun hostname
 </pre></div>
 </div>
-<p>In this case,
-1. the number of CPU cores requested is <code class="docutils literal notranslate"><span class="pre">56</span> <span class="pre">(ntasks)</span> <span class="pre">*</span> <span class="pre">4</span> <span class="pre">(cpus-per-task)</span> <span class="pre">=</span> <span class="pre">224</span></code>.
-2. This number should be divisible by 28 to use all the cores on the nodes. As in the multithreading job example, make sure <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> is a divisor of 28.</p>
+<p>In this case:</p>
+<ol class="arabic simple">
+<li><p>The number of CPU cores requested is <code class="docutils literal notranslate"><span class="pre">56</span> <span class="pre">(ntasks)</span> <span class="pre">*</span> <span class="pre">4</span> <span class="pre">(cpus-per-task)</span> <span class="pre">=</span> <span class="pre">224</span></code>.</p></li>
+<li><p>This number should be divisible by 28 <strong>(Dalma)</strong> or 128 <strong>(Jubail)</strong> to use all the cores on the nodes.</p></li>
+</ol>
 </div>
 </div>
 
