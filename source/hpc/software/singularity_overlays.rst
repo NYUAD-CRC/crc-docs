@@ -49,6 +49,40 @@ Run container with overlay filesystem
     #example:
     singularity shell  --overlay overlay-500M-700K.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
 
+
+.. admonition:: Analogy: To make things more understandable
+
+    The command you use to get into the overlay is as follows:
+
+    .. code-block:: bash
+
+        singularity shell  --overlay <chosen-file>.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
+
+    if you look closely it contains paths to two files
+
+    - **The Container**:  ``/share/apps/admin/singularity-images/centos-8.2.2004.sif``
+    - **The Overlay** :  ``<chosen-file>.ext3``
+    
+    You could think of the container as your personal computer (PC) and the overlay as an external hard disk or a pen drive. 
+
+    The thing about this conatiner PC is, that you wouldn't be able to write any files to it but you can write files to your pen drive (the overlay). You have also plugged in your /home and /scratch and hence these are also available from inside the container pc.
+
+    Each of these pendrives have their own capacity (quota). You could potentially create an overlay pendrive of the capacity (quota) you like and use it store your files(data).
+
+    When you run the above command, you basically login to your container PC and plug in these pendrives. It looks very similar to as compared to when you log in to Jubail. You could navigate through your files in /scratch and /home as usual. For files in the overlay you can cd to the desired folder and view the files in a similar manner.
+
+    For example:
+
+    .. code-block:: bash
+
+        cd /opt/data
+        ls -lrt data
+
+    For transferring data between any of these pendrives (``/home``, ``/scratch`` , ``overlay`` etc), you could use the 
+    usual ``cp``, ``mv`` commands. Any files/directories created outside ``/scratch``, ``/home`` (eg: ``/data`` or ``/opt``)
+    will reside inside the overlay filesystem that can only be accessed by plugging in the overlay filesystem using the
+    command mentioned above. 
+
 If you want to mount ext3 file as read and write, you can do that only with one process.
 
 If you have more than one process reading from the given ext3 file, it shall be mounted as read-only.
