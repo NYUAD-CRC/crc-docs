@@ -19,7 +19,7 @@ How to clone the **PyTorch** environment
     
         #conda create -n <name of the new env> --clone <existing env>
         #example:
-        conda create -n pytorch --clone pytorch-1.4
+        conda create -n pytorch --clone pytorch-1.11.0
         #You can also have the environment in a custom location
         conda create -p /scratch/wz22/conda-envs/pytroch
 
@@ -30,7 +30,7 @@ How to clone the **PyTorch** environment
 
         #conda create -n <name of the new env> --clone <path to existing env>
         #example:
-        conda create -n pytorch --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/pytorch-1.4
+        conda create -n pytorch --clone /share/apps/NYUAD5/miniconda/3-4.11.0/envs/pytorch-1.11.0
 
 Submitting Job Scripts
 ----------------------
@@ -46,7 +46,7 @@ A sample job submission script is shown below:
 .. code-block:: bash
 
     #!/bin/bash
-    #SBATCH -n 10
+    #SBATCH -c 10
     #SBATCH -t 48:00:00
     #SBATCH -p nvidia
     #SBATCH --gres=gpu:1

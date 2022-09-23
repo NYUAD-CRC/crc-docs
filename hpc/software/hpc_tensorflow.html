@@ -226,7 +226,7 @@ You can find the steps to set up the HPC Miniconda by clicking <a class="referen
 <span class="c1">#conda create -p &lt;path to local env&gt; --clone &lt;existing env&gt;</span>
 
 <span class="c1">#example:</span>
-conda create -n tf-gpu --clone tensorflow-1.15
+conda create -n tf-gpu --clone tensorflow-2.4.1
 </pre></div>
 </div>
 </div></blockquote>
@@ -235,7 +235,7 @@ conda create -n tf-gpu --clone tensorflow-1.15
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;path to existing env&gt;</span>
 <span class="c1">#example:</span>
-conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
+conda create -n tf-gpu --clone /share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1
 </pre></div>
 </div>
 </div></blockquote>
@@ -250,7 +250,7 @@ conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorfl
 </div>
 <p>A sample job submission script is shown below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH -n 10</span>
+<span class="c1">#SBATCH -c 10</span>
 <span class="c1">#SBATCH -t 48:00:00</span>
 <span class="c1">#SBATCH -p nvidia</span>
 <span class="c1">#SBATCH --gres=gpu:1</span>

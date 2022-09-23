@@ -217,7 +217,7 @@ You can find the steps to set up the HPC Miniconda by clicking <a class="referen
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;existing env&gt;</span>
 <span class="c1">#example:</span>
-conda create -n pytorch --clone pytorch-1.4
+conda create -n pytorch --clone pytorch-1.11.0
 <span class="c1">#You can also have the environment in a custom location</span>
 conda create -p /scratch/wz22/conda-envs/pytroch
 </pre></div>
@@ -228,7 +228,7 @@ conda create -p /scratch/wz22/conda-envs/pytroch
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;path to existing env&gt;</span>
 <span class="c1">#example:</span>
-conda create -n pytorch --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/pytorch-1.4
+conda create -n pytorch --clone /share/apps/NYUAD5/miniconda/3-4.11.0/envs/pytorch-1.11.0
 </pre></div>
 </div>
 </div></blockquote>
@@ -243,7 +243,7 @@ conda create -n pytorch --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/pytorch
 </div>
 <p>A sample job submission script is shown below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH -n 10</span>
+<span class="c1">#SBATCH -c 10</span>
 <span class="c1">#SBATCH -t 48:00:00</span>
 <span class="c1">#SBATCH -p nvidia</span>
 <span class="c1">#SBATCH --gres=gpu:1</span>
