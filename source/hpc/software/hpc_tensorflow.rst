@@ -27,7 +27,7 @@ How to clone the TensorFlow environment
         #conda create -p <path to local env> --clone <existing env>
 
         #example:
-        conda create -n tf-gpu --clone tensorflow-1.15
+        conda create -n tf-gpu --clone tensorflow-2.4.1
 
 2. **If you are using your own conda package**
 
@@ -35,7 +35,7 @@ How to clone the TensorFlow environment
 
         #conda create -n <name of the new env> --clone <path to existing env>
         #example:
-        conda create -n tf-gpu --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
+        conda create -n tf-gpu --clone /share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1
 
 Submitting Job Scripts
 ----------------------
@@ -51,7 +51,7 @@ A sample job submission script is shown below:
 .. code-block:: bash
 
     #!/bin/bash
-    #SBATCH -n 10
+    #SBATCH -c 10
     #SBATCH -t 48:00:00
     #SBATCH -p nvidia
     #SBATCH --gres=gpu:1

@@ -98,10 +98,10 @@ A sample output is shown below. The list of centralized and local installations 
                                          /scratch/wz22/conda-envs/myenv2
                                          /scratch/wz22/conda-envs/myenv3
                                          /scratch/wz22/conda-envs/myenv4
-    base                            *    /share/apps/NYUAD/miniconda/3-4.8.2
-    firefox                              /share/apps/NYUAD/miniconda/3-4.8.2/envs/firefox
-    tensorflow-1.15                      /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
-    tensorflow-2.0                       /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-2.0
+    base                            *    /share/apps/NYUAD5/miniconda/3-4.11.0
+    firefox                              /share/apps/NYUAD5/miniconda/3-4.11.0/envs/firefox
+    tensorflow-2.4.1                     /share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1
+    pytorch-1.11.0                       /share/apps/NYUAD5/miniconda/3-4.11.0/envs/pytorch-1.11.0
 
 
 **Cloning an Environment**
@@ -110,7 +110,7 @@ A sample output is shown below. The list of centralized and local installations 
 
     #conda create -n <name of the new env> --clone <path to existing env>
     #example: Here we clone the existing Tensorflow environment.
-    conda create -n tf-gpu --clone tensorflow-1.15
+    conda create -n tf-gpu --clone tensorflow-2.4.1
 
 Migrating / Sharing Environment
 -------------------------------
@@ -157,7 +157,7 @@ A sample job submission script is shown below:
 .. code-block:: bash
 
     #!/bin/bash
-    #SBATCH -n 10
+    #SBATCH -c 10
     #SBATCH -t 48:00:00
     #Other SBATCH commands go here
     
