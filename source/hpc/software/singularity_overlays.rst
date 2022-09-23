@@ -63,9 +63,9 @@ Run container with overlay filesystem
     - **The Container**:  ``/share/apps/admin/singularity-images/centos-8.2.2004.sif``
     - **The Overlay** :  ``<chosen-file>.ext3``
     
-    You could think of the container as your personal computer (PC) and the overlay as an external hard disk or a pen drive. 
+    You could think of the container as your personal computer (PC) and the overlay as an external hard disk or a pendrive. 
 
-    The thing about this conatiner PC is, that you wouldn't be able to write any files to it but you can write files to your pen drive (the overlay). You have also plugged in your /home and /scratch and hence these are also available from inside the container pc.
+    The thing about this conatiner PC is, that you wouldn't be able to write any files to it but you can write files to your pendrive (the overlay). You have also plugged in your /home and /scratch and hence these are also available from inside the container pc.
 
     Each of these pendrives have their own capacity (quota). You could potentially create an overlay pendrive of the capacity (quota) you like and use it store your files(data).
 
