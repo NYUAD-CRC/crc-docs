@@ -1,6 +1,11 @@
 CPCM 
 =====
-
+.. csv-table:: 2022
+   :widths: auto
+   :header-rows: 1
+   :class: publication-table
+   :file: data/cpcm-2022.csv
+   
 .. csv-table:: 2021
    :widths: auto
    :header-rows: 1
