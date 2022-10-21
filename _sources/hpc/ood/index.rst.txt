@@ -33,7 +33,7 @@ These are the different features supported by OOD
      
         <iframe width="560" height="315" src="https://www.youtube.com/embed/2Nc1eAl8GSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Juputer Notebbok on OOD
+Jupyter Notebook on OOD
 -----------------------
 To access JupyetrNotebook for OOD please follow this video:
  
