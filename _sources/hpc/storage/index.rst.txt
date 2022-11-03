@@ -66,7 +66,7 @@ Summary
       - 20GB, 150K Files	
       - 5TB, 500K Files	
       - 5TB, 500K Files	
-      - 5TB, 125K Files
+      - No Limit
 
 
   
@@ -83,15 +83,13 @@ Know Your Quota
 
 ::
 
-                        DISK SPACE                # FILES (1000's)
-    filesystem       size      quota            number      quota
-                --------------------------   --------------------------
-    /home         131KB     20GB   ( 0%)           0        150 ( 0%)
-    /scratch      220GB     5242GB ( 4%)           4        500 ( 1%)
-    /work         4KB       5242GB ( 0%)           0        512 ( 0%)
-    /archive      418GB     5242GB ( 8%)           3        125 ( 3%)
-
-
+                             DISK SPACE                # FILES (1000's)
+          filesystem       size      quota            number      quota
+                      --------------------------   --------------------------
+               /home     5990MB       20GB ( 29%)        60       150 ( 40%)
+            /scratch       67GB     5000GB (  1%)       191       500 ( 38%)
+               /work       24KB     5000GB (  0%)         0       500 (  0%)
+            /archive          0          0 (  0%)         0         0 (  0%)
 
 
 For data transfers please refer to the **Data Trasnfers** section :ref:`here <data_transfers>`

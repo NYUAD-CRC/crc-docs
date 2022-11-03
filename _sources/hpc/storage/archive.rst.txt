@@ -78,23 +78,20 @@ The ``archive.sh`` does the follwoing:
 * Once the tar creation is done, the tar is archived using ``dmpfput``
 
 .. tip::
-    If you have a larger directory to be archived, you could use ``screen`` sessions to run the 
-    script in background. An example is given below:
-
-    .. code-block:: bash
-        
-        module load screen
-        screen -dm bash -c "archive.sh /scratch/wz22/abc/def 2>&1 | tee archive.log"
-
-    The above command will initiate the ``archive.sh`` in a screen session which shall run in the 
-    background. It will also write the output to a file named ``archived.log``.
-
-    You could learn more about the ``screen`` commands using the link `here <https://www.geeksforgeeks.org/screen-command-in-linux-with-examples/>`__
-    or using the command below:
-
+    If you have a larger directory to be archived, you could use **screen.sh** script to run the 
+    command in background as follows:
+    
     .. code-block:: bash
 
-        screen -h  
+        #screen.sh <command to be executed>
+
+        #example:
+        screen.sh "archive.sh /scratch/wz22/abc/def"   
+         
+        This script will do three things:
+        * Execute the command in the background (inside the screen).
+        * Echo/ Print the command to the terminal.
+        * keep track of the command and its progress in a file in the same working directory called output_background.log
 
  
 .. note::

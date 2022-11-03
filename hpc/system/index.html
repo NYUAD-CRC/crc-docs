@@ -373,6 +373,21 @@ Windows users can use <a class="reference external" href="https://winscp.net/eng
 <p class="admonition-title">Note</p>
 <p>For data sharing among collaborators, Kindly refer to the section <a class="reference internal" href="../storage/data_sharing.html"><span class="doc">here</span></a></p>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you have a larger directory to be transfered, this script <strong>screen.sh</strong> can be used  to run the command in the background as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#screen.sh &lt;command to be executed&gt;</span>
+
+<span class="c1">#example:</span>
+screen.sh <span class="s2">&quot;rsync -av /scratch/</span><span class="nv">$USER</span><span class="s2">/my_input_data /scratch/</span><span class="nv">$USER</span><span class="s2">/my_run_dir&quot;</span>
+
+This script will <span class="k">do</span> three things:
+* Execute the <span class="nb">command</span> <span class="k">in</span> the background <span class="o">(</span>inside the screen<span class="o">)</span>.
+* Echo/ Print the <span class="nb">command</span> to the terminal.
+* keep track of the <span class="nb">command</span> and its progress <span class="k">in</span> a file <span class="k">in</span> the same working directory called output_background.log
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="special-compute-nodes">
 <span id="id2"></span><h2>Special Compute Nodes<a class="headerlink" href="#special-compute-nodes" title="Permalink to this heading">¶</a></h2>
