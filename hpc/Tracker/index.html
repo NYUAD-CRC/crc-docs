@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Research Publications &mdash; CRC Documentation  documentation</title>
+  <title>Tracker &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -46,8 +46,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CGSB" href="research_cgsb.html" />
-    <link rel="prev" title="Installing Jupyter Kernels" href="../ood/jupyter_kernels.html" /> 
+    <link rel="next" title="Research Computing Support" href="../../rcs/rcs.html" />
+    <link rel="prev" title="HPC Load" href="../hpc_load/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,23 +102,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Research Publications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="research_cgsb.html">CGSB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_chemistry.html">Chemistry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_computer.html">Computer Science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_cpcm.html">CPCM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_engg.html">Engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_math.html">Mathematics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_physics.html">Physics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_psychology.html">Psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_shanghai.html">NYU Shanghai</a></li>
-<li class="toctree-l2"><a class="reference internal" href="research_socialscience.html">Social Science</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Tracker/index.html">Tracker</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tracker</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
 <ul>
@@ -178,7 +166,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Research Publications</li>
+      <li>Tracker</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -195,104 +183,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="research-publications">
-<h1>Research Publications<a class="headerlink" href="#research-publications" title="Permalink to this heading">¶</a></h1>
+  <div class="section" id="tracker">
+<h1>Tracker<a class="headerlink" href="#tracker" title="Permalink to this heading">¶</a></h1>
 <p>This section highlights a few of the research works which have
 been carried out on the HPCs (Butinah,Dalma,Jubail) at NYU Abu Dhabi.</p>
+<!DOCTYPE html>
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+ <!-- http://t.co/dKP3o1e -->
+ <meta name="HandheldFriendly" content="True">
+ <meta name="MobileOptimized" content="320">
 
-<html>
-   <head>
-      <title>Total HPC Publications</title>
-      <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
-      </script>
-      <script type = "text/javascript">
-         google.charts.load('current', {packages: ['corechart']});     
-      </script>
-   </head>
-   
-   <body>
-      <div id = "container" style = "width: 700px; height: 400px; margin: 0 auto">
-      </div>
-      <script language = "JavaScript">
-         function drawChart() {
-            // Define the chart to be drawn.
-            var data = google.visualization.arrayToDataTable([
-               ['Year', 'No. of Publications'],
-               ['2013',1],
-               ['2014',12],
-               ['2015',16],
-               ['2016',18],
-               ['2017',  23],
-               ['2018',  49],
-               ['2019',  45],
-               ['2020',  49],
-               ['2021', 40],
-               ['2022', 30]
-            ]);
+ <title>Google Graph and CSV</title>
+ <meta name="description" content="test">
 
-            var options = {title: 'Publications Per Year'}; 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ <script src="jquery.csv.min.js"></script>
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-            // Instantiate and draw the chart.
-            var chart = new google.visualization.ColumnChart(document.getElementById('container'));
-            chart.draw(data, options);
+<script type="text/javascript"> // load the visualisation API
+  google.load('visualization', '1', { packages: ['corechart', 'controls'] });
+</script>
+
+<script type="text/javascript">
+function drawVisualization() {
+   $.get("ifr.csv", function(csvString) {
+      // transform the CSV string into a 2-dimensional array
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+      // this new DataTable object holds all the data
+      var data = new google.visualization.arrayToDataTable(arrayData);
+      // CAPACITY - En-route ATFM delay - YY - CHART
+      var crt_ertdlyYY = new google.visualization.ChartWrapper({
+         chartType: 'LineChart',
+         containerId: 'crt_ertdlyYY',
+         dataTable: data,
+         options:{
+            width: 450, height: 160,
+            title: 'EU-wide en-route ATFM delays (year to date)',
+            titleTextStyle : {color: 'grey', fontSize: 11},
          }
-         google.charts.setOnLoadCallback(drawChart);
-      </script>
-   </body>
-</html>
+      });
+      crt_ertdlyYY.draw();
+   });
+}
+google.setOnLoadCallback(drawVisualization)
+</script>
 
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Department', 'Publications'],
-          ['CGSB',     55],
-          ['Chemistry', 45],
-          ['Computer Science',  17],
-          ['CPCM', 39],
-          ['Engineering',    20],
-          ['Mathematics',7],
-          ['Physics',89],
-          ['NYU Shanghai',6],
-          ['Social Science',3],
-          ['Psychology',2]
-        ]);
-
-        var options = {
-          title: 'Publications Per Department'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="piechart" style="width: 700px; height: 400px;"></div>
-  </body>
-</html>
-
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="research_cgsb.html">CGSB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_chemistry.html">Chemistry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_computer.html">Computer Science</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_cpcm.html">CPCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_engg.html">Engineering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_math.html">Mathematics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_physics.html">Physics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_psychology.html">Psychology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_shanghai.html">NYU Shanghai</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_socialscience.html">Social Science</a></li>
-</ul>
-</div>
+<div id="crt_ertdlyYY"></div>
 </div>
 
 
@@ -301,8 +242,8 @@ been carried out on the HPCs (Butinah,Dalma,Jubail) at NYU Abu Dhabi.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="research_cgsb.html" class="btn btn-neutral float-right" title="CGSB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../ood/jupyter_kernels.html" class="btn btn-neutral float-left" title="Installing Jupyter Kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../rcs/rcs.html" class="btn btn-neutral float-right" title="Research Computing Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../hpc_load/index.html" class="btn btn-neutral float-left" title="HPC Load" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
