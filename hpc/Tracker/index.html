@@ -201,7 +201,7 @@ been carried out on the HPCs (Butinah,Dalma,Jubail) at NYU Abu Dhabi.</p>
  <meta name="description" content="test">
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
- <script src="jquery.csv.min.js"></script>
+ <script src="/hpc/Tracker/jquery.csv.min.js"></script>
  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 <script type="text/javascript"> // load the visualisation API
@@ -210,7 +210,7 @@ been carried out on the HPCs (Butinah,Dalma,Jubail) at NYU Abu Dhabi.</p>
 
 <script type="text/javascript">
 function drawVisualization() {
-   $.get("ifr.csv", function(csvString) {
+   $.get("/hpc/Tracker/ifr.csv", function(csvString) {
       // transform the CSV string into a 2-dimensional array
       var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
 
