@@ -165,21 +165,6 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 .. note::
 
   For data sharing among collaborators, Kindly refer to the section :doc:`here </hpc/storage/data_sharing>`
-
-.. Important::
-    If you have a larger directory to be transfered, this script **screen.sh** can be used  to run the command in the background as follows:
-    
-    .. code-block:: bash
-
-        #screen.sh <command to be executed>
-
-        #example:
-        screen.sh "rsync -av /scratch/$USER/my_input_data /scratch/$USER/my_run_dir"   
-         
-        This script will do three things:
-        * Execute the command in the background (inside the screen).
-        * Echo/ Print the command to the terminal.
-        * keep track of the command and its progress in a file in the same working directory called output_background.log 
    
 .. _special_compute_nodes: 
 
