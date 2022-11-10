@@ -19,7 +19,6 @@ HPC Documentation
    /hpc/help/index
    /hpc/training/index 
    /hpc/hpc_load/index
-   /hpc/Tracker/index
 
 * :doc:`Where to Find What</hpc/hpc>`
 * :doc:`Accounts </hpc/accounts/index>`
@@ -32,4 +31,3 @@ HPC Documentation
 * :doc:`Help </hpc/help/index>` 
 * :doc:`HPC Load</hpc/hpc_load/index>`
 * :doc:`HPC Training </hpc/training/index>`
-* :doc:`Tracker </hpc/Tracker/index>`
