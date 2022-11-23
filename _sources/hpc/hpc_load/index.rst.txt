@@ -20,3 +20,29 @@ The following table shows the utilization of the GPU nodes with their respective
     
     <iframe src="https://nyuad-crc.github.io/hpc-load/gpu.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
 
+
+
+Cmap
+----
+
+``cmap`` is a monitor utility to display in a compact mode, HPC utilization as well as information about 
+jobs and/or nodes
+
+Allocated resources as per the batch system
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+    
+    <iframe  src="https://nyuad-crc.github.io/hpc-load/cmap.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
+
+
+
+Memory usage in the nodes
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. raw:: html
+    
+    <iframe  src="https://nyuad-crc.github.io/hpc-load/cmap2.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
+
+

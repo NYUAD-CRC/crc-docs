@@ -25,9 +25,9 @@ High Performance Computing
     * - Name
       - Position
     * - **Benoit Marchand**
-      - Senior HPC Computational Specialist
+      - Senior Computational Scientist
     * - **Jorge Naranjo**
-      - Senior HPC Computational Specialist
+      - Senior Computational Scientist
     * - **Waqqas Zia**
       - HPC Applicaions Specialist
     * - **Mennatallah Saleh**
