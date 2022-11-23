@@ -9,7 +9,6 @@ been carried out on the HPCs (Butinah,Dalma,Jubail) at NYU Abu Dhabi.
      :file: research_plot.html
 
 
-   
 .. toctree::
    :glob:
    :maxdepth: 1
