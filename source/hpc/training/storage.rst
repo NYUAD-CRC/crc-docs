@@ -8,7 +8,7 @@ In short, you should
 - Put all your data to  ``$SCRATCH`` and run your jobs from there. 
 - Only a small persistent fraction to ``$HOME`` (e.g., source code, executables). 
 - For long-term storage, archive them to ``$ARCHIVE``. 
-- ``$WORK`` is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.
+- ``$ARCHIVE`` is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.
 
 Backing up is a user's own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.
 
@@ -28,38 +28,31 @@ Summary
     * - 
       - $HOME
       - $SCRATCH
-      - $WORK
       - $ARCHIVE
     * - Use for storing 
       - source code / executables 
-      - data 
-      - anything 
+      - data  
       - anything
     * - Accessible From
       - login / compute	
-      - login / compute	
-      - login	
+      - login / compute		
       - login
     * - Use to Run Jobs	
       - No	
       - Yes	
-      - No	
       - No
     * - Retention Time (Days)	
       - No Limit	
       - 90	
-      - 120	
       - No Limit
     * - Mountable	
       - No	
-      - No	
-      - Yes	
-      - No
+      - No		
+      - Yes
     * - Default Quota (star)	
       - 20GB, 150K Files	
-      - 5TB, 500K Files	
-      - 5TB, 500K Files	
-      - 5TB, 125K Files
+      - 5TB, 500K Files		
+      - No Limit
 
 Know Your Quota
 ---------------
