@@ -16,7 +16,7 @@ The NYUAD HPC is also part of the Globus network.
 
 
 .. Important::
-    The Globus Endpoint has **ONLY** ``$WORK`` mounted. Users can access the same in the Globus portal by specify ``/NetID``. This will correspond to ``/work/Netid``.
+    The Globus Endpoint has **ONLY** ``$ARCHIVE`` mounted. Users can access the same in the Globus portal by specify ``/NetID``. This will correspond to ``/work/Netid``.
 
 
 When to use Globus?

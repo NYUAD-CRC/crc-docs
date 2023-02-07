@@ -46,3 +46,12 @@ Memory usage in the nodes
     <iframe  src="https://nyuad-crc.github.io/hpc-load/cmap2.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
 
 
+.. raw:: html
+    
+    <iframe height=500px width=100% src="https://nyuad-crc.github.io/hpc-load/accumulated_chart.html" style="display:block; border:none;"></iframe>
+
+The following table shows the GPU Utilization over the time.
+
+.. raw:: html
+    
+    <iframe height=500px width=100% src="https://nyuad-crc.github.io/hpc-load/gpu_util.html" style="display:block; border:none;"></iframe>

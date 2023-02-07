@@ -21,7 +21,7 @@ There are essentially four important components a HPC user needs to be familiar 
     *   - :doc:`System </hpc/system/index>`
         - More about the system hardware and how to access it.
     *   - :doc:`Storage </hpc/storage/index>`
-        - Page about user quotas and different types of storage available (``$WORK``, ``$SCRATCH``, ``$HOME``, ``$ARCHIVE``).
+        - Page about user quotas and different types of storage available (``$SCRATCH``, ``$HOME``, ``$ARCHIVE``).
     *   - :doc:`Software </hpc/software/index>`
         - More about the software stack and modules, and what it offers you in terms of your application (MPI,Python,R,Singularity)
     *   - :doc:`Jobs Management </hpc/jobs/index>`
