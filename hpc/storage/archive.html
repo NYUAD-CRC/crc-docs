@@ -264,8 +264,12 @@ of the file plays an important role in the same. There are essentially two types
 <code class="docutils literal notranslate"><span class="pre">/archive</span></code>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code>: The file has a copy on the storage and the tape library as well.</p></li>
+<li><p>In the above figure, <code class="docutils literal notranslate"><span class="pre">file1,file2,file3,file4,file5</span></code> are in the <code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code> as they
+are both available on the storage and the tape drive.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code>: The file is only available on the tape library and has been moved (released)
 from the storage to free up space.</p></li>
+<li><p>In the above figure, <code class="docutils literal notranslate"><span class="pre">file6,file7,file8,file9,file10</span></code> are in the <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span></code> state as
+they have been released/moved from the storage to the tape drive.</p></li>
 </ul>
 </div>
 <div class="section" id="how-to-identify-the-state-of-a-file">
