@@ -71,8 +71,12 @@ of the file plays an important role in the same. There are essentially two types
 ``/archive``. 
 
 - ``archived state``: The file has a copy on the storage and the tape library as well.
+- In the above figure, ``file1,file2,file3,file4,file5`` are in the ``archived state`` as they 
+  are both available on the storage and the tape drive.
 - ``released archived state``: The file is only available on the tape library and has been moved (released)
   from the storage to free up space.
+- In the above figure, ``file6,file7,file8,file9,file10`` are in the ``released archived`` state as
+  they have been released/moved from the storage to the tape drive.
 
 
 How to identify the state of a file
