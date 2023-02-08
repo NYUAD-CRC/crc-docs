@@ -229,10 +229,10 @@ Instead of looping through each of the iterations one by one, you can use the SL
 <p>The individual tasks in the array are distinguished by an environment variable, <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> , which Slurm sets to a different value for each task. You set the range of values with the <code class="docutils literal notranslate"><span class="pre">--array</span></code> or <code class="docutils literal notranslate"><span class="pre">-a</span></code> parameter.</p>
 <div class="section" id="examples-of-the-array-parameter">
 <h2>Examples of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> parameter<a class="headerlink" href="#examples-of-the-array-parameter" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch --array<span class="o">=</span><span class="m">0</span>-7       <span class="c1"># $SLURM_ARRAY_TASK_ID takes values from 0 to 7 inclusive</span>
-sbatch --array<span class="o">=</span><span class="m">1</span>,3,5,7   <span class="c1"># $SLURM_ARRAY_TASK_ID takes the listed values</span>
-sbatch --array<span class="o">=</span><span class="m">1</span>-7:2     <span class="c1"># Step-size of 2, same as the previous example</span>
-sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span class="c1"># Allows no more than 10 of the jobs to run simultaneously</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">0</span>-7<span class="w">       </span><span class="c1"># $SLURM_ARRAY_TASK_ID takes values from 0 to 7 inclusive</span>
+sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>,3,5,7<span class="w">   </span><span class="c1"># $SLURM_ARRAY_TASK_ID takes the listed values</span>
+sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>-7:2<span class="w">     </span><span class="c1"># Step-size of 2, same as the previous example</span>
+sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>-100%10<span class="w">  </span><span class="c1"># Allows no more than 10 of the jobs to run simultaneously</span>
 </pre></div>
 </div>
 </div>
@@ -246,7 +246,7 @@ sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span cla
 <span class="c1">#SBATCH –a 1-50</span>
 
 <span class="c1">#your application commands go here</span>
-./my-code file.<span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span>
+./my-code<span class="w"> </span>file.<span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span>
 </pre></div>
 </div>
 </div>
@@ -255,9 +255,9 @@ sbatch --array<span class="o">=</span><span class="m">1</span>-100%10  <span cla
 <p>Sometimes, it may be easier to write out a file with a list of command lines to execute, one per line. For example, you have multiple instances of a <code class="docutils literal notranslate"><span class="pre">python</span></code> program with different
 set of arguments to run. In this case, your “file of commands” could look like:</p>
 <p><code class="docutils literal notranslate"><span class="pre">jobs.txt</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python myProgram.py arg1 arg2
-python myProgram.py arg3 arg4
-python myProgram.py arg5 arg6
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>myProgram.py<span class="w"> </span>arg1<span class="w"> </span>arg2
+python<span class="w"> </span>myProgram.py<span class="w"> </span>arg3<span class="w"> </span>arg4
+python<span class="w"> </span>myProgram.py<span class="w"> </span>arg5<span class="w"> </span>arg6
 </pre></div>
 </div>
 <p>Now you can write a job submission script that looks like:</p>
@@ -267,12 +267,12 @@ python myProgram.py arg5 arg6
 <span class="c1">#SBATCH --cpus-per-task=1</span>
 <span class="c1">#SBATCH --array=1-3</span>
 
-srun <span class="k">$(</span>head -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> jobs.txt <span class="p">|</span> tail -n <span class="m">1</span><span class="k">)</span>
+srun<span class="w"> </span><span class="k">$(</span>head<span class="w"> </span>-n<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="w"> </span>jobs.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>Note in the above example <code class="docutils literal notranslate"><span class="pre">--array=1-3</span></code> - the last number corresponds to the total number of jobs (or command lines) in your ” file of commands” <code class="docutils literal notranslate"><span class="pre">jobs.txt</span></code> file. The <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-n</span> <span class="pre">...</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">1</span></code> part is just a simple trick to read the <code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code> th line from the file (for example, if the task ID is 3, <code class="docutils literal notranslate"><span class="pre">head</span></code> reads the first 3 lines from <code class="docutils literal notranslate"><span class="pre">jobs.txt</span></code>, and then <code class="docutils literal notranslate"><span class="pre">tail</span></code> takes the last line from those 3 lines, which is of course the 3rd line in the file.)</p>
 <p>Now you can submit this to the cluster by doing:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch submit.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>submit.sh
 </pre></div>
 </div>
 <p>A job array looks like a normal job, except that the jobid is extended with a taskid – eg <code class="docutils literal notranslate"><span class="pre">466546_[1-50]</span></code> and
@@ -305,7 +305,7 @@ your computations. Follow the corresponding highlighted links for a much more de
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

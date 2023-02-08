@@ -202,14 +202,14 @@
 <p>You could get an interactive session directly from your terminal, on compute nodes. Only short interactive jobs should be used (e.g., experimenting with new modifications to your Matlab code).
 You could also use the <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition for quick testing purposes. You can find more about it <a class="reference internal" href="quick_start.html#preempt-partition"><span class="std std-ref">here</span></a></p>
 <p>To start an interactive session, use srun command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --pty -p preempt -t <span class="m">30</span>:00 -n <span class="m">1</span> /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--pty<span class="w"> </span>-p<span class="w"> </span>preempt<span class="w"> </span>-t<span class="w"> </span><span class="m">30</span>:00<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <p>Then you can run your applications on the terminal directly. E.g.,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ srun --pty -p preempt -t <span class="m">30</span>:00 -n <span class="m">1</span> /bin/bash
-srun: job <span class="m">775175</span> queued and waiting <span class="k">for</span> resources
-srun: job <span class="m">775175</span> has been allocated resources
-<span class="o">[</span>wz22@compute-21-1 ~<span class="o">]</span>$
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>-p<span class="w"> </span>preempt<span class="w"> </span>-t<span class="w"> </span><span class="m">30</span>:00<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>/bin/bash
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">775175</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">775175</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+<span class="o">[</span>wz22@compute-21-1<span class="w"> </span>~<span class="o">]</span>$
 </pre></div>
 </div>
 <p>In this example, user <code class="docutils literal notranslate"><span class="pre">wz22</span></code> requested 1 CPU core (<code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">1</span></code>) on login node (<code class="docutils literal notranslate"><span class="pre">login-0-1</span></code>) for 30 minutes on the high priority <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition. The system responded, assigned a job id (<code class="docutils literal notranslate"><span class="pre">775175</span></code>),
@@ -222,10 +222,10 @@ exhausted with no available resources to you. You need to wait in this circumsta
 <p>With interactive session you can have the same arguments passed TO <code class="docutils literal notranslate"><span class="pre">srun</span></code> as you pass into the job script.</p>
 <p>For example:</p>
 <p>If you need an interactive session for 8 hours for one cpu and 8G of memory, you can run the follwoing command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1 ~<span class="o">]</span>$ srun -n <span class="m">1</span> -m  8G -t <span class="m">8</span>:00:00 --pty /bin/bash
-srun: job <span class="m">775176</span> queued and waiting <span class="k">for</span> resources
-srun: job <span class="m">775176</span> has been allocated resources
-<span class="o">[</span>wz22@compute-21-1 ~<span class="o">]</span>$
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-m<span class="w">  </span>8G<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">775176</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">775176</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+<span class="o">[</span>wz22@compute-21-1<span class="w"> </span>~<span class="o">]</span>$
 </pre></div>
 </div>
 <p>To exit the interactive session, type <code class="docutils literal notranslate"><span class="pre">Ctrl+d</span></code>, or</p>
@@ -248,7 +248,7 @@ srun: job <span class="m">775176</span> has been allocated resources
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

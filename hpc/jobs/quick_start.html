@@ -403,14 +403,14 @@
 <span class="c1">#Resource requiremenmt commands end here</span>
 
 <span class="c1">#Add the lines for running your code/application</span>
-module purge
-module load abc
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>abc
 
 <span class="c1">#activate any environments if required</span>
-conda activate myenv
+conda<span class="w"> </span>activate<span class="w"> </span>myenv
 
 <span class="c1">#Execute the code</span>
-python abc.py
+python<span class="w"> </span>abc.py
 </pre></div>
 </div>
 </div>
@@ -425,7 +425,7 @@ a few of the basic commands a user can use for his/her jobs:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch file1
+<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>file1
 </pre></div>
 </div>
 </td>
@@ -438,8 +438,8 @@ containing the details of resource requirements and commands to be executed.</p>
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> command shows all your jobs (Runing and Pending) present in the queue</p></td>
 </tr>
-<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel <span class="m">127445</span>
-scancel -u wz22
+<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span><span class="m">127445</span>
+scancel<span class="w"> </span>-u<span class="w"> </span>wz22
 </pre></div>
 </div>
 </td>
@@ -494,7 +494,7 @@ or you can cancel all the jobs using your NetId.</p></td>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

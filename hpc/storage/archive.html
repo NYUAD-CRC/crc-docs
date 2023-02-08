@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Data Sharing with Collaborators" href="data_sharing.html" />
-    <link rel="prev" title="Mount $WORK with SSHFS" href="mount_work.html" /> 
+    <link rel="prev" title="$HOME and $SCRATCH" href="home_scratch.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,13 +100,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Storage</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="work.html">$WORK</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">$ARCHIVE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-inside-archive">What’s inside <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-of-the-file-in-archive">State of the file in <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-identify-the-state-of-a-file">How to identify the state of a file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-archive-and-de-archive">How to Archive and De Archive</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quick-glance-into-the-archive-commands">Quick Glance into the archive commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#archive-sh">archive.sh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-archive-with-sshfs">Mount $ARCHIVE with SSHFS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
 </ul>
@@ -198,25 +203,173 @@
             
   <div class="section" id="archive">
 <h1>$ARCHIVE<a class="headerlink" href="#archive" title="Permalink to this heading">¶</a></h1>
-<p>When storage is shared among many users rules must be set to prevent users to consume disk space
+<p>In order to simplify the storage mount points and the user experience in storing their data on the
+Jubail HPC, We have merged the functionalities of two storages, <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> (<code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code>) and
+<code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> (<code class="docutils literal notranslate"><span class="pre">/archive/NetID&gt;</span></code>) into a single storage <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> can be accessed on login nodes as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $ARCHIVE
+# is equivalent to
+cd /archive/&lt;your-NetID&gt;
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code> has been discontinued from 2nd Feb 2023. The previous data in <code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code> is
+moved to <code class="docutils literal notranslate"><span class="pre">/archive/work/&lt;NetID&gt;</span></code> as a temporary staging area to allow users to move out their
+existing data from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> to archive (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;/…</span></code>). The <code class="docutils literal notranslate"><span class="pre">/archive/work/&lt;NetID&gt;</span></code> will be
+available for the users from the 3rd of Feb 2023 and would be deprecated after a period of 180 days.</p>
+</div>
+<p>When storage is shared among many users, rules must be set to prevent users to consume disk space
 excessively at the expense of others. For this purpose HPC systems enforce disk quotas to users and
-groups of users. The regular cleanup of the <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> storage is essential to maintain its efficiency
-and easily manage the capacity.
-The current policy is to remove any files(data) that have not been accessed (viewed, created or modified)
+groups of users. The regular cleanup of the <code class="docutils literal notranslate"><span class="pre">/scratch/&lt;NetID&gt;</span></code> storage is essential to maintain its efficiency
+and easily manage the capacity.</p>
+<p>The current policy is to remove any files(data) that have not been accessed (viewed, created or modified)
 for more than 90 days.</p>
 <p>On the HPC disk quotas are enforced on <code class="docutils literal notranslate"><span class="pre">/home</span></code> and <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> (not <code class="docutils literal notranslate"><span class="pre">/archive</span></code> ). There are two
 quota constraints: the total amount of disk space and the total number of files. Once you reach a quota
 limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
 will generate a lot of data.</p>
+<p>We urge our users to clean up their <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> storage regularily.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">myquota</span></code> command in the terminal on the HPC to check your current usage and quota. Example output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="n">DISK</span> <span class="n">SPACE</span>                <span class="c1"># FILES (1000&#39;s)</span>
 <span class="n">filesystem</span>       <span class="n">size</span>      <span class="n">quota</span>            <span class="n">number</span>      <span class="n">quota</span>
             <span class="o">--------------------------</span>   <span class="o">--------------------------</span>
 <span class="o">/</span><span class="n">home</span>         <span class="mi">131</span><span class="n">KB</span>     <span class="mi">6442</span><span class="n">MB</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>           <span class="mi">0</span>        <span class="mi">100</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>
 <span class="o">/</span><span class="n">scratch</span>      <span class="mi">220</span><span class="n">GB</span>     <span class="mi">5242</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">4</span><span class="o">%</span><span class="p">)</span>           <span class="mi">4</span>        <span class="mi">500</span> <span class="p">(</span> <span class="mi">1</span><span class="o">%</span><span class="p">)</span>
-<span class="o">/</span><span class="n">work</span>         <span class="mi">4</span><span class="n">KB</span>       <span class="mi">5242</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>           <span class="mi">0</span>        <span class="mi">512</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>
 <span class="o">/</span><span class="n">archive</span>      <span class="mi">418</span><span class="n">GB</span>     <span class="mi">5242</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">8</span><span class="o">%</span><span class="p">)</span>           <span class="mi">3</span>        <span class="mi">125</span> <span class="p">(</span> <span class="mi">3</span><span class="o">%</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="section" id="what-s-inside-archive">
+<h2>What’s inside <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code><a class="headerlink" href="#what-s-inside-archive" title="Permalink to this heading">¶</a></h2>
+<p>The archive processes are described below in the form of a flowchart.</p>
+<img alt="../../_images/archive2.jpg" src="../../_images/archive2.jpg" />
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">archive</span></code> comprises of two types of storages:</p>
+<ul>
+<li><p>Normal Storage (fast)</p></li>
+<li><p>Long Term Storage - Tape Library (slow)</p></li>
+</ul>
+</li>
+<li><p><strong>Process 1 :</strong> The data in the Tape Library is synced with the storage every 12 hours, so that a copy of the
+files is available on the Tape library as well.</p></li>
+<li><p><strong>Process 2 :</strong> Once the usage of the total storage hits 80% , the system atomatically frees up space by keeping only
+a copy of the file on the tape library (which can be retrieved later).</p></li>
+<li><p>The freeing up of space is in accordance with the modification timestamp of the files which are oldest.</p></li>
+</ul>
+</div>
+<div class="section" id="state-of-the-file-in-archive">
+<h2>State of the file in <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code><a class="headerlink" href="#state-of-the-file-in-archive" title="Permalink to this heading">¶</a></h2>
+<p>Since the <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> acts both as a storage soultion and long term storage (tape drive) as well, hence the state
+of the file plays an important role in the same. There are essentially two types of states for a file in
+<code class="docutils literal notranslate"><span class="pre">/archive</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code>: The file has a copy on the storage and the tape library as well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code>: The file is only available on the tape library and has been moved (released)
+from the storage to free up space.</p></li>
+</ul>
+</div>
+<div class="section" id="how-to-identify-the-state-of-a-file">
+<h2>How to identify the state of a file<a class="headerlink" href="#how-to-identify-the-state-of-a-file" title="Permalink to this heading">¶</a></h2>
+<p>In order to identify the state of files in a directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#dmfls -d &lt;path to archive directory&gt;</span>
+
+<span class="c1">#for example:</span>
+dmfls<span class="w"> </span>-d<span class="w"> </span>/archive/wz22/abc
+</pre></div>
+</div>
+<p>In order to identify the state of a single file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#dmfls &lt;path to archive file&gt;</span>
+
+<span class="c1">#for example:</span>
+dmfls<span class="w"> </span>-d<span class="w"> </span>/archive/wz22/abc/input.txt
+</pre></div>
+</div>
+<p>A sample output of the above directory command is shown below</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login4<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>dmfls<span class="w"> </span>-d<span class="w"> </span>/archive/wz22/abc
+./hwloc/gnu/build.txt:<span class="w">  </span>exists<span class="w"> </span>archived,
+./hwloc/src/hwloc-1.7.1.tar.bz2:<span class="w">  </span>exists<span class="w"> </span>archived,
+./blat/src/bedGraphToBigWig:<span class="w">  </span>exists<span class="w"> </span>archived,
+./blat/src/liftOver:<span class="w"> </span>released<span class="w"> </span>exists<span class="w"> </span>archived,
+./blat/src/blat:<span class="w">  </span>exists<span class="w"> </span>archived,
+./cufflinks/src/cufflinks-2.0.2.Linux_x86_64.tar.gz:<span class="w"> </span>released<span class="w"> </span>exists<span class="w"> </span>archived,
+./cufflinks/src/cufflinks-2.1.1.Linux_x86_64.tar.gz:<span class="w">  </span>released<span class="w"> </span>exists<span class="w"> </span>archived,
+./cufflinks/src/cufflinks-2.0.2.tar.gz:<span class="w">  </span>relaxed<span class="w"> </span>exists<span class="w"> </span>archived,
+./crystal-analysis/gnu/crystal_analysis-0.9.12.tbz2:<span class="w">  </span>exists<span class="w"> </span>archived,
+</pre></div>
+</div>
+<p>It can be seen above in the sample output that the state of a few files is <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code>  while
+some are in the <code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code>.</p>
+</div>
+<div class="section" id="how-to-archive-and-de-archive">
+<h2>How to Archive and De Archive<a class="headerlink" href="#how-to-archive-and-de-archive" title="Permalink to this heading">¶</a></h2>
+<img alt="../../_images/archive1.jpg" src="../../_images/archive1.jpg" />
+<p>The above figure shows the following:</p>
+<ul class="simple">
+<li><p>The data from <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> or <code class="docutils literal notranslate"><span class="pre">/home</span></code> can be moved/copied to <code class="docutils literal notranslate"><span class="pre">/archive</span></code> using the usual unix
+commands (<code class="docutils literal notranslate"><span class="pre">rsync,cp,mv</span></code>)</p></li>
+<li><p>The commands to copy out data from <code class="docutils literal notranslate"><span class="pre">/archive</span></code> depend on the state of the file.</p></li>
+</ul>
+<p><strong>archived state</strong></p>
+<ul class="simple">
+<li><p>Since the <code class="docutils literal notranslate"><span class="pre">`archived</span> <span class="pre">state</span></code> refers to the copy of the file available on both the storages, usual unix commands
+(<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">,</span> <span class="pre">rsync</span></code>) can be used to copy out the files from <code class="docutils literal notranslate"><span class="pre">/archive</span></code> to your <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>.</p></li>
+</ul>
+<p><strong>released archived state</strong></p>
+<ul class="simple">
+<li><p>Since the <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code> refers that the file has been moved/released and is now only available
+on the tape library, dearchiving the file would be a two-step process.</p></li>
+<li><p>It would have to be first moved from the tape to the normal storage using
+the <code class="docutils literal notranslate"><span class="pre">dmfget</span> <span class="pre">&lt;filename&gt;</span></code> command and then can be copied out to the required directory in your <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> using
+the usual unix commands (<code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">,</span> <span class="pre">cp</span></code>).</p></li>
+</ul>
+<p>A simple dearchiving would have the following steps:</p>
+<ol class="arabic simple">
+<li><p>Go to the required <code class="docutils literal notranslate"><span class="pre">/archive</span></code> directory which you would like to copy out to your <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/archive/wz22/abc
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Check the state of the file using the <code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">&lt;filename&gt;</span></code> command.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>abc<span class="o">]</span>$<span class="w"> </span>ls
+xyz.txt<span class="w"> </span>file2.txt
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>lib64<span class="o">]</span>$<span class="w"> </span>dmfls<span class="w"> </span>*
+xyz.txt:<span class="w">  </span>exists<span class="w"> </span>archived,
+file2.txt:<span class="w">  </span>released<span class="w"> </span>exists<span class="w"> </span>archived,
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>(optional) if there are files in the <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code>, use the <code class="docutils literal notranslate"><span class="pre">dmfget</span> <span class="pre">&lt;filename&gt;</span></code> command
+to copy out them from the tape library to the storage to make them in the <code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code>.
+This will run in the background and the progress can be tracked using the <code class="docutils literal notranslate"><span class="pre">dmfmonitor</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>abc<span class="o">]</span>$<span class="w"> </span>dmfget<span class="w"> </span>*
+Execute<span class="w"> </span>watch<span class="w"> </span>dmfmonitor<span class="w"> </span>&lt;directory/file_name&gt;<span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>progress
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>abc<span class="o">]</span>$<span class="w"> </span>dmfmonitor<span class="w"> </span>*
+xyz.txt:<span class="w"> </span>NOOP
+file2.txt:<span class="w"> </span>RESTORE<span class="w"> </span>running<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>bytes<span class="w"> </span>moved<span class="o">)</span>
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>abc<span class="o">]</span>$<span class="w"> </span>dmfmonitor<span class="w"> </span>*
+xyz.txt:<span class="w"> </span>NOOP
+file2.txt:<span class="w"> </span>NOOP
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>lib64<span class="o">]</span>$<span class="w"> </span>dmfls<span class="w"> </span>*
+xyz.txt:<span class="w">  </span>exists<span class="w"> </span>archived,
+file2.txt:<span class="w">  </span>exists<span class="w"> </span>archived,
+</pre></div>
+</div>
+<p>Note that in the command <code class="docutils literal notranslate"><span class="pre">dmfmonitor</span></code> when the status corresponding to the file is <code class="docutils literal notranslate"><span class="pre">NOOP</span></code>, means that
+the file is now back in the storage and in the <code class="docutils literal notranslate"><span class="pre">archived</span></code> state.</p>
+</li>
+<li><p>Copy out the file from <code class="docutils literal notranslate"><span class="pre">/archive</span></code> to desired location in <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> using the usual unix commands (<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">,</span> <span class="pre">rsync</span></code>).</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>wz22@login1<span class="w"> </span>abc<span class="o">]</span>$<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>/archive/wz22/abc<span class="w"> </span>/scratch/wz22/.
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="quick-glance-into-the-archive-commands">
 <h2>Quick Glance into the archive commands<a class="headerlink" href="#quick-glance-into-the-archive-commands" title="Permalink to this heading">¶</a></h2>
@@ -224,88 +377,33 @@ will generate a lot of data.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Command</p></th>
-<th class="head"><p>Example</p></th>
+<th class="head"><p>Remarks</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>List the Files</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">&lt;path-to-archive&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">/archive/wz22</span></code></p></td>
+<tr class="row-even"><td><p>Navigating to archive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/archive/&lt;NetID&gt;</span></code></p></td>
+<td><p>usual unix commands (<code class="docutils literal notranslate"><span class="pre">rsync,cd,cp,mv</span></code>) can be used</p></td>
 </tr>
-<tr class="row-odd"><td><p>Copy to Archive</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfput</span> <span class="pre">&lt;full-path-to-scracth&gt;</span> <span class="pre">&lt;full-path-to-archive&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfput</span> <span class="pre">/scratch/wz22/abc/def</span> <span class="pre">/archive/wz22/.</span></code></p></td>
+<tr class="row-odd"><td><p>List the state of the files</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
+<td><p>check for <code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Retrieve from Archive</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfget</span> <span class="pre">&lt;full-path-to-archive&gt;</span> <span class="pre">&lt;full-path-to-scratch&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfget</span> <span class="pre">/archive/wz22/def</span> <span class="pre">/scratch/wz22/abc/.</span></code></p></td>
+<tr class="row-even"><td><p>Retrieve from Tape Library to Storage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dmfget</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
+<td><p>use when the file is in the <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Delete from archive</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfrm</span> <span class="pre">-r</span> <span class="pre">&lt;full-path-to-archive-dir&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dmfrm</span> <span class="pre">-r</span> <span class="pre">/archive/wz22/def</span></code></p></td>
+<tr class="row-odd"><td><p>Monitor the state of a file</p></td>
+<td><p>dmfmonitor &lt;filename&gt;</p></td>
+<td><p>Can be used to track if the migration from tape-library to storage is done.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The guide to long term storage (archive) can be downloaded from here: <a class="reference download internal" download="" href="../../_downloads/b61f6830f1758c147bb8a6e50165c14b/Dalma-Storage.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Archive</span> <span class="pre">Storage</span></code></a></p>
 </div>
-</div>
-<div class="section" id="archive-sh">
-<h2>archive.sh<a class="headerlink" href="#archive-sh" title="Permalink to this heading">¶</a></h2>
-<p>We also have a script <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> which facilitates this process. The <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> takes one argumnet in the form
-of the path of the directory to be archived.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> does the follwoing:</p>
-<ol class="arabic simple">
-<li><p>Create a tar with the same name and the date appended.</p></li>
-<li><p>Archive the tar using dmfput.</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#USAGE:</span>
-<span class="c1">#archive.sh &lt;Path-to-dir-to-be-archived&gt;</span>
-
-<span class="c1">#example</span>
-archive.sh /scratch/wz22/abc/def
-</pre></div>
-</div>
-<ul class="simple">
-<li><dl class="simple">
-<dt>This will create a tar in the directory <code class="docutils literal notranslate"><span class="pre">/scratch/wz22/abc</span></code> with the name <code class="docutils literal notranslate"><span class="pre">def-ddmmyyyy.tar.gz</span></code> where</dt><dd><p><code class="docutils literal notranslate"><span class="pre">ddmmyyyy</span></code> corresponds to date the script <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> was invoked.</p>
-</dd>
-</dl>
-</li>
-<li><p>Once the tar creation is done, the tar is archived using <code class="docutils literal notranslate"><span class="pre">dmpfput</span></code></p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you have a larger directory to be archived, you could use <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions to run the
-script in background. An example is given below:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load screen
-screen -dm bash -c <span class="s2">&quot;archive.sh /scratch/wz22/abc/def 2&gt;&amp;1 | tee archive.log&quot;</span>
-</pre></div>
-</div>
-<p>The above command will initiate the <code class="docutils literal notranslate"><span class="pre">archive.sh</span></code> in a screen session which shall run in the
-background. It will also write the output to a file named <code class="docutils literal notranslate"><span class="pre">archived.log</span></code>.</p>
-<p>You could learn more about the <code class="docutils literal notranslate"><span class="pre">screen</span></code> commands using the link <a class="reference external" href="https://www.geeksforgeeks.org/screen-command-in-linux-with-examples/">here</a>
-or using the command below:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>screen -h
-</pre></div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can use the following command to list the contents of the folder not accessed for “N” number of days.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#lfs find &lt;path-to-folder&gt; --atime +&lt;number-of-days&gt; --type f</span>
-
-<span class="c1">#example:</span>
-lfs find /scratch/wz22/abc --atime +250 --type f
-</pre></div>
-</div>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The archiving (<code class="docutils literal notranslate"><span class="pre">dmfput</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">dmfget</span></code>) might take some time for larger files. Hence It is
-advisable to use <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions to run the same in the background.</p>
-</div>
+<div class="section" id="mount-archive-with-sshfs">
+<h2>Mount $ARCHIVE with SSHFS<a class="headerlink" href="#mount-archive-with-sshfs" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> can also be mounted on your workstation, Linux,Mac and Windows.
+Instructions are in this page: <a class="reference internal" href="mount_archive.html#mount-archive"><span class="std std-ref">Mount $ARCHIVE with SSHFS</span></a></p>
 </div>
 </div>
 
@@ -316,14 +414,14 @@ advisable to use <code class="docutils literal notranslate"><span class="pre">sc
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="data_sharing.html" class="btn btn-neutral float-right" title="Data Sharing with Collaborators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="mount_work.html" class="btn btn-neutral float-left" title="Mount $WORK with SSHFS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="home_scratch.html" class="btn btn-neutral float-left" title="$HOME and $SCRATCH" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

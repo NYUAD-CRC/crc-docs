@@ -200,23 +200,23 @@
   <div class="section" id="parallel-job-array">
 <h1>Parallel Job Array<a class="headerlink" href="#parallel-job-array" title="Permalink to this heading">¶</a></h1>
 <p>There are times, however, when even a job array doesn’t really fit your needs. For instance, you may be looking at running 300,000 very short running jobs. Or maybe, the complexity to search through all the output files or having to manually “glue” them back together into a single output file is too demanding. Or maybe it’s too difficult to match SLURM’s taskids to actual input file names or parametric analysis. Or more probably the time delay between each jobs being scheduled to run is slowing down your processing as your jobs are really short</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-resuls file.1
-./process-one-resuls file.2
-./process-one-resuls file.3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-resuls<span class="w"> </span>file.1
+./process-one-resuls<span class="w"> </span>file.2
+./process-one-resuls<span class="w"> </span>file.3
 ...
-./process-one-result file.50000
+./process-one-result<span class="w"> </span>file.50000
 </pre></div>
 </div>
 <p>For these cases our HPC cluster has the “parallel job array” system– an NYU Abu Dhabi in-house tool – designed to make running large number of jobs even simpler.</p>
 <p>To submit a parallel job array you need to prepare a file (eg: <code class="docutils literal notranslate"><span class="pre">list_of_commands.txt</span></code> ) ,where each line represents a single job to execute. You can have multiple Linux commands on a line as:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>myprogram1
-<span class="nb">export</span> <span class="nv">V</span><span class="o">=</span><span class="m">42</span><span class="p">;</span> myprogram2 <span class="p">|</span> myprogram3
-myprogram4<span class="p">;</span> myprogram5 &lt; inp
-myprogram6 &gt; out
+<span class="nb">export</span><span class="w"> </span><span class="nv">V</span><span class="o">=</span><span class="m">42</span><span class="p">;</span><span class="w"> </span>myprogram2<span class="w"> </span><span class="p">|</span><span class="w"> </span>myprogram3
+myprogram4<span class="p">;</span><span class="w"> </span>myprogram5<span class="w"> </span>&lt;<span class="w"> </span>inp
+myprogram6<span class="w"> </span>&gt;<span class="w"> </span>out
 </pre></div>
 </div>
 <p>Then you pass the file to the tool and it automatically submits the job array for you.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>slurm_parallel_ja_submit.sh list_of_commands.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>slurm_parallel_ja_submit.sh<span class="w"> </span>list_of_commands.txt
 </pre></div>
 </div>
 <p>The tool splits all jobs into groups and proceeds to run them as a normal job array.
@@ -260,12 +260,12 @@ the lower the walltime, the higher is the probability for the faster allocation 
 </pre></div>
 </div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt; slurm_parallel_ja_submit.sh –h
-slurm_parallel_ja_submit.sh options:
--C &lt;constraint&gt; <span class="o">(</span>avx2 or sse<span class="o">)</span>
--t &lt;<span class="nb">time</span> limit HH:MM:SS&gt;
--p &lt;partition&gt;
--N &lt;number of nodes&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>–h
+slurm_parallel_ja_submit.sh<span class="w"> </span>options:
+-C<span class="w"> </span>&lt;constraint&gt;<span class="w"> </span><span class="o">(</span>avx2<span class="w"> </span>or<span class="w"> </span>sse<span class="o">)</span>
+-t<span class="w"> </span>&lt;<span class="nb">time</span><span class="w"> </span>limit<span class="w"> </span>HH:MM:SS&gt;
+-p<span class="w"> </span>&lt;partition&gt;
+-N<span class="w"> </span>&lt;number<span class="w"> </span>of<span class="w"> </span>nodes&gt;
 </pre></div>
 </div>
 <div class="admonition important">
@@ -274,78 +274,78 @@ slurm_parallel_ja_submit.sh options:
 and loaded modules, to all jobs.</p>
 </div>
 <p>The tool also support OpenMP jobs, so you can set the number of threads before launching your parallel job array.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; <span class="c1">#export the required number of threads</span>
-$&gt; <span class="c1">#in the current environment</span>
-$&gt; <span class="c1">#before submitting the jobs</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span><span class="c1">#export the required number of threads</span>
+$&gt;<span class="w"> </span><span class="c1">#in the current environment</span>
+$&gt;<span class="w"> </span><span class="c1">#before submitting the jobs</span>
 $&gt;
-$&gt; <span class="c1">#For example</span>
-$&gt; <span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
-$&gt; slurm_parallel_ja_submit.sh -N <span class="m">8</span> -t <span class="m">03</span>:45:00 list_of_commands.txt
+$&gt;<span class="w"> </span><span class="c1">#For example</span>
+$&gt;<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
+$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">03</span>:45:00<span class="w"> </span>list_of_commands.txt
 </pre></div>
 </div>
 <p>By default the tool will allow up to 8 “nodes” (groups).
 You can increase the number of nodes when there is a very large
 number of jobs to process to run faster, or when the groups can’t finish within the time limit</p>
 <p>Here is how a complete example looks like.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; cat list_of_commands.txt
-<span class="nb">echo</span> processing <span class="m">1</span>
-<span class="nb">echo</span> processing <span class="m">2</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>cat<span class="w"> </span>list_of_commands.txt
+<span class="nb">echo</span><span class="w"> </span>processing<span class="w"> </span><span class="m">1</span>
+<span class="nb">echo</span><span class="w"> </span>processing<span class="w"> </span><span class="m">2</span>
 ...
-<span class="nb">echo</span> processing <span class="m">10000</span>
+<span class="nb">echo</span><span class="w"> </span>processing<span class="w"> </span><span class="m">10000</span>
 
 
-$&gt; <span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
-$&gt; slurm_parallel_ja_submit.sh -N <span class="m">8</span> -t <span class="m">03</span>:45:00 list_of_commands.txt
-Entered number of nodes to use: <span class="m">8</span>
-Entered walltime: <span class="m">03</span>:45:00
-Input: list_of_commands.txt
-Actual maximum number of nodes that will be used: <span class="m">8</span>
-Submitting parallel job array using the following modules:
-No Modulefiles Currently Loaded.
-Submitting parallel job array with <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span> <span class="m">4</span>
-Submitted batch job <span class="m">265340</span>
+$&gt;<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
+$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">03</span>:45:00<span class="w"> </span>list_of_commands.txt
+Entered<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nodes<span class="w"> </span>to<span class="w"> </span>use:<span class="w"> </span><span class="m">8</span>
+Entered<span class="w"> </span>walltime:<span class="w"> </span><span class="m">03</span>:45:00
+Input:<span class="w"> </span>list_of_commands.txt
+Actual<span class="w"> </span>maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nodes<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used:<span class="w"> </span><span class="m">8</span>
+Submitting<span class="w"> </span>parallel<span class="w"> </span>job<span class="w"> </span>array<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>modules:
+No<span class="w"> </span>Modulefiles<span class="w"> </span>Currently<span class="w"> </span>Loaded.
+Submitting<span class="w"> </span>parallel<span class="w"> </span>job<span class="w"> </span>array<span class="w"> </span>with<span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
+Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">265340</span>
 
 
-$&gt; squeue
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-      265340_1   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">2</span> cn<span class="o">[</span><span class="m">107</span>,110<span class="o">]</span>
-      265340_2   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">2</span> cn<span class="o">[</span><span class="m">163</span>,189<span class="o">]</span>
-      265340_3   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">2</span> cn<span class="o">[</span><span class="m">190</span>-191<span class="o">]</span>
-      265340_4   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">2</span> cn<span class="o">[</span><span class="m">192</span>-193<span class="o">]</span>
-      265340_5   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">4</span> cn<span class="o">[</span><span class="m">041</span>,043,049,146<span class="o">]</span>
-      265340_6   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">4</span> cn<span class="o">[</span><span class="m">050</span>,203-205<span class="o">]</span>
-      265340_7   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">3</span> cn<span class="o">[</span><span class="m">206</span>-208<span class="o">]</span>
-      265340_8   compute   sbatch  ms13779  R       <span class="m">0</span>:03      <span class="m">3</span> cn<span class="o">[</span><span class="m">209</span>-211<span class="o">]</span>
+$&gt;<span class="w"> </span>squeue
+<span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">      </span>265340_1<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">2</span><span class="w"> </span>cn<span class="o">[</span><span class="m">107</span>,110<span class="o">]</span>
+<span class="w">      </span>265340_2<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">2</span><span class="w"> </span>cn<span class="o">[</span><span class="m">163</span>,189<span class="o">]</span>
+<span class="w">      </span>265340_3<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">2</span><span class="w"> </span>cn<span class="o">[</span><span class="m">190</span>-191<span class="o">]</span>
+<span class="w">      </span>265340_4<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">2</span><span class="w"> </span>cn<span class="o">[</span><span class="m">192</span>-193<span class="o">]</span>
+<span class="w">      </span>265340_5<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">4</span><span class="w"> </span>cn<span class="o">[</span><span class="m">041</span>,043,049,146<span class="o">]</span>
+<span class="w">      </span>265340_6<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">4</span><span class="w"> </span>cn<span class="o">[</span><span class="m">050</span>,203-205<span class="o">]</span>
+<span class="w">      </span>265340_7<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">3</span><span class="w"> </span>cn<span class="o">[</span><span class="m">206</span>-208<span class="o">]</span>
+<span class="w">      </span>265340_8<span class="w">   </span>compute<span class="w">   </span>sbatch<span class="w">  </span>ms13779<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">3</span><span class="w"> </span>cn<span class="o">[</span><span class="m">209</span>-211<span class="o">]</span>
 
 
-$&gt; ls list_of_commands.txt-265340_*
-list_of_commands.txt-265340_1.err  list_of_commands.txt-265340_2.err  list_of_commands.txt-265340_3.err  list_of_commands.txt-265340_4.err
-list_of_commands.txt-265340_5.err  list_of_commands.txt-265340_6.err  list_of_commands.txt-265340_7.err  list_of_commands.txt-265340_8.err
-list_of_commands.txt-265340_1.out  list_of_commands.txt-265340_2.out  list_of_commands.txt-265340_3.out  list_of_commands.txt-265340_4.out
-list_of_commands.txt-265340_5.out  list_of_commands.txt-265340_6.out  list_of_commands.txt-265340_7.out  list_of_commands.txt-265340_8.out
+$&gt;<span class="w"> </span>ls<span class="w"> </span>list_of_commands.txt-265340_*
+list_of_commands.txt-265340_1.err<span class="w">  </span>list_of_commands.txt-265340_2.err<span class="w">  </span>list_of_commands.txt-265340_3.err<span class="w">  </span>list_of_commands.txt-265340_4.err
+list_of_commands.txt-265340_5.err<span class="w">  </span>list_of_commands.txt-265340_6.err<span class="w">  </span>list_of_commands.txt-265340_7.err<span class="w">  </span>list_of_commands.txt-265340_8.err
+list_of_commands.txt-265340_1.out<span class="w">  </span>list_of_commands.txt-265340_2.out<span class="w">  </span>list_of_commands.txt-265340_3.out<span class="w">  </span>list_of_commands.txt-265340_4.out
+list_of_commands.txt-265340_5.out<span class="w">  </span>list_of_commands.txt-265340_6.out<span class="w">  </span>list_of_commands.txt-265340_7.out<span class="w">  </span>list_of_commands.txt-265340_8.out
 
 
-$&gt; cat list_of_commands.txt-265340_1.out
-<span class="o">=============</span> job <span class="nv">1</span> <span class="o">============</span>
-processing <span class="nv">1</span>
-<span class="o">=============</span> job <span class="nv">2</span> <span class="o">============</span>
-processing <span class="m">2</span>
+$&gt;<span class="w"> </span>cat<span class="w"> </span>list_of_commands.txt-265340_1.out
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="nv">1</span>
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">2</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="m">2</span>
 ...
-processing <span class="nv">1249</span>
-<span class="o">=============</span> job <span class="nv">1250</span> <span class="o">============</span>
-processing <span class="m">1250</span>
+processing<span class="w"> </span><span class="nv">1249</span>
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">1250</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="m">1250</span>
 
 
-$&gt; cat list_of_commands.txt-265340_8.out
-<span class="o">=============</span> job <span class="nv">8751</span> <span class="o">============</span>
-processing <span class="nv">8751</span>
-<span class="o">=============</span> job <span class="nv">8752</span> <span class="o">============</span>
-processing <span class="m">8752</span>
+$&gt;<span class="w"> </span>cat<span class="w"> </span>list_of_commands.txt-265340_8.out
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">8751</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="nv">8751</span>
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">8752</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="m">8752</span>
 ...
-<span class="o">=============</span> job <span class="nv">9999</span> <span class="o">============</span>
-processing <span class="nv">9999</span>
-<span class="o">=============</span> job <span class="nv">10000</span> <span class="o">============</span>
-processing <span class="m">10000</span>
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">9999</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="nv">9999</span>
+<span class="o">=============</span><span class="w"> </span>job<span class="w"> </span><span class="nv">10000</span><span class="w"> </span><span class="o">============</span>
+processing<span class="w"> </span><span class="m">10000</span>
 </pre></div>
 </div>
 <p>For compatibilty with existing job array scripts you can
@@ -358,23 +358,23 @@ that you are not limited to SLURM’s <code class="docutils literal notranslate"
 <code class="docutils literal notranslate"><span class="pre">MaxJobs</span> <span class="pre">account</span></code> / user limits.
 Whereas you can submit a maximum of 200 jobs, using parallel job array you have no
 such limits.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; cat ja.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>cat<span class="w"> </span>ja.sh
 <span class="c1">#!/bin/bash</span>
 <span class="c1">#SBATCH -n 1</span>
 <span class="c1">#SBATCH -a 1-1000</span>
-sleep <span class="m">5</span>
-<span class="nb">echo</span> -n <span class="nv">$SLURM_ARRAY_TASK_ID</span> <span class="s2">&quot; &quot;</span>
+sleep<span class="w"> </span><span class="m">5</span>
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
 date
 
-$&gt; sbatch ja.sh
+$&gt;<span class="w"> </span>sbatch<span class="w"> </span>ja.sh
 
-$&gt; cat list4.txt
+$&gt;<span class="w"> </span>cat<span class="w"> </span>list4.txt
 ./ja.sh
 ./ja.sh
 ...
 ./ja.sh
 
-$&gt; slurm_parallel_ja_submit.sh list4
+$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>list4
 </pre></div>
 </div>
 </div>
@@ -393,7 +393,7 @@ $&gt; slurm_parallel_ja_submit.sh list4
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

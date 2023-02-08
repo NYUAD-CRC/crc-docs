@@ -226,11 +226,11 @@ You can find the steps to set up the HPC Miniconda by clicking <a class="referen
 <span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;existing env&gt;</span>
 
 <span class="c1">#example:</span>
-conda create -p /scratch/wz22/conda-envs/R --clone R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/scratch/wz22/conda-envs/R<span class="w"> </span>--clone<span class="w"> </span>R-3.6
 
 <span class="c1">#or</span>
 
-conda create -n R --clone R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>--clone<span class="w"> </span>R-3.6
 </pre></div>
 </div>
 <p>A sample output is shown below:</p>
@@ -252,11 +252,11 @@ conda create -n R --clone R-3.6
 
 <span class="c1">#example:</span>
 
-conda create -p /scratch/wz22/conda-envs/R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/scratch/wz22/conda-envs/R<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 
 <span class="c1">#or</span>
 
-conda create -n R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 </pre></div>
 </div>
 </div></blockquote>
@@ -291,7 +291,7 @@ conda create -n R --clone /share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
 
 <span class="c1">#conda activate &lt;name of the environment&gt;</span>
 <span class="c1">#example:</span>
-conda activate R
+conda<span class="w"> </span>activate<span class="w"> </span>R
 </pre></div>
 </div>
 </dd>
@@ -300,7 +300,7 @@ conda activate R
 <li><dl>
 <dt>Install the required package</dt><dd><p>Paste the installation command found on the Anaconda web page as described above. Enter <code class="docutils literal notranslate"><span class="pre">y</span></code> when it prompts for confirmation.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#example:</span>
-conda install -c r r-tidyverse
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>r<span class="w"> </span>r-tidyverse
 </pre></div>
 </div>
 <p>A sample output is shown below:</p>
@@ -323,7 +323,7 @@ conda install -c r r-tidyverse
 <div class="section" id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this heading">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </pre></div>
 </div>
 <p>A sample job submission script is shown below:</p>
@@ -333,11 +333,11 @@ conda install -c r r-tidyverse
 <span class="c1">#Other SBATCH commands go here</span>
 
 <span class="c1">#Activating conda</span>
-<span class="nb">source</span> ~/.bashrc
-conda activate R
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+conda<span class="w"> </span>activate<span class="w"> </span>R
 
 <span class="c1">#Your appication commands go here</span>
-Rscript abc.R
+Rscript<span class="w"> </span>abc.R
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -361,7 +361,7 @@ Rscript abc.R
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

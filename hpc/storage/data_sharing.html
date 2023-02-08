@@ -46,7 +46,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Software" href="../software/index.html" />
+    <link rel="next" title="Merge of $WORK and $ARCHIVE" href="archive_work_merge.html" />
     <link rel="prev" title="$ARCHIVE" href="archive.html" /> 
 </head>
 
@@ -100,9 +100,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Storage</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="work.html">$WORK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
 </ul>
@@ -201,7 +202,7 @@ hence minimizing the complexity for quick/temporary sharing of data/files.</p>
 <ol class="arabic">
 <li><dl>
 <dt>Copy the data to <code class="docutils literal notranslate"><span class="pre">/scratch/tmp</span></code></dt><dd><p>The owner can copy/transfer the data from his/her account to a folder in <code class="docutils literal notranslate"><span class="pre">/scratch/tmp</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r /scratch/&lt;Netid&gt;/data /scratch/tmp/.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>/scratch/&lt;Netid&gt;/data<span class="w"> </span>/scratch/tmp/.
 </pre></div>
 </div>
 </dd>
@@ -209,7 +210,7 @@ hence minimizing the complexity for quick/temporary sharing of data/files.</p>
 </li>
 <li><dl>
 <dt>Copy the data from <code class="docutils literal notranslate"><span class="pre">/scratch/tmp</span></code></dt><dd><p>The collaborator can then transfer the data from <code class="docutils literal notranslate"><span class="pre">/scratch/tmp</span></code> to his/her account</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r /scratch/tmp/data /scratch/&lt;NetId&gt;/data/.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>/scratch/tmp/data<span class="w"> </span>/scratch/&lt;NetId&gt;/data/.
 </pre></div>
 </div>
 </dd>
@@ -218,10 +219,10 @@ hence minimizing the complexity for quick/temporary sharing of data/files.</p>
 <li><p><strong>(Optional)</strong> Change permissions of the folder if you would like the data to be private</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Change the permission of the copied directory to be accessed only by the owner.</span>
-chmod <span class="m">700</span> /scratch/tmp/data
+chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/scratch/tmp/data
 
 <span class="c1">#Allow access to your collaborator to the shared directory.</span>
-setfacl -m u:&lt;NetId&gt;:rx /scratch/tmp/data
+setfacl<span class="w"> </span>-m<span class="w"> </span>u:&lt;NetId&gt;:rx<span class="w"> </span>/scratch/tmp/data
 </pre></div>
 </div>
 </div></blockquote>
@@ -244,7 +245,7 @@ setfacl -m u:&lt;NetId&gt;:rx /scratch/tmp/data
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../software/index.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="archive_work_merge.html" class="btn btn-neutral float-right" title="Merge of $WORK and $ARCHIVE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="archive.html" class="btn btn-neutral float-left" title="$ARCHIVE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
@@ -252,7 +253,7 @@ setfacl -m u:&lt;NetId&gt;:rx /scratch/tmp/data
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

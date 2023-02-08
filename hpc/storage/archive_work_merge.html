@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Merge of $WORK and $ARCHIVE &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mount $ARCHIVE with SSHFS" href="mount_archive.html" />
+    <link rel="prev" title="Data Sharing with Collaborators" href="data_sharing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Storage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Merge of $WORK and $ARCHIVE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Storage</a> &raquo;</li>
+        
+      <li>Merge of $WORK and $ARCHIVE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="merge-of-work-and-archive">
+<h1>Merge of $WORK and $ARCHIVE<a class="headerlink" href="#merge-of-work-and-archive" title="Permalink to this heading">¶</a></h1>
+<p>In order to simplify the storage mount points and the user experience in storing their data on the
+Jubail HPC, We have merged the functionalities of two storages, <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> (<code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code>) and
+<code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> (<code class="docutils literal notranslate"><span class="pre">/archive/NetID&gt;</span></code>) into a single storage <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;</span></code>).</p>
+<p>This section highlights the major changes which
+affect’s the user experience after the merge.</p>
+<ol class="arabic simple">
+<li><p>Storage Mountpoints</p></li>
+<li><p>Functionality</p></li>
+<li><p>Archiving</p></li>
+</ol>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p><strong>Before</strong></p></th>
+<th class="head"><p><strong>Now</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Storage Mountpoints</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>The filesystems available for each user were as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$HOME</span> <span class="pre">(/home/&lt;NetID&gt;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$SCRATCH</span> <span class="pre">(/scratch/&lt;NetID&gt;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$WORK</span> <span class="pre">(/work/&lt;NetID&gt;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span> <span class="pre">(/archive/&lt;NetID&gt;)</span></code></p></li>
+</ul>
+</td>
+<td><p>The filesystems available for each user is now:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$HOME</span> <span class="pre">(/home/&lt;NetID&gt;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$SCRATCH</span> <span class="pre">(/scratch/&lt;NetID&gt;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span> <span class="pre">(/archive/&lt;NetID&gt;)</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code> has been discontinued from 2nd Feb 2023. The previous data in <code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code> is
+moved to <code class="docutils literal notranslate"><span class="pre">/archive/work/&lt;NetID&gt;</span></code> as a temporary staging area to allow users to move out their
+existing data from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> to archive (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;/…</span></code>).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">/archive/work/&lt;NetID&gt;</span></code> will be available for the users from the 3rd of Feb 2023 and
+would be deprecated after a period of 180 days.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Functionality</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>The basic funcionality of <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> were as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$WORK</span></code>: Additional form of storage for researchers which is also externally mountable on a local workstation/PC.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code>: A long term storage solution in the form of tape drives for data which isn’t frequently used.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>The merging of two mountpoints (<code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> and <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> ) into a single mountpoint (<code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code>)
+incorporates the functionalities of both and hence reducing the complexity at the user end.</p></li>
+<li><p>The new <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> acts as a from of storage that can be externally mounted to local workstation/PC
+and acts as a solution for long term storage as well.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Accessing $ARCHIVE</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> was inaccessible using the general unix commands (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">,</span> <span class="pre">cp</span> <span class="pre">,</span> <span class="pre">mv</span></code> etc) and was
+accessible only using the dmf commands (<code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">,</span> <span class="pre">dmfput</span> <span class="pre">,</span> <span class="pre">dmfget</span></code> etc).</p></td>
+<td><p>Users can move their files directly to archive using the traditional unix commands (<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">,</span> <span class="pre">mv</span></code> etc)
+instead of the earlier dmf commands (<code class="docutils literal notranslate"><span class="pre">dmfput,dmfget</span></code> etc) which are still available.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>Users would also be able to navigate through their <code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;</span></code> directory unlike earlier.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>More details on the commands for <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> can be found <a class="reference internal" href="archive.html"><span class="doc">here</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="mount_archive.html" class="btn btn-neutral float-right" title="Mount $ARCHIVE with SSHFS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="data_sharing.html" class="btn btn-neutral float-left" title="Data Sharing with Collaborators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

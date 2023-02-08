@@ -346,20 +346,20 @@ Singularity assumes that you will have a build system where you are the root use
 </ol>
 <p><strong>Example Usage</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the singularity container</span>
-module load singularity
+module<span class="w"> </span>load<span class="w"> </span>singularity
 
 <span class="c1"># pull the docker/singularity image from hub</span>
 <span class="c1"># pulls the latest GCC container and saves in current working directory</span>
-singularity pull docker://gcc
+singularity<span class="w"> </span>pull<span class="w"> </span>docker://gcc
 </pre></div>
 </div>
 <p>If you prefer to pull a specific GCC version, look at the <a class="reference external" href="https://hub.docker.com/r/library/gcc/tags/">available tags</a> for the specific container and append the tag version to the end of the container name. For example, if you need to pull the <code class="docutils literal notranslate"><span class="pre">GCC</span> <span class="pre">v</span> <span class="pre">5.3.0</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity pull docker://gcc:8.3.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span>pull<span class="w"> </span>docker://gcc:8.3.0
 </pre></div>
 </div>
 <p>You can also pull the images to a directory of your choosing (assuming you have write permission) by setting the variables <code class="docutils literal notranslate"><span class="pre">SINGULARITY_CACHEDIR</span></code> and <code class="docutils literal notranslate"><span class="pre">SINGULARITY_TMPDIR</span></code>. For instance,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SINGULARITY_CACHEDIR</span><span class="o">=</span><span class="nv">$TMPDIR</span>
-<span class="nb">export</span> <span class="nv">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="nv">$TMPDIR</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_CACHEDIR</span><span class="o">=</span><span class="nv">$TMPDIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="nv">$TMPDIR</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -387,26 +387,26 @@ Since the home directory has a limited amount of space, this can fill up quite e
 <li><p>Create a definition file (<code class="docutils literal notranslate"><span class="pre">example.def</span></code>)</p>
 <blockquote>
 <div><p>Detailed documentation for a Singularity definition file is <a class="reference external" href="https://sylabs.io/guides/3.3/user-guide/definition_files.html">here</a>. But below is a simple example to get you started.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: docker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap:<span class="w"> </span>docker
 
 
-From: continuumio/miniconda3
+From:<span class="w"> </span>continuumio/miniconda3
 
 
 
 %labels
 
-maintainer <span class="s2">&quot;Name&quot;</span> &lt;email address&gt;
+maintainer<span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="w"> </span>&lt;email<span class="w"> </span>address&gt;
 
 
 
 %post
 
-apt-get update <span class="o">&amp;&amp;</span> apt-get install -y git
+apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git
 
 <span class="c1"># Conda install stringtie</span>
 
-conda install -c bioconda stringtie
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>stringtie
 </pre></div>
 </div>
 <ul class="simple">
@@ -422,16 +422,16 @@ conda install -c bioconda stringtie
 <strong>If you do not have sudo/root privileges, please proceed to step number 3 or use a machine where you have the sudo or root privileges.</strong></p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the singularity module</span>
-module load singularity
+module<span class="w"> </span>load<span class="w"> </span>singularity
 
 <span class="c1">#singularity build --sandbox &lt;name_you_want&gt; &lt;definition_file.def&gt;</span>
 <span class="c1">#example</span>
-singularity build --sandbox abc example.def
+singularity<span class="w"> </span>build<span class="w"> </span>--sandbox<span class="w"> </span>abc<span class="w"> </span>example.def
 </pre></div>
 </div>
 <p>This will create a sandbox (writable directory) where you can log in and install anything you want after you <code class="docutils literal notranslate"><span class="pre">shell</span></code> into the sandox. Note that this requires root/sudo privileges.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#singularity shell -w &lt;name_of_the_sanbox&gt;</span>
-singularity shell -w abc
+singularity<span class="w"> </span>shell<span class="w"> </span>-w<span class="w"> </span>abc
 </pre></div>
 </div>
 <p>Once you have installed the required packages into the sandox, you can exit and build the container by following the next step.</p>
@@ -443,17 +443,17 @@ singularity shell -w abc
 <dt><strong>To build on the HPC</strong></dt><dd><p>If building on the HPC, you would need a definition file and
 access token obtained (onetime process) from <a class="reference external" href="https://cloud.sylabs.io/auth">Singularity Container Services</a> . We use the Singularity’s remote builder for the same.
 You can use the access token to remotely login to the singularity services before building the container as shown below:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>ziaw@login-0-3 ~<span class="o">]</span>$ module load singularity
-<span class="o">[</span>ziaw@login-0-3 ~<span class="o">]</span>$ singularity remote login
-INFO:    Authenticating with default remote.
-Generate an API Key at https://cloud.sylabs.io/auth/tokens, and paste here:
-API Key:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>ziaw@login-0-3<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>singularity
+<span class="o">[</span>ziaw@login-0-3<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>singularity<span class="w"> </span>remote<span class="w"> </span>login
+INFO:<span class="w">    </span>Authenticating<span class="w"> </span>with<span class="w"> </span>default<span class="w"> </span>remote.
+Generate<span class="w"> </span>an<span class="w"> </span>API<span class="w"> </span>Key<span class="w"> </span>at<span class="w"> </span>https://cloud.sylabs.io/auth/tokens,<span class="w"> </span>and<span class="w"> </span>paste<span class="w"> </span>here:
+API<span class="w"> </span>Key:
 </pre></div>
 </div>
 <p>Once logged in, you can build the container using definition file with <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#singularity build --remote &lt;name_of_the_container&gt;.sif &lt;definition_file.def&gt;</span>
 <span class="c1">#example:</span>
-singularity build --remote abc.sif exmple.def
+singularity<span class="w"> </span>build<span class="w"> </span>--remote<span class="w"> </span>abc.sif<span class="w"> </span>exmple.def
 </pre></div>
 </div>
 </dd>
@@ -462,11 +462,11 @@ singularity build --remote abc.sif exmple.def
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#If building with definition file (``example.def``)</span>
 <span class="c1">#singularity build &lt;name_you_want&gt;.sif &lt;definition_file.def&gt;</span>
-singularity build mycontainer.sif example.def
+singularity<span class="w"> </span>build<span class="w"> </span>mycontainer.sif<span class="w"> </span>example.def
 
 <span class="c1">#If building with a sandbox</span>
 <span class="c1">#singularity build &lt;name_you_want&gt;.sif &lt;name_of_the_sandbox&gt;</span>
-singularity build mycontainer.sif abc
+singularity<span class="w"> </span>build<span class="w"> </span>mycontainer.sif<span class="w"> </span>abc
 </pre></div>
 </div>
 </div></blockquote>
@@ -497,7 +497,7 @@ singularity build mycontainer.sif abc
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

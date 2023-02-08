@@ -3,8 +3,6 @@ GPU nodes on HPC
 
 Currently Jubail HPC holds 14 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (12) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS. 
 
-.. Warning::
-    The current Nvidia driver version on the GPU nodes is 410.79 which supports cuda/10.0 or lower. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.
 
 .. tip::
     Know more about the Centralized HPC Miniconda,TensorFlow(Keras) and PyTorch installations available :ref:`here<hpc_miniconda>`
@@ -26,7 +24,7 @@ Step-by-step guide
     The following limits apply to the GPU partition in Slurm. These limits might change in the future depending on the demand:
 
     - Max CPUs per user = 80
-    - Max GPUs per user = 4
-    - Max jobs per user = 4
+    - Max GPUs per user = 8
+    - Max jobs per user = 8
     - Max allowed walltime = 96 hours
     - Default walltime = 5 hours

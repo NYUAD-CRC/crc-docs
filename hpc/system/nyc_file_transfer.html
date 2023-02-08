@@ -212,36 +212,36 @@ high bandwidth ANKABUT link instead.</p>
 <ul class="simple">
 <li><p>Original scp command (low bandwidth):</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp source_file_name username@destination_host:destination_folder
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>source_file_name<span class="w"> </span>username@destination_host:destination_folder
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Addition of port 922 to the original scp command uses a high bandwidth ANKABUT link instead.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> source_file_name username@destination_host:destination_folder
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">922</span><span class="w"> </span>source_file_name<span class="w"> </span>username@destination_host:destination_folder
 </pre></div>
 </div>
 <p>For Example from your host in NY, run this in the terminal.</p>
 <p><strong>For Pulling data from Jubail</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> &lt;NetID&gt;@jubail.abudhabi.nyu.edu:~/filename ./
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">922</span><span class="w"> </span>&lt;NetID&gt;@jubail.abudhabi.nyu.edu:~/filename<span class="w"> </span>./
 </pre></div>
 </div>
 <p><strong>For Pushing data to Jubail</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -P <span class="m">922</span> filename &lt;NetID&gt;@jubail.abudhabi.nyu.edu:~/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">922</span><span class="w"> </span>filename<span class="w"> </span>&lt;NetID&gt;@jubail.abudhabi.nyu.edu:~/
 </pre></div>
 </div>
 </div>
 <div class="section" id="setup-an-alias">
 <h2>Setup an alias<a class="headerlink" href="#setup-an-alias" title="Permalink to this heading">¶</a></h2>
 <p>If you need to transfer data frequently, it is easier to setup an alias in your ssh config. In your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>, append the following entries.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host jubail-fast
-    Hostname     jubail.abudhabi.nyu.edu
-    Port         <span class="m">922</span>
-    User         &lt;your-NetID&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>jubail-fast
+<span class="w">    </span>Hostname<span class="w">     </span>jubail.abudhabi.nyu.edu
+<span class="w">    </span>Port<span class="w">         </span><span class="m">922</span>
+<span class="w">    </span>User<span class="w">         </span>&lt;your-NetID&gt;
 </pre></div>
 </div>
 <p>Now you should be able to scp to / from NYUAD HPC from your host in NY using the ANKABUT fast link by the following commands.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp filename jubail-fast:~/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>filename<span class="w"> </span>jubail-fast:~/
 </pre></div>
 </div>
 <p>Windows user can do the same thing by specifying the port 922 in the file transfer software. E.g., <a class="reference internal" href="filezilla_transfer.html"><span class="doc">FileZilla</span></a>.</p>
@@ -262,7 +262,7 @@ high bandwidth ANKABUT link instead.</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

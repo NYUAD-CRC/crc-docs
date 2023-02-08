@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Mount $ARCHIVE with SSHFS &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Software" href="../software/index.html" />
+    <link rel="prev" title="Merge of $WORK and $ARCHIVE" href="archive_work_merge.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dalma.html">Dalma HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Storage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mount $ARCHIVE with SSHFS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step-guide">Step-by-step guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-archive-on-windows">Mount $ARCHIVE on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/data_science/index.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Storage</a> &raquo;</li>
+        
+      <li>Mount $ARCHIVE with SSHFS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mount-archive-with-sshfs">
+<span id="mount-archive"></span><h1>Mount $ARCHIVE with SSHFS<a class="headerlink" href="#mount-archive-with-sshfs" title="Permalink to this heading">¶</a></h1>
+<p>This page explains how to mount <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> on the HPC with SSHFS on your local workstation.
+Only <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> is supported, not <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> , <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> or any other file system on the HPC.
+For mounting <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> on Windows, Kindly follow the section <a class="reference internal" href="#mount-archive-windows"><span class="std std-ref">here</span></a></p>
+<div class="section" id="step-by-step-guide">
+<h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might need <code class="docutils literal notranslate"><span class="pre">sudo</span></code> for the operations below.</p>
+</div>
+<ol class="arabic">
+<li><dl>
+<dt><strong>Install SSHFS on your workstation.</strong></dt><dd><ul class="simple">
+<li><p>Ubuntu:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>sshfs
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>CentOS:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>fuse-sshfs
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>MacOS:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Install</span> <span class="n">FUSE</span> <span class="ow">and</span> <span class="n">SSHFS</span> <span class="kn">from</span> <span class="nn">their</span> <span class="n">official</span> <span class="n">website</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">osxfuse</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>On your terminal, mount the drive</strong></dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>&lt;NetID&gt;@hpc-cng.abudhabi.nyu.edu:/archive/&lt;NetID&gt;<span class="w"> </span>&lt;Your-Local-Mount-Point&gt;
+</pre></div>
+</div>
+<p>For example, this command mount the <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> of NetID <code class="docutils literal notranslate"><span class="pre">wz22</span></code> to the local path <code class="docutils literal notranslate"><span class="pre">$HOME/work-wz22</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>wz22@hpc-cng.abudhabi.nyu.edu:/archive/wz22<span class="w"> </span><span class="nv">$HOME</span>/work-wz22
+</pre></div>
+</div>
+<p>These options might increase the speed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>-o<span class="w"> </span>auto_cache<span class="w"> </span>-o<span class="w"> </span><span class="nv">cache</span><span class="o">=</span>yes<span class="w"> </span>-o<span class="w"> </span>kernel_cache<span class="w"> </span>-o<span class="w"> </span><span class="nv">compression</span><span class="o">=</span>no<span class="w"> </span>-o<span class="w"> </span>large_read<span class="w"> </span>-o<span class="w"> </span>big_writes<span class="w"> </span>-o<span class="w"> </span><span class="nv">Ciphers</span><span class="o">=</span>arcfour<span class="w"> </span>&lt;NetID&gt;@hpc-cng.abudhabi.nyu.edu:/archive/&lt;NetID&gt;<span class="w"> </span>&lt;Your-Local-Mount-Point&gt;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Once done, unmount the drive.</strong></dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>umount<span class="w"> </span>&lt;Your-Local-Mount-Point&gt;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="mount-archive-on-windows">
+<span id="mount-archive-windows"></span><h2>Mount $ARCHIVE on Windows<a class="headerlink" href="#mount-archive-on-windows" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Download the following applications and install them on your local Windows PC.</dt><dd><ul class="simple">
+<li><p><a class="reference download external" download="" href="https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi"><code class="xref download docutils literal notranslate"><span class="pre">SSHFS-Win</span></code></a></p></li>
+<li><p><a class="reference download external" download="" href="https://github.com/billziss-gh/winfsp/releases/download/v1.7/winfsp-1.7.20172.msi"><code class="xref download docutils literal notranslate"><span class="pre">WinFsp</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Navigate to your Windows File explorer</strong></p></li>
+<li><dl>
+<dt>Right click on <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">PC</span></code> and select <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">network</span> <span class="pre">drive</span></code>:</dt><dd><img alt="../../_images/mount_work1.png" src="../../_images/mount_work1.png" />
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Enter the details and click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>:</dt><dd><img alt="../../_images/mount_work2.png" src="../../_images/mount_work2.png" />
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Drive</span></code> corresponds to the local mountpoint</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Folder</span></code> corresponds to the remote location.It should be noted that by default it connects to the <code class="docutils literal notranslate"><span class="pre">/home</span></code> and a relative path to the mounting point (<code class="docutils literal notranslate"><span class="pre">/work</span></code>) should be specified. So in this case the syntax should be as follows:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\&lt;</span>net-id&gt;@hpc-cng.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\a</span>rchive<span class="se">\&lt;</span>netid&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For example:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="se">\\</span>sshfs<span class="se">\w</span>z22@hpc-cng.abudhabi.nyu.edu<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\a</span>rchive<span class="se">\w</span>z22
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>You will be prompted for a password, after which you would have successfully mounted <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> on to your local workstation.</dt><dd><img alt="../../_images/mount_work3.png" src="../../_images/mount_work3.png" />
+</dd>
+</dl>
+</li>
+</ol>
+<div class="admonition-info admonition">
+<p class="admonition-title">Info</p>
+<p>Reference: <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh">https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../software/index.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="archive_work_merge.html" class="btn btn-neutral float-left" title="Merge of $WORK and $ARCHIVE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

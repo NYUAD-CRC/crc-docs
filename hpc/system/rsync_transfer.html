@@ -208,7 +208,7 @@
 <p>For replicating datasets between the HPC clusters and your workstation, or between two filesystems on an HPC cluster, rsync offers powerful functionality beyond that of cp or scp commands. With rsync you can copy directories between your workstation and the HPC clusters - or between different filesystems - in such a way that permission and file modification timestamps are preserved, and that only files which have changed are transferred.</p>
 <div class="admonition-basic-usage-of-rsync admonition">
 <p class="admonition-title">Basic Usage of rsync</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync <span class="o">[</span>options<span class="o">]</span> <span class="nb">source</span> <span class="o">[</span>source<span class="o">]</span> destination
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span><span class="o">[</span>source<span class="o">]</span><span class="w"> </span>destination
 </pre></div>
 </div>
 </div>
@@ -225,8 +225,8 @@
 <p>rsync treats destination in different ways:a new name for the copy of source, a parent directory into which to copy source, or a parent directory into which to place the contents of source, depending on the exact context of the command. For this reason, it is highly advisable to first run rsync with -n and -v to see exactly what rsync will do before issuing the “real” command, eg:</p>
 <div class="admonition-dry-run-first admonition">
 <p class="admonition-title">Dry Run First!</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync -nav <span class="nb">source</span> destination
-rsync -av <span class="nb">source</span> destination
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-nav<span class="w"> </span><span class="nb">source</span><span class="w"> </span>destination
+rsync<span class="w"> </span>-av<span class="w"> </span><span class="nb">source</span><span class="w"> </span>destination
 </pre></div>
 </div>
 </div>
@@ -235,58 +235,58 @@ rsync -av <span class="nb">source</span> destination
 <div class="section" id="some-examples-of-rsync-usage">
 <h2>Some examples of rsync usage<a class="headerlink" href="#some-examples-of-rsync-usage" title="Permalink to this heading">¶</a></h2>
 <p>To replicate in your /scratch area a directory tree you have saved in /home</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/<span class="nv">$USER</span>/
-$ ls -F
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/<span class="nv">$USER</span>/
+$<span class="w"> </span>ls<span class="w"> </span>-F
 my_input_data/
-$ rsync -nav my_input_data /scratch/<span class="nv">$USER</span>/my_run_dir
-building file list ... <span class="k">done</span>
+$<span class="w"> </span>rsync<span class="w"> </span>-nav<span class="w"> </span>my_input_data<span class="w"> </span>/scratch/<span class="nv">$USER</span>/my_run_dir
+building<span class="w"> </span>file<span class="w"> </span>list<span class="w"> </span>...<span class="w"> </span><span class="k">done</span>
 my_input_data/file1
 my_input_data/file2
 
-$ rsync -av my_input_data /scratch/<span class="nv">$USER</span>/my_run_dir
-building file list ... <span class="k">done</span>
+$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>my_input_data<span class="w"> </span>/scratch/<span class="nv">$USER</span>/my_run_dir
+building<span class="w"> </span>file<span class="w"> </span>list<span class="w"> </span>...<span class="w"> </span><span class="k">done</span>
 my_input_data/file1
 my_input_data/file2
 
-$ ls -F /scratch/<span class="nv">$USER</span>/my_run_dir
+$<span class="w"> </span>ls<span class="w"> </span>-F<span class="w"> </span>/scratch/<span class="nv">$USER</span>/my_run_dir
 my_input_data/
 </pre></div>
 </div>
 <p>There is now a copy of my_input_data directory under <code class="docutils literal notranslate"><span class="pre">/scratch/$USER/my_run_dir</span></code>.</p>
 <p><strong>If you append / to source, rsync will copy the contents of source rather than the source directory itself</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/<span class="nv">$USER</span>/
-$ ls -F
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/<span class="nv">$USER</span>/
+$<span class="w"> </span>ls<span class="w"> </span>-F
 my_input_data/
-$ rsync -nav my_input_data/ /scratch/<span class="nv">$USER</span>/my_run_dir
-building file list ... <span class="k">done</span>
+$<span class="w"> </span>rsync<span class="w"> </span>-nav<span class="w"> </span>my_input_data/<span class="w"> </span>/scratch/<span class="nv">$USER</span>/my_run_dir
+building<span class="w"> </span>file<span class="w"> </span>list<span class="w"> </span>...<span class="w"> </span><span class="k">done</span>
 file1
 file2
 
-$ rsync -av my_input_data/ /scratch/<span class="nv">$USER</span>/my_run_dir
-building file list ... <span class="k">done</span>
+$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>my_input_data/<span class="w"> </span>/scratch/<span class="nv">$USER</span>/my_run_dir
+building<span class="w"> </span>file<span class="w"> </span>list<span class="w"> </span>...<span class="w"> </span><span class="k">done</span>
 file1
 file2
 
-$ ls -F /scratch/<span class="nv">$USER</span>/my_run_dir
+$<span class="w"> </span>ls<span class="w"> </span>-F<span class="w"> </span>/scratch/<span class="nv">$USER</span>/my_run_dir
 file1
 file2
 </pre></div>
 </div>
 <p>The host name followed by a colon tells rsync that source or destination is on another host. If your username on the other host is different from the username on the current host, you can specify the remote username with <a class="reference external" href="mailto:username&#37;&#52;&#48;remotehost">username<span>&#64;</span>remotehost</a>: as following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -F
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-F
 my_input_data/
-$ rsync -av my_input_data &lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir
+$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>my_input_data<span class="w"> </span>&lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir
 <span class="c1">### For Example ###</span>
-$ rsync -av my_input_data wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir
+$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>my_input_data<span class="w"> </span>wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir
 </pre></div>
 </div>
 <p>To copy in the other direction, from <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> on HPC to your workstation.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ hostname
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>hostname
 my_workstation
-$ rsync -av &lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir my_results
+$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>&lt;your-net-id&gt;@jubail.abudhabi.nyu.edu:/scratch/&lt;your-net-id&gt;/my_run_dir<span class="w"> </span>my_results
 <span class="c1">### For Example ###</span>
-$ rsync -av wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir my_results
-$ ls my_results
+$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>wz22@jubail.abudhabi.nyu.edu:/scratch/wz22/my_run_dir<span class="w"> </span>my_results
+$<span class="w"> </span>ls<span class="w"> </span>my_results
 </pre></div>
 </div>
 <p>Only those files with modifications will be copired from the HPC to your workstation.</p>
@@ -294,7 +294,7 @@ $ ls my_results
 <div class="section" id="ignoring-certain-files">
 <h2>Ignoring certain files<a class="headerlink" href="#ignoring-certain-files" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">-C</span></code> option tells rsync to follow CVS conventions about ignoring certain files.The conventions are described fully in the man page (man rsync) but in summary, when <code class="docutils literal notranslate"><span class="pre">-C</span></code> is used the following files are ignored  or any file or directory whose name matches any of these mentioned below are ignored:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>RCS SCCS CVS CVS.adm RCSLOG cvslog.* tags TAGS .make.state .nse_depinfo *~ <span class="c1">#* .#* ,* _$* *$ *.old *.bak *.BAK *.orig *.rej .del-* *.a *.olb *.o *.obj *.so *.exe *.Z *.elc *.ln core .svn/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>RCS<span class="w"> </span>SCCS<span class="w"> </span>CVS<span class="w"> </span>CVS.adm<span class="w"> </span>RCSLOG<span class="w"> </span>cvslog.*<span class="w"> </span>tags<span class="w"> </span>TAGS<span class="w"> </span>.make.state<span class="w"> </span>.nse_depinfo<span class="w"> </span>*~<span class="w"> </span><span class="c1">#* .#* ,* _$* *$ *.old *.bak *.BAK *.orig *.rej .del-* *.a *.olb *.o *.obj *.so *.exe *.Z *.elc *.ln core .svn/</span>
 </pre></div>
 </div>
 <p>For example, when copying a tree of source code, you probably want the .c, .f and .h files but not the .o files, to define your own ignored rsync files use any of those methods.</p>
@@ -309,7 +309,7 @@ $ ls my_results
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CVSIGNORE</span><span class="o">=</span><span class="s2">&quot;fort.?? *.intermediate.nc&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CVSIGNORE</span><span class="o">=</span><span class="s2">&quot;fort.?? *.intermediate.nc&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -321,7 +321,7 @@ $ ls my_results
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .cvsignore
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>.cvsignore
 fort.??
 *.intermediate.nc
 </pre></div>
@@ -343,7 +343,7 @@ fort.??
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

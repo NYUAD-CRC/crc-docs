@@ -259,7 +259,7 @@
 
 <span class="c1"># **** Actual commands start here ****</span>
 <span class="c1"># Load modules here (safety measure)</span>
-module purge
+module<span class="w"> </span>purge
 <span class="c1"># You may need to load gcc here .. This is application specific</span>
 <span class="c1"># module load gcc</span>
 <span class="c1"># Replace this with your actual command. &#39;serial-hello-world&#39; for example</span>
@@ -297,12 +297,12 @@ whatever you want to run.</p>
 
 <span class="c1"># **** Actual commands start here ****</span>
 <span class="c1"># Load modules here (safety measure)</span>
-module purge
+module<span class="w"> </span>purge
 <span class="c1"># You may need to load gcc here .. This is application specific</span>
 <span class="c1"># module load gcc</span>
 
 <span class="c1"># If you are using OpenMP application, keep this line.</span>
-<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
 
 <span class="c1"># Replace this with your actual command. In this example, you should run a multithreading supported application</span>
 hostname
@@ -338,11 +338,11 @@ hostname
 
 <span class="c1"># **** Actual commands start here ****</span>
 <span class="c1"># Load modules here (safety measure)</span>
-module purge
+module<span class="w"> </span>purge
 <span class="c1"># You may need to load gcc here .. This is application specific</span>
 <span class="c1"># module load gcc</span>
 <span class="c1"># Replace this with your actual command. &#39;serial-hello-world&#39; for example</span>
-srun hostname
+srun<span class="w"> </span>hostname
 </pre></div>
 </div>
 <p>Comparing to the 1 core example, there are 2 different lines:</p>
@@ -371,15 +371,15 @@ srun hostname
 
 <span class="c1"># **** Actual commands start here ****</span>
 <span class="c1"># Load modules here (safety measure)</span>
-module purge
+module<span class="w"> </span>purge
 <span class="c1"># You may need to load gcc here .. This is application specific</span>
 <span class="c1"># module load gcc</span>
 
 <span class="c1"># If you are using Hybrid MPI + OpenMP application, keep this line.</span>
-<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
 
 <span class="c1"># Replace this with your actual command. &#39;serial-hello-world&#39; for example</span>
-srun hostname
+srun<span class="w"> </span>hostname
 </pre></div>
 </div>
 <p>In this case:</p>
@@ -404,7 +404,7 @@ srun hostname
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

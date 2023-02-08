@@ -217,17 +217,17 @@ software is installed as independent modules which users
 must explicitly load into their shell environment.</p>
 <p>Here’s an example with matlab.</p>
 <p>When you login your shell environment is empty of all software modules</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login1 ~<span class="o">]</span>$ matlab
--bash: matlab: <span class="nb">command</span> not found
-<span class="o">[</span>wz22@login1 ~<span class="o">]</span>$ which matlab
-/usr/bin/which: no matlab <span class="k">in</span> <span class="o">(</span>/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/admin/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin<span class="o">)</span>
-<span class="o">[</span>wz22@login1 ~<span class="o">]</span>$ module avail matlab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>matlab
+-bash:<span class="w"> </span>matlab:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
+<span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>which<span class="w"> </span>matlab
+/usr/bin/which:<span class="w"> </span>no<span class="w"> </span>matlab<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span>/share/apps/NYUAD/miniconda/3-4.8.2/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/slurm/default/bin:/opt/slurm/default/sbin:/share/apps/admin/tools:/share/apps/NYUAD/screen/4.3.1/bin:/home/wz22/.local/bin:/home/wz22/bin<span class="o">)</span>
+<span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>matlab
 
----------------------------------------- /share/apps/NYUAD/modules/SOFTWARE ----------------------------------------
-matlab/R2015b matlab/R2019a
-<span class="o">[</span>wz22@login1 ~<span class="o">]</span>$ module load matlab/R2019a
-Loading module <span class="s1">&#39;matlab/R2019a&#39;</span>
-<span class="o">[</span>wz22@login1 ~<span class="o">]</span>$ which matlab
+----------------------------------------<span class="w"> </span>/share/apps/NYUAD/modules/SOFTWARE<span class="w"> </span>----------------------------------------
+matlab/R2015b<span class="w"> </span>matlab/R2019a
+<span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>matlab/R2019a
+Loading<span class="w"> </span>module<span class="w"> </span><span class="s1">&#39;matlab/R2019a&#39;</span>
+<span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>which<span class="w"> </span>matlab
 /share/apps/NYUAD/matlab/R2019a/bin/matlab
 </pre></div>
 </div>
@@ -267,17 +267,17 @@ You can control and monitor the contents of your software modules environment wi
 <li><p>Use a shell script to run an application and include the necessary modules in the script:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module purge
-module load matlab
-matlab –nodisplay –nodesktop –r <span class="s2">&quot;mycode.m&quot;</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>matlab
+matlab<span class="w"> </span>–nodisplay<span class="w"> </span>–nodesktop<span class="w"> </span>–r<span class="w"> </span><span class="s2">&quot;mycode.m&quot;</span>
 </pre></div>
 </div>
 <p>If you use <code class="docutils literal notranslate"><span class="pre">csh</span></code> then you need to initialize the software module environment before using <code class="docutils literal notranslate"><span class="pre">module</span></code> commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/csh</span>
-<span class="nb">source</span> /usr/share/Modules/init/csh
-module purge
-module load matlab
-matlab –nodisplay –nodesktop –r <span class="s2">&quot;mycode.m&quot;</span>
+<span class="nb">source</span><span class="w"> </span>/usr/share/Modules/init/csh
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>matlab
+matlab<span class="w"> </span>–nodisplay<span class="w"> </span>–nodesktop<span class="w"> </span>–r<span class="w"> </span><span class="s2">&quot;mycode.m&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -312,7 +312,7 @@ matlab –nodisplay –nodesktop –r <span class="s2">&quot;mycode.m&quot;</spa
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

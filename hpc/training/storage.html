@@ -207,7 +207,7 @@
 <li><p>Put all your data to  <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> and run your jobs from there.</p></li>
 <li><p>Only a small persistent fraction to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (e.g., source code, executables).</p></li>
 <li><p>For long-term storage, archive them to <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.</p></li>
 </ul>
 <p>Backing up is a user’s own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.</p>
 <div class="admonition caution">
@@ -222,7 +222,6 @@
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>$HOME</p></th>
 <th class="head"><p>$SCRATCH</p></th>
-<th class="head"><p>$WORK</p></th>
 <th class="head"><p>$ARCHIVE</p></th>
 </tr>
 </thead>
@@ -231,37 +230,31 @@
 <td><p>source code / executables</p></td>
 <td><p>data</p></td>
 <td><p>anything</p></td>
-<td><p>anything</p></td>
 </tr>
 <tr class="row-odd"><td><p>Accessible From</p></td>
 <td><p>login / compute</p></td>
 <td><p>login / compute</p></td>
-<td><p>login</p></td>
 <td><p>login</p></td>
 </tr>
 <tr class="row-even"><td><p>Use to Run Jobs</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
-<td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>Retention Time (Days)</p></td>
 <td><p>No Limit</p></td>
 <td><p>90</p></td>
-<td><p>120</p></td>
 <td><p>No Limit</p></td>
 </tr>
 <tr class="row-even"><td><p>Mountable</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
-<td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>Default Quota (star)</p></td>
 <td><p>20GB, 150K Files</p></td>
 <td><p>5TB, 500K Files</p></td>
-<td><p>5TB, 500K Files</p></td>
-<td><p>5TB, 125K Files</p></td>
+<td><p>No Limit</p></td>
 </tr>
 </tbody>
 </table>
@@ -297,7 +290,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

@@ -233,7 +233,7 @@ in the overlay (in 1000’s). The usage is as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#overlay.sh &lt;size&gt; &lt;num of files&gt;</span>
 
 <span class="c1">#example:</span>
-overlay.sh <span class="m">500</span> <span class="m">700</span>
+overlay.sh<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">700</span>
 </pre></div>
 </div>
 <p>The above command will create an overlay with <code class="docutils literal notranslate"><span class="pre">500MB</span></code> capacity and number of files capacity <code class="docutils literal notranslate"><span class="pre">700K</span></code>
@@ -245,13 +245,13 @@ by the name <code class="docutils literal notranslate"><span class="pre">overlay
 <span class="c1">#singularity shell  --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif</span>
 
 <span class="c1">#example:</span>
-singularity shell  --overlay overlay-500M-700K.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
+singularity<span class="w"> </span>shell<span class="w">  </span>--overlay<span class="w"> </span>overlay-500M-700K.ext3<span class="w"> </span>/share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <div class="admonition-analogy-to-make-things-more-understandable admonition">
 <p class="admonition-title">Analogy: To make things more understandable</p>
 <p>The command you use to get into the overlay is as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell  --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span>shell<span class="w">  </span>--overlay<span class="w"> </span>&lt;chosen-file&gt;.ext3<span class="w"> </span>/share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>if you look closely it contains paths to two files</p>
@@ -264,8 +264,8 @@ singularity shell  --overlay overlay-500M-700K.ext3 /share/apps/admin/singularit
 <p>Each of these pendrives have their own capacity (quota). You could potentially create an overlay pendrive of the capacity (quota) you like and use it store your files(data).</p>
 <p>When you run the above command, you basically login to your container PC and plug in these pendrives. It looks very similar to as compared to when you log in to Jubail. You could navigate through your files in /scratch and /home as usual. For files in the overlay you can cd to the desired folder and view the files in a similar manner.</p>
 <p>For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data
-ls -lrt data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/opt/data
+ls<span class="w"> </span>-lrt<span class="w"> </span>data
 </pre></div>
 </div>
 <p>For transferring data between any of these pendrives (<code class="docutils literal notranslate"><span class="pre">/home</span></code>, <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> , <code class="docutils literal notranslate"><span class="pre">overlay</span></code> etc), you could use the
@@ -276,16 +276,16 @@ command mentioned above.</p>
 <p>If you want to mount ext3 file as read and write, you can do that only with one process.</p>
 <p>If you have more than one process reading from the given ext3 file, it shall be mounted as read-only.</p>
 <p>For read-only mount, please specify <code class="docutils literal notranslate"><span class="pre">:ro</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell  --overlay &lt;chosen-file&gt;.ext3:ro /share/apps/admin/singularity-images/centos-8.2.2004.sif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span>shell<span class="w">  </span>--overlay<span class="w"> </span>&lt;chosen-file&gt;.ext3:ro<span class="w"> </span>/share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>If you use GPUs please specify option <code class="docutils literal notranslate"><span class="pre">--nv</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell --nv  --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span>shell<span class="w"> </span>--nv<span class="w">  </span>--overlay<span class="w"> </span>&lt;chosen-file&gt;.ext3<span class="w"> </span>/share/apps/admin/singularity-images/centos-8.2.2004.sif
 </pre></div>
 </div>
 <p>More info on singularuty shell <a class="reference external" href="https://sylabs.io/guides/3.1/user-guide/cli/singularity_shell.html">here</a></p>
 <p>You can also use <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">exec</span></code> to run the container with overlay filesystem:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> --overlay &lt;chosen-file&gt;.ext3 /share/apps/admin/singularity-images/centos-8.2.2004.sif /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--overlay<span class="w"> </span>&lt;chosen-file&gt;.ext3<span class="w"> </span>/share/apps/admin/singularity-images/centos-8.2.2004.sif<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <p>More info on singularity exec <a class="reference external" href="https://sylabs.io/guides/3.5/user-guide/cli/singularity_exec.html">here</a></p>
@@ -299,8 +299,8 @@ to <code class="docutils literal notranslate"><span class="pre">opt</span></code
 <p>It should be noted that you can write to any of the directories and create your own directories in
 the overlay as well:</p>
 <p>for example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p /data
-mkdir -p /conda
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data
+mkdir<span class="w"> </span>-p<span class="w"> </span>/conda
 </pre></div>
 </div>
 <p>The above commands will create <code class="docutils literal notranslate"><span class="pre">/data</span></code> and <code class="docutils literal notranslate"><span class="pre">/conda</span></code> directories, which will be part of the overlay itself.
@@ -313,13 +313,13 @@ overlay.</p>
 <h2>While in container<a class="headerlink" href="#while-in-container" title="Permalink to this heading">¶</a></h2>
 <p><strong>Creating a Conda Environment</strong></p>
 <p>You can create a conda environment in /opt as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load miniconda
-<span class="nb">source</span> ~/.bashrc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>miniconda
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
 
 <span class="c1">#Create new environments in /opt</span>
-conda create -p /opt/conda-envs/myenv
+conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/opt/conda-envs/myenv
 
-conda activate /opt/conda-envs/myenv
+conda<span class="w"> </span>activate<span class="w"> </span>/opt/conda-envs/myenv
 <span class="c1">## then use conda as usual</span>
 
 <span class="c1">#Close singularity</span>
@@ -329,9 +329,9 @@ conda activate /opt/conda-envs/myenv
 <p><strong>Transferring Datasets</strong></p>
 <p>You can also copy the Dataset from your local folder and place it under <code class="docutils literal notranslate"><span class="pre">/opt</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example:</span>
-mkdir -p /opt/data
-cp -r /scratch/wz22/dataset.zip /opt/data/.
-unzip dataset.zip
+mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/data
+cp<span class="w"> </span>-r<span class="w"> </span>/scratch/wz22/dataset.zip<span class="w"> </span>/opt/data/.
+unzip<span class="w"> </span>dataset.zip
 </pre></div>
 </div>
 <div class="admonition note">
@@ -358,10 +358,10 @@ is written into the overlay directory <code class="docutils literal notranslate"
 <span class="c1">#Specify location of the overlay.ext3 file</span>
 <span class="nv">overlay_ext3</span><span class="o">=</span>/scratch/wz22/overlay-500M-700K.ext3
 
-singularity <span class="se">\</span>
-    <span class="nb">exec</span> --nv --overlay <span class="nv">$overlay_ext3</span>:ro <span class="se">\</span>
-    /share/apps/admin/singularity-images/centos-8.2.2004.sif  <span class="se">\</span>
-    /bin/bash -c <span class="s2">&quot;source ~/.bashrc; \</span>
+singularity<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>--overlay<span class="w"> </span><span class="nv">$overlay_ext3</span>:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/share/apps/admin/singularity-images/centos-8.2.2004.sif<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;source ~/.bashrc; \</span>
 <span class="s2">                conda activate /opt/conda-envs/myenv; \</span>
 <span class="s2">                python &lt;path_to_python_script_file&gt;.py &quot;</span>
 </pre></div>
@@ -383,7 +383,7 @@ singularity <span class="se">\</span>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

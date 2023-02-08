@@ -210,11 +210,11 @@
 <h2>Linux / Mac<a class="headerlink" href="#linux-mac" title="Permalink to this heading">¶</a></h2>
 <p><strong>Inside NYU Network</strong></p>
 <p>For Linux/Mac, execute the following command, change <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> to your actual username.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
 <p>If you need <code class="docutils literal notranslate"><span class="pre">X11</span></code> for GUI interface, add the <code class="docutils literal notranslate"><span class="pre">-X</span></code> option.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu -X
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;NetID&gt;@jubail.abudhabi.nyu.edu<span class="w"> </span>-X
 </pre></div>
 </div>
 </div>
@@ -227,13 +227,13 @@
 <ol class="arabic simple">
 <li><p>Connect to bastion host.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@hpc.abudhabi.nyu.edu -p <span class="m">4410</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;NetID&gt;@hpc.abudhabi.nyu.edu<span class="w"> </span>-p<span class="w"> </span><span class="m">4410</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>On bastion host, connect to Jubail.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
 <p><strong>Tunnel configuration</strong></p>
@@ -241,37 +241,37 @@
 <ol class="arabic simple">
 <li><p>Add the following to your <code class="docutils literal notranslate"><span class="pre">$HOME/.ssh/config</span></code> on your local workstation. Replace <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> with your actual <code class="docutils literal notranslate"><span class="pre">NetID</span></code>. Make sure your local port 8023 is available.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host tunnel-ad-hpc
-   HostName hpc.abudhabi.nyu.edu
-   Port <span class="m">4410</span>
-   ForwardX11 yes
-   LocalForward <span class="m">8023</span> jubail.abudhabi.nyu.edu:22
-   User &lt;NetID&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>tunnel-ad-hpc
+<span class="w">   </span>HostName<span class="w"> </span>hpc.abudhabi.nyu.edu
+<span class="w">   </span>Port<span class="w"> </span><span class="m">4410</span>
+<span class="w">   </span>ForwardX11<span class="w"> </span>yes
+<span class="w">   </span>LocalForward<span class="w"> </span><span class="m">8023</span><span class="w"> </span>jubail.abudhabi.nyu.edu:22
+<span class="w">   </span>User<span class="w"> </span>&lt;NetID&gt;
 
 
-Host tunnel-jubail
-   HostName localhost
-   Port <span class="m">8023</span>
-   ForwardX11 yes
-   User &lt;NetID&gt;
+Host<span class="w"> </span>tunnel-jubail
+<span class="w">   </span>HostName<span class="w"> </span>localhost
+<span class="w">   </span>Port<span class="w"> </span><span class="m">8023</span>
+<span class="w">   </span>ForwardX11<span class="w"> </span>yes
+<span class="w">   </span>User<span class="w"> </span>&lt;NetID&gt;
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Open a terminal. Run the following and keep this terminal alive.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh tunnel-ad-hpc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>tunnel-ad-hpc
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Open a new terminal. Run the following to connect to Jubail.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh tunnel-jubail
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>tunnel-jubail
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>If you want to transfer data instead, use the following example.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync -rav ./local-folder-to-upload tunnel-jubail:/scratch/&lt;NetID&gt;/remote-folder-on-jubail
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-rav<span class="w"> </span>./local-folder-to-upload<span class="w"> </span>tunnel-jubail:/scratch/&lt;NetID&gt;/remote-folder-on-jubail
 </pre></div>
 </div>
 </div>
@@ -304,7 +304,7 @@ Host tunnel-jubail
 <li><p>Follow the instructions above as inside NYU Network, but connect to the host <strong>hpc.abudhabi.nyu.edu</strong> with port <strong>4410</strong> instead of jubail.abudhabi.nyu.edu.</p></li>
 <li><p>Once you are connected, run this in the terminal on hpc.abudhabi.nyu.edu</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;NetID&gt;@jubail.abudhabi.nyu.edu
 </pre></div>
 </div>
 <p>Now you are on Jubail.</p>
@@ -325,7 +325,7 @@ Host tunnel-jubail
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

@@ -213,7 +213,7 @@ the MATLAB documentation (<a class="reference external" href="https://es.mathwor
 <h2>Running a Serial MATLAB Job<a class="headerlink" href="#running-a-serial-matlab-job" title="Permalink to this heading">¶</a></h2>
 <p>A serial MATLAB job is one that requires only a single CPU-core. Here is an example of a trivial,
 one-line serial MATLAB script (<code class="docutils literal notranslate"><span class="pre">hello_world.m</span></code>):</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Hello world.\n&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Hello world.\n&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The Slurm script (job.slurm) below can be used for serial jobs:</p>
@@ -227,17 +227,17 @@ one-line serial MATLAB script (<code class="docutils literal notranslate"><span 
 <span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@nyu.edu</span>
 
 <span class="c1">#Load matlab module</span>
-module purge
-module load matlab
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run Matlab via command line</span>
-matlab -nojvm -singleCompThread -nodisplay -nosplash -nodesktop -batch hello_world
+matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-batch<span class="w"> </span>hello_world
 </pre></div>
 </div>
 <p>By invoking MATLAB with <code class="docutils literal notranslate"><span class="pre">-nojvm</span> <span class="pre">-singleCompThread</span> <span class="pre">-nodisplay</span> <span class="pre">-nosplash</span></code>, the GUI and the background java processes are
 suppressed as is the creation of multiple threads.</p>
 <p>To run the MATLAB script, simply submit the job to the scheduler with the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch job.slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>job.slurm
 </pre></div>
 </div>
 <div class="admonition note">
@@ -257,17 +257,17 @@ then you can run in multi-threaded mode.</p>
 <p>One can use up to all the CPU-cores on a single node in this mode.
 Multi-node jobs are not possible with the version of MATLAB that we have so your Slurm script should always
 use <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--nodes=1</span></code>. Here is an example from MathWorks of using multiple cores (<code class="docutils literal notranslate"><span class="pre">for_loop.m</span></code>):</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">;</span><span class="w"></span>
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Number of workers: %g\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">poolobj</span><span class="p">.</span><span class="n">NumWorkers</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">;</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Number of workers: %g\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">poolobj</span><span class="p">.</span><span class="n">NumWorkers</span><span class="p">);</span>
 
-<span class="n">tic</span><span class="w"></span>
-<span class="s">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span><span class="w"></span>
-<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w"></span>
-<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
-<span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="w"></span>
-<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="n">A</span><span class="p">))));</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
-<span class="nb">toc</span><span class="w"></span>
+<span class="n">tic</span>
+<span class="s">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="n">A</span><span class="p">))));</span>
+<span class="k">end</span>
+<span class="nb">toc</span>
 </pre></div>
 </div>
 <p>The Slurm script (<code class="docutils literal notranslate"><span class="pre">job.slurm</span></code>) below can be used for this case:</p>
@@ -281,11 +281,11 @@ use <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> 
 <span class="c1">#SBATCH --mail-user=&lt;YourNetID&gt;@nyu.edu</span>
 
 <span class="c1">#Load Matlab</span>
-module purge
-module load matlab
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run the matlab script</span>
-matlab -nodisplay -nosplash -nodesktop -batch for_loop
+matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-batch<span class="w"> </span>for_loop
 </pre></div>
 </div>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">-singleCompThread</span></code> and <code class="docutils literal notranslate"><span class="pre">-nojvm</span></code> does not appear in the Slurm script in contrast to the serial case.</p>
@@ -300,7 +300,7 @@ request the longer your queue time will be.</p>
 <h2>Overriding the 12 core limit<a class="headerlink" href="#overriding-the-12-core-limit" title="Permalink to this heading">¶</a></h2>
 <p>By default MATLAB will restrict you to 12 worker threads. You can override this when making the parallel
 pool with the following line, for example, with 24 threads:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">(</span><span class="s">&#39;local&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">poolobj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">(</span><span class="s">&#39;local&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>If you use more than one thread then make sure that your code can take advantage of all the CPU-cores.
@@ -332,11 +332,11 @@ time of the two codes.</p>
 </div>
 <p>The rightmost column labeled <code class="docutils literal notranslate"><span class="pre">NODELIST(REASON)</span></code> gives the name of the node where your job is running.
 SSH to this node, for example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh dn034
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>dn034
 </pre></div>
 </div>
 <p>Once on the compute node, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>htop -u <span class="nv">$USER</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>htop<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </pre></div>
 </div>
 <p>If your job is running in parallel you should see a process using much more than <code class="docutils literal notranslate"><span class="pre">100%</span></code> in the <code class="docutils literal notranslate"><span class="pre">%CPU</span></code>
@@ -346,15 +346,15 @@ column. For 4 CPU-cores this number would ideally be <code class="docutils liter
 <h2>Running Matlab on GPUs<a class="headerlink" href="#running-matlab-on-gpus" title="Permalink to this heading">¶</a></h2>
 <p>Many routines in MATLAB have been written to run on a GPU. Below is a MATLAB script (svd_matlab.m) that
 performs a matrix decomposition using a GPU:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gpu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuDevice</span><span class="p">();</span><span class="w"></span>
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Using a %s GPU.\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">gpu</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span><span class="w"></span>
-<span class="nb">disp</span><span class="p">(</span><span class="n">gpuDevice</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gpu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuDevice</span><span class="p">();</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Using a %s GPU.\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">gpu</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">gpuDevice</span><span class="p">);</span>
 
-<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuArray</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="o">-</span><span class="mi">9</span><span class="p">]);</span><span class="w"></span>
-<span class="n">whos</span><span class="w"> </span><span class="s">X</span><span class="p">;</span><span class="w"></span>
-<span class="p">[</span><span class="n">U</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;trace(S): %f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trace</span><span class="p">(</span><span class="n">S</span><span class="p">))</span><span class="w"></span>
-<span class="nb">quit</span><span class="p">;</span><span class="w"></span>
+<span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuArray</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="o">-</span><span class="mi">9</span><span class="p">]);</span>
+<span class="n">whos</span><span class="w"> </span><span class="s">X</span><span class="p">;</span>
+<span class="p">[</span><span class="n">U</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;trace(S): %f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trace</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
+<span class="nb">quit</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The Slurm script (<code class="docutils literal notranslate"><span class="pre">job.slurm</span></code>) below can be used for this case:</p>
@@ -371,16 +371,16 @@ performs a matrix decomposition using a GPU:</p>
 <span class="c1">#SBATCH --mail-user=&lt;NetID&gt;@nyu.edu</span>
 
 <span class="c1">#Load Matlab Module</span>
-module purge
-module load matlab
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run your matlab script</span>
-matlab -nojvm -singleCompThread -nodisplay -nosplash -nodesktop -batch svd_matlab
+matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-batch<span class="w"> </span>svd_matlab
 </pre></div>
 </div>
 <p>In the above Slurm script, notice the new lines: <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">nvidia</span></code> and <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--gres=gpu:1</span></code></p>
 <p>The job can be submitted to the scheduler with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch job.slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>job.slurm
 </pre></div>
 </div>
 <p>Be sure that your MATLAB code is able to use a GPU before submitting your job.
@@ -402,7 +402,7 @@ See this <a class="reference external" href="https://www.mathworks.com/solutions
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 

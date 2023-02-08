@@ -100,9 +100,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Storage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="work.html">$WORK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#know-your-quota">Know Your Quota</a></li>
 </ul>
@@ -192,15 +193,23 @@
             
   <div class="section" id="storage">
 <h1>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">¶</a></h1>
-<p>We have 4 storage systems for you: <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (<code class="docutils literal notranslate"><span class="pre">/home/&lt;NetID&gt;</span></code>), <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> (<code class="docutils literal notranslate"><span class="pre">/scratch/&lt;NetID&gt;</span></code>), <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> (<code class="docutils literal notranslate"><span class="pre">/work/&lt;NetID&gt;</span></code>) and <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;</span></code>).</p>
+<p>We have 3 storage systems for you: <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (<code class="docutils literal notranslate"><span class="pre">/home/&lt;NetID&gt;</span></code>), <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> (<code class="docutils literal notranslate"><span class="pre">/scratch/&lt;NetID&gt;</span></code>) and <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Kindly note that <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is now discontinued. <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> are mereged together to <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code>
+to incoporate both their functionalities into one. Kindly refer the doc <a class="reference internal" href="archive_work_merge.html"><span class="doc">here</span></a>
+for the major changes</p>
+</div>
 <p>In short, you should</p>
 <ul class="simple">
 <li><p>Put all your data to  <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> and run your jobs from there.</p></li>
 <li><p>Only a small persistent fraction to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (e.g., source code, executables).</p></li>
 <li><p>For long-term storage, archive them to <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$WORK</span></code> is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> is not visible on compute nodes but mountable on your local workstation,
+best suited to quick post-processing, analysis and visualization, without moving your data.</p></li>
 </ul>
-<p>Backing up is a user’s own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.</p>
+<p>Backing up is a user’s own responsibility. E.g., if a user deleted something accidentally,
+we can not recover, unfortunately.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Running jobs from <code class="docutils literal notranslate"><span class="pre">/home</span></code> is a <strong>serious violation</strong> of HPC policy. Any users who intentionally violate this policy will get their account suspended.
@@ -209,16 +218,25 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="work.html">$WORK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="work.html#mount-work-with-sshfs">Mount $WORK with SSHFS</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="archive.html">$ARCHIVE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#what-s-inside-archive">What’s inside <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#state-of-the-file-in-archive">State of the file in <code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#how-to-identify-the-state-of-a-file">How to identify the state of a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#how-to-archive-and-de-archive">How to Archive and De Archive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archive.html#quick-glance-into-the-archive-commands">Quick Glance into the archive commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="archive.html#archive-sh">archive.sh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html#mount-archive-with-sshfs">Mount $ARCHIVE with SSHFS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html#step-by-step-guide">Step-by-step guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html#mount-archive-on-windows">Mount $ARCHIVE on Windows</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="summary">
@@ -228,7 +246,6 @@
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>$HOME</p></th>
 <th class="head"><p>$SCRATCH</p></th>
-<th class="head"><p>$WORK</p></th>
 <th class="head"><p>$ARCHIVE</p></th>
 </tr>
 </thead>
@@ -237,35 +254,29 @@
 <td><p>source code / executables</p></td>
 <td><p>data</p></td>
 <td><p>anything</p></td>
-<td><p>anything</p></td>
 </tr>
 <tr class="row-odd"><td><p>Accessible From</p></td>
 <td><p>login / compute</p></td>
 <td><p>login / compute</p></td>
-<td><p>login</p></td>
 <td><p>login</p></td>
 </tr>
 <tr class="row-even"><td><p>Use to Run Jobs</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
-<td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>Retention Time (Days)</p></td>
 <td><p>No Limit</p></td>
 <td><p>90</p></td>
-<td><p>120</p></td>
 <td><p>No Limit</p></td>
 </tr>
 <tr class="row-even"><td><p>Mountable</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
-<td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>Default Quota (star)</p></td>
 <td><p>20GB, 150K Files</p></td>
-<td><p>5TB, 500K Files</p></td>
 <td><p>5TB, 500K Files</p></td>
 <td><p>No Limit</p></td>
 </tr>
@@ -273,7 +284,6 @@
 </table>
 <ul class="simple">
 <li><p><a class="reference internal" href="home_scratch.html"><span class="doc">$HOME and $SCRATCH</span></a></p></li>
-<li><p><a class="reference internal" href="work.html"><span class="doc">$WORK</span></a></p></li>
 <li><p><a class="reference internal" href="archive.html"><span class="doc">$ARCHIVE</span></a></p></li>
 <li><p><a class="reference internal" href="data_sharing.html"><span class="doc">Data Sharing with Collaborators</span></a></p></li>
 </ul>
@@ -288,7 +298,6 @@
             <span class="o">--------------------------</span>   <span class="o">--------------------------</span>
      <span class="o">/</span><span class="n">home</span>     <span class="mi">5990</span><span class="n">MB</span>       <span class="mi">20</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">29</span><span class="o">%</span><span class="p">)</span>        <span class="mi">60</span>       <span class="mi">150</span> <span class="p">(</span> <span class="mi">40</span><span class="o">%</span><span class="p">)</span>
   <span class="o">/</span><span class="n">scratch</span>       <span class="mi">67</span><span class="n">GB</span>     <span class="mi">5000</span><span class="n">GB</span> <span class="p">(</span>  <span class="mi">1</span><span class="o">%</span><span class="p">)</span>       <span class="mi">191</span>       <span class="mi">500</span> <span class="p">(</span> <span class="mi">38</span><span class="o">%</span><span class="p">)</span>
-     <span class="o">/</span><span class="n">work</span>       <span class="mi">24</span><span class="n">KB</span>     <span class="mi">5000</span><span class="n">GB</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">%</span><span class="p">)</span>         <span class="mi">0</span>       <span class="mi">500</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">%</span><span class="p">)</span>
   <span class="o">/</span><span class="n">archive</span>          <span class="mi">0</span>          <span class="mi">0</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">%</span><span class="p">)</span>         <span class="mi">0</span>         <span class="mi">0</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">%</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -310,7 +319,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2022, Center for Research Computing | NYU Abu Dhabi.
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
 
     </p>
   </div> 
