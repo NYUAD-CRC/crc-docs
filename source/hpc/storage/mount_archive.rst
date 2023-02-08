@@ -58,7 +58,7 @@ Step-by-step guide
 .. _mount_archive_windows:
 
 Mount $ARCHIVE on Windows
--------------------------
+--------------------------
 
 1. Download the following applications and install them on your local Windows PC.
     * :download:`SSHFS-Win<https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20024/sshfs-win-3.5.20024-x64.msi>`
