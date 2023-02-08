@@ -71,9 +71,7 @@ Summary
 
 
   
-* :doc:`$HOME and $SCRATCH <home_scratch>`
-* :doc:`$ARCHIVE <archive>`
-* :doc:`Data Sharing with Collaborators <data_sharing>`
+
 
 Know Your Quota
 ---------------

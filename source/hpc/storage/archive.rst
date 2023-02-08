@@ -15,7 +15,7 @@ Jubail HPC, We have merged the functionalities of two storages, ``$WORK`` (``/wo
 
 .. caution:: The ``/work/<NetID>`` has been discontinued from 2nd Feb 2023. The previous data in ``/work/<NetID>`` is 
     moved to ``/archive/work/<NetID>`` as a temporary staging area to allow users to move out their 
-    existing data from ``$WORK`` to archive (``/archive/<NetID>/…``). The ``/archive/work/<NetID>`` will be 
+    existing data from ``$WORK`` to archive (``/archive/<NetID>/…``). The ``/archive/work/<NetID>`` is 
     available for the users from the 3rd of Feb 2023 and would be deprecated after a period of 180 days.
 
 When storage is shared among many users, rules must be set to prevent users to consume disk space
@@ -61,7 +61,7 @@ The archive processes are described below in the form of a flowchart.
   files is available on the Tape library as well.
 - **Process 2 :** Once the usage of the total storage hits 80% , the system atomatically frees up space by keeping only 
   a copy of the file on the tape library (which can be retrieved later).
-- The freeing up of space is in accordance with the modification timestamp of the files which are oldest. 
+- The freeing up of space is in accordance with the access timestamp of the files which are oldest. 
 
 State of the file in ``$ARCHIVE``
 ---------------------------------
@@ -128,7 +128,7 @@ The above figure shows the following:
 
 **archived state**
 
-- Since the ```archived state`` refers to the copy of the file available on both the storages, usual unix commands 
+- Since the ``archived state`` refers to the copy of the file available on both the storages, usual unix commands 
   (``cp , rsync``) can be used to copy out the files from ``/archive`` to your ``/scratch``. 
 
 **released archived state**
@@ -204,13 +204,29 @@ Quick Glance into the archive commands
       - ``dmfget <filename>``
       - use when the file is in the ``released archived state``
     * - Monitor the state of a file
-      - dmfmonitor <filename>
+      - ``dmfmonitor <filename>``
       - Can be used to track if the migration from tape-library to storage is done.
    
 
-Mount $ARCHIVE with SSHFS
--------------------------
+Best Practices
+--------------
 
-``$ARCHIVE`` can also be mounted on your workstation, Linux,Mac and Windows. 
-Instructions are in this page: :ref:`Mount $ARCHIVE with SSHFS <mount_archive>`
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - Dos
+      - Remarks
+    * - Periodically clean your ``/scratch`` 
+      - Files which have not been access for 90 days in ``/scratch`` are deleted.  
+    * - Once a project is completed move the data over to ``/archive`` 
+      - Moving data to ``/archive`` frees up space from ``/scratch`` and avoids deletion of files if older than 90 days.
+    * - Use tar files to archive directories with large file count	
+      - Lesser the number of files, faster is the archiving and dearchiving process
+    
+.. note::
+ ``$ARCHIVE`` can also be mounted on your workstation, Linux,Mac and Windows. 
+ Instructions are in this page: :ref:`Mount $ARCHIVE with SSHFS <mount_archive>`
+
+
 
