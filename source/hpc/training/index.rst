@@ -63,7 +63,7 @@ Job Submission
    :maxdepth: 4
 
    /hpc/training/quick_start
-   /hpc/training/job_jubail
+   /hpc/training/job_array
 
 HPC Web Interface
 -----------------

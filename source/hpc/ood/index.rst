@@ -27,7 +27,7 @@ These are the different features supported by OOD
 
 
     
- 1. **Files** shows and process your files in the different storage systems ``$HOME`` (``/home/<NetID>``), ``$SCRATCH`` (``/scratch/<NetID>``) and ``$WORK`` (``/work/<NetID>``)
+ 1. **Files** shows and process your files in the different storage systems ``$HOME`` (``/home/<NetID>``), ``$SCRATCH`` (``/scratch/<NetID>``) and ``$ARCHIVE`` (``/ARCHIVE/<NetID>``)
  
      .. raw:: html
      
