@@ -106,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#know-your-quota">Know Your Quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
@@ -297,6 +298,27 @@ we can not recover, unfortunately.</p>
 </pre></div>
 </div>
 <p>For data transfers please refer to the <strong>Data Trasnfers</strong> section <a class="reference internal" href="../system/index.html#data-transfers"><span class="std std-ref">here</span></a></p>
+</div>
+<div class="section" id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dos</p></th>
+<th class="head"><p>Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Periodically clean your <code class="docutils literal notranslate"><span class="pre">/scratch</span></code></p></td>
+<td><p>Files which have not been access for 90 days in <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> are deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Once a project is completed move the data over to <code class="docutils literal notranslate"><span class="pre">/archive</span></code></p></td>
+<td><p>Moving data to <code class="docutils literal notranslate"><span class="pre">/archive</span></code> frees up space from <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> and avoids deletion of files if older than 90 days.</p></td>
+</tr>
+<tr class="row-even"><td><p>Use tar files to archive directories with large file count</p></td>
+<td><p>Lesser the number of files, faster is the archiving and dearchiving process</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

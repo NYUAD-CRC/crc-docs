@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#things-to-keep-in-mind">Things to Keep in mind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#partitions-summary">Partitions Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sample-job-script">Sample Job Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sbatch-with-n-c-and-n">#SBATCH with <code class="docutils literal notranslate"><span class="pre">-n</span></code> , <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#basic-slurm-commands">Basic SLURM Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requesting-a-gpu-node">Requesting a GPU node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preempt-partition">Preempt Partition</a></li>
@@ -365,7 +366,7 @@
 <div class="section" id="sample-job-script">
 <h2>Sample Job Script<a class="headerlink" href="#sample-job-script" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
-<dt>A job script, which consists of 2 parts:</dt><dd><ol class="loweralpha simple">
+<dt>A job script consists of 2 parts:</dt><dd><ol class="loweralpha simple">
 <li><p>Resources requirement.</p></li>
 <li><p>Commands to be executed.</p></li>
 </ol>
@@ -395,7 +396,7 @@
 <span class="c1">#Define the resource requirements here using #SBATCH</span>
 
 <span class="c1">#For requesting 10 CPUs</span>
-<span class="c1">#SBATCH -n 10</span>
+<span class="c1">#SBATCH -c 10</span>
 
 <span class="c1">#Max wallTime for the job</span>
 <span class="c1">#SBATCH -t 24:00:00</span>
@@ -413,6 +414,95 @@ conda<span class="w"> </span>activate<span class="w"> </span>myenv
 python<span class="w"> </span>abc.py
 </pre></div>
 </div>
+<p><strong>Common Job submission arguments:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>   Select number of tasks to run (default 1 core per task)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code>   Select number of nodes on which to run</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>   Wallclock in days-hours:minutes:seconds (ex 4:00:00)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>   Select partition (compute, gpu, bigmem)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>   Output file ( with no <code class="docutils literal notranslate"><span class="pre">–e</span></code> option, err and out are merged to the Outfile)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e</span></code>   Keep a separate error File</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>   Dependency with prior job (ex don’t start this job before job XXX terminates)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-A</span></code>   Select account (ex physics_ser, faculty_ser)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>   Number of cores required per task (default 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ntasks-per-node</span></code> Number of tasks on each node</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mail-type=type</span></code> Notify on state change: BEGIN, END, FAIL or ALL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mail-user=user</span></code> Who to send email notification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mem</span></code> Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)</p></li>
+</ul>
+</div>
+<div class="section" id="sbatch-with-n-c-and-n">
+<h2>#SBATCH with <code class="docutils literal notranslate"><span class="pre">-n</span></code> , <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code><a class="headerlink" href="#sbatch-with-n-c-and-n" title="Permalink to this heading">¶</a></h2>
+<p>It may sometimes be confusing to select between <code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code>. The following section attempts to
+describe the difference between these parameters.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code> refers to number of tasks. Tasks can communicate across the nodes.</p></li>
+<li><p>If the number of tasks, is greater than one, it is possible that they may distributed across multiple nodes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code> refers to number of cpus per task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code> is always confined to a single node and is beneficial for multithreaded jobs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code> assigns the tasks to <code class="docutils literal notranslate"><span class="pre">N</span></code> number of nodes.</p></li>
+<li><p>Each task is by default assigned one cpu and each task is by default assigned a single node.</p></li>
+<li><p>The values of <code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code> are by default 1, if not specified.</p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Behaviour</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -n 10</span>
+</pre></div>
+</div>
+</td>
+<td><ul class="simple">
+<li><p>Same as <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=10</span></code></p></li>
+<li><p>10 CPUs are assigned in this case</p></li>
+<li><p>CPUs can be assigned in the same node or across multiple nodes.</p></li>
+<li><p>Not recommended for multithreaded jobs or jobs needed to be confied to a single node.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -c 10</span>
+</pre></div>
+</div>
+</td>
+<td><ul class="simple">
+<li><p>Same as <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--cpus-per-task=10</span></code></p></li>
+<li><p>10 CPUs are assigned in this case</p></li>
+<li><p>CPUs are assigned within a single node</p></li>
+<li><p>Recommended for multithreaded jobs (most python jobs).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -n 10</span>
+</pre></div>
+</div>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code> parameter is same as <code class="docutils literal notranslate"><span class="pre">--nodes</span></code></p></li>
+<li><p>10 CPUs are assigned in this case</p></li>
+<li><p>CPUs are assigned to number nodes specified to the parameter <code class="docutils literal notranslate"><span class="pre">N</span></code> (1 in this case)</p></li>
+<li><p>Useful to run jobs across selected number of nodes (mostly for MPI jobs).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -n 10</span>
+<span class="c1">#SBATCH -c 20</span>
+</pre></div>
+</div>
+</td>
+<td><ul class="simple">
+<li><p>200 CPUs are assigned ( 20 for each task).</p></li>
+<li><p>Combination of 20 CPUs spread across 10 nodes.</p></li>
+<li><p>Should be used with caution</p></li>
+<li><p>Not recommended for python jobs</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="basic-slurm-commands">
 <h2>Basic SLURM Commands<a class="headerlink" href="#basic-slurm-commands" title="Permalink to this heading">¶</a></h2>
