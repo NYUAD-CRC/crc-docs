@@ -91,6 +91,21 @@ Know Your Quota
 
 For data transfers please refer to the **Data Trasnfers** section :ref:`here <data_transfers>`
 
+Best Practices
+--------------
 
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - Dos
+      - Remarks
+    * - Periodically clean your ``/scratch`` 
+      - Files which have not been access for 90 days in ``/scratch`` are deleted.  
+    * - Once a project is completed move the data over to ``/archive`` 
+      - Moving data to ``/archive`` frees up space from ``/scratch`` and avoids deletion of files if older than 90 days.
+    * - Use tar files to archive directories with large file count	
+      - Lesser the number of files, faster is the archiving and dearchiving process
+    
 
    

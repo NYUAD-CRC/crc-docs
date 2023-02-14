@@ -159,7 +159,7 @@ A sample job submission script is shown below:
 .. code-block:: bash
 
     #!/bin/bash
-    #SBATCH -n 10
+    #SBATCH -c 10
     #SBATCH -t 48:00:00
     #Other SBATCH commands go here
     

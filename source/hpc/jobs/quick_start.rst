@@ -154,7 +154,7 @@ Partitions Summary
 Sample Job Script
 ------------------
 
-A job script, which consists of 2 parts:
+A job script consists of 2 parts:
 	a. Resources requirement.
 	b. Commands to be executed.
 
@@ -180,7 +180,7 @@ A job script, which consists of 2 parts:
  #Define the resource requirements here using #SBATCH
 
  #For requesting 10 CPUs
- #SBATCH -n 10
+ #SBATCH -c 10
 
  #Max wallTime for the job
  #SBATCH -t 24:00:00  	
@@ -197,6 +197,91 @@ A job script, which consists of 2 parts:
  #Execute the code
  python abc.py
    
+**Common Job submission arguments:**
+
+* ``-n``   Select number of tasks to run (default 1 core per task)
+* ``-N``   Select number of nodes on which to run
+* ``-t``   Wallclock in days-hours:minutes:seconds (ex 4:00:00)
+* ``-p``   Select partition (compute, gpu, bigmem)
+* ``-o``   Output file ( with no ``–e`` option, err and out are merged to the Outfile)
+* ``-e``   Keep a separate error File
+* ``-d``   Dependency with prior job (ex don't start this job before job XXX terminates)
+* ``-A``   Select account (ex physics_ser, faculty_ser)
+* ``-c``   Number of cores required per task (default 1)
+* ``--ntasks-per-node`` Number of tasks on each node
+* ``--mail-type=type`` Notify on state change: BEGIN, END, FAIL or ALL
+* ``--mail-user=user`` Who to send email notification
+* ``--mem`` Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)
+
+#SBATCH with ``-n`` , ``-c`` and ``-N``
+---------------------------------------
+
+It may sometimes be confusing to select between ``-n``, ``-c`` and ``-N``. The following section attempts to 
+describe the difference between these parameters. 
+
+- ``-n`` refers to number of tasks. Tasks can communicate across the nodes.
+- If the number of tasks, is greater than one, it is possible that they may distributed across multiple nodes.
+- ``-c`` refers to number of cpus per task.
+- ``-c`` is always confined to a single node and is beneficial for multithreaded jobs.
+- ``-N`` assigns the tasks to ``N`` number of nodes.
+- Each task is by default assigned one cpu and each task is by default assigned a single node.
+- The values of ``-n``, ``-c`` and ``-N`` are by default 1, if not specified.
+
+
+.. list-table::
+	:widths: auto
+	:header-rows: 1
+
+	* - Command
+	  - Behaviour
+	* - 
+		.. code-block:: bash
+
+			#SBATCH -n 10
+		
+	  -
+	  	- Same as ``#SBATCH --ntasks=10``
+
+	  	- 10 CPUs are assigned in this case
+
+	  	- CPUs can be assigned in the same node or across multiple nodes.
+
+		- Not recommended for multithreaded jobs or jobs needed to be confied to a single node.
+	* -
+	 	.. code-block:: bash
+
+			#SBATCH -c 10
+
+	  -
+	  	- Same as ``#SBATCH --cpus-per-task=10``
+		- 10 CPUs are assigned in this case 
+		- CPUs are assigned within a single node
+		- Recommended for multithreaded jobs (most python jobs).
+	* - 
+		.. code-block:: bash
+
+			#SBATCH -N 1
+			#SBATCH -n 10
+
+	  -
+		- ``-N`` parameter is same as ``--nodes``
+		- 10 CPUs are assigned in this case
+		- CPUs are assigned to number nodes specified to the parameter ``N`` (1 in this case)
+		- Useful to run jobs across selected number of nodes (mostly for MPI jobs).
+
+	* - 
+		.. code-block:: bash
+
+			#SBATCH -n 10
+			#SBATCH -c 20
+
+	  -
+	  	- 200 CPUs are assigned ( 20 for each task).
+		- Combination of 20 CPUs spread across 10 nodes.
+		- Should be used with caution 
+		- Not recommended for python jobs
+			
+
 
 Basic SLURM Commands
 --------------------
