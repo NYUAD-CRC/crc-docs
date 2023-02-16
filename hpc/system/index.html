@@ -262,7 +262,7 @@
 <ol class="arabic simple">
 <li><p>(One time only) Let us know your computational requirement.</p></li>
 <li><p>(One time only) Apply an HPC account and pass our quiz.</p></li>
-<li><p>If needed, transfer your input data to Jubail.</p></li>
+<li><p>If needed, transfer your input data to the HPC.</p></li>
 <li><p>Log on to HPC login nodes.</p></li>
 <li><p>Submit jobs on login nodes.</p></li>
 <li><p>Your jobs will queue for execution.</p></li>
@@ -282,60 +282,50 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Bulk</p></td>
-<td><p>188</p></td>
+<tr class="row-even"><td><p>Jubail Compute</p></td>
+<td><p>224</p></td>
 <td><p>128</p></td>
 <td><p>480GB</p></td>
 <td><p>None</p></td>
 <td><p>New HPC Compute nodes</p></td>
 </tr>
-<tr class="row-odd"><td><p>Versatile</p></td>
-<td><p>24</p></td>
+<tr class="row-odd"><td><p>Jubail Gpu</p></td>
+<td><p>20</p></td>
 <td><p>128</p></td>
 <td><p>480GB</p></td>
-<td><p>1/2 (Nvidia A100)</p></td>
-<td><p>New HPC GPU nodes with two nodes have only one GPU card each, rest of them have 2 cards each</p></td>
+<td><p>1/2/3 (Nvidia A100)</p></td>
+<td><p>New HPC GPU nodes</p></td>
 </tr>
 <tr class="row-even"><td><p>Dalma Compute</p></td>
 <td><p>428</p></td>
-<td><p>28</p></td>
-<td><p>105 GB</p></td>
+<td><p>28/40</p></td>
+<td><p>102 GB / 480 GB</p></td>
 <td><p>None</p></td>
 <td><p>Small jobs &lt; 28 CPUs will be sent to Dalma</p></td>
 </tr>
-<tr class="row-odd"><td><p>Bigmem</p></td>
-<td><p>4</p></td>
-<td><p>32/64/72</p></td>
-<td><p>1 TB / 2TB</p></td>
-<td><p>None</p></td>
-<td><p>Used when memory requirement per node is greater than 500GB</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">Dalma GPU</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">Dalma GPU</span></a></p></td>
 <td><p>14</p></td>
 <td><p>40</p></td>
 <td><p>360 GB / 1 TB</p></td>
 <td><p>2/8 (Nvidia V100)</p></td>
 <td><p>Two nodes have 8 GPU cards each, rest of them have 2 cards each</p></td>
 </tr>
+<tr class="row-even"><td><p>Bigmem</p></td>
+<td><p>5</p></td>
+<td><p>32/64/72/128</p></td>
+<td><p>1 TB / 2TB</p></td>
+<td><p>None</p></td>
+<td><p>Used when memory requirement per node is greater than 500GB</p></td>
+</tr>
 <tr class="row-odd"><td><p>Visual</p></td>
 <td><p>4</p></td>
 <td><p>32</p></td>
-<td><p>105 GB</p></td>
+<td><p>112 GB</p></td>
 <td><p>2 (Nvidia Quadro P4000)</p></td>
 <td><p>Used for GUI</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition-difference-between-cpus-cores-and-tasks admonition">
-<p class="admonition-title">Difference between CPUs,Cores and Tasks</p>
-<ul class="simple">
-<li><p>On Jubail HPC, One CPU is equivalent to one Core.</p></li>
-<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>.</p></li>
-<li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
-<li><p>By Default, Each task is equivalent to one CPU.</p></li>
-<li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the CPUs allocated to you would be the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
-</ul>
-</div>
 </div>
 <div class="section" id="access">
 <h2>Access<a class="headerlink" href="#access" title="Permalink to this heading">¶</a></h2>
@@ -346,16 +336,25 @@
 <p>If you use Windows or outside NYU AD/NY network, follow the instructions here: <a class="reference internal" href="access_jubail.html"><span class="doc">Access Jubail</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-<p>Whenever you login, you land up on the login node which is shown on left most section of
-your terminal and may look something like <code class="docutils literal notranslate"><span class="pre">[wz22&#64;login-0-2</span> <span class="pre">~]$</span></code> suggesting that you are on one of the login nodes.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Last<span class="w"> </span>login:<span class="w"> </span>Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">04</span>:07:47<span class="w"> </span><span class="m">2021</span><span class="w"> </span>from<span class="w"> </span>hpc.abudhabi.nyu.edu
+<p>Whenever you login, you land up on one of the four login nodes, which is shown on left most section of
+your terminal.It may look something like <code class="docutils literal notranslate"><span class="pre">[wz22&#64;login2</span> <span class="pre">~]$</span></code> suggesting that you are on the second login node.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Access<span class="w"> </span>allowed<span class="w"> </span>by<span class="w"> </span>pam_access
 -<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-
 Welcome<span class="w"> </span>to<span class="w"> </span>Jubail!
 
 For<span class="w"> </span>documentation<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>examples:<span class="w"> </span>https://crc-docs.abudhabi.nyu.edu
 For<span class="w"> </span>support:<span class="w"> </span>nyuad.it.help@nyu.edu
 -<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-
-<span class="o">[</span>wz22@login-0-2<span class="w"> </span>~<span class="o">]</span>$
+Last<span class="w"> </span>login:<span class="w"> </span>Wed<span class="w"> </span>Feb<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">15</span>:27:08<span class="w"> </span><span class="m">2023</span><span class="w"> </span>from<span class="w"> </span><span class="m">10</span>.224.42.159
+Disk<span class="w"> </span>quotas<span class="w"> </span><span class="k">for</span><span class="w"> </span>wz22<span class="w"> </span><span class="o">(</span>uid<span class="w"> </span><span class="m">3387153</span><span class="o">)</span>:
+<span class="w">                           </span>DISK<span class="w"> </span>SPACE<span class="w">                </span><span class="c1"># FILES (1000&#39;s)</span>
+<span class="w">        </span>filesystem<span class="w">       </span>size<span class="w">      </span>quota<span class="w">            </span>number<span class="w">      </span>quota
+<span class="w">                    </span>--------------------------<span class="w">   </span>--------------------------
+<span class="w">             </span>/home<span class="w">    </span>10099MB<span class="w">       </span>20GB<span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">49</span>%<span class="o">)</span><span class="w">        </span><span class="m">77</span><span class="w">       </span><span class="m">150</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">52</span>%<span class="o">)</span>
+<span class="w">          </span>/scratch<span class="w">       </span>53GB<span class="w">     </span>5000GB<span class="w"> </span><span class="o">(</span><span class="w">  </span><span class="m">1</span>%<span class="o">)</span><span class="w">        </span><span class="m">74</span><span class="w">       </span><span class="m">500</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">15</span>%<span class="o">)</span>
+<span class="w">          </span>/archive<span class="w">       </span>24GB<span class="w">     </span>5120GB<span class="w"> </span><span class="o">(</span><span class="w">  </span><span class="m">0</span>%<span class="o">)</span><span class="w">         </span><span class="m">1</span><span class="w">       </span><span class="m">125</span><span class="w"> </span><span class="o">(</span><span class="w">  </span><span class="m">1</span>%<span class="o">)</span>
+
+<span class="o">[</span>wz22@login2<span class="w"> </span>~<span class="o">]</span>$
 </pre></div>
 </div>
 <div class="admonition important">
