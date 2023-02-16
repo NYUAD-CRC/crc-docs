@@ -17,6 +17,9 @@ To Access Jubail interactive interface go to this link https://ood.hpc.abudhabi.
 
     .. image:: /hpc/img/OOD_connection.png
     
+.. note::
+    This link requires you to be connected to the NYUAD VPN
+    
 OOD Features
 ------------
 These are the different features supported by OOD
