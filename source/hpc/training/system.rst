@@ -100,7 +100,7 @@ Summary of Nodes
     * - Visual	
       - 4	
       - 32	
-      - 112 GB
+      - 105 GB
       - 2 (Nvidia Quadro P4000)
       - Used for GUI 
 

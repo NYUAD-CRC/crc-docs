@@ -1,20 +1,22 @@
 Storage
 =======
 
-We have 4 storage systems for you: ``$HOME`` (``/home/<NetID>``), ``$SCRATCH`` (``/scratch/<NetID>``), ``$WORK`` (``/work/<NetID>``) and ``$ARCHIVE`` (``/archive/<NetID>``).
+We have 3 storage systems for you: ``$HOME`` (``/home/<NetID>``), ``$SCRATCH`` (``/scratch/<NetID>``), and ``$ARCHIVE`` (``/archive/<NetID>``).
 
 In short, you should 
 
 - Put all your data to  ``$SCRATCH`` and run your jobs from there. 
 - Only a small persistent fraction to ``$HOME`` (e.g., source code, executables). 
 - For long-term storage, archive them to ``$ARCHIVE``. 
-- ``$ARCHIVE`` is not visible on compute nodes but mountable on your local workstation, best suited to quick post-processing, analysis and visualization, without moving your data.
+- ``$ARCHIVE`` is not visible on compute nodes but mountable on your local workstation using this :doc:`link <../storage/mount_archive>`, it is
+  best suited to quick post-processing, analysis and visualization, without moving your data.
 
-Backing up is a user's own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.
-
+.. Important::
+    Backing up is a user's own responsibility. E.g., if a user deletes something accidentally, we can not recover, unfortunately.
+    
 .. caution::
     Running jobs from ``/home`` is a **serious violation** of HPC policy. Any users who intentionally violate this policy will get their account suspended. 
-    ``$HOME`` SSDs are not designed for scratch disks, it will kill the SSDs quickly. 
+    ``$HOME`` SSDs are not designed for running jobs, it will kill the SSDs quickly. 
 
 
 Summary
@@ -49,7 +51,7 @@ Summary
       - No	
       - No		
       - Yes
-    * - Default Quota (star)	
+    * - Default Quota	
       - 20GB, 150K Files	
       - 5TB, 500K Files		
       - No Limit
@@ -62,17 +64,28 @@ Know Your Quota
 
 ::
 
-                        DISK SPACE                # FILES (1000's)
-    filesystem       size      quota            number      quota
-                --------------------------   --------------------------
-    /home         131KB     20GB   ( 0%)           0        150 ( 0%)
-    /scratch      220GB     5242GB ( 4%)           4        500 ( 1%)
-    /work         4KB       5242GB ( 0%)           0        512 ( 0%)
-    /archive      418GB     5242GB ( 8%)           3        125 ( 3%)
+                             DISK SPACE                # FILES (1000's)
+          filesystem       size      quota            number      quota
+                      --------------------------   --------------------------
+               /home     1406MB       20GB (  7%)        17       150 ( 12%)
+            /scratch       70GB     5000GB (  1%)        93       500 ( 19%)
+            /archive        8KB     5120GB (  0%)         0       125 (  0%)
 
 
+Best Practices
+--------------
 
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
 
-
+    * - Dos
+      - Remarks
+    * - Periodically clean your ``/scratch`` 
+      - Files which have not been accessed for 90 days in ``/scratch`` are deleted.  
+    * - Once a project is completed move the data over to ``/archive`` using this :doc:`link <../storage/archive>` 
+      - Moving data to ``/archive`` frees up space from ``/scratch`` and avoids deletion of files if older than 90 days.
+    * - Use tar files to archive directories with large file count	
+      - Lesser the number of files, faster is the archiving and dearchiving process
 
    
