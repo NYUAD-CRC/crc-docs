@@ -13,6 +13,9 @@ Connection to OOD
 To Access Jubail interactive interface go to this link https://ood.hpc.abudhabi.nyu.edu , enter your NetID and password and click **Log in with your NYU account**.
 
     .. image:: /hpc/img/OOD_connection.png
+
+.. note::
+    This link requires you to be connected to the NYUAD VPN
     
 OOD Features
 ------------

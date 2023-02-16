@@ -3,7 +3,7 @@
 Mount $ARCHIVE with SSHFS
 ==========================
 
-This page explains how to mount ``$WORK`` on the HPC with SSHFS on your local workstation. 
+This page explains how to mount ``$ARCHIVE`` on the HPC with SSHFS on your local workstation. 
 Only ``$ARCHIVE`` is supported, not ``$HOME`` , ``$SCRATCH`` or any other file system on the HPC.
 For mounting ``$ARCHIVE`` on Windows, Kindly follow the section :ref:`here <mount_ARCHIVE_windows>`
 
