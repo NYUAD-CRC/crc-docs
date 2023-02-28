@@ -18,30 +18,36 @@ Jubail HPC, We have merged the functionalities of two storages, ``$WORK`` (``/wo
     existing data from ``$WORK`` to archive (``/archive/<NetID>/…``). The ``/archive/work/<NetID>`` is 
     available for the users from the 3rd of Feb 2023 and would be deprecated after a period of 180 days.
 
-When storage is shared among many users, rules must be set to prevent users to consume disk space
-excessively at the expense of others. For this purpose HPC systems enforce disk quotas to users and
+When storage is shared among many users, rules must be set to prevent users from consuming disk space
+excessively at the expense of others. For this purpose, HPC systems enforce disk quotas to users and
 groups of users. The regular cleanup of the ``/scratch/<NetID>`` storage is essential to maintain its efficiency 
 and easily manage the capacity.
 
+.. warning::
+    The current policy is to remove any files(data) that have not been accessed (viewed, created or modified) 
+    for more than 90 days.
 
-The current policy is to remove any files(data) that have not been accessed (viewed, created or modified) 
-for more than 90 days.
+On the HPC, disk quotas are enforced on ``/home`` and ``/scratch`` (not ``/archive`` ). 
 
-On the HPC disk quotas are enforced on ``/home`` and ``/scratch`` (not ``/archive`` ). There are two
-quota constraints: the total amount of disk space and the total number of files. Once you reach a quota
-limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
+There are two quota constraints: 
+  - The total amount of disk space
+  - The total number of files. 
+
+Once you reach a quota limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
 will generate a lot of data.
 
 We urge our users to clean up their ``$SCRATCH`` storage regularily.
 
-Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. Example output:
+Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. 
+
+Example output:
 
 ::
 
                         DISK SPACE                # FILES (1000's)
     filesystem       size      quota            number      quota
                 --------------------------   --------------------------
-    /home         131KB     6442MB ( 0%)           0        100 ( 0%)
+    /home         131KB       20GB ( 0%)           0        100 ( 0%)
     /scratch      220GB     5242GB ( 4%)           4        500 ( 1%)
     /archive      418GB     5242GB ( 8%)           3        125 ( 3%)
 
@@ -55,12 +61,12 @@ The archive processes are described below in the form of a flowchart.
 - The ``archive`` comprises of two types of storages:
   
   - Normal Storage (fast)
-  - Long Term Storage - Tape Library (slow)
+  - Long Term Storage - Tape drive (slow)
 
-- **Process 1 :** The data in the Tape Library is synced with the storage every 12 hours, so that a copy of the 
-  files is available on the Tape library as well.
+- **Process 1 :** The data in the Tape drive is synced with the storage every 12 hours, so that a copy of the 
+  files is available on the Tape drive as well.
 - **Process 2 :** Once the usage of the total storage hits 80% , the system atomatically frees up space by keeping only 
-  a copy of the file on the tape library (which can be retrieved later).
+  a copy of the file on the tape drive (which can be retrieved later).
 - The freeing up of space is in accordance with the access timestamp of the files which are oldest. 
 
 State of the file in ``$ARCHIVE``
@@ -70,10 +76,10 @@ Since the ``$ARCHIVE`` acts both as a storage soultion and long term storage (ta
 of the file plays an important role in the same. There are essentially two types of states for a file in 
 ``/archive``. 
 
-- ``archived state``: The file has a copy on the storage and the tape library as well.
+- ``archived state``: The file has a copy on the storage and the tape drive as well.
 - In the above figure, ``file1,file2,file3,file4,file5`` are in the ``archived state`` as they 
   are both available on the storage and the tape drive.
-- ``released archived state``: The file is only available on the tape library and has been moved (released)
+- ``released archived state``: The file is only available on the tape drive and has been moved (released)
   from the storage to free up space.
 - In the above figure, ``file6,file7,file8,file9,file10`` are in the ``released archived`` state as
   they have been released/moved from the storage to the tape drive.
@@ -98,7 +104,7 @@ In order to identify the state of a single file:
   #dmfls <path to archive file>
 
   #for example:
-  dmfls -d /archive/wz22/abc/input.txt
+  dmfls /archive/wz22/abc/input.txt
 
 
 A sample output of the above directory command is shown below
@@ -113,7 +119,6 @@ A sample output of the above directory command is shown below
   ./blat/src/blat:  exists archived,
   ./cufflinks/src/cufflinks-2.0.2.Linux_x86_64.tar.gz: released exists archived,
   ./cufflinks/src/cufflinks-2.1.1.Linux_x86_64.tar.gz:  released exists archived,
-  ./cufflinks/src/cufflinks-2.0.2.tar.gz:  relaxed exists archived,
   ./crystal-analysis/gnu/crystal_analysis-0.9.12.tbz2:  exists archived,
 
 It can be seen above in the sample output that the state of a few files is ``released archived state``  while 
@@ -204,12 +209,12 @@ Quick Glance into the archive commands
     * - List the state of the files 
       - ``dmfls <filename>`` 
       - check for ``archived state`` and ``released archived state``
-    * - Retrieve from Tape Library to Storage	
+    * - Retrieve from Tape drive to Storage	
       - ``dmfget <filename>``
       - use when the file is in the ``released archived state``
     * - Monitor the state of a file
       - ``dmfmonitor <filename>``
-      - Can be used to track if the migration from tape-library to storage is done.
+      - Can be used to track if the migration from tape drive to storage is done.
    
 
 Best Practices
