@@ -220,22 +220,32 @@ moved to <code class="docutils literal notranslate"><span class="pre">/archive/w
 existing data from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> to archive (<code class="docutils literal notranslate"><span class="pre">/archive/&lt;NetID&gt;/…</span></code>). The <code class="docutils literal notranslate"><span class="pre">/archive/work/&lt;NetID&gt;</span></code> is
 available for the users from the 3rd of Feb 2023 and would be deprecated after a period of 180 days.</p>
 </div>
-<p>When storage is shared among many users, rules must be set to prevent users to consume disk space
-excessively at the expense of others. For this purpose HPC systems enforce disk quotas to users and
+<p>When storage is shared among many users, rules must be set to prevent users from consuming disk space
+excessively at the expense of others. For this purpose, HPC systems enforce disk quotas to users and
 groups of users. The regular cleanup of the <code class="docutils literal notranslate"><span class="pre">/scratch/&lt;NetID&gt;</span></code> storage is essential to maintain its efficiency
 and easily manage the capacity.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>The current policy is to remove any files(data) that have not been accessed (viewed, created or modified)
 for more than 90 days.</p>
-<p>On the HPC disk quotas are enforced on <code class="docutils literal notranslate"><span class="pre">/home</span></code> and <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> (not <code class="docutils literal notranslate"><span class="pre">/archive</span></code> ). There are two
-quota constraints: the total amount of disk space and the total number of files. Once you reach a quota
-limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
+</div>
+<p>On the HPC, disk quotas are enforced on <code class="docutils literal notranslate"><span class="pre">/home</span></code> and <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> (not <code class="docutils literal notranslate"><span class="pre">/archive</span></code> ).</p>
+<dl class="simple">
+<dt>There are two quota constraints:</dt><dd><ul class="simple">
+<li><p>The total amount of disk space</p></li>
+<li><p>The total number of files.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Once you reach a quota limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
 will generate a lot of data.</p>
 <p>We urge our users to clean up their <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> storage regularily.</p>
-<p>Run <code class="docutils literal notranslate"><span class="pre">myquota</span></code> command in the terminal on the HPC to check your current usage and quota. Example output:</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">myquota</span></code> command in the terminal on the HPC to check your current usage and quota.</p>
+<p>Example output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="n">DISK</span> <span class="n">SPACE</span>                <span class="c1"># FILES (1000&#39;s)</span>
 <span class="n">filesystem</span>       <span class="n">size</span>      <span class="n">quota</span>            <span class="n">number</span>      <span class="n">quota</span>
             <span class="o">--------------------------</span>   <span class="o">--------------------------</span>
-<span class="o">/</span><span class="n">home</span>         <span class="mi">131</span><span class="n">KB</span>     <span class="mi">6442</span><span class="n">MB</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>           <span class="mi">0</span>        <span class="mi">100</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>
+<span class="o">/</span><span class="n">home</span>         <span class="mi">131</span><span class="n">KB</span>       <span class="mi">20</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>           <span class="mi">0</span>        <span class="mi">100</span> <span class="p">(</span> <span class="mi">0</span><span class="o">%</span><span class="p">)</span>
 <span class="o">/</span><span class="n">scratch</span>      <span class="mi">220</span><span class="n">GB</span>     <span class="mi">5242</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">4</span><span class="o">%</span><span class="p">)</span>           <span class="mi">4</span>        <span class="mi">500</span> <span class="p">(</span> <span class="mi">1</span><span class="o">%</span><span class="p">)</span>
 <span class="o">/</span><span class="n">archive</span>      <span class="mi">418</span><span class="n">GB</span>     <span class="mi">5242</span><span class="n">GB</span> <span class="p">(</span> <span class="mi">8</span><span class="o">%</span><span class="p">)</span>           <span class="mi">3</span>        <span class="mi">125</span> <span class="p">(</span> <span class="mi">3</span><span class="o">%</span><span class="p">)</span>
 </pre></div>
@@ -248,13 +258,13 @@ will generate a lot of data.</p>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">archive</span></code> comprises of two types of storages:</p>
 <ul>
 <li><p>Normal Storage (fast)</p></li>
-<li><p>Long Term Storage - Tape Library (slow)</p></li>
+<li><p>Long Term Storage - Tape drive (slow)</p></li>
 </ul>
 </li>
-<li><p><strong>Process 1 :</strong> The data in the Tape Library is synced with the storage every 12 hours, so that a copy of the
-files is available on the Tape library as well.</p></li>
+<li><p><strong>Process 1 :</strong> The data in the Tape drive is synced with the storage every 12 hours, so that a copy of the
+files is available on the Tape drive as well.</p></li>
 <li><p><strong>Process 2 :</strong> Once the usage of the total storage hits 80% , the system atomatically frees up space by keeping only
-a copy of the file on the tape library (which can be retrieved later).</p></li>
+a copy of the file on the tape drive (which can be retrieved later).</p></li>
 <li><p>The freeing up of space is in accordance with the access timestamp of the files which are oldest.</p></li>
 </ul>
 </div>
@@ -264,10 +274,10 @@ a copy of the file on the tape library (which can be retrieved later).</p></li>
 of the file plays an important role in the same. There are essentially two types of states for a file in
 <code class="docutils literal notranslate"><span class="pre">/archive</span></code>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code>: The file has a copy on the storage and the tape library as well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code>: The file has a copy on the storage and the tape drive as well.</p></li>
 <li><p>In the above figure, <code class="docutils literal notranslate"><span class="pre">file1,file2,file3,file4,file5</span></code> are in the <code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code> as they
 are both available on the storage and the tape drive.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code>: The file is only available on the tape library and has been moved (released)
+<li><p><code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code>: The file is only available on the tape drive and has been moved (released)
 from the storage to free up space.</p></li>
 <li><p>In the above figure, <code class="docutils literal notranslate"><span class="pre">file6,file7,file8,file9,file10</span></code> are in the <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span></code> state as
 they have been released/moved from the storage to the tape drive.</p></li>
@@ -286,7 +296,7 @@ dmfls<span class="w"> </span>-d<span class="w"> </span>/archive/wz22/abc
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#dmfls &lt;path to archive file&gt;</span>
 
 <span class="c1">#for example:</span>
-dmfls<span class="w"> </span>-d<span class="w"> </span>/archive/wz22/abc/input.txt
+dmfls<span class="w"> </span>/archive/wz22/abc/input.txt
 </pre></div>
 </div>
 <p>A sample output of the above directory command is shown below</p>
@@ -298,7 +308,6 @@ dmfls<span class="w"> </span>-d<span class="w"> </span>/archive/wz22/abc/input.t
 ./blat/src/blat:<span class="w">  </span>exists<span class="w"> </span>archived,
 ./cufflinks/src/cufflinks-2.0.2.Linux_x86_64.tar.gz:<span class="w"> </span>released<span class="w"> </span>exists<span class="w"> </span>archived,
 ./cufflinks/src/cufflinks-2.1.1.Linux_x86_64.tar.gz:<span class="w">  </span>released<span class="w"> </span>exists<span class="w"> </span>archived,
-./cufflinks/src/cufflinks-2.0.2.tar.gz:<span class="w">  </span>relaxed<span class="w"> </span>exists<span class="w"> </span>archived,
 ./crystal-analysis/gnu/crystal_analysis-0.9.12.tbz2:<span class="w">  </span>exists<span class="w"> </span>archived,
 </pre></div>
 </div>
@@ -394,13 +403,13 @@ the file is now back in the storage and in the <code class="docutils literal not
 <td><p><code class="docutils literal notranslate"><span class="pre">dmfls</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
 <td><p>check for <code class="docutils literal notranslate"><span class="pre">archived</span> <span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Retrieve from Tape Library to Storage</p></td>
+<tr class="row-even"><td><p>Retrieve from Tape drive to Storage</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dmfget</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
 <td><p>use when the file is in the <code class="docutils literal notranslate"><span class="pre">released</span> <span class="pre">archived</span> <span class="pre">state</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Monitor the state of a file</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dmfmonitor</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
-<td><p>Can be used to track if the migration from tape-library to storage is done.</p></td>
+<td><p>Can be used to track if the migration from tape drive to storage is done.</p></td>
 </tr>
 </tbody>
 </table>
