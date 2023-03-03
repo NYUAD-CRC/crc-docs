@@ -30,7 +30,7 @@ There are essentially four important components a HPC user needs to be familiar 
         - An interactive interface to remote computing resources    
 
 We shall have a brief introduction to each of the components below.
-The users can also refer to the corresponding section from (`here <file:///home/mennatallah/Mennatallah_projects/crc-docs/_build/html/hpc/hpc.html#useful-links>`__) for a more detailed explanation, or reach us out at jubail.admins@nyu.edu for any assistance.
+The users can also refer to the corresponding section from (`here </home/mennatallah/Mennatallah_projects/crc-docs/_build/html/hpc/hpc.html#useful-links>`__) for a more detailed explanation, or reach us out at jubail.admins@nyu.edu for any assistance.
 
 System
 ------
