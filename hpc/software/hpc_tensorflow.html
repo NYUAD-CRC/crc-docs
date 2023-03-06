@@ -202,13 +202,13 @@
             
   <div class="section" id="tensorflow-keras-on-hpc">
 <h1>TensorFlow (Keras) on HPC<a class="headerlink" href="#tensorflow-keras-on-hpc" title="Permalink to this heading">¶</a></h1>
-<p>We have Tensorflow (1.15 &amp; 2.0) installations as part of Miniconda module on the HPC.
+<p>We have Tensorflow (2.4 &amp; 2.11) installations as part of Miniconda module on the HPC.
 You can clone the existing centralized environments to your local environments and add
 other required libraries or packages on top of it. To find more details of the
 Miniconda module on the HPC, click <a class="reference internal" href="hpc_miniconda.html"><span class="doc">here</span></a>. Since Keras uses Tensorflow in the backend, this environement also comes with GPU enabled keras preinstalled.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The current Nvidia driver version on the GPU nodes is <code class="docutils literal notranslate"><span class="pre">410.79</span></code> which supports <code class="docutils literal notranslate"><span class="pre">cuda/10.0</span></code> or lesser and hence the TensorFlow versions &lt;= 2.0 are supported. However, the TensorFlow versions &gt;= 2.1 require cuda/10.1 or higher and hence are not compatible. We cannot update the Nvidia driver due to certain OS restrictions and dependencies. We shall have the drivers updated in our new release.</p>
+<p>The current Nvidia driver version on the GPU nodes is updated to <code class="docutils literal notranslate"><span class="pre">460.106</span></code> which supports <code class="docutils literal notranslate"><span class="pre">cuda/11.2</span></code> and hence the TensorFlow versions &gt;= 2.0 are now supported.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -227,7 +227,7 @@ You can find the steps to set up the HPC Miniconda by clicking <a class="referen
 <span class="c1">#conda create -p &lt;path to local env&gt; --clone &lt;existing env&gt;</span>
 
 <span class="c1">#example:</span>
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>tf-gpu<span class="w"> </span>--clone<span class="w"> </span>tensorflow-2.4.1
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>tf-gpu<span class="w"> </span>--clone<span class="w"> </span>tensorflow-2.11
 </pre></div>
 </div>
 </div></blockquote>
@@ -236,7 +236,7 @@ conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;path to existing env&gt;</span>
 <span class="c1">#example:</span>
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>tf-gpu<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>tf-gpu<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.11
 </pre></div>
 </div>
 </div></blockquote>
