@@ -1,23 +1,26 @@
-,"Title", "Authors/Co-Authors"
-"1","`NIHAO–XXII. Introducing black hole formation, accretion, and feedback into the NIHAO simulation suite <https://arxiv.org/pdf/1906.06955>`_","Marwin Blank"
-"2","`Local photoionization feedback effects on galaxies <https://arxiv.org/pdf/1909.00832>`_","Andrea V Macciò"
-"3","`NIHAO XVI: the properties and evolution of kinematically selected discs, bulges, and stellar haloes <https://arxiv.org/pdf/1804.06635>`_","Andrea V Macciò"
-"4","`Do the planets in the HD 34445 system really exist? <https://arxiv.org/pdf/1907.05495>`_","Andrea V Macciò"
-"5","`CGM properties in VELA and NIHAO simulations; the OVI ionization mechanism: dependence on redshift, halo mass, and radius <https://arxiv.org/pdf/1808.09973>`_","Nikolaos Georgakarakos"
-"6","`Angular momentum evolution of bulge stars in disc galaxies in NIHAO <https://arxiv.org/pdf/1811.02239>`_","Andrea V Macciò"
-"7","`NIHAO XXI: the emergence of low surface brightness galaxies <https://arxiv.org/pdf/1901.08559>`_","Andrea V Macciò"
-"8","`Formation of ultra-diffuse galaxies in the field and in galaxy groups <https://academic.oup.com/mnras/article-abstract/487/4/5272/5518365>`_","Andrea V Macciò"
-"9","`An observational test for star formation prescriptions in cosmological hydrodynamical simulations <https://academic.oup.com/mnras/article-abstract/486/1/1481/5429459>`_","Andrea V Macciò"
-"10","`NIHAO XV: the environmental impact of the host galaxy on galactic satellite and field dwarf galaxies <https://academic.oup.com/mnras/article-abstract/483/1/1314/5149504>`_","Andrea V Macciò"
-"11","`NIHAO – XVII. The diversity of dwarf galaxy kinematics and implications for the H i velocity function <https://academic.oup.com/mnras/article-abstract/482/4/5606/5173096>`_","Andrea V Macciò"
-"12","`NIHAO XX: the impact of the star formation threshold on the cusp–core transformation of cold dark matter haloes <https://academic.oup.com/mnras/article-abstract/486/1/655/5420828>`_","Andrea V Macciò"
-"13","`Clues to the nature of dark matter from first galaxies <https://academic.oup.com/mnras/article-abstract/489/1/487/5531770>`_","Andrea V Macciò"
-"14","`A deeper look into the structure of ΛCDM haloes: correlations between halo parameters from Einasto fits <https://academic.oup.com/mnras/article-abstract/482/4/5259/5184503>`_","Andrea V Macciò"
-"15","`The edge of galaxy formation III: The effects of warm dark matter on Milky Way satellites and field dwarfs <https://academic.oup.com/mnras/article-abstract/484/4/5400/5305871>`_","Andrea V Macciò"
-"16","`Quantifying inhomogeneities in the HI distributions of simulated galaxies <https://iopscience.iop.org/article/10.1088/1742-6596/1258/1/012023/meta>`_","Andrea V Macciò"
-"17","`NIHAO XIX: how supernova feedback shapes the galaxy baryon cycle <https://academic.oup.com/mnras/article-abstract/485/2/2511/5364564>`_","Andrea V Macciò"
-"18","`Drivers of disc tilting I: correlations and possible drivers for Milky Way analogues <https://academic.oup.com/mnras/article-abstract/488/4/5728/5542726>`_","Andrea V Macciò"
-"19","`NIHAO XVIII: Origin of the MOND phenomenology of galactic rotation curves in a LCDM universe <https://arxiv.org/abs/1902.06751>`_","Andrea V Macciò"
-"20","`Discovery of a 2.8 s pulsar in a 2 d orbit High-Mass X-ray Binary powering the Ultraluminous X-ray source ULX-7 in M51 <https://arxiv.org/abs/1906.04791>`_","Federico Bernardini"
-"21","`Stars behind Bars II: A Cosmological Formation Scenario for the Milky Way's Central Stellar Structure <https://iopscience.iop.org/article/10.3847/1538-4357/aaffd0/meta>`_","Andrea V Macciò"
+,Title,Authors/Co-Authors
+1,"`NIHAO–XXII. Introducing black hole formation, accretion, and feedback into the NIHAO simulation suite <https://arxiv.org/pdf/1906.06955>`_",Marwin Blank
+2,`Local photoionization feedback effects on galaxies <https://arxiv.org/pdf/1909.00832>`_,Andrea V Macciò
+3,"`NIHAO XVI: the properties and evolution of kinematically selected discs, bulges, and stellar haloes <https://arxiv.org/pdf/1804.06635>`_",Andrea V Macciò
+4,`Do the planets in the HD 34445 system really exist? <https://arxiv.org/pdf/1907.05495>`_,Nikolaos Georgakarakos
+5,"`CGM properties in VELA and NIHAO simulations; the OVI ionization mechanism: dependence on redshift, halo mass, and radius <https://arxiv.org/pdf/1808.09973>`_",Nikolaos Georgakarakos
+6,`Angular momentum evolution of bulge stars in disc galaxies in NIHAO <https://arxiv.org/pdf/1811.02239>`_,Andrea V Macciò
+7,`NIHAO XXI: the emergence of low surface brightness galaxies <https://arxiv.org/pdf/1901.08559>`_,Andrea V Macciò
+8,`Formation of ultra-diffuse galaxies in the field and in galaxy groups <https://academic.oup.com/mnras/article-abstract/487/4/5272/5518365>`_,Andrea V Macciò
+9,`An observational test for star formation prescriptions in cosmological hydrodynamical simulations <https://academic.oup.com/mnras/article-abstract/486/1/1481/5429459>`_,Andrea V Macciò
+10,`NIHAO XV: the environmental impact of the host galaxy on galactic satellite and field dwarf galaxies <https://academic.oup.com/mnras/article-abstract/483/1/1314/5149504>`_,Andrea V Macciò
+11,`NIHAO – XVII. The diversity of dwarf galaxy kinematics and implications for the H i velocity function <https://academic.oup.com/mnras/article-abstract/482/4/5606/5173096>`_,Andrea V Macciò
+12,`NIHAO XX: the impact of the star formation threshold on the cusp–core transformation of cold dark matter haloes <https://academic.oup.com/mnras/article-abstract/486/1/655/5420828>`_,Andrea V Macciò
+13,`Clues to the nature of dark matter from first galaxies <https://academic.oup.com/mnras/article-abstract/489/1/487/5531770>`_,Andrea V Macciò
+14,`A deeper look into the structure of ΛCDM haloes: correlations between halo parameters from Einasto fits <https://academic.oup.com/mnras/article-abstract/482/4/5259/5184503>`_,Andrea V Macciò
+15,`The edge of galaxy formation III: The effects of warm dark matter on Milky Way satellites and field dwarfs <https://academic.oup.com/mnras/article-abstract/484/4/5400/5305871>`_,Andrea V Macciò
+16,`Quantifying inhomogeneities in the HI distributions of simulated galaxies <https://iopscience.iop.org/article/10.1088/1742-6596/1258/1/012023/meta>`_,Andrea V Macciò
+17,`NIHAO XIX: how supernova feedback shapes the galaxy baryon cycle <https://academic.oup.com/mnras/article-abstract/485/2/2511/5364564>`_,Andrea V Macciò
+18,`Drivers of disc tilting I: correlations and possible drivers for Milky Way analogues <https://academic.oup.com/mnras/article-abstract/488/4/5728/5542726>`_,Andrea V Macciò
+19,`NIHAO XVIII: Origin of the MOND phenomenology of galactic rotation curves in a LCDM universe <https://arxiv.org/abs/1902.06751>`_,Andrea V Macciò
+20,`Discovery of a 2.8 s pulsar in a 2 d orbit High-Mass X-ray Binary powering the Ultraluminous X-ray source ULX-7 in M51 <https://arxiv.org/abs/1906.04791>`_,Federico Bernardini
+21,`Stars behind Bars II: A Cosmological Formation Scenario for the Milky Way's Central Stellar Structure <https://iopscience.iop.org/article/10.3847/1538-4357/aaffd0/meta>`_,Andrea V Macciò
 22,`Supervised Neural Networks for Helioseismic Ring-Diagram Inversions <https://arxiv.org/abs/1901.01505>`_,Chris Hanson
+23,"`CGM properties in VELA and NIHAO simulations; the
+OVI ionization mechanism: dependence on redshift, halo
+mass and radius <https://arxiv.org/pdf/1808.09973.pdf>`_",Andrea V. Macciò
