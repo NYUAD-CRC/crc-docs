@@ -5,7 +5,7 @@ Engineering
    :widths: auto
    :header-rows: 1
    :class: publication-table
-   :file: data/engineering-2022.csv
+   :file: data/engineering-2023.csv
    
    
 .. csv-table:: 2022
