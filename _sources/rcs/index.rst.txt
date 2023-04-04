@@ -7,4 +7,3 @@
    /rcs/rcs
    /rcs/1001n
    /rcs/kb/index
-   /rcs/data_science/index
