@@ -51,7 +51,7 @@ Research Data Scientist Support Guidelines
 ------------------------------------------
 
 The research data scientist can support the faculty and researchers in 2 ways; 
-1. the first, could be through research collaboration on projects and 
+1. the first, could be through research collaboration on projects and, 
 2. the second, could be through support services. 
 
 * Research collaboration will entail the data scientist contributes significantly to the research project. 
