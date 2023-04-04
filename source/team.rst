@@ -81,7 +81,9 @@ Research Support
     * - **Nasser Al Ansari**
       - Senior Research Application Specialist
 
-**Data Science**
+
+Data Science
+-------------
 
 .. list-table:: 
     :widths: auto 

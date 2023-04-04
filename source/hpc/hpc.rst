@@ -10,8 +10,8 @@ Introduction
     through a medium-sized Linux cluster called Jubail. The cluster consists of around 
     **28,000 computing cores** and a peak performance of *approx.* **795 TFLOPS**.
 
-    The previous HPC Dalma cluster will be integrated with Jubail starting from 10th of March. The details of the 
-    Dalma can be found :doc:`here </hpc/dalma>` 
+    The previous HPC Dalma cluster was integrated with Jubail starting from 10th of March 2022. The details of the
+    previous HPC's can be found :doc:`here </hpc/old_hpc>` 
 
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
