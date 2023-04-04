@@ -8,7 +8,7 @@ HPC Documentation
    :hidden:
 
    /hpc/hpc
-   /hpc/dalma
+   /hpc/old_hpc
    /hpc/accounts/index
    /hpc/system/index
    /hpc/storage/index

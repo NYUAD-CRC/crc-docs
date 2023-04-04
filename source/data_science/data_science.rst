@@ -70,4 +70,3 @@ Prioritization of the requests:
 All the received requests will be dealt with on the priority of first come first serve basis. 
 However, we will consider conference/publication/grant funding as exception to the priority list based on 
 the urgency.
-
