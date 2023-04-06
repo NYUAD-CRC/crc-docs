@@ -7,11 +7,35 @@ Introduction
     New York University Abu Dhabi (NYUAD) High Performance Computing (HPC) Center serves New York University 
     Abu Dhabi (NYUAD) researchers, faculty and students by providing them with HPC services and support to 
     help them conduct world-class computational research and education. The HPC Center provides its services 
-    through a medium-sized Linux cluster called Jubail. The cluster consists of around 
-    **28,000 computing cores** and a peak performance of *approx.* **795 TFLOPS**.
+    through a medium-sized Linux cluster called Jubail - launched in March 2022. 
+    
+    Named after Jubail Island, Home of the Jubail Mangrove Park, the first self-contained educational, 
+    nature, and leisure destination of its kind in the Emirate of Abu Dhabi.
+    
+    In Brief, it is a **1.5 PFLOPs (~33,150 CPU cores)** cluster hosted at NYUAD Data Center in Saadiyat 
+    in 28 racks.
 
-    The previous HPC Dalma cluster was integrated with Jubail starting from 10th of March 2022. The details of the
-    previous HPC's can be found :doc:`here </hpc/old_hpc>` 
+
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - Node Type
+      - Number
+      - Specifications
+      - Total TFlops
+    * - CPU 
+      - 259
+      - AMD EPYC Rome CPU (128 cores & 512GB RAM each)
+      - 940 
+    * - GPU 
+      - 35
+      - 89 Nvidia Tesla V100 & A100 GPUs
+      - 720
+   
+
+The previous HPC Dalma cluster was integrated with Jubail starting from 10th of March 2022. The details of the
+previous HPC systems can be found :doc:`here </hpc/old_hpc>` 
 
 .. warning::
     Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
