@@ -1,5 +1,5 @@
-Previous HPCs
-==============
+Previous HPC Systems
+====================
 
 Dalma HPC
 ---------
@@ -20,7 +20,7 @@ BuTinah HPC
 .. rst-class:: text-justify
 
     BuTinah was NYU Abu Dhabi’s first High Performance Computing  (HPC) Cluster commisioned in 
-    April 2012 and decommissioned in May 2016.Named after Bu Tinah a tiny protected nature reserve 
+    April 2012 and decommissioned in May 2016. Named after Bu Tinah a tiny protected nature reserve 
     found in the waters of Abu Dhabi.
     
     In Brief, it was a 70 TFLOPs cluster ranked 397 in the top500 in June 2012 built in 15 racks 
