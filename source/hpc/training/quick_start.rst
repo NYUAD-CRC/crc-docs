@@ -85,7 +85,7 @@ Partitions Summary
 		- Large
 		- (256,2048) 
 		- 2 days
-		- 10
+		- 6
 		- 
 			.. code-block:: bash
 
@@ -95,9 +95,9 @@ Partitions Summary
 	*	- 
 		- 
 		- XLarge
-		- (512,4096) 
+		- (1024,4096) 
 		- 2 days
-		- 5
+		- 3
 		- 
 			.. code-block:: bash
 
@@ -110,7 +110,7 @@ Partitions Summary
 		- GPU
 		- (1,80)
 		- 4 days
-		- 4
+		- 8
 		- 
 			.. code-block:: bash
 
@@ -118,7 +118,7 @@ Partitions Summary
 				#SBATCH --gres=gpu:1
 
 
-		- Max GPUs:4
+		- Max GPUs:8
 	*	- 3
 		- ``bigmem``
 		- Large Memory Jobs
@@ -134,21 +134,61 @@ Partitions Summary
 		- Jobs requesting more than 480GB will be fowarded to bigmem
 	*	- 4
 		- ``preempt``
-		- high priority
-		- No Limit
-		- 7 days
+		- 
 		-
+		-
+		-
+		-
+		-
+	*	- 
+		- 
+		- preempt-small
+		- (1,28)
+		- 7 days
+		- 1200
 		- 
 			.. code-block:: bash
 
 				#SBATCH -p preempt
-				#SBATCH -n 128
-				#SBATCH -t 10:00:00
-          		 
-				
-				
-				
+				#SBATCH -n 25
+				#SBATCH -t 12:00:00
+		
+			
+
+		- grace period of 30 mins	
+	*	- 
+		- 
+		- preempt-big
+		- (28,8192)
+		- 7 days
+		- 100
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p preempt
+				#SBATCH -n 8100
+				#SBATCH -t 15:00:00
+		
+			
+
 		- grace period of 30 mins
+	*	- 
+		- 
+		- preempt-gpu
+		- (1,16)
+		- 7 days
+		- 12
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p preempt
+				#SBATCH -n 14
+				#SBATCH --gres=gpu:3
+				#SBATCH -t 20:00:00
+		
+			
+
+		- grace period of 30 mins Max GPUs:8
     	
     	
 Sample Job Script
