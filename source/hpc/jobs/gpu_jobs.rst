@@ -119,3 +119,11 @@ In this example output, we have one NVIDIA A100 GPU with the following informati
       - Low (``< 10%``)
       - Not a favourable outcome. 
 
+To exit the watch command, press ``Ctrl-C`` and then ``exit`` again from the GPU node.
+
+.. code-block:: console
+
+  (3-4.11.0)[wz22@cn001 ~]$ exit
+  logout
+  Connection to cn001 closed.
+  (3-4.11.0)[wz22@login1 ~]$

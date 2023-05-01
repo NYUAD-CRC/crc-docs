@@ -4,19 +4,19 @@ Submitting a Job
 Once you have your job script prepared, you could use the command 
 **sbatch** to submit your job.
 
-.. code-block:: bash
+.. code-block:: console
 
-    sbatch <jobscript>
+    [wz22@login1]$ sbatch <jobscript>
 
 Let say if you saved your job script into a file called ``job.sh``. Then you should run the following.
 
-.. code-block:: bash
+.. code-block:: console
 
-    sbatch job.sh
+    [wz22@login1]$ sbatch job.sh
 
 After the submission, it will return the corresponding job id. E.g.,
 
-.. code-block:: bash
+.. code-block:: console
 
     [wz22@login1]$ sbatch threads-job.sh
     Submitted batch job 775602
