@@ -16,7 +16,7 @@ The NYUAD HPC is also part of the Globus network.
 
 
 .. Important::
-    The Globus Endpoint has **ONLY** ``$ARCHIVE`` mounted. Users can access the same in the Globus portal by specify ``/NetID``. This will correspond to ``/work/Netid``.
+    The Globus Endpoint has **ONLY** ``$ARCHIVE`` mounted. Users can access the same in the Globus portal by specify ``/NetID``. This will correspond to ``/archive/Netid``.
 
 
 When to use Globus?
@@ -68,7 +68,7 @@ Follow the below steps to connect to the Globus Network.
     +----[SHA256]-----+
     ------------------------------------------------------------------------------
 
-                    To enable automount of /work for Globus,
+                    To enable automount of /archive for Globus,
         please copy Globus ssh-key to HPC Bastion host (NetID pass):
 
         scp -P 4410 ~/.ssh/globus_ed25519 hpc.abudhabi.nyu.edu:~/.ssh/
@@ -114,7 +114,7 @@ Globus Portal
 - You can now Trasnfer or sync data available within the globus network.
 
 The screenshot below is a trasnfer to be initiated between one of the dataset from "NCAR's Research Data Archive"
-to ``/work/wz22`` of NYUAD HPC.
+to ``/archive/wz22`` of NYUAD HPC.
 
     .. image:: ../img/globus3.png
 
