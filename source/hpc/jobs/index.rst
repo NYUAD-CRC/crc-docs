@@ -37,6 +37,7 @@ For Special Compute Nodes (GPU  and Visualization), please refer to the section 
    /hpc/jobs/interactive
    /hpc/jobs/job_array
    /hpc/jobs/parallel_job_array
+   /hpc/jobs/gpu_jobs
    /hpc/jobs/job_submit
    /hpc/jobs/job_status
    /hpc/jobs/job_cancel
