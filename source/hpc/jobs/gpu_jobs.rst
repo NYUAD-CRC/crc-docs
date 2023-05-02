@@ -127,3 +127,33 @@ To exit the watch command, press ``Ctrl-C`` and then ``exit`` again from the GPU
   logout
   Connection to cn001 closed.
   (3-4.11.0)[wz22@login1 ~]$
+
+Interactive sessions
+--------------------
+
+Users can also make use of interactive sessions to debug their GPU jobs in an incremental fashion, 
+if they are not working as expected.
+
+This can be done as follows:
+
+1. Get interactive access of a GPU node as follows:
+   
+   .. code-block:: console
+
+    srun -p nvidia --gres=gpu:1 -c 5 --pty bash
+
+  
+ This will give you the interactive access on one of the GPU nodes.
+ A sample output is shown below:
+
+  .. code-block:: console
+
+    (3-4.11.0)[wz22@login1 ~]$ srun -p nvidia --gres=gpu:1 -c 5 --pty bash
+    (3-4.11.0)[wz22@dn001 ~]$
+
+ It can be seen the prompt chnaging from ``login1`` to ``dn001``.
+
+2. Open a new terminal in parallel and follow the above sections to track the GPU utilization as you work on. 
+
+.. caution::
+  It is strongly recommended to use the interactive mode for debugging purposes only.
