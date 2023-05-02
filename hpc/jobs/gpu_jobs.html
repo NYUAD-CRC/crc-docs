@@ -113,6 +113,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Analyzing GPU Jobs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#logging-into-the-node">Logging into the node</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#monitoring-gpu-usage">Monitoring GPU Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-sessions">Interactive sessions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
@@ -322,6 +323,37 @@ being used heavily by an application.</p></li>
 <span class="go">Connection to cn001 closed.</span>
 <span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="interactive-sessions">
+<h2>Interactive sessions<a class="headerlink" href="#interactive-sessions" title="Permalink to this heading">¶</a></h2>
+<p>Users can also make use of interactive sessions to debug their GPU jobs in an incremental fashion,
+if they are not working as expected.</p>
+<p>This can be done as follows:</p>
+<ol class="arabic">
+<li><p>Get interactive access of a GPU node as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun -p nvidia --gres=gpu:1 -c 5 --pty bash</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>This will give you the interactive access on one of the GPU nodes.
+A sample output is shown below:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>srun<span class="w"> </span>-p<span class="w"> </span>nvidia<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>-c<span class="w"> </span><span class="m">5</span><span class="w"> </span>--pty<span class="w"> </span>bash
+<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@dn001 ~]$</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>It can be seen the prompt chnaging from <code class="docutils literal notranslate"><span class="pre">login1</span></code> to <code class="docutils literal notranslate"><span class="pre">dn001</span></code>.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Open a new terminal in parallel and follow the above sections to track the GPU utilization as you work on.</p></li>
+</ol>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It is strongly recommended to use the interactive mode for debugging purposes only.</p>
 </div>
 </div>
 </div>
