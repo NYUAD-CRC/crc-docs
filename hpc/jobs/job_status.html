@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
   
@@ -40,6 +41,8 @@
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -107,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu_jobs.html">Analyzing GPU Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Checking Job Status</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-and-during-job-execution">Before and During Job Execution</a></li>
@@ -211,25 +215,25 @@
 <p>This command shows all your current jobs.</p>
 <p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p>
 <p>Example output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login-0-1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">31408</span>
-<span class="w">            </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w">            </span><span class="m">31408</span><span class="w">   </span>ser_std<span class="w">  </span>job1.sh<span class="w">     </span>wz22<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>compute-21-4
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login-0-1 ~]$ </span>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">31408</span>
+<span class="go">            JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">            31408   ser_std  job1.sh     wz22  R       0:02      1 compute-21-4</span>
 </pre></div>
 </div>
 <p>It means the job with Job ID <code class="docutils literal notranslate"><span class="pre">31408</span></code>, has been running (<code class="docutils literal notranslate"><span class="pre">ST:</span> <span class="pre">R</span></code>) for 2 minutes on <code class="docutils literal notranslate"><span class="pre">compute-21-4</span></code>.</p>
 <p>For more verbose information, use <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">job</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1]$ </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="after-job-execution">
 <h2>After Job Execution<a class="headerlink" href="#after-job-execution" title="Permalink to this heading">¶</a></h2>
 <p>Once the job is finished, the job can’t be inspected by squeue or scontrol show job. At this point, you could inspect the job by sacct.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1]$ </span>sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </pre></div>
 </div>
 <p>The following commands give you extremely verbose information on a job.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span>-l
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1]$ </span>sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span>-l
 </pre></div>
 </div>
 </div>

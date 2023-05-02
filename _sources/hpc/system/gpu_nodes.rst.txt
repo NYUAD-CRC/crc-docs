@@ -1,8 +1,7 @@
 GPU nodes on HPC
 ==================
 
-Currently Jubail HPC holds 14 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (12) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS. 
-
+Currently Jubail HPC holds 89 GPU nodes equipped with NVIDIA-A100 and NVIDIA-V100 cards. 
 
 .. tip::
     Know more about the Centralized HPC Miniconda,TensorFlow(Keras) and PyTorch installations available :ref:`here<hpc_miniconda>`
@@ -10,9 +9,7 @@ Currently Jubail HPC holds 14 GPU nodes equipped with NVIDIA-V100 cards. Two of 
 Step-by-step guide
 -------------------
 
-1. Users that want to have access to the GPU nodes have to make a request for access. By default, any account in Jubail is created without access to the GPU nodes.
-
-2. In order to submit jobs to be allocated in the GPU nodes, these are the slurm directives (where ``<NUMBER>`` is the number of GPU cards requested):
+ In order to submit jobs to be allocated in the GPU nodes, these are the slurm directives (where ``<NUMBER>`` is the number of GPU cards requested):
 
 .. code-block:: bash
 
@@ -28,3 +25,6 @@ Step-by-step guide
     - Max jobs per user = 8
     - Max allowed walltime = 96 hours
     - Default walltime = 5 hours
+
+If you would like to analyze your GPU jobs, Please refer to following 
+section: :doc:`Analyzing GPU Usage</hpc/jobs/gpu_jobs>`

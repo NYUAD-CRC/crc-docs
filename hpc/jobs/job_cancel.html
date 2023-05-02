@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
   
@@ -40,6 +41,8 @@
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -107,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu_jobs.html">Analyzing GPU Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Cancelling a Job</a></li>
@@ -203,13 +207,13 @@
   <div class="section" id="cancelling-a-job">
 <h1>Cancelling a Job<a class="headerlink" href="#cancelling-a-job" title="Permalink to this heading">¶</a></h1>
 <p>If you decide to end a job prematurely, use <code class="docutils literal notranslate"><span class="pre">scancel</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span>&lt;jobid&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1]$ </span>scancel<span class="w"> </span>&lt;jobid&gt;
 </pre></div>
 </div>
 <div class="admonition-use-with-cautions admonition">
 <p class="admonition-title">Use with Cautions</p>
 <p>To cancel all jobs from your account. Run this on the HPC terminal.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span>-u<span class="w"> </span>&lt;NetID&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1]$ </span>scancel<span class="w"> </span>-u<span class="w"> </span>&lt;NetID&gt;
 </pre></div>
 </div>
 </div>

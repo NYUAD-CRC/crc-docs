@@ -10,7 +10,7 @@ This command shows all your current jobs.
 
 Example output:
 
-.. code-block:: bash
+.. code-block:: console
 
     [wz22@login-0-1 ~]$ squeue -j 31408
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -20,22 +20,22 @@ It means the job with Job ID ``31408``, has been running (``ST: R``) for 2 minut
 
 For more verbose information, use ``scontrol show job``.
 
-.. code-block:: bash
+.. code-block:: console
 
-    scontrol show job <jobid>
+    [wz22@login1]$ scontrol show job <jobid>
 
 After Job Execution
 -------------------
 
 Once the job is finished, the job can't be inspected by squeue or scontrol show job. At this point, you could inspect the job by sacct.
 
-.. code-block:: bash
+.. code-block:: console
 
-    sacct -j <jobid>
+    [wz22@login1]$ sacct -j <jobid>
 
 The following commands give you extremely verbose information on a job.
 
-.. code-block:: bash
+.. code-block:: console
 
-    sacct -j <jobid> -l
+    [wz22@login1]$ sacct -j <jobid> -l
 

@@ -120,9 +120,9 @@ Each submitted job is given a unique number
 * You can list your jobs to see which ones are waiting (pending) or running
 * As well as how long a job has been running and on which node(s)
 
-.. code-block:: bash
+.. code-block:: console
 
-    $> squeue
+    [wz22@login1 ~]$ squeue
     JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST(REASON)
     435251_[1-50]   compute     151215_F wz22    PD  0:00      1        (Priority)
     435252_[1-50]   compute     151215_F wz22    PD  0:00      1        (Priority)
@@ -145,9 +145,9 @@ SLURM: Listing Jobs
 * You can look at completed jobs using the "sacct" command
 * To look at jobs you ran since July 1, 2022
 
-.. code-block:: bash
+.. code-block:: console
 
-    $> sacct --starttime=2022-07-01
+    [wz22@login1 ~]$ sacct --starttime=2022-07-01
 
 
 * You can retrieve the following informations about a job after it terminates:
@@ -175,9 +175,9 @@ SLURM: Listing Jobs
 
 * To retrieve specific informations about a job
 
-.. code-block:: bash
+.. code-block:: console
 
-    $> sacct -j 511512 -format=partition,alloccpus,elapsed,state,exitcode
+    [wz22@login1 ~]$ sacct -j 511512 -format=partition,alloccpus,elapsed,state,exitcode
      JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode
      ------------ ---------- ---------- ---------- ---------- ---------- --------
      511512        sub.sh     nvidia     avengers     20      COMPLETED    0:0
@@ -192,7 +192,7 @@ SLURM: Job Progress
 * By default output and error files are named "slurm-XXX.out" and "slurm-XXX.err" where XXX is the job id
 * "tail –f" allows you to track new output as it is produced
 
-.. code-block:: bash
+.. code-block:: console
 
     $> cat slurm-435563.out
     $> more slurm-435563.out
@@ -204,7 +204,7 @@ SLURM: Killing Jobs
 * Sometimes you need to kill your job when you realise it is not working as expected
 * Note that your job can be killed automatically when it reaches its maximum time/memory allocation
     
-.. code-block:: bash
+.. code-block:: console
 
     $> scancel 435563
 

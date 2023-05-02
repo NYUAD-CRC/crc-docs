@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Analyzing GPU Jobs &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Submitting a Job" href="job_submit.html" />
+    <link rel="prev" title="Parallel Job Array" href="parallel_job_array.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission between Jubail and Dalma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Analyzing GPU Jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-into-the-node">Logging into the node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitoring-gpu-usage">Monitoring GPU Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc_slurm.html">A Detailed SLURM Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Jobs Management</a> &raquo;</li>
+        
+      <li>Analyzing GPU Jobs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analyzing-gpu-jobs">
+<h1>Analyzing GPU Jobs<a class="headerlink" href="#analyzing-gpu-jobs" title="Permalink to this heading">¶</a></h1>
+<p>When running jobs on a High-Performance Computing (HPC) cluster that use Graphics Processing
+Units (GPUs), it is essential to monitor the GPU usage to optimize performance and ensure
+efficient resource allocation. The <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> command is a useful tool for monitoring
+GPU usage in real-time.</p>
+<p>This guide will walk you through the process of analyzing GPU jobs using the <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code>
+command after accessing the node using the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command obtained from the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> output.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note that jobs with low GPU utilization (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">10%</span></code>) may be terminated
+by the system in order to free up resources for other users on the cluster.</p>
+</div>
+<div class="section" id="logging-into-the-node">
+<h2>Logging into the node<a class="headerlink" href="#logging-into-the-node" title="Permalink to this heading">¶</a></h2>
+<p>Before you can analyze your GPU jobs using the <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> command, you must first
+log in to the node where your job is running. You can obtain the necessary login credentials
+using the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command. The output of the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command will display the node name
+and job ID of your running job.</p>
+<p>The output will look something like this</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>squeue
+<span class="go">         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">       1457246    nvidia     bash     wz22  R    3:35:44      1 cn001</span>
+</pre></div>
+</div>
+<p>Here, the job is running on <code class="docutils literal notranslate"><span class="pre">cn001</span></code>. You can log in to the node using the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>ssh<span class="w"> </span>cn001
+</pre></div>
+</div>
+<p>Once you have successfully logged in to the node, you can proceed with monitoring the GPU usage.
+You can notice that that, after <code class="docutils literal notranslate"><span class="pre">ssh</span></code> the command prompt has changed from login node (<code class="docutils literal notranslate"><span class="pre">[wz22&#64;login1</span> <span class="pre">~]$</span></code>)
+to the GPU node (<code class="docutils literal notranslate"><span class="pre">[wz22&#64;cn001</span> <span class="pre">~]$</span></code>)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>ssh<span class="w"> </span>cn001
+<span class="go">Last login: Mon May  1 14:25:21 2023 from 10.10.0.201</span>
+<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@cn001 ~]$</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="monitoring-gpu-usage">
+<h2>Monitoring GPU Usage<a class="headerlink" href="#monitoring-gpu-usage" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> command allows you to monitor the GPU usage in real-time. The <code class="docutils literal notranslate"><span class="pre">watch</span></code>
+command refreshes the output at regular intervals (every two seconds by default), making it
+easy to track changes over time.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@cn001 ~]$ </span>watch<span class="w"> </span>nvidia-smi
+</pre></div>
+</div>
+<p>This command will display a continuous stream of output showing the current GPU usage.
+The output includes information such as the GPU temperature, memory usage, and process
+IDs of any running jobs.</p>
+<p>A sample output is shown below</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Every 2.0s: nvidia-smi                                                                              cn001: Mon May  1 22:04:18 2023</span>
+
+<span class="go">Mon May  1 22:04:18 2023</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 460.106.00   Driver Version: 460.106.00   CUDA Version: 11.2     |</span>
+<span class="go">|-------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                               |                      |               MIG M. |</span>
+<span class="go">|===============================+======================+======================|</span>
+<span class="go">|   1  A100-PCIE-40GB      Off  | 00000000:81:00.0 Off |                    0 |</span>
+<span class="go">| N/A   32C    P0    64W / 250W |  14298MiB / 40536MiB |     78%      Default |</span>
+<span class="go">|                               |                      |             Disabled |</span>
+<span class="go">+-------------------------------+----------------------+----------------------+</span>
+
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                  |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span>
+<span class="go">|        ID   ID                                                   Usage      |</span>
+<span class="go">|=============================================================================|</span>
+<span class="go">|    1   N/A  N/A   1146446      C   python                          14295MiB |</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>In this example output, we have one NVIDIA A100 GPU with the following information:</p>
+<ul class="simple">
+<li><p><strong>Memory usage</strong>: The Memory-Usage column shows how much memory is the GPU currently using, in MiB.
+For example, the GPU above is using 14298MiB of its available 40536MiB.</p></li>
+<li><p><strong>GPU utilization</strong>: The GPU-Util column shows the current GPU utilization for the GPU,
+as a percentage. For example, the GPU above has a utilization of 78%, indicating that it is
+being used heavily by an application.</p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Memory Usage</p></th>
+<th class="head"><p>GPU Utilization</p></th>
+<th class="head"><p>Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>High</p></td>
+<td><p>High</p></td>
+<td><p>Your job is running perfectly fine and utilizating the GPU to its full capacity.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Low</p></td>
+<td><p>High</p></td>
+<td><p>Your job is running fine and utilizing the GPU. Increasing the batch size in a few cases can speed up even more.</p></td>
+</tr>
+<tr class="row-even"><td><p>High</p></td>
+<td><p>Low ( <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">10%</span></code>)</p></td>
+<td><p>Not a favourable outcome. Even though the data is residing on the GPU, the computation/utilization is low and hence can be counter productive.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Low</p></td>
+<td><p>Low (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">10%</span></code>)</p></td>
+<td><p>Not a favourable outcome.</p></td>
+</tr>
+</tbody>
+</table>
+<p>To exit the watch command, press <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code> and then <code class="docutils literal notranslate"><span class="pre">exit</span></code> again from the GPU node.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@cn001 ~]$ </span><span class="nb">exit</span>
+<span class="go">logout</span>
+<span class="go">Connection to cn001 closed.</span>
+<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="job_submit.html" class="btn btn-neutral float-right" title="Submitting a Job" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="parallel_job_array.html" class="btn btn-neutral float-left" title="Parallel Job Array" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

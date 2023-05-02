@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
   
@@ -40,6 +41,8 @@
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -107,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu_jobs.html">Analyzing GPU Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
@@ -336,22 +340,22 @@ sbatch<span class="w"> </span>--depend<span class="o">=</span>afternotok:123<spa
 <li><p>You can list your jobs to see which ones are waiting (pending) or running</p></li>
 <li><p>As well as how long a job has been running and on which node(s)</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>squeue
-JOBID<span class="w">           </span>PARTITION<span class="w">   </span>NAME<span class="w">     </span>USER<span class="w">    </span>ST<span class="w">  </span>TIME<span class="w">    </span>NODES<span class="w">   </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-435251_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span><span class="w">   </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>PD<span class="w">  </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w">        </span><span class="o">(</span>Priority<span class="o">)</span>
-435252_<span class="o">[</span><span class="m">1</span>-50<span class="o">]</span><span class="w">   </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>PD<span class="w">  </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w">        </span><span class="o">(</span>Priority<span class="o">)</span>
-<span class="m">435294</span><span class="w">          </span>compute<span class="w">     </span>Merge5.s<span class="w"> </span>wz22<span class="w">    </span>PD<span class="w">  </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w">        </span><span class="o">(</span>Priority<span class="o">)</span>
-435235_<span class="o">[</span><span class="m">20</span>-50<span class="o">]</span><span class="w">  </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>PD<span class="w">  </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w">        </span><span class="o">(</span>Priority<span class="o">)</span>
-435235_19<span class="w">       </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">12</span>:55<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn028
-435235_17<span class="w">       </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">47</span>:34<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn021
-435235_15<span class="w">       </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">49</span>:04<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn027
-435235_13<span class="w">       </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">50</span>:34<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn024
-435235_11<span class="w">       </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">54</span>:35<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn029
-435235_9<span class="w">        </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">56</span>:35<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn026
-435235_7<span class="w">        </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">58</span>:35<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn025
-435235_5<span class="w">        </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">59</span>:36<span class="w">     </span><span class="m">1</span><span class="w">        </span>cn020
-435235_3<span class="w">        </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">1</span>:00:36<span class="w">   </span><span class="m">1</span><span class="w">        </span>cn011
-435235_1<span class="w">        </span>compute<span class="w">     </span>151215_F<span class="w"> </span>wz22<span class="w">    </span>R<span class="w">   </span><span class="m">1</span>:04:37<span class="w">   </span><span class="m">1</span><span class="w">        </span>cn013
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1 ~]$ </span>squeue
+<span class="go">JOBID           PARTITION   NAME     USER    ST  TIME    NODES   NODELIST(REASON)</span>
+<span class="go">435251_[1-50]   compute     151215_F wz22    PD  0:00      1        (Priority)</span>
+<span class="go">435252_[1-50]   compute     151215_F wz22    PD  0:00      1        (Priority)</span>
+<span class="go">435294          compute     Merge5.s wz22    PD  0:00      1        (Priority)</span>
+<span class="go">435235_[20-50]  compute     151215_F wz22    PD  0:00      1        (Priority)</span>
+<span class="go">435235_19       compute     151215_F wz22    R   12:55     1        cn028</span>
+<span class="go">435235_17       compute     151215_F wz22    R   47:34     1        cn021</span>
+<span class="go">435235_15       compute     151215_F wz22    R   49:04     1        cn027</span>
+<span class="go">435235_13       compute     151215_F wz22    R   50:34     1        cn024</span>
+<span class="go">435235_11       compute     151215_F wz22    R   54:35     1        cn029</span>
+<span class="go">435235_9        compute     151215_F wz22    R   56:35     1        cn026</span>
+<span class="go">435235_7        compute     151215_F wz22    R   58:35     1        cn025</span>
+<span class="go">435235_5        compute     151215_F wz22    R   59:36     1        cn020</span>
+<span class="go">435235_3        compute     151215_F wz22    R   1:00:36   1        cn011</span>
+<span class="go">435235_1        compute     151215_F wz22    R   1:04:37   1        cn013</span>
 </pre></div>
 </div>
 </div>
@@ -361,7 +365,7 @@ JOBID<span class="w">           </span>PARTITION<span class="w">   </span>NAME<s
 <li><p>You can look at completed jobs using the “sacct” command</p></li>
 <li><p>To look at jobs you ran since July 1, 2022</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>sacct<span class="w"> </span>--starttime<span class="o">=</span><span class="m">2022</span>-07-01
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1 ~]$ </span>sacct<span class="w"> </span>--starttime<span class="o">=</span><span class="m">2022</span>-07-01
 </pre></div>
 </div>
 <ul class="simple">
@@ -389,12 +393,12 @@ UID<span class="w">             </span>User<span class="w">           </span>Use
 <ul class="simple">
 <li><p>To retrieve specific informations about a job</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">511512</span><span class="w"> </span>-format<span class="o">=</span>partition,alloccpus,elapsed,state,exitcode
-<span class="w"> </span>JobID<span class="w">         </span>JobName<span class="w">    </span>Partition<span class="w">   </span>Account<span class="w">   </span>AllocCPUS<span class="w">  </span>State<span class="w">     </span>ExitCode
-<span class="w"> </span>------------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>--------
-<span class="w"> </span><span class="m">511512</span><span class="w">        </span>sub.sh<span class="w">     </span>nvidia<span class="w">     </span>avengers<span class="w">     </span><span class="m">20</span><span class="w">      </span>COMPLETED<span class="w">    </span><span class="m">0</span>:0
-<span class="w"> </span><span class="m">511512</span>.batch<span class="w">  </span>batch<span class="w">                 </span>avengers<span class="w">     </span><span class="m">20</span><span class="w">      </span>COMPLETED<span class="w">    </span><span class="m">0</span>:0
-<span class="w"> </span><span class="m">511512</span>.0<span class="w">      </span>env<span class="w">                   </span>avengers<span class="w">     </span><span class="m">20</span><span class="w">      </span>COMPLETED<span class="w">    </span><span class="m">0</span>:0
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[wz22@login1 ~]$ </span>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">511512</span><span class="w"> </span>-format<span class="o">=</span>partition,alloccpus,elapsed,state,exitcode
+<span class="go"> JobID         JobName    Partition   Account   AllocCPUS  State     ExitCode</span>
+<span class="go"> ------------ ---------- ---------- ---------- ---------- ---------- --------</span>
+<span class="go"> 511512        sub.sh     nvidia     avengers     20      COMPLETED    0:0</span>
+<span class="go"> 511512.batch  batch                 avengers     20      COMPLETED    0:0</span>
+<span class="go"> 511512.0      env                   avengers     20      COMPLETED    0:0</span>
 </pre></div>
 </div>
 </div>
@@ -405,9 +409,9 @@ UID<span class="w">             </span>User<span class="w">           </span>Use
 <li><p>By default output and error files are named “slurm-XXX.out” and “slurm-XXX.err” where XXX is the job id</p></li>
 <li><p>“tail –f” allows you to track new output as it is produced</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>cat<span class="w"> </span>slurm-435563.out
-$&gt;<span class="w"> </span>more<span class="w"> </span>slurm-435563.out
-$&gt;<span class="w"> </span>tail<span class="w"> </span>–f<span class="w"> </span>slurm-435563.out
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>&gt;<span class="w"> </span>cat<span class="w"> </span>slurm-435563.out
+<span class="gp">$</span>&gt;<span class="w"> </span>more<span class="w"> </span>slurm-435563.out
+<span class="gp">$</span>&gt;<span class="w"> </span>tail<span class="w"> </span>–f<span class="w"> </span>slurm-435563.out
 </pre></div>
 </div>
 </div>
@@ -417,7 +421,7 @@ $&gt;<span class="w"> </span>tail<span class="w"> </span>–f<span class="w"> </
 <li><p>Sometimes you need to kill your job when you realise it is not working as expected</p></li>
 <li><p>Note that your job can be killed automatically when it reaches its maximum time/memory allocation</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt;<span class="w"> </span>scancel<span class="w"> </span><span class="m">435563</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>&gt;<span class="w"> </span>scancel<span class="w"> </span><span class="m">435563</span>
 </pre></div>
 </div>
 </div>

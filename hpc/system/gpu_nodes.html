@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
 
   
@@ -40,6 +41,8 @@
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -205,17 +208,16 @@
             
   <div class="section" id="gpu-nodes-on-hpc">
 <h1>GPU nodes on HPC<a class="headerlink" href="#gpu-nodes-on-hpc" title="Permalink to this heading">¶</a></h1>
-<p>Currently Jubail HPC holds 14 GPU nodes equipped with NVIDIA-V100 cards. Two of those nodes have 8 GPU V100 cards and 1TB of memory per node. The rest (12) have 2 GPU V100 cards with 360GB per node. Each node has 40 CPUS.</p>
+<p>Currently Jubail HPC holds 89 GPU nodes equipped with NVIDIA-A100 and NVIDIA-V100 cards.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Know more about the Centralized HPC Miniconda,TensorFlow(Keras) and PyTorch installations available <a class="reference internal" href="../software/index.html#hpc-miniconda"><span class="std std-ref">here</span></a></p>
 </div>
 <div class="section" id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Users that want to have access to the GPU nodes have to make a request for access. By default, any account in Jubail is created without access to the GPU nodes.</p></li>
-<li><p>In order to submit jobs to be allocated in the GPU nodes, these are the slurm directives (where <code class="docutils literal notranslate"><span class="pre">&lt;NUMBER&gt;</span></code> is the number of GPU cards requested):</p></li>
-</ol>
+<blockquote>
+<div><p>In order to submit jobs to be allocated in the GPU nodes, these are the slurm directives (where <code class="docutils literal notranslate"><span class="pre">&lt;NUMBER&gt;</span></code> is the number of GPU cards requested):</p>
+</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --gres=gpu:&lt;NUMBER&gt;</span>
 
 <span class="c1">#SBATCH -p nvidia</span>
@@ -232,6 +234,8 @@
 <li><p>Default walltime = 5 hours</p></li>
 </ul>
 </div>
+<p>If you would like to analyze your GPU jobs, Please refer to following
+section: <a class="reference internal" href="../jobs/gpu_jobs.html"><span class="doc">Analyzing GPU Usage</span></a></p>
 </div>
 </div>
 

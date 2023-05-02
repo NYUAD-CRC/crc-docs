@@ -3,14 +3,14 @@ Cancelling a Job
 
 If you decide to end a job prematurely, use ``scancel``
 
-.. code-block:: bash
+.. code-block:: console
 
-    scancel <jobid>
+    [wz22@login1]$ scancel <jobid>
 
 .. admonition:: Use with Cautions
     
     To cancel all jobs from your account. Run this on the HPC terminal.
 
-    .. code-block:: bash
+    .. code-block:: console
 
-        scancel -u <NetID>
+        [wz22@login1]$ scancel -u <NetID>
