@@ -71,4 +71,5 @@ Miscellaneous
    
 
    /hpc/software/r_hpc_miniconda
+   /hpc/software/vscode
    
