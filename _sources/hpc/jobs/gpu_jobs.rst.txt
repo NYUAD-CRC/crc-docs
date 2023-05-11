@@ -1,63 +1,48 @@
 Analyzing GPU Jobs
 ==================
 
-When running jobs on a High-Performance Computing (HPC) cluster that use Graphics Processing 
-Units (GPUs), it is essential to monitor the GPU usage to optimize performance and ensure 
-efficient resource allocation. The ``watch nvidia-smi`` command is a useful tool for monitoring 
-GPU usage in real-time.
+When running GPU-accelerated jobs on a High-Performance Computing (HPC) system, 
+it is essential to monitor the utilization and performance of the GPUs to ensure efficient 
+resource utilization and troubleshoot any potential issues. This documentation provides 
+instructions on monitoring GPU jobs using the system inbuilt ``gutil`` command which uses ``nvidia-smi`` 
+command within, allowing users to track the GPU status in real-time.
 
-This guide will walk you through the process of analyzing GPU jobs using the ``watch nvidia-smi`` 
-command after accessing the node using the ``ssh`` command obtained from the ``squeue`` output.
+This guide will walk you through the process of analyzing GPU jobs using the ``gutil`` 
+after obtaining the ``jobid`` from the ``squeue`` output.
 
 .. important::
     Note that jobs with low GPU utilization (``< 10%``) may be terminated 
     by the system in order to free up resources for other users on the cluster. 
 
-Logging into the node
+Finding the Job ID
 ---------------------
-
-Before you can analyze your GPU jobs using the ``watch nvidia-smi`` command, you must first 
-log in to the node where your job is running. You can obtain the necessary login credentials 
-using the ``squeue`` command. The output of the ``squeue`` command will display the node name 
-and job ID of your running job.
-
+Before monitoring the GPU job, you need to find the `jobid`. You can use the `squeue` command to obtain 
+a list of running jobs and their corresponding job IDs. The output of the ``squeue`` command will display 
+the job ID of your running job .
 
 The output will look something like this
-
 
 .. code-block:: console
 
     (3-4.11.0)[wz22@login1 ~]$ squeue
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1457246    nvidia     bash     wz22  R    3:35:44      1 cn001
+           1457246    nvidia     run     wz22  R    3:35:44      1 cn001
 
-Here, the job is running on ``cn001``. You can log in to the node using the ``ssh`` command:
-
-.. code-block:: console
-
-    (3-4.11.0)[wz22@login1 ~]$ ssh cn001
-
-Once you have successfully logged in to the node, you can proceed with monitoring the GPU usage.
-You can notice that that, after ``ssh`` the command prompt has changed from login node (``[wz22@login1 ~]$``)
-to the GPU node (``[wz22@cn001 ~]$``)
-
-.. code-block:: console
-
-    (3-4.11.0)[wz22@login1 ~]$ ssh cn001
-    Last login: Mon May  1 14:25:21 2023 from 10.10.0.201
-    (3-4.11.0)[wz22@cn001 ~]$
+Here, the JobID is ``1457246``.
 
 
 Monitoring GPU Usage
 --------------------
 
-The ``watch nvidia-smi`` command allows you to monitor the GPU usage in real-time. The ``watch`` 
-command refreshes the output at regular intervals (every two seconds by default), making it 
-easy to track changes over time.
+The ``gutil <jobid>`` command allows you to monitor the GPU usage in real-time. The command refreshes the 
+output at regular intervals, making it 
+easy to track changes over time. The jobid of the desired job is passed as an argument to the ``gutil`` command
+as shown below:
 
 .. code-block:: console
 
-    (3-4.11.0)[wz22@cn001 ~]$ watch nvidia-smi
+    (3-4.11.0)[wz22@login1 ~]$ #gutil <jobid>
+    (3-4.11.0)[wz22@login1 ~]$ gutil 1457246
 
 This command will display a continuous stream of output showing the current GPU usage. 
 The output includes information such as the GPU temperature, memory usage, and process 
@@ -77,7 +62,7 @@ A sample output is shown below
     | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
     |                               |                      |               MIG M. |
     |===============================+======================+======================|
-    |   1  A100-PCIE-40GB      Off  | 00000000:81:00.0 Off |                    0 |
+    |   0  A100-PCIE-40GB      Off  | 00000000:81:00.0 Off |                    0 |
     | N/A   32C    P0    64W / 250W |  14298MiB / 40536MiB |     78%      Default |
     |                               |                      |             Disabled |
     +-------------------------------+----------------------+----------------------+
@@ -119,14 +104,8 @@ In this example output, we have one NVIDIA A100 GPU with the following informati
       - Low (``< 10%``)
       - Not a favourable outcome. 
 
-To exit the watch command, press ``Ctrl-C`` and then ``exit`` again from the GPU node.
+To exit the ``gutil```` command, press ``Ctrl-C``.
 
-.. code-block:: console
-
-  (3-4.11.0)[wz22@cn001 ~]$ exit
-  logout
-  Connection to cn001 closed.
-  (3-4.11.0)[wz22@login1 ~]$
 
 Interactive sessions
 --------------------

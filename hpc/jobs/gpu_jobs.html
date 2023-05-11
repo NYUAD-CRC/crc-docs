@@ -111,7 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Analyzing GPU Jobs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#logging-into-the-node">Logging into the node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finding-the-job-id">Finding the Job ID</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#monitoring-gpu-usage">Monitoring GPU Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-sessions">Interactive sessions</a></li>
 </ul>
@@ -211,48 +211,39 @@
             
   <div class="section" id="analyzing-gpu-jobs">
 <h1>Analyzing GPU Jobs<a class="headerlink" href="#analyzing-gpu-jobs" title="Permalink to this heading">¶</a></h1>
-<p>When running jobs on a High-Performance Computing (HPC) cluster that use Graphics Processing
-Units (GPUs), it is essential to monitor the GPU usage to optimize performance and ensure
-efficient resource allocation. The <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> command is a useful tool for monitoring
-GPU usage in real-time.</p>
-<p>This guide will walk you through the process of analyzing GPU jobs using the <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code>
-command after accessing the node using the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command obtained from the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> output.</p>
+<p>When running GPU-accelerated jobs on a High-Performance Computing (HPC) system,
+it is essential to monitor the utilization and performance of the GPUs to ensure efficient
+resource utilization and troubleshoot any potential issues. This documentation provides
+instructions on monitoring GPU jobs using the system inbuilt <code class="docutils literal notranslate"><span class="pre">gutil</span></code> command which uses <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>
+command within, allowing users to track the GPU status in real-time.</p>
+<p>This guide will walk you through the process of analyzing GPU jobs using the <code class="docutils literal notranslate"><span class="pre">gutil</span></code>
+after obtaining the <code class="docutils literal notranslate"><span class="pre">jobid</span></code> from the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> output.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Note that jobs with low GPU utilization (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">10%</span></code>) may be terminated
 by the system in order to free up resources for other users on the cluster.</p>
 </div>
-<div class="section" id="logging-into-the-node">
-<h2>Logging into the node<a class="headerlink" href="#logging-into-the-node" title="Permalink to this heading">¶</a></h2>
-<p>Before you can analyze your GPU jobs using the <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> command, you must first
-log in to the node where your job is running. You can obtain the necessary login credentials
-using the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command. The output of the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command will display the node name
-and job ID of your running job.</p>
+<div class="section" id="finding-the-job-id">
+<h2>Finding the Job ID<a class="headerlink" href="#finding-the-job-id" title="Permalink to this heading">¶</a></h2>
+<p>Before monitoring the GPU job, you need to find the <cite>jobid</cite>. You can use the <cite>squeue</cite> command to obtain
+a list of running jobs and their corresponding job IDs. The output of the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command will display
+the job ID of your running job .</p>
 <p>The output will look something like this</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>squeue
 <span class="go">         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
-<span class="go">       1457246    nvidia     bash     wz22  R    3:35:44      1 cn001</span>
+<span class="go">       1457246    nvidia     run     wz22  R    3:35:44      1 cn001</span>
 </pre></div>
 </div>
-<p>Here, the job is running on <code class="docutils literal notranslate"><span class="pre">cn001</span></code>. You can log in to the node using the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>ssh<span class="w"> </span>cn001
-</pre></div>
-</div>
-<p>Once you have successfully logged in to the node, you can proceed with monitoring the GPU usage.
-You can notice that that, after <code class="docutils literal notranslate"><span class="pre">ssh</span></code> the command prompt has changed from login node (<code class="docutils literal notranslate"><span class="pre">[wz22&#64;login1</span> <span class="pre">~]$</span></code>)
-to the GPU node (<code class="docutils literal notranslate"><span class="pre">[wz22&#64;cn001</span> <span class="pre">~]$</span></code>)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>ssh<span class="w"> </span>cn001
-<span class="go">Last login: Mon May  1 14:25:21 2023 from 10.10.0.201</span>
-<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@cn001 ~]$</span>
-</pre></div>
-</div>
+<p>Here, the JobID is <code class="docutils literal notranslate"><span class="pre">1457246</span></code>.</p>
 </div>
 <div class="section" id="monitoring-gpu-usage">
 <h2>Monitoring GPU Usage<a class="headerlink" href="#monitoring-gpu-usage" title="Permalink to this heading">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> command allows you to monitor the GPU usage in real-time. The <code class="docutils literal notranslate"><span class="pre">watch</span></code>
-command refreshes the output at regular intervals (every two seconds by default), making it
-easy to track changes over time.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@cn001 ~]$ </span>watch<span class="w"> </span>nvidia-smi
+<p>The <code class="docutils literal notranslate"><span class="pre">gutil</span> <span class="pre">&lt;jobid&gt;</span></code> command allows you to monitor the GPU usage in real-time. The command refreshes the
+output at regular intervals, making it
+easy to track changes over time. The jobid of the desired job is passed as an argument to the <code class="docutils literal notranslate"><span class="pre">gutil</span></code> command
+as shown below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span><span class="c1">#gutil &lt;jobid&gt;</span>
+<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>gutil<span class="w"> </span><span class="m">1457246</span>
 </pre></div>
 </div>
 <p>This command will display a continuous stream of output showing the current GPU usage.
@@ -269,7 +260,7 @@ IDs of any running jobs.</p>
 <span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
 <span class="go">|                               |                      |               MIG M. |</span>
 <span class="go">|===============================+======================+======================|</span>
-<span class="go">|   1  A100-PCIE-40GB      Off  | 00000000:81:00.0 Off |                    0 |</span>
+<span class="go">|   0  A100-PCIE-40GB      Off  | 00000000:81:00.0 Off |                    0 |</span>
 <span class="go">| N/A   32C    P0    64W / 250W |  14298MiB / 40536MiB |     78%      Default |</span>
 <span class="go">|                               |                      |             Disabled |</span>
 <span class="go">+-------------------------------+----------------------+----------------------+</span>
@@ -317,13 +308,7 @@ being used heavily by an application.</p></li>
 </tr>
 </tbody>
 </table>
-<p>To exit the watch command, press <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code> and then <code class="docutils literal notranslate"><span class="pre">exit</span></code> again from the GPU node.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@cn001 ~]$ </span><span class="nb">exit</span>
-<span class="go">logout</span>
-<span class="go">Connection to cn001 closed.</span>
-<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$</span>
-</pre></div>
-</div>
+<p>To exit the <code class="docutils literal notranslate"><span class="pre">gutil``</span></code> command, press <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code>.</p>
 </div>
 <div class="section" id="interactive-sessions">
 <h2>Interactive sessions<a class="headerlink" href="#interactive-sessions" title="Permalink to this heading">¶</a></h2>
