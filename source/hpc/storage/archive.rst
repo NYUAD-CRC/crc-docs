@@ -192,6 +192,14 @@ A simple dearchiving would have the following steps:
 
     (base) [wz22@login1 abc]$ cp -r /archive/wz22/abc /scratch/wz22/.
 
+.. tip::
+  A user can simply use the standard unix utilities like ``rsync``, ``cp`` etc. to copy in or out the data 
+  from/to  ``/archive``. While copying out from archive, the rest of the ``dmfget`` command would be automatically handled in the background and
+  hence the time taken for the moving out would depend on the state of the file (released/exists).
+
+  Any operation performed on the archive files would first auto trasnfer the file to the ``exists archived state`` before
+  performing the operation.
+
 
 
 Quick Glance into the archive commands
@@ -217,6 +225,30 @@ Quick Glance into the archive commands
       - ``dmfmonitor <filename>``
       - Can be used to track if the migration from tape drive to storage is done.
    
+
+Summary
+--------
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - Action
+      - Command
+      - Remarks
+    * - Copy in to Archive
+      - 
+        .. code-block:: console
+            
+            rsync <source-dir> <dest-dir>
+
+      - Usual commands like rsync and cp can be used to copy in to ``/archive``
+    * - Copy out from archive
+      - 
+        .. code-block:: console
+            
+            rsync <source-dir> <dest-dir>
+
+      - Usual commands like rsync and cp can be used to copy out from ``/archive``. The dmfget would be handled in the backgroound.
 
 Best Practices
 --------------
