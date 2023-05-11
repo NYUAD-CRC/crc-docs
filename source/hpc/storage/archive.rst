@@ -193,6 +193,7 @@ A simple dearchiving would have the following steps:
     (base) [wz22@login1 abc]$ cp -r /archive/wz22/abc /scratch/wz22/.
 
 
+
 Quick Glance into the archive commands
 --------------------------------------
 
