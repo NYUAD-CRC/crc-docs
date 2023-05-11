@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Connecting VS Code to HPC using SSH &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Jobs Management" href="../jobs/index.html" />
+    <link rel="prev" title="R in HPC Miniconda" href="r_hpc_miniconda.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#hpc-miniconda">HPC Miniconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#matlab">Matlab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#singularity">Singularity</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#miscellaneous">Miscellaneous</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="r_hpc_miniconda.html">R in HPC Miniconda</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Connecting VS Code to HPC using SSH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-modify-ssh-config-file">Step 1: Modify SSH Config File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-connect-with-vs-code-remote-ssh-extension">Step 2: Connect with VS Code Remote-SSH Extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Software</a> &raquo;</li>
+        
+      <li>Connecting VS Code to HPC using SSH</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="connecting-vs-code-to-hpc-using-ssh">
+<h1>Connecting VS Code to HPC using SSH<a class="headerlink" href="#connecting-vs-code-to-hpc-using-ssh" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>This documentation provides step-by-step instructions on how to connect your local VS Code to
+a High-Performance Computing (HPC) system using SSH. By establishing an SSH connection,
+you can leverage the power of the HPC resources while utilizing the familiar and feature-rich
+VS Code editor.</p>
+<p>The below steps also achieve the following:</p>
+<p>-This will connect to the compute nodes and not the login nodes and hence prevent any overloads on login nodes.
+- Eliminate the possibility of the non terminated vs code-related background processes which may cause login issues on the HPC</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>A local installation of VS Code.</p></li>
+<li><p>Basic knowledge of SSH and working with remote systems.</p></li>
+</ul>
+</div>
+<div class="section" id="step-1-modify-ssh-config-file">
+<h2>Step 1: Modify SSH Config File<a class="headerlink" href="#step-1-modify-ssh-config-file" title="Permalink to this heading">¶</a></h2>
+<p>Add the following configuration to your SSH config file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>hpc
+<span class="w">  </span>HostName<span class="w"> </span>jubail.abudhabi.nyu.edu
+<span class="w">  </span>User<span class="w"> </span>&lt;NetID&gt;
+
+Host<span class="w"> </span>hpc-job
+<span class="w">  </span>ForwardAgent<span class="w"> </span>yes
+<span class="w">  </span>StrictHostKeyChecking<span class="w"> </span>no
+<span class="w">  </span><span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null
+<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;/opt/slurm/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c &#39;nc \$SLURM_NODELIST 22&#39;&quot;</span>
+<span class="w">  </span>User<span class="w"> </span>&lt;NetID&gt;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> with your username. This configuration allows you to connect to the “hpc-job” host.</p>
+</div>
+<div class="section" id="step-2-connect-with-vs-code-remote-ssh-extension">
+<h2>Step 2: Connect with VS Code Remote-SSH Extension<a class="headerlink" href="#step-2-connect-with-vs-code-remote-ssh-extension" title="Permalink to this heading">¶</a></h2>
+<p>To remotely connect VS Code to one of the compute nodes, perform the following steps:</p>
+<ol class="arabic simple">
+<li><p>Install the Remote-SSH extension in your local VS Code instance.</p></li>
+<li><p>Open the Command Palette in VS Code (press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code> or <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+P</span></code>).</p></li>
+<li><p>Search for and select the <code class="docutils literal notranslate"><span class="pre">Remote-SSH:</span> <span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Host</span></code> option.</p></li>
+<li><p>Choose the <code class="docutils literal notranslate"><span class="pre">hpc-job</span></code> host from the list of configured hosts.</p></li>
+<li><p>VS Code will establish a remote SSH connection to the compute node.</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../jobs/index.html" class="btn btn-neutral float-right" title="Jobs Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="r_hpc_miniconda.html" class="btn btn-neutral float-left" title="R in HPC Miniconda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
