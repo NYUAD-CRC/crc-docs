@@ -12,7 +12,7 @@ VS Code editor.
 
 The below steps also achieve the following:
 
--This will connect to the compute nodes and not the login nodes and hence prevent any overloads on login nodes.
+- This will connect to the compute nodes and not the login nodes and hence prevent any overloads on login nodes.
 - Eliminate the possibility of the non terminated vs code-related background processes which may cause login issues on the HPC
 
 Prerequisites
