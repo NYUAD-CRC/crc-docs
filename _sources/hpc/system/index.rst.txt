@@ -121,6 +121,17 @@ If you use Windows or outside NYU AD/NY network, follow the instructions here: :
 
  /hpc/system/access_jubail
 
+MFA Authentication
+------------------
+
+For enhanced security, Multi Factor Authentication is now enabled to log-in to the HPC. You could find more details about the same 
+here: :doc:`MFA Authentication on HPC <mfa_auth>`
+
+.. toctree::
+ :hidden:
+
+ /hpc/system/mfa_auth
+
 
 Whenever you login, you land up on one of the four login nodes, which is shown on left most section of
 your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that you are on the second login node.
@@ -193,3 +204,4 @@ at a faster rate.
   :hidden:
 
   /hpc/system/globus
+

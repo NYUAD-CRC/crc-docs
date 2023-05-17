@@ -119,7 +119,7 @@ This can be done as follows:
    
    .. code-block:: console
 
-    srun -p nvidia --gres=gpu:1 -c 5 --pty bash
+    salloc -p nvidia --gres=gpu:1 -c 5 
 
   
  This will give you the interactive access on one of the GPU nodes.
@@ -127,10 +127,22 @@ This can be done as follows:
 
   .. code-block:: console
 
-    (3-4.11.0)[wz22@login1 ~]$ srun -p nvidia --gres=gpu:1 -c 5 --pty bash
-    (3-4.11.0)[wz22@dn001 ~]$
+    (3-4.11.0)[wz22@login4 ~]$ salloc -p nvidia --gres=gpu:1 -c 5
+    salloc: Granted job allocation 1606651
+    salloc: Waiting for resource configuration
+    salloc: Nodes cn005 are ready for job
 
- It can be seen the prompt chnaging from ``login1`` to ``dn001``.
+    Disk quotas for wz22 (uid 3387153):
+                                DISK SPACE                # FILES (1000's)
+              filesystem       size      quota            number      quota
+                          --------------------------   --------------------------
+                  /home       17GB       29GB ( 60%)       105       150 ( 70%)
+                /scratch     1047GB     5000GB ( 21%)       750      2048 ( 37%)
+                /archive        0KB     5120GB (  0%)         0       125 (  0%)
+
+    (3-4.11.0)[wz22@login4 ~]$
+
+ It can be seen that node ``cn005`` has been assigned for the job. To exit from the interactive session, enter ``exit`` or press ``Ctrl+d``.
 
 2. Open a new terminal in parallel and follow the above sections to track the GPU utilization as you work on. 
 

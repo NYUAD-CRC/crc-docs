@@ -317,7 +317,7 @@ if they are not working as expected.</p>
 <p>This can be done as follows:</p>
 <ol class="arabic">
 <li><p>Get interactive access of a GPU node as follows:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun -p nvidia --gres=gpu:1 -c 5 --pty bash</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">salloc -p nvidia --gres=gpu:1 -c 5</span>
 </pre></div>
 </div>
 </li>
@@ -326,12 +326,24 @@ if they are not working as expected.</p>
 <div><p>This will give you the interactive access on one of the GPU nodes.
 A sample output is shown below:</p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>srun<span class="w"> </span>-p<span class="w"> </span>nvidia<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>-c<span class="w"> </span><span class="m">5</span><span class="w"> </span>--pty<span class="w"> </span>bash
-<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@dn001 ~]$</span>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login4 ~]$ </span>salloc<span class="w"> </span>-p<span class="w"> </span>nvidia<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>-c<span class="w"> </span><span class="m">5</span>
+<span class="go">salloc: Granted job allocation 1606651</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes cn005 are ready for job</span>
+
+<span class="go">Disk quotas for wz22 (uid 3387153):</span>
+<span class="go">                            DISK SPACE                # FILES (1000&#39;s)</span>
+<span class="go">          filesystem       size      quota            number      quota</span>
+<span class="go">                      --------------------------   --------------------------</span>
+<span class="go">              /home       17GB       29GB ( 60%)       105       150 ( 70%)</span>
+<span class="go">            /scratch     1047GB     5000GB ( 21%)       750      2048 ( 37%)</span>
+<span class="go">            /archive        0KB     5120GB (  0%)         0       125 (  0%)</span>
+
+<span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login4 ~]$</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>It can be seen the prompt chnaging from <code class="docutils literal notranslate"><span class="pre">login1</span></code> to <code class="docutils literal notranslate"><span class="pre">dn001</span></code>.</p>
+<p>It can be seen that node <code class="docutils literal notranslate"><span class="pre">cn005</span></code> has been assigned for the job. To exit from the interactive session, enter <code class="docutils literal notranslate"><span class="pre">exit</span></code> or press <code class="docutils literal notranslate"><span class="pre">Ctrl+d</span></code>.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>Open a new terminal in parallel and follow the above sections to track the GPU utilization as you work on.</p></li>

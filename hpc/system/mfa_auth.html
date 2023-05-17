@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>HPC Access with MFA Authentication &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File Transfer using rsync" href="rsync_transfer.html" />
+    <link rel="prev" title="Access Jubail" href="access_jubail.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">System</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#hardware">Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#typical-workflow">Typical Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary-of-nodes">Summary of Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#access">Access</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#mfa-authentication">MFA Authentication</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">HPC Access with MFA Authentication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mfa-authentication">MFA Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-passwordless-authentication">Enabling Passwordless Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssh-configuration-with-control-masters-optional">SSH Configuration with Control Masters (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#explanation">Explanation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#data-transfers">Data Transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#special-compute-nodes">Special Compute Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#globus-data-transfer">Globus Data Transfer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">System</a> &raquo;</li>
+        
+      <li>HPC Access with MFA Authentication</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hpc-access-with-mfa-authentication">
+<h1>HPC Access with MFA Authentication<a class="headerlink" href="#hpc-access-with-mfa-authentication" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>This following sections provide instructions for accessing the High-Performance Computing (HPC) system
+with multifactor DUO authentication enabled. Users will be prompted to authenticate themselves using
+DUO during the login process. Additionally, steps are provided for enabling passwordless authentication by copying
+SSH keys for Windows, Linux, and Mac users to override the multifactor authentication. Lastly, this guide includes instructions for modifying SSH
+configurations to incorporate control masters.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Users who have already set up passwordless authentication by copying their SSH keys will not be
+affected by the multifactor DUO authentication. Passwordless authentication allows users to log
+in to the HPC system without entering a password. Instead, authentication is based on the presence
+of a valid SSH key on the user’s local machine and the corresponding public key stored on the
+HPC system.</p>
+</div>
+</div>
+<div class="section" id="mfa-authentication">
+<h2>MFA Authentication<a class="headerlink" href="#mfa-authentication" title="Permalink to this heading">¶</a></h2>
+<p>Starting from now, accessing the HPC system requires multifactor DUO authentication. Upon login,
+users will be prompted to provide additional authentication through DUO. The following options will
+be presented:</p>
+<ol class="arabic">
+<li><p><strong>DUO Push to +XXX XX XXX 7777</strong></p>
+<p>Select this option if you want to receive a DUO Push notification on your mobile device. Confirm the login request on your device to proceed.</p>
+</li>
+<li><p><strong>SMS passcodes to +XXX XX XXX 7777</strong></p>
+<p>Select this option if you want to receive an SMS passcode on your registered phone number. Enter the passcode provided to proceed.</p>
+</li>
+</ol>
+<p>A sample example is given below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Duo two-factor login for wz22</span>
+
+<span class="go">Enter a passcode or select one of the following options:</span>
+
+<span class="go">1. Duo Push to +XXX XX XXX 7777</span>
+<span class="go">2. SMS passcodes to +XXX XX XXX 7777</span>
+
+<span class="go">Passcode or option (1-2): 1</span>
+<span class="go">password for wz22:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-passwordless-authentication">
+<h2>Enabling Passwordless Authentication<a class="headerlink" href="#enabling-passwordless-authentication" title="Permalink to this heading">¶</a></h2>
+<p>To enable passwordless authentication and override the multifactor DUO authentication, follow the steps below based on your operating system:</p>
+<ol class="arabic">
+<li><p>Windows Users:</p>
+<ul>
+<li><p>Open the app <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Powershell</span></code> and generate a public key using the command <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code>.You may keep hitting enter when prompted for the paraphrase.</p></li>
+<li><p>Copy the public key to the HPC system. A sample command is given below:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">PS C:\Users\wz22&gt; type $env:USERPROFILE\.ssh\id_rsa.pub | ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu &quot;cat &gt;&gt; .ssh/authorized_keys&quot;</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> with your NetID.</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p>Linux and Mac Users:</p>
+<ul>
+<li><p>Open the terminal.</p></li>
+<li><p>Generate an SSH key pair by running the following command</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh-keygen -t rsa</span>
+</pre></div>
+</div>
+<p>Press Enter to accept the default settings and provide a passphrase if desired.</p>
+</div></blockquote>
+</li>
+<li><p>Copy the public key to the HPC system using the following command</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;NetID&gt;@jubail.abudhabi.nyu.edu</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> with your university NetID.</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="ssh-configuration-with-control-masters-optional">
+<h2>SSH Configuration with Control Masters (Optional)<a class="headerlink" href="#ssh-configuration-with-control-masters-optional" title="Permalink to this heading">¶</a></h2>
+<p>Users can modify their SSH configurations to incorporate control masters, which allow for more efficient SSH connections. Control masters create a persistent connection to the remote host, eliminating the need to establish a new connection for each subsequent SSH session.</p>
+<p>To set up control masters, follow the steps below:</p>
+<ol class="arabic">
+<li><p>Create the control masters directory:
+Run the following command to create the directory where control masters will be stored</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">controlmasters</span>
+</pre></div>
+</div>
+</li>
+<li><p>Edit the SSH configuration file:
+Edit the SSH configuration file located at <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> using a text editor</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add the following configuration for the HPC system:
+Insert the following lines into the SSH configuration file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">jubail</span><span class="o">.</span><span class="n">abudhabi</span><span class="o">.</span><span class="n">nyu</span><span class="o">.</span><span class="n">edu</span>
+  <span class="n">IdentitiesOnly</span> <span class="n">yes</span>
+  <span class="n">ControlPath</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">controlmasters</span><span class="o">/%</span><span class="n">r</span><span class="o">@%</span><span class="n">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span>
+  <span class="n">ControlMaster</span> <span class="n">auto</span>
+  <span class="n">ControlPersist</span> <span class="mi">3</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>This configuration ensures that SSH connections to <code class="docutils literal notranslate"><span class="pre">jubail.abudhabi.nyu.edu</span></code> will use control masters, providing faster and more efficient connections. The <code class="docutils literal notranslate"><span class="pre">ControlPersist</span></code> directive specifies that the control master connection will persist for 3 hours.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="explanation">
+<h2>Explanation<a class="headerlink" href="#explanation" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Control masters, introduced in the SSH protocol, allow for the creation of persistent SSH connections
+to remote hosts. By utilizing control masters, subsequent SSH sessions to the same host can reuse the
+existing connection, resulting in faster and more efficient connections. The SSH configuration
+specified in this document enables control masters for connections to the HPC system,
+improving the overall SSH experience.</p></li>
+<li><p>Passwordless authentication, on the other hand, relies on the use of SSH keys for authentication
+instead of passwords. Users generate a public-private key pair, where the public key is stored on
+the HPC system and the private key remains on the user’s local machine. During authentication,
+the private key is used to prove the user’s identity without requiring a password. This method is
+more secure and convenient than traditional password-based authentication.</p></li>
+<li><p>Users who have already set up passwordless authentication by copying their SSH keys to the HPC system are not required to go through the multifactor DUO authentication process. Since passwordless authentication relies on the possession of a valid SSH key, it provides an inherent level of security that negates the need for additional authentication factors such as DUO.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="rsync_transfer.html" class="btn btn-neutral float-right" title="File Transfer using rsync" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="access_jubail.html" class="btn btn-neutral float-left" title="Access Jubail" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
