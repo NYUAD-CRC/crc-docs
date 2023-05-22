@@ -6,13 +6,13 @@ Social Science
    :class: publication-table
    :file: data/socialscience-2022.csv
    
-   .. csv-table:: 2021
+.. csv-table:: 2021
    :widths: auto
    :header-rows: 1
    :class: publication-table
    :file: data/socialscience-2021.csv
    
-   .. csv-table:: 2020
+.. csv-table:: 2020
    :widths: auto
    :header-rows: 1
    :class: publication-table
