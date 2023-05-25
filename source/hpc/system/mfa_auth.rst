@@ -45,6 +45,7 @@ A sample example is given below:
     Passcode or option (1-2): 1
     password for wz22:
 
+.. _passwordless_ssh:
 
 Enabling Passwordless Authentication
 ------------------------------------
@@ -57,7 +58,7 @@ To enable passwordless authentication and override the multifactor DUO authentic
       
       .. code-block:: console
 
-         PS C:\Users\wz22> type $env:USERPROFILE\.ssh\id_rsa.pub | ssh <NetID>@jubail.abudhabi.nyu.edu "cat >> .ssh/authorized_keys"
+         type $env:USERPROFILE\.ssh\id_rsa.pub | ssh <NetID>@jubail.abudhabi.nyu.edu "cat >> .ssh/authorized_keys"
 
       Replace ``<NetID>`` with your NetID.   
     
@@ -80,6 +81,12 @@ To enable passwordless authentication and override the multifactor DUO authentic
         ssh-copy-id -i ~/.ssh/id_rsa.pub <NetID>@jubail.abudhabi.nyu.edu
 
       Replace ``<NetID>`` with your university NetID.
+
+.. important::
+   It is recommended to generate SSH keys exclusively on private laptops or desktops. 
+   If a user replaces or loses their laptop, it is crucial to remove the old SSH key from Jubail to ensure 
+   security measures are in place. This precautionary step helps cover all potential scenarios and minimizes 
+   unauthorized access risks.
 
 SSH Configuration with Control Masters (Optional)
 -------------------------------------------------
