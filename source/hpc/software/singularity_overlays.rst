@@ -1,7 +1,19 @@
 Singularity Overlays
 ====================
 
-An Overlay is a directory or a filesystem image which sits on top of a Singularity container.
+Efficient handling of large input and output (I/O) volumes is crucial for scientific workflows, 
+particularly those involving tasks like image processing. However, when dealing with a multitude of 
+files (e.g., Python packages comprising numerous small files), this can effect workflow speed and even impact 
+the overall filesystem performance for other users.
+
+To address these challenges, a persistent overlay serves as an empty writable filesystem that gets mounted 
+within the Singularity container during runtime. It preserves any modifications made to its filesystem while 
+the container is active. While the overlay appears as just another directory from the container's perspective, 
+the HPC filesystem treats it as a single file, enabling all I/O operations to be applied to this consolidated file. 
+This key aspect of overlays reduces the burden on the HPC filesystem by managing metadata solely for the overlay 
+file instead of individual files within the overlay.
+
+An Overlay is simply a directory or a filesystem image which sits on top of a Singularity container.
 
 The user can make benefit of the overlays in any of the following ways:
 
