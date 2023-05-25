@@ -56,6 +56,12 @@ The usage is as follows:
 
 The above example will mount the overlays ``overlay1.ext3`` and ``overlay2.ext3`` simultaneously.
 
+.. note::
+    Please note that when mounting or running multiple overlays, it is important to be aware that only the first overlay 
+    specified will be mounted as writable, while the remaining overlays will be mounted as read-only. 
+    This means that any changes made to the first overlay will be retained, but modifications to the 
+    subsequent overlays will not be allowed.
+
 Running with an Overlay
 -----------------------
 
