@@ -132,6 +132,8 @@ here: :doc:`MFA Authentication on HPC <mfa_auth>`
 
  /hpc/system/mfa_auth
 
+.. important::
+  If you would like to use VS Code on jubail, please follow the following guide :doc:`VS Code on HPC </hpc/software/vscode>` for recommendations.
 
 Whenever you login, you land up on one of the four login nodes, which is shown on left most section of
 your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that you are on the second login node.

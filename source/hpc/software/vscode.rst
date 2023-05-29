@@ -15,6 +15,9 @@ The below steps also achieve the following:
 - This will connect to the compute nodes and not the login nodes and hence prevent any overloads on login nodes.
 - Eliminate the possibility of the non terminated vs code-related background processes which may cause login issues on the HPC
 
+.. important::
+  It is recommended to have enabled passwordless ssh on your private PC's for seamless experience. Find the guide here :ref:`Passwordless SSH <passwordless_ssh>`
+
 Prerequisites
 -------------
 
