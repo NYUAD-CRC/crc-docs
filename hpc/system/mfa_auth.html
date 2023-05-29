@@ -256,7 +256,7 @@ be presented:</p>
 </div>
 </div>
 <div class="section" id="enabling-passwordless-authentication">
-<h2>Enabling Passwordless Authentication<a class="headerlink" href="#enabling-passwordless-authentication" title="Permalink to this heading">¶</a></h2>
+<span id="passwordless-ssh"></span><h2>Enabling Passwordless Authentication<a class="headerlink" href="#enabling-passwordless-authentication" title="Permalink to this heading">¶</a></h2>
 <p>To enable passwordless authentication and override the multifactor DUO authentication, follow the steps below based on your operating system:</p>
 <ol class="arabic">
 <li><p>Windows Users:</p>
@@ -264,7 +264,7 @@ be presented:</p>
 <li><p>Open the app <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Powershell</span></code> and generate a public key using the command <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code>.You may keep hitting enter when prompted for the paraphrase.</p></li>
 <li><p>Copy the public key to the HPC system. A sample command is given below:</p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">PS C:\Users\wz22&gt; type $env:USERPROFILE\.ssh\id_rsa.pub | ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu &quot;cat &gt;&gt; .ssh/authorized_keys&quot;</span>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">type $env:USERPROFILE\.ssh\id_rsa.pub | ssh &lt;NetID&gt;@jubail.abudhabi.nyu.edu &quot;cat &gt;&gt; .ssh/authorized_keys&quot;</span>
 </pre></div>
 </div>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;NetID&gt;</span></code> with your NetID.</p>
@@ -294,6 +294,13 @@ be presented:</p>
 </ul>
 </li>
 </ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is recommended to generate SSH keys exclusively on private laptops or desktops.
+If a user replaces or loses their laptop, it is crucial to remove the old SSH key from Jubail to ensure
+security measures are in place. This precautionary step helps cover all potential scenarios and minimizes
+unauthorized access risks.</p>
+</div>
 </div>
 <div class="section" id="ssh-configuration-with-control-masters-optional">
 <h2>SSH Configuration with Control Masters (Optional)<a class="headerlink" href="#ssh-configuration-with-control-masters-optional" title="Permalink to this heading">¶</a></h2>
