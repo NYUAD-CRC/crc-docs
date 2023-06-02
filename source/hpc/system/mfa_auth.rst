@@ -6,8 +6,9 @@ Introduction
 This following sections provide instructions for accessing the High-Performance Computing (HPC) system 
 with multifactor DUO authentication enabled. Users will be prompted to authenticate themselves using 
 DUO during the login process. Additionally, steps are provided for enabling passwordless authentication by copying 
-SSH keys for Windows, Linux, and Mac users to override the multifactor authentication. Lastly, this guide includes instructions for modifying SSH 
-configurations to incorporate control masters. 
+SSH keys for Windows, Linux, and Mac users to override the multifactor authentication. 
+
+.. Lastly, this guide includes instructions for modifying SSH configurations to incorporate control masters. 
 
 .. Important::
     Users who have already set up passwordless authentication by copying their SSH keys will not be 
