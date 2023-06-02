@@ -153,8 +153,17 @@ Here's an example:
 
     run-overlay -o overlay1.ext3 -o overlay2.ext3 -f file.txt
 
-This script will run the commands present in "file.txt" with the overlays ``overlay1.ext3`` 
+This script will run the commands present in ``file.txt`` with the overlays ``overlay1.ext3`` 
 and ``overlay2.ext3`` mounted simultaneously.
+
+An example file.txt is given below:
+
+.. code-block:: bash
+
+    source ~/.bashrc
+    conda activate /opt/conda-envs/myenv
+    python abc.py
+
 
 If you need finer control over the overlay or want to use the underlying Singularity 
 commands directly, you can modify the job script as follows:

@@ -111,7 +111,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mfa-authentication">MFA Authentication</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enabling-passwordless-authentication">Enabling Passwordless Authentication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ssh-configuration-with-control-masters-optional">SSH Configuration with Control Masters (Optional)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#explanation">Explanation</a></li>
 </ul>
 </li>
@@ -302,45 +301,10 @@ security measures are in place. This precautionary step helps cover all potentia
 unauthorized access risks.</p>
 </div>
 </div>
-<div class="section" id="ssh-configuration-with-control-masters-optional">
-<h2>SSH Configuration with Control Masters (Optional)<a class="headerlink" href="#ssh-configuration-with-control-masters-optional" title="Permalink to this heading">¶</a></h2>
-<p>Users can modify their SSH configurations to incorporate control masters, which allow for more efficient SSH connections. Control masters create a persistent connection to the remote host, eliminating the need to establish a new connection for each subsequent SSH session.</p>
-<p>To set up control masters, follow the steps below:</p>
-<ol class="arabic">
-<li><p>Create the control masters directory:
-Run the following command to create the directory where control masters will be stored</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">controlmasters</span>
-</pre></div>
-</div>
-</li>
-<li><p>Edit the SSH configuration file:
-Edit the SSH configuration file located at <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> using a text editor</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
-</pre></div>
-</div>
-</li>
-<li><p>Add the following configuration for the HPC system:
-Insert the following lines into the SSH configuration file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">jubail</span><span class="o">.</span><span class="n">abudhabi</span><span class="o">.</span><span class="n">nyu</span><span class="o">.</span><span class="n">edu</span>
-  <span class="n">IdentitiesOnly</span> <span class="n">yes</span>
-  <span class="n">ControlPath</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">controlmasters</span><span class="o">/%</span><span class="n">r</span><span class="o">@%</span><span class="n">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span>
-  <span class="n">ControlMaster</span> <span class="n">auto</span>
-  <span class="n">ControlPersist</span> <span class="mi">3</span><span class="n">h</span>
-</pre></div>
-</div>
-<p>This configuration ensures that SSH connections to <code class="docutils literal notranslate"><span class="pre">jubail.abudhabi.nyu.edu</span></code> will use control masters, providing faster and more efficient connections. The <code class="docutils literal notranslate"><span class="pre">ControlPersist</span></code> directive specifies that the control master connection will persist for 3 hours.</p>
-</li>
-</ol>
-</div>
 <div class="section" id="explanation">
 <h2>Explanation<a class="headerlink" href="#explanation" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Control masters, introduced in the SSH protocol, allow for the creation of persistent SSH connections
-to remote hosts. By utilizing control masters, subsequent SSH sessions to the same host can reuse the
-existing connection, resulting in faster and more efficient connections. The SSH configuration
-specified in this document enables control masters for connections to the HPC system,
-improving the overall SSH experience.</p></li>
-<li><p>Passwordless authentication, on the other hand, relies on the use of SSH keys for authentication
+<li><p>Passwordless authentication relies on the use of SSH keys for authentication
 instead of passwords. Users generate a public-private key pair, where the public key is stored on
 the HPC system and the private key remains on the user’s local machine. During authentication,
 the private key is used to prove the user’s identity without requiring a password. This method is

@@ -336,8 +336,14 @@ Here’s an example:</p>
 run-overlay<span class="w"> </span>-o<span class="w"> </span>overlay1.ext3<span class="w"> </span>-o<span class="w"> </span>overlay2.ext3<span class="w"> </span>-f<span class="w"> </span>file.txt
 </pre></div>
 </div>
-<p>This script will run the commands present in “file.txt” with the overlays <code class="docutils literal notranslate"><span class="pre">overlay1.ext3</span></code>
+<p>This script will run the commands present in <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> with the overlays <code class="docutils literal notranslate"><span class="pre">overlay1.ext3</span></code>
 and <code class="docutils literal notranslate"><span class="pre">overlay2.ext3</span></code> mounted simultaneously.</p>
+<p>An example file.txt is given below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+conda<span class="w"> </span>activate<span class="w"> </span>/opt/conda-envs/myenv
+python<span class="w"> </span>abc.py
+</pre></div>
+</div>
 <p>If you need finer control over the overlay or want to use the underlying Singularity
 commands directly, you can modify the job script as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
