@@ -88,49 +88,50 @@ To enable passwordless authentication and override the multifactor DUO authentic
    security measures are in place. This precautionary step helps cover all potential scenarios and minimizes 
    unauthorized access risks.
 
-SSH Configuration with Control Masters (Optional)
--------------------------------------------------
-Users can modify their SSH configurations to incorporate control masters, which allow for more efficient SSH connections. Control masters create a persistent connection to the remote host, eliminating the need to establish a new connection for each subsequent SSH session.
+.. SSH Configuration with Control Masters (Optional)
+.. -------------------------------------------------
+   Users can modify their SSH configurations to incorporate control masters, which allow for more efficient SSH connections. Control masters create a persistent connection to the remote host, eliminating the need to establish a new connection for each subsequent SSH session.
 
-To set up control masters, follow the steps below:
+   To set up control masters, follow the steps below:
 
-1. Create the control masters directory:
-   Run the following command to create the directory where control masters will be stored
-   
-   ::
+   1. Create the control masters directory:
+      Run the following command to create the directory where control masters will be stored
+      
+      ::
 
-      mkdir ~/.ssh/controlmasters
+         mkdir ~/.ssh/controlmasters
 
-2. Edit the SSH configuration file:
-   Edit the SSH configuration file located at ``~/.ssh/config`` using a text editor
-   
-   ::
+   2. Edit the SSH configuration file:
+      Edit the SSH configuration file located at ``~/.ssh/config`` using a text editor
+      
+      ::
 
-      nano ~/.ssh/config
+         nano ~/.ssh/config
 
-3. Add the following configuration for the HPC system:
-   Insert the following lines into the SSH configuration file
-   
-   ::
+   3. Add the following configuration for the HPC system:
+      Insert the following lines into the SSH configuration file
+      
+      ::
 
-      Host jubail.abudhabi.nyu.edu
-        IdentitiesOnly yes
-        ControlPath ~/.ssh/controlmasters/%r@%h:%p
-        ControlMaster auto
-        ControlPersist 3h
+         Host jubail.abudhabi.nyu.edu
+         IdentitiesOnly yes
+         ControlPath ~/.ssh/controlmasters/%r@%h:%p
+         ControlMaster auto
+         ControlPersist 3h
 
-   This configuration ensures that SSH connections to ``jubail.abudhabi.nyu.edu`` will use control masters, providing faster and more efficient connections. The ``ControlPersist`` directive specifies that the control master connection will persist for 3 hours.
+      This configuration ensures that SSH connections to ``jubail.abudhabi.nyu.edu`` will use control masters, providing faster and more efficient connections. The ``ControlPersist`` directive specifies that the control master connection will persist for 3 hours.
 
 
 
 Explanation
 -----------
-- Control masters, introduced in the SSH protocol, allow for the creation of persistent SSH connections 
+.. - Control masters, introduced in the SSH protocol, allow for the creation of persistent SSH connections 
   to remote hosts. By utilizing control masters, subsequent SSH sessions to the same host can reuse the 
   existing connection, resulting in faster and more efficient connections. The SSH configuration 
   specified in this document enables control masters for connections to the HPC system, 
   improving the overall SSH experience.
-- Passwordless authentication, on the other hand, relies on the use of SSH keys for authentication 
+
+- Passwordless authentication relies on the use of SSH keys for authentication 
   instead of passwords. Users generate a public-private key pair, where the public key is stored on 
   the HPC system and the private key remains on the user's local machine. During authentication, 
   the private key is used to prove the user's identity without requiring a password. This method is 
