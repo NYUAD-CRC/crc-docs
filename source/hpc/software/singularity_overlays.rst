@@ -35,7 +35,7 @@ megabytes and the number of files as arguments. The usage is as follows:
     # Example:
     create-overlay -s 500 -n 700
 
-The above example will create an overlay by the name ``overlay-700K-500M.ext3`` of 500MB capacity with a 
+The above example will create an overlay by the name ``overlay-500M-700K.ext3`` of 500MB capacity with a 
 number of file limit of 700K. 
 The overlay will be named ``overlay-<size>M-<numfiles>K.ext3`` by default. It can be customized by specifying
 the name with ``-o`` argument.
