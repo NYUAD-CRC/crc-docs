@@ -40,6 +40,42 @@ number of file limit of 700K.
 The overlay will be named ``overlay-<size>M-<numfiles>K.ext3`` by default. It can be customized by specifying
 the name with ``-o`` argument.
 
+A sample output of the ``create-overlay`` command is shown below:
+
+.. code-block:: console
+
+    (3-4.11.0)[wz22@login2 overlay_testing]$ create-overlay -s 500 -n 700
+    ======================
+    # Overlay Info       #
+    ======================
+    Overlay Size: 500M
+    No. of Files limit: 700K
+    Name of Overlay: overlay-500M-700K.ext3
+    ======================
+    # Creating overlay   #
+    ======================
+    463483904 bytes (463 MB, 442 MiB) copied, 8 s, 57.9 MB/s
+    500000+0 records in
+    500000+0 records out
+    512000000 bytes (512 MB, 488 MiB) copied, 8.73192 s, 58.6 MB/s
+    mke2fs 1.45.4 (23-Sep-2019)
+    Creating filesystem with 125000 4k blocks and 700480 inodes
+    Filesystem UUID: b51f9007-3ad2-418e-8a41-f51b0f3361bd
+    Superblock backups stored on blocks:
+            5896, 17688, 29480, 41272, 53064
+
+    Allocating group tables: done
+    Writing inode tables: done
+    Creating journal (4096 blocks): done
+    Copying files into the device: done
+    Writing superblocks and filesystem accounting information: done
+
+    ====================
+    #      Done      #
+    ====================
+    Finished creating overlay. It is located in /scratch/wz22/overlay_testing/overlay-500M-700K.ext3
+
+
 Mounting an Overlay
 -------------------
 

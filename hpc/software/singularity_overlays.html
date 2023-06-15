@@ -243,6 +243,39 @@ megabytes and the number of files as arguments. The usage is as follows:</p>
 number of file limit of 700K.
 The overlay will be named <code class="docutils literal notranslate"><span class="pre">overlay-&lt;size&gt;M-&lt;numfiles&gt;K.ext3</span></code> by default. It can be customized by specifying
 the name with <code class="docutils literal notranslate"><span class="pre">-o</span></code> argument.</p>
+<p>A sample output of the <code class="docutils literal notranslate"><span class="pre">create-overlay</span></code> command is shown below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login2 overlay_testing]$ </span>create-overlay<span class="w"> </span>-s<span class="w"> </span><span class="m">500</span><span class="w"> </span>-n<span class="w"> </span><span class="m">700</span>
+<span class="go">======================</span>
+<span class="gp"># </span>Overlay<span class="w"> </span>Info<span class="w">       </span><span class="c1">#</span>
+<span class="go">======================</span>
+<span class="go">Overlay Size: 500M</span>
+<span class="go">No. of Files limit: 700K</span>
+<span class="go">Name of Overlay: overlay-500M-700K.ext3</span>
+<span class="go">======================</span>
+<span class="gp"># </span>Creating<span class="w"> </span>overlay<span class="w">   </span><span class="c1">#</span>
+<span class="go">======================</span>
+<span class="go">463483904 bytes (463 MB, 442 MiB) copied, 8 s, 57.9 MB/s</span>
+<span class="go">500000+0 records in</span>
+<span class="go">500000+0 records out</span>
+<span class="go">512000000 bytes (512 MB, 488 MiB) copied, 8.73192 s, 58.6 MB/s</span>
+<span class="go">mke2fs 1.45.4 (23-Sep-2019)</span>
+<span class="go">Creating filesystem with 125000 4k blocks and 700480 inodes</span>
+<span class="go">Filesystem UUID: b51f9007-3ad2-418e-8a41-f51b0f3361bd</span>
+<span class="go">Superblock backups stored on blocks:</span>
+<span class="go">        5896, 17688, 29480, 41272, 53064</span>
+
+<span class="go">Allocating group tables: done</span>
+<span class="go">Writing inode tables: done</span>
+<span class="go">Creating journal (4096 blocks): done</span>
+<span class="go">Copying files into the device: done</span>
+<span class="go">Writing superblocks and filesystem accounting information: done</span>
+
+<span class="go">====================</span>
+<span class="gp">#      </span>Done<span class="w">      </span><span class="c1">#</span>
+<span class="go">====================</span>
+<span class="go">Finished creating overlay. It is located in /scratch/wz22/overlay_testing/overlay-500M-700K.ext3</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="mounting-an-overlay">
 <h2>Mounting an Overlay<a class="headerlink" href="#mounting-an-overlay" title="Permalink to this heading">¶</a></h2>
