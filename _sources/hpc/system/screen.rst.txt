@@ -49,12 +49,15 @@ The screen.sh script
 It can be used as follows:
  
 .. code-block:: bash
-
-  [ms13779@login2 ~]$ screen.sh "cp -r /home/ms13779/result_56_1.txt /scratch/ms13779/"
-  cp -r /home/ms13779/result_56_1.txt /scratch/ms13779/
+ 
+  [ms13779@login2 ~]$ screen.sh "cp -r /scratch/ms13779/FFTW/ /archive/ms13779/"
+  This script runs the command passed to it in the background using screen command
+  Running command: cp -r /scratch/ms13779/FFTW/ /archive/ms13779/
+  Log file : output_background.log in the current directory
   [ms13779@login2 ~]$ 
+
    
-Where (cp -r /home/ms13779/result_56_1.txt /scratch/ms13779/) can be replaced with your command.
+Where (cp -r /scratch/ms13779/FFTW/ /archive/ms13779/) can be replaced with your command.
 
 This script will do three things:
     * Execute the command in the background (inside the screen session).

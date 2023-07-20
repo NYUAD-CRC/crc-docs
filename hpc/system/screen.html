@@ -255,12 +255,14 @@ There<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>
 <h1>The screen.sh script<a class="headerlink" href="#the-screen-sh-script" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">screen.sh</span></code> is an in-house tool to automate the process of running commands in the background using the <strong>screen</strong> command.
 It can be used as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>ms13779@login2<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>screen.sh<span class="w"> </span><span class="s2">&quot;cp -r /home/ms13779/result_56_1.txt /scratch/ms13779/&quot;</span>
-cp<span class="w"> </span>-r<span class="w"> </span>/home/ms13779/result_56_1.txt<span class="w"> </span>/scratch/ms13779/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>ms13779@login2<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>screen.sh<span class="w"> </span><span class="s2">&quot;cp -r /scratch/ms13779/FFTW/ /archive/ms13779/&quot;</span>
+This<span class="w"> </span>script<span class="w"> </span>runs<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>passed<span class="w"> </span>to<span class="w"> </span>it<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>background<span class="w"> </span>using<span class="w"> </span>screen<span class="w"> </span><span class="nb">command</span>
+Running<span class="w"> </span>command:<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>/scratch/ms13779/FFTW/<span class="w"> </span>/archive/ms13779/
+Log<span class="w"> </span>file<span class="w"> </span>:<span class="w"> </span>output_background.log<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory
 <span class="o">[</span>ms13779@login2<span class="w"> </span>~<span class="o">]</span>$
 </pre></div>
 </div>
-<p>Where (cp -r /home/ms13779/result_56_1.txt /scratch/ms13779/) can be replaced with your command.</p>
+<p>Where (cp -r /scratch/ms13779/FFTW/ /archive/ms13779/) can be replaced with your command.</p>
 <dl class="simple">
 <dt>This script will do three things:</dt><dd><ul class="simple">
 <li><p>Execute the command in the background (inside the screen session).</p></li>
