@@ -108,9 +108,9 @@ Partitions Summary
 	*	- 2
 		- ``nvidia``
 		- GPU
-		- (1,80)
+		- (1,160)
 		- 4 days
-		- 8
+		- 10
 		- 
 			.. code-block:: bash
 
@@ -118,7 +118,7 @@ Partitions Summary
 				#SBATCH --gres=gpu:1
 
 
-		- Max GPUs:8
+		- Max GPUs:12
 	*	- 3
 		- ``bigmem``
 		- Large Memory Jobs
