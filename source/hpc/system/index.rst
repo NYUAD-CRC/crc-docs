@@ -168,13 +168,14 @@ Data Transfers
 --------------
 
 You can use either :doc:`rsycn command </hpc/system/rsync_transfer>` or :doc:`FileZilla (with a GUI) </hpc/system/filezilla_transfer>` to transfer your data from/to the HPC cluster.
-Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and from the HPC cluster. For Google Drive data transfer, Please refer to the section :doc:`here </hpc/software/gdrive>`
+Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transferring data to and from the HPC cluster. You can also use ``gdrive`` for Google Drive related data transfers.
 
 .. toctree::
   :hidden:
 
   /hpc/system/rsync_transfer
   /hpc/system/filezilla_transfer
+  /hpc/software/gdrive
 
   
 .. note::
