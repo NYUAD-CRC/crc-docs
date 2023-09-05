@@ -180,6 +180,10 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 .. note::
 
   For data sharing among collaborators, Kindly refer to the section :doc:`here </hpc/storage/data_sharing>`
+
+.. note::
+
+  For large date transfer, Kindly refer to the section :doc:`here </hpc/system/screen>`
    
 .. _special_compute_nodes: 
 
@@ -193,7 +197,7 @@ Special Compute Nodes
   :hidden:
 
   /hpc/system/gpu_nodes
-   
+  /hpc/system/screen
   
 Globus Data Transfer
 --------------------
