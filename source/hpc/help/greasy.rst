@@ -1,7 +1,7 @@
 "Greasy" Workload Management Tool
 ==================================
 
-We want to introduce you the "greasy" tool. This tool will easy to implement "High Throughput Computing" (HTC) jobs on Dalma. HTC jobs  are usually concerned about resource availability and resilience normally for long running tasks. In most cases HPC environments are not suitable to run HTC workload and this is where Greasy can become a handy tool to use. It will help users to manage workflows with many serial tasks even if they have dependencies among them in an easy and robust way.
+We want to introduce you the "greasy" tool. This tool will easy to implement "High Throughput Computing" (HTC) jobs on Jubail. HTC jobs  are usually concerned about resource availability and resilience normally for long running tasks. In most cases HPC environments are not suitable to run HTC workload and this is where Greasy can become a handy tool to use. It will help users to manage workflows with many serial tasks even if they have dependencies among them in an easy and robust way.
 
 
 This is a tools which is still under development, so some improvements may come up in the future.
@@ -79,10 +79,10 @@ example.txt Collapse source
 # Dependencies must be numerical, and ranges must be expressed correctly
 [# 2->6 #]      /bin/sleep 31
 [# mistake #]   /bin/sleep 32
-2.- the submission script ( dalma_greasy.job )
+2.- the submission script ( Jubail_greasy.job )
 
 
-The file  dalma_greasy.job is the file you submit to queues
+The file  Jubail_greasy.job is the file you submit to queues
 Greasy has different types of "engines" for different kinds of underlying hardware. In a cluster environment like Butinah you can use "mpi" engine by setting the environment variable in the submission script :
 
 
@@ -98,7 +98,7 @@ export GREASY_NWORKERS=31
 
 Please refer to the Greasy User's Guide for more config details
 
-dalma_greasy.job Expand source
+Jubail_greasy.job Expand source
  
 
 3.- Running Greasy  is simple: 
@@ -112,7 +112,7 @@ $> module load greasy
 $> module load openmpi
 submit the job
 
-$> sbatch dalma_greasy.job
+$> sbatch Jubail_greasy.job
  
 
 4.- Getting the results  is also very simple: 
