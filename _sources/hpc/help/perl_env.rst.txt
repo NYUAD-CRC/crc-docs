@@ -8,7 +8,7 @@ The localisation is based on Perl's local::lib
 
 
 Step-by-step guide
-Login Dalma.
+Login Jubail.
 (One time setup) Run this in terminal:
 
 $RECIPESDIR/localize-perl.sh
@@ -21,7 +21,7 @@ $RECIPESDIR/localize-perl.sh
 Perl localization completed.
  
 
-Logout Dalma and login again.
+Logout Jubail and login again.
 
 Now you should be able to install Perl modules using cpanm. Example installing LWP Perl module:
 

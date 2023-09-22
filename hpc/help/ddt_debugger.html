@@ -48,9 +48,7 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="“Greasy” Workload Management Tool" href="greasy.html" />
-    <link rel="prev" title="Help" href="index.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,7 +94,7 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -106,17 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Help</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">How to use the DDT Debugger</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#step-by-step-guide">Step-by-step guide</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="greasy.html">“Greasy” Workload Management Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_vpn.html">NYU VPN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_vpn.html#nyu-vpn-for-linux">NYU VPN for Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="perl_env.html">Perl - Create and manage your own Perl environment</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
@@ -181,8 +169,6 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">Help</a> &raquo;</li>
-        
       <li>How to use the DDT Debugger</li>
     
     
@@ -202,7 +188,7 @@
             
   <div class="section" id="how-to-use-the-ddt-debugger">
 <h1>How to use the DDT Debugger<a class="headerlink" href="#how-to-use-the-ddt-debugger" title="Permalink to this heading">¶</a></h1>
-<p>Users can use Allinea DDT debugger to debug serial, multi-threaded or MPI applications submitted to Dalma.</p>
+<p>Users can use Allinea DDT debugger to debug serial, multi-threaded or MPI applications submitted to Jubail.</p>
 <p>Due to X-Forwarding restrictions in the cluster, the jobs have to be submitted to queues and DDT started in the login nodes and then attach the debugger to the running process in the remote node.</p>
 <div class="section" id="step-by-step-guide">
 <h2>Step-by-step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">¶</a></h2>
@@ -217,7 +203,7 @@
 <p>Load the allinea module and run <code class="docutils literal notranslate"><span class="pre">ddt</span></code></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>You will need to ssh Dalma enabling X11 Forwarding:  <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;netid&gt;&#64;dalma.abudhabi.nyu.edu</span></code></p>
+<p>You will need to ssh Jubail enabling X11 Forwarding:  <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;netid&gt;&#64;jubail.abudhabi.nyu.edu</span></code></p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>allinea
 $<span class="w"> </span>ddt
@@ -248,7 +234,7 @@ $<span class="w"> </span>ddt
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>You will need to ssh Dalma enabling X11 Forwarding: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;netid&gt;&#64;dalma.abudhabi.nyu.edu</span></code></p>
+<p>You will need to ssh Jubail enabling X11 Forwarding: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">&lt;netid&gt;&#64;jubail.abudhabi.nyu.edu</span></code></p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>allinea
 $<span class="w"> </span>ddt
@@ -276,10 +262,6 @@ $<span class="w"> </span>ddt
            
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="greasy.html" class="btn btn-neutral float-right" title="“Greasy” Workload Management Tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Help" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
 
   <hr/>
 

@@ -1,7 +1,7 @@
 How to use the DDT Debugger
 ===========================
 
-Users can use Allinea DDT debugger to debug serial, multi-threaded or MPI applications submitted to Dalma.
+Users can use Allinea DDT debugger to debug serial, multi-threaded or MPI applications submitted to Jubail.
 
 Due to X-Forwarding restrictions in the cluster, the jobs have to be submitted to queues and DDT started in the login nodes and then attach the debugger to the running process in the remote node.
 
@@ -20,7 +20,7 @@ Step-by-step guide
     Load the allinea module and run ``ddt``
 
     .. important::
-        You will need to ssh Dalma enabling X11 Forwarding:  ``ssh -X <netid>@dalma.abudhabi.nyu.edu``
+        You will need to ssh Jubail enabling X11 Forwarding:  ``ssh -X <netid>@jubail.abudhabi.nyu.edu``
 
     .. code-block:: bash
         
@@ -48,7 +48,7 @@ Step-by-step guide
     
 
     .. important::
-        You will need to ssh Dalma enabling X11 Forwarding: ``ssh -X <netid>@dalma.abudhabi.nyu.edu``
+        You will need to ssh Jubail enabling X11 Forwarding: ``ssh -X <netid>@jubail.abudhabi.nyu.edu``
 
     .. code-block:: bash
 

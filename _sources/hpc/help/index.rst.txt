@@ -13,5 +13,5 @@ This section pulls out the How To's available
    :glob:
    :maxdepth: 1
 
-   *
+   /hpc/help/linux_vpn
 

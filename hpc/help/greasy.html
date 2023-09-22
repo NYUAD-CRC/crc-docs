@@ -48,9 +48,7 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="NYU VPN" href="linux_vpn.html" />
-    <link rel="prev" title="How to use the DDT Debugger" href="ddt_debugger.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,7 +94,7 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
@@ -106,18 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Help</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ddt_debugger.html">How to use the DDT Debugger</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">“Greasy” Workload Management Tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#these-lines-with-dependencies-are-correct"># These Lines with dependencies are correct</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#these-ones-are-not-ok"># these ones are not Ok</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="linux_vpn.html">NYU VPN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_vpn.html#nyu-vpn-for-linux">NYU VPN for Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="perl_env.html">Perl - Create and manage your own Perl environment</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
 </ul>
@@ -182,8 +169,6 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">Help</a> &raquo;</li>
-        
       <li>“Greasy” Workload Management Tool</li>
     
     
@@ -203,7 +188,7 @@
             
   <div class="section" id="greasy-workload-management-tool">
 <h1>“Greasy” Workload Management Tool<a class="headerlink" href="#greasy-workload-management-tool" title="Permalink to this heading">¶</a></h1>
-<p>We want to introduce you the “greasy” tool. This tool will easy to implement “High Throughput Computing” (HTC) jobs on Dalma. HTC jobs  are usually concerned about resource availability and resilience normally for long running tasks. In most cases HPC environments are not suitable to run HTC workload and this is where Greasy can become a handy tool to use. It will help users to manage workflows with many serial tasks even if they have dependencies among them in an easy and robust way.</p>
+<p>We want to introduce you the “greasy” tool. This tool will easy to implement “High Throughput Computing” (HTC) jobs on Jubail. HTC jobs  are usually concerned about resource availability and resilience normally for long running tasks. In most cases HPC environments are not suitable to run HTC workload and this is where Greasy can become a handy tool to use. It will help users to manage workflows with many serial tasks even if they have dependencies among them in an easy and robust way.</p>
 <p>This is a tools which is still under development, so some improvements may come up in the future.</p>
 <p>You can start by copying the example directory that you will find in the installation dir:
 /share/apps/NYUAD/greasy/openmpi_1.10.2/2.1/example/</p>
@@ -270,8 +255,8 @@ For more details about how to write dependencies please go to the user’s guide
 # Dependencies must be numerical, and ranges must be expressed correctly
 [# 2-&gt;6 #]      /bin/sleep 31
 [# mistake #]   /bin/sleep 32
-2.- the submission script ( dalma_greasy.job )</p>
-<p>The file  dalma_greasy.job is the file you submit to queues
+2.- the submission script ( Jubail_greasy.job )</p>
+<p>The file  Jubail_greasy.job is the file you submit to queues
 Greasy has different types of “engines” for different kinds of underlying hardware. In a cluster environment like Butinah you can use “mpi” engine by setting the environment variable in the submission script :</p>
 <p>export GREASY_ENGINE=mpi
 but this is the default engine so you don’t have to put it in the script.</p>
@@ -279,14 +264,14 @@ but this is the default engine so you don’t have to put it in the script.</p>
 <p>export GREASY_ENGINE=thread
 export GREASY_NWORKERS=31</p>
 <p>Please refer to the Greasy User’s Guide for more config details</p>
-<p>dalma_greasy.job Expand source</p>
+<p>Jubail_greasy.job Expand source</p>
 <p>3.- Running Greasy  is simple:</p>
 <p>prepare your tasks file
 load the module</p>
 <p>$&gt; module load greasy
 $&gt; module load openmpi
 submit the job</p>
-<p>$&gt; sbatch dalma_greasy.job</p>
+<p>$&gt; sbatch Jubail_greasy.job</p>
 <p>4.- Getting the results  is also very simple:</p>
 <p>Check the log file ( GREASY_LOGFILE ) for progress. In this file you can also check the resources utilization so you can tune your runs to make a more efficient use of the cluster.
 To see different colors for different kind of messages, use the tool “greasycolorlog”
@@ -362,10 +347,6 @@ $&gt; cat greasy.log | greasycolorlog</p>
            
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="linux_vpn.html" class="btn btn-neutral float-right" title="NYU VPN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="ddt_debugger.html" class="btn btn-neutral float-left" title="How to use the DDT Debugger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
 
   <hr/>
 
