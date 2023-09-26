@@ -10,7 +10,7 @@ First, you need a working NetID (`NYU Home Page <http://www.nyu.edu/life/informa
 
     If you are an external collaborator (not directly employed by NYU), fill this form
     :download:`HPC Collaboration Template.docx <../docs/HPC_Collaboration_Template.docx>` 
-    with your NYU sponsor, sign and send to us (jubail.admins@nyu.edu).
+    with your NYU sponsor, sign and send to us (jubail.admins@nyu.edu). Fore more details, please check this :doc:`page <index>`
 
 
 
