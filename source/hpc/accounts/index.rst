@@ -2,8 +2,8 @@ Accounts
 ========
 
 
-If you are an external **collaborator** (not directly employed by NYU)
-----------------------
+External collaborators 
+-----------------------
 
 
 Kindly follow below steps needed for the HPC collaboration:
