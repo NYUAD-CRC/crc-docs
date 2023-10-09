@@ -237,7 +237,7 @@ module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run Matlab via command line</span>
-matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-batch<span class="w"> </span>hello_world
+matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-batch<span class="w"> </span>hello_world
 </pre></div>
 </div>
 <p>By invoking MATLAB with <code class="docutils literal notranslate"><span class="pre">-nojvm</span> <span class="pre">-singleCompThread</span> <span class="pre">-nodisplay</span> <span class="pre">-nosplash</span></code>, the GUI and the background java processes are
@@ -291,7 +291,7 @@ module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run the matlab script</span>
-matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-batch<span class="w"> </span>for_loop
+matlab<span class="w"> </span>-batch<span class="w"> </span>for_loop
 </pre></div>
 </div>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">-singleCompThread</span></code> and <code class="docutils literal notranslate"><span class="pre">-nojvm</span></code> does not appear in the Slurm script in contrast to the serial case.</p>
@@ -381,7 +381,7 @@ module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run your matlab script</span>
-matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-batch<span class="w"> </span>svd_matlab
+matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-batch<span class="w"> </span>svd_matlab
 </pre></div>
 </div>
 <p>In the above Slurm script, notice the new lines: <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-p</span> <span class="pre">nvidia</span></code> and <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--gres=gpu:1</span></code></p>
