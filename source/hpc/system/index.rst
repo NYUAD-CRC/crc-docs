@@ -74,10 +74,10 @@ Summary of Nodes
       - None
       - New HPC Compute nodes
     * - Jubail Gpu
-      - 20
-      - 128
+      - 36
+      - 64/128
       - 480GB
-      - 1/2/3 (Nvidia A100)
+      - 1/2/3/4 (Nvidia A100)
       - New HPC GPU nodes
     * - Dalma Compute
       - 428

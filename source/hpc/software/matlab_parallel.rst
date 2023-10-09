@@ -40,7 +40,7 @@ The Slurm script (job.slurm) below can be used for serial jobs:
     module load matlab
 
     #Run Matlab via command line
-    matlab -nojvm -singleCompThread -nodisplay -nosplash -nodesktop -batch hello_world
+    matlab -nojvm -singleCompThread -batch hello_world
 
 By invoking MATLAB with ``-nojvm -singleCompThread -nodisplay -nosplash``, the GUI and the background java processes are
 suppressed as is the creation of multiple threads. 
@@ -102,7 +102,7 @@ The Slurm script (``job.slurm``) below can be used for this case:
     module load matlab
 
     #Run the matlab script
-    matlab -nodisplay -nosplash -nodesktop -batch for_loop
+    matlab -batch for_loop
 
 Note that ``-singleCompThread`` and ``-nojvm`` does not appear in the Slurm script in contrast to the serial case. 
 
@@ -213,7 +213,7 @@ The Slurm script (``job.slurm``) below can be used for this case:
     module load matlab
 
     #Run your matlab script
-    matlab -nojvm -singleCompThread -nodisplay -nosplash -nodesktop -batch svd_matlab
+    matlab -nojvm -singleCompThread -batch svd_matlab
 
 In the above Slurm script, notice the new lines: ``#SBATCH -p nvidia`` and ``#SBATCH --gres=gpu:1``
 
