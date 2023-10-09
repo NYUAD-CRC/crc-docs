@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Conda Environment Migration from $SCRATCH &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PyTorch on HPC" href="hpc_pytorch.html" />
+    <link rel="prev" title="Miniconda on the HPC" href="hpc_miniconda.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#hpc-miniconda">HPC Miniconda</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hpc_miniconda.html">Miniconda on the HPC</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Conda Environment Migration from $SCRATCH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conda-migrate">conda-migrate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finding-the-conda-environment-directories">Finding the Conda Environment directories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrating-environments">Migrating Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate-all-valid-environments-in-a-directory">Migrate All Valid Environments in a Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-job-submission-for-migrating-environments">(Optional) Job Submission for Migrating Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hpc_pytorch.html">PyTorch on HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hpc_tensorflow.html">TensorFlow (Keras) on HPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#matlab">Matlab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#singularity">Singularity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Software</a> &raquo;</li>
+        
+      <li>Conda Environment Migration from $SCRATCH</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conda-environment-migration-from-scratch">
+<h1>Conda Environment Migration from $SCRATCH<a class="headerlink" href="#conda-environment-migration-from-scratch" title="Permalink to this heading">¶</a></h1>
+<p>Conda environments often produce a multitude of small files, which can adversely affect filesystem
+performance, especially on high-performance computing (HPC) systems. The rising number of Python users
+has resulted in a substantial increase in Python/Conda environments. These environments also pose
+challenges for effective file cleanup in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.</p>
+<p>To tackle this challenge, users are strongly encouraged to migrate their Conda environments from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>
+to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>. The <code class="docutils literal notranslate"><span class="pre">conda-migrate</span></code> tool offers a user-friendly solution for this process.</p>
+<div class="section" id="conda-migrate">
+<h2>conda-migrate<a class="headerlink" href="#conda-migrate" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">conda-migrate</span></code> is a tool designed to help you migrate your existing Conda environments from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda-migrate<span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--all<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>The tool offers several key functions:</p>
+<ul class="simple">
+<li><p>It clones an existing Conda environment from a directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> to <code class="docutils literal notranslate"><span class="pre">$HOME/conda/envs</span></code>.</p></li>
+<li><p>It conducts package comparisons between the old and new environments.</p></li>
+<li><p>It preserves a copy of the YAML file for each environment in the <code class="docutils literal notranslate"><span class="pre">$HOME/conda/envs/yaml</span></code> directory.</p></li>
+<li><p>If migration and comparison are successful, it removes the old environment.</p></li>
+<li><p>It updates Conda environment paths in <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p></li>
+<li><p>It conducts cleanup operations using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">conda-migrate</span></code> tools accepts the following options</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;path</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">directory&gt;</span></code></dt><dd><p>Specify the directory containing Conda environments in your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> that you want to migrate.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--all</span></code></dt><dd><p>Migrate all valid Conda environments found in the specified directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<p>The tool allows you to specify the directory containing the environments in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> you wish to migrate using
+the <code class="docutils literal notranslate"><span class="pre">-d</span></code> flag. Additionally, you have the option to use the <code class="docutils literal notranslate"><span class="pre">--all</span></code> flag, which will migrate all
+the Conda environments found in the specified directory.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda-migrate<span class="w"> </span>-d<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span>--all<span class="o">]</span>
+</pre></div>
+</div>
+<p>Here’s the step-by-step process the tool follows:</p>
+<ol class="arabic simple">
+<li><p>The tool scans the directory for valid Conda environments and presents the user with a list of environments to migrate.</p></li>
+<li><p>Selected environments are serialized into YAML files and stored in $HOME/conda/yaml.</p></li>
+<li><p>Environments are then cloned individually to the <code class="docutils literal notranslate"><span class="pre">$HOME/conda/envs</span></code> directory.</p></li>
+<li><p>Following successful cloning, the tool performs a comparison between the old and new environments.</p></li>
+<li><p>If the cloned environment in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> matches the old environment in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, the tool removes the old environment from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.</p></li>
+<li><p>Finally, the tool cleans up Conda cache files and updates certain Conda variables that previously pointed to <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="finding-the-conda-environment-directories">
+<h2>Finding the Conda Environment directories<a class="headerlink" href="#finding-the-conda-environment-directories" title="Permalink to this heading">¶</a></h2>
+<p>One of the simplest commands to find out the source directory of the conda environments in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> would be
+as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;/scratch&quot;</span>
+</pre></div>
+</div>
+<p>Example output would be as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span><span class="gp">[wz22@login1 ~]$ </span>conda<span class="w"> </span>env<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/scratch
+<span class="go">                     /scratch/wz22/conda-envs/amd</span>
+<span class="go">                     /scratch/wz22/conda-envs/abc</span>
+<span class="go">                     /scratch/wz22/myenvs/hdf</span>
+<span class="go">                     /scratch/wz22/myenvs/xyz</span>
+</pre></div>
+</div>
+<p>Following observations can be made from the above example:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>There are four different conda environments.</dt><dd><ul>
+<li><p>amd</p></li>
+<li><p>abc</p></li>
+<li><p>hdf</p></li>
+<li><p>xyz</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>There are two source directories where environemnts have been installed.</dt><dd><ul>
+<li><p>/scratch/wz22/conda-envs</p></li>
+<li><p>/scratch/wz22/myenvs</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="migrating-environments">
+<h2>Migrating Environments<a class="headerlink" href="#migrating-environments" title="Permalink to this heading">¶</a></h2>
+<p>In this section, we will take an in-depth look at the tool by examining an example.</p>
+<p>To migrate specific conda environment(s), simply specify the path to the directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>
+containing the environments with the <code class="docutils literal notranslate"><span class="pre">-d</span></code> flag:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda-migrate -d /path/to/your/conda/environment</span>
+</pre></div>
+</div>
+<p>The output is organized into sections to enhance clarity:</p>
+<ol class="arabic simple">
+<li><p>Valid Environments**</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(3-4.11.0)</span><span class="gp">[wz22@login1 ~]$ </span>conda-migrate<span class="w"> </span>-d<span class="w"> </span>/scratch/wz22/conda-envs
+<span class="go">Valid Env: amd</span>
+<span class="go">Valid Env: abc</span>
+<span class="go">INVALID ENV: pkgs</span>
+<span class="go">INVALID ENV: pyt</span>
+
+<span class="go">Valid Conda environments in &#39;/scratch/wz22/conda-envs&#39;:</span>
+<span class="go">1. amd (/scratch/wz22/conda-envs/amd)</span>
+<span class="go">2. abc (/scratch/wz22/conda-envs/abc)</span>
+
+<span class="go">Select environments to migrate (comma-separated list, &#39;All&#39; to migrate all):</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In the initial section, the tool lists both the valid and invalid Conda environments found in the specified directory.</p></li>
+<li><p>Following this, it prompts the user to choose which Conda environments they want to migrate to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Migration process</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Selected environments:</span>
+<span class="go">abc:/scratch/wz22/conda-envs/abc</span>
+<span class="go">Migrating and comparing environment: abc</span>
+<span class="go">Source:      /scratch/wz22/conda-envs/abc</span>
+<span class="go">Destination: /home/wz22/conda/envs/abc</span>
+
+<span class="go">Packages: 81</span>
+<span class="go">Files: 5375</span>
+<span class="go">Preparing transaction: done</span>
+<span class="go">Verifying transaction: done</span>
+<span class="go">Executing transaction: done</span>
+<span class="gp">#</span>
+<span class="gp"># </span>To<span class="w"> </span>activate<span class="w"> </span>this<span class="w"> </span>environment,<span class="w"> </span>use
+<span class="gp">#</span>
+<span class="gp">#     </span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>/home/wz22/conda/envs/abc
+<span class="gp">#</span>
+<span class="gp"># </span>To<span class="w"> </span>deactivate<span class="w"> </span>an<span class="w"> </span>active<span class="w"> </span>environment,<span class="w"> </span>use
+<span class="gp">#</span>
+<span class="gp">#     </span>$<span class="w"> </span>conda<span class="w"> </span>deactivate
+
+<span class="go">Old and New Environments are same</span>
+
+<span class="go">Remove all packages in environment /scratch/wz22/conda-envs/abc:</span>
+
+<span class="go">Successfully migrated and removed old environment: /scratch/wz22/conda-envs/abc</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This section provides a comprehensive breakdown of the selected environments chosen for migration.</p></li>
+<li><p>It initiates the process by cloning the old environment to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p></li>
+<li><p>Upon successful verification that the old and new environments match, the tool proceeds to clean up the old environment.</p></li>
+</ul>
+</div>
+<div class="section" id="migrate-all-valid-environments-in-a-directory">
+<h2>Migrate All Valid Environments in a Directory<a class="headerlink" href="#migrate-all-valid-environments-in-a-directory" title="Permalink to this heading">¶</a></h2>
+<p>Additionally, the tool offers a convenient method to migrate all environments from a directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p>
+<p>To migrate all valid Conda environments found in a directory:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda-migrate -d /path/to/directory --all</span>
+
+<span class="c1">#Example</span>
+conda-migrate<span class="w"> </span>-d<span class="w"> </span>/scratch/wz22/conda-envs<span class="w"> </span>--all
+</pre></div>
+</div>
+</div>
+<div class="section" id="optional-job-submission-for-migrating-environments">
+<h2>(Optional) Job Submission for Migrating Environments<a class="headerlink" href="#optional-job-submission-for-migrating-environments" title="Permalink to this heading">¶</a></h2>
+<p>For users dealing with a substantial number of environments, environments containing
+numerous files, or facing network connectivity challenges, an alternative option is available for
+migrating Conda environments through job submission.</p>
+<p>Here’s an example command that executes the tool as a job:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch -c 10 -t 48:00:00 -J conda-migrate --wrap &quot;conda-migrate -d /scratch/wz22/conda-envs --all&quot;</span>
+</pre></div>
+</div>
+<p>This command initiates a background job on a compute node. It’s designed to migrate all environments
+from a directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> (<code class="docutils literal notranslate"><span class="pre">/scratch/wz22/conda-envs</span></code>) to a directory
+in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (<code class="docutils literal notranslate"><span class="pre">/home/wz22/conda/envs</span></code>).</p>
+<div class="admonition-contact-us admonition">
+<p class="admonition-title">Contact us</p>
+<p>Kindly reach out to us if you need any assistance on <a class="reference external" href="mailto:jubail&#46;support&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>support<span>&#64;</span>nyu<span>&#46;</span>edu</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="hpc_pytorch.html" class="btn btn-neutral float-right" title="PyTorch on HPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hpc_miniconda.html" class="btn btn-neutral float-left" title="Miniconda on the HPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

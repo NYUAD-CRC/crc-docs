@@ -36,6 +36,7 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/hpc_minicon
    
 
    /hpc/software/hpc_miniconda
+   /hpc/software/conda_migrate
    /hpc/software/hpc_pytorch
    /hpc/software/hpc_tensorflow
 
@@ -72,5 +73,5 @@ Miscellaneous
 
    /hpc/software/r_hpc_miniconda
    /hpc/software/vscode
-   /hpc/software/gdrive
+
    
