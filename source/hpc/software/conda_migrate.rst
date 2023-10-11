@@ -18,16 +18,16 @@ conda-migrate
 
 .. code-block:: shell
 
-    conda-migrate [-d <path to a directory>] [--all]
+    conda-migrate [-d <path to a directory in scratch>] [--all]
 
 Description
 --------------------
 
 The tool offers several key functions:
 
-- It clones an existing Conda environment from a directory in ``$SCRATCH`` to ``$HOME/conda/envs``.
+- It clones an existing Conda environment from a directory in ``$SCRATCH`` to ``$HOME/.conda/envs``.
 - It conducts package comparisons between the old and new environments.
-- It preserves a copy of the YAML file for each environment in the ``$HOME/conda/envs/yaml`` directory.
+- It preserves a copy of the YAML file for each environment in the ``$HOME/.conda/yaml`` directory.
 - If migration and comparison are successful, it removes the old environment.
 - It updates Conda environment paths in ``~/.bashrc``.
 - It conducts cleanup operations using ``conda clean``.
@@ -54,13 +54,13 @@ the Conda environments found in the specified directory.
 
 .. code-block:: shell
 
-        conda-migrate -d <path to a directory > [--all]
+        conda-migrate -d <path to a directory in scratch> [--all]
 
 Here's the step-by-step process the tool follows:
 
 1. The tool scans the directory for valid Conda environments and presents the user with a list of environments to migrate.
-2. Selected environments are serialized into YAML files and stored in $HOME/conda/yaml.
-3. Environments are then cloned individually to the ``$HOME/conda/envs`` directory.
+2. Selected environments are serialized into YAML files and stored in ``$HOME/.conda/yaml``.
+3. Environments are then cloned individually to the ``$HOME/.conda/envs`` directory.
 4. Following successful cloning, the tool performs a comparison between the old and new environments.
 5. If the cloned environment in ``$HOME`` matches the old environment in ``$SCRATCH``, the tool removes the old environment from ``$SCRATCH``.
 6. Finally, the tool cleans up Conda cache files and updates certain Conda variables that previously pointed to ``$SCRATCH``.
@@ -141,7 +141,7 @@ The output is organized into sections to enhance clarity:
     abc:/scratch/wz22/conda-envs/abc
     Migrating and comparing environment: abc
     Source:      /scratch/wz22/conda-envs/abc
-    Destination: /home/wz22/conda/envs/abc
+    Destination: /home/wz22/.conda/envs/abc
 
     Packages: 81
     Files: 5375
@@ -151,7 +151,7 @@ The output is organized into sections to enhance clarity:
     #
     # To activate this environment, use
     #
-    #     $ conda activate /home/wz22/conda/envs/abc
+    #     $ conda activate /home/wz22/.conda/envs/abc
     #
     # To deactivate an active environment, use
     #
@@ -197,7 +197,7 @@ Here's an example command that executes the tool as a job:
 
 This command initiates a background job on a compute node. It's designed to migrate all environments 
 from a directory in ``$SCRATCH`` (``/scratch/wz22/conda-envs``) to a directory 
-in ``$HOME`` (``/home/wz22/conda/envs``).
+in ``$HOME`` (``/home/wz22/.conda/envs``).
 
 
 .. admonition:: Contact us

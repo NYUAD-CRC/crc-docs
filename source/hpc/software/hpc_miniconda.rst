@@ -1,197 +1,205 @@
+=========================================
+Conda Environment Migration from $SCRATCH
+=========================================
+
+Conda environments often produce a multitude of small files, which can adversely affect filesystem 
+performance, especially on high-performance computing (HPC) systems. The rising number of Python users 
+has resulted in a substantial increase in Python/Conda environments. These environments also pose 
+challenges for effective file cleanup in ``$SCRATCH``.
+
+To tackle this challenge, users are strongly encouraged to migrate their Conda environments from ``$SCRATCH`` 
+to ``$HOME``. The ``conda-migrate`` tool offers a user-friendly solution for this process.
+
+conda-migrate
+-------------
+
+``conda-migrate`` is a tool designed to help you migrate your existing Conda environments from ``$SCRATCH`` to ``$HOME``.
 
 
-Miniconda on the HPC
-=====================
+.. code-block:: shell
 
-We have a centralized installation of Miniconda on the HPC. The users can either 
-install their own Miniconda or use the centralized installation present on the HPC. This centralized installation can also be used for creating your own local environments, wherein you can install your own packages. Moreover, You can clone the existing centralized environments (like Tensorflow, R) and add other required libraries or packages on top of it.  
+    conda-migrate [-d <path to a directory>] [--all]
 
-The conda cheat sheet gives you a list of useful commands in a 
-glance:  `Conda-cheat-sheet <https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf>`__
+Description
+--------------------
 
+The tool offers several key functions:
 
-.. _one_time_setup:
-
-One Time Setup
----------------
-
-Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done **ONLY once**, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, **you donot need to load the miniconda again in your subsequent logins**.
-
-.. code-block:: bash
-
-    module load miniconda
-    echo "export CONDA_ENVS_PATH=$SCRATCH/conda-envs" >> ~/.bashrc
-    echo "export CONDA_PKGS_DIRS=$SCRATCH/conda-envs/pkgs" >> ~/.bashrc
-    source ~/.bashrc
-
-Application Installation
-------------------------
-
-Following are the steps which need to be followed to install an application using conda.
-
-* Create a local conda environment using conda create (more details below)
-* Activate the local conda environment using conda activate (more details below)
-* Install the application using conda install (eg : ``conda install -c r r=3.6``)
-* Clean/remove the residual/cache files created by conda which eat up your quota (eg: ``conda clean -a``)
-
-.. Note::
-
-	The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don't remove them automatically and 
-	hence stay in your $HOME affecting your files quota. 
-
-	We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.
-
-  Following commands and links can come handy:
-
-  - ``conda clean -a``
-  - https://docs.conda.io/projects/conda/en/latest/commands/clean.html
-  - ``pip cache purge``
-  - https://pip.pypa.io/en/stable/cli/pip_cache/
-
-.. _managing_envs:
-
-Managing Environments
----------------------
+- It clones an existing Conda environment from a directory in ``$SCRATCH`` to ``$HOME/.conda/envs``.
+- It conducts package comparisons between the old and new environments.
+- It preserves a copy of the YAML file for each environment in the ``$HOME/.conda/yaml`` directory.
+- If migration and comparison are successful, it removes the old environment.
+- It updates Conda environment paths in ``~/.bashrc``.
+- It conducts cleanup operations using ``conda clean``.
 
 
-**Create a Local Environment**
+Options
+-------
 
-The below command creates a conda environment in your ``$SCRATCH/conda-envs`` if you have followed the :ref:`One Time Setup <one_time_setup>` instructions described above else the environments will be created in your home (which is not recommended as ``$HOME`` quota is limited).   
+The ``conda-migrate`` tools accepts the following options
 
-.. code-block:: bash
+- ``-d <path to a directory>``
+    Specify the directory containing Conda environments in your ``$SCRATCH`` that you want to migrate.
 
-    #conda create -n <name of the env>
-    
-    #example:
-    conda create -n myenv
-
-**Activate the Local Environment**
-
-.. code-block:: bash
-
-    #conda activate <name of the local env>
-
-    #example:
-    conda activate myenv
+- ``--all``
+    Migrate all valid Conda environments found in the specified directory in ``$SCRATCH``.
 
 
-**Deactivate an Environment**
+Usage
+-----
 
-.. code-block:: bash
+The tool allows you to specify the directory containing the environments in ``$SCRATCH`` you wish to migrate using 
+the ``-d`` flag. Additionally, you have the option to use the ``--all`` flag, which will migrate all 
+the Conda environments found in the specified directory.
 
-    conda deactivate
+.. code-block:: shell
 
+        conda-migrate -d <path to a directory > [--all]
 
-**Listing the Environments Available**
+Here's the step-by-step process the tool follows:
 
-This shows the existing local and centralized Miniconda environments available
+1. The tool scans the directory for valid Conda environments and presents the user with a list of environments to migrate.
+2. Selected environments are serialized into YAML files and stored in ``$HOME/.conda/yaml``.
+3. Environments are then cloned individually to the ``$HOME/.conda/envs`` directory.
+4. Following successful cloning, the tool performs a comparison between the old and new environments.
+5. If the cloned environment in ``$HOME`` matches the old environment in ``$SCRATCH``, the tool removes the old environment from ``$SCRATCH``.
+6. Finally, the tool cleans up Conda cache files and updates certain Conda variables that previously pointed to ``$SCRATCH``.
 
-.. code-block:: bash
+Finding the Conda Environment directories
+-----------------------------------------
 
-    conda env list
+One of the simplest commands to find out the source directory of the conda environments in ``$SCRATCH`` would be
+as follows:
 
-A sample output is shown below. The list of centralized and local installations can be seen. 
+.. code-block:: shell
 
-.. code-block:: bash
+    conda env list | grep "/scratch"
 
-                                         /scratch/wz22/conda-envs/myenv
-                                         /scratch/wz22/conda-envs/myenv2
-                                         /scratch/wz22/conda-envs/myenv3
-                                         /scratch/wz22/conda-envs/myenv4
-    base                            *    /share/apps/NYUAD5/miniconda/3-4.11.0
-    firefox                              /share/apps/NYUAD5/miniconda/3-4.11.0/envs/firefox
-    tensorflow-2.4.1                     /share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1
-    pytorch-1.11.0                       /share/apps/NYUAD5/miniconda/3-4.11.0/envs/pytorch-1.11.0
+Example output would be as follows:
 
+.. code-block:: console
 
-**Cloning an Environment**
-
-.. code-block:: bash
-
-    #conda create -n <name of the new env> --clone <path to existing env>
-    #example: Here we clone the existing Tensorflow environment.
-    conda create -n tf-gpu --clone tensorflow-2.4.1
-
-Migrating / Sharing Environment
--------------------------------
-
-It is possible to migrate an environment, with exact same packages and configuration. 
-This is the beauty of Conda. Same environment, anywhere.
-
-
-1. Activate the environment you want to migrate from.
-    .. code-block:: bash
-       
-        # Activate the environment you want to migrate from
-        # Example: conda activate <env-migrate-from>
-        conda activate myenv
-
-2. Export the environment to an yml file.
-    .. code-block:: bash
-        
-        # In this example, the yml file is called environment.yml
-        conda env export > environment.yml
-
-3. Share this yml file.
-    The other person / machine, an identical environment could be created using this yml file.
-    
-    .. code-block:: bash
-
-        # In this example, the yml file is called environment.yml
-        conda env create -n myenv -f environment.yml
+    (base)[wz22@login1 ~]$ conda env list | grep /scratch
+                         /scratch/wz22/conda-envs/amd
+                         /scratch/wz22/conda-envs/abc
+                         /scratch/wz22/myenvs/hdf
+                         /scratch/wz22/myenvs/xyz
+                         
+Following observations can be made from the above example:
 
 
+- There are four different conda environments.
+    - amd
+    - abc
+    - hdf
+    - xyz
+- There are two source directories where environemnts have been installed.
+    - /scratch/wz22/conda-envs
+    - /scratch/wz22/myenvs
 
-
-Submitting Job Scripts
+Migrating Environments
 ----------------------
 
-The conda environment might not get activated when submitting a Job script since the slurm doesn't source the ``bashrc`` file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.
+In this section, we will take an in-depth look at the tool by examining an example.
 
-.. code-block:: bash
+To migrate specific conda environment(s), simply specify the path to the directory in ``$SCRATCH`` 
+containing the environments with the ``-d`` flag:
 
-    source ~/.bashrc
+.. code-block:: console
 
-A sample job submission script is shown below:
+    conda-migrate -d /path/to/your/conda/environment
 
-.. code-block:: bash
+The output is organized into sections to enhance clarity:
 
-    #!/bin/bash
-    #SBATCH -c 10
-    #SBATCH -t 48:00:00
-    #Other SBATCH commands go here
+1. Valid Environments**
+
+
+.. code-block:: console
+
+    (3-4.11.0)[wz22@login1 ~]$ conda-migrate -d /scratch/wz22/conda-envs
+    Valid Env: amd
+    Valid Env: abc
+    INVALID ENV: pkgs
+    INVALID ENV: pyt
     
-    #Activating conda
-    source ~/.bashrc
-    conda activate myenv1
+    Valid Conda environments in '/scratch/wz22/conda-envs':
+    1. amd (/scratch/wz22/conda-envs/amd)
+    2. abc (/scratch/wz22/conda-envs/abc)
     
-    #Your appication commands go here
-    python abc.py
+    Select environments to migrate (comma-separated list, 'All' to migrate all):
+    2
 
-.. tip::
+- In the initial section, the tool lists both the valid and invalid Conda environments found in the specified directory.
+- Following this, it prompts the user to choose which Conda environments they want to migrate to ``$HOME``.
 
-    In order to avoid activating a long path everytime, an alias can be created in the bashrc similar to the following 
+2. Migration process
 
-    .. code-block:: bash
 
-        alias myenv1='conda activate myenv1'
+.. code-block:: console
 
-    This will activate the environment just by typing ``myenv1``.
-    
-.. Note::
+    Selected environments:
+    abc:/scratch/wz22/conda-envs/abc
+    Migrating and comparing environment: abc
+    Source:      /scratch/wz22/conda-envs/abc
+    Destination: /home/wz22/.conda/envs/abc
 
-	If you donot miniconda paths to mess up your bashrc, you can use **ONE** of the following commands 
-	
-	.. code-block:: bash
-	
-		source /share/apps/NYUAD/miniconda/3-4.11.0/bin/activate
-		#you can also create an alias for the above command in your bashrc
-		
-	.. code-block:: bash
-	
-		module load miniconda-nobashrc
-		eval "$(conda shell.bash hook)"
+    Packages: 81
+    Files: 5375
+    Preparing transaction: done
+    Verifying transaction: done
+    Executing transaction: done
+    #
+    # To activate this environment, use
+    #
+    #     $ conda activate /home/wz22/.conda/envs/abc
+    #
+    # To deactivate an active environment, use
+    #
+    #     $ conda deactivate
 
-.. Note::
-    
-    Go through the Conda 30 mins test drive to make sure you understand the basic concepts: https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+    Old and New Environments are same
+
+    Remove all packages in environment /scratch/wz22/conda-envs/abc:
+
+    Successfully migrated and removed old environment: /scratch/wz22/conda-envs/abc
+
+- This section provides a comprehensive breakdown of the selected environments chosen for migration.
+- It initiates the process by cloning the old environment to ``$HOME``.
+- Upon successful verification that the old and new environments match, the tool proceeds to clean up the old environment.
+
+Migrate All Valid Environments in a Directory
+---------------------------------------------
+
+Additionally, the tool offers a convenient method to migrate all environments from a directory in ``$SCRATCH`` to ``$HOME``.
+
+To migrate all valid Conda environments found in a directory:
+
+.. code-block:: shell
+
+    #conda-migrate -d /path/to/directory --all
+
+    #Example
+    conda-migrate -d /scratch/wz22/conda-envs --all
+
+
+(Optional) Job Submission for Migrating Environments
+----------------------------------------------------
+
+For users dealing with a substantial number of environments, environments containing 
+numerous files, or facing network connectivity challenges, an alternative option is available for 
+migrating Conda environments through job submission.
+
+Here's an example command that executes the tool as a job:
+
+.. code-block:: console
+
+    sbatch -c 10 -t 48:00:00 -J conda-migrate --wrap "conda-migrate -d /scratch/wz22/conda-envs --all"
+
+This command initiates a background job on a compute node. It's designed to migrate all environments 
+from a directory in ``$SCRATCH`` (``/scratch/wz22/conda-envs``) to a directory 
+in ``$HOME`` (``/home/wz22/.conda/envs``).
+
+
+.. admonition:: Contact us
+
+    Kindly reach out to us if you need any assistance on jubail.support@nyu.edu
