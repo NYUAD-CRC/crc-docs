@@ -20,8 +20,6 @@ Execute the following command for making the HPC Miniconda as your default conda
 .. code-block:: bash
 
     module load miniconda
-    echo "export CONDA_ENVS_PATH=$SCRATCH/conda-envs" >> ~/.bashrc
-    echo "export CONDA_PKGS_DIRS=$SCRATCH/conda-envs/pkgs" >> ~/.bashrc
     source ~/.bashrc
 
 Application Installation
@@ -94,10 +92,10 @@ A sample output is shown below. The list of centralized and local installations 
 
 .. code-block:: bash
 
-                                         /scratch/wz22/conda-envs/myenv
-                                         /scratch/wz22/conda-envs/myenv2
-                                         /scratch/wz22/conda-envs/myenv3
-                                         /scratch/wz22/conda-envs/myenv4
+                                         /home/wz22/.conda/envs/myenv
+                                         /home/wz22/.conda/envs/myenv2
+                                         /home/wz22/.conda/envs/myenv3
+                                         /home/wz22/.conda/envs/myenv4
     base                            *    /share/apps/NYUAD5/miniconda/3-4.11.0
     firefox                              /share/apps/NYUAD5/miniconda/3-4.11.0/envs/firefox
     tensorflow-2.4.1                     /share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1

@@ -224,7 +224,7 @@ to <code class="docutils literal notranslate"><span class="pre">$HOME</span></co
 <div class="section" id="conda-migrate">
 <h2>conda-migrate<a class="headerlink" href="#conda-migrate" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">conda-migrate</span></code> is a tool designed to help you migrate your existing Conda environments from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> to <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda-migrate<span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--all<span class="o">]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda-migrate<span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>scratch&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--all<span class="o">]</span>
 </pre></div>
 </div>
 </div>
@@ -232,9 +232,9 @@ to <code class="docutils literal notranslate"><span class="pre">$HOME</span></co
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>The tool offers several key functions:</p>
 <ul class="simple">
-<li><p>It clones an existing Conda environment from a directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> to <code class="docutils literal notranslate"><span class="pre">$HOME/conda/envs</span></code>.</p></li>
+<li><p>It clones an existing Conda environment from a directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> to <code class="docutils literal notranslate"><span class="pre">$HOME/.conda/envs</span></code>.</p></li>
 <li><p>It conducts package comparisons between the old and new environments.</p></li>
-<li><p>It preserves a copy of the YAML file for each environment in the <code class="docutils literal notranslate"><span class="pre">$HOME/conda/envs/yaml</span></code> directory.</p></li>
+<li><p>It preserves a copy of the YAML file for each environment in the <code class="docutils literal notranslate"><span class="pre">$HOME/.conda/yaml</span></code> directory.</p></li>
 <li><p>If migration and comparison are successful, it removes the old environment.</p></li>
 <li><p>It updates Conda environment paths in <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p></li>
 <li><p>It conducts cleanup operations using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span></code>.</p></li>
@@ -261,14 +261,14 @@ to <code class="docutils literal notranslate"><span class="pre">$HOME</span></co
 <p>The tool allows you to specify the directory containing the environments in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> you wish to migrate using
 the <code class="docutils literal notranslate"><span class="pre">-d</span></code> flag. Additionally, you have the option to use the <code class="docutils literal notranslate"><span class="pre">--all</span></code> flag, which will migrate all
 the Conda environments found in the specified directory.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda-migrate<span class="w"> </span>-d<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span>--all<span class="o">]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda-migrate<span class="w"> </span>-d<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>scratch&gt;<span class="w"> </span><span class="o">[</span>--all<span class="o">]</span>
 </pre></div>
 </div>
 <p>Here’s the step-by-step process the tool follows:</p>
 <ol class="arabic simple">
 <li><p>The tool scans the directory for valid Conda environments and presents the user with a list of environments to migrate.</p></li>
-<li><p>Selected environments are serialized into YAML files and stored in $HOME/conda/yaml.</p></li>
-<li><p>Environments are then cloned individually to the <code class="docutils literal notranslate"><span class="pre">$HOME/conda/envs</span></code> directory.</p></li>
+<li><p>Selected environments are serialized into YAML files and stored in <code class="docutils literal notranslate"><span class="pre">$HOME/.conda/yaml</span></code>.</p></li>
+<li><p>Environments are then cloned individually to the <code class="docutils literal notranslate"><span class="pre">$HOME/.conda/envs</span></code> directory.</p></li>
 <li><p>Following successful cloning, the tool performs a comparison between the old and new environments.</p></li>
 <li><p>If the cloned environment in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> matches the old environment in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, the tool removes the old environment from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.</p></li>
 <li><p>Finally, the tool cleans up Conda cache files and updates certain Conda variables that previously pointed to <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.</p></li>
@@ -348,7 +348,7 @@ containing the environments with the <code class="docutils literal notranslate">
 <span class="go">abc:/scratch/wz22/conda-envs/abc</span>
 <span class="go">Migrating and comparing environment: abc</span>
 <span class="go">Source:      /scratch/wz22/conda-envs/abc</span>
-<span class="go">Destination: /home/wz22/conda/envs/abc</span>
+<span class="go">Destination: /home/wz22/.conda/envs/abc</span>
 
 <span class="go">Packages: 81</span>
 <span class="go">Files: 5375</span>
@@ -358,7 +358,7 @@ containing the environments with the <code class="docutils literal notranslate">
 <span class="gp">#</span>
 <span class="gp"># </span>To<span class="w"> </span>activate<span class="w"> </span>this<span class="w"> </span>environment,<span class="w"> </span>use
 <span class="gp">#</span>
-<span class="gp">#     </span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>/home/wz22/conda/envs/abc
+<span class="gp">#     </span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>/home/wz22/.conda/envs/abc
 <span class="gp">#</span>
 <span class="gp"># </span>To<span class="w"> </span>deactivate<span class="w"> </span>an<span class="w"> </span>active<span class="w"> </span>environment,<span class="w"> </span>use
 <span class="gp">#</span>
@@ -399,7 +399,7 @@ migrating Conda environments through job submission.</p>
 </div>
 <p>This command initiates a background job on a compute node. It’s designed to migrate all environments
 from a directory in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> (<code class="docutils literal notranslate"><span class="pre">/scratch/wz22/conda-envs</span></code>) to a directory
-in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (<code class="docutils literal notranslate"><span class="pre">/home/wz22/conda/envs</span></code>).</p>
+in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (<code class="docutils literal notranslate"><span class="pre">/home/wz22/.conda/envs</span></code>).</p>
 <div class="admonition-contact-us admonition">
 <p class="admonition-title">Contact us</p>
 <p>Kindly reach out to us if you need any assistance on <a class="reference external" href="mailto:jubail&#46;support&#37;&#52;&#48;nyu&#46;edu">jubail<span>&#46;</span>support<span>&#64;</span>nyu<span>&#46;</span>edu</a></p>

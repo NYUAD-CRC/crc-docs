@@ -220,8 +220,6 @@ glance:  <a class="reference external" href="https://docs.conda.io/projects/cond
 <span id="id1"></span><h2>One Time Setup<a class="headerlink" href="#one-time-setup" title="Permalink to this heading">¶</a></h2>
 <p>Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, <strong>you donot need to load the miniconda again in your subsequent logins</strong>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>miniconda
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export CONDA_ENVS_PATH=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export CONDA_PKGS_DIRS=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs/pkgs&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 <span class="nb">source</span><span class="w"> </span>~/.bashrc
 </pre></div>
 </div>
@@ -278,10 +276,10 @@ conda<span class="w"> </span>activate<span class="w"> </span>myenv
 </pre></div>
 </div>
 <p>A sample output is shown below. The list of centralized and local installations can be seen.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">                                     </span>/scratch/wz22/conda-envs/myenv
-<span class="w">                                     </span>/scratch/wz22/conda-envs/myenv2
-<span class="w">                                     </span>/scratch/wz22/conda-envs/myenv3
-<span class="w">                                     </span>/scratch/wz22/conda-envs/myenv4
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">                                     </span>/home/wz22/.conda/envs/myenv
+<span class="w">                                     </span>/home/wz22/.conda/envs/myenv2
+<span class="w">                                     </span>/home/wz22/.conda/envs/myenv3
+<span class="w">                                     </span>/home/wz22/.conda/envs/myenv4
 base<span class="w">                            </span>*<span class="w">    </span>/share/apps/NYUAD5/miniconda/3-4.11.0
 firefox<span class="w">                              </span>/share/apps/NYUAD5/miniconda/3-4.11.0/envs/firefox
 tensorflow-2.4.1<span class="w">                     </span>/share/apps/NYUAD5/miniconda/3-4.11.0/envs/tensorflow-2.4.1

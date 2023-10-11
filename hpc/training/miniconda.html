@@ -218,8 +218,6 @@ install their own Miniconda or use the centralized installation present on the H
 <span id="one-time-setup1"></span><h2>One Time Setup<a class="headerlink" href="#one-time-setup" title="Permalink to this heading">¶</a></h2>
 <p>Execute the following command for making the HPC Miniconda as your default conda environment. This is needed to be done <strong>ONLY once</strong>, just for setting up Miniconda for your account. Loading the miniconda module sets the miniconda environement for your account. You also need to source the bashrc file to activate the changes in your current shell. Once the environment is set up, <strong>you donot need to load the miniconda again in your subsequent logins</strong>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>miniconda
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export CONDA_ENVS_PATH=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export CONDA_PKGS_DIRS=</span><span class="nv">$SCRATCH</span><span class="s2">/conda-envs/pkgs&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 <span class="nb">source</span><span class="w"> </span>~/.bashrc
 </pre></div>
 </div>
@@ -251,7 +249,7 @@ install their own Miniconda or use the centralized installation present on the H
 <div class="section" id="managing-environments">
 <span id="managing-envs1"></span><h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this heading">¶</a></h2>
 <p><strong>Create a Local Environment</strong></p>
-<p>The below command creates a conda environment in your <code class="docutils literal notranslate"><span class="pre">$SCRATCH/conda-envs</span></code> if you have followed the <a class="reference internal" href="#one-time-setup1"><span class="std std-ref">One Time Setup</span></a> instructions described above else the environments will be created in your home (which is not recommended as <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> quota is limited).</p>
+<p>The below command creates a conda environment in your <code class="docutils literal notranslate"><span class="pre">$HOME/.conda/envs</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the env&gt;</span>
 
 <span class="c1">#example:</span>
@@ -275,10 +273,10 @@ conda<span class="w"> </span>activate<span class="w"> </span>myenv
 </pre></div>
 </div>
 <p>A sample output is shown below. The list of centralized and local installations can be seen.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">                                     </span>/scratch/wz22/conda-envs/myenv
-<span class="w">                                     </span>/scratch/wz22/conda-envs/myenv2
-<span class="w">                                     </span>/scratch/wz22/conda-envs/myenv3
-<span class="w">                                     </span>/scratch/wz22/conda-envs/myenv4
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">                                     </span>/home/wz22/.conda/envs/myenv
+<span class="w">                                     </span>/home/wz22/.conda/envs/myenv2
+<span class="w">                                     </span>/home/wz22/.conda/envs/myenv3
+<span class="w">                                     </span>/home/wz22/.conda/envs/myenv4
 base<span class="w">                            </span>*<span class="w">    </span>/share/apps/NYUAD/miniconda/3-4.8.2
 firefox<span class="w">                              </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/firefox
 tensorflow-1.15<span class="w">                      </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
