@@ -97,7 +97,7 @@ A sample output is shown below. The list of centralized and local installations 
                                          /home/wz22/.conda/envs/myenv
                                          /home/wz22/.conda/envs/myenv2
                                          /home/wz22/.conda/envs/myenv3
-                                         /home/wz22/.conda/envsmyenv4
+                                         /home/wz22/.conda/envs/myenv4
     base                            *    /share/apps/NYUAD/miniconda/3-4.8.2
     firefox                              /share/apps/NYUAD/miniconda/3-4.8.2/envs/firefox
     tensorflow-1.15                      /share/apps/NYUAD/miniconda/3-4.8.2/envs/tensorflow-1.15
