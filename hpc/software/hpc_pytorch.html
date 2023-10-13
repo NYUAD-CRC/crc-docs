@@ -246,7 +246,7 @@ conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </
 <div class="section" id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this heading">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
 </pre></div>
 </div>
 <p>A sample job submission script is shown below:</p>
@@ -258,7 +258,7 @@ conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </
 <span class="c1">#Other SBATCH commands go here</span>
 
 <span class="c1">#Activating conda</span>
-<span class="nb">source</span><span class="w"> </span>~/.bashrc
+<span class="nb">source</span><span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
 conda<span class="w"> </span>activate<span class="w"> </span>pytorch
 
 <span class="c1">#Your appication commands go here</span>

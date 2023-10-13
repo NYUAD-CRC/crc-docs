@@ -209,7 +209,7 @@
             
   <div class="section" id="r-in-hpc-miniconda">
 <h1>R in HPC Miniconda<a class="headerlink" href="#r-in-hpc-miniconda" title="Permalink to this heading">¶</a></h1>
-<p>Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6) as part of the Miniconda module in the HPC. This provides greater flexibility and
+<p>Apart from a centralized installation of R, we also have a Miniconda installation of R (ver=3.6.1) as part of the Miniconda module in the HPC. This provides greater flexibility and
 easier installation for other complementary packages required for R (eg: Tidyverse, Rstan etc).
 To find more details on the Miniconda module usage, click <a class="reference internal" href="hpc_miniconda.html"><span class="doc">here</span></a>.</p>
 <div class="admonition tip">
@@ -225,33 +225,61 @@ You can find the steps to set up the HPC Miniconda by clicking <a class="referen
 <h2>How to clone the R environment<a class="headerlink" href="#how-to-clone-the-r-environment" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><dl>
-<dt>If you are using the HPC Miniconda</dt><dd><p>This creates an exclusive local environment (installation) of the R package in the given path (in the example below, the path is “/scratch/wz22/my-envs/R”). The User can now activate this environment and use it and further install any required complementary packages in the activated environment (More details on this in upcoming sections).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p /scratch/&lt;NetID&gt;/conda-envs/R --clone R-3.6</span>
+<dt>If you are using the HPC Miniconda</dt><dd><p>This creates an exclusive local environment (installation) of the R package in the given path (in the example below, the path is “/home/wz22/.conda/envs/R”). The User can now activate this environment and use it and further install any required complementary packages in the activated environment (More details on this in upcoming sections).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p /home/&lt;NetID&gt;/.conda/envs/R --clone r_env</span>
 
 <span class="c1">#or</span>
 
 <span class="c1">#conda create -n &lt;name of the new env&gt; --clone &lt;existing env&gt;</span>
 
 <span class="c1">#example:</span>
-conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/scratch/wz22/conda-envs/R<span class="w"> </span>--clone<span class="w"> </span>R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/home/wz22/.conda/envs/R<span class="w"> </span>--clone<span class="w"> </span>r_env
 
 <span class="c1">#or</span>
 
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>--clone<span class="w"> </span>R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>--clone<span class="w"> </span>r_env
 </pre></div>
-</div>
-<p>A sample output is shown below:</p>
-<img alt="../../_images/R1.png" src="../../_images/R1.png" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It must be noted that the given path is not the path to the working directory, but the location where the user wishes to install the environment. The user can navigate to any directory (where his application and running script resides) and activate the required environment.</p>
 </div>
 </dd>
 </dl>
 </li>
+</ol>
+<p>A sample output is shown below:</p>
+<blockquote>
+<div><blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/home/wz22/.conda/envs/R<span class="w"> </span>--clone<span class="w"> </span>r_env
+Source:<span class="w">      </span>/share/apps/NYUAD5/miniconda/3-4.11.0/envs/r_env
+Destination:<span class="w"> </span>/home/wz22/.conda/envs/R
+Packages:<span class="w"> </span><span class="m">257</span>
+Files:<span class="w"> </span><span class="m">4684</span>
+
+Downloading<span class="w"> </span>and<span class="w"> </span>Extracting<span class="w"> </span>Packages
+
+Preparing<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
+Verifying<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
+Executing<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
+<span class="c1">#</span>
+<span class="c1"># To activate this environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda activate /home/wz22/.conda/envs/R</span>
+<span class="c1">#</span>
+<span class="c1"># To deactivate an active environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda deactivate</span>
+
+<span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It must be noted that the given path is not the path to the working directory, but the location where the user wishes to install the environment. The user can navigate to any directory (where his application and running script resides) and activate the required environment.</p>
+</div>
+</div></blockquote>
+<ol class="arabic" start="2">
 <li><p>If you are using your own conda package</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p /scratch/&lt;NetID&gt;/conda-envs/R --clone &lt;path-to-existing-env&gt;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -p /home/&lt;NetID&gt;/.conda/envs/R --clone &lt;path-to-existing-env&gt;</span>
 
 <span class="c1">#or</span>
 
@@ -259,11 +287,11 @@ conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </
 
 <span class="c1">#example:</span>
 
-conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/scratch/wz22/conda-envs/R<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>/home/wz22/.conda/envs/R<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/r_env
 
 <span class="c1">#or</span>
 
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/R-3.6
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>R<span class="w"> </span>--clone<span class="w"> </span>/share/apps/NYUAD/miniconda/3-4.8.2/envs/r_env
 </pre></div>
 </div>
 </div></blockquote>
@@ -311,7 +339,12 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </pre></div>
 </div>
 <p>A sample output is shown below:</p>
-<img alt="../../_images/R3.png" src="../../_images/R3.png" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>/home/wz22/.conda/envs/R
+<span class="o">(</span>R<span class="o">)[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>r<span class="w"> </span>r-tidyverse
+Collecting<span class="w"> </span>package<span class="w"> </span>metadata<span class="w"> </span><span class="o">(</span>repodata.json<span class="o">)</span>:<span class="w"> </span><span class="k">done</span>
+Solving<span class="w"> </span>environment:<span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>It must be noted that the complementary packages must be installed only after activating the local R environment.</p>
@@ -319,9 +352,47 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Once the installation is done, launch R and check the installation of the package using the “library( )” function of R.</dt><dd><p>A sample output is shown below:
-.. image:: ../img/R4.png</p>
+<li><dl>
+<dt>Once the installation is done, launch R and check the installation of the package using the “library( )” function of R.</dt><dd><p>A sample output is shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>R<span class="o">)[</span>wz22@login1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>R
+
+R<span class="w"> </span>version<span class="w"> </span><span class="m">3</span>.6.1<span class="w"> </span><span class="o">(</span><span class="m">2019</span>-07-05<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Action of the Toes&quot;</span>
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+Platform:<span class="w"> </span>x86_64-conda_cos6-linux-gnu<span class="w"> </span><span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+
+R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+
+<span class="w"> </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+
+R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+<span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+
+Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+<span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+
+&gt;<span class="w"> </span>library<span class="o">(</span><span class="s1">&#39;tidyverse&#39;</span><span class="o">)</span>
+Registered<span class="w"> </span>S3<span class="w"> </span>methods<span class="w"> </span>overwritten<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;ggplot2&#39;</span>:
+<span class="w">  </span>method<span class="w">         </span>from
+<span class="w">  </span><span class="o">[</span>.quosures<span class="w">     </span>rlang
+<span class="w">  </span>c.quosures<span class="w">     </span>rlang
+<span class="w">  </span>print.quosures<span class="w"> </span>rlang
+Registered<span class="w"> </span>S3<span class="w"> </span>method<span class="w"> </span>overwritten<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;rvest&#39;</span>:
+<span class="w">  </span>method<span class="w">            </span>from
+<span class="w">  </span>read_xml.response<span class="w"> </span>xml2
+──<span class="w"> </span>Attaching<span class="w"> </span>packages<span class="w"> </span>───────────────────────────────────────<span class="w"> </span>tidyverse<span class="w"> </span><span class="m">1</span>.2.1<span class="w"> </span>──
+✔<span class="w"> </span>ggplot2<span class="w"> </span><span class="m">3</span>.1.1<span class="w">       </span>✔<span class="w"> </span>purrr<span class="w">   </span><span class="m">0</span>.3.2
+✔<span class="w"> </span>tibble<span class="w">  </span><span class="m">2</span>.1.1<span class="w">       </span>✔<span class="w"> </span>dplyr<span class="w">   </span><span class="m">0</span>.8.0.1
+✔<span class="w"> </span>tidyr<span class="w">   </span><span class="m">0</span>.8.3<span class="w">       </span>✔<span class="w"> </span>stringr<span class="w"> </span><span class="m">1</span>.4.0
+✔<span class="w"> </span>readr<span class="w">   </span><span class="m">1</span>.3.1<span class="w">       </span>✔<span class="w"> </span>forcats<span class="w"> </span><span class="m">0</span>.4.0
+──<span class="w"> </span>Conflicts<span class="w"> </span>──────────────────────────────────────────<span class="w"> </span>tidyverse_conflicts<span class="o">()</span><span class="w"> </span>──
+✖<span class="w"> </span>dplyr::filter<span class="o">()</span><span class="w"> </span>masks<span class="w"> </span>stats::filter<span class="o">()</span>
+✖<span class="w"> </span>dplyr::lag<span class="o">()</span><span class="w">    </span>masks<span class="w"> </span>stats::lag<span class="o">()</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </li>
@@ -330,7 +401,7 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="section" id="submitting-job-scripts">
 <h2>Submitting Job Scripts<a class="headerlink" href="#submitting-job-scripts" title="Permalink to this heading">¶</a></h2>
 <p>The conda environment might not get activated when submitting a Job script since the slurm doesn’t source the bashrc file. Hence, in order to go about this, you can include the following line in your job submission script before activating the required environment.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
 </pre></div>
 </div>
 <p>A sample job submission script is shown below:</p>
@@ -340,7 +411,7 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <span class="c1">#Other SBATCH commands go here</span>
 
 <span class="c1">#Activating conda</span>
-<span class="nb">source</span><span class="w"> </span>~/.bashrc
+<span class="nb">source</span><span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
 conda<span class="w"> </span>activate<span class="w"> </span>R
 
 <span class="c1">#Your appication commands go here</span>
