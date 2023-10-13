@@ -44,7 +44,7 @@ The conda environment might not get activated when submitting a Job script since
 
 .. code-block:: bash
 
-    source ~/.bashrc
+    source /share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
 
 A sample job submission script is shown below:
 
@@ -58,7 +58,7 @@ A sample job submission script is shown below:
     #Other SBATCH commands go here
     
     #Activating conda
-    source ~/.bashrc
+    source /share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
     conda activate tf-gpu
     
     #Your appication commands go here
