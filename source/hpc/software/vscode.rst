@@ -5,10 +5,16 @@ Connecting VS Code to HPC using SSH
 Introduction
 ------------
 
+.. important::
+  Users are encouraged to use the Web version of VS Code (Code-Server) available on the HPC. The Code-server 
+  can be found in the ``Interactive Apps`` section of the HPC Web Interface (https://ood.hpc.abudhabi.nyu.edu/)
+    
+
 This documentation provides step-by-step instructions on how to connect your local VS Code to 
 a High-Performance Computing (HPC) system using SSH. By establishing an SSH connection, 
 you can leverage the power of the HPC resources while utilizing the familiar and feature-rich 
 VS Code editor.
+
 
 The below steps also achieve the following:
 
@@ -39,7 +45,7 @@ Add the following configuration to your SSH config file:
      ForwardAgent yes
      StrictHostKeyChecking no
      UserKnownHostsFile=/dev/null
-     ProxyCommand ssh hpc "/opt/slurm/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc \$SLURM_NODELIST 22'"
+     ProxyCommand ssh hpc "/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc \$SLURM_NODELIST 22'"
      User <NetID>
 
 Replace ``<NetID>`` with your username. This configuration allows you to connect to the "hpc-job" host.
