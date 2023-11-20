@@ -211,6 +211,11 @@
 <h1>Connecting VS Code to HPC using SSH<a class="headerlink" href="#connecting-vs-code-to-hpc-using-ssh" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Users are encouraged to use the Web version of VS Code (Code-Server) available on the HPC. The Code-server
+can be found in the <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code> section of the HPC Web Interface (<a class="reference external" href="https://ood.hpc.abudhabi.nyu.edu/">https://ood.hpc.abudhabi.nyu.edu/</a>)</p>
+</div>
 <p>This documentation provides step-by-step instructions on how to connect your local VS Code to
 a High-Performance Computing (HPC) system using SSH. By establishing an SSH connection,
 you can leverage the power of the HPC resources while utilizing the familiar and feature-rich
@@ -222,7 +227,7 @@ VS Code editor.</p>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>It is recommended to have enabled passwordless ssh on your private PC’s for seamless experience. Find the guide here <a class="reference internal" href="../system/mfa_auth.html#passwordless-ssh"><span class="std std-ref">Passwordless SSH</span></a></p>
+<p>It is recommended to have enabled passwordless ssh on your private PC’s for seamless experience. Find the guide here <a class="reference internal" href="../system/passwordless_auth.html#passwordless-ssh"><span class="std std-ref">Passwordless SSH</span></a></p>
 </div>
 </div>
 <div class="section" id="prerequisites">
@@ -243,7 +248,7 @@ Host<span class="w"> </span>hpc-job
 <span class="w">  </span>ForwardAgent<span class="w"> </span>yes
 <span class="w">  </span>StrictHostKeyChecking<span class="w"> </span>no
 <span class="w">  </span><span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null
-<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;/opt/slurm/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c &#39;nc \$SLURM_NODELIST 22&#39;&quot;</span>
+<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c &#39;nc \$SLURM_NODELIST 22&#39;&quot;</span>
 <span class="w">  </span>User<span class="w"> </span>&lt;NetID&gt;
 </pre></div>
 </div>

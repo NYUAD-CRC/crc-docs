@@ -121,16 +121,15 @@ If you use Windows or outside NYU AD/NY network, follow the instructions here: :
 
  /hpc/system/access_jubail
 
-MFA Authentication
-------------------
+Passwordless Authentication
+---------------------------
 
-For enhanced security, Multi Factor Authentication is now enabled to log-in to the HPC. You could find more details about the same 
-here: :doc:`MFA Authentication on HPC <mfa_auth>`
+Users can follow the following guide to setup passwordless authnetication to the HPC :doc:`Enabling Passwordless Authentication </hpc/system/passwordless_auth>`.
 
 .. toctree::
  :hidden:
 
- /hpc/system/mfa_auth
+ /hpc/system/passwordless_auth
 
 .. important::
   If you would like to use VS Code on jubail, please follow the following guide :doc:`VS Code on HPC </hpc/software/vscode>` for recommendations.
