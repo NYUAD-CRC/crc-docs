@@ -1,6 +1,13 @@
 Psychology
 ============
 
+.. csv-table:: 2024
+   :widths: auto
+   :header-rows: 1
+   :class: publication-table
+   :file: data/psychology-2024.csv
+ 
+   
 .. csv-table:: 2023
    :widths: auto
    :header-rows: 1
