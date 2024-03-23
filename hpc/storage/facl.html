@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Data Sharing with FACL &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Merge of $WORK and $ARCHIVE" href="archive_work_merge.html" />
+    <link rel="prev" title="Data Sharing with Collaborators" href="data_sharing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Storage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Sharing with FACL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-control-lists-acl-levels">Access Control Lists (ACL) Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-permissions">Viewing Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-permissions">Setting Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removing-permissions">Removing Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flags">Flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-information">Additional Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Storage</a> &raquo;</li>
+        
+      <li>Data Sharing with FACL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-sharing-with-facl">
+<h1>Data Sharing with FACL<a class="headerlink" href="#data-sharing-with-facl" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>When sharing files on a cluster with other users, it’s recommended to use file access control
+lists (FACL). FACL mechanisms allow for fine-grained control over access to files, enabling users
+to share access to their data with others. Unlike setting permissions with <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">777</span></code>, which can
+lead to data loss, FACL provides a safer and more flexible way to manage access. This document
+outlines how to use FACLs with the <code class="docutils literal notranslate"><span class="pre">getfacl</span></code> and <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> commands to view and set access
+permissions.</p>
+</div>
+<div class="section" id="access-control-lists-acl-levels">
+<h2>Access Control Lists (ACL) Levels<a class="headerlink" href="#access-control-lists-acl-levels" title="Permalink to this heading">¶</a></h2>
+<p>ACL mechanisms, similar to standard Linux POSIX permissions, provide three levels of access control:</p>
+<ul class="simple">
+<li><p>Read (<code class="docutils literal notranslate"><span class="pre">r</span></code>)</p></li>
+<li><p>Write (<code class="docutils literal notranslate"><span class="pre">w</span></code>)</p></li>
+<li><p>Execute (<code class="docutils literal notranslate"><span class="pre">x</span></code>)</p></li>
+</ul>
+<p>These levels of access can be granted to:</p>
+<ul class="simple">
+<li><p>User (owner of the file)</p></li>
+<li><p>Group (owner group)</p></li>
+<li><p>Other (everyone else)</p></li>
+</ul>
+<p>ACL allows for granting the same type of access without modifying file ownership or POSIX permissions.</p>
+</div>
+<div class="section" id="viewing-permissions">
+<h2>Viewing Permissions<a class="headerlink" href="#viewing-permissions" title="Permalink to this heading">¶</a></h2>
+<p>To retrieve access permissions for a file, use the <code class="docutils literal notranslate"><span class="pre">getfacl</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>getfacl<span class="w"> </span>myfile.txt
+<span class="c1"># file: myfile.txt</span>
+<span class="c1"># owner: ab123</span>
+<span class="c1"># group: users</span>
+user::rw-
+group::---
+other::---
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-permissions">
+<h2>Setting Permissions<a class="headerlink" href="#setting-permissions" title="Permalink to this heading">¶</a></h2>
+<p>To modify access permissions, use the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> command with the following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: Modify ACL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-x</span></code>: Remove ACL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-R</span></code>: Apply the action recursively (to all files and directories within a directory)</p></li>
+</ul>
+<p>For example, To grant read and write permissions to the user <code class="docutils literal notranslate"><span class="pre">abc12</span></code> on the directory <code class="docutils literal notranslate"><span class="pre">/scratch/xyz12/abc/def/xyz</span></code>,
+follow these steps:</p>
+<ol class="arabic">
+<li><p>Grant execute permissions to each directory in the hierarchy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setfacl</span> <span class="o">-</span><span class="n">m</span> <span class="n">u</span><span class="p">:</span><span class="n">abc12</span><span class="p">:</span><span class="n">x</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">xyz12</span><span class="o">/</span>
+<span class="n">setfacl</span> <span class="o">-</span><span class="n">m</span> <span class="n">u</span><span class="p">:</span><span class="n">abc12</span><span class="p">:</span><span class="n">x</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">xyz12</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span>
+<span class="n">setfacl</span> <span class="o">-</span><span class="n">m</span> <span class="n">u</span><span class="p">:</span><span class="n">abc12</span><span class="p">:</span><span class="n">x</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">xyz12</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span><span class="n">def</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+<li><p>Grant read and write permissions to the final directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setfacl</span> <span class="o">-</span><span class="n">m</span> <span class="n">u</span><span class="p">:</span><span class="n">abc12</span><span class="p">:</span><span class="n">rwx</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">xyz12</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span><span class="n">def</span><span class="o">/</span><span class="n">xyz</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>User <code class="docutils literal notranslate"><span class="pre">xyz12</span></code> will have read-write permissions to the directory mentioned above.
+By setting execute permissions on intermediate directories, access to the contents of those directories is denied to other users.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When setting ACL for a file like <code class="docutils literal notranslate"><span class="pre">/a/b/c/example.out</span></code>, ensure appropriate ACLs are also set for all parent directories in the path.
+For example, to grant read/write/execute permissions for <code class="docutils literal notranslate"><span class="pre">/a/b/c/example.out</span></code>, also grant at least <code class="docutils literal notranslate"><span class="pre">x</span></code>
+permissions to the directories <code class="docutils literal notranslate"><span class="pre">/a</span></code>, <code class="docutils literal notranslate"><span class="pre">/a/b</span></code>, and <code class="docutils literal notranslate"><span class="pre">/a/b/c</span></code>.</p>
+</div>
+</div>
+<div class="section" id="removing-permissions">
+<h2>Removing Permissions<a class="headerlink" href="#removing-permissions" title="Permalink to this heading">¶</a></h2>
+<p>To remove access permissions set by ACL, you can use the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-x</span></code>
+option followed by the specific entry you want to remove. Below is an example of removing ACL
+permissions for a user <code class="docutils literal notranslate"><span class="pre">xyz12</span></code> from the path <code class="docutils literal notranslate"><span class="pre">/scrtach/abc12/example/group1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>setfacl<span class="w"> </span>-x<span class="w"> </span><span class="s2">&quot;u:xyz12&quot;</span><span class="w"> </span>/scrtach/abc12/example/group1
+</pre></div>
+</div>
+<p>This command will remove the access permissions previously granted to the user <code class="docutils literal notranslate"><span class="pre">xyz12</span></code>
+to the path <code class="docutils literal notranslate"><span class="pre">/scrtach/abc12/example/group1</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ACL permissions can be set or modified only for files and directories
+that are owned by you.</p>
+</div>
+</div>
+<div class="section" id="flags">
+<h2>Flags<a class="headerlink" href="#flags" title="Permalink to this heading">¶</a></h2>
+<p>Refer to the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> manual page for possible flags. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>: Modify</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-x</span></code>: Remove</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-R</span></code>: Recursive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: Default</p></li>
+</ul>
+</div>
+<div class="section" id="additional-information">
+<h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this heading">¶</a></h2>
+<p>For more details about the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> command, refer to its manual page or visit the following link: <a class="reference external" href="https://linux.die.net/man/1/setfacl">FACL Documentation</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="archive_work_merge.html" class="btn btn-neutral float-right" title="Merge of $WORK and $ARCHIVE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="data_sharing.html" class="btn btn-neutral float-left" title="Data Sharing with Collaborators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2024, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
