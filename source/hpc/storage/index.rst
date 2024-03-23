@@ -29,6 +29,7 @@ we can not recover, unfortunately.
   /hpc/storage/home_scratch
   /hpc/storage/archive
   /hpc/storage/data_sharing
+  /hpc/storage/facl
   /hpc/storage/archive_work_merge
   /hpc/storage/mount_archive
 
