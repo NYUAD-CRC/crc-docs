@@ -49,7 +49,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Data Sharing with FACL" href="facl.html" />
+    <link rel="next" title="Data Sharing with ACL" href="acl.html" />
     <link rel="prev" title="$ARCHIVE" href="archive.html" /> 
 </head>
 
@@ -105,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Data Sharing with Collaborators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="facl.html">Data Sharing with FACL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acl.html">Data Sharing with ACL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
@@ -206,6 +206,12 @@
 <p>Apart from the existing data sharing options (Groups and ACLs) avaiable on the HPC,
 Users can now also share the data/files with their collaborators via a common location (<code class="docutils literal notranslate"><span class="pre">/scratch/tmp</span></code>),
 hence minimizing the complexity for quick/temporary sharing of data/files.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Sharing your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> (<code class="docutils literal notranslate"><span class="pre">scratch/&lt;NetID&gt;</span></code>) directories with collaborators using <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">777</span></code> is highly
+discouraged due to the significant security risks it poses. This practice exposes your data and
+files to everyone, potentially leading to data theft or deletion.</p>
+</div>
 <p>The instructions for the same are given below:</p>
 <ol class="arabic">
 <li><dl>
@@ -253,7 +259,7 @@ setfacl<span class="w"> </span>-m<span class="w"> </span>u:&lt;NetId&gt;:rx<span
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="facl.html" class="btn btn-neutral float-right" title="Data Sharing with FACL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="acl.html" class="btn btn-neutral float-right" title="Data Sharing with ACL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="archive.html" class="btn btn-neutral float-left" title="$ARCHIVE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

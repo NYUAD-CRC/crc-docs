@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Data Sharing with FACL &mdash; CRC Documentation  documentation</title>
+  <title>Data Sharing with ACL &mdash; CRC Documentation  documentation</title>
   
 
   
@@ -105,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Sharing with FACL</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Sharing with ACL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#access-control-lists-acl-levels">Access Control Lists (ACL) Levels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#viewing-permissions">Viewing Permissions</a></li>
@@ -193,7 +193,7 @@
         
           <li><a href="index.html">Storage</a> &raquo;</li>
         
-      <li>Data Sharing with FACL</li>
+      <li>Data Sharing with ACL</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -210,16 +210,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="data-sharing-with-facl">
-<h1>Data Sharing with FACL<a class="headerlink" href="#data-sharing-with-facl" title="Permalink to this heading">¶</a></h1>
+  <div class="section" id="data-sharing-with-acl">
+<h1>Data Sharing with ACL<a class="headerlink" href="#data-sharing-with-acl" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
-<p>When sharing files on a cluster with other users, it’s recommended to use file access control
-lists (FACL). FACL mechanisms allow for fine-grained control over access to files, enabling users
+<p>When sharing files on a cluster with other users, it’s recommended to use Access Control Lists (ACL). ACL mechanisms allow for fine-grained control over access to files, enabling users
 to share access to their data with others. Unlike setting permissions with <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">777</span></code>, which can
 lead to data loss, FACL provides a safer and more flexible way to manage access. This document
 outlines how to use FACLs with the <code class="docutils literal notranslate"><span class="pre">getfacl</span></code> and <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> commands to view and set access
 permissions.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Sharing your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> (<code class="docutils literal notranslate"><span class="pre">scratch/&lt;NetID&gt;</span></code>) directories with collaborators using <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">777</span></code> is highly
+discouraged due to the significant security risks it poses. This practice exposes your data and
+files to everyone, potentially leading to data theft or deletion.</p>
+</div>
 </div>
 <div class="section" id="access-control-lists-acl-levels">
 <h2>Access Control Lists (ACL) Levels<a class="headerlink" href="#access-control-lists-acl-levels" title="Permalink to this heading">¶</a></h2>
@@ -269,13 +274,18 @@ follow these steps:</p>
 </div>
 </li>
 <li><p>Grant read and write permissions to the final directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setfacl</span> <span class="o">-</span><span class="n">m</span> <span class="n">u</span><span class="p">:</span><span class="n">abc12</span><span class="p">:</span><span class="n">rwx</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">xyz12</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span><span class="n">def</span><span class="o">/</span><span class="n">xyz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setfacl</span> <span class="o">-</span><span class="n">R</span> <span class="o">-</span><span class="n">m</span> <span class="n">u</span><span class="p">:</span><span class="n">abc12</span><span class="p">:</span><span class="n">rwx</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">xyz12</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span><span class="n">def</span><span class="o">/</span><span class="n">xyz</span>
 </pre></div>
 </div>
 </li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-R</span></code> option in the above step,  will recursively apply the permissions (<code class="docutils literal notranslate"><span class="pre">rwx</span></code>) to
+all files within the directory and its subdirectories.</p>
+</div>
 <p>User <code class="docutils literal notranslate"><span class="pre">xyz12</span></code> will have read-write permissions to the directory mentioned above.
-By setting execute permissions on intermediate directories, access to the contents of those directories is denied to other users.</p>
+By setting only execute (<code class="docutils literal notranslate"><span class="pre">x</span></code>) permissions on intermediate directories, access to the contents of those directories is denied to other users.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>When setting ACL for a file like <code class="docutils literal notranslate"><span class="pre">/a/b/c/example.out</span></code>, ensure appropriate ACLs are also set for all parent directories in the path.
@@ -311,7 +321,7 @@ that are owned by you.</p>
 </div>
 <div class="section" id="additional-information">
 <h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this heading">¶</a></h2>
-<p>For more details about the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> command, refer to its manual page or visit the following link: <a class="reference external" href="https://linux.die.net/man/1/setfacl">FACL Documentation</a>.</p>
+<p>For more details about the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> command, refer to its manual page or visit the following link: <a class="reference external" href="https://linux.die.net/man/1/setfacl">ACL Documentation</a>.</p>
 </div>
 </div>
 

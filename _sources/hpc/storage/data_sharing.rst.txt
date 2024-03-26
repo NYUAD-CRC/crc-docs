@@ -5,6 +5,10 @@ Apart from the existing data sharing options (Groups and ACLs) avaiable on the H
 Users can now also share the data/files with their collaborators via a common location (``/scratch/tmp``),
 hence minimizing the complexity for quick/temporary sharing of data/files.
 
+.. caution:: Sharing your ``$SCRATCH`` (``scratch/<NetID>``) directories with collaborators using ``chmod 777`` is highly 
+    discouraged due to the significant security risks it poses. This practice exposes your data and 
+    files to everyone, potentially leading to data theft or deletion.
+
 The instructions for the same are given below:
 
 1. Copy the data to ``/scratch/tmp``
