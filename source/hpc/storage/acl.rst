@@ -1,15 +1,19 @@
-Data Sharing with FACL
+Data Sharing with ACL
 =======================
 
 Introduction
 ------------
 
-When sharing files on a cluster with other users, it's recommended to use file access control 
-lists (FACL). FACL mechanisms allow for fine-grained control over access to files, enabling users 
+When sharing files on a cluster with other users, it's recommended to use Access Control Lists (ACL). ACL mechanisms allow for fine-grained control over access to files, enabling users 
 to share access to their data with others. Unlike setting permissions with ``chmod 777``, which can 
 lead to data loss, FACL provides a safer and more flexible way to manage access. This document 
 outlines how to use FACLs with the ``getfacl`` and ``setfacl`` commands to view and set access 
 permissions.
+
+.. caution:: Sharing your ``$SCRATCH`` (``scratch/<NetID>``) directories with collaborators using ``chmod 777`` is highly 
+    discouraged due to the significant security risks it poses. This practice exposes your data and 
+    files to everyone, potentially leading to data theft or deletion.
+
 
 Access Control Lists (ACL) Levels 
 ---------------------------------
@@ -65,10 +69,13 @@ follow these steps:
 
 2. Grant read and write permissions to the final directory::
 
-       setfacl -m u:abc12:rwx /scratch/xyz12/abc/def/xyz
+       setfacl -R -m u:abc12:rwx /scratch/xyz12/abc/def/xyz
+
+.. note:: The ``-R`` option in the above step,  will recursively apply the permissions (``rwx``) to 
+    all files within the directory and its subdirectories. 
 
 User ``xyz12`` will have read-write permissions to the directory mentioned above.
-By setting execute permissions on intermediate directories, access to the contents of those directories is denied to other users.
+By setting only execute (``x``) permissions on intermediate directories, access to the contents of those directories is denied to other users.
 
 
 .. Important::
@@ -106,5 +113,4 @@ Refer to the ``setfacl`` manual page for possible flags. For example:
 Additional Information
 -----------------------
 
-For more details about the ``setfacl`` command, refer to its manual page or visit the following link: `FACL Documentation <https://linux.die.net/man/1/setfacl>`_.
-
+For more details about the ``setfacl`` command, refer to its manual page or visit the following link: `ACL Documentation <https://linux.die.net/man/1/setfacl>`_.
