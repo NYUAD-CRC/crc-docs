@@ -74,7 +74,7 @@ Summary of Nodes
       - None
       - New HPC Compute nodes
     * - Jubail Gpu
-      - 36
+      - 95 GPUs
       - 64/128
       - 480GB
       - 1/2/3/4 (Nvidia A100)
@@ -85,8 +85,8 @@ Summary of Nodes
       - 102 GB / 480 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
-    * - :doc:`Dalma GPU<../system/gpu_nodes>` 
-      - 14
+    * - Dalma GPUs
+      - 39 GPUs
       - 40
       - 360 GB / 1 TB
       - 2/8 (Nvidia V100)
@@ -191,19 +191,7 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 
   For large date transfer, Kindly refer to the section :doc:`here </hpc/system/screen>`
    
-.. _special_compute_nodes: 
 
-Special Compute Nodes
----------------------
-
-* :doc:`GPU nodes on HPC<gpu_nodes>`
-
-
-.. toctree::
-  :hidden:
-
-  /hpc/system/gpu_nodes
-  /hpc/system/screen
   
 Globus Data Transfer
 --------------------
@@ -217,4 +205,5 @@ at a faster rate.
   :hidden:
 
   /hpc/system/globus
+  /hpc/system/screen
 

@@ -85,7 +85,7 @@ Summary of Nodes
       - 102 GB / 480 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
-    * - :doc:`Dalma GPU<../system/gpu_nodes>` 
+    * - Dalma GPUs
       - 14
       - 40
       - 360 GB / 1 TB
