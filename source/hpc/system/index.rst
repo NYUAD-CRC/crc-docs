@@ -74,7 +74,7 @@ Summary of Nodes
       - None
       - New HPC Compute nodes
     * - Jubail Gpu
-      - 36
+      - 95 GPUs
       - 64/128
       - 480GB
       - 1/2/3/4 (Nvidia A100)
@@ -85,8 +85,8 @@ Summary of Nodes
       - 102 GB / 480 GB
       - None
       - Small jobs < 28 CPUs will be sent to Dalma
-    * - :doc:`Dalma GPU<../system/gpu_nodes>` 
-      - 14
+    * - Dalma GPUs
+      - 39 GPUs
       - 40
       - 360 GB / 1 TB
       - 2/8 (Nvidia V100)
@@ -116,10 +116,18 @@ Once your account is ready, you can access the HPC. With Linux or Mac in NYU AD/
 
 If you use Windows or outside NYU AD/NY network, follow the instructions here: :doc:`Access Jubail <access_jubail>`.
 
+.. admonition:: Caution for VS Code Users
+  
+  Please always use the following method to connect to HPC from :doc:`VS Code on HPC <vscode>`. 
+  Connecting directly to the login nodes leaves background processes running in the login node for each new connection thus accumulating 
+  over time until you reach the threshold after which no more processes for a user are allowed on login which 
+  further results in login failures. Any VS code processes on login nodes are now automatically terminated after 10 minutes.
+
 .. toctree::
  :hidden:
 
  /hpc/system/access_jubail
+ /hpc/system/vscode
 
 Passwordless Authentication
 ---------------------------
@@ -131,8 +139,7 @@ Users can follow the following guide to setup passwordless authnetication to the
 
  /hpc/system/passwordless_auth
 
-.. important::
-  If you would like to use VS Code on jubail, please follow the following guide :doc:`VS Code on HPC </hpc/software/vscode>` for recommendations.
+
 
 Whenever you login, you land up on one of the four login nodes, which is shown on left most section of
 your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that you are on the second login node.
@@ -184,19 +191,7 @@ Windows users can use `WinScp <https://winscp.net/eng/index.php>`__ for transfer
 
   For large date transfer, Kindly refer to the section :doc:`here </hpc/system/screen>`
    
-.. _special_compute_nodes: 
 
-Special Compute Nodes
----------------------
-
-* :doc:`GPU nodes on HPC<gpu_nodes>`
-
-
-.. toctree::
-  :hidden:
-
-  /hpc/system/gpu_nodes
-  /hpc/system/screen
   
 Globus Data Transfer
 --------------------
@@ -210,4 +205,5 @@ at a faster rate.
   :hidden:
 
   /hpc/system/globus
+  /hpc/system/screen
 
