@@ -40,8 +40,7 @@ We have a centralized installation of :doc:`Miniconda </hpc/software/hpc_minicon
    /hpc/software/hpc_pytorch
    /hpc/software/hpc_tensorflow
 
-.. tip::
-    Know more about the GPU nodes available :doc:`here</hpc/system/gpu_nodes>`
+
     
 
 Matlab
@@ -72,6 +71,6 @@ Miscellaneous
    
 
    /hpc/software/r_hpc_miniconda
-   /hpc/software/vscode
+ 
 
    

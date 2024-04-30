@@ -107,6 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#summary-of-nodes">Summary of Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access">Access</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="access_jubail.html">Access Jubail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vscode.html">Connecting VS Code to HPC using SSH</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#passwordless-authentication">Passwordless Authentication</a><ul>
@@ -118,14 +119,10 @@
 <li class="toctree-l3"><a class="reference internal" href="filezilla_transfer.html">File Transfer using FileZilla</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#special-compute-nodes">Special Compute Nodes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="gpu_nodes.html">GPU nodes on HPC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="screen.html">Screen command</a></li>
-<li class="toctree-l3"><a class="reference internal" href="screen.html#the-screen-sh-script">The screen.sh script</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#globus-data-transfer">Globus Data Transfer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="globus.html">Globus Data Transfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="screen.html">Screen command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="screen.html#the-screen-sh-script">The screen.sh script</a></li>
 </ul>
 </li>
 </ul>
@@ -298,7 +295,7 @@
 <td><p>New HPC Compute nodes</p></td>
 </tr>
 <tr class="row-odd"><td><p>Jubail Gpu</p></td>
-<td><p>36</p></td>
+<td><p>95 GPUs</p></td>
 <td><p>64/128</p></td>
 <td><p>480GB</p></td>
 <td><p>1/2/3/4 (Nvidia A100)</p></td>
@@ -311,8 +308,8 @@
 <td><p>None</p></td>
 <td><p>Small jobs &lt; 28 CPUs will be sent to Dalma</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">Dalma GPU</span></a></p></td>
-<td><p>14</p></td>
+<tr class="row-odd"><td><p>Dalma GPUs</p></td>
+<td><p>39 GPUs</p></td>
 <td><p>40</p></td>
 <td><p>360 GB / 1 TB</p></td>
 <td><p>2/8 (Nvidia V100)</p></td>
@@ -342,6 +339,13 @@
 </pre></div>
 </div>
 <p>If you use Windows or outside NYU AD/NY network, follow the instructions here: <a class="reference internal" href="access_jubail.html"><span class="doc">Access Jubail</span></a>.</p>
+<div class="admonition-caution-for-vs-code-users admonition">
+<p class="admonition-title">Caution for VS Code Users</p>
+<p>Please always use the following method to connect to HPC from <a class="reference internal" href="vscode.html"><span class="doc">VS Code on HPC</span></a>.
+Connecting directly to the login nodes leaves background processes running in the login node for each new connection thus accumulating
+over time until you reach the threshold after which no more processes for a user are allowed on login which
+further results in login failures. Any VS code processes on login nodes are now automatically terminated after 10 minutes.</p>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -349,10 +353,6 @@
 <h2>Passwordless Authentication<a class="headerlink" href="#passwordless-authentication" title="Permalink to this heading">¶</a></h2>
 <p>Users can follow the following guide to setup passwordless authnetication to the HPC <a class="reference internal" href="passwordless_auth.html"><span class="doc">Enabling Passwordless Authentication</span></a>.</p>
 <div class="toctree-wrapper compound">
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>If you would like to use VS Code on jubail, please follow the following guide <a class="reference internal" href="../software/vscode.html"><span class="doc">VS Code on HPC</span></a> for recommendations.</p>
 </div>
 <p>Whenever you login, you land up on one of the four login nodes, which is shown on left most section of
 your terminal.It may look something like <code class="docutils literal notranslate"><span class="pre">[wz22&#64;login2</span> <span class="pre">~]$</span></code> suggesting that you are on the second login node.</p>
@@ -393,14 +393,6 @@ Windows users can use <a class="reference external" href="https://winscp.net/eng
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For large date transfer, Kindly refer to the section <a class="reference internal" href="screen.html"><span class="doc">here</span></a></p>
-</div>
-</div>
-<div class="section" id="special-compute-nodes">
-<span id="id2"></span><h2>Special Compute Nodes<a class="headerlink" href="#special-compute-nodes" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="gpu_nodes.html"><span class="doc">GPU nodes on HPC</span></a></p></li>
-</ul>
-<div class="toctree-wrapper compound">
 </div>
 </div>
 <div class="section" id="globus-data-transfer">
