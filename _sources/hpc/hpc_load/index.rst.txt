@@ -12,38 +12,9 @@ and overall as well. These stats are refreshed every 15 minutes.
     <iframe src="https://nyuad-crc.github.io/hpc-load/jobs.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
 
 
-GPU Jobs
---------
-The following table shows the utilization of the GPU nodes with their respective number of GPU cards.
-
-.. raw:: html
-    
-    <iframe src="https://nyuad-crc.github.io/hpc-load/gpu.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
 
 
 
-Cmap
-----
-
-``cmap`` is a monitor utility to display in a compact mode, HPC utilization as well as information about 
-jobs and/or nodes
-
-Allocated resources as per the batch system
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. raw:: html
-    
-    <iframe  src="https://nyuad-crc.github.io/hpc-load/cmap.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
-
-
-
-Memory usage in the nodes
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-.. raw:: html
-    
-    <iframe  src="https://nyuad-crc.github.io/hpc-load/cmap2.html" style="display:block; border:none; height:70vh; width:100%;"></iframe>
 
 
 Software tracker
@@ -54,10 +25,3 @@ Software tracker
     
     <iframe height=500px width=100% src="https://nyuad-crc.github.io/hpc-load/accumulated_chart.html" style="display:block; border:none;"></iframe>
 
-GPU utilization
-^^^^^^^^^^^^^^^
-The following table shows the GPU Utilization over the time.
-
-.. raw:: html
-    
-    <iframe height=500px width=100% src="https://nyuad-crc.github.io/hpc-load/gpu_util.html" style="display:block; border:none;"></iframe>
