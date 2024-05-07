@@ -190,7 +190,11 @@ Partitions Summary
 
 		- grace period of 30 mins Max GPUs:8
     	
-    	
+
+.. note::
+	Kindly be advised that the resource and job limits mentioned above are indicative and subject to change based on resource utilization and availability.
+
+
 Sample Job Script
 ------------------
 
@@ -381,7 +385,6 @@ To request a Gpu node you have two options:
 
 If you would like to analyze your GPU jobs, Please refer to following section: :doc:`Analyzing GPU Usage</hpc/jobs/gpu_jobs>`
 
-For more details regarding GPU nodes and cards types, kindly check this section :doc:`GPU nodes</hpc/system/gpu_nodes>`.
 
 .. _preempt_partition:
    

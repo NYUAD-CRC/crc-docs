@@ -35,20 +35,42 @@ Step 1: Modify SSH Config File
 
 Add the following configuration to your SSH config file:
 
-.. code-block:: bash
+- **For Mac OS and Ubuntu**
 
-   Host hpc
-     HostName jubail.abudhabi.nyu.edu
-     User <NetID>
+  .. code-block:: bash
+
+     Host hpc
+       HostName jubail.abudhabi.nyu.edu
+      User <NetID>
    
-   Host hpc-job
-     ForwardAgent yes
-     StrictHostKeyChecking no
-     UserKnownHostsFile=/dev/null
-     ProxyCommand ssh hpc "/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc \$SLURM_NODELIST 22'"
-     User <NetID>
+    Host hpc-job
+       ForwardAgent yes
+      StrictHostKeyChecking no
+      UserKnownHostsFile=/dev/null
+      ProxyCommand ssh hpc "/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc \$SLURM_NODELIST 22'"
+      User <NetID>
 
-Replace ``<NetID>`` with your username. This configuration allows you to connect to the "hpc-job" host.
+  Replace ``<NetID>`` with your username. This configuration allows you to connect to the "hpc-job" host.
+
+- **For Windows**
+
+  .. code-block:: bash
+
+     Host hpc
+       HostName jubail.abudhabi.nyu.edu
+      User <NetID>
+   
+    Host hpc-job
+       ForwardAgent yes
+      StrictHostKeyChecking no
+      UserKnownHostsFile=/dev/null
+      ProxyCommand ssh hpc "/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc $SLURM_NODELIST 22'"
+      User <NetID>
+
+  Replace ``<NetID>`` with your username. This configuration allows you to connect to the "hpc-job" host.
+
+.. tip::
+  Please refer to the following `link <https://code.visualstudio.com/blogs/2019/10/03/remote-ssh-tips-and-tricks#_ssh-configuration-file>`__ for instructions on how to open the SSH config file.
 
 Step 2: Connect with VS Code Remote-SSH Extension
 --------------------------------------------------
