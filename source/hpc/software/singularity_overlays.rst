@@ -85,12 +85,13 @@ The usage is as follows:
 
 .. code-block:: bash
 
-    mount-overlay -o <name-of-overlay> [-o <name-of-overlay> ...]
+    mount-overlay -o <name-of-overlay> [-o <name-of-overlay>] [-c <path-to-container>]...
 
     # Example:
     mount-overlay -o overlay1.ext3 -o overlay2.ext3
 
 The above example will mount the overlays ``overlay1.ext3`` and ``overlay2.ext3`` simultaneously.
+
 
 .. note::
     Please note that when mounting or running multiple overlays, it is important to be aware that only the first overlay 
@@ -107,7 +108,7 @@ using the ``-o`` option multiple times. The usage is as follows:
 
 .. code-block:: bash
 
-    run-overlay -o <name-of-overlay> [-o <name-of-overlay> ...] -f <command-file>
+    run-overlay -o <name-of-overlay> [-o <name-of-overlay> ...] [-c <path-to-container>] -f <command-file>
 
     # Example:
     run-overlay -o overlay1.ext3 -o overlay2.ext3 -f file1.txt
@@ -115,6 +116,11 @@ using the ``-o`` option multiple times. The usage is as follows:
 The above example will run the commands present in ``file1.txt`` with the overlays ``overlay1.ext3`` 
 and ``overlay2.ext3`` mounted simultaneously.
 
+
+.. hint:: Custom Container
+    You can also use your own base containers 
+    with ``mount-overlay`` and ``run-overlay`` commands with ``-c`` 
+    option to override the default container.
 
 .. note::
     If you need finer control over the overlay, you can directly use the underlying Singularity 
