@@ -66,7 +66,7 @@ Summary
       - No		
       - Yes
     * - Default Quota	
-      - 20GB, 150K Files	
+      - 50GB, 500K Files	
       - 5TB, 500K Files		
       - No Limit
 
@@ -85,7 +85,7 @@ Know Your Quota
                              DISK SPACE                # FILES (1000's)
           filesystem       size      quota            number      quota
                       --------------------------   --------------------------
-               /home     5990MB       20GB ( 29%)        60       150 ( 40%)
+               /home       39GB       50GB ( 80%)       328       500 ( 66%)
             /scratch       67GB     5000GB (  1%)       191       500 ( 38%)
             /archive          0          0 (  0%)         0         0 (  0%)
 
