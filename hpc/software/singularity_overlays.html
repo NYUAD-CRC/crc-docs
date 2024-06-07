@@ -282,7 +282,7 @@ the name with <code class="docutils literal notranslate"><span class="pre">-o</s
 <p>To mount an overlay, use the <code class="docutils literal notranslate"><span class="pre">mount-overlay</span></code> command. This command takes the name of the overlay file
 as an argument. You can specify multiple overlays by using the <code class="docutils literal notranslate"><span class="pre">-o</span></code> option multiple times.
 The usage is as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount-overlay<span class="w"> </span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span>...<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount-overlay<span class="w"> </span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>&lt;path-to-container&gt;<span class="o">]</span>...
 
 <span class="c1"># Example:</span>
 mount-overlay<span class="w"> </span>-o<span class="w"> </span>overlay1.ext3<span class="w"> </span>-o<span class="w"> </span>overlay2.ext3
@@ -302,7 +302,7 @@ subsequent overlays will not be allowed.</p>
 <p>To run a command with the overlay mounted, use the <code class="docutils literal notranslate"><span class="pre">run-overlay</span></code> command. This command takes the
 name of the overlay file and a command file as arguments. You can specify multiple overlays by
 using the <code class="docutils literal notranslate"><span class="pre">-o</span></code> option multiple times. The usage is as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run-overlay<span class="w"> </span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span>...<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>&lt;command-file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run-overlay<span class="w"> </span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span>...<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>&lt;path-to-container&gt;<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>&lt;command-file&gt;
 
 <span class="c1"># Example:</span>
 run-overlay<span class="w"> </span>-o<span class="w"> </span>overlay1.ext3<span class="w"> </span>-o<span class="w"> </span>overlay2.ext3<span class="w"> </span>-f<span class="w"> </span>file1.txt
@@ -310,6 +310,13 @@ run-overlay<span class="w"> </span>-o<span class="w"> </span>overlay1.ext3<span 
 </div>
 <p>The above example will run the commands present in <code class="docutils literal notranslate"><span class="pre">file1.txt</span></code> with the overlays <code class="docutils literal notranslate"><span class="pre">overlay1.ext3</span></code>
 and <code class="docutils literal notranslate"><span class="pre">overlay2.ext3</span></code> mounted simultaneously.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Custom Container
+You can also use your own base containers
+with <code class="docutils literal notranslate"><span class="pre">mount-overlay</span></code> and <code class="docutils literal notranslate"><span class="pre">run-overlay</span></code> commands with <code class="docutils literal notranslate"><span class="pre">-c</span></code>
+option to override the default container.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you need finer control over the overlay, you can directly use the underlying Singularity
