@@ -35,7 +35,7 @@ Following are the steps which need to be followed to install an application usin
 .. Note::
 
 	The number of files quota usually gets filled up very quickly, if you use conda/pip environment as they generate a large number of residual files. They don't remove them automatically and 
-	hence stay in your $HOME affecting your files quota. 
+	hence stay in your $SCRATCH affecting your files quota. 
 
 	We recommend you to clean your conda/pip cache files (if any). This cleaning up of cache files is very easy and needs only a single command to be run.
 
