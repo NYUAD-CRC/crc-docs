@@ -172,23 +172,6 @@ Partitions Summary
 			
 
 		- grace period of 30 mins
-	*	- 
-		- 
-		- preempt-gpu
-		- (1,16)
-		- 7 days
-		- 12
-		- 
-			.. code-block:: bash
-
-				#SBATCH -p preempt
-				#SBATCH -n 14
-				#SBATCH --gres=gpu:3
-				#SBATCH -t 20:00:00
-		
-			
-
-		- grace period of 30 mins Max GPUs:8
     	
     	
 Sample Job Script
