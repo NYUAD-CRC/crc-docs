@@ -252,7 +252,7 @@ hence stay in your $SCRATCH affecting your files quota.</p>
 <div class="section" id="managing-environments">
 <span id="managing-envs"></span><h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this heading">¶</a></h2>
 <p><strong>Create a Local Environment</strong></p>
-<p>The below command creates a conda environment in your <code class="docutils literal notranslate"><span class="pre">$SCRATCH/conda-envs</span></code> if you have followed the <a class="reference internal" href="#one-time-setup"><span class="std std-ref">One Time Setup</span></a> instructions described above else the environments will be created in your home (which is not recommended as <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> quota is limited).</p>
+<p>The below command creates a conda environment in your <code class="docutils literal notranslate"><span class="pre">$HOME/NetID/.conda/envs/</span></code> by default if you have followed the <a class="reference internal" href="#one-time-setup"><span class="std std-ref">One Time Setup</span></a> instructions described above.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#conda create -n &lt;name of the env&gt;</span>
 
 <span class="c1">#example:</span>
