@@ -54,7 +54,7 @@ Managing Environments
 
 **Create a Local Environment**
 
-The below command creates a conda environment in your ``$SCRATCH/conda-envs`` if you have followed the :ref:`One Time Setup <one_time_setup>` instructions described above else the environments will be created in your home (which is not recommended as ``$HOME`` quota is limited).   
+The below command creates a conda environment in your ``$HOME/NetID/.conda/envs/`` by default if you have followed the :ref:`One Time Setup <one_time_setup>` instructions described above.   
 
 .. code-block:: bash
 
