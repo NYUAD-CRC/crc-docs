@@ -16,7 +16,7 @@ Kindly follow below steps needed for the HPC collaboration:
     
  	 c. It should be sent back to us with all required information.(jubail.admins@nyu.edu)
     
-    2. A NetID may be requested/reactivated using this `page <https://identity.it.nyu.edu/>`__ (Make sure you are connected to :doc:`NYU VPN</hpc/help/linux_vpn>`)
+    2. A NetID may be requested/reactivated by the sponsor using this `page <https://identity.it.nyu.edu/>`__ (Make sure you are connected to :doc:`NYU VPN</hpc/help/linux_vpn>`)
     
    	 a. Date of birth and mobile number of the collaborator is required.
     
