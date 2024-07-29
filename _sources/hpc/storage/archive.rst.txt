@@ -36,7 +36,7 @@ There are two quota constraints:
 Once you reach a quota limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
 will generate a lot of data.
 
-We urge our users to clean up their ``$SCRATCH`` storage regularily.
+We urge our users to clean up their ``$SCRATCH`` storage regularly.
 
 Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. 
 
@@ -65,7 +65,7 @@ The archive processes are described below in the form of a flowchart.
 
 - **Process 1 :** The data in the Tape drive is synced with the storage every 12 hours, so that a copy of the 
   files is available on the Tape drive as well.
-- **Process 2 :** Once the usage of the total storage hits 80% , the system atomatically frees up space by keeping only 
+- **Process 2 :** Once the usage of the total storage hits 80% , the system automatically frees up space by keeping only 
   a copy of the file on the tape drive (which can be retrieved later).
 - The freeing up of space is in accordance with the access timestamp of the files which are oldest. 
 
@@ -127,7 +127,7 @@ some are in the ``archived state``.
 How to Archive and De Archive
 ------------------------------
 
-.. image:: /hpc/img/archive1.jpg
+.. image:: /hpc/img/archive3.png
 
 The above figure shows the following:
 
@@ -197,7 +197,7 @@ A simple dearchiving would have the following steps:
   from/to  ``/archive``. While copying out from archive, the rest of the ``dmfget`` command would be automatically handled in the background and
   hence the time taken for the moving out would depend on the state of the file (released/exists).
 
-  Any operation performed on the archive files would first auto trasnfer the file to the ``exists archived state`` before
+  Any operation performed on the archive files would first auto transfer the file to the ``exists archived state`` before
   performing the operation.
 
 
@@ -248,7 +248,7 @@ Summary
             
             rsync <source-dir> <dest-dir>
 
-      - Usual commands like rsync and cp can be used to copy out from ``/archive``. The dmfget would be handled in the backgroound.
+      - Usual commands like rsync and cp can be used to copy out from ``/archive``. The dmfget would be handled in the background.
 
 Best Practices
 --------------

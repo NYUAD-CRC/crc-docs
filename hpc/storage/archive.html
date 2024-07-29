@@ -247,7 +247,7 @@ for more than 90 days.</p>
 </dl>
 <p>Once you reach a quota limit your jobs may be killed. So it is a good practice to check your quota before submitting a job that
 will generate a lot of data.</p>
-<p>We urge our users to clean up their <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> storage regularily.</p>
+<p>We urge our users to clean up their <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> storage regularly.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">myquota</span></code> command in the terminal on the HPC to check your current usage and quota.</p>
 <p>Example output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="n">DISK</span> <span class="n">SPACE</span>                <span class="c1"># FILES (1000&#39;s)</span>
@@ -271,7 +271,7 @@ will generate a lot of data.</p>
 </li>
 <li><p><strong>Process 1 :</strong> The data in the Tape drive is synced with the storage every 12 hours, so that a copy of the
 files is available on the Tape drive as well.</p></li>
-<li><p><strong>Process 2 :</strong> Once the usage of the total storage hits 80% , the system atomatically frees up space by keeping only
+<li><p><strong>Process 2 :</strong> Once the usage of the total storage hits 80% , the system automatically frees up space by keeping only
 a copy of the file on the tape drive (which can be retrieved later).</p></li>
 <li><p>The freeing up of space is in accordance with the access timestamp of the files which are oldest.</p></li>
 </ul>
@@ -324,7 +324,7 @@ some are in the <code class="docutils literal notranslate"><span class="pre">arc
 </div>
 <div class="section" id="how-to-archive-and-de-archive">
 <h2>How to Archive and De Archive<a class="headerlink" href="#how-to-archive-and-de-archive" title="Permalink to this heading">¶</a></h2>
-<img alt="../../_images/archive1.jpg" src="../../_images/archive1.jpg" />
+<img alt="../../_images/archive3.png" src="../../_images/archive3.png" />
 <p>The above figure shows the following:</p>
 <ul class="simple">
 <li><p>The data from <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> or <code class="docutils literal notranslate"><span class="pre">/home</span></code> can be moved/copied to <code class="docutils literal notranslate"><span class="pre">/archive</span></code> using the usual unix
@@ -397,7 +397,7 @@ the file is now back in the storage and in the <code class="docutils literal not
 <p>A user can simply use the standard unix utilities like <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, <code class="docutils literal notranslate"><span class="pre">cp</span></code> etc. to copy in or out the data
 from/to  <code class="docutils literal notranslate"><span class="pre">/archive</span></code>. While copying out from archive, the rest of the <code class="docutils literal notranslate"><span class="pre">dmfget</span></code> command would be automatically handled in the background and
 hence the time taken for the moving out would depend on the state of the file (released/exists).</p>
-<p>Any operation performed on the archive files would first auto trasnfer the file to the <code class="docutils literal notranslate"><span class="pre">exists</span> <span class="pre">archived</span> <span class="pre">state</span></code> before
+<p>Any operation performed on the archive files would first auto transfer the file to the <code class="docutils literal notranslate"><span class="pre">exists</span> <span class="pre">archived</span> <span class="pre">state</span></code> before
 performing the operation.</p>
 </div>
 </div>
@@ -452,7 +452,7 @@ performing the operation.</p>
 </pre></div>
 </div>
 </td>
-<td><p>Usual commands like rsync and cp can be used to copy out from <code class="docutils literal notranslate"><span class="pre">/archive</span></code>. The dmfget would be handled in the backgroound.</p></td>
+<td><p>Usual commands like rsync and cp can be used to copy out from <code class="docutils literal notranslate"><span class="pre">/archive</span></code>. The dmfget would be handled in the background.</p></td>
 </tr>
 </tbody>
 </table>
