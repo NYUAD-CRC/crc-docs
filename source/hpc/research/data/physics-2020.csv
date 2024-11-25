@@ -1,19 +1,23 @@
-,"Title", "Authors/Co-Authors"
-"1","`NIHAO–XXIII. Dark matter density shaped by black hole feedback <https://academic.oup.com/mnrasl/article-abstract/495/1/L46/5817315>`_","Andrea V Macciò"
-"2","`Stellar Proton Event-induced surface radiation dose as a constraint on the habitability of terrestrial exoplanets <https://academic.oup.com/mnrasl/article-abstract/492/1/L28/5612190>`_","Dimitra Atri"
-"3","`Plucking the Web: Searching Unidentified Gamma-ray Sources for Spider Pulsars using Jerksearch Algorithm <https://ui.adsabs.harvard.edu/abs/2020AAS...23530217T/abstract>`_","Shawaiz Tabassum"
-"4","`Simulations of satellite tidal debris in the Milky Way halo <https://www.aanda.org/articles/aa/abs/2020/04/aa37558-20/aa37558-20.html>`_","Andrea V Macciò"
-"5","`NIHAO-UHD: the properties of MW-like stellar discs in high-resolution cosmological simulations <https://academic.oup.com/mnras/article-abstract/491/3/3461/5634276>`_","Andrea V Macciò"
-"6","`The Dekel+ profile: a mass-dependent dark-matter density profile with flexible inner slope and analytic potential, velocity dispersion, and lensing properties <https://arxiv.org/abs/2004.08395>`_","Andrea V Macciò"
-"7","`The Ultraluminous X-ray sources population of the galaxy NGC 7456 <https://iopscience.iop.org/article/10.3847/1538-4357/ab6ffd/meta>`_","Federico Bernardini"
-"8","`On the origin of the chemical bimodality of disc stars: a tale of merger and migration <https://academic.oup.com/mnras/article-abstract/491/4/5435/5643926>`_","Tobias Buck"
-"9","`Detection of exomoons in simulated light curves with a regularized convolutional neural network <http://scholar.google.com/scholar_url?url=https://arxiv.org/pdf/2005.13035&hl=en&sa=X&d=10664625602253242554&scisig=AAGBfm2PhpIfoAA7HD8UDqrskecNj8OERw&nossl=1&oi=scholaralrt&hist=WPoU9MQAAAAJ:610903001825142744:AAGBfm3RWSP-esz9Wtc-qwpMNA4g0usriA>`_","Rasha Alshehhi"
-"10","`Deep Regression for Imaging Solar Magnetograms Using Pyramid Generative Adversarial Networks <https://openaccess.thecvf.com/content_CVPRW_2020/papers/w11/Alshehhi_Deep_Regression_for_Imaging_Solar_Magnetograms_Using_Pyramid_Generative_Adversarial_CVPRW_2020_paper.pdf>`_","Rasha Alshehhi"
-"11","`NIHAO XXVI: Nature versus nurture, the Star Formation Main Sequence and the origin of its scatter <https://arxiv.org/pdf/2008.13379.pdf>`_","Marvin Blank"
-"12","`The Dekel-Zhao profile: a mass-dependent dark-matter density profile with flexible inner slope and analytic potential, velocity dispersion, and lensing properties <https://academic.oup.com/mnras/article/499/2/2912/5904776?login=true>`_","Andrea V. Macciò"
-"13","`Gamma Ray Bursts: Not so Much Deadlier than We Thought <https://arxiv.org/ftp/arxiv/papers/2009/2009.14078.pdf>`_","Dimitra Atri"
-"14","`Exploring the origin of low-metallicity stars in Milky Way-like galaxies with the NIHAO-UHD simulations <https://arxiv.org/pdf/2009.14207.pdf>`_","Andrea V. Macciò"
-"15","`Creating a galaxy lacking dark matter in a dark matter dominated universe <https://arxiv.org/pdf/2010.02245.pdf>`_","Andrea V. Macciò"
-"16","`Helioseismic finite-frequency sensitivity kernels for flows in spherical geometry including systematic effects <https://arxiv.org/pdf/2011.02180.pdf>`_","Jishnu Bhattacharya"
-"17","`Modeling Solar Proton Event-induced Martian Surface Radiation Dose <https://arxiv.org/pdf/2012.00568.pdf>`_","Dimitra Atri"
+,Title,Authors/Co-Authors
+1,`NIHAO–XXIII. Dark matter density shaped by black hole feedback <https://academic.oup.com/mnrasl/article-abstract/495/1/L46/5817315>`_,Andrea V Macciò
+2,`Stellar Proton Event-induced surface radiation dose as a constraint on the habitability of terrestrial exoplanets <https://academic.oup.com/mnrasl/article-abstract/492/1/L28/5612190>`_,Dimitra Atri
+3,`Plucking the Web: Searching Unidentified Gamma-ray Sources for Spider Pulsars using Jerksearch Algorithm <https://ui.adsabs.harvard.edu/abs/2020AAS...23530217T/abstract>`_,Shawaiz Tabassum
+4,`Simulations of satellite tidal debris in the Milky Way halo <https://www.aanda.org/articles/aa/abs/2020/04/aa37558-20/aa37558-20.html>`_,Andrea V Macciò
+5,`NIHAO-UHD: the properties of MW-like stellar discs in high-resolution cosmological simulations <https://academic.oup.com/mnras/article-abstract/491/3/3461/5634276>`_,Andrea V Macciò
+6,"`The Dekel+ profile: a mass-dependent dark-matter density profile with flexible inner slope and analytic potential, velocity dispersion, and lensing properties <https://arxiv.org/abs/2004.08395>`_",Andrea V Macciò
+7,`The Ultraluminous X-ray sources population of the galaxy NGC 7456 <https://iopscience.iop.org/article/10.3847/1538-4357/ab6ffd/meta>`_,Federico Bernardini
+8,`On the origin of the chemical bimodality of disc stars: a tale of merger and migration <https://academic.oup.com/mnras/article-abstract/491/4/5435/5643926>`_,Tobias Buck
+9,`Detection of exomoons in simulated light curves with a regularized convolutional neural network <http://scholar.google.com/scholar_url?url=https://arxiv.org/pdf/2005.13035&hl=en&sa=X&d=10664625602253242554&scisig=AAGBfm2PhpIfoAA7HD8UDqrskecNj8OERw&nossl=1&oi=scholaralrt&hist=WPoU9MQAAAAJ:610903001825142744:AAGBfm3RWSP-esz9Wtc-qwpMNA4g0usriA>`_,Rasha Alshehhi
+10,`Deep Regression for Imaging Solar Magnetograms Using Pyramid Generative Adversarial Networks <https://openaccess.thecvf.com/content_CVPRW_2020/papers/w11/Alshehhi_Deep_Regression_for_Imaging_Solar_Magnetograms_Using_Pyramid_Generative_Adversarial_CVPRW_2020_paper.pdf>`_,Rasha Alshehhi
+11,"`NIHAO XXVI: Nature versus nurture, the Star Formation Main Sequence and the origin of its scatter <https://arxiv.org/pdf/2008.13379.pdf>`_",Marvin Blank
+12,"`The Dekel-Zhao profile: a mass-dependent dark-matter density profile with flexible inner slope and analytic potential, velocity dispersion, and lensing properties <https://academic.oup.com/mnras/article/499/2/2912/5904776?login=true>`_",Andrea V. Macciò
+13,`Gamma Ray Bursts: Not so Much Deadlier than We Thought <https://arxiv.org/ftp/arxiv/papers/2009/2009.14078.pdf>`_,Dimitra Atri
+14,`Exploring the origin of low-metallicity stars in Milky Way-like galaxies with the NIHAO-UHD simulations <https://arxiv.org/pdf/2009.14207.pdf>`_,Andrea V. Macciò
+15,`Creating a galaxy lacking dark matter in a dark matter dominated universe <https://arxiv.org/pdf/2010.02245.pdf>`_,Andrea V. Macciò
+16,`Helioseismic finite-frequency sensitivity kernels for flows in spherical geometry including systematic effects <https://arxiv.org/pdf/2011.02180.pdf>`_,Jishnu Bhattacharya
+17,`Modeling Solar Proton Event-induced Martian Surface Radiation Dose <https://arxiv.org/pdf/2012.00568.pdf>`_,Dimitra Atri
 18,`Solar Rossby waves observed in GONG++ ring-diagram flow maps <https://arxiv.org/abs/2002.01194>`_,Chris Hanson
+19,`NIHAO – XXV. Convergence in the cusp-core transformation of cold dark matter haloes at high star formation thresholds <https://academic.oup.com/mnras/article/499/2/2648/5917088>`_,Andrea V. Macciò
+20,`Fluctuations in galactic bar parameters due to bar–spiral interaction  <https://academic.oup.com/mnras/article/497/1/933/5869255>`_,Tobias Buck
+21,`Abundance matching tested on small scales with galaxy dynamics <https://academic.oup.com/mnrasl/article/496/1/L101/5841209>`_,Andrea V. Macciò
+22,`A model for core formation in dark matter haloes and ultra-diffuse galaxies by outflow episodes <https://academic.oup.com/mnras/article/491/3/4523/5643939>`_,Andrea V. Macciò
