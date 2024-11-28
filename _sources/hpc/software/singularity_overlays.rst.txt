@@ -221,7 +221,7 @@ commands directly, you can modify the job script as follows:
 
     singularity \
         exec --overlay $overlay_ext3:ro \
-        /share/apps/jubail/singularity-images/centos-8.2.2004.sif  \
+        /share/apps/admin/singularity-images/centos-8.2.2004.sif  \
         /bin/bash -c "source ~/.bashrc; \
                     conda activate /opt/conda-envs/myenv; \
                     python <path_to_python_script_file>.py "
