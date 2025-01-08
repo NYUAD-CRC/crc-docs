@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Conda with Overlay &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="R in HPC Miniconda" href="r_hpc_miniconda.html" />
+    <link rel="prev" title="Singularity Overlays" href="singularity_overlays.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/index.html">Storage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#software-modules-and-environment">Software Modules and environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#hpc-miniconda">HPC Miniconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#matlab">Matlab</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#singularity">Singularity</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="singularity.html">Singularity Containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_commands.html">Singularity - How to Run on HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity_overlays.html">Singularity Overlays</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Conda with Overlay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-conda-overlay">Creating a Conda Overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-an-overlay">Mounting an Overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-the-conda-environment-in-the-overlay">Managing the Conda Environment in the Overlay</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Software</a> &raquo;</li>
+        
+      <li>Conda with Overlay</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conda-with-overlay">
+<h1>Conda with Overlay<a class="headerlink" href="#conda-with-overlay" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://crc-docs.abudhabi.nyu.edu/hpc/software/hpc_miniconda.html#miniconda-on-the-hpc/">Conda</a> environments allow users to create customizable, portable work environments and dependencies to support specific packages or versions of software for research. Common conda distributions include Anaconda, Miniconda and <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a>. Packages are available via “channels”. Popular channels include “conda-forge” and “bioconda”.
+This section describes using Miniforge which sets “conda-forge” as the package channel, inside an overlay.</p>
+<p>An <a class="reference external" href="https://crc-docs.abudhabi.nyu.edu/hpc/software/singularity_overlays.html">Overlay</a> is simply a directory or a filesystem image which sits on top of a <a class="reference external" href="https://crc-docs.abudhabi.nyu.edu/hpc/software/singularity.html">Singularity Container</a>.
+As a user you can benefit from the overlays in the following ways:</p>
+<ul class="simple">
+<li><p>You have too many conda environments eating up your number of files limit</p></li>
+<li><p>You would like to share your environments (R,conda,etc) with your collaborators with no installation required.</p></li>
+</ul>
+<div class="section" id="creating-a-conda-overlay">
+<h2>Creating a Conda Overlay<a class="headerlink" href="#creating-a-conda-overlay" title="Permalink to this heading">¶</a></h2>
+<p>To create an overlay with conda, use the <code class="docutils literal notranslate"><span class="pre">create-overlay-conda</span></code> command. This command takes the size of the overlay in
+megabytes and the number of files as arguments. The usage is as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">create-overlay-conda -s &lt;size-in-Megabytes&gt; -n &lt;number-of-files-in-1000&#39;s&gt; [ -o &lt;name-of-overlay&gt; ]</span>
+
+<span class="gp"># </span>Example:
+<span class="go">create-overlay-conda -s 7000 -n 700</span>
+</pre></div>
+</div>
+<p>The above example will create an overlay by the name <code class="docutils literal notranslate"><span class="pre">overlay-7000M-700K.ext3</span></code> of 7000MB capacity with a
+number of file limit of 700K.
+The overlay will be named <code class="docutils literal notranslate"><span class="pre">overlay-&lt;size&gt;M-&lt;numfiles&gt;K.ext3</span></code> by default. It can be customized by specifying
+the name with <code class="docutils literal notranslate"><span class="pre">-o</span></code> argument.</p>
+<p>A sample output of the <code class="docutils literal notranslate"><span class="pre">create-overlay-conda</span></code> command is shown below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">[fatema@login4 test-overlay-conda]$ </span>create-overlay-conda<span class="w"> </span>-s<span class="w"> </span><span class="m">7000</span><span class="w"> </span>-n<span class="w"> </span><span class="m">700</span><span class="w"> </span>-o<span class="w"> </span>overlay-with-conda
+<span class="go">======================</span>
+<span class="gp"># </span>Overlay<span class="w"> </span>Info<span class="w">       </span><span class="c1">#</span>
+<span class="go">======================</span>
+<span class="go">Overlay Size: 7000M</span>
+<span class="go">No. of Files limit: 700K</span>
+<span class="go">Name of Overlay: overlay-with-conda.ext3</span>
+<span class="go">======================</span>
+<span class="gp"># </span>Creating<span class="w"> </span>overlay<span class="w">   </span><span class="c1">#</span>
+<span class="go">======================</span>
+<span class="go">6965945344 bytes (7.0 GB, 6.5 GiB) copied, 26 s, 268 MB/s</span>
+<span class="go">7000000+0 records in</span>
+<span class="go">7000000+0 records out</span>
+<span class="go">7168000000 bytes (7.2 GB, 6.7 GiB) copied, 26.7555 s, 268 MB/s</span>
+<span class="go">mke2fs 1.45.4 (23-Sep-2019)</span>
+<span class="go">Discarding device blocks: done</span>
+<span class="go">Creating filesystem with 1750000 4k blocks and 700704 inodes</span>
+<span class="go">Filesystem UUID: 5a9d4e59-4c09-42d4-a31b-b2af371084eb</span>
+<span class="go">Superblock backups stored on blocks:</span>
+<span class="go">        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</span>
+
+<span class="go">Allocating group tables: done</span>
+<span class="go">Writing inode tables: done</span>
+<span class="go">Creating journal (16384 blocks): done</span>
+<span class="go">Copying files into the device: done</span>
+<span class="go">Writing superblocks and filesystem accounting information: done</span>
+
+<span class="go">====================</span>
+<span class="gp">#      </span>Done<span class="w">  </span><span class="c1">#</span>
+<span class="go">====================</span>
+<span class="go">Finished creating overlay. It is located in /scratch/fatema/test-overlay-conda/overlay-with-conda.ext3</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Please make sure the &lt;size-in-Megabytes&gt; is appropriate to accommodate the size of the conda.</p>
+</div>
+</div>
+<div class="section" id="mounting-an-overlay">
+<h2>Mounting an Overlay<a class="headerlink" href="#mounting-an-overlay" title="Permalink to this heading">¶</a></h2>
+<p>To mount an overlay, use the <code class="docutils literal notranslate"><span class="pre">mount-overlay</span></code> command. This command takes the name of the overlay file
+as an argument.
+The usage is as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount-overlay<span class="w"> </span>-o<span class="w"> </span>&lt;name-of-overlay&gt;<span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>&lt;path-to-container&gt;<span class="o">]</span>...
+
+<span class="c1"># Example:</span>
+mount-overlay<span class="w"> </span>-o<span class="w"> </span>overlay-7000M-700K.ext3
+</pre></div>
+</div>
+</div>
+<div class="section" id="managing-the-conda-environment-in-the-overlay">
+<h2>Managing the Conda Environment in the Overlay<a class="headerlink" href="#managing-the-conda-environment-in-the-overlay" title="Permalink to this heading">¶</a></h2>
+<p>Activate your conda environment with the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/ext3/env.sh
+</pre></div>
+</div>
+<p>Now that your environment is activated, to confirm that your environment is appropriately referencing your Miniforge installation, try out the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>which<span class="w"> </span>conda
+<span class="c1"># output: /ext3/miniforge3/bin/conda</span>
+which<span class="w"> </span>python
+<span class="c1"># output: /ext3/miniforge3/bin/python</span>
+python<span class="w"> </span>--version
+<span class="c1"># output: Python 3.12.8</span>
+which<span class="w"> </span>pip
+<span class="c1"># output: /ext3/miniforge3/bin/pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="r_hpc_miniconda.html" class="btn btn-neutral float-right" title="R in HPC Miniconda" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="singularity_overlays.html" class="btn btn-neutral float-left" title="Singularity Overlays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2025, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
