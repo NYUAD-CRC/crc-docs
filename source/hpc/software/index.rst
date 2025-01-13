@@ -62,6 +62,7 @@ Singularity
    /hpc/software/singularity
    /hpc/software/singularity_commands
    /hpc/software/singularity_overlays
+   /hpc/software/conda_with_overlay
 
 Miscellaneous
 ----------------------
