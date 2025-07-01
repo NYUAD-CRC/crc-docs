@@ -24,16 +24,12 @@ High Performance Computing
 
     * - Name
       - Position
-    * - **Benoit Marchand**
-      - Senior Computational Scientist
     * - **Jorge Naranjo**
       - Senior Computational Scientist
     * - **Waqqas Zia**
+      - HPC Computational Scientist
+    * - **Mennatallah Samier Saleh**
       - HPC Applicaions Specialist
-    * - **Mennatallah Saleh**
-      - HPC Applicaions Specialist
-    * - **Fatema Alhajeri**
-      - Junior HPC Applications Specialist
       
 
 **HPC System Administrators**
@@ -44,11 +40,11 @@ High Performance Computing
 
     * - Name
       - Position
-    * - **Hendra Adiwijaja**
-      - Senior HPC System Administrator
     * - **Simon Johny**
       - HPC Storage System Administrator
     * - **Fayizal Kunhi**
+      - HPC System Administrator
+    * - **Abhishek Kumar Sharma**
       - HPC System Administrator
 
 
@@ -92,5 +88,7 @@ Data Science
     * - Name
       - Position
     * - **Karunakar Reddy Mannem**
+      - Research Data Scientist
+    * - **Dhanu Jhala**
       - Research Data Scientist
 
