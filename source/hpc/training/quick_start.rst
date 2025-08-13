@@ -71,9 +71,9 @@ Partitions Summary
 	*	- 
 		- 
 		- Medium	
-		- (28,512)
+		- (1,512)
 		- 7 days
-		- 20
+		- 10
 		- 
 			.. code-block:: bash
 
@@ -84,8 +84,8 @@ Partitions Summary
 		- 
 		- Large
 		- (256,2048) 
-		- 2 days
-		- 6
+		- 7 days
+		- 7
 		- 
 			.. code-block:: bash
 
@@ -96,8 +96,8 @@ Partitions Summary
 		- 
 		- XLarge
 		- (1024,4096) 
-		- 2 days
-		- 3
+		- 7 days
+		- 5
 		- 
 			.. code-block:: bash
 
@@ -108,9 +108,9 @@ Partitions Summary
 	*	- 2
 		- ``nvidia``
 		- GPU
-		- (1,80)
+		- (1,512)
 		- 4 days
-		- 8
+		- 12
 		- 
 			.. code-block:: bash
 
@@ -118,11 +118,11 @@ Partitions Summary
 				#SBATCH --gres=gpu:1
 
 
-		- Max GPUs:8
+		- Max GPUs:12
 	*	- 3
 		- ``bigmem``
 		- Large Memory Jobs
-		- (1,40)
+		- (1,56)
 		- 4 days
 		- 2
 		- 
@@ -172,7 +172,11 @@ Partitions Summary
 			
 
 		- grace period of 30 mins
-    	
+
+.. note::
+	Kindly be advised that the resource and job limits mentioned above are indicative and subject to change based on resource utilization and availability.
+
+
     	
 Sample Job Script
 ------------------
@@ -191,7 +195,7 @@ A job script consists of 2 parts:
 .. admonition:: Difference between CPUs,Cores and Tasks
 
 	- On Jubail HPC, One CPU is equivalent to one Core. Jubail also has 128 CPUs per node.
-	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--natsks``. 
+	- In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by ``-n`` or ``--ntasks``. 
 	- By Default, the value of ``-n`` or ``--ntasks`` is one if left undefined.
 	- By Default, Each task is equivalent to one CPU.
 	- But if you have defined ``-c`` or ``--cpus-per-task`` in your job script, then the total number of CPUs allocated to you would be the multiple of ``-n`` and ``-c``.
