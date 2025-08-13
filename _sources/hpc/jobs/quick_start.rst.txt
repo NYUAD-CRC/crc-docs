@@ -71,9 +71,9 @@ Partitions Summary
 	*	- 
 		- 
 		- Medium	
-		- (28,512)
+		- (1,512)
 		- 7 days
-		- 20
+		- 10
 		- 
 			.. code-block:: bash
 
@@ -84,8 +84,8 @@ Partitions Summary
 		- 
 		- Large
 		- (256,2048) 
-		- 2 days
-		- 6
+		- 7 days
+		- 7
 		- 
 			.. code-block:: bash
 
@@ -96,8 +96,8 @@ Partitions Summary
 		- 
 		- XLarge
 		- (1024,4096) 
-		- 2 days
-		- 3
+		- 7 days
+		- 5
 		- 
 			.. code-block:: bash
 
@@ -108,9 +108,9 @@ Partitions Summary
 	*	- 2
 		- ``nvidia``
 		- GPU
-		- (1,160)
+		- (1,512)
 		- 4 days
-		- 10
+		- 12
 		- 
 			.. code-block:: bash
 
@@ -122,7 +122,7 @@ Partitions Summary
 	*	- 3
 		- ``bigmem``
 		- Large Memory Jobs
-		- (1,40)
+		- (1,56)
 		- 4 days
 		- 2
 		- 

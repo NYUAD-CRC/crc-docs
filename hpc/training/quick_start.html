@@ -74,6 +74,9 @@
           </a>
 
           
+            
+            
+          
 
           
 <div role="search">
@@ -289,9 +292,9 @@
 <tr class="row-even"><td></td>
 <td></td>
 <td><p>Medium</p></td>
-<td><p>(28,512)</p></td>
+<td><p>(1,512)</p></td>
 <td><p>7 days</p></td>
-<td><p>20</p></td>
+<td><p>10</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
 <span class="c1">#SBATCH -n 56</span>
 </pre></div>
@@ -303,8 +306,8 @@
 <td></td>
 <td><p>Large</p></td>
 <td><p>(256,2048)</p></td>
-<td><p>2 days</p></td>
-<td><p>6</p></td>
+<td><p>7 days</p></td>
+<td><p>7</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
 <span class="c1">#SBATCH -n 1024</span>
 </pre></div>
@@ -316,8 +319,8 @@
 <td></td>
 <td><p>XLarge</p></td>
 <td><p>(1024,4096)</p></td>
-<td><p>2 days</p></td>
-<td><p>3</p></td>
+<td><p>7 days</p></td>
+<td><p>5</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p compute</span>
 <span class="c1">#SBATCH -n 4000</span>
 </pre></div>
@@ -328,20 +331,20 @@
 <tr class="row-odd"><td><p>2</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nvidia</span></code></p></td>
 <td><p>GPU</p></td>
-<td><p>(1,80)</p></td>
+<td><p>(1,512)</p></td>
 <td><p>4 days</p></td>
-<td><p>8</p></td>
+<td><p>12</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
 <span class="c1">#SBATCH --gres=gpu:1</span>
 </pre></div>
 </div>
 </td>
-<td><p>Max GPUs:8</p></td>
+<td><p>Max GPUs:12</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bigmem</span></code></p></td>
 <td><p>Large Memory Jobs</p></td>
-<td><p>(1,40)</p></td>
+<td><p>(1,56)</p></td>
 <td><p>4 days</p></td>
 <td><p>2</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p bigmem</span>
@@ -390,6 +393,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Kindly be advised that the resource and job limits mentioned above are indicative and subject to change based on resource utilization and availability.</p>
+</div>
 </div>
 <div class="section" id="sample-job-script">
 <h2>Sample Job Script<a class="headerlink" href="#sample-job-script" title="Permalink to this heading">¶</a></h2>
@@ -413,7 +420,7 @@
 <p class="admonition-title">Difference between CPUs,Cores and Tasks</p>
 <ul class="simple">
 <li><p>On Jubail HPC, One CPU is equivalent to one Core. Jubail also has 128 CPUs per node.</p></li>
-<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--natsks</span></code>.</p></li>
+<li><p>In Slurm, the resources (CPUs) are allocated in terms of tasks which are denoted by <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>.</p></li>
 <li><p>By Default, the value of <code class="docutils literal notranslate"><span class="pre">-n</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> is one if left undefined.</p></li>
 <li><p>By Default, Each task is equivalent to one CPU.</p></li>
 <li><p>But if you have defined <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> in your job script, then the total number of CPUs allocated to you would be the multiple of <code class="docutils literal notranslate"><span class="pre">-n</span></code> and <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></li>
