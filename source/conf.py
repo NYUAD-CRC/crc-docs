@@ -113,7 +113,7 @@ html_css_files = ['css/custom.css']
 # documentation.
 html_theme_options = {
     'logo_only': True,
-    'display_version': False,
+    # 'display_version': False,  # Removed because it's unsupported
     # 'style_nav_header_background':'#57068C',
 }
 
