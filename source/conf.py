@@ -113,8 +113,9 @@ html_css_files = ['css/custom.css']
 # documentation.
 html_theme_options = {
     'logo_only': True,
-    # 'display_version': False,  # Removed because it's unsupported
+    'display_version': False,
     # 'style_nav_header_background':'#57068C',
+    # 'display_version': True,  # Removed because it's unsupported
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

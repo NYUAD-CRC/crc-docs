@@ -23,11 +23,13 @@ How do containers differ from virtual machines (VMs)
 Containers and VMs are both types of virtualization. But it's important to understand the differences between the two and know when to use each.
 
 Virtual Machines install every last bit of an operating system (OS) right down to the core software that allows the OS to control the hardware (called the kernel). This means that VMs:
+
 * Are complete in the sense that you can use a VM to interact with your computer via a different OS.
 * Are extremely flexible. For instance you install a Windows VM on a Mac using software like VirtualBox.
 * Are slow and resource hungry. Every time you start a VM it has to bring up an entirely new OS.
 
-Containers share a kernel with the host OS. This means that Containers:
+Containers share a kernel with the host OS, which means that Containers:
+
 * Are less flexible than VMs. For example, a Linux container must be run on a Linux host OS. (Although you can mix and match distributions.) In practice, containers are only extensively developed on Linux.
 * Are much faster and lighter weight than VMs. A container may be just a few MB.
 * Start and stop quickly and are suitable for running single apps.
@@ -140,7 +142,7 @@ Using docker and singularity images from existing container libraries
 	# pulls the latest GCC container and saves in current working directory
 	singularity pull docker://gcc                      
 	
-If you prefer to pull a specific GCC version, look at the `available tags <https://hub.docker.com/r/library/gcc/tags/>`__ for the specific container and append the tag version to the end of the container name. For example, if you need to pull the ``GCC v 5.3.0``
+If you prefer to pull a specific GCC version, look at the `available tags <https://hub.docker.com/r/library/gcc/tags/>`__ for the specific container and append the tag version to the end of the container name. For example, if you need to pull the ``GCC v 8.3.0``
 
 .. code-block:: bash
 
