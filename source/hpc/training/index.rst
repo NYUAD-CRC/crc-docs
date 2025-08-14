@@ -18,15 +18,15 @@ There are essentially four important components a HPC user needs to be familiar 
 
     *   - Component
         - Description
-    *   - :doc:`System </hpc/system/index>`
+    *   - :doc:`System </hpc/training/system>`
         - More about the system hardware and how to access it.
-    *   - :doc:`Storage </hpc/storage/index>`
+    *   - :doc:`Storage </hpc/training/storage>`
         - Page about user quotas and different types of storage available (``$SCRATCH``, ``$HOME``, ``$ARCHIVE``).
-    *   - :doc:`Software </hpc/software/index>`
+    *   - :doc:`Software </hpc/training/software>`
         - More about the software stack and modules, and what it offers you in terms of your application (MPI,Python,R,Singularity)
-    *   - :doc:`Jobs Management </hpc/jobs/index>`
+    *   - :doc:`Jobs Management </hpc/training/quick_start>`
         - Section containing details of Job submission
-    *   - :doc:`HPC Web Interface </hpc/ood/index>`
+    *   - :doc:`HPC Web Interface </hpc/training/ood>`
         - An interactive interface to remote computing resources    
 
 We shall have a brief introduction to each of the components below.
