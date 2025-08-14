@@ -126,21 +126,21 @@ GPU Nodes:
         | MEM / Node
         | (RAM)
       - | 
-        | Num GPUs
+        | GPUs / Node
       - | 
         | MEM / GPU
         | (VRAM)
       - | 
-        | GPUs / Node
+        | Num GPUs
       - | 
         | ___________Remarks___________
     * - Jubail
       - 36
       - 64 / 128
       - 512 GB
-      - 101
-      - 40 / 80
       - 1 / 2 / 3 / 4
+      - 40 / 80
+      - 101
       - | 
         | Nvidia A100
         | 
@@ -151,9 +151,9 @@ GPU Nodes:
       - 2
       - 40
       - 1 TB
-      - 16
-      - 32
       - 8
+      - 32
+      - 16
       - | 
         | Nvidia Tesla V100
         | 
@@ -162,9 +162,9 @@ GPU Nodes:
       - 11
       - 40
       - 320 GB / 384 GB
-      - 23
+      - 2
       - 32
-      - 1 / 2
+      - 22
       - | 
         | Nvidia Tesla V100
         | 
@@ -186,21 +186,21 @@ Visual Nodes:
         | MEM / Node
         | (RAM)
       - | 
-        | Num GPUs
+        | GPUs / Node
       - | 
         | MEM / GPU
         | (VRAM)
       - | 
-        | GPUs / Node
+        | Num GPUs
       - | 
         | __Remarks__
     * - Visual
       - 4
       - 32
       - 128 GB
-      - 8
-      - 8
       - 2
+      - 8
+      - 8
       - GUI Nodes
 
 
