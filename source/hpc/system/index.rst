@@ -21,12 +21,13 @@ Generic diagram of the cluster architecture and outside connectivity.
 
 Hardware
 --------
-The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-The Jubail HPC consists of more than 28K cores.
+The HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
+
+The Jubail HPC consists of more than 29K cores.
 
 * The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
-* 480GB per node.
+* 480GB usable memory per node (512 GB theoretically). Bigmem nodes consist of 1 TB theoretical memory.
 * 3.75 GB memory per core by default.
 * 128 CPU cores per node, implicits the following:
     1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
@@ -35,7 +36,8 @@ The Jubail HPC consists of more than 28K cores.
 
 The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
 
-* The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
+* The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2. There are 8 nodes with Intel(R) Xeon(R) Gold 6148 (40 CPU cores). Bigmem node CPU models are AMD EPYC 7551, Intel(R) Xeon(R) CPU E7- 8837, Intel(R) Xeon(R) CPU E7-8867 v4 
+* 112GB usable memory per node (128 GB theoretically). Bigmem nodes consist of 1 and 2 TB theoretical memory.
 * 4 GB memory per core by default.
 * 28 CPU cores per node, implicits the following:
     1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
@@ -57,54 +59,151 @@ Typical Workflow
 Summary of Nodes
 ----------------
 
-.. list-table:: 
-    :widths: auto 
+Compute Nodes:
+--------------
+.. list-table::
+    :widths: auto
     :header-rows: 1
 
-    * - Node Type
-      - Num Nodes
-      - CPUs / Node
-      - Memory / node
-      - GPUs / node
-      - Remarks
-    * - Jubail Compute
-      - 224
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - |
+        | ____________Remarks____________
+    * - Bigmem Jubail
+      - 1
       - 128
-      - 480GB
-      - None
-      - New HPC Compute nodes
-    * - Jubail Gpu
-      - 95 GPUs
-      - 64/128
-      - 480GB
-      - 1/2/3/4 (Nvidia A100)
-      - New HPC GPU nodes
-    * - Dalma Compute
-      - 428
-      - 28/40
-      - 102 GB / 480 GB
-      - None
-      - Small jobs < 28 CPUs will be sent to Dalma
-    * - Dalma GPUs
-      - 39 GPUs
-      - 40
-      - 360 GB / 1 TB
-      - 2/8 (Nvidia V100)
-      - Two nodes have 8 GPU cards each, rest of them have 2 cards each
-    * - Bigmem
-      - 5	
-      - 32/64/72/128
-      - 1 TB / 2TB	
-      - None	
-      - Used when memory requirement per node is greater than 500GB
-    * - Visual	
-      - 4	
-      - 32	
-      - 105 GB
-      - 2 (Nvidia Quadro P4000)
-      - Used for GUI 
+      - 1 TB
+      - | 
+        | AMD EPYC 7742
+        | 
+        | Memory requirement > 512 GB
+    * - Jubail
+      - 233
+      - 128
+      - 512 GB
+      - AMD EPYC 7742
+    * - Bigmem Dalma
+      - 4
+      - 32 / 64 / 72
+      - 1 TB / 2 TB
+      - | 
+        | AMD EPYC 7551
+        | 
+        | Intel(R) Xeon(R) CPU E7- 8837
+        | 
+        | Intel(R) Xeon(R) CPU E7-8867 v4
+        | 
+        | Memory requirement > 512 GB
+    * - Dalma
+      - 432
+      - 28 / 40
+      - 128 GB / 512 GB
+      - | 
+        | Intel(R) Xeon(R) CPU E5-2680 v4
+        | [Small jobs < 28 CPUs]
+        | 
+        | Intel(R) Xeon(R) Gold 6148
 
-	    
+GPU Nodes:
+--------------
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | 
+        | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - | 
+        | GPUs / Node
+      - | 
+        | MEM / GPU
+        | (VRAM)
+      - | 
+        | Num GPUs
+      - | 
+        | ___________Remarks___________
+    * - Jubail
+      - 36
+      - 64 / 128
+      - 512 GB
+      - 1 / 2 / 3 / 4
+      - 40 / 80
+      - 101
+      - | 
+        | Nvidia A100
+        | 
+        | AMD EPYC 7543
+        | 
+        | AMD EPYC 7742
+    * - Dalma 1TB
+      - 2
+      - 40
+      - 1 TB
+      - 8
+      - 32
+      - 16
+      - | 
+        | Nvidia Tesla V100
+        | 
+        | Intel(R) Xeon(R) Gold 6148 CPU
+    * - Dalma
+      - 11
+      - 40
+      - 320 GB / 384 GB
+      - 2
+      - 32
+      - 22
+      - | 
+        | Nvidia Tesla V100
+        | 
+        | Intel(R) Xeon(R) Gold 6148 CPU
+
+Visual Nodes:
+--------------
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | 
+        | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - | 
+        | GPUs / Node
+      - | 
+        | MEM / GPU
+        | (VRAM)
+      - | 
+        | Num GPUs
+      - | 
+        | __Remarks__
+    * - Visual
+      - 4
+      - 32
+      - 128 GB
+      - 2
+      - 8
+      - 8
+      - GUI Nodes
+
+
 Access
 ------
 
