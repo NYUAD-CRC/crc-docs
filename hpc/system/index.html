@@ -108,6 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#typical-workflow">Typical Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary-of-nodes">Summary of Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compute-nodes">Compute Nodes:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gpu-nodes">GPU Nodes:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visual-nodes">Visual Nodes:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access">Access</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="access_jubail.html">Access Jubail</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vscode.html">Connecting VS Code to HPC using SSH</a></li>
@@ -234,11 +237,11 @@
 </div>
 <div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this heading">¶</a></h2>
-<p>The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.</p>
-<p>The Jubail HPC consists of more than 28K cores.</p>
+<p>The HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.</p>
+<p>The Jubail HPC consists of more than 29K cores.</p>
 <ul class="simple">
 <li><p>The CPU model is AMD EPYC 7742 64-Core Processor &#64;2.25GHz,supporting AVX2.</p></li>
-<li><p>480GB per node.</p></li>
+<li><p>480GB usable memory per node (512 GB theoretically). Bigmem nodes consist of 1 TB theoretical memory.</p></li>
 <li><p>3.75 GB memory per core by default.</p></li>
 <li><dl class="simple">
 <dt>128 CPU cores per node, implicits the following:</dt><dd><ol class="arabic simple">
@@ -252,7 +255,8 @@
 </ul>
 <p>The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:</p>
 <ul class="simple">
-<li><p>The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 &#64; 2.40GHz, supporting AVX2.</p></li>
+<li><p>The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 &#64; 2.40GHz, supporting AVX2. There are 8 nodes with Intel(R) Xeon(R) Gold 6148 (40 CPU cores). Bigmem node CPU models are AMD EPYC 7551, Intel(R) Xeon(R) CPU E7- 8837, Intel(R) Xeon(R) CPU E7-8867 v4</p></li>
+<li><p>112GB usable memory per node (128 GB theoretically). Bigmem nodes consist of 1 and 2 TB theoretical memory.</p></li>
 <li><p>4 GB memory per core by default.</p></li>
 <li><dl class="simple">
 <dt>28 CPU cores per node, implicits the following:</dt><dd><ol class="arabic simple">
@@ -279,58 +283,245 @@
 </div>
 <div class="section" id="summary-of-nodes">
 <h2>Summary of Nodes<a class="headerlink" href="#summary-of-nodes" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="compute-nodes">
+<h2>Compute Nodes:<a class="headerlink" href="#compute-nodes" title="Permalink to this heading">¶</a></h2>
 <table class="colwidths-auto docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Node Type</p></th>
-<th class="head"><p>Num Nodes</p></th>
-<th class="head"><p>CPUs / Node</p></th>
-<th class="head"><p>Memory / node</p></th>
-<th class="head"><p>GPUs / node</p></th>
-<th class="head"><p>Remarks</p></th>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Node Type</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Num Nodes</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CPUs / Node</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MEM / Node</div>
+<div class="line">(RAM)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">____________Remarks____________</div>
+</div>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Jubail Compute</p></td>
-<td><p>224</p></td>
+<tr class="row-even"><td><p>Bigmem Jubail</p></td>
+<td><p>1</p></td>
 <td><p>128</p></td>
-<td><p>480GB</p></td>
-<td><p>None</p></td>
-<td><p>New HPC Compute nodes</p></td>
+<td><p>1 TB</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">AMD EPYC 7742</div>
+<div class="line"><br /></div>
+<div class="line">Memory requirement &gt; 512 GB</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>Jubail Gpu</p></td>
-<td><p>95 GPUs</p></td>
-<td><p>64/128</p></td>
-<td><p>480GB</p></td>
-<td><p>1/2/3/4 (Nvidia A100)</p></td>
-<td><p>New HPC GPU nodes</p></td>
+<tr class="row-odd"><td><p>Jubail</p></td>
+<td><p>233</p></td>
+<td><p>128</p></td>
+<td><p>512 GB</p></td>
+<td><p>AMD EPYC 7742</p></td>
 </tr>
-<tr class="row-even"><td><p>Dalma Compute</p></td>
-<td><p>428</p></td>
-<td><p>28/40</p></td>
-<td><p>102 GB / 480 GB</p></td>
-<td><p>None</p></td>
-<td><p>Small jobs &lt; 28 CPUs will be sent to Dalma</p></td>
+<tr class="row-even"><td><p>Bigmem Dalma</p></td>
+<td><p>4</p></td>
+<td><p>32 / 64 / 72</p></td>
+<td><p>1 TB / 2 TB</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">AMD EPYC 7551</div>
+<div class="line"><br /></div>
+<div class="line">Intel(R) Xeon(R) CPU E7- 8837</div>
+<div class="line"><br /></div>
+<div class="line">Intel(R) Xeon(R) CPU E7-8867 v4</div>
+<div class="line"><br /></div>
+<div class="line">Memory requirement &gt; 512 GB</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>Dalma GPUs</p></td>
-<td><p>39 GPUs</p></td>
+<tr class="row-odd"><td><p>Dalma</p></td>
+<td><p>432</p></td>
+<td><p>28 / 40</p></td>
+<td><p>128 GB / 512 GB</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Intel(R) Xeon(R) CPU E5-2680 v4</div>
+<div class="line">[Small jobs &lt; 28 CPUs]</div>
+<div class="line"><br /></div>
+<div class="line">Intel(R) Xeon(R) Gold 6148</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpu-nodes">
+<h2>GPU Nodes:<a class="headerlink" href="#gpu-nodes" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Node Type</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Num Nodes</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">CPUs / Node</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MEM / Node</div>
+<div class="line">(RAM)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">GPUs / Node</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MEM / GPU</div>
+<div class="line">(VRAM)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Num GPUs</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">___________Remarks___________</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jubail</p></td>
+<td><p>36</p></td>
+<td><p>64 / 128</p></td>
+<td><p>512 GB</p></td>
+<td><p>1 / 2 / 3 / 4</p></td>
+<td><p>40 / 80</p></td>
+<td><p>101</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Nvidia A100</div>
+<div class="line"><br /></div>
+<div class="line">AMD EPYC 7543</div>
+<div class="line"><br /></div>
+<div class="line">AMD EPYC 7742</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Dalma 1TB</p></td>
+<td><p>2</p></td>
 <td><p>40</p></td>
-<td><p>360 GB / 1 TB</p></td>
-<td><p>2/8 (Nvidia V100)</p></td>
-<td><p>Two nodes have 8 GPU cards each, rest of them have 2 cards each</p></td>
+<td><p>1 TB</p></td>
+<td><p>8</p></td>
+<td><p>32</p></td>
+<td><p>16</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Nvidia Tesla V100</div>
+<div class="line"><br /></div>
+<div class="line">Intel(R) Xeon(R) Gold 6148 CPU</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td><p>Bigmem</p></td>
-<td><p>5</p></td>
-<td><p>32/64/72/128</p></td>
-<td><p>1 TB / 2TB</p></td>
-<td><p>None</p></td>
-<td><p>Used when memory requirement per node is greater than 500GB</p></td>
+<tr class="row-even"><td><p>Dalma</p></td>
+<td><p>11</p></td>
+<td><p>40</p></td>
+<td><p>320 GB / 384 GB</p></td>
+<td><p>2</p></td>
+<td><p>32</p></td>
+<td><p>22</p></td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Nvidia Tesla V100</div>
+<div class="line"><br /></div>
+<div class="line">Intel(R) Xeon(R) Gold 6148 CPU</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>Visual</p></td>
+</tbody>
+</table>
+</div>
+<div class="section" id="visual-nodes">
+<h2>Visual Nodes:<a class="headerlink" href="#visual-nodes" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Node Type</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Num Nodes</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">CPUs / Node</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MEM / Node</div>
+<div class="line">(RAM)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">GPUs / Node</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MEM / GPU</div>
+<div class="line">(VRAM)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Num GPUs</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">__Remarks__</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Visual</p></td>
 <td><p>4</p></td>
 <td><p>32</p></td>
-<td><p>105 GB</p></td>
-<td><p>2 (Nvidia Quadro P4000)</p></td>
-<td><p>Used for GUI</p></td>
+<td><p>128 GB</p></td>
+<td><p>2</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>GUI Nodes</p></td>
 </tr>
 </tbody>
 </table>
