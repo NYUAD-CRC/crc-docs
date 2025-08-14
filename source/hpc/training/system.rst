@@ -36,6 +36,7 @@ The Jubail HPC consists of more than 28K CPU cores, while Dalma HPC comprises ov
       - Serial Job Limit
       - Non-MPI Max Cores
       - MPI Multi-Node
+      - Remarks
     * - Jubail
       - AMD EPYC 7742 64-Core Processor @2.25GHz, supporting AVX2
       - 128
@@ -44,6 +45,7 @@ The Jubail HPC consists of more than 28K CPU cores, while Dalma HPC comprises ov
       - 1
       - 128
       - Use multiples of 128
+      - 
     * - Dalma (28 cores)
       - Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2
       - 28
@@ -52,14 +54,19 @@ The Jubail HPC consists of more than 28K CPU cores, while Dalma HPC comprises ov
       - 1
       - 28
       - Use multiples of 28
+      - 
     * - Dalma (40 cores)
-      - **CPU Model**
+      - Intel(R) Xeon(R) Gold 6148 @ 2.40GHz, supporting AVX-512
       - 40
       - 480 GB
-      - **RAM GB**
+      - 4 GB
       - 1
       - 40
       - Use multiples of 40
+      -   
+          .. code-block:: bash
+
+				     #SBATCH --constraint=dalma,512g
 
 .. important::
   * **Serial job limit** means jobs with no threading should request only 1 core.
@@ -99,7 +106,7 @@ Summary of Nodes
       - 480GB
       - None
       - New HPC Compute nodes
-    * - Jubail Gpu
+    * - Jubail GPU
       - 20
       - 128
       - 480GB
