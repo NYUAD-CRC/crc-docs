@@ -255,13 +255,12 @@ your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that yo
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   Last login: Wed Feb 15 15:27:08 2023 from 10.224.42.159
   Disk quotas for wz22 (uid 3387153):
-                             DISK SPACE                # FILES (1000's)
+                          DISK SPACE                # FILES (1000's)
           filesystem       size      quota            number      quota
                       --------------------------   --------------------------
-               /home    10099MB       20GB ( 49%)        77       150 ( 52%)
-            /scratch       53GB     5000GB (  1%)        74       500 ( 15%)
-            /archive       24GB     5120GB (  0%)         1       125 (  1%)
-            
+               /home       92KB       50GB (  0%)         0       500 (  0%)
+            /scratch        4KB     5000GB (  0%)         0       500 (  0%)
+            /archive        4KB     5120GB (  0%)         0       125 (  0%)
   [wz22@login2 ~]$
 
 .. Important::

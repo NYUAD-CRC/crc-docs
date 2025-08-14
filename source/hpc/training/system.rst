@@ -90,55 +90,149 @@ Typical Workflow
 Summary of Nodes
 ----------------
 
-.. list-table:: 
-    :widths: auto 
+Compute Nodes:
+--------------
+.. list-table::
+    :widths: auto
     :header-rows: 1
 
-    * - Node Type
-      - Num Nodes
-      - CPUs / Node
-      - Memory / node
-      - GPUs / node
-      - Remarks
-    * - Jubail Compute
-      - 224
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - |
+        | ____________Remarks____________
+    * - Bigmem Jubail
+      - 1
       - 128
-      - 480GB
-      - None
-      - New HPC Compute nodes
-    * - Jubail GPU
-      - 20
+      - 1 TB
+      - | 
+        | AMD EPYC 7742
+        | 
+        | Memory requirement > 512 GB
+    * - Jubail
+      - 233
       - 128
-      - 480GB
-      - 1/2/3 (Nvidia A100)
-      - New HPC GPU nodes
-    * - Dalma Compute
-      - 428
-      - 28/40
-      - 102 GB / 480 GB
-      - None
-      - Small jobs < 28 CPUs will be sent to Dalma
-    * - Dalma GPUs
-      - 14
+      - 512 GB
+      - AMD EPYC 7742
+    * - Bigmem Dalma
+      - 4
+      - 32 / 64 / 72
+      - 1 TB / 2 TB
+      - | 
+        | AMD EPYC 7551
+        | 
+        | Intel(R) Xeon(R) CPU E7- 8837
+        | 
+        | Intel(R) Xeon(R) CPU E7-8867 v4
+        | 
+        | Memory requirement > 512 GB
+    * - Dalma
+      - 432
+      - 28 / 40
+      - 128 GB / 512 GB
+      - | 
+        | Intel(R) Xeon(R) CPU E5-2680 v4
+        | [Small jobs < 28 CPUs]
+        | 
+        | Intel(R) Xeon(R) Gold 6148
+
+GPU Nodes:
+--------------
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | 
+        | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - | 
+        | GPUs / Node
+      - | 
+        | MEM / GPU
+        | (VRAM)
+      - | 
+        | Num GPUs
+      - | 
+        | ___________Remarks___________
+    * - Jubail
+      - 36
+      - 64 / 128
+      - 512 GB
+      - 1 / 2 / 3 / 4
+      - 40 / 80
+      - 101
+      - | 
+        | Nvidia A100
+        | 
+        | AMD EPYC 7543
+        | 
+        | AMD EPYC 7742
+    * - Dalma 1TB
+      - 2
       - 40
-      - 360 GB / 1 TB
-      - 2/8 (Nvidia V100)
-      - Two nodes have 8 GPU cards each, rest of them have 2 cards each
-    * - Bigmem
-      - 5	
-      - 32/64/72/128
-      - 1 TB / 2TB	
-      - None	
-      - Used when memory requirement per node is greater than 500GB
-    * - Visual	
-      - 4	
-      - 32	
-      - 105 GB
-      - 2 (Nvidia Quadro P4000)
-      - Used for GUI 
+      - 1 TB
+      - 8
+      - 32
+      - 16
+      - | 
+        | Nvidia Tesla V100
+        | 
+        | Intel(R) Xeon(R) Gold 6148 CPU
+    * - Dalma
+      - 11
+      - 40
+      - 320 GB / 384 GB
+      - 2
+      - 32
+      - 22
+      - | 
+        | Nvidia Tesla V100
+        | 
+        | Intel(R) Xeon(R) Gold 6148 CPU
 
+Visual Nodes:
+--------------
+.. list-table::
+    :widths: auto
+    :header-rows: 1
 
-	    
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | 
+        | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - | 
+        | GPUs / Node
+      - | 
+        | MEM / GPU
+        | (VRAM)
+      - | 
+        | Num GPUs
+      - | 
+        | __Remarks__
+    * - Visual
+      - 4
+      - 32
+      - 128 GB
+      - 2
+      - 8
+      - 8
+      - GUI Nodes 
 
 Access
 ------
@@ -172,13 +266,12 @@ your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that yo
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   Last login: Wed Feb 15 15:27:08 2023 from 10.224.42.159
   Disk quotas for wz22 (uid 3387153):
-                             DISK SPACE                # FILES (1000's)
+                          DISK SPACE                # FILES (1000's)
           filesystem       size      quota            number      quota
                       --------------------------   --------------------------
-               /home    10099MB       20GB ( 49%)        77       150 ( 52%)
-            /scratch       53GB     5000GB (  1%)        74       500 ( 15%)
-            /archive       24GB     5120GB (  0%)         1       125 (  1%)
-            
+               /home       92KB       50GB (  0%)         0       500 (  0%)
+            /scratch        4KB     5000GB (  0%)         0       500 (  0%)
+            /archive        4KB     5120GB (  0%)         0       125 (  0%)
   [wz22@login2 ~]$
 
 .. Important::
