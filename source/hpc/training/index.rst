@@ -10,7 +10,7 @@ HPC Training
     
 
 
-There are essentially four important components a HPC user needs to be familiar with to be able to use it successfully for computational research.  
+There are essentially five important components a HPC user needs to be familiar with to be able to use it successfully for computational research. 
 
 .. list-table::
     :widths: auto
@@ -18,19 +18,18 @@ There are essentially four important components a HPC user needs to be familiar 
 
     *   - Component
         - Description
-    *   - :doc:`System </hpc/system/index>`
+    *   - :doc:`System </hpc/training/system>`
         - More about the system hardware and how to access it.
-    *   - :doc:`Storage </hpc/storage/index>`
+    *   - :doc:`Storage </hpc/training/storage>`
         - Page about user quotas and different types of storage available (``$SCRATCH``, ``$HOME``, ``$ARCHIVE``).
-    *   - :doc:`Software </hpc/software/index>`
+    *   - :doc:`Software </hpc/training/software>`
         - More about the software stack and modules, and what it offers you in terms of your application (MPI,Python,R,Singularity)
-    *   - :doc:`Jobs Management </hpc/jobs/index>`
+    *   - :doc:`Jobs Management </hpc/training/quick_start>`
         - Section containing details of Job submission
-    *   - :doc:`HPC Web Interface </hpc/ood/index>`
-        - An interactive interface to remote computing resources    
+    *   - :doc:`HPC Web Interface </hpc/training/ood>`
+        - An interactive interface to remote computing resources
 
 We shall have a brief introduction to each of the components below.
-The users can also refer to the corresponding sections above for a more detailed explanation, or reach us out at jubail.admins@nyu.edu for any assistance.
 
 System
 ------
@@ -82,3 +81,12 @@ Quiz
 
    /hpc/training/quiz
    
+More Detailed Information
+-------------------------
+The users can also refer to the following sections for a more detailed explanation, or reach us out at jubail.admins@nyu.edu for any assistance.
+
+- :doc:`System </hpc/system/index>`
+- :doc:`Storage </hpc/storage/index>`
+- :doc:`Software </hpc/software/index>`
+- :doc:`Jobs Management </hpc/jobs/index>`
+- :doc:`HPC Web Interface </hpc/ood/index>`

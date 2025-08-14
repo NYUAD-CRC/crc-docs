@@ -67,9 +67,9 @@ Know Your Quota
                              DISK SPACE                # FILES (1000's)
           filesystem       size      quota            number      quota
                       --------------------------   --------------------------
-               /home       39GB       50GB (  80%)      328       500 ( 66%)
-            /scratch       70GB     5000GB (  1%)        93       500 ( 19%)
-            /archive        8KB     5120GB (  0%)         0       125 (  0%)
+               /home    10099MB       20GB ( 49%)        77       150 ( 52%)
+            /scratch       53GB     5000GB (  1%)        74       500 ( 15%)
+            /archive       24GB     5120GB (  0%)         1       125 (  1%)
 
 
 Best Practices

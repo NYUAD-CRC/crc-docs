@@ -22,23 +22,56 @@ Hardware
 
 The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-The Jubail HPC consists of more than 28K cores.
+The Jubail HPC consists of more than 28K CPU cores, while Dalma HPC comprises over 12K. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
 
-* The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
-* 480GB per node.
-* 3.75 GB memory per core by default.
-* 128 CPU cores per node, implicits the following:
-    1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
-    2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128 cores per job.
-    3. For MPI jobs using more than one node, always use a number of cores divisible by 128, to utilize the full nodes.
+.. list-table::
+    :widths: auto
+    :header-rows: 1
 
-The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
+    * - HPC Node
+      - CPU Model
+      - Cores per Node
+      - Total Memory
+      - Memory per Core
+      - Serial Job Limit
+      - Non-MPI Max Cores
+      - MPI Multi-Node
+      - Remarks
+    * - Jubail
+      - AMD EPYC 7742 64-Core Processor @2.25GHz, supporting AVX2
+      - 128
+      - 480 GB
+      - 3.75 GB
+      - 1
+      - 128
+      - Use multiples of 128
+      - 
+    * - Dalma (28 cores)
+      - Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2
+      - 28
+      - 102 GB
+      - 4 GB
+      - 1
+      - 28
+      - Use multiples of 28
+      - 
+    * - Dalma (40 cores)
+      - Intel(R) Xeon(R) Gold 6148 @ 2.40GHz, supporting AVX-512
+      - 40
+      - 480 GB
+      - 4 GB
+      - 1
+      - 40
+      - Use multiples of 40
+      -   
+          .. code-block:: bash
 
-* The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
-* 4 GB memory per core by default.
-* 28 CPU cores per node, implicits the following:
-    1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
-    2. For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.
+				     #SBATCH --constraint=dalma,512g
+
+.. important::
+  * **Serial job limit** means jobs with no threading should request only 1 core.
+  * **Non-MPI Max Cores** means for jobs without MPI, stay within a single node.
+  * **MPI multi-Node** ensures you utilize whole nodes, avoiding wasted resources, where the requested number of cores is divisible by the “Cores per Node” value.
 
 Contact us if you need special configuration (extra large memory, GPU, etc...)
 
@@ -49,7 +82,7 @@ Typical Workflow
 2. (One time only) Apply an HPC account and pass our quiz.
 3. If needed, transfer your input data to the HPC.
 4. Log on to HPC login nodes.
-5. Submit jobs on login nodes. 
+5. Submit jobs from login nodes. 
 6. Your jobs will queue for execution.
 7. Once done, examine the output.
 
@@ -73,7 +106,7 @@ Summary of Nodes
       - 480GB
       - None
       - New HPC Compute nodes
-    * - Jubail Gpu
+    * - Jubail GPU
       - 20
       - 128
       - 480GB
