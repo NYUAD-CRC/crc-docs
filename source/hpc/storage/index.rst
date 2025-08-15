@@ -82,12 +82,12 @@ Know Your Quota
 
 ::
 
-                             DISK SPACE                # FILES (1000's)
+                          DISK SPACE                # FILES (1000's)
           filesystem       size      quota            number      quota
                       --------------------------   --------------------------
-               /home       39GB       50GB ( 80%)       328       500 ( 66%)
-            /scratch       67GB     5000GB (  1%)       191       500 ( 38%)
-            /archive          0          0 (  0%)         0         0 (  0%)
+               /home       92KB       50GB (  0%)         0       500 (  0%)
+            /scratch        4KB     5000GB (  0%)         0       500 (  0%)
+            /archive        4KB     5120GB (  0%)         0       125 (  0%)
 
 
 For data transfers please refer to the **Data Trasnfers** section :ref:`here <data_transfers>`
