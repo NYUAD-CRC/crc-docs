@@ -22,23 +22,56 @@ Hardware
 
 The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-The Jubail HPC consists of more than 28K cores.
+The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises over 12K. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
 
-* The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
-* 480GB per node.
-* 3.75 GB memory per core by default.
-* 128 CPU cores per node, implicits the following:
-    1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
-    2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128 cores per job.
-    3. For MPI jobs using more than one node, always use a number of cores divisible by 128, to utilize the full nodes.
+.. list-table::
+    :widths: auto
+    :header-rows: 1
 
-The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
+    * - HPC Node
+      - CPU Model
+      - Cores per Node
+      - Total Memory
+      - Memory per Core
+      - Serial Job Limit
+      - Non-MPI Max Cores
+      - MPI Multi-Node
+      - Remarks
+    * - Jubail
+      - AMD EPYC 7742 64-Core Processor @2.25GHz, supporting AVX2
+      - 128
+      - 480 GB
+      - 3.75 GB
+      - 1
+      - 128
+      - Use multiples of 128
+      - 
+    * - Dalma (28 cores)
+      - Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2
+      - 28
+      - 102 GB
+      - 4 GB
+      - 1
+      - 28
+      - Use multiples of 28
+      - 
+    * - Dalma (40 cores)
+      - Intel(R) Xeon(R) Gold 6148 @ 2.40GHz, supporting AVX-512
+      - 40
+      - 480 GB
+      - 4 GB
+      - 1
+      - 40
+      - Use multiples of 40
+      -   
+          .. code-block:: bash
 
-* The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2.
-* 4 GB memory per core by default.
-* 28 CPU cores per node, implicits the following:
-    1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
-    2. For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.
+				     #SBATCH --constraint=dalma,512g
+
+.. important::
+  * **Serial job limit** means jobs with no threading should request only 1 core.
+  * **Non-MPI Max Cores** means for jobs without MPI, stay within a single node.
+  * **MPI multi-Node** ensures you utilize whole nodes, avoiding wasted resources, where the requested number of cores is divisible by the “Cores per Node” value.
 
 Contact us if you need special configuration (extra large memory, GPU, etc...)
 
@@ -49,7 +82,7 @@ Typical Workflow
 2. (One time only) Apply an HPC account and pass our quiz.
 3. If needed, transfer your input data to the HPC.
 4. Log on to HPC login nodes.
-5. Submit jobs on login nodes. 
+5. Submit jobs from login nodes. 
 6. Your jobs will queue for execution.
 7. Once done, examine the output.
 
@@ -57,55 +90,149 @@ Typical Workflow
 Summary of Nodes
 ----------------
 
-.. list-table:: 
-    :widths: auto 
+Compute Nodes:
+--------------
+.. list-table::
+    :widths: auto
     :header-rows: 1
 
-    * - Node Type
-      - Num Nodes
-      - CPUs / Node
-      - Memory / node
-      - GPUs / node
-      - Remarks
-    * - Jubail Compute
-      - 224
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - |
+        | ____________Remarks____________
+    * - Bigmem Jubail
+      - 1
       - 128
-      - 480GB
-      - None
-      - New HPC Compute nodes
-    * - Jubail Gpu
-      - 20
+      - 1 TB
+      - | 
+        | AMD EPYC 7742
+        | 
+        | Memory requirement > 512 GB
+    * - Jubail
+      - 233
       - 128
-      - 480GB
-      - 1/2/3 (Nvidia A100)
-      - New HPC GPU nodes
-    * - Dalma Compute
-      - 428
-      - 28/40
-      - 102 GB / 480 GB
-      - None
-      - Small jobs < 28 CPUs will be sent to Dalma
-    * - Dalma GPUs
-      - 14
+      - 512 GB
+      - AMD EPYC 7742
+    * - Bigmem Dalma
+      - 4
+      - 32 / 64 / 72
+      - 1 TB / 2 TB
+      - | 
+        | AMD EPYC 7551
+        | 
+        | Intel(R) Xeon(R) CPU E7- 8837
+        | 
+        | Intel(R) Xeon(R) CPU E7-8867 v4
+        | 
+        | Memory requirement > 512 GB
+    * - Dalma
+      - 432
+      - 28 / 40
+      - 128 GB / 512 GB
+      - | 
+        | Intel(R) Xeon(R) CPU E5-2680 v4
+        | [Small jobs < 28 CPUs]
+        | 
+        | Intel(R) Xeon(R) Gold 6148
+
+GPU Nodes:
+--------------
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | 
+        | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - | 
+        | GPUs / Node
+      - | 
+        | MEM / GPU
+        | (VRAM)
+      - | 
+        | Num GPUs
+      - | 
+        | ___________Remarks___________
+    * - Jubail
+      - 36
+      - 64 / 128
+      - 512 GB
+      - 1 / 2 / 3 / 4
+      - 40 / 80
+      - 101
+      - | 
+        | Nvidia A100
+        | 
+        | AMD EPYC 7543
+        | 
+        | AMD EPYC 7742
+    * - Dalma 1TB
+      - 2
       - 40
-      - 360 GB / 1 TB
-      - 2/8 (Nvidia V100)
-      - Two nodes have 8 GPU cards each, rest of them have 2 cards each
-    * - Bigmem
-      - 5	
-      - 32/64/72/128
-      - 1 TB / 2TB	
-      - None	
-      - Used when memory requirement per node is greater than 500GB
-    * - Visual	
-      - 4	
-      - 32	
-      - 105 GB
-      - 2 (Nvidia Quadro P4000)
-      - Used for GUI 
+      - 1 TB
+      - 8
+      - 32
+      - 16
+      - | 
+        | Nvidia Tesla V100
+        | 
+        | Intel(R) Xeon(R) Gold 6148 CPU
+    * - Dalma
+      - 11
+      - 40
+      - 320 GB / 384 GB
+      - 2
+      - 32
+      - 22
+      - | 
+        | Nvidia Tesla V100
+        | 
+        | Intel(R) Xeon(R) Gold 6148 CPU
 
+Visual Nodes:
+--------------
+.. list-table::
+    :widths: auto
+    :header-rows: 1
 
-	    
+    * - | 
+        | Node Type
+      - | 
+        | Num Nodes
+      - | 
+        | CPUs / Node
+      - | 
+        | MEM / Node
+        | (RAM)
+      - | 
+        | GPUs / Node
+      - | 
+        | MEM / GPU
+        | (VRAM)
+      - | 
+        | Num GPUs
+      - | 
+        | __Remarks__
+    * - Visual
+      - 4
+      - 32
+      - 128 GB
+      - 2
+      - 8
+      - 8
+      - GUI Nodes 
 
 Access
 ------
@@ -139,13 +266,12 @@ your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that yo
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   Last login: Wed Feb 15 15:27:08 2023 from 10.224.42.159
   Disk quotas for wz22 (uid 3387153):
-                             DISK SPACE                # FILES (1000's)
+                          DISK SPACE                # FILES (1000's)
           filesystem       size      quota            number      quota
                       --------------------------   --------------------------
-               /home    10099MB       20GB ( 49%)        77       150 ( 52%)
-            /scratch       53GB     5000GB (  1%)        74       500 ( 15%)
-            /archive       24GB     5120GB (  0%)         1       125 (  1%)
-            
+               /home       92KB       50GB (  0%)         0       500 (  0%)
+            /scratch        4KB     5000GB (  0%)         0       500 (  0%)
+            /archive        4KB     5120GB (  0%)         0       125 (  0%)
   [wz22@login2 ~]$
 
 .. Important::

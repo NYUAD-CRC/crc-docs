@@ -235,14 +235,18 @@
 <div class="section" id="how-do-containers-differ-from-virtual-machines-vms">
 <h2>How do containers differ from virtual machines (VMs)<a class="headerlink" href="#how-do-containers-differ-from-virtual-machines-vms" title="Permalink to this heading">¶</a></h2>
 <p>Containers and VMs are both types of virtualization. But it’s important to understand the differences between the two and know when to use each.</p>
-<p>Virtual Machines install every last bit of an operating system (OS) right down to the core software that allows the OS to control the hardware (called the kernel). This means that VMs:
-* Are complete in the sense that you can use a VM to interact with your computer via a different OS.
-* Are extremely flexible. For instance you install a Windows VM on a Mac using software like VirtualBox.
-* Are slow and resource hungry. Every time you start a VM it has to bring up an entirely new OS.</p>
-<p>Containers share a kernel with the host OS. This means that Containers:
-* Are less flexible than VMs. For example, a Linux container must be run on a Linux host OS. (Although you can mix and match distributions.) In practice, containers are only extensively developed on Linux.
-* Are much faster and lighter weight than VMs. A container may be just a few MB.
-* Start and stop quickly and are suitable for running single apps.</p>
+<p>Virtual Machines install every last bit of an operating system (OS) right down to the core software that allows the OS to control the hardware (called the kernel). This means that VMs:</p>
+<ul class="simple">
+<li><p>Are complete in the sense that you can use a VM to interact with your computer via a different OS.</p></li>
+<li><p>Are extremely flexible. For instance you install a Windows VM on a Mac using software like VirtualBox.</p></li>
+<li><p>Are slow and resource hungry. Every time you start a VM it has to bring up an entirely new OS.</p></li>
+</ul>
+<p>Containers share a kernel with the host OS, which means that Containers:</p>
+<ul class="simple">
+<li><p>Are less flexible than VMs. For example, a Linux container must be run on a Linux host OS. (Although you can mix and match distributions.) In practice, containers are only extensively developed on Linux.</p></li>
+<li><p>Are much faster and lighter weight than VMs. A container may be just a few MB.</p></li>
+<li><p>Start and stop quickly and are suitable for running single apps.</p></li>
+</ul>
 <p>Because of their differences, VMs and containers serve different purposes and should be favoured under different circumstances.</p>
 <ul class="simple">
 <li><p>VMs are good for long running interactive sessions where you may want to use several different applications. (Checking email on Outlook and using Microsoft Word and Excel).</p></li>
@@ -363,7 +367,7 @@ module<span class="w"> </span>load<span class="w"> </span>singularity
 singularity<span class="w"> </span>pull<span class="w"> </span>docker://gcc
 </pre></div>
 </div>
-<p>If you prefer to pull a specific GCC version, look at the <a class="reference external" href="https://hub.docker.com/r/library/gcc/tags/">available tags</a> for the specific container and append the tag version to the end of the container name. For example, if you need to pull the <code class="docutils literal notranslate"><span class="pre">GCC</span> <span class="pre">v</span> <span class="pre">5.3.0</span></code></p>
+<p>If you prefer to pull a specific GCC version, look at the <a class="reference external" href="https://hub.docker.com/r/library/gcc/tags/">available tags</a> for the specific container and append the tag version to the end of the container name. For example, if you need to pull the <code class="docutils literal notranslate"><span class="pre">GCC</span> <span class="pre">v</span> <span class="pre">8.3.0</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span>pull<span class="w"> </span>docker://gcc:8.3.0
 </pre></div>
 </div>
