@@ -22,7 +22,7 @@ Hardware
 
 The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-The Jubail HPC consists of more than 28K CPU cores, while Dalma HPC comprises over 12K. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
+The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises over 12K. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
 
 .. list-table::
     :widths: auto
