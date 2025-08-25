@@ -30,6 +30,7 @@ we can not recover, unfortunately.
   /hpc/storage/archive
   /hpc/storage/data_sharing
   /hpc/storage/acl
+  /hpc/storage/data_sharing_risks
   /hpc/storage/archive_work_merge
   /hpc/storage/mount_archive
 
