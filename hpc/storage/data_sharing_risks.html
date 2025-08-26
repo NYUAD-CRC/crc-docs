@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Data Sharing Risks &mdash; CRC Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Merge of $WORK and $ARCHIVE" href="archive_work_merge.html" />
+    <link rel="prev" title="Data Sharing with ACL" href="acl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/crc-wordmark-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">HPC Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hpc.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../old_hpc.html">Previous HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounts/index.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/index.html">System</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Storage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="home_scratch.html">$HOME and $SCRATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archive.html">$ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sharing.html">Data Sharing with Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acl.html">Data Sharing with ACL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Sharing Risks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-chmod-777-mean">What Does chmod 777 Mean?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-explanation">Command Explanation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numeric-octal-representation-of-permissions">Numeric (Octal) Representation of Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#risks-of-using-chmod-777">Risks of Using chmod 777</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#safer-alternatives">Safer Alternatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="archive_work_merge.html">Merge of $WORK and $ARCHIVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mount_archive.html">Mount $ARCHIVE with SSHFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#know-your-quota">Know Your Quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jobs/index.html">Jobs Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ood/index.html">HPC Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research/index.html">Research Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help/index.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">HPC Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hpc_load/index.html">HPC Load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RCS Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/rcs.html">Research Computing Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/1001n.html">1001n Research Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rcs/kb/index.html">Knowledge Base</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_science/data_science.html">Research Data Science Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Team</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../team.html">Center for Research Computing Team</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CRC Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Storage</a> &raquo;</li>
+        
+      <li>Data Sharing Risks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-sharing-risks">
+<h1>Data Sharing Risks<a class="headerlink" href="#data-sharing-risks" title="Permalink to this heading">¶</a></h1>
+<p>When managing file permissions in Linux or Unix-based systems, using the command chmod 777 may seem like a quick fix to access issues.
+However, it comes with serious security risks that can compromise your system.</p>
+<div class="section" id="what-does-chmod-777-mean">
+<h2>What Does chmod 777 Mean?<a class="headerlink" href="#what-does-chmod-777-mean" title="Permalink to this heading">¶</a></h2>
+<p>The command chmod 777 sets file or directory permissions so that:</p>
+<ul class="simple">
+<li><p><strong>Owner</strong>: can read, write, and execute</p></li>
+<li><p><strong>Group</strong>: can read, write, and execute</p></li>
+<li><p><strong>Others (everyone)</strong>: can read, write, and execute</p></li>
+</ul>
+<p>In short, anyone can do anything with the file or directory.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Running chmod with <code class="docutils literal notranslate"><span class="pre">-R</span></code> will recursively change permission for all sub files and directories.
+This can lead to untrackable file permissions and may even prevent certain applications from executing correctly.</p>
+</div>
+</div>
+<div class="section" id="command-explanation">
+<h2>Command Explanation<a class="headerlink" href="#command-explanation" title="Permalink to this heading">¶</a></h2>
+<p>The chmod (short for change mode) command in Linux and Unix is used to change the permissions of a file or directory.
+Every file and directory has three sets of permissions for three types of users:</p>
+<ol class="arabic simple">
+<li><p><strong>User (u)</strong> – the owner of the file</p></li>
+<li><p><strong>Group (g)</strong> – users in the file’s group</p></li>
+<li><p><strong>Others (o)</strong> – all other users</p></li>
+</ol>
+<p>Each set of permissions includes:</p>
+<ul class="simple">
+<li><p><strong>Read (r)</strong> - allows reading the file/directory contents</p></li>
+<li><p><strong>Write (w)</strong> - allows modifying the file or directory</p></li>
+<li><p><strong>Execute (x)</strong> - allows executing a file or entering a directory</p></li>
+</ul>
+</div>
+<div class="section" id="numeric-octal-representation-of-permissions">
+<h2>Numeric (Octal) Representation of Permissions<a class="headerlink" href="#numeric-octal-representation-of-permissions" title="Permalink to this heading">¶</a></h2>
+<p>Permissions can be represented with numbers, where each permission is assigned a value:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Permission</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Read (r)</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Write (w)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Execute (x)</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>To get the permission for a category (user, group, or others), add the values:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Numeric representation</p></th>
+<th class="head"><p>Calculation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rwx</p></td>
+<td><p>7</p></td>
+<td><p>4 (r) + 2 (w) + 1 (x)</p></td>
+</tr>
+<tr class="row-odd"><td><p>rw-</p></td>
+<td><p>6</p></td>
+<td><p>4 (r) + 2 (w)</p></td>
+</tr>
+<tr class="row-even"><td><p>r-x</p></td>
+<td><p>5</p></td>
+<td><p>4 (r) + 1 (x)</p></td>
+</tr>
+<tr class="row-odd"><td><p>r--</p></td>
+<td><p>4</p></td>
+<td><p>4 (r)</p></td>
+</tr>
+<tr class="row-even"><td><p>-wx</p></td>
+<td><p>3</p></td>
+<td><p>2 (w) + 1 (x)</p></td>
+</tr>
+<tr class="row-odd"><td><p>-w-</p></td>
+<td><p>2</p></td>
+<td><p>2 (w)</p></td>
+</tr>
+<tr class="row-even"><td><p>--x</p></td>
+<td><p>1</p></td>
+<td><p>1 (x)</p></td>
+</tr>
+<tr class="row-odd"><td><p>-–</p></td>
+<td><p>0</p></td>
+<td><p>no permissions</p></td>
+</tr>
+</tbody>
+</table>
+<p>Fore more details on permission for files and directories refer <a class="reference external" href="https://linux.die.net/man/1/chmod">chmod manual page</a>.</p>
+</div>
+<div class="section" id="risks-of-using-chmod-777">
+<h2>Risks of Using chmod 777<a class="headerlink" href="#risks-of-using-chmod-777" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Unauthorized Modifications</strong>: Anyone with access to the system can alter, delete, or replace the file, leading to data loss or corruption.</p></li>
+<li><p><strong>Data Integrity Issues</strong>: Multiple users editing or deleting critical files at once can cause file or directory conflicts or instability.</p></li>
+<li><p><strong>Compliance Violations</strong>: For businesses, overly permissive permissions may violate security standards like PCI-DSS, HIPAA, or ISO27001.</p></li>
+</ul>
+</div>
+<div class="section" id="safer-alternatives">
+<h2>Safer Alternatives<a class="headerlink" href="#safer-alternatives" title="Permalink to this heading">¶</a></h2>
+<p>Instead of using chmod 777, consider:</p>
+<ul class="simple">
+<li><p><strong>Restricting access</strong>: Grant only necessary permissions (e.g., chmod 755 filename [meaning rwxr-xr-x] or chmod u=rw,g=r,o=r filename [meaning rw-r--r--]).</p></li>
+<li><p><strong>Applying ACLs</strong>: Use <a class="reference internal" href="acl.html"><span class="doc">Access Control Lists</span></a> for fine-grained permissions.</p></li>
+</ul>
+</div>
+<div class="section" id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Always follow the principle of least privilege: give users only the permissions they need.</p></li>
+<li><p>Regularly audit file permissions to detect overly permissive settings.</p></li>
+<li><p>Use logging and monitoring to track unauthorized access attempts.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While chmod 777 may resolve access problems instantly, it creates far greater risks in the long run.
+A secure system requires thoughtful permission management that balances usability with protection against threats.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="archive_work_merge.html" class="btn btn-neutral float-right" title="Merge of $WORK and $ARCHIVE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="acl.html" class="btn btn-neutral float-left" title="Data Sharing with ACL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2025, Center for Research Computing | NYU Abu Dhabi.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
