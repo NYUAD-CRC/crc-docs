@@ -82,11 +82,11 @@ Compute Nodes:
       - | 
         | AMD EPYC 7742
         | 
-        | Memory requirement > 512 GB
+        | Memory requirement > 480 GB
     * - Jubail
       - 233
       - 128
-      - 512 GB
+      - 480 GB
       - AMD EPYC 7742
     * - Bigmem Dalma
       - 4
@@ -99,11 +99,11 @@ Compute Nodes:
         | 
         | Intel(R) Xeon(R) CPU E7-8867 v4
         | 
-        | Memory requirement > 512 GB
+        | Memory requirement > 480 GB
     * - Dalma
       - 432
       - 28 / 40
-      - 128 GB / 512 GB
+      - 112 GB / 480 GB
       - | 
         | Intel(R) Xeon(R) CPU E5-2680 v4
         | [Small jobs < 28 CPUs]
@@ -137,7 +137,7 @@ GPU Nodes:
     * - Jubail
       - 36
       - 64 / 128
-      - 512 GB
+      - 480 GB
       - 1 / 2 / 3 / 4
       - 40 / 80
       - 101
@@ -197,7 +197,7 @@ Visual Nodes:
     * - Visual
       - 4
       - 32
-      - 128 GB
+      - 112 GB
       - 2
       - 8
       - 8
