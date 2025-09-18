@@ -119,9 +119,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#things-to-keep-in-mind">Things to Keep in mind</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#partitions-summary">Partitions Summary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sample-job-script">Sample Job Script</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sbatch-with-n-c-and-n">#SBATCH with <code class="docutils literal notranslate"><span class="pre">-n</span></code> , <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#basic-slurm-commands">Basic SLURM Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hello-sample-job-script">Hello Sample Job Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sbatch-with-n-c-and-n">#SBATCH with <code class="docutils literal notranslate"><span class="pre">-n</span></code> , <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#requesting-a-gpu-node">Requesting a GPU node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-job-script-for-gpu">Sample Job Script for GPU</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preempt-partition">Preempt Partition</a></li>
 </ul>
 </li>
@@ -448,11 +450,10 @@ conda<span class="w"> </span>activate<span class="w"> </span>myenv
 
 <span class="c1">#Execute the code</span>
 python<span class="w"> </span>abc.py
-
-**Common<span class="w"> </span>Job<span class="w"> </span>submission<span class="w"> </span>arguments:**
 </pre></div>
 </div>
-<ul class="simple">
+<dl class="simple">
+<dt><strong>Common Job submission arguments:</strong></dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>   Select number of tasks to run (default 1 core per task)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code>   Select number of nodes on which to run</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>   Wallclock in days-hours:minutes:seconds (ex 4:00:00)</p></li>
@@ -467,6 +468,71 @@ python<span class="w"> </span>abc.py
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-user=user</span></code> Who to send email notification</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mem</span></code> Maximum amount of memory per job (default is in MB, but can use GB suffix) (Note: not all memory is available to jobs, 8GB is reserved on each node for the OS) (So a 128GB node can allocate up to 120GB for jobs)</p></li>
 </ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="basic-slurm-commands">
+<h2>Basic SLURM Commands<a class="headerlink" href="#basic-slurm-commands" title="Permalink to this heading">¶</a></h2>
+<p>SLURM is the Resource Manager we use to schedule the jobs to the resources according to the requirements specified. Bellow are
+a few of the basic commands a user can use for his/her jobs:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Command</strong></p></th>
+<th class="head"><p><strong>Descirption</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>file1
+</pre></div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command is used to submit a job to the queue. Here <code class="docutils literal notranslate"><span class="pre">file1</span></code> is the job script
+containing the details of resource requirements and commands to be executed.</p></td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue
+</pre></div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> command shows all your jobs (Runing and Pending) present in the queue</p></td>
+</tr>
+<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span><span class="m">127445</span>
+scancel<span class="w"> </span>-u<span class="w"> </span>wz22
+</pre></div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scancel</span></code> commands allows you to cancel your jobs in the queue. You can cancel a single job using the job id
+or you can cancel all the jobs using your NetId.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hello-sample-job-script">
+<h2>Hello Sample Job Script<a class="headerlink" href="#hello-sample-job-script" title="Permalink to this heading">¶</a></h2>
+<p>A simple hello world job script is shown below. Save it as <code class="docutils literal notranslate"><span class="pre">hello_world.slurm</span></code> and submit it using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">hello_world.slurm</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=hello_world</span>
+<span class="c1">#SBATCH --output=hello_world.out</span>
+<span class="c1">#SBATCH --error=hello_world.err</span>
+<span class="c1">#SBATCH --time=00:01:00</span>
+<span class="c1">#SBATCH --partition=compute</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="nv">$USER</span><span class="s2"> from `hostname`!&quot;</span>
+
+<span class="c1">#Wait for 30 seconds</span>
+sleep<span class="w"> </span><span class="m">30</span>
+</pre></div>
+</div>
+<p>The output of the job will be saved in the file <code class="docutils literal notranslate"><span class="pre">hello_world.out</span></code> and any errors will be logged in <code class="docutils literal notranslate"><span class="pre">hello_world.err</span></code>.
+The expected output in <code class="docutils literal notranslate"><span class="pre">hello_world.out</span></code> should look like below:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Hello wz22 from dn001!
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">dn001</span></code> is the name of the node on which the job was executed. This may vary in your case based on the node assigned to you.</p>
+</div>
 </div>
 <div class="section" id="sbatch-with-n-c-and-n">
 <h2>#SBATCH with <code class="docutils literal notranslate"><span class="pre">-n</span></code> , <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-N</span></code><a class="headerlink" href="#sbatch-with-n-c-and-n" title="Permalink to this heading">¶</a></h2>
@@ -532,46 +598,11 @@ describe the difference between these parameters.</p>
 </td>
 <td><ul class="simple">
 <li><p>200 CPUs are assigned ( 20 for each task).</p></li>
-<li><p>Combination of 20 CPUs spread across 10 nodes.</p></li>
+<li><p>Combination of 20 CPUs spread across 10 tasks.</p></li>
 <li><p>Should be used with caution</p></li>
 <li><p>Not recommended for python jobs</p></li>
 </ul>
 </td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="basic-slurm-commands">
-<h2>Basic SLURM Commands<a class="headerlink" href="#basic-slurm-commands" title="Permalink to this heading">¶</a></h2>
-<p>SLURM is the Resource Manager we use to schedule the jobs to the resources according to the requirements specified. Bellow are
-a few of the basic commands a user can use for his/her jobs:</p>
-<table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Command</strong></p></th>
-<th class="head"><p><strong>Descirption</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>file1
-</pre></div>
-</div>
-</td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command is used to submit a job to the queue. Here <code class="docutils literal notranslate"><span class="pre">file1</span></code> is the job script
-containing the details of resource requirements and commands to be executed.</p></td>
-</tr>
-<tr class="row-odd"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue
-</pre></div>
-</div>
-</td>
-<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> command shows all your jobs (Runing and Pending) present in the queue</p></td>
-</tr>
-<tr class="row-even"><td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span><span class="m">127445</span>
-scancel<span class="w"> </span>-u<span class="w"> </span>wz22
-</pre></div>
-</div>
-</td>
-<td><p><code class="docutils literal notranslate"><span class="pre">scancel</span></code> commands allows you to cancel your jobs in the queue. You can cancel a single job using the job id
-or you can cancel all the jobs using your NetId.</p></td>
 </tr>
 </tbody>
 </table>
@@ -594,6 +625,54 @@ or you can cancel all the jobs using your NetId.</p></td>
 </pre></div>
 </div>
 <p>For more details regarding GPU nodes and cards types, kindly check <a class="reference internal" href="#partitions-summary1"><span class="std std-ref">this</span></a></p>
+</div>
+<div class="section" id="sample-job-script-for-gpu">
+<h2>Sample Job Script for GPU<a class="headerlink" href="#sample-job-script-for-gpu" title="Permalink to this heading">¶</a></h2>
+<p>A sample job script for GPU is shown below. Save it as <code class="docutils literal notranslate"><span class="pre">gpu_job.slurm</span></code> and submit it using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">gpu_job.slurm</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J gpu_job</span>
+<span class="c1">#SBATCH -o gpu_job.out</span>
+<span class="c1">#SBATCH -e gpu_job.err</span>
+<span class="c1">#SBATCH -t 00:05:00</span>
+<span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH -c 1</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -G 1 # similar to --gres=gpu:1</span>
+
+<span class="c1">#Activate PyTorch conda environment</span>
+<span class="nb">source</span><span class="w"> </span>/share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
+conda<span class="w"> </span>activate<span class="w"> </span>pytorch-gpu
+
+<span class="c1">#Run the sample script</span>
+python<span class="w"> </span>sample.py
+
+<span class="c1">#Wait for 30 seconds</span>
+sleep<span class="w"> </span><span class="m">30</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">sample.py</span></code> is a simple python script to check the availability of GPU and PyTorch version. You can create this file in the same directory as <code class="docutils literal notranslate"><span class="pre">gpu_job.slurm</span></code> with the following content:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="c1"># Check PyTorch version</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PyTorch Version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check if CUDA (GPU) is available</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="c1"># Print the name of the current GPU</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GPU Name       : </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">current_device</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA is not available, no GPU found.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output of the job will be saved in the file <code class="docutils literal notranslate"><span class="pre">gpu_job.out</span></code> and any errors will be logged in <code class="docutils literal notranslate"><span class="pre">gpu_job.err</span></code>. The expected output in <code class="docutils literal notranslate"><span class="pre">gpu_job.out</span></code> should look like below:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PyTorch Version: 1.11.0
+GPU Name       : NVIDIA A100-PCIE-40GB
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above output may vary based on the PyTorch version and GPU assigned to you.</p>
+</div>
 </div>
 <div class="section" id="preempt-partition">
 <span id="preempt-partition1"></span><h2>Preempt Partition<a class="headerlink" href="#preempt-partition" title="Permalink to this heading">¶</a></h2>

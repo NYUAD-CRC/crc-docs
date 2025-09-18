@@ -16,8 +16,8 @@ In short, you should
 - ``$ARCHIVE`` is not visible on compute nodes but mountable on your local workstation, 
   best suited to quick post-processing, analysis and visualization, without moving your data.
 
-Backing up is a user's own responsibility. E.g., if a user deleted something accidentally, 
-we can not recover, unfortunately.
+.. Important::
+    Backing up is a user's own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.
 
 .. caution::
     Running jobs from ``/home`` is a **serious violation** of HPC policy. Any users who intentionally violate this policy will get their account suspended. 
@@ -79,7 +79,7 @@ Know Your Quota
 ---------------
 
 
-- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. Example output:
+- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota where it is only accessible from the login nodes. Example output:
 
 ::
 

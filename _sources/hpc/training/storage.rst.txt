@@ -60,7 +60,7 @@ Know Your Quota
 ---------------
 
 
-- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. Example output:
+- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota where it is only accessible from the login nodes. Example output:
 
 ::
 
@@ -70,7 +70,6 @@ Know Your Quota
                /home       92KB       50GB (  0%)         0       500 (  0%)
             /scratch        4KB     5000GB (  0%)         0       500 (  0%)
             /archive        4KB     5120GB (  0%)         0       125 (  0%)
-
 
 Best Practices
 --------------

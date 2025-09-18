@@ -220,8 +220,10 @@ for the major changes</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">$ARCHIVE</span></code> is not visible on compute nodes but mountable on your local workstation,
 best suited to quick post-processing, analysis and visualization, without moving your data.</p></li>
 </ul>
-<p>Backing up is a user’s own responsibility. E.g., if a user deleted something accidentally,
-we can not recover, unfortunately.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Backing up is a user’s own responsibility. E.g., if a user deleted something accidentally, we can not recover, unfortunately.</p>
+</div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Running jobs from <code class="docutils literal notranslate"><span class="pre">/home</span></code> is a <strong>serious violation</strong> of HPC policy. Any users who intentionally violate this policy will get their account suspended.
@@ -318,7 +320,7 @@ we can not recover, unfortunately.</p>
 <div class="section" id="know-your-quota">
 <h2>Know Your Quota<a class="headerlink" href="#know-your-quota" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">myquota</span></code> command in the terminal on the HPC to check your current usage and quota. Example output:</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">myquota</span></code> command in the terminal on the HPC to check your current usage and quota where it is only accessible from the login nodes. Example output:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">DISK</span> <span class="n">SPACE</span>                <span class="c1"># FILES (1000&#39;s)</span>
 <span class="n">filesystem</span>       <span class="n">size</span>      <span class="n">quota</span>            <span class="n">number</span>      <span class="n">quota</span>
