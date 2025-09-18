@@ -27,14 +27,14 @@ When you login your shell environment is empty of all software modules
     [wz22@login-0-1 ~]$ module avail matlab
 
     ---------------------------------------- /share/apps/NYUAD/modules/SOFTWARE ----------------------------------------
-    matlab/R2015b matlab/R2019a
-    [wz22@login-0-1 ~]$ module load matlab/R2019a
-    Loading module 'matlab/R2019a'
+    matlab/R2021a  matlab/R2023a  matlab/R2023b  matlab/R2024a  matlab/R2024b  matlab/R2025a
+    [wz22@login-0-1 ~]$ module load matlab
+    Loading module 'matlab/R2024b'
     [wz22@login-0-1 ~]$ which matlab
-    /share/apps/NYUAD/matlab/R2019a/bin/matlab
+    /share/apps/NYUAD/matlab/R2024b/install/bin/matlab
 
 
-``module avail matlab`` shows you all available versions of matlab on the HPC. ``module load matlab/R2019a`` loads the R2019a
+``module avail matlab`` shows you all available versions of matlab on the HPC. ``module load matlab/R2024b`` loads the R2024b
 version into your shell environment. So when you invoke ``matlab`` you actually use the correct version.
 
 Software module environment are set on a per shell instance. So if you open a new terminal on a login node the

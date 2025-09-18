@@ -369,7 +369,7 @@ describe the difference between these parameters.
 
 	  -
 	  	- 200 CPUs are assigned ( 20 for each task).
-		- Combination of 20 CPUs spread across 10 nodes.
+		- Combination of 20 CPUs spread across 10 tasks.
 		- Should be used with caution 
 		- Not recommended for python jobs
 		 
@@ -408,16 +408,11 @@ A sample job script for GPU is shown below. Save it as ``gpu_job.slurm`` and sub
  #SBATCH -n 1
  #SBATCH -c 1
  #SBATCH -N 1
- #SBATCH -G 1
-
- #purge all loaded modules (recommended)
- module purge
+ #SBATCH -G 1 # similar to --gres=gpu:1
  
- #Load the required modules
- module load miniconda
-
  #Activate PyTorch conda environment
- source activate pytorch-gpu
+ source /share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
+ conda activate pytorch-gpu
 
  #Run the sample script
  python sample.py

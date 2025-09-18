@@ -79,7 +79,7 @@ Know Your Quota
 ---------------
 
 
-- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota. Example output:
+- Run ``myquota`` command in the terminal on the HPC to check your current usage and quota where it is only accessible from the login nodes. Example output:
 
 ::
 
