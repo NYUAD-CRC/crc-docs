@@ -15,13 +15,13 @@ The account will have a state of the following: **Active**, **Suspended**, **Arc
       - 1 year from request or renewal
       - Data and HPC resources are accessible
     * - Suspended
-      - lasts for 3 months after end of 1 year without renewal
+      - Lasts for 3 months after account becomes suspended
       - Data accessible, but HPC resources are restricted
     * - Archived
-      - After 3 months from suspended (6 months total)
+      - Lasts for 3 months after suspension ends (total 6 months from suspension)
       - Data retained in archive with no direct access from /home or /scratch.
     * - Deleted
-      - After 6 months from suspended (9 months total), the account is still not reactivated
+      - After 6 months from suspension and the account is still not reactivated
       - Data and account permanently deleted, all access revoked.
 
 .. note::
