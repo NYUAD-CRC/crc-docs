@@ -32,7 +32,7 @@ Opening a New Account
 
 #. Follow the instructions this :doc:`page <account_new>` to request an new account on the HPC.
 #. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request.
-#. You cannot submit jobs until you pass our online training. Click this: :ref:`HPC Trainig <training>`
+#. You needs to go through the :ref:`HPC Trainig <training>` and pass the `Quiz <https://forms.gle/2Fzm5FnkTfhc3umXA/>`__ to get full access to computing resources.
 
 .. toctree::
   :hidden:
@@ -44,11 +44,11 @@ Opening a New Account
 Renewing an Existing Account
 ----------------------------
 
-Users need to renew their account every year.
-
 #. Follow the instructions in this :doc:`page <account_renew>` to request and renewal of your account on HPC. 
-#. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request
-#. You cannot submit jobs until you pass our online training. Click this: :ref:`HPC Training <training>`
+#. Ask your sponsor to approve the request by following the instructions in this :doc:`page <account_approval>` to approve your account request.
+
+.. note::
+  Users need to renew their account every year.
 
 .. toctree::
   :hidden:
@@ -56,7 +56,10 @@ Users need to renew their account every year.
   /hpc/accounts/account_renew
   /hpc/accounts/account_approval
   
-   
+Account Lifecycle
+-----------------
+
+Check this :doc:`page <account_lifecycle>` for the account lifecycle, including the account suspension and grace period.
 
 Formality
 ---------

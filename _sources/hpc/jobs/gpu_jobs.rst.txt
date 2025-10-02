@@ -104,7 +104,7 @@ In this example output, we have one NVIDIA A100 GPU with the following informati
       - Low (``< 10%``)
       - Not a favourable outcome. 
 
-To exit the ``gutil```` command, press ``Ctrl-C``.
+To exit the ``gutil`` command, press ``Ctrl-C``.
 
 
 Interactive sessions

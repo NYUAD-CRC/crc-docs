@@ -33,5 +33,4 @@ Submit an Account Renewal Request
 
 6. Hit ``Submit``, and the request will go to your sponsor to approve (if applicable), and your account will be created, usually within a day of being approved.  You will be returned to the dashboard.
 7. (If you are not an NYU faculty) Ask your sponsor to approve as instructed here :doc:`Approving Account <account_approval>`
-8. (Only minimum computing resource will be assigned to your account until you pass the online training!) Pass our online training for more computing resources. :ref:`HPC Training <training>`
-9. If you have any difficulties or questions, please contact us at jubail.admins@nyu.edu
+8. If you have any difficulties or questions, please contact us at jubail.admins@nyu.edu
