@@ -122,10 +122,10 @@
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel_job_array.html">Parallel Job Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu_jobs.html">Analyzing GPU Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_submit.html">Submitting a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_status.html">Checking Job Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_cancel.html">Cancelling a Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu_jobs.html">Tools for GPU Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpc_slurm.html">A Detailed SLURM Guide</a></li>
 </ul>
@@ -332,18 +332,54 @@
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nvidia</span></code></p></td>
-<td><p>GPU</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>V100 GPU with 32GB of GPU Memory</p></td>
 <td><p>(1,512)</p></td>
 <td><p>4 days</p></td>
 <td><p>12</p></td>
 <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
-<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1</span>
 </pre></div>
 </div>
 </td>
 <td><p>Max GPUs:12</p></td>
 </tr>
-<tr class="row-even"><td><p>3</p></td>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>A100 GPU with 40GB of GPU Memory</p></td>
+<td><p>(1,512)</p></td>
+<td><p>4 days</p></td>
+<td><p>12</p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:a100:1</span>
+</pre></div>
+</div>
+</td>
+<td><p>Max GPUs:12</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>A100 GPU with 80GB of GPU Memory</p></td>
+<td><p>(1,512)</p></td>
+<td><p>4 days</p></td>
+<td><p>12</p></td>
+<td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p nvidia</span>
+<span class="c1">#SBATCH --gres=gpu:a100:1</span>
+<span class="c1">#SBATCH --constrain=80g</span>
+</pre></div>
+</div>
+</td>
+<td><p>Max GPUs:12</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bigmem</span></code></p></td>
 <td><p>Large Memory Jobs</p></td>
 <td><p>(1,56)</p></td>
@@ -356,7 +392,7 @@
 </td>
 <td><p>Jobs requesting more than 480GB will be fowarded to bigmem</p></td>
 </tr>
-<tr class="row-odd"><td><p>4</p></td>
+<tr class="row-even"><td><p>4</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">preempt</span></code></p></td>
 <td></td>
 <td></td>
@@ -365,7 +401,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td></td>
 <td><p>preempt-small</p></td>
 <td><p>(1,28)</p></td>
@@ -379,7 +415,7 @@
 </td>
 <td><p>grace period of 30 mins</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td></td>
 <td><p>preempt-big</p></td>
 <td><p>(28,8192)</p></td>

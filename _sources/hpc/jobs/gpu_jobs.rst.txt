@@ -1,5 +1,18 @@
+Tools for GPU Jobs
+=================== 
+
+GPU Monitoring Tool
+-------------------
+
+The GPU monitoring tool monitors GPU usage of running jobs and takes action in cases of significant underutilization. Below are the key points researchers should be aware of:
+
+  - **Email Notification**: If a job’s average GPU utilization remains below 20% over a two-hour period, the researcher will receive an email alert.
+  - **Job Termination**: If the average GPU utilization falls below 5% for two consecutive hours, the job will be automatically terminated, and the researcher will be notified.
+
+This initiative aims to optimize resource allocation and ensure fair access for all users.
+
 Analyzing GPU Jobs
-==================
+------------------
 
 When running GPU-accelerated jobs on a High-Performance Computing (HPC) system, 
 it is essential to monitor the utilization and performance of the GPUs to ensure efficient 
@@ -15,24 +28,23 @@ after obtaining the ``jobid`` from the ``squeue`` output.
     by the system in order to free up resources for other users on the cluster. 
 
 Finding the Job ID
----------------------
-Before monitoring the GPU job, you need to find the `jobid`. You can use the `squeue` command to obtain 
-a list of running jobs and their corresponding job IDs. The output of the ``squeue`` command will display 
-the job ID of your running job .
+~~~~~~~~~~~~~~~~~~~
+
+Before monitoring the GPU job, you need to find the `jobid`. You can use the ``squeue -p nvidia -t R`` command to obtain 
+a list of running GPU jobs and their corresponding job IDs. The output of this command will display the job ID of your running job(s).
 
 The output will look something like this
 
 .. code-block:: console
 
-    (3-4.11.0)[wz22@login1 ~]$ squeue
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1457246    nvidia     run     wz22  R    3:35:44      1 cn001
+    [wz22@login1 ~]$ squeue -p nvidia -t R
+    JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    1457246    nvidia     run     wz22  R    3:35:44      1 cn001
 
 Here, the JobID is ``1457246``.
 
-
 Monitoring GPU Usage
---------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 The ``gutil <jobid>`` command allows you to monitor the GPU usage in real-time. The command refreshes the 
 output at regular intervals, making it 
@@ -41,8 +53,8 @@ as shown below:
 
 .. code-block:: console
 
-    (3-4.11.0)[wz22@login1 ~]$ #gutil <jobid>
-    (3-4.11.0)[wz22@login1 ~]$ gutil 1457246
+    [wz22@login1 ~]$ #gutil <jobid>
+    [wz22@login1 ~]$ gutil 1457246
 
 This command will display a continuous stream of output showing the current GPU usage. 
 The output includes information such as the GPU temperature, memory usage, and process 
@@ -108,7 +120,7 @@ To exit the ``gutil`` command, press ``Ctrl-C``.
 
 
 Interactive sessions
---------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Users can also make use of interactive sessions to debug their GPU jobs in an incremental fashion, 
 if they are not working as expected.
@@ -127,7 +139,7 @@ This can be done as follows:
 
   .. code-block:: console
 
-    (3-4.11.0)[wz22@login4 ~]$ salloc -p nvidia --gres=gpu:1 -c 5
+    [wz22@login4 ~]$ salloc -p nvidia --gres=gpu:1 -c 5
     salloc: Granted job allocation 1606651
     salloc: Waiting for resource configuration
     salloc: Nodes cn005 are ready for job
@@ -140,7 +152,7 @@ This can be done as follows:
                 /scratch     1047GB     5000GB ( 21%)       750      2048 ( 37%)
                 /archive        0KB     5120GB (  0%)         0       125 (  0%)
 
-    (3-4.11.0)[wz22@login4 ~]$
+    [wz22@login4 ~]$
 
  It can be seen that node ``cn005`` has been assigned for the job. To exit from the interactive session, enter ``exit`` or press ``Ctrl+d``.
 

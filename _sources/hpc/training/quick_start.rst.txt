@@ -103,11 +103,18 @@ Partitions Summary
 
 				#SBATCH -p compute
 				#SBATCH -n 4000
-
 		-
 	*	- 2
 		- ``nvidia``
-		- GPU
+		- 
+		- 
+		- 
+		- 
+		- 
+		- 
+	*	- 
+		- 
+		- V100 GPU with 32GB of GPU Memory
 		- (1,512)
 		- 4 days
 		- 12
@@ -115,8 +122,34 @@ Partitions Summary
 			.. code-block:: bash
 
 				#SBATCH -p nvidia
-				#SBATCH --gres=gpu:1
+				#SBATCH --gres=gpu:v100:1
 
+		- Max GPUs:12
+	*	-  
+		- 
+		- A100 GPU with 40GB of GPU Memory
+		- (1,512)
+		- 4 days
+		- 12
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p nvidia
+				#SBATCH --gres=gpu:a100:1
+
+		- Max GPUs:12
+	*	- 
+		-
+		- A100 GPU with 80GB of GPU Memory
+		- (1,512)
+		- 4 days
+		- 12
+		- 
+			.. code-block:: bash
+
+				#SBATCH -p nvidia
+				#SBATCH --gres=gpu:a100:1
+				#SBATCH --constrain=80g
 
 		- Max GPUs:12
 	*	- 3
