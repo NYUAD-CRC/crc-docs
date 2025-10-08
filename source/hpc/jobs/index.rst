@@ -37,9 +37,9 @@ On HPC, you don't run it directly on the login nodes. Instead, you submit jobs o
    /hpc/jobs/interactive
    /hpc/jobs/job_array
    /hpc/jobs/parallel_job_array
-   /hpc/jobs/gpu_jobs
    /hpc/jobs/job_submit
    /hpc/jobs/job_status
    /hpc/jobs/job_cancel
+   /hpc/jobs/gpu_jobs
    /hpc/jobs/performance
    /hpc/jobs/hpc_slurm
