@@ -70,7 +70,7 @@ As a guideline you should:
     #!/bin/bash
     module purge
     module load matlab
-    matlab –nodisplay –nodesktop –r "mycode.m"
+    matlab –batch mycode
 
 If you use ``csh`` then you need to initialize the software module environment before using ``module`` commands:
 
@@ -80,7 +80,7 @@ If you use ``csh`` then you need to initialize the software module environment b
     source /usr/share/Modules/init/csh
     module purge
     module load matlab
-    matlab –nodisplay –nodesktop –r "mycode.m"
+    matlab –batch mycode
     
             
 You can compile / install your own software, and/or use our Module system. For the latter, first check what applications are available.

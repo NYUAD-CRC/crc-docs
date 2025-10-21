@@ -279,7 +279,7 @@ You can control and monitor the contents of your software modules environment wi
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>matlab
-matlab<span class="w"> </span>–nodisplay<span class="w"> </span>–nodesktop<span class="w"> </span>–r<span class="w"> </span><span class="s2">&quot;mycode.m&quot;</span>
+matlab<span class="w"> </span>–batch<span class="w"> </span>mycode
 </pre></div>
 </div>
 <p>If you use <code class="docutils literal notranslate"><span class="pre">csh</span></code> then you need to initialize the software module environment before using <code class="docutils literal notranslate"><span class="pre">module</span></code> commands:</p>
@@ -287,7 +287,7 @@ matlab<span class="w"> </span>–nodisplay<span class="w"> </span>–nodesktop<s
 <span class="nb">source</span><span class="w"> </span>/usr/share/Modules/init/csh
 module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>matlab
-matlab<span class="w"> </span>–nodisplay<span class="w"> </span>–nodesktop<span class="w"> </span>–r<span class="w"> </span><span class="s2">&quot;mycode.m&quot;</span>
+matlab<span class="w"> </span>–batch<span class="w"> </span>mycode
 </pre></div>
 </div>
 </div>
