@@ -301,5 +301,12 @@ column. For 4 CPU-cores this number would ideally be ``400%``
 
 Installing MATLAB Toolbox
 --------------------------
+To install additional MATLAB toolboxes on Jubail, please follow the instructions below:
 
-If you need a specific Matlab toolbox that is not currently installed on Jubail, please contact the HPC team at hpc-support@nyu.edu.
+1. Download the required MATLAB toolbox from the MathWorks website. Ensure you have the necessary permissions or license to download the toolbox.
+
+2. Transfer the downloaded toolbox files to your scratch directory using a secure copy method (e.g., SCP or SFTP).
+
+3. Once the files are on Jubail, unzip the toolbox and run the startup file from MATLAB.
+
+If you need further assistance with a specific MATLAB toolbox that is not currently installed on Jubail, please contact the HPC team at jubail.support@nyu.edu
