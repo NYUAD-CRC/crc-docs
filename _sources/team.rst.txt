@@ -30,6 +30,10 @@ High Performance Computing
       - HPC Computational Scientist
     * - **Mennatallah Samier Saleh**
       - HPC Applicaions Specialist
+    * - **Ahmed Mahany Omar**
+      - HPC Applicaions Specialist
+    * - **Vineet Deepak More**
+      - HPC Applicaions Specialist
       
 
 **HPC System Administrators**
@@ -52,21 +56,7 @@ High Performance Computing
 Research Support
 ----------------
 
-**Hardware & Technology**
- 
-
-.. list-table:: 
-    :widths: auto 
-    :header-rows: 1
-
-    * - Name
-      - Position
-    * - **Wissam Ali**
-      - Research Technology Specialist
-
 **Application & Development**
-
-
 
 .. list-table:: 
     :widths: auto 
@@ -91,4 +81,25 @@ Data Science
       - Research Data Scientist
     * - **Dhanu Jhala**
       - Research Data Scientist
+
+
+Bioinformatics
+--------------
+
+.. list-table:: 
+    :widths: auto 
+    :header-rows: 1
+
+    * - Name
+      - Position
+    * - **Nizar Drou**
+      - Core Bioinformatics Lead Developer
+    * - **Muhammad Arshad**
+      - Research Scientist
+    * - **Jayaram Radhakrishnan**
+      - Bioinformatics Infrastructure Engineer
+    * - **Giuseppe-Antonio Saldi**
+      - Data Computational Scientist
+    * - **Nabil Rahiman**
+      - Research Data Engineer
 

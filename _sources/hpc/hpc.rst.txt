@@ -12,8 +12,8 @@ Introduction
     Named after Jubail Island, Home of the Jubail Mangrove Park, the first self-contained educational, 
     nature, and leisure destination of its kind in the Emirate of Abu Dhabi.
     
-    In Brief, it is a **2.24 PFLOPs (~33,984 CPU cores)** cluster hosted at NYUAD Data Center in Saadiyat 
-    in 40 racks.
+    In Brief, it is a **3.9 PFLOPs (~49,280 CPU cores)** cluster hosted at the NYUAD Data Center in Saadiyat,  
+    comprising 40 racks.
 
 
 .. list-table:: 
@@ -23,15 +23,15 @@ Introduction
     * - Node Type
       - Number
       - Specifications
-      - Total TFlops
+      - Total PFlops
     * - CPU 
-      - 269
+      - 334 nodes
       - AMD EPYC Rome CPU (128 cores & 512GB RAM each)
-      - 971.73 
+      - 1.4
     * - GPU 
-      - 50
-      - 89 Nvidia Tesla V100 & A100 GPUs
-      - 1272.5
+      - 178 GPUs
+      - Nvidia Tesla V100, A100, H100 & H200 GPUs
+      - 2.5
    
 
 The previous HPC Dalma cluster was integrated with Jubail starting from 10th of March 2022. The details of the
