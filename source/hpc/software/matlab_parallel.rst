@@ -27,6 +27,8 @@ The Slurm script (job.slurm) below can be used for serial jobs:
 
     #Run Matlab via command line
     matlab -nojvm -singleCompThread -batch hello_world
+    #Wait for a minute
+    sleep 60
 
 By invoking MATLAB with ``-nojvm -singleCompThread -batch``, the GUI and the background java processes are
 suppressed as is the creation of multiple threads. 
@@ -39,7 +41,7 @@ To run the MATLAB script, simply submit the job to the scheduler with the follow
 
 .. note::
     Matlab GUI can be launched from the ``Interactive Apps`` section of our HPC Web Interface,
-    https://ood.hpc.abuhdabi.nyu.edu (VPN Required). More info on the HPC Web Interface can be found :doc:`here </hpc/ood/index>`.
+    https://ood.hpc.abudhabi.nyu.edu (VPN Required). More info on the HPC Web Interface can be found :doc:`here </hpc/ood/index>`.
     It is recommended you use the GUI for testing/debugging purposes. For the actual/production runs, command line/batch mode is 
     recommended as it reduces the overhead created by processes/java threads in the background.
 
@@ -100,6 +102,13 @@ The Slurm script (``job.slurm``) below can be used for this case:
     #Run the matlab script
     matlab -batch hello_world_threaded
 
+
+The job can be submitted to the scheduler with:
+
+.. code-block:: bash
+
+    sbatch job.slurm
+
 Note that ``-singleCompThread`` and ``-nojvm`` does not appear in the Slurm script in contrast to the serial case. 
 
 One must tune the value of ``--cpus-per-task`` for optimum performance, use the smallest value for ``--cpus-per-task`` that gives you a significant performance boost because the more resources you 
@@ -119,7 +128,7 @@ request the longer your queue time will be. Furthermore, your fairshare value is
 Running MATLAB on GPUs
 ----------------------
 
-Many routines in MATLAB have been written to run on a GPU. Below is a MATLAB script (matlab_gpu.m) that prints out information about the GPU device:
+Many routines in MATLAB have been written to run on a GPU. Below is a MATLAB script (``matlab_gpu.m``) that prints out information about the GPU device:
 
 .. code-block:: matlab
 
