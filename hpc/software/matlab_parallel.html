@@ -231,6 +231,8 @@ module<span class="w"> </span>load<span class="w"> </span>matlab
 
 <span class="c1">#Run Matlab via command line</span>
 matlab<span class="w"> </span>-nojvm<span class="w"> </span>-singleCompThread<span class="w"> </span>-batch<span class="w"> </span>hello_world
+<span class="c1">#Wait for a minute</span>
+sleep<span class="w"> </span><span class="m">60</span>
 </pre></div>
 </div>
 <p>By invoking MATLAB with <code class="docutils literal notranslate"><span class="pre">-nojvm</span> <span class="pre">-singleCompThread</span> <span class="pre">-batch</span></code>, the GUI and the background java processes are
@@ -242,7 +244,7 @@ suppressed as is the creation of multiple threads.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Matlab GUI can be launched from the <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code> section of our HPC Web Interface,
-<a class="reference external" href="https://ood.hpc.abuhdabi.nyu.edu">https://ood.hpc.abuhdabi.nyu.edu</a> (VPN Required). More info on the HPC Web Interface can be found <a class="reference internal" href="../ood/index.html"><span class="doc">here</span></a>.
+<a class="reference external" href="https://ood.hpc.abudhabi.nyu.edu">https://ood.hpc.abudhabi.nyu.edu</a> (VPN Required). More info on the HPC Web Interface can be found <a class="reference internal" href="../ood/index.html"><span class="doc">here</span></a>.
 It is recommended you use the GUI for testing/debugging purposes. For the actual/production runs, command line/batch mode is
 recommended as it reduces the overhead created by processes/java threads in the background.</p>
 </div>
@@ -294,6 +296,10 @@ module<span class="w"> </span>load<span class="w"> </span>matlab
 matlab<span class="w"> </span>-batch<span class="w"> </span>hello_world_threaded
 </pre></div>
 </div>
+<p>The job can be submitted to the scheduler with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>job.slurm
+</pre></div>
+</div>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">-singleCompThread</span></code> and <code class="docutils literal notranslate"><span class="pre">-nojvm</span></code> does not appear in the Slurm script in contrast to the serial case.</p>
 <p>One must tune the value of <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> for optimum performance, use the smallest value for <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> that gives you a significant performance boost because the more resources you
 request the longer your queue time will be. Furthermore, your fairshare value is decreased in proportion to the requested resources.</p>
@@ -313,7 +319,7 @@ You can also contact us if you need any further help with this.</p>
 </div>
 <div class="section" id="running-matlab-on-gpus">
 <h1>Running MATLAB on GPUs<a class="headerlink" href="#running-matlab-on-gpus" title="Permalink to this heading">¶</a></h1>
-<p>Many routines in MATLAB have been written to run on a GPU. Below is a MATLAB script (matlab_gpu.m) that prints out information about the GPU device:</p>
+<p>Many routines in MATLAB have been written to run on a GPU. Below is a MATLAB script (<code class="docutils literal notranslate"><span class="pre">matlab_gpu.m</span></code>) that prints out information about the GPU device:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">gpu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpuDevice</span><span class="p">();</span>
 <span class="nb">disp</span><span class="p">(</span><span class="n">gpu</span><span class="p">);</span>
 <span class="nb">reset</span><span class="p">(</span><span class="n">gpu</span><span class="p">);</span>
