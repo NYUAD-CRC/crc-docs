@@ -95,7 +95,7 @@ Windows
 
 We recommend Mobaxterm/Putty as your ssh client. Putty is available for download here: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html. 
 
-1. (First-time login only) Setup Butinah session in your putty.
+1. (First-time login only) Setup Jubail session in your putty.
     a. Open Putty. Go to Category -> Session. 
     b. Type jubail.abudhabi.nyu.edu in Host Name (or IP address).
     c. Type Jubail under Saved Sessions.
