@@ -262,7 +262,38 @@
 </div>
 <div class="section" id="account-lifecycle">
 <h2>Account Lifecycle<a class="headerlink" href="#account-lifecycle" title="Permalink to this heading">¶</a></h2>
-<p>Check this <a class="reference internal" href="account_lifecycle.html"><span class="doc">page</span></a> for the account lifecycle, including the account suspension and grace period.</p>
+<p>When you request or renew an HPC account, it is valid for one year. After this period, the account enters a series of states if not renewed, each with specific access permissions and data retention policies.
+The account will have a state of the following: <strong>Active</strong>, <strong>Suspended</strong>, <strong>Archived</strong>, and <strong>Deleted</strong> where the following table summarizes them and their descriptions:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Duration</p></th>
+<th class="head"><p>Access Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Active</p></td>
+<td><p>1 year from request or renewal</p></td>
+<td><p>HPC resources and data are accessible</p></td>
+</tr>
+<tr class="row-odd"><td><p>Suspended</p></td>
+<td><p>3 months after Active</p></td>
+<td><p>No HPC access; data retained (no direct access) and available on request.</p></td>
+</tr>
+<tr class="row-even"><td><p>Archived</p></td>
+<td><p>Lasts for 3 months after suspension ends (total 6 months from suspension)</p></td>
+<td><p>No HPC access; data kept in archive. Data can be restored on request, but restoration takes longer than in suspended state.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deleted</p></td>
+<td><p>After 6 months from suspension and the account is still not reactivated</p></td>
+<td><p>Account and data permanently deleted, all access revoked.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can request account reactivation within the 6-month period by following the instructions in this <a class="reference internal" href="account_renew.html"><span class="doc">page</span></a>. If your NetID remains unchanged, your data will be restored to your account. Otherwise, data migration to a new account may be required.</p>
+</div>
 </div>
 <div class="section" id="formality">
 <h2>Formality<a class="headerlink" href="#formality" title="Permalink to this heading">¶</a></h2>
