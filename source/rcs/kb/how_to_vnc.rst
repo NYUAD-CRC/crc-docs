@@ -10,7 +10,7 @@ Connect VPN and Login
 
 You need to connect NYU VPN if accessing the system from outside campus
 
-( See `How to access NYUAD VPN <https://intranet.nyuad.nyu.edu/administrative-services/technology-services/wireless-network-connectivity/remote-connectivity-vpn/>`_ for more details ) 
+( See `How to access NYUAD VPN <https://intranet.nyuad.nyu.edu/administrative-services/technology-services/network-and-connectivity/nyu-net-remote-access-vpn/>`_ for more details ) 
 
 
 
