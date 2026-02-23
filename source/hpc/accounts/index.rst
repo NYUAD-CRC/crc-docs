@@ -20,15 +20,16 @@ Kindly follow below steps needed for the HPC collaboration:
     
    	 a. Date of birth and mobile number of the collaborator is required.
     
-    3. Collaborator needs to request a new HPC account following the steps below, on this page and get the sponsor's (NYUAD PI)'s approval.
+    3. Please ask your sponsor/manager to complete the `Intranet Access Request Form <https://support.nyu.edu/esc?id=sc_cat_item&sys_id=3419bb241b7c96503f31a9b6624bcb2b&table=sc_cat_item&searchTerm=intranet%20access>`__.
+
+    4. Collaborator needs to request a new HPC account following the steps below, on this page and get the sponsor's (NYUAD PI)'s approval.
     
-    4. Collaborator needs to go through the :ref:`HPC Trainig <training>` and pass the `Quiz <https://forms.gle/2Fzm5FnkTfhc3umXA/>`__.
+    5. Collaborator needs to go through the :ref:`HPC Trainig <training>` and pass the `Quiz <https://forms.gle/2Fzm5FnkTfhc3umXA/>`__.
     
 
 
 Opening a New Account
 ----------------------
-
 
 #. Follow the instructions this :doc:`page <account_new>` to request an new account on the HPC.
 #. Ask your sponsor to approve the request. Follow the instructions in this :doc:`page <account_approval>` to approve account request.
