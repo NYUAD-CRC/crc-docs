@@ -25,15 +25,15 @@ High Performance Computing
     * - Name
       - Position
     * - **Jorge Naranjo**
-      - Senior Computational Scientist
+      - HPC Lead
     * - **Waqqas Zia**
       - HPC Computational Scientist
     * - **Mennatallah Samier Saleh**
-      - HPC Applicaions Specialist
+      - HPC Application Specialist
     * - **Ahmed Mahany Omar**
-      - HPC Applicaions Specialist
+      - HPC Application Specialist
     * - **Vineet Deepak More**
-      - HPC Applicaions Specialist
+      - HPC Application Specialist
       
 
 **HPC System Administrators**
@@ -45,31 +45,14 @@ High Performance Computing
     * - Name
       - Position
     * - **Simon Johny**
-      - HPC Storage System Administrator
+      - HPC System Administrator Lead
     * - **Fayizal Kunhi**
       - HPC System Administrator
     * - **Abhishek Kumar Sharma**
       - HPC System Administrator
 
-
-
-Research Support
-----------------
-
-**Application & Development**
-
-.. list-table:: 
-    :widths: auto 
-    :header-rows: 1
-
-    * - Name
-      - Position
-    * - **Nasser Al Ansari**
-      - Senior Research Application Specialist
-
-
-Data Science
--------------
+Data Science & AI
+-----------------
 
 .. list-table:: 
     :widths: auto 
@@ -78,7 +61,7 @@ Data Science
     * - Name
       - Position
     * - **Karunakar Reddy Mannem**
-      - Research Data Scientist
+      - Data Science & AI Lead
     * - **Dhanu Jhala**
       - Research Data Scientist
 
@@ -93,7 +76,7 @@ Bioinformatics
     * - Name
       - Position
     * - **Nizar Drou**
-      - Core Bioinformatics Lead Developer
+      - Bioinformatics Lead 
     * - **Muhammad Arshad**
       - Research Scientist
     * - **Jayaram Radhakrishnan**
