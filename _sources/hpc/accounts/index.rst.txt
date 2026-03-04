@@ -20,7 +20,7 @@ Kindly follow below steps needed for the HPC collaboration:
     
    	 a. Date of birth and mobile number of the collaborator is required.
     
-    3. Please ask your sponsor/manager to complete the `Intranet Access Request Form <https://support.nyu.edu/esc?id=sc_cat_item&sys_id=3419bb241b7c96503f31a9b6624bcb2b&table=sc_cat_item&searchTerm=intranet%20access>`__.
+    3. Please ask your sponsor/manager to complete the `Contractor Intranet Access Request Form <https://intranet.nyuad.nyu.edu/administrative-services/safety/campus-safety/nyuad-id-cards/contract-staff-intranet-access/>`__.
 
     4. Collaborator needs to request a new HPC account following the steps below, on this page and get the sponsor's (NYUAD PI)'s approval.
     
