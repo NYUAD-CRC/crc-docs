@@ -75,6 +75,12 @@ Compute Nodes:
         | (RAM)
       - |
         | ____________Remarks____________
+    * - Bergamo
+      - 57
+      - 256
+      - 1 TB
+      - | 
+        | AMD EPYC 9754
     * - Bigmem Jubail
       - 1
       - 128
