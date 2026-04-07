@@ -37,6 +37,15 @@ The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises ov
       - Non-MPI Max Cores
       - MPI Multi-Node
       - Remarks
+    * - Bergamo
+      - AMD EPYC 9754 128-Core Processor @2.25GHz, supporting AVX2
+      - 256
+      - 937 GB
+      - 3.66 GB
+      - 1
+      - 256
+      - Use multiples of 256
+      - 
     * - Jubail
       - AMD EPYC 7742 64-Core Processor @2.25GHz, supporting AVX2
       - 128
@@ -106,6 +115,12 @@ Compute Nodes:
         | (RAM)
       - |
         | ____________Remarks____________
+    * - Bergamo
+      - 57
+      - 256
+      - 1 TB
+      - | 
+        | AMD EPYC 9754
     * - Bigmem Jubail
       - 1
       - 128
