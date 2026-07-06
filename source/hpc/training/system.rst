@@ -22,7 +22,7 @@ Hardware
 
 The new HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises over 12K. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
+The Jubail HPC consists of more than 49K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
 
 .. list-table::
     :widths: auto
@@ -36,7 +36,6 @@ The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises ov
       - Serial Job Limit
       - Non-MPI Max Cores
       - MPI Multi-Node
-      - Remarks
     * - Bergamo
       - AMD EPYC 9754 128-Core Processor @2.25GHz, supporting AVX2
       - 256
@@ -45,7 +44,6 @@ The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises ov
       - 1
       - 256
       - Use multiples of 256
-      - 
     * - Jubail
       - AMD EPYC 7742 64-Core Processor @2.25GHz, supporting AVX2
       - 128
@@ -54,29 +52,7 @@ The Jubail HPC consists of more than 29K CPU cores, while Dalma HPC comprises ov
       - 1
       - 128
       - Use multiples of 128
-      - 
-    * - Dalma (28 cores)
-      - Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2
-      - 28
-      - 112 GB
-      - 4 GB
-      - 1
-      - 28
-      - Use multiples of 28
-      - 
-    * - Dalma (40 cores)
-      - Intel(R) Xeon(R) Gold 6148 @ 2.40GHz, supporting AVX-512
-      - 40
-      - 480 GB
-      - 12 GB
-      - 1
-      - 40
-      - Use multiples of 40
-      -   
-          .. code-block:: bash
-
-				     #SBATCH --constraint=dalma,512g
-
+      
 .. important::
   * **Serial job limit** means jobs with no threading should request only 1 core.
   * **Non-MPI Max Cores** means for jobs without MPI, stay within a single node.
@@ -114,9 +90,9 @@ Compute Nodes:
         | MEM / Node
         | (RAM)
       - |
-        | ____________Remarks____________
+        | ___________Remarks___________
     * - Bergamo
-      - 57
+      - 58
       - 256
       - 1 TB
       - | 
@@ -146,15 +122,6 @@ Compute Nodes:
         | Intel(R) Xeon(R) CPU E7-8867 v4
         | 
         | Memory requirement > 480 GB
-    * - Dalma
-      - 432
-      - 28 / 40
-      - 112 GB / 480 GB
-      - | 
-        | Intel(R) Xeon(R) CPU E5-2680 v4
-        | [Small jobs < 28 CPUs]
-        | 
-        | Intel(R) Xeon(R) Gold 6148
 
 GPU Nodes:
 --------------
@@ -180,6 +147,32 @@ GPU Nodes:
         | Num GPUs
       - | 
         | ___________Remarks___________
+    * - Jubail
+      - 3
+      - 64
+      - 2 TB
+      - 8
+      - 141
+      - 24
+      - | 
+        | Nvidia H200
+        | 
+        | Intel(R) Xeon(R) Platinum 8462Y+
+        |
+        | Intel(R) Xeon(R) Gold 6448Y
+    * - Jubail
+      - 4
+      - 64
+      - 1 TB / 2 TB
+      - 2 / 7
+      - 94
+      - 13
+      - | 
+        | Nvidia H100
+        | 
+        | Intel(R) XEON(R) Gold 6548N
+        |
+        | AMD EPYC 7513
     * - Jubail
       - 36
       - 64 / 128

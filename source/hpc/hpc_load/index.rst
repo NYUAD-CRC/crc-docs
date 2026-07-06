@@ -23,7 +23,7 @@ The following table shows the utilization of the GPU nodes with their respective
 
 Software tracker
 ^^^^^^^^^^^^^^^^
-``Software tracker`` is a tracker of the currently running softwares in HPC associated with the number of processes used per each of them in Jubail and Dalma.
+``Software tracker`` is a tracker of the currently running software packages in HPC associated with the number of processes used per each of them.
 
 .. raw:: html
     
