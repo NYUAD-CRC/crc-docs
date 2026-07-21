@@ -108,7 +108,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Jobs Management</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick Intro to Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_jubail.html">Difference in Job Submission between Jubail and Dalma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_job.html">Batch Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_array.html">Job Array</a></li>
@@ -210,9 +209,9 @@
   <div class="section" id="parallel-job-array">
 <h1>Parallel Job Array<a class="headerlink" href="#parallel-job-array" title="Permalink to this heading">¶</a></h1>
 <p>There are times, however, when even a job array doesn’t really fit your needs. For instance, you may be looking at running 300,000 very short running jobs. Or maybe, the complexity to search through all the output files or having to manually “glue” them back together into a single output file is too demanding. Or maybe it’s too difficult to match SLURM’s taskids to actual input file names or parametric analysis. Or more probably the time delay between each jobs being scheduled to run is slowing down your processing as your jobs are really short</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-resuls<span class="w"> </span>file.1
-./process-one-resuls<span class="w"> </span>file.2
-./process-one-resuls<span class="w"> </span>file.3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./process-one-result<span class="w"> </span>file.1
+./process-one-result<span class="w"> </span>file.2
+./process-one-result<span class="w"> </span>file.3
 ...
 ./process-one-result<span class="w"> </span>file.50000
 </pre></div>
@@ -237,7 +236,7 @@ the output is ordered to make things easy for you.</p>
 overhead and the queuing delay for each job.</p>
 <p>The parallel job array tool allows you to set the time limit for each node – <strong>not each job</strong>!,
 the processor type (sse, or avx2) and the partition, this is useful if your research group has its “compute condo”, and the number of nodes to use.</p>
-<p>The parallel job array tool determines an optimal number of nodes to use
+<p>The parallel job array tool determines an optimal number of nodes to use.
 It groups all jobs into groups then processes them using conventional job array.</p>
 <p>The number of “nodes” corresponds actually to the number of groups, which is the number of tasks for the job array.</p>
 <p>The time limit parameter applies to the groups – eg an entire group must complete within the time limit.</p>
@@ -252,21 +251,21 @@ with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">per</span> <span class="n">group</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">/</span><span class="mi">8</span> <span class="o">=</span> <span class="mi">1250</span>
 </pre></div>
 </div>
-<p>Now each group of job will run on one node and the parallel job array is submitted by default to dalma nodes which has 28 CPUs per node.
+<p>Now each group of job will run on one node and the parallel job array is submitted by default to the compute nodes which has 128 CPUs per node.
 This means that per each core (CPU), we will have</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">per</span> <span class="n">core</span> <span class="p">(</span><span class="n">CPU</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1250</span><span class="o">/</span><span class="mi">28</span> <span class="o">=</span> <span class="mi">44</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Hence</span><span class="p">,</span> <span class="n">total</span> <span class="n">time</span> <span class="n">per</span> <span class="n">CPU</span> <span class="o">=</span> <span class="mi">45</span> <span class="o">*</span> <span class="mi">5</span> <span class="n">minutes</span> <span class="o">=</span> <span class="mi">225</span> <span class="n">minutes</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">hours</span> <span class="mi">45</span> <span class="n">minutes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">jobs</span> <span class="n">per</span> <span class="n">core</span> <span class="p">(</span><span class="n">CPU</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1250</span><span class="o">/</span><span class="mi">128</span> <span class="o">=</span> <span class="mi">9</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Hence</span><span class="p">,</span> <span class="n">total</span> <span class="n">time</span> <span class="n">per</span> <span class="n">CPU</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">5</span> <span class="n">minutes</span> <span class="o">=</span> <span class="mi">50</span> <span class="n">minutes</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">+1</span></code> factor comes with the fact that since <code class="docutils literal notranslate"><span class="pre">1250</span></code> isn’t perfectly divisible by <code class="docutils literal notranslate"><span class="pre">28</span></code>, the reminder is distributed
+<p>The <code class="docutils literal notranslate"><span class="pre">+1</span></code> factor comes with the fact that since <code class="docutils literal notranslate"><span class="pre">1250</span></code> isn’t perfectly divisible by <code class="docutils literal notranslate"><span class="pre">128</span></code>, the reminder is distributed
 among the different cores in a round robin fashion.</p>
 </div>
 <p>This is the estimated time it will take a group of jobs (1250) to complete on a single node.</p>
 <p><strong>Hence, while submitting the ``parallel job array`` it will be good to specify this TimeLimit as well, as
 the lower the walltime, the higher is the probability for the faster allocation of resources.</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">slurm_parallel_ja_submit</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">N</span> <span class="mi">8</span> <span class="o">-</span><span class="n">t</span> <span class="mi">03</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">00</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">slurm_parallel_ja_submit</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">N</span> <span class="mi">8</span> <span class="o">-</span><span class="n">t</span> <span class="mi">00</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">00</span>
 </pre></div>
 </div>
 </div>
@@ -290,7 +289,7 @@ $&gt;<span class="w"> </span><span class="c1">#before submitting the jobs</span>
 $&gt;
 $&gt;<span class="w"> </span><span class="c1">#For example</span>
 $&gt;<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
-$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">03</span>:45:00<span class="w"> </span>list_of_commands.txt
+$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:50:00<span class="w"> </span>list_of_commands.txt
 </pre></div>
 </div>
 <p>By default the tool will allow up to 8 “nodes” (groups).
@@ -305,9 +304,9 @@ number of jobs to process to run faster, or when the groups can’t finish withi
 
 
 $&gt;<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
-$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">03</span>:45:00<span class="w"> </span>list_of_commands.txt
+$&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:50:00<span class="w"> </span>list_of_commands.txt
 Entered<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nodes<span class="w"> </span>to<span class="w"> </span>use:<span class="w"> </span><span class="m">8</span>
-Entered<span class="w"> </span>walltime:<span class="w"> </span><span class="m">03</span>:45:00
+Entered<span class="w"> </span>walltime:<span class="w"> </span><span class="m">00</span>:50:00
 Input:<span class="w"> </span>list_of_commands.txt
 Actual<span class="w"> </span>maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nodes<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used:<span class="w"> </span><span class="m">8</span>
 Submitting<span class="w"> </span>parallel<span class="w"> </span>job<span class="w"> </span>array<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>modules:
