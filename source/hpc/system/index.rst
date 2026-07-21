@@ -24,24 +24,19 @@ Hardware
 
 The HPC cluster includes the integration of previous HPC cluster Dalma with Jubail HPC cluster.
 
-The Jubail HPC consists of more than 29K cores.
+The Jubail HPC consists of more than 49K cores.
 
-* The CPU model is AMD EPYC 7742 64-Core Processor @2.25GHz,supporting AVX2.
-* 480GB usable memory per node (512 GB theoretically). Bigmem nodes consist of 1 TB theoretical memory.
+* The CPU models are AMD EPYC 9754 or AMD EPYC 7742.
+* Memory per node is 1 TB/512 GB theoretically.
 * 3.75 GB memory per core by default.
-* 128 CPU cores per node, implicits the following:
+* 128/256 CPU cores per node, implicits the following:
     1. If your code is serial and doesn't has multithreading capabilities, use one core/CPU per job.
-    2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128 cores per job.
-    3. For MPI jobs using more than one node, always use a number of cores divisible by 128, to utilize the full nodes.
+    2. If your code doesn't support MPI, or you don't know what MPI is, use maximum 128/256 cores per job.
+    3. For MPI jobs using more than one node, always use a number of cores divisible by 128/256, to utilize the full nodes.
 
-The Dalma HPC consists of more than 12K CPU cores. But it is very unlikely that your code can scale up to use them all (contact us directly if you are confident). From the user perspective, here are the important specifications for most nodes:
-
-* The CPU model is Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz, supporting AVX2. There are 8 nodes with Intel(R) Xeon(R) Gold 6148 (40 CPU cores). Bigmem node CPU models are AMD EPYC 7551, Intel(R) Xeon(R) CPU E7- 8837, Intel(R) Xeon(R) CPU E7-8867 v4 
-* 112GB usable memory per node (128 GB theoretically). Bigmem nodes consist of 1 and 2 TB theoretical memory.
+* There are 8 nodes with Intel(R) Xeon(R) Gold 6148 (40 CPU cores). Bigmem node CPU models are AMD EPYC 7551, Intel(R) Xeon(R) CPU E7- 8837, Intel(R) Xeon(R) CPU E7-8867 v4 
+* Bigmem nodes consist of 1 and 2 TB theoretical memory.
 * 4 GB memory per core by default.
-* 28 CPU cores per node, implicits the following:
-    1. If your code doesn't support MPI, or you don't know what MPI is, use maximum 28 cores per job.
-    2. For MPI jobs using more than one node, always use a number of cores divisible by 28, to utilize the full nodes.
 
 Contact us if you need special configuration (extra large memory, GPU, etc...)
 
@@ -74,9 +69,9 @@ Compute Nodes:
         | MEM / Node
         | (RAM)
       - |
-        | ____________Remarks____________
+        | ___________Remarks___________
     * - Bergamo
-      - 57
+      - 58
       - 256
       - 1 TB
       - | 
@@ -106,15 +101,6 @@ Compute Nodes:
         | Intel(R) Xeon(R) CPU E7-8867 v4
         | 
         | Memory requirement > 480 GB
-    * - Dalma
-      - 432
-      - 28 / 40
-      - 112 GB / 480 GB
-      - | 
-        | Intel(R) Xeon(R) CPU E5-2680 v4
-        | [Small jobs < 28 CPUs]
-        | 
-        | Intel(R) Xeon(R) Gold 6148
 
 GPU Nodes:
 --------------
@@ -140,6 +126,32 @@ GPU Nodes:
         | Num GPUs
       - | 
         | ___________Remarks___________
+    * - Jubail
+      - 3
+      - 64
+      - 2 TB
+      - 8
+      - 141
+      - 24
+      - | 
+        | Nvidia H200
+        | 
+        | Intel(R) Xeon(R) Platinum 8462Y+
+        |
+        | Intel(R) Xeon(R) Gold 6448Y
+    * - Jubail
+      - 4
+      - 64
+      - 1 TB / 2 TB
+      - 2 / 7
+      - 94
+      - 13
+      - | 
+        | Nvidia H100
+        | 
+        | Intel(R) XEON(R) Gold 6548N
+        |
+        | AMD EPYC 7513
     * - Jubail
       - 36
       - 64 / 128

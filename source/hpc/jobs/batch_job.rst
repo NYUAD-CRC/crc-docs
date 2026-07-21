@@ -111,7 +111,7 @@ Multithreading enables a process to spawn multiple threads to accelerate its exe
 
 Comparing to the previous examples, there are 2 extra lines:
 
-1. ``#SBATCH --cpus-per-task=4``: this asks the system to assign 4 CPU cores per tasks, this number should be no larger than and a divisor of 28 **(Dalma)** or 128 **(Jubail)** to use all the cores on the nodes
+1. ``#SBATCH --cpus-per-task=4``: this asks the system to assign 4 CPU cores per tasks, this number should be no larger than and a divisor of 128 **(Jubail)** or 256 **(Bergamo)** to use all the cores on the nodes
 2. ``export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK``: this tells your applications, if OpenMP supported, to use all the CPU cores assigned to your job, by spawning an exact number of OpenMP threads.
 
 Remember, running a job is 2 steps process: 
@@ -151,7 +151,7 @@ Now comes the pure MPI Jobs.
 
 Comparing to the 1 core example, there are 2 different lines:
 
-1. ``#SBATCH --ntasks=128``: This line requests 128 cores, **this number should be divisible by 28 (Dalma) E.g., 28,56... or 128 (Jubail) . E.g., 128,256...**
+1. ``#SBATCH --ntasks=256``: This line requests 256 cores, **this number should be divisible by 128 (Jubail) or 256 (Bergamo).**
 2. ``srun hostname``: This tells your application to run with MPI support, utilizing all CPU cores requested. 
 
 The old school ``mpiexec`` or ``mpirun`` are supported as well. But you need to load ``openmpi`` module in this case.
@@ -193,5 +193,5 @@ If your application support MPI + OpenMP hybrid parallelization, you could follo
 In this case:
 
 1. The number of CPU cores requested is ``56 (ntasks) * 4 (cpus-per-task) = 224``. 
-2. This number should be divisible by 28 **(Dalma)** or 128 **(Jubail)** to use all the cores on the nodes.
+2. This number should be divisible by 128 **(Jubail)** or 256 **(Bergamo)** to use all the cores on the nodes.
 

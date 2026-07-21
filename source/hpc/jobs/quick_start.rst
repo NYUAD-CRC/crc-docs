@@ -67,7 +67,7 @@ Partitions Summary
 		
 			
 
-		- The small jobs will be forwarded, preferably to Dalma nodes.
+		- 
 	*	- 
 		- 
 		- Medium	
