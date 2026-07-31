@@ -235,7 +235,7 @@ the output is ordered to make things easy for you.</p>
 <p>You get significant performance gains by eliminating the job scheduling
 overhead and the queuing delay for each job.</p>
 <p>The parallel job array tool allows you to set the time limit for each node – <strong>not each job</strong>!,
-the processor type (sse, or avx2) and the partition, this is useful if your research group has its “compute condo”, and the number of nodes to use.</p>
+the node type (bergamo, or jubail), qos, and the number of nodes to use.</p>
 <p>The parallel job array tool determines an optimal number of nodes to use.
 It groups all jobs into groups then processes them using conventional job array.</p>
 <p>The number of “nodes” corresponds actually to the number of groups, which is the number of tasks for the job array.</p>
@@ -270,10 +270,10 @@ the lower the walltime, the higher is the probability for the faster allocation 
 </div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;<span class="w"> </span>slurm_parallel_ja_submit.sh<span class="w"> </span>–h
-slurm_parallel_ja_submit.sh<span class="w"> </span>options:
--C<span class="w"> </span>&lt;constraint&gt;<span class="w"> </span><span class="o">(</span>avx2<span class="w"> </span>or<span class="w"> </span>sse<span class="o">)</span>
+slurm_parallel_ja_submit.sh<span class="w">  </span>options:
+-C<span class="w"> </span>&lt;constraint&gt;<span class="w"> </span><span class="o">(</span>bergamo<span class="w"> </span>or<span class="w"> </span>jubail<span class="o">)</span>
 -t<span class="w"> </span>&lt;<span class="nb">time</span><span class="w"> </span>limit<span class="w"> </span>HH:MM:SS&gt;
--p<span class="w"> </span>&lt;partition&gt;
+-q<span class="w"> </span>&lt;qos&gt;
 -N<span class="w"> </span>&lt;number<span class="w"> </span>of<span class="w"> </span>nodes&gt;
 </pre></div>
 </div>
