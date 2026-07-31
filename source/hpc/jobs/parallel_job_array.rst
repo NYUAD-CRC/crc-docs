@@ -38,7 +38,7 @@ You get significant performance gains by eliminating the job scheduling
 overhead and the queuing delay for each job.
 
 The parallel job array tool allows you to set the time limit for each node – **not each job**!, 
-the processor type (sse, or avx2) and the partition, this is useful if your research group has its "compute condo", and the number of nodes to use.
+the node type (bergamo, or jubail), qos, and the number of nodes to use.
 
 The parallel job array tool determines an optimal number of nodes to use.
 It groups all jobs into groups then processes them using conventional job array. 
@@ -88,10 +88,10 @@ The time limit parameter applies to the groups – eg an entire group must compl
 .. code-block:: bash
 
     >> slurm_parallel_ja_submit.sh –h
-    slurm_parallel_ja_submit.sh options:
-    -C <constraint> (avx2 or sse)
+    slurm_parallel_ja_submit.sh  options:
+    -C <constraint> (bergamo or jubail)
     -t <time limit HH:MM:SS>
-    -p <partition>
+    -q <qos>
     -N <number of nodes>
 .. important::
     The parallel job array tool propagates your environment, 
