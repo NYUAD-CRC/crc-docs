@@ -593,9 +593,18 @@ Disk<span class="w"> </span>quotas<span class="w"> </span><span class="k">for</s
 <span class="o">[</span>wz22@login2<span class="w"> </span>~<span class="o">]</span>$
 </pre></div>
 </div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<dl class="simple">
+<dt>Please refrain from running jobs or computationally intensive tasks on login nodes. Violations may result in account suspension. The following activities are also prohibited on login nodes:</dt><dd><ul class="simple">
+<li><p>SSH reverse tunnels (ssh -R) or remote port forwarding.</p></li>
+<li><p>VPNs, tunnels, or overlay networking (e.g., Cloudflare Tunnel, Tailscale, ZeroTier, ngrok).</p></li>
+<li><p>Persistent background processes exposing login-node services externally.</p></li>
+<li><p>Proxies, gateways, or services providing inbound access to the cluster.</p></li>
+<li><p>Bypassing CRC network security controls, firewalls, VPN requirements, or approved access methods.</p></li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 </div>

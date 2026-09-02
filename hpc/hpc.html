@@ -234,7 +234,16 @@ comprising 40 racks.</p>
 previous HPC systems can be found <a class="reference internal" href="old_hpc.html"><span class="doc">here</span></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.</p>
+<dl class="simple">
+<dt>Please refrain from running jobs or computationally intensive tasks on login nodes. Violations may result in account suspension. The following activities are also prohibited on login nodes:</dt><dd><ul class="simple">
+<li><p>SSH reverse tunnels (ssh -R) or remote port forwarding.</p></li>
+<li><p>VPNs, tunnels, or overlay networking (e.g., Cloudflare Tunnel, Tailscale, ZeroTier, ngrok).</p></li>
+<li><p>Persistent background processes exposing login-node services externally.</p></li>
+<li><p>Proxies, gateways, or services providing inbound access to the cluster.</p></li>
+<li><p>Bypassing CRC network security controls, firewalls, VPN requirements, or approved access methods.</p></li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this heading">¶</a></h2>
