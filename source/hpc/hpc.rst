@@ -42,7 +42,12 @@ The previous HPC Dalma cluster was integrated with Jubail starting from 10th of 
 previous HPC systems can be found :doc:`here </hpc/old_hpc>` 
 
 .. warning::
-    Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
+    Please refrain from running jobs or computationally intensive tasks on login nodes. Violations may result in account suspension. The following activities are also prohibited on login nodes: 
+      - SSH reverse tunnels (ssh -R) or remote port forwarding.
+      - VPNs, tunnels, or overlay networking (e.g., Cloudflare Tunnel, Tailscale, ZeroTier, ngrok).
+      - Persistent background processes exposing login-node services externally.
+      - Proxies, gateways, or services providing inbound access to the cluster.
+      - Bypassing CRC network security controls, firewalls, VPN requirements, or approved access methods.
 
 Useful Links
 ------------

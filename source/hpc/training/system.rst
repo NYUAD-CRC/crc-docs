@@ -282,8 +282,13 @@ your terminal.It may look something like ``[wz22@login2 ~]$`` suggesting that yo
             /archive        4KB     5120GB (  0%)         0       125 (  0%)
   [wz22@login2 ~]$
 
-.. Important::
-    Please refrain from running jobs on the login nodes. This can lead to your account getting suspended.
+.. warning::
+    Please refrain from running jobs or computationally intensive tasks on login nodes. Violations may result in account suspension. The following activities are also prohibited on login nodes: 
+      - SSH reverse tunnels (ssh -R) or remote port forwarding.
+      - VPNs, tunnels, or overlay networking (e.g., Cloudflare Tunnel, Tailscale, ZeroTier, ngrok).
+      - Persistent background processes exposing login-node services externally.
+      - Proxies, gateways, or services providing inbound access to the cluster.
+      - Bypassing CRC network security controls, firewalls, VPN requirements, or approved access methods.
 
 
 
