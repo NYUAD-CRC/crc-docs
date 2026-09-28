@@ -57,7 +57,7 @@ DEPARTMENTS = collections.OrderedDict([
 # historical 2013-2017 breakdown of those papers; any difference between this
 # and the actual pre-2018 count is applied to 2017 (with a warning).
 PRE2018_SPLIT = collections.OrderedDict([
-    ("2013", 1), ("2014", 12), ("2015", 16), ("2016", 19), ("2017", 23),
+    ("2013", 1), ("2014", 12), ("2015", 16), ("2016", 19), ("2017", 19),
 ])
 
 LINK_RE = re.compile(r"^\s*`(.*)<([^<>]*)>`_\s*$", re.S)
