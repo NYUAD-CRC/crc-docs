@@ -36,3 +36,5 @@ Temporary Items
 
 ### vscode ###
 .vscode
+
+__pycache__/
