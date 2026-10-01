@@ -296,3 +296,11 @@ def setup(app):
         # 'enable_auto_doc_ref': True,
     }, True)
     app.add_transform(AutoStructify)
+
+    # Regenerate the publication charts (hpc/research/research_plot.html)
+    # from the CSV data so the counts never have to be edited by hand.
+    def _update_publication_stats(app):
+        sys.path.insert(0, os.path.join(app.srcdir, 'hpc', 'research'))
+        import publication_stats
+        publication_stats.write()
+    app.connect('builder-inited', _update_publication_stats)
