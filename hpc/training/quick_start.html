@@ -554,7 +554,7 @@ or you can cancel all the jobs using your NetId.</p></td>
 <span class="c1">#SBATCH --nodes=1</span>
 <span class="c1">#SBATCH --ntasks=1</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="nv">$USER</span><span class="s2"> from `hostname`!&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello </span><span class="nv">$USER</span><span class="s2"> from `hostname`!"</span>
 
 <span class="c1">#Wait for 30 seconds</span>
 sleep<span class="w"> </span><span class="m">30</span>
@@ -690,14 +690,14 @@ sleep<span class="w"> </span><span class="m">30</span>
 <p>Where <code class="docutils literal notranslate"><span class="pre">sample.py</span></code> is a simple python script to check the availability of GPU and PyTorch version. You can create this file in the same directory as <code class="docutils literal notranslate"><span class="pre">gpu_job.slurm</span></code> with the following content:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="c1"># Check PyTorch version</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PyTorch Version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PyTorch Version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Check if CUDA (GPU) is available</span>
 <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
     <span class="c1"># Print the name of the current GPU</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GPU Name       : </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">current_device</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GPU Name       : </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">current_device</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA is not available, no GPU found.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"CUDA is not available, no GPU found."</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The output of the job will be saved in the file <code class="docutils literal notranslate"><span class="pre">gpu_job.out</span></code> and any errors will be logged in <code class="docutils literal notranslate"><span class="pre">gpu_job.err</span></code>. The expected output in <code class="docutils literal notranslate"><span class="pre">gpu_job.out</span></code> should look like below:</p>

@@ -281,7 +281,7 @@ the Conda environments found in the specified directory.</p>
 <h2>Finding the Conda Environment directories<a class="headerlink" href="#finding-the-conda-environment-directories" title="Permalink to this heading">¶</a></h2>
 <p>One of the simplest commands to find out the source directory of the conda environments in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> would be
 as follows:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;/scratch&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"/scratch"</span>
 </pre></div>
 </div>
 <p>Example output would be as follows:</p>
@@ -332,11 +332,11 @@ containing the environments with the <code class="docutils literal notranslate">
 <span class="go">INVALID ENV: pkgs</span>
 <span class="go">INVALID ENV: pyt</span>
 
-<span class="go">Valid Conda environments in &#39;/scratch/wz22/conda-envs&#39;:</span>
+<span class="go">Valid Conda environments in '/scratch/wz22/conda-envs':</span>
 <span class="go">1. amd (/scratch/wz22/conda-envs/amd)</span>
 <span class="go">2. abc (/scratch/wz22/conda-envs/abc)</span>
 
-<span class="go">Select environments to migrate (comma-separated list, &#39;All&#39; to migrate all):</span>
+<span class="go">Select environments to migrate (comma-separated list, 'All' to migrate all):</span>
 <span class="go">2</span>
 </pre></div>
 </div>
@@ -397,7 +397,7 @@ conda-migrate<span class="w"> </span>-d<span class="w"> </span>/scratch/wz22/con
 numerous files, or facing network connectivity challenges, an alternative option is available for
 migrating Conda environments through job submission.</p>
 <p>Here’s an example command that executes the tool as a job:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch -c 10 -t 48:00:00 -J conda-migrate --wrap &quot;conda-migrate -d /scratch/wz22/conda-envs --all&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch -c 10 -t 48:00:00 -J conda-migrate --wrap "conda-migrate -d /scratch/wz22/conda-envs --all"</span>
 </pre></div>
 </div>
 <p>This command initiates a background job on a compute node. It’s designed to migrate all environments

@@ -372,7 +372,7 @@ such limits.</p>
 <span class="c1">#SBATCH -n 1</span>
 <span class="c1">#SBATCH -a 1-1000</span>
 sleep<span class="w"> </span><span class="m">5</span>
-<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="w"> </span><span class="s2">" "</span>
 date
 
 $&gt;<span class="w"> </span>sbatch<span class="w"> </span>ja.sh

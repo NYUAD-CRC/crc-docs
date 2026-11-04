@@ -263,7 +263,7 @@ Host<span class="w"> </span>hpc-job
 <span class="w">   </span>ForwardAgent<span class="w"> </span>yes
 <span class="w">  </span>StrictHostKeyChecking<span class="w"> </span>no
 <span class="w">  </span><span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null
-<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c &#39;nc \$SLURM_NODELIST 22&#39;&quot;</span>
+<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">"/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc \$SLURM_NODELIST 22'"</span>
 <span class="w">  </span>User<span class="w"> </span>&lt;NetID&gt;
 </pre></div>
 </div>
@@ -278,7 +278,7 @@ Host<span class="w"> </span>hpc-job
 <span class="w">   </span>ForwardAgent<span class="w"> </span>yes
 <span class="w">  </span>StrictHostKeyChecking<span class="w"> </span>no
 <span class="w">  </span><span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null
-<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c &#39;nc </span><span class="nv">$SLURM_NODELIST</span><span class="s2"> 22&#39;&quot;</span>
+<span class="w">  </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">"/opt/slurm/default/bin/salloc --nodes=1 --ntasks-per-node=8 --time=9:00:00 /bin/bash -c 'nc </span><span class="nv">$SLURM_NODELIST</span><span class="s2"> 22'"</span>
 <span class="w">  </span>User<span class="w"> </span>&lt;NetID&gt;
 </pre></div>
 </div>

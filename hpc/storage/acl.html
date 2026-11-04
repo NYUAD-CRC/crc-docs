@@ -302,7 +302,7 @@ permissions to the directories <code class="docutils literal notranslate"><span 
 <p>To remove access permissions set by ACL, you can use the <code class="docutils literal notranslate"><span class="pre">setfacl</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-x</span></code>
 option followed by the specific entry you want to remove. Below is an example of removing ACL
 permissions for a user <code class="docutils literal notranslate"><span class="pre">xyz12</span></code> from the path <code class="docutils literal notranslate"><span class="pre">/scrtach/abc12/example/group1</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>setfacl<span class="w"> </span>-x<span class="w"> </span><span class="s2">&quot;u:xyz12&quot;</span><span class="w"> </span>/scrtach/abc12/example/group1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>setfacl<span class="w"> </span>-x<span class="w"> </span><span class="s2">"u:xyz12"</span><span class="w"> </span>/scrtach/abc12/example/group1
 </pre></div>
 </div>
 <p>This command will remove the access permissions previously granted to the user <code class="docutils literal notranslate"><span class="pre">xyz12</span></code>
