@@ -1,3 +1,4 @@
+
 name: github pages
 
 on:
@@ -5,38 +6,31 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.8'
+          python-version: '3.11'
+          cache: 'pip'
 
       - name: Upgrade pip
-        run: |
-          # install pip=>20.1 to use "pip cache dir"
-          python3 -m pip install --upgrade pip
-
-      - name: Get pip cache dir
-        id: pip-cache
-        run: echo "::set-output name=dir::$(pip cache dir)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+        run: python3 -m pip install --upgrade pip
 
       - name: Install dependencies
         run: python3 -m pip install -r ./requirements.txt
 
-      - run: make html
+      - name: Build documentation
+        run: make html
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
